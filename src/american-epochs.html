@@ -47,7 +47,10 @@
   .mode-btn.active{background:var(--ink);color:var(--paper);}
 
   .stage{position:relative;margin-top:8px;border-top:1px solid var(--rule);}
-  svg.chart{display:block;width:100%;height:auto;overflow:visible;}
+  .chart-scroll{overflow-x:auto;position:relative;scrollbar-width:thin;scrollbar-color:var(--rule) transparent;}
+  .chart-scroll::-webkit-scrollbar{height:5px;}
+  .chart-scroll::-webkit-scrollbar-thumb{background:var(--rule);border-radius:3px;}
+  svg.chart{display:block;height:auto;overflow:visible;}
 
   .ax-year{font-family:var(--mono);font-size:11px;fill:var(--ink-soft);}
   .ax-year.major{fill:var(--ink);}
@@ -101,7 +104,7 @@
 </head>
 <body>
 <header class="masthead">
-  <div class="kicker">v2 · A Periodization Instrument · 1939 – Present</div>
+  <div class="kicker">v3 · A Periodization Instrument · 1939 – Present</div>
   <h1>American Epochs</h1>
   <div class="dek">Two legitimacy cycles, each rising to an apex and falling into crisis — laid over the empirical record so the labels can be tested against it, not just asserted over it.</div>
 </header>
@@ -116,6 +119,9 @@
     <button class="mode-btn active" id="z2Btn" title="Major events (default)">Standard</button>
     <button class="mode-btn" id="z3Btn" title="All events including granular detail">Detail</button>
   </div>
+  <div class="ctl-group" id="backGroup" style="display:none">
+    <button class="mode-btn active" id="backBtn">← All epochs</button>
+  </div>
   <div class="ctl-group">
     <span class="ctl-label">Mode</span>
     <button class="mode-btn" id="stripBtn" title="Hide epoch names + RFT band. If the seam is real, you should still find it in the raw lanes.">Strip labels</button>
@@ -123,7 +129,9 @@
 </div>
 
 <div class="stage">
-  <svg class="chart" id="chart" xmlns="http://www.w3.org/2000/svg"></svg>
+  <div class="chart-scroll" id="chartScroll">
+    <svg class="chart" id="chart" xmlns="http://www.w3.org/2000/svg"></svg>
+  </div>
 </div>
 
 <div class="detail" id="detail">
@@ -334,9 +342,10 @@ const lanes = {
   crime:{on:true,       label:'Violent crime',  register:'measured', color:'var(--ink)'},
   rft:{on:false,        label:'RFT regime',     register:'argued',   color:'var(--argued)'},
 };
-let stripped   = false;
-let zoomLevel  = 2;   // 1=Overview  2=Standard  3=Detail
-let selected   = null;
+let stripped     = false;
+let zoomLevel    = 2;       // 1=Overview  2=Standard  3=Detail
+let zoomEpochId  = null;    // null=full view, epoch id=zoomed into that epoch
+let selected     = null;
 
 const SVGNS = 'http://www.w3.org/2000/svg';
 const chart   = document.getElementById('chart');
@@ -394,14 +403,30 @@ function computeSpanLayout(){
    RENDER
    ============================================================ */
 function render(){
-  W = chart.clientWidth || chart.parentNode.clientWidth || 1000;
+  const scrollEl = document.getElementById('chartScroll');
+  const containerW = scrollEl ? (scrollEl.clientWidth || 900) : 900;
+
+  // When zoomed: expand SVG so the target epoch fills the container width
+  if(zoomEpochId){
+    const ep = EPOCHS.find(e => e.id === zoomEpochId);
+    const epEnd = ep.open ? NOW : ep.end;
+    const epYears = epEnd - ep.start;
+    const totalYears = YEAR_MAX - YEAR_MIN;
+    const padPx = containerW * 0.12;
+    W = Math.round((containerW - 2 * padPx) * totalYears / epYears);
+  } else {
+    W = containerW;
+  }
+  chart.style.width = W + 'px';
+
   while(chart.firstChild) chart.removeChild(chart.firstChild);
 
   const spanLayout = computeSpanLayout();
 
-  const evTop = 14, evH = 150;
+  // More vertical room for the dot cloud when zoomed — events spread out naturally
+  const evTop = 14, evH = zoomEpochId ? 220 : 150;
   const axisY = evTop + evH;
-  let y = axisY + 34;                                    // below axis ticks/labels
+  let y = axisY + 34;
 
   const spanY = y; y += spanLayout.totalH;
 
@@ -428,27 +453,59 @@ function render(){
     if(b.key === 'rft')        drawRFT(b.y, b.h);
   });
   drawNow(evTop, H);
+
+  // After drawing, scroll so the zoomed epoch fills the viewport
+  if(zoomEpochId && scrollEl){
+    const ep = EPOCHS.find(e => e.id === zoomEpochId);
+    const padPx = containerW * 0.12;
+    scrollEl.scrollLeft = Math.max(0, xOf(ep.start) - padPx);
+  }
 }
 
 /* ---- axis spine + year ticks ---- */
 function drawAxis(axisY){
   el('line',{x1:xOf(YEAR_MIN),y1:axisY,x2:xOf(YEAR_MAX),y2:axisY,stroke:'var(--ink)','stroke-width':1.5},chart);
-  for(let yr=1940; yr<=2020; yr+=10){
-    const x=xOf(yr);
-    el('line',{x1:x,y1:axisY-5,x2:x,y2:axisY+5,stroke:'var(--ink)','stroke-width':1},chart);
-    txt(yr,{x:x,y:axisY+19,'text-anchor':'middle',class:'ax-year major'},chart);
-  }
-  for(let yr=1945; yr<=2025; yr+=10){
-    const x=xOf(yr);
-    el('line',{x1:x,y1:axisY-3,x2:x,y2:axisY+3,stroke:'var(--ink-faint)','stroke-width':1},chart);
+
+  const pxPerYear = (W - 16) / (YEAR_MAX - YEAR_MIN);
+
+  if(pxPerYear < 15){
+    // Full view: decade labels, half-decade minor ticks
+    for(let yr=1940; yr<=2020; yr+=10){
+      const x=xOf(yr);
+      el('line',{x1:x,y1:axisY-5,x2:x,y2:axisY+5,stroke:'var(--ink)','stroke-width':1},chart);
+      txt(yr,{x:x,y:axisY+19,'text-anchor':'middle',class:'ax-year major'},chart);
+    }
+    for(let yr=1945; yr<=2025; yr+=10){
+      const x=xOf(yr);
+      el('line',{x1:x,y1:axisY-3,x2:x,y2:axisY+3,stroke:'var(--ink-faint)','stroke-width':1},chart);
+    }
+  } else {
+    // Zoomed: every year tick; decade = big + label, quinquennial = medium + label, other = small tick
+    for(let yr=YEAR_MIN; yr<=YEAR_MAX; yr++){
+      const x = xOf(yr);
+      const isDec = yr % 10 === 0;
+      const isMid = yr % 5  === 0 && !isDec;
+      if(isDec){
+        el('line',{x1:x,y1:axisY-6,x2:x,y2:axisY+6,stroke:'var(--ink)','stroke-width':1.5},chart);
+        txt(yr,{x,y:axisY+19,'text-anchor':'middle',class:'ax-year major'},chart);
+      } else if(isMid){
+        el('line',{x1:x,y1:axisY-4,x2:x,y2:axisY+4,stroke:'var(--ink)','stroke-width':1},chart);
+        txt(yr,{x,y:axisY+19,'text-anchor':'middle',class:'ax-year major'},chart);
+      } else {
+        el('line',{x1:x,y1:axisY-2,x2:x,y2:axisY+2,stroke:'var(--ink-faint)','stroke-width':0.8},chart);
+        if(pxPerYear >= 35){
+          txt(yr,{x,y:axisY+15,'text-anchor':'middle',class:'ax-year',style:'font-size:8.5px'},chart);
+        }
+      }
+    }
   }
 }
 
 /* ---- point events: vertical-scootch dot cloud ---- */
 function drawEvents(top, h, axisY){
   const dotR   = 4;
-  const rowH   = 22;        // vertical spacing between dot rows
-  const maxRows = 6;
+  const rowH   = 22;
+  const maxRows = Math.max(6, Math.floor((h - 24) / rowH));
   const charW  = 6.0;
   const rowEndX = new Array(maxRows).fill(-1e9);
 
@@ -601,13 +658,25 @@ function drawEpochs(top, h){
          style:'font-family:var(--mono);font-size:9.5px;font-weight:400;opacity:.85'},chart);
     }
 
-    if(selected && selected.type==='epoch' && selected.id===ep.id){
-      el('rect',{x:startX,y:top-3,width:Math.max(0,(ep.open?xOf(NOW):x1)-startX),height:h+6,
+    // Zoom ring — shown when this epoch is the zoomed-into epoch
+    const epW = Math.max(0, (ep.open ? xOf(NOW) : x1) - startX);
+    if(zoomEpochId === ep.id){
+      el('rect',{x:startX,y:top-3,width:epW,height:h+6,
+        fill:'none',stroke:'var(--now)','stroke-width':2.5},chart);
+    } else if(selected && selected.type==='epoch' && selected.id===ep.id && !zoomEpochId){
+      el('rect',{x:startX,y:top-3,width:epW,height:h+6,
         fill:'none',stroke:'var(--now)','stroke-width':2},chart);
     }
 
-    g.addEventListener('click', () => selectEpoch(ep));
-    g.addEventListener('mousemove', e => showTip(`<span class="tt-yr">${ep.start}–${ep.open?'now':ep.end}</span> · ${ep.name}<br>${ep.oneliner}`,e));
+    g.addEventListener('click', () => {
+      if(zoomEpochId === ep.id) zoomOut();
+      else zoomToEpoch(ep);
+    });
+    g.addEventListener('mousemove', e => showTip(
+      zoomEpochId === ep.id
+        ? `<span class="tt-yr">${ep.name}</span><br>Click to zoom out`
+        : `<span class="tt-yr">${ep.start}–${ep.open?'now':ep.end}</span> · ${ep.name}<br>${ep.oneliner}<br><span style="opacity:.6">Click to zoom in</span>`,
+      e));
     g.addEventListener('mouseleave', hideTip);
   });
 }
@@ -687,19 +756,31 @@ function drawNow(top, bottom){
    ============================================================ */
 const detail = document.getElementById('detail');
 
-function selectEpoch(ep){
-  selected = {type:'epoch', id:ep.id};
-  const evs = EVENTS.filter(e => !e.span && e.y >= ep.start && e.y <= (ep.open ? NOW : ep.end));
-  const spans = EVENTS.filter(e => e.span && e.y >= ep.start && e.y <= (ep.open ? NOW : ep.end));
+function epochDetailHTML(ep){
+  const evs   = EVENTS.filter(e => !e.span && e.y >= ep.start && e.y <= (ep.open ? NOW : ep.end));
+  const spans = EVENTS.filter(e =>  e.span && e.y >= ep.start && e.y <= (ep.open ? NOW : ep.end));
   const allLabels = [...evs, ...spans].map(e => e.label).join(' · ');
-  detail.innerHTML = `
+  return `
     <div class="d-eyebrow">Cycle ${ep.cycle} · ${ep.phase}</div>
     <h2>${ep.name}</h2>
     <div class="d-years">${ep.open ? ep.start+' – present' : ep.start+' – '+ep.end}</div>
     <div class="d-prose">${ep.rationale.map(p=>'<p>'+p+'</p>').join('')}</div>
     <div class="d-meta">Events in this epoch: ${allLabels || '—'}</div>`;
+}
+
+function zoomToEpoch(ep){
+  zoomEpochId = ep.id;
+  selected = {type:'epoch', id:ep.id};
+  document.getElementById('backGroup').style.display = 'flex';
+  detail.innerHTML = epochDetailHTML(ep);
   render();
   detail.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+function zoomOut(){
+  zoomEpochId = null;
+  document.getElementById('backGroup').style.display = 'none';
+  render();
 }
 
 function selectEvent(ev){
@@ -738,6 +819,9 @@ function setZoom(level){
 z1Btn.addEventListener('click', () => setZoom(1));
 z2Btn.addEventListener('click', () => setZoom(2));
 z3Btn.addEventListener('click', () => setZoom(3));
+
+document.getElementById('backBtn').addEventListener('click', zoomOut);
+document.addEventListener('keydown', e => { if(e.key === 'Escape' && zoomEpochId) zoomOut(); });
 
 const stripBtn = document.getElementById('stripBtn');
 stripBtn.addEventListener('click', () => {
