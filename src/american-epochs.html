@@ -6,17 +6,16 @@
 <title>American Epochs — An Instrument</title>
 <style>
   :root{
-    --paper:#E8EAE6;        /* cool archival paper */
-    --paper-2:#DFE2DD;      /* slightly deeper panel */
-    --ink:#1B1D1A;          /* near-black, warm */
-    --ink-soft:#5A5E58;     /* secondary text */
-    --ink-faint:#8A8E87;    /* tertiary / axis */
-    --rule:#C6C9C1;         /* hairlines */
-    --now:#B5503C;          /* RESERVED: standpoint + active selection only */
-    --argued:#7A746A;       /* interpretive ink */
+    --paper:#E8EAE6;
+    --paper-2:#DFE2DD;
+    --ink:#1B1D1A;
+    --ink-soft:#5A5E58;
+    --ink-faint:#8A8E87;
+    --rule:#C6C9C1;
+    --now:#B5503C;
+    --argued:#7A746A;
     --serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
     --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
-    /* epoch hues — equal weight, non-valenced */
     --e1:#6B8E9E; --e2:#7FA07A; --e3:#B89B6E; --e4:#9E8AA8;
     --e5:#6E9B96; --e6:#A98B7D; --e7:#8C8A9E;
   }
@@ -50,22 +49,23 @@
   .stage{position:relative;margin-top:8px;border-top:1px solid var(--rule);}
   svg.chart{display:block;width:100%;height:auto;overflow:visible;}
 
-  /* chart text */
   .ax-year{font-family:var(--mono);font-size:11px;fill:var(--ink-soft);}
   .ax-year.major{fill:var(--ink);}
   .epoch-name{font-family:var(--serif);font-size:13px;fill:var(--paper);font-weight:600;}
   .epoch-name.dark{fill:var(--ink);}
   .lane-tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;fill:var(--ink-faint);}
   .ev-label{font-family:var(--mono);font-size:10px;fill:var(--ink-soft);}
+  .span-label{font-family:var(--mono);font-size:9.5px;fill:var(--ink-soft);}
   .pres-label{font-family:var(--mono);font-size:9.5px;fill:var(--paper);}
   .crime-val{font-family:var(--mono);font-size:9px;fill:var(--ink-soft);}
   .register-note{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;fill:var(--argued);}
 
   .ev-dot{cursor:pointer;}
+  .span-bar{cursor:pointer;}
+  .span-bar:hover > rect.span-fill{opacity:.2 !important;}
   .epoch-region{cursor:pointer;}
   .epoch-region:hover{filter:brightness(1.06);}
 
-  /* detail panel */
   .detail{margin-top:18px;border-top:2px solid var(--ink);padding-top:14px;min-height:60px;}
   .detail .d-eyebrow{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);}
   .detail h2{font-family:var(--serif);font-size:24px;margin:4px 0 2px;font-weight:600;}
@@ -93,7 +93,7 @@
   .foot b{color:var(--ink-soft);}
 
   .tooltip{position:fixed;pointer-events:none;z-index:50;background:var(--ink);color:var(--paper);
-    font-family:var(--mono);font-size:11px;padding:6px 9px;border-radius:3px;max-width:240px;line-height:1.4;
+    font-family:var(--mono);font-size:11px;padding:6px 9px;border-radius:3px;max-width:260px;line-height:1.4;
     opacity:0;transition:opacity .1s;box-shadow:0 4px 14px rgba(0,0,0,.22);}
   .tooltip .tt-yr{color:#E7B7AC;}
   @media (prefers-reduced-motion: reduce){*{transition:none!important;}}
@@ -101,7 +101,7 @@
 </head>
 <body>
 <header class="masthead">
-  <div class="kicker">A Periodization Instrument · 1939 – Present</div>
+  <div class="kicker">v2 · A Periodization Instrument · 1939 – Present</div>
   <h1>American Epochs</h1>
   <div class="dek">Two legitimacy cycles, each rising to an apex and falling into crisis — laid over the empirical record so the labels can be tested against it, not just asserted over it.</div>
 </header>
@@ -109,6 +109,12 @@
 <div class="controls">
   <div class="ctl-group" id="laneToggles">
     <span class="ctl-label">Lanes</span>
+  </div>
+  <div class="ctl-group">
+    <span class="ctl-label">Depth</span>
+    <button class="mode-btn" id="z1Btn" title="Structural pivots only">Overview</button>
+    <button class="mode-btn active" id="z2Btn" title="Major events (default)">Standard</button>
+    <button class="mode-btn" id="z3Btn" title="All events including granular detail">Detail</button>
   </div>
   <div class="ctl-group">
     <span class="ctl-label">Mode</span>
@@ -139,7 +145,7 @@
     <h3><span class="tick">⊙</span> Pre-registered predictions</h3>
     <p>Written before judging the lanes, so the goalposts can't move after the ball lands.</p>
     <div class="pred"><b>Nixon-inflection thesis:</b> if 1968–74 is where the field turns durably illiberal, the political/media lane should show a discontinuity there that the earlier lanes lack.</div>
-    <div class="pred"><b>Rival reading:</b> if illiberalism runs continuously back through Goldwater ’64 and the Dixiecrats, the same marks appear earlier — Nixon is productization, not origin.</div>
+    <div class="pred"><b>Rival reading:</b> if illiberalism runs continuously back through Goldwater '64 and the Dixiecrats, the same marks appear earlier — Nixon is productization, not origin.</div>
     <div class="pred"><b>Recession ↔ crime null:</b> the easy story says downturns drive violent crime. The verified series predicts they barely track. Watch the crash of 2008 land inside a falling crime line.</div>
   </div>
 
@@ -150,15 +156,12 @@
 </div>
 
 <div class="foot" id="sources"></div>
-
 <div class="tooltip" id="tooltip"></div>
 
 <script>
 /* ============================================================
-   DATA  — edit freely; the chart is built from these objects.
-   Each lane is independent so you can throw new ones in.
+   DATA
    ============================================================ */
-
 const YEAR_MIN = 1939, YEAR_MAX = 2027, NOW = 2026;
 
 const EPOCHS = [
@@ -166,121 +169,127 @@ const EPOCHS = [
     cycle:1, phase:'Rise',
     oneliner:'Arsenal and creditor — hegemony accrues before the country is fully in the war.',
     rationale:[
-      "“Ascendancy” over “hegemony” keeps the contingency: in 1941 Britain could fall, the Soviets could collapse. The ascent was real, the destination still uncertain.",
-      "1941 over 1945 is deliberate. Lend-Lease (March 1941) was the structural pivot — before a single American soldier died, the U.S. became creditor and arsenal of the Allied powers, and Britain began liquidating its empire to pay for materiel.",
-      "Bretton Woods (1944) only ratified what Lend-Lease created. Luce declared “The American Century” in February 1941, one month before Lend-Lease passed. He saw it coming; the isolationists saw it too, which is why they fought it."
+      '"Ascendancy" over "hegemony" keeps the contingency: in 1941 Britain could fall, the Soviets could collapse. The ascent was real, the destination still uncertain.',
+      '1941 over 1945 is deliberate. Lend-Lease (March 1941) was the structural pivot — before a single American soldier died, the U.S. became creditor and arsenal of the Allied powers, and Britain began liquidating its empire to pay for materiel.',
+      'Bretton Woods (1944) only ratified what Lend-Lease created. Luce declared "The American Century" in February 1941, one month before Lend-Lease passed. He saw it coming; the isolationists saw it too, which is why they fought it.'
     ]},
   { id:'aff', name:'The Affluent Society', start:1953, end:1965, color:'var(--e2)',
     cycle:1, phase:'Apex',
     oneliner:'Postwar plenty — the settlement achieves hegemony; the opposition accepts its terms.',
     rationale:[
-      "Galbraith named it in 1958: the problem of production was solved; the question was now distribution and quality of life. Countercyclical Keynesianism worked, wages rose with productivity, the GI Bill built a middle class — the empirical basis of legitimacy.",
-      "1953 marks the moment the opposition party accepted the New Deal frame. Eisenhower built the Interstate system and left Social Security and the regulatory state intact. The settlement had won.",
-      "The endpoint is 1965 — the legislative apex (Voting Rights Act, Medicare/Medicaid). Yet that same August, Watts burned. The first crack appeared at the moment of greatest triumph."
+      'Galbraith named it in 1958: the problem of production was solved; the question was now distribution and quality of life. Countercyclical Keynesianism worked, wages rose with productivity, the GI Bill built a middle class — the empirical basis of legitimacy.',
+      '1953 marks the moment the opposition party accepted the New Deal frame. Eisenhower built the Interstate system and left Social Security and the regulatory state intact. The settlement had won.',
+      'The endpoint is 1965 — the legislative apex (Voting Rights Act, Medicare/Medicaid). Yet that same August, Watts burned. The first crack appeared at the moment of greatest triumph.'
     ]},
   { id:'unr', name:'The Unravelling', start:1966, end:1979, color:'var(--e3)',
     cycle:1, phase:'Crisis',
     oneliner:'A woven thing comes apart — each thread pulls loose another.',
     rationale:[
-      "The postwar settlement was an interlocking system: Keynesian economics, Cold War bipartisanship, the labor-capital accord, incremental civil rights within the existing order. Each failure connected to the others.",
-      "1966 marks the turn. Carmichael’s “Black Power” (June) signals the civil-rights coalition fracturing; the same year brings the first major anti-war protests and the midterms that broke the Great Society majority.",
-      "1979 closes it because the next regime was already gestating. Volcker’s appointment (August 1979) — breaking inflation by inducing recession — abandoned full-employment Keynesianism before Reagan was elected. The policy regime changed first."
+      'The postwar settlement was an interlocking system: Keynesian economics, Cold War bipartisanship, the labor-capital accord, incremental civil rights within the existing order. Each failure connected to the others.',
+      '1966 marks the turn. Carmichael\'s "Black Power" (June) signals the civil-rights coalition fracturing; the same year brings the first major anti-war protests and the midterms that broke the Great Society majority.',
+      '1979 closes it because the next regime was already gestating. Volcker\'s appointment (August 1979) — breaking inflation by inducing recession — abandoned full-employment Keynesianism before Reagan was elected. The policy regime changed first.'
     ]},
   { id:'mor', name:'Morning in America', start:1980, end:1991, color:'var(--e4)',
     cycle:2, phase:'Rise',
     oneliner:'A new ideological order establishes legitimacy on different terms.',
     rationale:[
-      "Using Reagan’s own slogan is pointed: it concedes Reaganism was a successful ideological project that restored confidence — and carries the irony that mornings end.",
-      "1980 was regime change after 48 years of New Deal governance. The question shifted from “how do we manage capitalism?” to “how do we unleash it?”",
-      "1991 closes with the Soviet collapse and the Gulf War’s display of unchallengeable supremacy. The settlement survived Reagan and proved transferable; Bush governed within it."
+      'Using Reagan\'s own slogan is pointed: it concedes Reaganism was a successful ideological project that restored confidence — and carries the irony that mornings end.',
+      '1980 was regime change after 48 years of New Deal governance. The question shifted from "how do we manage capitalism?" to "how do we unleash it?"',
+      '1991 closes with the Soviet collapse and the Gulf War\'s display of unchallengeable supremacy. The settlement survived Reagan and proved transferable; Bush governed within it.'
     ]},
   { id:'eoh', name:'The End of History', start:1992, end:2007, color:'var(--e5)',
     cycle:2, phase:'Apex',
     oneliner:'The ideological question declared settled — believed sincerely, by serious people, for fifteen years.',
     rationale:[
-      "Fukuyama named it (1989/1992): liberal-democratic capitalism had no serious competitor; the Washington Consensus would spread, China would liberalize as it marketized.",
-      "Clinton’s 1992 win ratified that the Democrats accepted the Reagan settlement — “the era of big government is over,” triangulation, welfare reform, NAFTA — exactly as Eisenhower’s acceptance of the New Deal opened the Affluent Society.",
-      "Why 2007, not 2008? The confidence died before the crisis. Iraq had soured, Katrina exposed state incapacity, housing peaked in 2006. 2008 was the corpse hitting the floor."
+      'Fukuyama named it (1989/1992): liberal-democratic capitalism had no serious competitor; the Washington Consensus would spread, China would liberalize as it marketized.',
+      'Clinton\'s 1992 win ratified that the Democrats accepted the Reagan settlement — "the era of big government is over," triangulation, welfare reform, NAFTA — exactly as Eisenhower\'s acceptance of the New Deal opened the Affluent Society.',
+      'Why 2007, not 2008? The confidence died before the crisis. Iraq had soured, Katrina exposed state incapacity, housing peaked in 2006. 2008 was the corpse hitting the floor.'
     ]},
   { id:'int', name:'The Interregnum', start:2008, end:2015, color:'var(--e6)',
     cycle:2, phase:'Crisis',
     oneliner:'The old is dying and the new cannot be born; morbid symptoms appear.',
     rationale:[
-      "Gramsci’s word. The neoliberal order demonstrably failed — bailouts for banks, foreclosures for homeowners made the class politics undeniable — yet nothing replaced it.",
-      "Obama governed the aftermath without founding a new regime: stimulus too small, no structural reform, no new framework. The Tea Party and Occupy were mirror-image symptoms of the same vacuum.",
-      "2015 marks the emergence: Trump’s campaign announcement (June) signals a morbid symptom becoming a political force. The interregnum was ending — into what remained unclear."
+      'Gramsci\'s word. The neoliberal order demonstrably failed — bailouts for banks, foreclosures for homeowners made the class politics undeniable — yet nothing replaced it.',
+      'Obama governed the aftermath without founding a new regime: stimulus too small, no structural reform, no new framework. The Tea Party and Occupy were mirror-image symptoms of the same vacuum.',
+      '2015 marks the emergence: Trump\'s campaign announcement (June) signals a morbid symptom becoming a political force. The interregnum was ending — into what remained unclear.'
     ]},
   { id:'rec', name:'The Reckoning', start:2016, end:NOW, color:'var(--e7)', open:true,
     cycle:2, phase:'Crisis',
     oneliner:'Debts coming due — an accounting that can no longer be deferred.',
     rationale:[
-      "Deindustrialization’s social costs (deferred since the ’80s), racial-caste contradictions (since the Founding), legitimacy deficits (since Watergate), imperial overextension (since 2003). The bill arrived.",
-      "Trump became the vehicle precisely by repudiating the bipartisan consensus that deferred these debts. The 2016 win — against both establishments, against polling, against elite opposition — proved the interregnum had produced something.",
-      "“Present” concedes we are inside the period, too close to see its shape. Whether January 2025 inaugurates a new settlement or intensifies the crisis remains to be seen — so this end of the chart is drawn open, not closed."
+      'Deindustrialization\'s social costs (deferred since the \'80s), racial-caste contradictions (since the Founding), legitimacy deficits (since Watergate), imperial overextension (since 2003). The bill arrived.',
+      'Trump became the vehicle precisely by repudiating the bipartisan consensus that deferred these debts. The 2016 win — against both establishments, against polling, against elite opposition — proved the interregnum had produced something.',
+      '"Present" concedes we are inside the period, too close to see its shape. Whether January 2025 inaugurates a new settlement or intensifies the crisis remains to be seen — so this end of the chart is drawn open, not closed.'
     ]},
 ];
 
-// Events: type 'point' (single year) or 'span' (start..end). Matches your dot / joined-dot vocabulary.
+/*
+  tier 1 — structural pivots (Overview): always visible, epoch-defining moments
+  tier 2 — major events (Standard): important second-order events
+  tier 3 — granular detail (Detail): reserved for future additions
+  span:true events live in the duration strip, not the dot cloud
+*/
 const EVENTS = [
-  { y:1941, label:'Lend-Lease', note:'The structural pivot — U.S. becomes creditor & arsenal.' },
-  { y:1941, label:'Pearl Harbor' },
-  { y:1941, end:1945, label:'World War II', span:true },
-  { y:1944, label:'Bretton Woods' },
-  { y:1945, label:'Hiroshima' },
-  { y:1948, label:'Marshall Plan' },
-  { y:1954, label:'Brown v. Board' },
-  { y:1956, label:'Interstate Highways' },
-  { y:1964, label:'Civil Rights Act' },
-  { y:1965, label:'Voting Rights Act', note:'Legislative apex of the consensus.' },
-  { y:1965, label:'Watts burns', note:'First crack, at the moment of triumph.' },
-  { y:1966, label:'“Black Power”' },
-  { y:1968, label:'MLK & RFK killed' },
-  { y:1968, label:'Tet Offensive' },
-  { y:1972, end:1974, label:'Watergate', span:true },
-  { y:1973, end:1979, label:'Stagflation', span:true, note:'“It’s just not The Unravelling without stagflation.”' },
-  { y:1975, label:'Fall of Saigon' },
-  { y:1979, label:'Volcker to Fed', note:'Policy regime changes before the election.' },
-  { y:1980, label:'Reagan elected' },
-  { y:1981, label:'PATCO broken' },
-  { y:1981, label:'Welch: "shareholder value"', note:'Historians mark the August 1981 Pierre Hotel speech as the origin of the shareholder-value doctrine — refocusing GE, then corporate America, from long-term investment to quarterly returns. The causal weight is argued; the ideological shift is real.' },
-  { y:1989, label:'Berlin Wall falls' },
-  { y:1991, label:'Soviet collapse' },
-  { y:1994, label:'NAFTA' },
-  { y:1996, label:'Welfare reform' },
-  { y:2001, label:'9/11' },
-  { y:2003, end:2011, label:'Iraq War', span:true },
-  { y:2005, label:'Katrina' },
-  { y:2008, label:'Lehman / TARP', note:'The corpse hits the floor.' },
-  { y:2010, label:'Tea Party wave' },
-  { y:2011, label:'Occupy' },
-  { y:2016, label:'Trump elected' },
-  { y:2017, label:'Charlottesville' },
-  { y:2020, end:2021, label:'COVID-19', span:true },
-  { y:2021, label:'January 6' },
-  { y:2024, label:'Trump re-elected' },
+  // — Span events (duration strip) ——————————————————————————————
+  { y:1941, end:1945, label:'World War II',  span:true, note:'The crucible in which American hegemony was forged.' },
+  { y:1972, end:1974, label:'Watergate',     span:true, note:'Institutional rot reaches the presidency. Legitimacy begins to drain.' },
+  { y:1973, end:1979, label:'Stagflation',   span:true, note:'The empirical refutation of Keynesianism. Inflation + stagnation = the end of the postwar economic settlement.' },
+  { y:2003, end:2011, label:'Iraq War',      span:true, note:'The occupation that proved the confidence of the End of History was misplaced.' },
+  { y:2020, end:2021, label:'COVID-19',      span:true, note:'State capacity tested and found wanting; the pandemic exposed a government hollowed out by decades of defunding.' },
+
+  // — Point events ——————————————————————————————————————————————
+  { y:1941, tier:1, label:'Lend-Lease',         note:'The structural pivot — U.S. becomes creditor & arsenal of the Allied powers.' },
+  { y:1941, tier:1, label:'Pearl Harbor' },
+  { y:1944, tier:1, label:'Bretton Woods',       note:'Dollar supremacy formalized. The financial architecture of the American century set.' },
+  { y:1945, tier:2, label:'Hiroshima' },
+  { y:1948, tier:2, label:'Marshall Plan' },
+  { y:1954, tier:2, label:'Brown v. Board' },
+  { y:1956, tier:2, label:'Interstate Highways' },
+  { y:1964, tier:1, label:'Civil Rights Act' },
+  { y:1965, tier:2, label:'Voting Rights Act',   note:'Legislative apex of the consensus.' },
+  { y:1965, tier:2, label:'Watts burns',         note:'First crack, at the moment of triumph.' },
+  { y:1966, tier:1, label:'"Black Power"',       note:'Carmichael\'s June speech signals the civil-rights coalition fracturing — incrementalism is no longer enough.' },
+  { y:1968, tier:2, label:'MLK & RFK killed' },
+  { y:1968, tier:2, label:'Tet Offensive' },
+  { y:1975, tier:2, label:'Fall of Saigon' },
+  { y:1979, tier:1, label:'Volcker to Fed',      note:'Policy regime changes before the election. Full-employment Keynesianism ends here.' },
+  { y:1980, tier:1, label:'Reagan elected' },
+  { y:1981, tier:2, label:'PATCO broken' },
+  { y:1981, tier:2, label:'Welch: "shareholder value"', note:'Historians mark the August 1981 Pierre Hotel speech as the origin of the shareholder-value doctrine — refocusing GE, then corporate America, from long-term investment to quarterly returns. The causal weight is argued; the ideological shift is real.' },
+  { y:1989, tier:1, label:'Berlin Wall falls' },
+  { y:1991, tier:1, label:'Soviet collapse' },
+  { y:1994, tier:2, label:'NAFTA' },
+  { y:1996, tier:2, label:'Welfare reform' },
+  { y:2001, tier:1, label:'9/11' },
+  { y:2005, tier:2, label:'Katrina' },
+  { y:2008, tier:1, label:'Lehman / TARP',       note:'The corpse hits the floor.' },
+  { y:2010, tier:2, label:'Tea Party wave' },
+  { y:2011, tier:2, label:'Occupy' },
+  { y:2016, tier:1, label:'Trump elected' },
+  { y:2017, tier:2, label:'Charlottesville' },
+  { y:2021, tier:1, label:'January 6' },
+  { y:2024, tier:2, label:'Trump re-elected' },
 ];
 
-// Presidents (measured). Party kept as neutral label, not red/blue valence.
 const PRESIDENTS = [
   { name:'F. Roosevelt', start:1939, end:1945, p:'D' },
-  { name:'Truman', start:1945, end:1953, p:'D' },
-  { name:'Eisenhower', start:1953, end:1961, p:'R' },
-  { name:'Kennedy', start:1961, end:1963, p:'D' },
-  { name:'Johnson', start:1963, end:1969, p:'D' },
-  { name:'Nixon', start:1969, end:1974, p:'R' },
-  { name:'Ford', start:1974, end:1977, p:'R' },
-  { name:'Carter', start:1977, end:1981, p:'D' },
-  { name:'Reagan', start:1981, end:1989, p:'R' },
-  { name:'Bush', start:1989, end:1993, p:'R' },
-  { name:'Clinton', start:1993, end:2001, p:'D' },
-  { name:'Bush', start:2001, end:2009, p:'R' },
-  { name:'Obama', start:2009, end:2017, p:'D' },
-  { name:'Trump', start:2017, end:2021, p:'R' },
-  { name:'Biden', start:2021, end:2025, p:'D' },
-  { name:'Trump', start:2025, end:NOW, p:'R' },
+  { name:'Truman',       start:1945, end:1953, p:'D' },
+  { name:'Eisenhower',   start:1953, end:1961, p:'R' },
+  { name:'Kennedy',      start:1961, end:1963, p:'D' },
+  { name:'Johnson',      start:1963, end:1969, p:'D' },
+  { name:'Nixon',        start:1969, end:1974, p:'R' },
+  { name:'Ford',         start:1974, end:1977, p:'R' },
+  { name:'Carter',       start:1977, end:1981, p:'D' },
+  { name:'Reagan',       start:1981, end:1989, p:'R' },
+  { name:'Bush',         start:1989, end:1993, p:'R' },
+  { name:'Clinton',      start:1993, end:2001, p:'D' },
+  { name:'Bush',         start:2001, end:2009, p:'R' },
+  { name:'Obama',        start:2009, end:2017, p:'D' },
+  { name:'Trump',        start:2017, end:2021, p:'R' },
+  { name:'Biden',        start:2021, end:2025, p:'D' },
+  { name:'Trump',        start:2025, end:NOW,  p:'R' },
 ];
 
-// NBER recessions (measured). Well-established peak→trough spans, year-rounded.
 const RECESSIONS = [
   {start:1945,end:1945},{start:1948,end:1949},{start:1953,end:1954},{start:1957,end:1958},
   {start:1960,end:1961},{start:1969,end:1970},{start:1973,end:1975},{start:1980,end:1980},
@@ -288,66 +297,84 @@ const RECESSIONS = [
   {start:2020,end:2020},
 ];
 
-// Violent crime rate per 100k — VERIFIED WAYPOINTS ONLY (FBI UCR / CRS R45236).
-// Full annual series pending ingestion; line between points is a guide, not year-exact.
 const CRIME = [
   {y:1960, v:160.9, verified:true},
-  {y:1991, v:758.2, verified:true, peak:true},   // post-1960 high (CRS)
+  {y:1991, v:758.2, verified:true, peak:true},
   {y:2014, v:361.6, verified:true},
   {y:2015, v:373.7, verified:true},
   {y:2016, v:386.3, verified:true},
   {y:2019, v:366.7, verified:true},
 ];
 
-// RFT regime — ARGUED. Editable interpretive band. Off by default.
 const RFT = [
-  { label:'Modern settlement', start:1941, end:1968, note:'Truth bound to Power under a shared Purpose.' },
-  { label:'Premodern re-anchoring', start:1968, end:NOW, note:'Power eats Truth; winning becomes the end. (Thesis: begins with Nixon-era illiberalism — or earlier?)' },
+  { label:'Modern settlement',      start:1941, end:1968, note:'Truth bound to Power under a shared Purpose.' },
+  { label:'Premodern re-anchoring', start:1968, end:NOW,  note:'Power eats Truth; winning becomes the end. (Thesis: begins with Nixon-era illiberalism — or earlier?)' },
 ];
 
 /* ============================================================
    STATE + GEOMETRY
    ============================================================ */
 const lanes = {
-  presidents:{on:true,  label:'Presidents', register:'measured', color:'var(--ink-soft)'},
-  recessions:{on:true,  label:'Recessions', register:'measured', color:'var(--ink)'},
-  crime:{on:true,       label:'Violent crime', register:'measured', color:'var(--ink)'},
-  rft:{on:false,        label:'RFT regime',  register:'argued',   color:'var(--argued)'},
+  presidents:{on:true,  label:'Presidents',     register:'measured', color:'var(--ink-soft)'},
+  recessions:{on:true,  label:'Recessions',     register:'measured', color:'var(--ink)'},
+  crime:{on:true,       label:'Violent crime',  register:'measured', color:'var(--ink)'},
+  rft:{on:false,        label:'RFT regime',     register:'argued',   color:'var(--argued)'},
 };
-let stripped = false;
-let selected = null;
+let stripped   = false;
+let zoomLevel  = 2;   // 1=Overview  2=Standard  3=Detail
+let selected   = null;
 
-const SVGNS='http://www.w3.org/2000/svg';
-const chart=document.getElementById('chart');
-const tooltip=document.getElementById('tooltip');
+const SVGNS = 'http://www.w3.org/2000/svg';
+const chart   = document.getElementById('chart');
+const tooltip = document.getElementById('tooltip');
 
-function el(tag,attrs={},parent=null){
-  const n=document.createElementNS(SVGNS,tag);
-  for(const k in attrs) n.setAttribute(k,attrs[k]);
+const SPAN_LANE_H   = 18;
+const SPAN_LANE_GAP =  7;
+
+function el(tag, attrs={}, parent=null){
+  const n = document.createElementNS(SVGNS, tag);
+  for(const k in attrs) n.setAttribute(k, attrs[k]);
   if(parent) parent.appendChild(n);
   return n;
 }
-function txt(s,attrs={},parent=null){
-  const n=el('text',attrs,parent); n.textContent=s; return n;
+function txt(s, attrs={}, parent=null){
+  const n = el('text', attrs, parent); n.textContent = s; return n;
 }
 
-let W=1000;
+let W = 1000;
 function xOf(year){
   const padL=8, padR=8;
-  return padL + ( (year-YEAR_MIN)/(YEAR_MAX-YEAR_MIN) ) * (W - padL - padR);
+  return padL + ((year - YEAR_MIN) / (YEAR_MAX - YEAR_MIN)) * (W - padL - padR);
 }
 
-/* ---- tooltip ---- */
-function showTip(html,e){
-  tooltip.innerHTML=html; tooltip.style.opacity=1;
-  const pad=14;
-  let x=e.clientX+pad, y=e.clientY+pad;
-  const r=tooltip.getBoundingClientRect();
-  if(x+r.width>window.innerWidth-8) x=e.clientX-r.width-pad;
-  if(y+r.height>window.innerHeight-8) y=e.clientY-r.height-pad;
-  tooltip.style.left=x+'px'; tooltip.style.top=y+'px';
+function showTip(html, e){
+  tooltip.innerHTML = html; tooltip.style.opacity = 1;
+  const pad = 14;
+  let x = e.clientX + pad, y = e.clientY + pad;
+  const r = tooltip.getBoundingClientRect();
+  if(x + r.width  > window.innerWidth  - 8) x = e.clientX - r.width  - pad;
+  if(y + r.height > window.innerHeight - 8) y = e.clientY - r.height - pad;
+  tooltip.style.left = x + 'px'; tooltip.style.top = y + 'px';
 }
-function hideTip(){ tooltip.style.opacity=0; }
+function hideTip(){ tooltip.style.opacity = 0; }
+
+/* ============================================================
+   SPAN LANE LAYOUT (computed each render, depends on W)
+   ============================================================ */
+function computeSpanLayout(){
+  const spans = EVENTS.filter(ev => ev.span).sort((a,b) => a.y - b.y);
+  const laneEndX = [];
+  const assignments = spans.map(ev => {
+    const x0 = xOf(ev.y);
+    let lane = laneEndX.findIndex(ex => x0 > ex + 10);
+    if(lane === -1){ lane = laneEndX.length; laneEndX.push(0); }
+    laneEndX[lane] = xOf(ev.end);
+    return lane;
+  });
+  const laneCount = Math.max(1, laneEndX.length);
+  const totalH = laneCount * SPAN_LANE_H + (laneCount - 1) * SPAN_LANE_GAP + 24;
+  return { spans, assignments, laneCount, totalH };
+}
 
 /* ============================================================
    RENDER
@@ -356,36 +383,40 @@ function render(){
   W = chart.clientWidth || chart.parentNode.clientWidth || 1000;
   while(chart.firstChild) chart.removeChild(chart.firstChild);
 
-  // vertical band allocation
-  const evTop=14, evH=150;                 // events above the axis
-  const axisY=evTop+evH;                   // the spine
-  let y=axisY+34;                          // running cursor below axis
+  const spanLayout = computeSpanLayout();
 
-  const epochY=y, epochH=46; y+=epochH+10;
+  const evTop = 14, evH = 150;
+  const axisY = evTop + evH;
+  let y = axisY + 34;                                    // below axis ticks/labels
 
-  const laneBlocks=[];
-  if(lanes.presidents.on){ laneBlocks.push({key:'presidents',y, h:26}); y+=26+8; }
-  if(lanes.recessions.on){ laneBlocks.push({key:'recessions',y, h:20}); y+=20+8; }
-  if(lanes.crime.on){      laneBlocks.push({key:'crime',y, h:96});       y+=96+8; }
-  if(lanes.rft.on){        laneBlocks.push({key:'rft',y, h:30});         y+=30+8; }
+  const spanY = y; y += spanLayout.totalH;
 
-  const H=y+10;
-  chart.setAttribute('viewBox',`0 0 ${W} ${H}`);
-  chart.setAttribute('height',H);
+  const epochY = y, epochH = 46; y += epochH + 10;
 
-  drawEvents(evTop,evH,axisY);
+  const laneBlocks = [];
+  if(lanes.presidents.on){ laneBlocks.push({key:'presidents', y, h:26}); y += 26+8; }
+  if(lanes.recessions.on){ laneBlocks.push({key:'recessions', y, h:20}); y += 20+8; }
+  if(lanes.crime.on)     { laneBlocks.push({key:'crime',      y, h:96}); y += 96+8; }
+  if(lanes.rft.on)       { laneBlocks.push({key:'rft',        y, h:30}); y += 30+8; }
+
+  const H = y + 10;
+  chart.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  chart.setAttribute('height', H);
+
+  drawEvents(evTop, evH, axisY);
   drawAxis(axisY);
-  drawEpochs(epochY,epochH);
-  laneBlocks.forEach(b=>{
-    if(b.key==='presidents') drawPresidents(b.y,b.h);
-    if(b.key==='recessions') drawRecessions(b.y,b.h);
-    if(b.key==='crime')      drawCrime(b.y,b.h);
-    if(b.key==='rft')        drawRFT(b.y,b.h);
+  drawSpans(spanY, spanLayout);
+  drawEpochs(epochY, epochH);
+  laneBlocks.forEach(b => {
+    if(b.key === 'presidents') drawPresidents(b.y, b.h);
+    if(b.key === 'recessions') drawRecessions(b.y, b.h);
+    if(b.key === 'crime')      drawCrime(b.y, b.h);
+    if(b.key === 'rft')        drawRFT(b.y, b.h);
   });
   drawNow(evTop, H);
 }
 
-/* ---- the spine + year ticks ---- */
+/* ---- axis spine + year ticks ---- */
 function drawAxis(axisY){
   el('line',{x1:xOf(YEAR_MIN),y1:axisY,x2:xOf(YEAR_MAX),y2:axisY,stroke:'var(--ink)','stroke-width':1.5},chart);
   for(let yr=1940; yr<=2020; yr+=10){
@@ -399,126 +430,189 @@ function drawAxis(axisY){
   }
 }
 
-/* ---- epoch band (below axis) with soft bleeds + lead-in nub ---- */
-function drawEpochs(top,h){
-  // defs for bleed gradients
-  let defs=chart.querySelector('defs'); if(!defs){ defs=el('defs',{},chart); }
-  EPOCHS.forEach((ep,i)=>{
-    const x0=xOf(ep.lead!=null?ep.lead:ep.start);
-    const x1=xOf(ep.open?NOW:ep.end+1);
-    const wseg=x1-x0;
+/* ---- point events: vertical-scootch dot cloud ---- */
+function drawEvents(top, h, axisY){
+  const dotR   = 4;
+  const rowH   = 22;        // vertical spacing between dot rows
+  const maxRows = 6;
+  const charW  = 6.0;
+  const rowEndX = new Array(maxRows).fill(-1e9);
 
-    // lead-in nub (the "not a light switch" bleed) rendered as faded leading slice
-    if(ep.lead!=null){
-      const nx0=xOf(ep.lead), nx1=xOf(ep.start);
-      el('rect',{x:nx0,y:top,width:Math.max(0,nx1-nx0),height:h,fill:ep.color,opacity:.30},chart);
-    }
+  const visible = EVENTS
+    .filter(ev => !ev.span && ev.tier <= zoomLevel)
+    .sort((a, b) => a.y - b.y);
 
-    const g=el('g',{class:'epoch-region'},chart);
-    const startX = ep.lead!=null?xOf(ep.start):x0;
-    const r=el('rect',{x:startX,y:top,width:Math.max(0,x1-startX),height:h,fill:ep.color,
-      opacity: stripped?.55:.92},g);
+  visible.forEach(ev => {
+    const x = xOf(ev.y);
+    const labelW = ev.label.length * charW + 10;
 
-    // open right edge for The Reckoning: dissolve into uncertainty
-    if(ep.open){
-      const fadeId='fade'+i;
-      const lg=el('linearGradient',{id:fadeId,x1:'0',x2:'1',y1:'0',y2:'0'},defs);
-      el('stop',{offset:'0%','stop-color':ep.color,'stop-opacity': stripped?.55:.92},lg);
-      el('stop',{offset:'62%','stop-color':ep.color,'stop-opacity': stripped?.55:.92},lg);
-      el('stop',{offset:'100%','stop-color':ep.color,'stop-opacity':0},lg);
-      r.setAttribute('fill',`url(#${fadeId})`);
-      r.setAttribute('width', xOf(YEAR_MAX)-startX);
-    }
+    // find lowest row whose last label clears
+    let row = 0;
+    for(; row < maxRows; row++){ if(x - labelW/2 > rowEndX[row] + 6) break; }
+    if(row >= maxRows) row = maxRows - 1;
+    rowEndX[row] = x + labelW/2;
 
-    // soft seam between adjacent epochs (overlapping feather)
-    if(i>0){
-      const seamId='seam'+i;
-      const lg=el('linearGradient',{id:seamId,x1:'0',x2:'1',y1:'0',y2:'0'},defs);
-      el('stop',{offset:'0%','stop-color':EPOCHS[i-1].color,'stop-opacity':.0},lg);
-      el('stop',{offset:'50%','stop-color':EPOCHS[i-1].color,'stop-opacity':.5},lg);
-      el('stop',{offset:'100%','stop-color':ep.color,'stop-opacity':.0},lg);
-      const sW=Math.min(16, wseg*0.4);
-      el('rect',{x:startX-sW/2,y:top,width:sW,height:h,fill:`url(#${seamId})`},chart);
-    }
+    // dot and label both ride this row — the whole unit scootches up
+    const dotY   = axisY - dotR - 6 - row * rowH;
+    const labelY = dotY - 8;
 
-    if(!stripped){
-      const cx=(startX + (ep.open?xOf(NOW):x1))/2;
-      const dark = ep.color==='var(--e3)'; // ochre needs dark text
-      txt(ep.name,{x:cx,y:top+h/2-2,'text-anchor':'middle','dominant-baseline':'middle',
-        class:'epoch-name'+(dark?' dark':'')},chart);
-      txt((ep.open?ep.start+'–present':ep.start+'–'+ep.end),
-        {x:cx,y:top+h/2+13,'text-anchor':'middle',class:'epoch-name'+(dark?' dark':''),
-         style:'font-family:var(--mono);font-size:9.5px;font-weight:400;opacity:.85'},chart);
-    }
+    // leader from axis to dot
+    el('line',{x1:x, y1:axisY-2, x2:x, y2:dotY+dotR,
+      stroke:'var(--rule)', 'stroke-width':0.8}, chart);
 
-    // selection ring
-    if(selected&&selected.type==='epoch'&&selected.id===ep.id){
-      el('rect',{x:startX,y:top-3,width:Math.max(0,(ep.open?xOf(NOW):x1)-startX),height:h+6,
-        fill:'none',stroke:'var(--now)','stroke-width':2},chart);
-    }
-
-    g.addEventListener('click',()=>selectEpoch(ep));
-    g.addEventListener('mousemove',e=>showTip(`<span class="tt-yr">${ep.start}–${ep.open?'now':ep.end}</span> · ${ep.name}<br>${ep.oneliner}`,e));
-    g.addEventListener('mouseleave',hideTip);
-  });
-}
-
-/* ---- events above the axis, with anti-collision label stacking ---- */
-function drawEvents(top,h,axisY){
-  const baseY=top+h-6;               // dots sit just above the axis
-  const rowH=22, maxRows=5;
-  const rowEndX=new Array(maxRows).fill(-1e9);
-  const charW=6.0, fs=10;
-
-  const sorted=[...EVENTS].sort((a,b)=>a.y-b.y);
-  sorted.forEach(ev=>{
-    const x=xOf(ev.y);
-    const labelW=ev.label.length*charW+10;
-    // pick lowest row whose last label end is clear
-    let row=0;
-    for(;row<maxRows;row++){ if(x-labelW/2 > rowEndX[row]+6) break; }
-    if(row===maxRows) row=maxRows-1;
-    rowEndX[row]=x+labelW/2;
-    const labelY=baseY-14-row*rowH;
-
-    // span bar
-    if(ev.span){
-      const x2=xOf(ev.end);
-      el('line',{x1:x,y1:baseY,x2:x2,y2:baseY,stroke:'var(--ink-soft)','stroke-width':2.5,'stroke-linecap':'round'},chart);
-      el('circle',{cx:x2,cy:baseY,r:3,fill:'var(--ink-soft)'},chart);
-    }
-    // leader
-    el('line',{x1:x,y1:baseY-4,x2:x,y2:labelY+3,stroke:'var(--rule)','stroke-width':1},chart);
     // dot
-    const dot=el('circle',{cx:x,cy:baseY,r:4,fill:'var(--ink)',class:'ev-dot'},chart);
-    // label
-    const t=txt(ev.label,{x:x,y:labelY,'text-anchor':'middle',class:'ev-label'},chart);
+    const isSelected = selected && selected.type==='event'
+      && selected.y === ev.y && selected.label === ev.label;
 
-    const handler=e=>showTip(`<span class="tt-yr">${ev.y}${ev.span?'–'+ev.end:''}</span> · ${ev.label}${ev.note?'<br>'+ev.note:''}`,e);
-    [dot,t].forEach(node=>{
-      node.style.cursor='pointer';
-      node.addEventListener('mousemove',handler);
-      node.addEventListener('mouseleave',hideTip);
-      node.addEventListener('click',()=>selectEvent(ev));
+    if(isSelected){
+      el('circle',{cx:x, cy:dotY, r:dotR+3,
+        fill:'none', stroke:'var(--now)', 'stroke-width':1.5}, chart);
+    }
+    const dot = el('circle',{cx:x, cy:dotY, r:dotR,
+      fill: ev.tier===1 ? 'var(--ink)' : 'var(--ink-soft)',
+      class:'ev-dot'}, chart);
+
+    // label
+    const t = txt(ev.label,{x:x, y:labelY,
+      'text-anchor':'middle', class:'ev-label'}, chart);
+
+    const tipHtml = `<span class="tt-yr">${ev.y}</span> · ${ev.label}${ev.note ? '<br>' + ev.note : ''}`;
+    [dot, t].forEach(node => {
+      node.style.cursor = 'pointer';
+      node.addEventListener('mousemove', e => showTip(tipHtml, e));
+      node.addEventListener('mouseleave', hideTip);
+      node.addEventListener('click', () => selectEvent(ev));
     });
   });
 }
 
+/* ---- span / duration strip (below axis) ---- */
+function drawSpans(top, layout){
+  const { spans, assignments } = layout;
+
+  txt('Duration', {x:xOf(YEAR_MIN), y:top-4, class:'lane-tag'}, chart);
+
+  spans.forEach((ev, i) => {
+    const lane = assignments[i];
+    const x0 = xOf(ev.y);
+    const x1 = xOf(ev.end + 0.4);   // tiny nudge so end-cap is visible
+    const y  = top + lane * (SPAN_LANE_H + SPAN_LANE_GAP);
+    const w  = Math.max(6, x1 - x0);
+    const cy = y + SPAN_LANE_H / 2;
+
+    const g = el('g', {class:'span-bar'}, chart);
+
+    // fill
+    el('rect',{x:x0, y, width:w, height:SPAN_LANE_H,
+      fill:'var(--ink)', opacity:0.08, rx:2, class:'span-fill'}, g);
+    // stroke
+    el('rect',{x:x0, y, width:w, height:SPAN_LANE_H,
+      fill:'none', stroke:'var(--ink-soft)', 'stroke-width':1, rx:2}, g);
+    // end dots + connector
+    el('line',{x1:x0, y1:cy, x2:x1, y2:cy,
+      stroke:'var(--ink-soft)', 'stroke-width':1.5}, g);
+    el('circle',{cx:x0, cy, r:3.5, fill:'var(--ink-soft)'}, g);
+    el('circle',{cx:x1, cy, r:3.5, fill:'var(--ink-soft)'}, g);
+
+    // label: inside bar if it fits, otherwise to the right
+    const charW = 5.5;
+    const labelW = ev.label.length * charW + 4;
+    if(w > labelW + 8){
+      txt(ev.label, {x:(x0+x1)/2, y:cy+4, 'text-anchor':'middle', class:'span-label'}, g);
+    } else {
+      txt(ev.label, {x:x1+6, y:cy+4, class:'span-label'}, g);
+    }
+
+    const isSelected = selected && selected.type==='event'
+      && selected.span && selected.y === ev.y;
+    if(isSelected){
+      el('rect',{x:x0-2, y:y-2, width:w+4, height:SPAN_LANE_H+4,
+        fill:'none', stroke:'var(--now)', 'stroke-width':1.5, rx:3}, g);
+    }
+
+    const tipHtml = `<span class="tt-yr">${ev.y}–${ev.end}</span> · ${ev.label}${ev.note ? '<br>' + ev.note : ''}`;
+    g.addEventListener('mousemove', e => showTip(tipHtml, e));
+    g.addEventListener('mouseleave', hideTip);
+    g.addEventListener('click', () => selectEvent(ev));
+  });
+}
+
+/* ---- epoch band (below span strip) ---- */
+function drawEpochs(top, h){
+  let defs = chart.querySelector('defs');
+  if(!defs){ defs = el('defs', {}, chart); }
+
+  EPOCHS.forEach((ep, i) => {
+    const x0 = xOf(ep.lead != null ? ep.lead : ep.start);
+    const x1 = xOf(ep.open ? NOW : ep.end + 1);
+    const wseg = x1 - x0;
+
+    if(ep.lead != null){
+      const nx0=xOf(ep.lead), nx1=xOf(ep.start);
+      el('rect',{x:nx0,y:top,width:Math.max(0,nx1-nx0),height:h,fill:ep.color,opacity:.30},chart);
+    }
+
+    const g = el('g', {class:'epoch-region'}, chart);
+    const startX = ep.lead != null ? xOf(ep.start) : x0;
+    const r = el('rect',{x:startX,y:top,width:Math.max(0,x1-startX),height:h,fill:ep.color,
+      opacity: stripped ? .55 : .92}, g);
+
+    if(ep.open){
+      const fadeId = 'fade' + i;
+      const lg = el('linearGradient',{id:fadeId,x1:'0',x2:'1',y1:'0',y2:'0'},defs);
+      el('stop',{offset:'0%',  'stop-color':ep.color,'stop-opacity': stripped ? .55 : .92},lg);
+      el('stop',{offset:'62%', 'stop-color':ep.color,'stop-opacity': stripped ? .55 : .92},lg);
+      el('stop',{offset:'100%','stop-color':ep.color,'stop-opacity':0},lg);
+      r.setAttribute('fill', `url(#${fadeId})`);
+      r.setAttribute('width', xOf(YEAR_MAX) - startX);
+    }
+
+    if(i > 0){
+      const seamId = 'seam' + i;
+      const lg = el('linearGradient',{id:seamId,x1:'0',x2:'1',y1:'0',y2:'0'},defs);
+      el('stop',{offset:'0%',  'stop-color':EPOCHS[i-1].color,'stop-opacity':.0},lg);
+      el('stop',{offset:'50%', 'stop-color':EPOCHS[i-1].color,'stop-opacity':.5},lg);
+      el('stop',{offset:'100%','stop-color':ep.color,'stop-opacity':.0},lg);
+      const sW = Math.min(16, wseg * 0.4);
+      el('rect',{x:startX-sW/2,y:top,width:sW,height:h,fill:`url(#${seamId})`},chart);
+    }
+
+    if(!stripped){
+      const cx = (startX + (ep.open ? xOf(NOW) : x1)) / 2;
+      const dark = ep.color === 'var(--e3)';
+      txt(ep.name,{x:cx,y:top+h/2-2,'text-anchor':'middle','dominant-baseline':'middle',
+        class:'epoch-name'+(dark?' dark':'')},chart);
+      txt((ep.open ? ep.start+'–present' : ep.start+'–'+ep.end),
+        {x:cx,y:top+h/2+13,'text-anchor':'middle',class:'epoch-name'+(dark?' dark':''),
+         style:'font-family:var(--mono);font-size:9.5px;font-weight:400;opacity:.85'},chart);
+    }
+
+    if(selected && selected.type==='epoch' && selected.id===ep.id){
+      el('rect',{x:startX,y:top-3,width:Math.max(0,(ep.open?xOf(NOW):x1)-startX),height:h+6,
+        fill:'none',stroke:'var(--now)','stroke-width':2},chart);
+    }
+
+    g.addEventListener('click', () => selectEpoch(ep));
+    g.addEventListener('mousemove', e => showTip(`<span class="tt-yr">${ep.start}–${ep.open?'now':ep.end}</span> · ${ep.name}<br>${ep.oneliner}`,e));
+    g.addEventListener('mouseleave', hideTip);
+  });
+}
+
 /* ---- presidents ribbon ---- */
-function drawPresidents(top,h){
+function drawPresidents(top, h){
   txt('Presidents',{x:xOf(YEAR_MIN),y:top-4,class:'lane-tag'},chart);
   PRESIDENTS.forEach(pr=>{
     const x0=xOf(pr.start), x1=xOf(pr.end);
-    const tone = pr.p==='R' ? '#9A9C95' : '#74766F'; // neutral two-tone, no partisan red/blue
+    const tone = pr.p==='R' ? '#9A9C95' : '#74766F';
     el('rect',{x:x0,y:top,width:Math.max(1,x1-x0),height:h,fill:tone,stroke:'var(--paper)','stroke-width':1},chart);
-    if(x1-x0>46){
+    if(x1-x0 > 46){
       txt(pr.name,{x:(x0+x1)/2,y:top+h/2+3,'text-anchor':'middle',class:'pres-label'},chart);
     }
   });
 }
 
 /* ---- recession bands ---- */
-function drawRecessions(top,h){
+function drawRecessions(top, h){
   txt('Recessions · NBER',{x:xOf(YEAR_MIN),y:top-4,class:'lane-tag'},chart);
   el('line',{x1:xOf(YEAR_MIN),y1:top+h,x2:xOf(YEAR_MAX),y2:top+h,stroke:'var(--rule)','stroke-width':1},chart);
   RECESSIONS.forEach(r=>{
@@ -528,14 +622,12 @@ function drawRecessions(top,h){
 }
 
 /* ---- crime line (verified waypoints) ---- */
-function drawCrime(top,h){
+function drawCrime(top, h){
   txt('Violent crime / 100k · verified waypoints',{x:xOf(YEAR_MIN),y:top-4,class:'lane-tag'},chart);
-  const vmax=800;
-  const yOf=v=> top+h - (v/vmax)*h;
-  // baseline + peak guide
+  const vmax = 800;
+  const yOf = v => top + h - (v/vmax)*h;
   el('line',{x1:xOf(YEAR_MIN),y1:top+h,x2:xOf(YEAR_MAX),y2:top+h,stroke:'var(--rule)','stroke-width':1},chart);
-  const pts=[...CRIME].sort((a,b)=>a.y-b.y);
-  // connecting guide (dashed = shape between verified points, not year-exact)
+  const pts = [...CRIME].sort((a,b)=>a.y-b.y);
   let d='';
   pts.forEach((p,i)=>{ d+=(i?'L':'M')+xOf(p.y)+' '+yOf(p.v)+' '; });
   el('path',{d,fill:'none',stroke:'var(--ink)','stroke-width':1.4,'stroke-dasharray':'2 3',opacity:.6},chart);
@@ -545,13 +637,13 @@ function drawCrime(top,h){
     txt(p.v.toFixed(0),{x:cx,y:cy-7,'text-anchor':'middle',class:'crime-val'},chart);
     txt(p.y,{x:cx,y:top+h+11,'text-anchor':'middle',class:'crime-val'},chart);
   });
-  txt('peak 758 (1991) → falls through the ’08 crash',{x:xOf(1996),y:top+10,'text-anchor':'middle',class:'register-note',style:'fill:var(--ink-faint)'},chart);
+  txt('peak 758 (1991) → falls through the ‘08 crash',{x:xOf(1996),y:top+10,'text-anchor':'middle',class:'register-note',style:'fill:var(--ink-faint)'},chart);
 }
 
 /* ---- RFT regime (argued, hatched) ---- */
-function drawRFT(top,h){
-  // hatch pattern
-  let defs=chart.querySelector('defs'); if(!defs){ defs=el('defs',{},chart); }
+function drawRFT(top, h){
+  let defs = chart.querySelector('defs');
+  if(!defs){ defs = el('defs',{},chart); }
   if(!chart.querySelector('#hatch')){
     const pat=el('pattern',{id:'hatch',width:6,height:6,patternUnits:'userSpaceOnUse',patternTransform:'rotate(45)'},defs);
     el('rect',{width:6,height:6,fill:'var(--paper)'},pat);
@@ -559,7 +651,7 @@ function drawRFT(top,h){
   }
   txt('RFT regime · ARGUED — not measured',{x:xOf(YEAR_MIN),y:top-4,class:'lane-tag',style:'fill:var(--argued)'},chart);
   RFT.forEach(seg=>{
-    const x0=xOf(seg.start), x1=xOf(seg.end+ (seg.end===NOW?0:1));
+    const x0=xOf(seg.start), x1=xOf(seg.end+(seg.end===NOW?0:1));
     el('rect',{x:x0,y:top,width:Math.max(2,x1-x0),height:h,fill:'url(#hatch)',stroke:'var(--argued)',
       'stroke-width':1,'stroke-dasharray':'4 3'},chart);
     txt(seg.label,{x:(x0+x1)/2,y:top+h/2+3,'text-anchor':'middle',
@@ -568,9 +660,9 @@ function drawRFT(top,h){
   });
 }
 
-/* ---- the standpoint marker: YOU ARE HERE ---- */
-function drawNow(top,bottom){
-  const x=xOf(NOW);
+/* ---- standpoint marker ---- */
+function drawNow(top, bottom){
+  const x = xOf(NOW);
   el('line',{x1:x,y1:top-4,x2:x,y2:bottom-8,stroke:'var(--now)','stroke-width':1.5,'stroke-dasharray':'3 3'},chart);
   txt('2026 · the vantage point',{x:x-6,y:top+4,'text-anchor':'end',
     style:'font-family:var(--mono);font-size:9.5px;fill:var(--now);letter-spacing:.06em'},chart);
@@ -579,59 +671,78 @@ function drawNow(top,bottom){
 /* ============================================================
    SELECTION / DETAIL PANEL
    ============================================================ */
-const detail=document.getElementById('detail');
+const detail = document.getElementById('detail');
+
 function selectEpoch(ep){
-  selected={type:'epoch',id:ep.id};
-  const evs=EVENTS.filter(e=> e.y>=ep.start && e.y<=(ep.open?NOW:ep.end));
-  detail.innerHTML=`
+  selected = {type:'epoch', id:ep.id};
+  const evs = EVENTS.filter(e => !e.span && e.y >= ep.start && e.y <= (ep.open ? NOW : ep.end));
+  const spans = EVENTS.filter(e => e.span && e.y >= ep.start && e.y <= (ep.open ? NOW : ep.end));
+  const allLabels = [...evs, ...spans].map(e => e.label).join(' · ');
+  detail.innerHTML = `
     <div class="d-eyebrow">Cycle ${ep.cycle} · ${ep.phase}</div>
     <h2>${ep.name}</h2>
-    <div class="d-years">${ep.open?ep.start+' – present':ep.start+' – '+ep.end}</div>
+    <div class="d-years">${ep.open ? ep.start+' – present' : ep.start+' – '+ep.end}</div>
     <div class="d-prose">${ep.rationale.map(p=>'<p>'+p+'</p>').join('')}</div>
-    <div class="d-meta">Defining events in view: ${evs.map(e=>e.label).join(' · ')}</div>`;
+    <div class="d-meta">Events in this epoch: ${allLabels || '—'}</div>`;
   render();
-  detail.scrollIntoView({behavior:'smooth',block:'nearest'});
+  detail.scrollIntoView({behavior:'smooth', block:'nearest'});
 }
+
 function selectEvent(ev){
-  selected={type:'event',y:ev.y};
-  const ep=EPOCHS.find(e=> ev.y>=e.start && ev.y<=(e.open?NOW:e.end));
-  detail.innerHTML=`
-    <div class="d-eyebrow">Event${ev.span?' · span':''}</div>
+  selected = {type:'event', y:ev.y, label:ev.label, span:!!ev.span};
+  const ep = EPOCHS.find(e => ev.y >= e.start && ev.y <= (e.open ? NOW : e.end));
+  detail.innerHTML = `
+    <div class="d-eyebrow">Event${ev.span ? ' · duration' : ev.tier===1 ? ' · tier 1' : ' · tier 2'}</div>
     <h2>${ev.label}</h2>
-    <div class="d-years">${ev.y}${ev.span?' – '+ev.end:''}${ep?' · within '+ep.name:''}</div>
-    <div class="d-prose"><p>${ev.note?ev.note:'A defining event of this epoch. (Annotate freely — this panel reads the <code>note</code> field on each event.)'}</p></div>`;
+    <div class="d-years">${ev.y}${ev.span ? ' – '+ev.end : ''}${ep ? ' · '+ep.name : ''}</div>
+    <div class="d-prose"><p>${ev.note ? ev.note : 'A defining event of this epoch. (Annotate freely — this panel reads the <code>note</code> field on each event.)'}</p></div>`;
   render();
 }
 
 /* ============================================================
    CONTROLS
    ============================================================ */
-const tg=document.getElementById('laneToggles');
-Object.entries(lanes).forEach(([key,l])=>{
-  const b=document.createElement('button');
-  b.className='toggle '+(l.on?'on':'off');
-  if(l.register==='argued') b.dataset.register='argued';
-  b.innerHTML=`<span class="swatch" style="background:${l.register==='argued'?'transparent':l.color}"></span>${l.label}`;
-  b.addEventListener('click',()=>{ l.on=!l.on; b.classList.toggle('on'); b.classList.toggle('off'); render(); });
+const tg = document.getElementById('laneToggles');
+Object.entries(lanes).forEach(([key, l]) => {
+  const b = document.createElement('button');
+  b.className = 'toggle ' + (l.on ? 'on' : 'off');
+  if(l.register === 'argued') b.dataset.register = 'argued';
+  b.innerHTML = `<span class="swatch" style="background:${l.register==='argued'?'transparent':l.color}"></span>${l.label}`;
+  b.addEventListener('click', () => { l.on = !l.on; b.classList.toggle('on'); b.classList.toggle('off'); render(); });
   tg.appendChild(b);
 });
 
-const stripBtn=document.getElementById('stripBtn');
-stripBtn.addEventListener('click',()=>{
-  stripped=!stripped; stripBtn.classList.toggle('active',stripped);
-  stripBtn.textContent = stripped?'Show labels':'Strip labels';
+const z1Btn = document.getElementById('z1Btn');
+const z2Btn = document.getElementById('z2Btn');
+const z3Btn = document.getElementById('z3Btn');
+
+function setZoom(level){
+  zoomLevel = level;
+  [z1Btn, z2Btn, z3Btn].forEach((b, i) => b.classList.toggle('active', i+1 === level));
+  render();
+}
+z1Btn.addEventListener('click', () => setZoom(1));
+z2Btn.addEventListener('click', () => setZoom(2));
+z3Btn.addEventListener('click', () => setZoom(3));
+
+const stripBtn = document.getElementById('stripBtn');
+stripBtn.addEventListener('click', () => {
+  stripped = !stripped;
+  stripBtn.classList.toggle('active', stripped);
+  stripBtn.textContent = stripped ? 'Show labels' : 'Strip labels';
   render();
 });
 
-document.getElementById('sources').innerHTML=
-  `<b>Sources & honesty notes.</b> Epoch names, dates, and justifications: your “American Epochs” framework. `+
+document.getElementById('sources').innerHTML =
+  `<b>Sources & honesty notes.</b> Epoch names, dates, and justifications: the "American Epochs" framework. `+
   `Presidents and NBER recession spans: established record (year-rounded). `+
-  `Violent crime: FBI UCR / Congressional Research Service R45236 — <b>verified waypoints only</b> `+
-  `(1960·161, 1991·758 peak, 2014·362, 2015·374, 2016·386, 2019·367); the dashed connector is shape between points, not a year-exact series. `+
-  `The RFT regime lane is <b>argued, not measured</b>, and is drawn hatched for that reason. `+
+  `Violent crime: FBI UCR / CRS R45236 — <b>verified waypoints only</b> `+
+  `(1960·161, 1991·758 peak, 2014·362, 2015·374, 2016·386, 2019·367); dashed connector is shape, not a year-exact series. `+
+  `Duration events (span strip) are measured where dates are documented, argued where the strip encodes an interpretive framing. `+
+  `RFT regime lane is <b>argued, not measured</b>, drawn hatched for that reason. `+
   `Pre-registered predictions are fixed above so the chart can disconfirm, not just confirm.`;
 
-window.addEventListener('resize',()=>{ clearTimeout(window.__rt); window.__rt=setTimeout(render,120); });
+window.addEventListener('resize', () => { clearTimeout(window.__rt); window.__rt = setTimeout(render, 120); });
 render();
 </script>
 </body>
