@@ -73,7 +73,7 @@ Clicking an epoch region or event dot populates the detail panel below the chart
 ## File Structure
 
 ```
-saeculum/
+american-epochs/
 ├── README.md
 ├── CLAUDE.md
 └── src/
