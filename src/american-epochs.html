@@ -18,6 +18,8 @@
     --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
     --e1:#6B8E9E; --e2:#7FA07A; --e3:#B89B6E; --e4:#9E8AA8;
     --e5:#6E9B96; --e6:#A98B7D; --e7:#8C8A9E;
+    --e8:#6B7280; --e9:#C2A66B; --e10:#B08D57; --e11:#5D7A94;
+    --e12:#A97F8C; --e13:#8C93B8; --e14:#6E8B6B;
   }
   *{box-sizing:border-box}
   html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--mono);}
@@ -54,6 +56,8 @@
 
   .ax-year{font-family:var(--mono);font-size:11px;fill:var(--ink-soft);}
   .ax-year.major{fill:var(--ink);}
+  .cycle-name{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;fill:var(--ink-soft);}
+  .cycle-region{cursor:pointer;}
   .epoch-name{font-family:var(--serif);font-size:13px;fill:var(--paper);font-weight:600;}
   .epoch-name.dark{fill:var(--ink);}
   .lane-tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;fill:var(--ink-faint);}
@@ -104,9 +108,9 @@
 </head>
 <body>
 <header class="masthead">
-  <div class="kicker">v3 · A Periodization Instrument · 1939 – Present</div>
+  <div class="kicker">v4 · A Periodization Instrument · 1854 – Present</div>
   <h1>American Epochs</h1>
-  <div class="dek">Two legitimacy cycles, each rising to an apex and falling into crisis — laid over the empirical record so the labels can be tested against it, not just asserted over it.</div>
+  <div class="dek">Three legitimacy cycles, each rising to an apex and falling into crisis — preceded by the rupture that made the first one possible — laid over the empirical record so the labels can be tested against it, not just asserted over it.</div>
 </header>
 
 <div class="controls">
@@ -170,11 +174,67 @@
 /* ============================================================
    DATA
    ============================================================ */
-const YEAR_MIN = 1939, YEAR_MAX = 2027, NOW = 2026;
+const YEAR_MIN = 1852, YEAR_MAX = 2027, NOW = 2026;
 
 const EPOCHS = [
-  { id:'asc', name:'The American Ascendancy', start:1941, end:1952, lead:1939, color:'var(--e1)',
+  { id:'hdiv', name:'The House Divided', start:1854, end:1865, lead:1852, color:'var(--e8)',
+    cycle:null, phase:'Rupture',
+    oneliner:'The party system fails to contain slavery, and the constitutional order built around it goes to war with itself.',
+    rationale:[
+      '"House Divided" is Lincoln\'s own phrase, from his 1858 Senate campaign: "A house divided against itself cannot stand... I do not expect the house to fall — but I do expect it will cease to be divided." It says almost exactly what happens.',
+      'The Kansas-Nebraska Act (May 1854) is the structural pivot — not a battle or an assassination but a bill. It repeals the Missouri Compromise\'s line, collapses the Whig Party within months, and produces the Republican Party in direct response. The political system stops being able to contain the question at all.',
+      'This epoch belongs to no cycle. What ends at Appomattox and Lincoln\'s assassination in 1865 is not a crisis phase of an existing order — it is the constitutional order of 1787, the one built around slavery, ending outright.'
+    ]},
+  { id:'recon', name:'Reconstruction', start:1865, end:1877, color:'var(--e9)',
+    cycle:1, phase:'Genesis',
+    oneliner:'An honest attempt at multiracial democracy, backed by federal troops, abandoned within a generation.',
+    rationale:[
+      'The plain name, deliberately: no borrowed slogan, no irony required. It names both the real attempt — the 13th, 14th, and 15th Amendments; Black congressmen and state legislators in numbers the country would not see again for a century — and, once you know how it ends, that it was left unfinished.',
+      'It opens on Appomattox and Lincoln\'s assassination (April 1865), when the question the war deferred — does victory include Black citizenship, land, political power — opens immediately and violently; the Klan is founded the same year.',
+      'It closes on the Compromise of 1877: the disputed Hayes-Tilden election settled by a backroom deal, federal troops withdrawn from the South, "Redeemer" governments retaking power. The industrial order that follows is built directly on that withdrawal.'
+    ]},
+  { id:'gild', name:'The Gilded Age', start:1877, end:1897, color:'var(--e10)',
     cycle:1, phase:'Rise',
+    oneliner:'Industrial capitalism runs for two decades with no federal counterweight, and calls it prosperity.',
+    rationale:[
+      'Twain and Warner\'s own coinage, from their 1873 novel — a shiny surface over corruption, named from inside the moment it describes, the same move as "Ascendancy" or "Morning in America."',
+      'It rises directly out of 1877\'s withdrawal: railroad and trust consolidation, brutal labor conflict (the Great Railroad Strike, Haymarket, Homestead, Pullman), mass immigration — and a genuine mass movement against the whole arrangement, Populism, that ultimately loses.',
+      'It closes when McKinley beats Bryan in 1896, settling the fight in favor of gold-standard industrial capital — exactly where The Big Stick picks up.'
+    ]},
+  { id:'stick', name:'The Big Stick', start:1898, end:1912, color:'var(--e11)',
+    cycle:1, phase:'Apex',
+    oneliner:'Confidence compounding in every direction at once — imperial and regulatory swagger, until the coalition splits at its own peak.',
+    rationale:[
+      'Roosevelt\'s own foreign-policy phrase. The Spanish-American War (1898) is the structural pivot: the U.S. stops being a continental power and starts governing people who never voted on it — the Philippines, Puerto Rico, Guam, effective control of Cuba.',
+      'The same confidence runs domestically: trust-busting, the Square Deal, food and drug regulation, the Panama Canal, the Great White Fleet circling the globe. Imperial reach and regulatory ambition rise together, not in tension.',
+      'It ends on a crack at the moment of triumph, the same shape as Watts in 1965: in 1912 the Republican coalition destroys itself from pride, not opposition. Roosevelt runs against his own handpicked successor Taft; the vote splits three ways; Wilson wins with a minority.'
+    ]},
+  { id:'newfree', name:'The New Freedom', start:1913, end:1919, color:'var(--e12)',
+    cycle:1, phase:'Crisis',
+    oneliner:'Reform triumph curdles into moral catastrophe inside a single presidency.',
+    rationale:[
+      'Wilson\'s own platform phrase. It opens with the most concentrated burst of federal institution-building since Reconstruction — the Federal Reserve, the income tax, direct election of Senators, the Clayton Antitrust Act, nearly all inside eighteen months.',
+      'Then it rides straight into WWI intervention (1917) and the collapse of Wilsonian idealism in a single brutal year: Wilson\'s stroke, the Senate killing the League of Nations, the Red Summer race riots, the Palmer Raids. "Safe for democracy" fails at home and abroad in the same twelve months.',
+      'It is the Big Stick cycle\'s crisis phase in miniature — rise to collapse compressed into six years instead of twenty — which is exactly why it needed to be split out rather than folded in.'
+    ]},
+  { id:'normalcy', name:'Return to Normalcy', start:1920, end:1932, color:'var(--e13)',
+    cycle:1, phase:'Crisis',
+    oneliner:'The same laissez-faire confidence produces the boom and the bust — one story, not two.',
+    rationale:[
+      'Harding\'s own 1920 campaign phrase, carrying the same built-in irony as "Morning in America": a promise of stability that turns out to be a crash waiting to happen.',
+      'Installment credit, radio, a stock market bought on margin the way appliances were bought on credit, Coolidge\'s sincerely-meant "the business of America is business" — the same ideology that inflates the boom refuses any counterweight when it turns.',
+      'It closes not on the Crash itself but on the Bonus Army (1932): the U.S. Army tear-gassing its own WWI veterans out of their own encampment in Washington, protecting a "normalcy" that had already stopped existing for most of the country.'
+    ]},
+  { id:'newdeal', name:'A New Deal', start:1933, end:1940, color:'var(--e14)',
+    cycle:2, phase:'Genesis',
+    oneliner:'FDR\'s own words for his program, before it was policy — bold, persistent experimentation whose survival was genuinely in doubt.',
+    rationale:[
+      'It opens on the bank holiday and the Hundred Days (March 1933) — a literal system stoppage, not a gradual shift. The banking system shuts down and restarts on new terms.',
+      'The Supreme Court strikes down the NRA and the AAA; business elites call Roosevelt a class traitor; the 1937 court-packing scheme is a real attempt to override a coequal branch, and it backfires, landing alongside the "Roosevelt recession" and a conservative coalition that blocks further reform for good.',
+      'It closes in 1940, not 1941, because that is the year the story stops being mainly about America arguing with itself: the first peacetime draft, the destroyers-for-bases deal, and a third-term election breaking 150 years of precedent all land within months of each other. By 1941 the pivot — Lend-Lease — is already international.'
+    ]},
+  { id:'asc', name:'The American Ascendancy', start:1941, end:1952, lead:1939, color:'var(--e1)',
+    cycle:2, phase:'Rise',
     oneliner:'Arsenal and creditor — hegemony accrues before the country is fully in the war.',
     rationale:[
       '"Ascendancy" over "hegemony" keeps the contingency: in 1941 Britain could fall, the Soviets could collapse. The ascent was real, the destination still uncertain.',
@@ -182,7 +242,7 @@ const EPOCHS = [
       'Bretton Woods (1944) only ratified what Lend-Lease created. Luce declared "The American Century" in February 1941, one month before Lend-Lease passed. He saw it coming; the isolationists saw it too, which is why they fought it.'
     ]},
   { id:'aff', name:'The Affluent Society', start:1953, end:1965, color:'var(--e2)',
-    cycle:1, phase:'Apex',
+    cycle:2, phase:'Apex',
     oneliner:'Postwar plenty — the settlement achieves hegemony; the opposition accepts its terms.',
     rationale:[
       'Galbraith named it in 1958: the problem of production was solved; the question was now distribution and quality of life. Countercyclical Keynesianism worked, wages rose with productivity, the GI Bill built a middle class — the empirical basis of legitimacy.',
@@ -190,7 +250,7 @@ const EPOCHS = [
       'The endpoint is 1965 — the legislative apex (Voting Rights Act, Medicare/Medicaid). Yet that same August, Watts burned. The first crack appeared at the moment of greatest triumph.'
     ]},
   { id:'unr', name:'The Unravelling', start:1966, end:1979, color:'var(--e3)',
-    cycle:1, phase:'Crisis',
+    cycle:2, phase:'Crisis',
     oneliner:'A woven thing comes apart — each thread pulls loose another.',
     rationale:[
       'The postwar settlement was an interlocking system: Keynesian economics, Cold War bipartisanship, the labor-capital accord, incremental civil rights within the existing order. Each failure connected to the others.',
@@ -198,7 +258,7 @@ const EPOCHS = [
       '1979 closes it because the next regime was already gestating. Volcker\'s appointment (August 1979) — breaking inflation by inducing recession — abandoned full-employment Keynesianism before Reagan was elected. The policy regime changed first.'
     ]},
   { id:'mor', name:'Morning in America', start:1980, end:1991, color:'var(--e4)',
-    cycle:2, phase:'Rise',
+    cycle:3, phase:'Rise',
     oneliner:'A new ideological order establishes legitimacy on different terms.',
     rationale:[
       'Using Reagan\'s own slogan is pointed: it concedes Reaganism was a successful ideological project that restored confidence — and carries the irony that mornings end.',
@@ -206,7 +266,7 @@ const EPOCHS = [
       '1991 closes with the Soviet collapse and the Gulf War\'s display of unchallengeable supremacy. The settlement survived Reagan and proved transferable; Bush governed within it.'
     ]},
   { id:'eoh', name:'The End of History', start:1992, end:2007, color:'var(--e5)',
-    cycle:2, phase:'Apex',
+    cycle:3, phase:'Apex',
     oneliner:'The ideological question declared settled — believed sincerely, by serious people, for fifteen years.',
     rationale:[
       'Fukuyama named it (1989/1992): liberal-democratic capitalism had no serious competitor; the Washington Consensus would spread, China would liberalize as it marketized.',
@@ -214,7 +274,7 @@ const EPOCHS = [
       'Why 2007, not 2008? The confidence died before the crisis. Iraq had soured, Katrina exposed state incapacity, housing peaked in 2006. 2008 was the corpse hitting the floor.'
     ]},
   { id:'int', name:'The Interregnum', start:2008, end:2015, color:'var(--e6)',
-    cycle:2, phase:'Crisis',
+    cycle:3, phase:'Crisis',
     oneliner:'The old is dying and the new cannot be born; morbid symptoms appear.',
     rationale:[
       'Gramsci\'s word. The neoliberal order demonstrably failed — bailouts for banks, foreclosures for homeowners made the class politics undeniable — yet nothing replaced it.',
@@ -222,13 +282,19 @@ const EPOCHS = [
       '2015 marks the emergence: Trump\'s campaign announcement (June) signals a morbid symptom becoming a political force. The interregnum was ending — into what remained unclear.'
     ]},
   { id:'rec', name:'The Reckoning', start:2016, end:NOW, color:'var(--e7)', open:true,
-    cycle:2, phase:'Crisis',
+    cycle:3, phase:'Crisis',
     oneliner:'Debts coming due — an accounting that can no longer be deferred.',
     rationale:[
       'Deindustrialization\'s social costs (deferred since the \'80s), racial-caste contradictions (since the Founding), legitimacy deficits (since Watergate), imperial overextension (since 2003). The bill arrived.',
       'Trump became the vehicle precisely by repudiating the bipartisan consensus that deferred these debts. The 2016 win — against both establishments, against polling, against elite opposition — proved the interregnum had produced something.',
       '"Present" concedes we are inside the period, too close to see its shape. Whether January 2025 inaugurates a new settlement or intensifies the crisis remains to be seen — so this end of the chart is drawn open, not closed.'
     ]},
+];
+
+const CYCLES = [
+  { id:1, name:'The Industrial Order' },
+  { id:2, name:'The New Deal Order' },
+  { id:3, name:'The Neoliberal Order' },
 ];
 
 /*
@@ -239,6 +305,9 @@ const EPOCHS = [
 */
 const EVENTS = [
   // — Span events (duration strip) ——————————————————————————————
+  { y:1861, end:1865, label:'Civil War',     span:true, note:'The war that ends the constitutional order built around slavery.' },
+  { y:1914, end:1918, label:'World War I',   span:true, note:'The U.S. enters in 1917; the war that breaks Wilsonian idealism as much as it vindicates it.' },
+  { y:1929, end:1933, label:'Great Depression', span:true, note:'NBER dates the contraction August 1929 to March 1933 — the longest on record.' },
   { y:1941, end:1945, label:'World War II',  span:true, note:'The crucible in which American hegemony was forged.' },
   { y:1972, end:1974, label:'Watergate',     span:true, note:'Institutional rot reaches the presidency. Legitimacy begins to drain.' },
   { y:1973, end:1979, label:'Stagflation',   span:true, note:'The empirical refutation of Keynesianism. Inflation + stagnation = the end of the postwar economic settlement.' },
@@ -246,6 +315,78 @@ const EVENTS = [
   { y:2020, end:2021, label:'COVID-19',      span:true, note:'State capacity tested and found wanting; the pandemic exposed a government hollowed out by decades of defunding.' },
 
   // — Point events ——————————————————————————————————————————————
+  // The House Divided (1854–1865)
+  { y:1854, tier:1, label:'Kansas-Nebraska Act', note:'Repeals the Missouri Compromise line; the Whig Party collapses within months and the Republican Party forms in response.' },
+  { y:1857, tier:1, label:'Dred Scott',          note:'The Supreme Court rules Black Americans, free or enslaved, can never be citizens.' },
+  { y:1858, tier:2, label:'Lincoln-Douglas debates' },
+  { y:1859, tier:2, label:'Harpers Ferry raid',  note:'John Brown\'s raid on the federal armory — an armed attempt to spark a slave uprising.' },
+  { y:1860, tier:1, label:'Lincoln elected' },
+  { y:1861, tier:1, label:'Fort Sumter',         note:'The first shots of the war.' },
+  { y:1863, tier:2, label:'Emancipation Proclamation' },
+  { y:1863, tier:3, label:'Gettysburg' },
+  { y:1865, tier:1, label:'Appomattox',          note:'Lee surrenders; the war ends.' },
+  { y:1865, tier:2, label:'Lincoln assassinated' },
+
+  // Reconstruction (1865–1877)
+  { y:1865, tier:2, label:'Klan founded' },
+  { y:1865, tier:1, label:'13th Amendment',      note:'Abolishes slavery.' },
+  { y:1868, tier:1, label:'14th Amendment',      note:'Birthright citizenship and equal protection.' },
+  { y:1868, tier:2, label:'Johnson impeached' },
+  { y:1870, tier:1, label:'15th Amendment',      note:'Bars denying the vote by race — for men; women of all races remain excluded.' },
+  { y:1877, tier:1, label:'Compromise of 1877',  note:'Federal troops withdraw from the South; Reconstruction enforcement ends.' },
+
+  // The Gilded Age (1877–1897)
+  { y:1877, tier:2, label:'Great Railroad Strike' },
+  { y:1886, tier:2, label:'Haymarket affair' },
+  { y:1890, tier:3, label:'Sherman Antitrust Act' },
+  { y:1892, tier:2, label:'Homestead strike' },
+  { y:1892, tier:3, label:'Ellis Island opens' },
+  { y:1893, tier:2, label:'Panic of 1893' },
+  { y:1894, tier:2, label:'Pullman strike' },
+  { y:1896, tier:1, label:'"Cross of Gold" / McKinley elected', note:'The realignment election that settles the Gilded Age\'s central argument in favor of gold-standard industrial capital.' },
+
+  // The Big Stick (1898–1912)
+  { y:1898, tier:1, label:'Spanish-American War', note:'The U.S. annexes the Philippines, Puerto Rico, and Guam, and effectively controls Cuba.' },
+  { y:1901, tier:1, label:'McKinley assassinated', note:'Theodore Roosevelt becomes president.' },
+  { y:1903, tier:2, label:'Panama Canal Zone acquired' },
+  { y:1906, tier:3, label:'Pure Food and Drug Act' },
+  { y:1909, tier:3, label:'Taft inaugurated' },
+  { y:1912, tier:1, label:'GOP splits (Bull Moose)', note:'Roosevelt runs a third-party campaign against his own successor Taft; Wilson wins with a plurality.' },
+
+  // The New Freedom (1913–1919)
+  { y:1913, tier:1, label:'Federal Reserve Act' },
+  { y:1913, tier:2, label:'Income tax & direct Senate elections', note:'The 16th and 17th Amendments, ratified the same year.' },
+  { y:1914, tier:3, label:'Clayton Antitrust Act' },
+  { y:1917, tier:1, label:'U.S. enters WWI' },
+  { y:1918, tier:2, label:'Armistice' },
+  { y:1919, tier:1, label:'Versailles rejected', note:'The Senate refuses to ratify; the U.S. never joins the League of Nations.' },
+  { y:1919, tier:2, label:'Wilson\'s stroke' },
+  { y:1919, tier:2, label:'Red Summer',       note:'Race riots erupt in dozens of American cities.' },
+  { y:1919, tier:3, label:'Palmer Raids',     note:'The First Red Scare — mass arrests and deportations of suspected radicals.' },
+
+  // Return to Normalcy (1920–1932)
+  { y:1920, tier:1, label:'Harding elected', note:'"Return to normalcy" — the campaign phrase that names the epoch.' },
+  { y:1920, tier:3, label:'19th Amendment',  note:'Women\'s suffrage.' },
+  { y:1920, tier:3, label:'Prohibition begins' },
+  { y:1922, tier:2, label:'Teapot Dome scandal' },
+  { y:1923, tier:2, label:'Harding dies in office' },
+  { y:1924, tier:3, label:'Immigration Act', note:'Explicit national-origin quotas.' },
+  { y:1929, tier:1, label:'Stock market crash' },
+  { y:1932, tier:1, label:'Bonus Army',      note:'The U.S. Army tear-gases its own WWI veterans out of their encampment in Washington.' },
+  { y:1932, tier:2, label:'FDR elected' },
+
+  // A New Deal (1933–1940)
+  { y:1933, tier:1, label:'FDR inaugurated / bank holiday', note:'"The only thing we have to fear is fear itself." The banking system shuts down and restarts on new terms.' },
+  { y:1933, tier:2, label:'The Hundred Days', note:'A historic burst of emergency legislation in FDR\'s first three months.' },
+  { y:1935, tier:2, label:'Social Security Act' },
+  { y:1935, tier:2, label:'Wagner Act',       note:'Guarantees the right to unionize and collectively bargain.' },
+  { y:1936, tier:2, label:'FDR landslide re-election' },
+  { y:1937, tier:1, label:'Court-packing fails', note:'FDR\'s plan to expand the Supreme Court backfires — a real attempt to override a coequal branch.' },
+  { y:1937, tier:2, label:'"Roosevelt recession"' },
+  { y:1938, tier:3, label:'Conservative coalition forms', note:'The midterms hand Congress to a bloc that blocks further New Deal legislation for good.' },
+  { y:1940, tier:1, label:'Selective Service Act', note:'The first peacetime draft in American history.' },
+  { y:1940, tier:2, label:'FDR wins third term',   note:'Breaks 150 years of two-term precedent.' },
+
   { y:1941, tier:1, label:'Lend-Lease',         note:'The structural pivot — U.S. becomes creditor & arsenal of the Allied powers.' },
   { y:1941, tier:1, label:'Pearl Harbor' },
   { y:1944, tier:1, label:'Bretton Woods',       note:'Dollar supremacy formalized. The financial architecture of the American century set.' },
@@ -310,7 +451,25 @@ const EVENTS = [
 ];
 
 const PRESIDENTS = [
-  { name:'F. Roosevelt', start:1939, end:1945, p:'D' },
+  { name:'Pierce',       start:1853, end:1857, p:'D' },
+  { name:'Buchanan',     start:1857, end:1861, p:'D' },
+  { name:'Lincoln',      start:1861, end:1865, p:'R' },
+  { name:'A. Johnson',   start:1865, end:1869, p:'D' },
+  { name:'Grant',        start:1869, end:1877, p:'R' },
+  { name:'Hayes',        start:1877, end:1881, p:'R' },
+  { name:'Garfield',     start:1881, end:1881, p:'R' },
+  { name:'Arthur',       start:1881, end:1885, p:'R' },
+  { name:'Cleveland',    start:1885, end:1889, p:'D' },
+  { name:'B. Harrison',  start:1889, end:1893, p:'R' },
+  { name:'Cleveland',    start:1893, end:1897, p:'D' },
+  { name:'McKinley',     start:1897, end:1901, p:'R' },
+  { name:'T. Roosevelt', start:1901, end:1909, p:'R' },
+  { name:'Taft',         start:1909, end:1913, p:'R' },
+  { name:'Wilson',       start:1913, end:1921, p:'D' },
+  { name:'Harding',      start:1921, end:1923, p:'R' },
+  { name:'Coolidge',     start:1923, end:1929, p:'R' },
+  { name:'Hoover',       start:1929, end:1933, p:'R' },
+  { name:'F. Roosevelt', start:1933, end:1945, p:'D' },
   { name:'Truman',       start:1945, end:1953, p:'D' },
   { name:'Eisenhower',   start:1953, end:1961, p:'R' },
   { name:'Kennedy',      start:1961, end:1963, p:'D' },
@@ -329,6 +488,12 @@ const PRESIDENTS = [
 ];
 
 const RECESSIONS = [
+  {start:1857,end:1858},{start:1860,end:1861},{start:1865,end:1867},{start:1869,end:1870},
+  {start:1873,end:1879},{start:1882,end:1885},{start:1887,end:1888},{start:1890,end:1891},
+  {start:1893,end:1894},{start:1895,end:1897},{start:1899,end:1900},{start:1902,end:1904},
+  {start:1907,end:1908},{start:1910,end:1912},{start:1913,end:1914},{start:1918,end:1919},
+  {start:1920,end:1921},{start:1923,end:1924},{start:1926,end:1927},{start:1929,end:1933},
+  {start:1937,end:1938},
   {start:1945,end:1945},{start:1948,end:1949},{start:1953,end:1954},{start:1957,end:1958},
   {start:1960,end:1961},{start:1969,end:1970},{start:1973,end:1975},{start:1980,end:1980},
   {start:1981,end:1982},{start:1990,end:1991},{start:2001,end:2001},{start:2007,end:2009},
@@ -360,7 +525,7 @@ const lanes = {
 };
 let stripped     = false;
 let zoomLevel    = 2;       // 1=Overview  2=Standard  3=Detail
-let zoomEpochId  = null;    // null=full view, epoch id=zoomed into that epoch
+let zoomTarget   = null;    // null=full view, {type:'cycle'|'epoch', id} otherwise
 let selected     = null;
 
 const SVGNS = 'http://www.w3.org/2000/svg';
@@ -397,6 +562,20 @@ function showTip(html, e){
 }
 function hideTip(){ tooltip.style.opacity = 0; }
 
+/* ---- cycle / epoch span helpers (shared by zoom + cycle rail) ---- */
+function epochSpan(ep){ return { start: ep.start, end: ep.open ? NOW : ep.end, open: !!ep.open }; }
+function cycleSpan(id){
+  const eps = EPOCHS.filter(e => e.cycle === id);
+  const start = Math.min(...eps.map(e => e.start));
+  const open  = eps.some(e => e.open);
+  const end   = open ? NOW : Math.max(...eps.map(e => e.end));
+  return { start, end, open };
+}
+function targetSpan(t){
+  if(!t) return null;
+  return t.type === 'epoch' ? epochSpan(EPOCHS.find(e => e.id === t.id)) : cycleSpan(t.id);
+}
+
 /* ============================================================
    SPAN LANE LAYOUT (computed each render, depends on W)
    ============================================================ */
@@ -422,14 +601,13 @@ function render(){
   const scrollEl = document.getElementById('chartScroll');
   const containerW = scrollEl ? (scrollEl.clientWidth || 900) : 900;
 
-  // When zoomed: expand SVG so the target epoch fills the container width
-  if(zoomEpochId){
-    const ep = EPOCHS.find(e => e.id === zoomEpochId);
-    const epEnd = ep.open ? NOW : ep.end;
-    const epYears = epEnd - ep.start;
+  // When zoomed: expand SVG so the target cycle/epoch fills the container width
+  if(zoomTarget){
+    const span = targetSpan(zoomTarget);
+    const spanYears = span.end - span.start;
     const totalYears = YEAR_MAX - YEAR_MIN;
     const padPx = containerW * 0.12;
-    W = Math.round((containerW - 2 * padPx) * totalYears / epYears);
+    W = Math.round((containerW - 2 * padPx) * totalYears / spanYears);
   } else {
     W = containerW;
   }
@@ -440,11 +618,13 @@ function render(){
   const spanLayout = computeSpanLayout();
 
   // More vertical room for the dot cloud when zoomed — events spread out naturally
-  const evTop = 14, evH = zoomEpochId ? 220 : 150;
+  const evTop = 14, evH = zoomTarget ? 220 : 150;
   const axisY = evTop + evH;
   let y = axisY + 34;
 
   const spanY = y; y += spanLayout.totalH;
+
+  const cycleY = y, cycleH = 20; y += cycleH + 8;
 
   const epochY = y, epochH = 46; y += epochH + 10;
 
@@ -461,6 +641,7 @@ function render(){
   drawEvents(evTop, evH, axisY);
   drawAxis(axisY);
   drawSpans(spanY, spanLayout);
+  drawCycles(cycleY, cycleH);
   drawEpochs(epochY, epochH);
   laneBlocks.forEach(b => {
     if(b.key === 'presidents') drawPresidents(b.y, b.h);
@@ -470,11 +651,11 @@ function render(){
   });
   drawNow(evTop, H);
 
-  // After drawing, scroll so the zoomed epoch fills the viewport
-  if(zoomEpochId && scrollEl){
-    const ep = EPOCHS.find(e => e.id === zoomEpochId);
+  // After drawing, scroll so the zoomed cycle/epoch fills the viewport
+  if(zoomTarget && scrollEl){
+    const span = targetSpan(zoomTarget);
     const padPx = containerW * 0.12;
-    scrollEl.scrollLeft = Math.max(0, xOf(ep.start) - padPx);
+    scrollEl.scrollLeft = Math.max(0, xOf(span.start) - padPx);
   }
 }
 
@@ -485,13 +666,15 @@ function drawAxis(axisY){
   const pxPerYear = (W - 16) / (YEAR_MAX - YEAR_MIN);
 
   if(pxPerYear < 15){
-    // Full view: decade labels, half-decade minor ticks
-    for(let yr=1940; yr<=2020; yr+=10){
+    // Full view: decade labels, half-decade minor ticks — computed from YEAR_MIN/MAX, not hardcoded
+    const decStart = Math.ceil(YEAR_MIN / 10) * 10;
+    const decEnd   = Math.floor(YEAR_MAX / 10) * 10;
+    for(let yr=decStart; yr<=decEnd; yr+=10){
       const x=xOf(yr);
       el('line',{x1:x,y1:axisY-5,x2:x,y2:axisY+5,stroke:'var(--ink)','stroke-width':1},chart);
       txt(yr,{x:x,y:axisY+19,'text-anchor':'middle',class:'ax-year major'},chart);
     }
-    for(let yr=1945; yr<=2025; yr+=10){
+    for(let yr=decStart+5; yr<=decEnd+5; yr+=10){
       const x=xOf(yr);
       el('line',{x1:x,y1:axisY-3,x2:x,y2:axisY+3,stroke:'var(--ink-faint)','stroke-width':1},chart);
     }
@@ -533,11 +716,13 @@ function drawEvents(top, h, axisY){
     const x = xOf(ev.y);
     const labelW = ev.label.length * charW + 10;
 
-    // find lowest row whose last label clears
-    let row = 0;
-    for(; row < maxRows; row++){ if(x - labelW/2 > rowEndX[row] + 6) break; }
-    if(row >= maxRows) row = maxRows - 1;
-    rowEndX[row] = x + labelW/2;
+    // find lowest row whose last label clears; if none clears, the row is
+    // overcrowded — still place the dot, but suppress the label rather than
+    // force an overlapping one into the last row
+    let row = 0, cleared = false;
+    for(; row < maxRows; row++){ if(x - labelW/2 > rowEndX[row] + 6){ cleared = true; break; } }
+    if(!cleared) row = maxRows - 1;
+    if(cleared) rowEndX[row] = x + labelW/2;
 
     // dot and label both ride this row — the whole unit scootches up
     const dotY   = axisY - dotR - 6 - row * rowH;
@@ -559,12 +744,12 @@ function drawEvents(top, h, axisY){
       fill: ev.tier===1 ? 'var(--ink)' : 'var(--ink-soft)',
       class:'ev-dot'}, chart);
 
-    // label
-    const t = txt(ev.label,{x:x, y:labelY,
-      'text-anchor':'middle', class:'ev-label'}, chart);
+    // label — omitted when the row is overcrowded (dot + tooltip still work)
+    const t = cleared ? txt(ev.label,{x:x, y:labelY,
+      'text-anchor':'middle', class:'ev-label'}, chart) : null;
 
     const tipHtml = `<span class="tt-yr">${ev.y}</span> · ${ev.label}${ev.note ? '<br>' + ev.note : ''}`;
-    [dot, t].forEach(node => {
+    [dot, t].filter(Boolean).forEach(node => {
       node.style.cursor = 'pointer';
       node.addEventListener('mousemove', e => showTip(tipHtml, e));
       node.addEventListener('mouseleave', hideTip);
@@ -624,6 +809,41 @@ function drawSpans(top, layout){
   });
 }
 
+/* ---- cycle rail (above epoch band) ---- */
+function drawCycles(top, h){
+  txt('Cycle', {x:xOf(YEAR_MIN), y:top-4, class:'lane-tag'}, chart);
+
+  CYCLES.forEach(cy => {
+    const span = cycleSpan(cy.id);
+    const x0 = xOf(span.start), x1 = xOf(span.open ? NOW : span.end + 1);
+    const w = Math.max(2, x1 - x0);
+
+    const isTarget = zoomTarget && (
+      (zoomTarget.type === 'cycle' && zoomTarget.id === cy.id) ||
+      (zoomTarget.type === 'epoch' && EPOCHS.find(e => e.id === zoomTarget.id)?.cycle === cy.id)
+    );
+
+    const g = el('g', {class:'cycle-region'}, chart);
+    el('rect',{x:x0, y:top, width:w, height:h, fill:'none',
+      stroke: isTarget ? 'var(--ink)' : 'var(--ink-soft)', 'stroke-width':isTarget?1.4:1,
+      'stroke-dasharray':'3 2', rx:2}, g);
+    txt(cy.name, {x:(x0+x1)/2, y:top+h/2+3.5, 'text-anchor':'middle', class:'cycle-name'}, g);
+
+    if(zoomTarget && zoomTarget.type === 'cycle' && zoomTarget.id === cy.id){
+      el('rect',{x:x0-2, y:top-2, width:w+4, height:h+4,
+        fill:'none', stroke:'var(--now)', 'stroke-width':1.5, rx:3}, chart);
+    }
+
+    g.addEventListener('click', () => {
+      if(zoomTarget && zoomTarget.type === 'cycle' && zoomTarget.id === cy.id) zoomTo(null);
+      else zoomTo({type:'cycle', id:cy.id});
+    });
+    g.addEventListener('mousemove', e => showTip(
+      `<span class="tt-yr">${span.start}–${span.open?'now':span.end}</span> · ${cy.name}<br><span style="opacity:.6">Click to zoom in</span>`, e));
+    g.addEventListener('mouseleave', hideTip);
+  });
+}
+
 /* ---- epoch band (below span strip) ---- */
 function drawEpochs(top, h){
   let defs = chart.querySelector('defs');
@@ -664,32 +884,38 @@ function drawEpochs(top, h){
       el('rect',{x:startX-sW/2,y:top,width:sW,height:h,fill:`url(#${seamId})`},chart);
     }
 
-    if(!stripped){
+    // Label only if the band is wide enough to hold the name without
+    // overlapping its neighbors — narrow bands still show color + tooltip,
+    // just no text crammed in.
+    const bandW = (ep.open ? xOf(NOW) : x1) - startX;
+    const nameFits = bandW > ep.name.length * 6.4 + 14;
+    if(!stripped && nameFits){
       const cx = (startX + (ep.open ? xOf(NOW) : x1)) / 2;
-      const dark = ep.color === 'var(--e3)';
+      const dark = ['var(--e3)', 'var(--e9)', 'var(--e10)'].includes(ep.color);
       txt(ep.name,{x:cx,y:top+h/2-2,'text-anchor':'middle','dominant-baseline':'middle',
-        class:'epoch-name'+(dark?' dark':'')},chart);
+        class:'epoch-name'+(dark?' dark':'')},g);
       txt((ep.open ? ep.start+'–present' : ep.start+'–'+ep.end),
         {x:cx,y:top+h/2+13,'text-anchor':'middle',class:'epoch-name'+(dark?' dark':''),
-         style:'font-family:var(--mono);font-size:9.5px;font-weight:400;opacity:.85'},chart);
+         style:'font-family:var(--mono);font-size:9.5px;font-weight:400;opacity:.85'},g);
     }
 
-    // Zoom ring — shown when this epoch is the zoomed-into epoch
+    // Zoom ring — shown when this epoch is the zoomed-into target
+    const isZoomedEpoch = zoomTarget && zoomTarget.type==='epoch' && zoomTarget.id===ep.id;
     const epW = Math.max(0, (ep.open ? xOf(NOW) : x1) - startX);
-    if(zoomEpochId === ep.id){
+    if(isZoomedEpoch){
       el('rect',{x:startX,y:top-3,width:epW,height:h+6,
         fill:'none',stroke:'var(--now)','stroke-width':2.5},chart);
-    } else if(selected && selected.type==='epoch' && selected.id===ep.id && !zoomEpochId){
+    } else if(selected && selected.type==='epoch' && selected.id===ep.id && !zoomTarget){
       el('rect',{x:startX,y:top-3,width:epW,height:h+6,
         fill:'none',stroke:'var(--now)','stroke-width':2},chart);
     }
 
     g.addEventListener('click', () => {
-      if(zoomEpochId === ep.id) zoomOut();
-      else zoomToEpoch(ep);
+      if(isZoomedEpoch) zoomTo(ep.cycle != null ? {type:'cycle', id:ep.cycle} : null);
+      else zoomTo({type:'epoch', id:ep.id});
     });
     g.addEventListener('mousemove', e => showTip(
-      zoomEpochId === ep.id
+      isZoomedEpoch
         ? `<span class="tt-yr">${ep.name}</span><br>Click to zoom out`
         : `<span class="tt-yr">${ep.start}–${ep.open?'now':ep.end}</span> · ${ep.name}<br>${ep.oneliner}<br><span style="opacity:.6">Click to zoom in</span>`,
       e));
@@ -777,26 +1003,62 @@ function epochDetailHTML(ep){
   const spans = EVENTS.filter(e =>  e.span && e.y >= ep.start && e.y <= (ep.open ? NOW : ep.end));
   const allLabels = [...evs, ...spans].map(e => e.label).join(' · ');
   return `
-    <div class="d-eyebrow">Cycle ${ep.cycle} · ${ep.phase}</div>
+    <div class="d-eyebrow">${ep.cycle != null ? 'Cycle '+ep.cycle+' · ' : ''}${ep.phase}</div>
     <h2>${ep.name}</h2>
     <div class="d-years">${ep.open ? ep.start+' – present' : ep.start+' – '+ep.end}</div>
     <div class="d-prose">${ep.rationale.map(p=>'<p>'+p+'</p>').join('')}</div>
     <div class="d-meta">Events in this epoch: ${allLabels || '—'}</div>`;
 }
 
-function zoomToEpoch(ep){
-  zoomEpochId = ep.id;
-  selected = {type:'epoch', id:ep.id};
-  document.getElementById('backGroup').style.display = 'flex';
-  detail.innerHTML = epochDetailHTML(ep);
-  render();
-  detail.scrollIntoView({behavior:'smooth', block:'nearest'});
+function cycleDetailHTML(cy){
+  const eps = EPOCHS.filter(e => e.cycle === cy.id);
+  const span = cycleSpan(cy.id);
+  const rows = eps.map(e =>
+    `<div class="d-meta"><b>${e.phase}</b> — ${e.name} (${e.start}–${e.open ? 'present' : e.end})</div>`
+  ).join('');
+  return `
+    <div class="d-eyebrow">Cycle ${cy.id}</div>
+    <h2>${cy.name}</h2>
+    <div class="d-years">${span.start} – ${span.open ? 'present' : span.end}</div>
+    <div class="d-prose"><p>${eps.length} epochs in this cycle, rising to an apex and falling into crisis. Click through to any one below for its full rationale.</p></div>
+    ${rows}`;
 }
 
-function zoomOut(){
-  zoomEpochId = null;
-  document.getElementById('backGroup').style.display = 'none';
+function backLabel(target){
+  if(target.type === 'epoch'){
+    const ep = EPOCHS.find(e => e.id === target.id);
+    const cy = CYCLES.find(c => c.id === ep.cycle);
+    return cy ? '← ' + cy.name : '← All epochs';
+  }
+  return '← All epochs';
+}
+
+function backTarget(target){
+  if(target && target.type === 'epoch'){
+    const ep = EPOCHS.find(e => e.id === target.id);
+    return ep.cycle != null ? {type:'cycle', id:ep.cycle} : null;
+  }
+  return null;
+}
+
+function zoomTo(target){
+  zoomTarget = target;
+  if(target && target.type === 'epoch'){
+    const ep = EPOCHS.find(e => e.id === target.id);
+    selected = {type:'epoch', id:ep.id};
+    detail.innerHTML = epochDetailHTML(ep);
+  } else if(target && target.type === 'cycle'){
+    const cy = CYCLES.find(c => c.id === target.id);
+    selected = {type:'cycle', id:cy.id};
+    detail.innerHTML = cycleDetailHTML(cy);
+  } else {
+    selected = null;
+  }
+  const backGroup = document.getElementById('backGroup');
+  backGroup.style.display = target ? 'flex' : 'none';
+  if(target) document.getElementById('backBtn').textContent = backLabel(target);
   render();
+  if(target) detail.scrollIntoView({behavior:'smooth', block:'nearest'});
 }
 
 function selectEvent(ev){
@@ -836,8 +1098,8 @@ z1Btn.addEventListener('click', () => setZoom(1));
 z2Btn.addEventListener('click', () => setZoom(2));
 z3Btn.addEventListener('click', () => setZoom(3));
 
-document.getElementById('backBtn').addEventListener('click', zoomOut);
-document.addEventListener('keydown', e => { if(e.key === 'Escape' && zoomEpochId) zoomOut(); });
+document.getElementById('backBtn').addEventListener('click', () => zoomTo(backTarget(zoomTarget)));
+document.addEventListener('keydown', e => { if(e.key === 'Escape' && zoomTarget) zoomTo(backTarget(zoomTarget)); });
 
 const stripBtn = document.getElementById('stripBtn');
 stripBtn.addEventListener('click', () => {
@@ -849,11 +1111,12 @@ stripBtn.addEventListener('click', () => {
 
 document.getElementById('sources').innerHTML =
   `<b>Sources & honesty notes.</b> Epoch names, dates, and justifications: the "American Epochs" framework. `+
-  `Presidents and NBER recession spans: established record (year-rounded). `+
+  `Presidents and NBER recession spans: established record (year-rounded), extending back to NBER's earliest dated contraction (December 1854). `+
   `Violent crime: FBI UCR / CRS R45236 — <b>verified waypoints only</b> `+
   `(1960·161, 1991·758 peak, 2014·362, 2015·374, 2016·386, 2019·367); dashed connector is shape, not a year-exact series. `+
+  `<b>This lane has no coverage before 1960</b> — the FBI UCR program didn't exist before 1930 and has no comparable predecessor series, so the epochs before The American Ascendancy render with no crime data rather than an invented one. `+
   `Duration events (span strip) are measured where dates are documented, argued where the strip encodes an interpretive framing. `+
-  `RFT regime lane is <b>argued, not measured</b>, drawn hatched for that reason. `+
+  `RFT regime lane is <b>argued, not measured</b>, drawn hatched for that reason, and scoped to 1941–present — it is a thesis about the postwar order, not a claim about earlier epochs. `+
   `Pre-registered predictions are fixed above so the chart can disconfirm, not just confirm.`;
 
 window.addEventListener('resize', () => { clearTimeout(window.__rt); window.__rt = setTimeout(render, 120); });
