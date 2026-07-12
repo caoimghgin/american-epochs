@@ -49,7 +49,9 @@
   .mode-btn.active{background:var(--ink);color:var(--paper);}
 
   .stage{position:relative;margin-top:8px;border-top:1px solid var(--rule);}
-  .chart-scroll{overflow-x:auto;position:relative;scrollbar-width:thin;scrollbar-color:var(--rule) transparent;}
+  .chart-scroll{overflow-x:auto;position:relative;scrollbar-width:thin;scrollbar-color:var(--rule) transparent;
+    cursor:grab;touch-action:none;user-select:none;}
+  .chart-scroll.panning{cursor:grabbing;}
   .chart-scroll::-webkit-scrollbar{height:5px;}
   .chart-scroll::-webkit-scrollbar-thumb{background:var(--rule);border-radius:3px;}
   svg.chart{display:block;height:auto;overflow:visible;}
@@ -125,13 +127,6 @@
   </div>
   <div class="ctl-group">
     <button class="mode-btn" id="resetViewBtn" title="Reset to the full known history (Escape)">↺ Full view</button>
-  </div>
-  <div class="ctl-group" title="Temporary — stands in for AE-3's real wheel-zoom/drag-pan input">
-    <span class="ctl-label">Pan/Zoom (temp)</span>
-    <button class="mode-btn" id="panLeftBtn">◀</button>
-    <button class="mode-btn" id="zoomOutBtn">−</button>
-    <button class="mode-btn" id="zoomInBtn">+</button>
-    <button class="mode-btn" id="panRightBtn">▶</button>
   </div>
   <div class="ctl-group">
     <span class="ctl-label">Mode</span>
@@ -1149,22 +1144,79 @@ z3Btn.addEventListener('click', () => setZoom(3));
 document.getElementById('resetViewBtn').addEventListener('click', resetView);
 document.addEventListener('keydown', e => { if(e.key === 'Escape') resetView(); });
 
-// AE-2 temporary test rig — stands in for AE-3's real wheel-zoom/drag-pan
-// input. Zoom is centered on the current view's midpoint; pan shifts by a
-// fraction of the current span. Remove once AE-3 lands.
-function zoomBy(factor){
-  const mid = (viewStart + viewEnd) / 2;
-  const halfSpan = (viewEnd - viewStart) / 2 / factor;
-  animateViewTo(mid - halfSpan, mid + halfSpan, 250);
+/* ============================================================
+   WHEEL-ZOOM + DRAG-PAN (AE-3)
+   ============================================================ */
+const chartScrollEl = document.getElementById('chartScroll');
+
+// Inverse of xOf(): pixel (client-space) -> year, using the chart's own
+// bounding box. Valid because chart.style.width is always set to W, so
+// 1 CSS px === 1 SVG user unit (no viewBox rescaling).
+function yearAtClientX(clientX){
+  const rect = chart.getBoundingClientRect();
+  const svgX = clientX - rect.left;
+  return viewStart + (svgX - PAD_L) / (W - PAD_L - PAD_R) * (viewEnd - viewStart);
 }
-function panBy(fraction){
-  const delta = (viewEnd - viewStart) * fraction;
-  animateViewTo(viewStart + delta, viewEnd + delta, 250);
+
+chartScrollEl.addEventListener('wheel', e => {
+  e.preventDefault();
+  if(viewAnimId){ cancelAnimationFrame(viewAnimId); viewAnimId = null; }
+
+  // Anchor: whatever year is under the cursor stays under the cursor.
+  const cursorYear = yearAtClientX(e.clientX);
+  const frac = (cursorYear - viewStart) / (viewEnd - viewStart);
+
+  const zoomFactor = Math.exp(-e.deltaY * 0.0015); // >1 zooms in, <1 zooms out
+  const newSpan = (viewEnd - viewStart) / zoomFactor;
+
+  const newStart = cursorYear - frac * newSpan;
+  const clamped = clampView(newStart, newStart + newSpan);
+  viewStart = clamped.start; viewEnd = clamped.end;
+  render();
+}, { passive: false });
+
+let isPanning = false, panPointerId = null, panStartX = 0, panStartViewStart = 0, panStartViewEnd = 0;
+const PAN_THRESHOLD = 4; // px of movement before a pointerdown counts as a drag, not a click
+
+chartScrollEl.addEventListener('pointerdown', e => {
+  if(e.button !== undefined && e.button !== 0) return; // primary mouse button / touch only
+  panPointerId = e.pointerId;
+  panStartX = e.clientX;
+  panStartViewStart = viewStart;
+  panStartViewEnd = viewEnd;
+});
+
+chartScrollEl.addEventListener('pointermove', e => {
+  if(panPointerId === null || e.pointerId !== panPointerId || e.buttons === 0) return;
+  const dx = e.clientX - panStartX;
+
+  if(!isPanning){
+    if(Math.abs(dx) < PAN_THRESHOLD) return;
+    // Only capture once we know this is a real drag — capturing immediately
+    // on pointerdown can swallow the click synthesis that click-to-snap
+    // epoch/cycle selection depends on.
+    isPanning = true;
+    chartScrollEl.setPointerCapture(e.pointerId);
+    chartScrollEl.classList.add('panning');
+    if(viewAnimId){ cancelAnimationFrame(viewAnimId); viewAnimId = null; }
+  }
+  e.preventDefault();
+
+  const pxPerYear = (W - PAD_L - PAD_R) / (panStartViewEnd - panStartViewStart);
+  const deltaYears = -dx / pxPerYear;
+  const clamped = clampView(panStartViewStart + deltaYears, panStartViewEnd + deltaYears);
+  viewStart = clamped.start; viewEnd = clamped.end;
+  render();
+});
+
+function endPan(e){
+  if(panPointerId === null || e.pointerId !== panPointerId) return;
+  if(isPanning) chartScrollEl.classList.remove('panning');
+  isPanning = false;
+  panPointerId = null;
 }
-document.getElementById('zoomInBtn').addEventListener('click', () => zoomBy(1.5));
-document.getElementById('zoomOutBtn').addEventListener('click', () => zoomBy(1/1.5));
-document.getElementById('panLeftBtn').addEventListener('click', () => panBy(-0.3));
-document.getElementById('panRightBtn').addEventListener('click', () => panBy(0.3));
+chartScrollEl.addEventListener('pointerup', endPan);
+chartScrollEl.addEventListener('pointercancel', endPan);
 
 const stripBtn = document.getElementById('stripBtn');
 stripBtn.addEventListener('click', () => {

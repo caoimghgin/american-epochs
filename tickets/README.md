@@ -39,7 +39,7 @@ Body sections, in order:
 |---|---|---|---|---|
 | [AE-1](AE-1-continuous-zoom-rebuild.md) | Continuous zoom rebuild — flexible-scale timeline navigation | Epic | In Progress | Low |
 | [AE-2](AE-2-continuous-view-state-core.md) | Continuous view-state core | Story | Done | High |
-| [AE-3](AE-3-wheel-zoom-drag-pan.md) | Wheel-zoom + drag-pan input | Story | Backlog | High |
+| [AE-3](AE-3-wheel-zoom-drag-pan.md) | Wheel-zoom + drag-pan input | Story | Done | High |
 | [AE-4](AE-4-density-floor-side-scroll.md) | Density floor + side-scroll for full-history view | Story | Backlog | Medium |
 | [AE-5](AE-5-quarter-year-axis-tier.md) | Quarter-year hashmark axis tier | Story | Backlog | Low |
 | [AE-6](AE-6-event-density-curation.md) | Event density vs. zoom depth (curation) | Story | Backlog | Low |
