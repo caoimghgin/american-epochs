@@ -2,10 +2,10 @@
 id: AE-2
 title: Continuous view-state core
 type: Story
-status: Backlog
+status: Done
 priority: High
 reporter: Kevin Muldoon
-assignee: Unassigned
+assignee: Claude
 created: 2026-07-12
 labels: [dataviz, rewrite, zoom]
 components: [src/american-epochs.html]
@@ -37,11 +37,21 @@ The whole point of the rebuild is that a viewer should be able to land on an arb
 
 ## Acceptance Criteria
 
-- [ ] `viewStart`/`viewEnd` (or equivalent) drives `xOf()`/render width instead of `zoomTarget`
-- [ ] Clicking a cycle or epoch animates the view to its bounds rather than jumping instantly
-- [ ] The view can be set to an arbitrary window not aligned to any epoch/cycle boundary, and everything renders correctly there (axis, epoch bands, event dots, overlays)
-- [ ] Detail panel, tooltips, register toggles, and statistical overlay toggles all continue to work correctly at arbitrary view windows
-- [ ] Ring-highlight / "current selection" indication on epoch and cycle bands has a defined rule under continuous view (not just an exact-match check)
+- [x] `viewStart`/`viewEnd` (or equivalent) drives `xOf()`/render width instead of `zoomTarget`
+- [x] Clicking a cycle or epoch animates the view to its bounds rather than jumping instantly
+- [x] The view can be set to an arbitrary window not aligned to any epoch/cycle boundary, and everything renders correctly there (axis, epoch bands, event dots, overlays)
+- [x] Detail panel, tooltips, register toggles, and statistical overlay toggles all continue to work correctly at arbitrary view windows
+- [x] Ring-highlight / "current selection" indication on epoch and cycle bands has a defined rule under continuous view (not just an exact-match check)
+
+## Implementation Notes
+
+- `selected` (already existed, for the detail panel) and view state are now fully decoupled: `selected = {type:'epoch'|'cycle', id}` drives ring-highlight and the detail panel; `viewStart`/`viewEnd` drives what's on screen. The "concrete rule" the ticket called for: an epoch's ring shows when `selected` matches it exactly; a cycle's ring shows only when the cycle *itself* is selected, but its box still draws in a heavier ink stroke (no red ring) when a *child epoch* of that cycle is selected — so zooming into an epoch still visually shows which cycle it belongs to.
+- `animateViewTo(start, end, duration)` is the one path (besides the temporary debug rig) that ever changes `viewStart`/`viewEnd` — a `requestAnimationFrame` tween with `easeInOutCubic`, clamped to `[YEAR_MIN, YEAR_MAX]` and a 2-year minimum span so the view can't collapse to zero width.
+- Click-to-zoom is now a toggle: clicking an already-selected epoch/cycle calls `resetView()` (back to full history) rather than requiring a separate back button/stack — continuous zoom removes the need for the old discrete back/forward levels.
+- Added a temporary Pan/Zoom control group (◀ − + ▶ buttons, clearly labeled "temp" in the UI) so this story is testable without waiting on AE-3's real wheel/drag input — verified reaching a genuinely arbitrary window (e.g. 1949–1971, cutting through the middle of The Affluent Society/Unravelling boundary) renders correctly. Remove this control group once AE-3 ships.
+- Found and fixed several spots that anchored to `xOf(YEAR_MIN)`/`xOf(YEAR_MAX)` as a stand-in for "left/right edge of the viewport" (axis spine, lane tags, baseline lines) — these silently broke once the view no longer always spans the full known range, and now use `PAD_L`/`W-PAD_R` directly.
+- Added a view-bounds cull to `drawEvents()` (skip events well outside `[viewStart, viewEnd]` before row-packing) — not required by the acceptance criteria, but cheap now and will matter once AE-3 triggers many renders per second during a drag.
+- Verified via Playwright: initial full-history ticks, cycle-click zoom, epoch-click zoom (with ring), an arbitrary non-aligned window via the temp rig, lane-toggle interaction at that arbitrary window, and Escape-to-reset — zero console errors throughout.
 
 ## Non-Goals
 

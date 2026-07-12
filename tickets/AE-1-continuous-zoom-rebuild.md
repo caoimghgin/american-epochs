@@ -2,7 +2,7 @@
 id: AE-1
 title: Continuous zoom rebuild — flexible-scale timeline navigation
 type: Epic
-status: Backlog
+status: In Progress
 priority: Low
 reporter: Kevin Muldoon
 assignee: Unassigned
