@@ -52,6 +52,13 @@
   .chart-scroll{overflow-x:auto;position:relative;scrollbar-width:thin;scrollbar-color:var(--rule) transparent;
     cursor:grab;touch-action:none;user-select:none;}
   .chart-scroll.panning{cursor:grabbing;}
+  /* AE-4: hints that there's more history to pan to when the default/current
+     view (density-floored) doesn't cover the full known range. Never covers
+     everything at once by claiming it's all there is. */
+  .edge-fade{position:absolute;top:0;bottom:0;width:36px;pointer-events:none;
+    opacity:0;transition:opacity .15s;z-index:2;}
+  .edge-fade-l{left:0;background:linear-gradient(to right, var(--paper), transparent);}
+  .edge-fade-r{right:0;background:linear-gradient(to left, var(--paper), transparent);}
   .chart-scroll::-webkit-scrollbar{height:5px;}
   .chart-scroll::-webkit-scrollbar-thumb{background:var(--rule);border-radius:3px;}
   svg.chart{display:block;height:auto;overflow:visible;}
@@ -126,7 +133,7 @@
     <button class="mode-btn" id="z3Btn" title="All events including granular detail">Detail</button>
   </div>
   <div class="ctl-group">
-    <button class="mode-btn" id="resetViewBtn" title="Reset to the full known history (Escape)">↺ Full view</button>
+    <button class="mode-btn" id="resetViewBtn" title="Reset to the default view (Escape)">↺ Reset</button>
   </div>
   <div class="ctl-group">
     <span class="ctl-label">Mode</span>
@@ -138,6 +145,8 @@
   <div class="chart-scroll" id="chartScroll">
     <svg class="chart" id="chart" xmlns="http://www.w3.org/2000/svg"></svg>
   </div>
+  <div class="edge-fade edge-fade-l" id="fadeLeft"></div>
+  <div class="edge-fade edge-fade-r" id="fadeRight"></div>
 </div>
 
 <div class="detail" id="detail">
@@ -539,6 +548,8 @@ let viewStart = YEAR_MIN, viewEnd = YEAR_MAX;
 const SVGNS = 'http://www.w3.org/2000/svg';
 const chart   = document.getElementById('chart');
 const tooltip = document.getElementById('tooltip');
+const fadeLeftEl  = document.getElementById('fadeLeft');
+const fadeRightEl = document.getElementById('fadeRight');
 
 const SPAN_LANE_H   = 18;
 const SPAN_LANE_GAP =  7;
@@ -584,16 +595,36 @@ function cycleSpan(id){
    CONTINUOUS VIEW STATE (AE-2)
    ============================================================ */
 const MIN_VIEW_SPAN = 2; // years — a sane floor so the view can't collapse to zero width
+
+// AE-4: minimum px/year the view is ever allowed to compress to. Chosen
+// against the narrowest real epoch's label, not picked arbitrarily: "The
+// New Freedom" (6 years, 16 characters) needs bandW > 16*6.4+14 ≈ 116px
+// (the same fit formula drawEpochs() uses) to hold its own name — that's
+// ~19.4px/year. 22 gives it comfortable headroom without being far above
+// what's actually required.
+const FLOOR_PX_PER_YEAR = 22;
+let maxViewSpan = Infinity; // years — recomputed from the container width every render()
+let firstRender = true;
 let viewAnimId = null;
 
 function clampView(start, end){
-  start = Math.max(YEAR_MIN, start);
-  end   = Math.min(YEAR_MAX, end);
-  if(end - start < MIN_VIEW_SPAN){
-    const mid = (start + end) / 2;
-    start = mid - MIN_VIEW_SPAN / 2;
-    end   = mid + MIN_VIEW_SPAN / 2;
-  }
+  // Cap the span itself first (independent of position), around the
+  // requested midpoint — unbiased; the one deliberately recency-biased
+  // default lives in render()'s firstRender case and resetView(), not here.
+  let span = end - start;
+  span = Math.min(Math.max(span, MIN_VIEW_SPAN), maxViewSpan, YEAR_MAX - YEAR_MIN);
+  const mid = (start + end) / 2;
+  start = mid - span / 2;
+  end   = start + span;
+
+  // Slide the whole window into [YEAR_MIN, YEAR_MAX] — shift both edges
+  // together to preserve the span. Using Math.max/min on start/end
+  // independently here would shrink the span instead of repositioning it,
+  // which compounds into a runaway collapse under repeated panning at
+  // the boundary (this bit the initial AE-4 implementation).
+  if(start < YEAR_MIN){ end += YEAR_MIN - start; start = YEAR_MIN; }
+  if(end > YEAR_MAX){ start -= end - YEAR_MAX; end = YEAR_MAX; }
+
   return { start, end };
 }
 
@@ -656,11 +687,33 @@ function render(){
   const scrollEl = document.getElementById('chartScroll');
   const containerW = scrollEl ? (scrollEl.clientWidth || 900) : 900;
 
-  // AE-2: W always matches the container — viewStart/viewEnd (not W) is what
-  // changes to zoom/pan. (AE-4 will reintroduce a wider-than-container W for
-  // the density-floor/side-scroll case; out of scope here.)
+  // W always matches the container — viewStart/viewEnd (not W) is what
+  // changes to zoom/pan; "side-scroll" (AE-4) is achieved by capping how
+  // wide a span the view is ever allowed to show, and letting the existing
+  // AE-3 drag-pan reach whatever falls outside that — not by reintroducing
+  // a wider-than-container SVG with a competing native scrollbar.
   W = containerW;
   chart.style.width = W + 'px';
+  maxViewSpan = (W - PAD_L - PAD_R) / FLOOR_PX_PER_YEAR;
+
+  if(firstRender){
+    firstRender = false;
+    // Deliberate product choice, not a generic clamp: land on the most
+    // recent floor-respecting window rather than an arbitrary or
+    // symmetric-about-everything slice of history.
+    const span = Math.min(YEAR_MAX - YEAR_MIN, maxViewSpan);
+    viewStart = YEAR_MAX - span;
+    viewEnd = YEAR_MAX;
+  }
+  // Self-heal every render (covers window resize shrinking maxViewSpan,
+  // or any future caller that sets the view directly without going
+  // through clampView already).
+  { const c = clampView(viewStart, viewEnd); viewStart = c.start; viewEnd = c.end; }
+
+  // Edge fades: visible whenever there's known history off-screen in that
+  // direction — never let "the default view" silently read as "all of it."
+  fadeLeftEl.style.opacity  = viewStart > YEAR_MIN + 0.5 ? 1 : 0;
+  fadeRightEl.style.opacity = viewEnd   < YEAR_MAX - 0.5 ? 1 : 0;
 
   while(chart.firstChild) chart.removeChild(chart.firstChild);
 
@@ -1101,7 +1154,11 @@ function selectCycle(cy){
 function resetView(){
   selected = null;
   detail.innerHTML = DETAIL_PLACEHOLDER;
-  animateViewTo(YEAR_MIN, YEAR_MAX);
+  // Same recency-anchored default as the initial load (see render()'s
+  // firstRender case) — not literally YEAR_MIN..YEAR_MAX, since that may
+  // exceed maxViewSpan (AE-4).
+  const span = Math.min(YEAR_MAX - YEAR_MIN, maxViewSpan);
+  animateViewTo(YEAR_MAX - span, YEAR_MAX);
 }
 
 function selectEvent(ev){
