@@ -46,3 +46,4 @@ Body sections, in order:
 | [AE-5](completed/AE-5-quarter-year-axis-tier.md) | Sub-year axis tiers (quarters + months) and a hard max-zoom cap | Story | Done | Low |
 | [AE-6](AE-6-event-density-curation.md) | Event density vs. zoom depth (curation) | Story | Backlog | Low |
 | [AE-7](AE-7-extend-epochs-to-1775.md) | Extend epochs back to 1775 (the Revolution through Manifest Destiny) | Epic | Backlog | Low |
+| [AE-8](AE-8-event-date-precision.md) | Event dates support year-month-day precision | Epic | Backlog | Medium |
