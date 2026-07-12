@@ -49,6 +49,8 @@ After AE-2 lands: a continuous `viewStart`/`viewEnd` exists and can be set progr
 - Removed AE-2's temporary Pan/Zoom button group (◀ − + ▶) and its `zoomBy`/`panBy` functions now that real input supersedes them, per that ticket's own note.
 - Verified via Playwright: cursor-anchored wheel zoom (a tracked tick moved 754.0px → 754.1px after 8 zoom-in steps), drag-right correctly revealed earlier years (view shifted 1925–1955 → 1920–1945), click-to-snap still resolves correctly after pan/zoom interaction, zoom-out clamps to the full 1852–2027 range under 30 extreme wheel events, zoom-in clamps to a sane minimum span under 40 extreme wheel events with no degenerate/NaN viewBox — zero console errors throughout.
 
+**Follow-up added after initial ship**: the wheel handler originally only read `e.deltaY` (zoom), silently ignoring `e.deltaX` — meaning a trackpad two-finger horizontal swipe, or a mouse's tilt-wheel/horizontal scroll, did nothing. Added `deltaX` handling as a pan, using ordinary-scroll sign convention (scroll/swipe right reveals later content) — deliberately the *opposite* sign from drag-pan's "grab and pull" convention, since those are different, equally standard interaction metaphors. Both components apply within the same event when a gesture has both (e.g. a diagonal trackpad swipe pans and zooms together). Verified via Playwright in both directions plus a combined diagonal event — zero errors.
+
 ## Non-Goals
 
 - Polished touch/mobile gesture handling beyond basic pinch — revisit later if it's actually rough

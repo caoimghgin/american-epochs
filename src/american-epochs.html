@@ -1219,16 +1219,31 @@ chartScrollEl.addEventListener('wheel', e => {
   e.preventDefault();
   if(viewAnimId){ cancelAnimationFrame(viewAnimId); viewAnimId = null; }
 
-  // Anchor: whatever year is under the cursor stays under the cursor.
-  const cursorYear = yearAtClientX(e.clientX);
-  const frac = (cursorYear - viewStart) / (viewEnd - viewStart);
+  // Horizontal component (trackpad two-finger swipe, or a mouse's
+  // tilt-wheel/horizontal scroll) pans — same direction convention as
+  // ordinary scrolling (scroll right reveals later content), which is the
+  // opposite sign from drag-pan's "grab and pull" convention on purpose.
+  if(e.deltaX !== 0){
+    const pxPerYear = (W - PAD_L - PAD_R) / (viewEnd - viewStart);
+    const deltaYears = e.deltaX / pxPerYear;
+    const panned = clampView(viewStart + deltaYears, viewEnd + deltaYears);
+    viewStart = panned.start; viewEnd = panned.end;
+  }
 
-  const zoomFactor = Math.exp(-e.deltaY * 0.0015); // >1 zooms in, <1 zooms out
-  const newSpan = (viewEnd - viewStart) / zoomFactor;
+  // Vertical component zooms, anchored under the cursor — whatever year is
+  // under the cursor stays under the cursor.
+  if(e.deltaY !== 0){
+    const cursorYear = yearAtClientX(e.clientX);
+    const frac = (cursorYear - viewStart) / (viewEnd - viewStart);
 
-  const newStart = cursorYear - frac * newSpan;
-  const clamped = clampView(newStart, newStart + newSpan);
-  viewStart = clamped.start; viewEnd = clamped.end;
+    const zoomFactor = Math.exp(-e.deltaY * 0.0015); // >1 zooms in, <1 zooms out
+    const newSpan = (viewEnd - viewStart) / zoomFactor;
+
+    const newStart = cursorYear - frac * newSpan;
+    const clamped = clampView(newStart, newStart + newSpan);
+    viewStart = clamped.start; viewEnd = clamped.end;
+  }
+
   render();
 }, { passive: false });
 
