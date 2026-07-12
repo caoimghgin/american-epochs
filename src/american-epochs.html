@@ -594,8 +594,6 @@ function cycleSpan(id){
 /* ============================================================
    CONTINUOUS VIEW STATE (AE-2)
    ============================================================ */
-const MIN_VIEW_SPAN = 2; // years — a sane floor so the view can't collapse to zero width
-
 // AE-4: minimum px/year the view is ever allowed to compress to. Chosen
 // against the narrowest real epoch's label, not picked arbitrarily: "The
 // New Freedom" (6 years, 16 characters) needs bandW > 16*6.4+14 ≈ 116px
@@ -603,7 +601,18 @@ const MIN_VIEW_SPAN = 2; // years — a sane floor so the view can't collapse to
 // ~19.4px/year. 22 gives it comfortable headroom without being far above
 // what's actually required.
 const FLOOR_PX_PER_YEAR = 22;
+
+// AE-5: sub-year axis tiers and the max-zoom cap, all expressed on the same
+// "zoom scale" — 0 at the AE-4 floor, +1 per doubling of px/year density —
+// calibrated live against a temporary on-screen readout rather than guessed:
+// quarter-year hashes from 2.72, month ticks from 3.18, hard zoom cap at 4.85.
+const QUARTER_ZOOM_SCALE = 2.72;
+const MONTH_ZOOM_SCALE   = 3.18;
+const MAX_ZOOM_SCALE     = 4.85;
+const MAX_PX_PER_YEAR = FLOOR_PX_PER_YEAR * Math.pow(2, MAX_ZOOM_SCALE);
+
 let maxViewSpan = Infinity; // years — recomputed from the container width every render()
+let minViewSpan = 0.05;     // years — ditto, derived from MAX_PX_PER_YEAR instead of a flat constant
 let firstRender = true;
 let viewAnimId = null;
 
@@ -612,7 +621,7 @@ function clampView(start, end){
   // requested midpoint — unbiased; the one deliberately recency-biased
   // default lives in render()'s firstRender case and resetView(), not here.
   let span = end - start;
-  span = Math.min(Math.max(span, MIN_VIEW_SPAN), maxViewSpan, YEAR_MAX - YEAR_MIN);
+  span = Math.min(Math.max(span, minViewSpan), maxViewSpan, YEAR_MAX - YEAR_MIN);
   const mid = (start + end) / 2;
   start = mid - span / 2;
   end   = start + span;
@@ -695,6 +704,7 @@ function render(){
   W = containerW;
   chart.style.width = W + 'px';
   maxViewSpan = (W - PAD_L - PAD_R) / FLOOR_PX_PER_YEAR;
+  minViewSpan = Math.max(0.05, (W - PAD_L - PAD_R) / MAX_PX_PER_YEAR);
 
   if(firstRender){
     firstRender = false;
@@ -720,6 +730,7 @@ function render(){
   const spanLayout = computeSpanLayout();
 
   const pxPerYear = (W - PAD_L - PAD_R) / (viewEnd - viewStart);
+
   // More vertical room for the dot cloud once zoomed in — events spread out naturally
   const evTop = 14, evH = pxPerYear > 15 ? 220 : 150;
   const axisY = evTop + evH;
@@ -793,6 +804,35 @@ function drawAxis(axisY){
         el('line',{x1:x,y1:axisY-2,x2:x,y2:axisY+2,stroke:'var(--ink-faint)','stroke-width':0.8},chart);
         if(pxPerYear >= 35){
           txt(yr,{x,y:axisY+15,'text-anchor':'middle',class:'ax-year',style:'font-size:8.5px'},chart);
+        }
+      }
+    }
+
+    // AE-5: sub-year subdivisions, past the point where individual years are
+    // already legible. Thresholds calibrated live against a temporary
+    // on-screen "zoom scale" readout (0 at the AE-4 floor, +1 per doubling
+    // of density) rather than guessed — quarters from 2.72, months from
+    // 3.18. Unlabeled by design, same as the rest of the tier hierarchy:
+    // size/weight carries the structure, not more text at a tier this fine.
+    const zoomScale = Math.log2(pxPerYear / FLOOR_PX_PER_YEAR);
+    const yFrom = Math.floor(viewStart) - 1, yTo = Math.ceil(viewEnd);
+
+    if(zoomScale >= MONTH_ZOOM_SCALE){
+      for(let yr = yFrom; yr <= yTo; yr++){
+        for(let m = 1; m <= 11; m++){
+          const x = xOf(yr + m / 12);
+          const isQuarter = m % 3 === 0;
+          const r = isQuarter ? 2.5 : 1.5;
+          el('line',{x1:x,y1:axisY-r,x2:x,y2:axisY+r,
+            stroke:'var(--ink-faint)','stroke-width':isQuarter?0.9:0.6},chart);
+        }
+      }
+    } else if(zoomScale >= QUARTER_ZOOM_SCALE){
+      for(let yr = yFrom; yr <= yTo; yr++){
+        for(let q = 1; q <= 3; q++){
+          const x = xOf(yr + q / 4);
+          el('line',{x1:x,y1:axisY-1.5,x2:x,y2:axisY+1.5,
+            stroke:'var(--ink-faint)','stroke-width':0.6},chart);
         }
       }
     }
