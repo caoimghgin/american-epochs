@@ -2,6 +2,8 @@
 
 Lightweight, JIRA-shaped tickets for work on this project, tracked as files instead of in an issue tracker. One ticket per file: `<KEY>-<title-slug>.md`, project key `AE`.
 
+Tickets move to `completed/` once their status is set to `Done` — `git mv`, not copy, so history follows the file. Everything still in `tickets/` (not `completed/`) is active or backlog. Update any cross-references (`[AE-N](...)`) when moving a file — links from `tickets/*.md` into `completed/` need a `completed/` prefix; links from `completed/*.md` back out need `../`.
+
 ## Format
 
 Each ticket is a YAML frontmatter block followed by a fixed set of sections.
@@ -38,9 +40,9 @@ Body sections, in order:
 | ID | Title | Type | Status | Priority |
 |---|---|---|---|---|
 | [AE-1](AE-1-continuous-zoom-rebuild.md) | Continuous zoom rebuild — flexible-scale timeline navigation | Epic | In Progress | Low |
-| [AE-2](AE-2-continuous-view-state-core.md) | Continuous view-state core | Story | Done | High |
-| [AE-3](AE-3-wheel-zoom-drag-pan.md) | Wheel-zoom + drag-pan input | Story | Done | High |
-| [AE-4](AE-4-density-floor-side-scroll.md) | Density floor + side-scroll for full-history view | Story | Done | Medium |
+| [AE-2](completed/AE-2-continuous-view-state-core.md) | Continuous view-state core | Story | Done | High |
+| [AE-3](completed/AE-3-wheel-zoom-drag-pan.md) | Wheel-zoom + drag-pan input | Story | Done | High |
+| [AE-4](completed/AE-4-density-floor-side-scroll.md) | Density floor + side-scroll for full-history view | Story | Done | Medium |
 | [AE-5](AE-5-quarter-year-axis-tier.md) | Quarter-year hashmark axis tier | Story | Backlog | Low |
 | [AE-6](AE-6-event-density-curation.md) | Event density vs. zoom depth (curation) | Story | Backlog | Low |
 | [AE-7](AE-7-extend-epochs-to-1775.md) | Extend epochs back to 1775 (the Revolution through Manifest Destiny) | Epic | Backlog | Low |

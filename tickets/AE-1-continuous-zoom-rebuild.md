@@ -32,9 +32,9 @@ The concept worth adopting is continuous/semantic zoom. The literal tile-fetchin
 
 Broken into five stories after a design discussion sketching the target zoom states (full-history overview, an arbitrary mid-zoom window, and a planned deepest tier). See each story for detail:
 
-1. [AE-2](AE-2-continuous-view-state-core.md) — continuous view-state core (foundational; everything below depends on it)
-2. [AE-3](AE-3-wheel-zoom-drag-pan.md) — wheel-zoom + drag-pan input, click-to-snap kept as a convenience
-3. [AE-4](AE-4-density-floor-side-scroll.md) — density floor + side-scroll for the full-history view
+1. [AE-2](completed/AE-2-continuous-view-state-core.md) — continuous view-state core (foundational; everything below depends on it) — **Done**
+2. [AE-3](completed/AE-3-wheel-zoom-drag-pan.md) — wheel-zoom + drag-pan input, click-to-snap kept as a convenience — **Done**
+3. [AE-4](completed/AE-4-density-floor-side-scroll.md) — density floor + side-scroll for the full-history view — **Done**
 4. [AE-5](AE-5-quarter-year-axis-tier.md) — quarter-year hashmark tier on the axis
 5. [AE-6](AE-6-event-density-curation.md) — event density vs. zoom depth (explicitly deferred, tracked separately)
 

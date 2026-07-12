@@ -55,6 +55,6 @@ Matches the explicit behavior in the first continuous-zoom sketch ("anything tha
 
 ## Related
 
-- Epic: [AE-1](AE-1-continuous-zoom-rebuild.md)
+- Epic: [AE-1](../AE-1-continuous-zoom-rebuild.md)
 - Depends on: AE-2
 - Supersedes the squeeze-to-fit rationale behind commits `4f099f8` and `aaed21d`

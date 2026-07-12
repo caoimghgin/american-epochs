@@ -62,5 +62,5 @@ The whole point of the rebuild is that a viewer should be able to land on an arb
 
 ## Related
 
-- Epic: [AE-1](AE-1-continuous-zoom-rebuild.md)
+- Epic: [AE-1](../AE-1-continuous-zoom-rebuild.md)
 - Blocks: AE-3, AE-4, AE-5
