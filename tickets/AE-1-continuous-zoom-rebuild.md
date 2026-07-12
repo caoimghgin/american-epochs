@@ -30,12 +30,15 @@ The concept worth adopting is continuous/semantic zoom. The literal tile-fetchin
 
 ## Proposed Approach
 
-Not fully speced — this is deliberately an Epic to be broken into Stories once picked up. Rough shape:
+Broken into five stories after a design discussion sketching the target zoom states (full-history overview, an arbitrary mid-zoom window, and a planned deepest tier). See each story for detail:
 
-1. Replace fixed `W`/discrete zoom with a continuous scale factor (px-per-year) driven by scroll/pinch/drag, likely with momentum/easing rather than instant jumps.
-2. Rebuild `drawAxis()` as a continuous ruler: tick spacing and label granularity (century → decade → year → month, as scale increases) computed from the current scale rather than switched between two hardcoded modes.
-3. Replace the per-layer binary fit checks (epoch bands, cycle rail, event dot-cloud) with a shared priority/collision system: tier-1 events and wider epochs should hold their labels longer than tier-3 events and narrow epochs as things get crowded, rather than each layer solving its own overlap problem independently.
-4. Decide whether cycle/epoch "click to zoom to exactly this span" is still a first-class interaction alongside free continuous panning, or whether it becomes a convenience shortcut (e.g., double-click an epoch to snap-zoom to its bounds) layered on top of free navigation.
+1. [AE-2](AE-2-continuous-view-state-core.md) — continuous view-state core (foundational; everything below depends on it)
+2. [AE-3](AE-3-wheel-zoom-drag-pan.md) — wheel-zoom + drag-pan input, click-to-snap kept as a convenience
+3. [AE-4](AE-4-density-floor-side-scroll.md) — density floor + side-scroll for the full-history view
+4. [AE-5](AE-5-quarter-year-axis-tier.md) — quarter-year hashmark tier on the axis
+5. [AE-6](AE-6-event-density-curation.md) — event density vs. zoom depth (explicitly deferred, tracked separately)
+
+Two decisions settled during design discussion, worth recording so they don't get re-litigated mid-implementation: event labels stay vertical-only (row-scootch), not a 2D/angled-leader-line solver — simpler, and sufficient; and cycle/epoch click-to-zoom is kept as an animated convenience layered on top of free pan/zoom, not replaced by it.
 
 ## Acceptance Criteria
 
@@ -46,11 +49,13 @@ Not fully speced — this is deliberately an Epic to be broken into Stories once
 
 ## Non-Goals
 
-- **No tile-fetching/quadtree infrastructure.** The dataset (currently ~150 events, a few hundred KB) fits entirely in memory and is small enough that this will remain true even after the pre-1854 epochs (AE-2, not yet filed) are added. Building real map-tile-style dynamic loading would be solving a data-scale problem this project doesn't have.
+- **No tile-fetching/quadtree infrastructure.** The dataset (currently ~150 events, a few hundred KB) fits entirely in memory and is small enough that this will remain true even after the pre-1854 epochs (a future ticket, not yet filed) are added. Building real map-tile-style dynamic loading would be solving a data-scale problem this project doesn't have.
 - **No change to the underlying epoch/cycle framework or data model** (`EPOCHS`/`CYCLES`/`EVENTS` shape) — this is a rendering and interaction rebuild, not a content or schema change.
 
 ## Related
 
 - Discrete cycle-zoom tier + label-suppression fixes: commits `349cd46` (v3 epoch zoom), `4f099f8` (v4 data expansion + cycle zoom + label suppression), `aaed21d` (cycle-rail label suppression)
+- Child stories: AE-2, AE-3, AE-4, AE-5, AE-6
+- Tag `pre-continuous-zoom-rebuild` marks the last commit before this epic's work began — revert here if the rebuild goes sideways
 - [ChronoZoom — Microsoft Research](https://www.microsoft.com/en-us/research/project/chronozoom/)
 - [GitHub - ChronoZoom (open source)](https://github.com/alterm4nn/ChronoZoom)
