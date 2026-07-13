@@ -1,0 +1,167 @@
+# Event Corpus Guide
+
+Format and curation spec for researching one epoch's events, so the work can be
+farmed out to other LLMs (or humans) without them needing this project's full
+chat history — just this file, `CLAUDE.md`, and `house_divided_events.yaml` as
+the worked example.
+
+## What this is, and isn't
+
+Each file here is a **research and authoring artifact** for one epoch of
+American Epochs. It is not loaded by the instrument at runtime — the project
+has zero build tooling and no YAML parser by design (see `CLAUDE.md`). A human
+or LLM reconciles a finished corpus by hand into the inline `EVENTS` array in
+`src/american-epochs.html`. Producing a well-researched, correctly-leveled
+YAML file is the whole deliverable; wiring it into the live instrument is a
+separate, later step.
+
+## Naming convention
+
+`src/data/<epoch_id>_events.yaml`, where `<epoch_id>` matches the epoch's `id`
+in the live `EPOCHS` array (e.g. `hdiv` → `house_divided`, spelled out rather
+than abbreviated for readability). One file per epoch.
+
+## Schema
+
+Every file starts with a `schema:` block (name, version, `level_definition`,
+`curation_guidance`, `notes`) — copy it from `house_divided_events.yaml`
+verbatim; it's project-wide guidance, not epoch-specific. Then an `epoch:`
+block (`id`, `title`, `start`/`end` as `YYYYMMDD`, `thesis` — one or two
+sentences on what the epoch is *about*, matching the tone of its `CLAUDE.md`
+entry). Then `events:`, a flat list. Each event:
+
+```yaml
+- id: kansas_nebraska_act        # snake_case, unique within the file
+  start: 18540530                # YYYYMMDD; unknown month/day just use the
+                                  # 1st, but see "date precision" below
+  end: 18581231                  # omit entirely for a point event; present
+                                  # only for genuine multi-day/week spans
+  level: 1                       # 1-5, see level_definition and curation
+                                  # guidance below — this is the hard part
+  kind: legislation               # free-text category (legislation, battle,
+                                  # speech, election, court_case, ...) — not
+                                  # enforced, but keep it consistent within a
+                                  # file so a later pass can group by kind
+  title: Kansas–Nebraska Act
+  description_short: One sentence, plain factual summary.
+  description_long: Two or three sentences of context — what happened, who
+    was involved, what immediately followed. This is research depth; it is
+    NOT what ends up in the live instrument's tooltip.
+  why: One sentence on why this event matters to the epoch's own argument —
+    this is the interpretive claim, and it's what the live `note` field gets
+    distilled from during reconciliation.
+  tags: [slavery, federalism, congress, territories]
+  sources:                        # omit the whole key if nothing solid exists
+    - name: Library of Congress
+      url: https://...
+```
+
+## The level system — read this part carefully
+
+Levels aren't a difficulty slider. They're what the live instrument uses to
+decide what's visible at a given zoom: **Level 1 is always on screen, even at
+the widest possible view of all 172 years of American history at once.**
+Levels 2–5 reveal automatically as the viewer zooms in — never a manual
+toggle, never a viewer choice. Getting Level 1 wrong makes the whole
+instrument's argument at its most-seen moment wrong.
+
+**Target 5–8 Level 1 point events, regardless of epoch length or how
+eventful it was.** This is the single most important curation call in the
+file, and it does not get easier for a longer or bloodier epoch — a longer
+epoch just means harder cuts, not a bigger crown. Ask of each candidate: does
+removing this break the causal chain from the epoch's start to its end? If
+the answer is no, it's a Level 2 (or lower) event, however famous it is.
+
+A House Divided's own Level 1 went through two rounds of trimming (17 → 10 →
+7 point events) before landing on: Kansas-Nebraska Act, Lincoln elected, Fort
+Sumter, Emancipation Proclamation, Gettysburg, Appomattox, Lincoln
+assassinated. Dred Scott, John Brown's raid, and South Carolina secedes are
+all genuinely important and all got cut on the second pass — they're real
+causes, not hinges the arc turns on. Use this as the calibration example:
+if your Level 1 list looks more like "everything a textbook chapter title
+would mention" than "the seven beats you'd tell a friend in one breath,"
+it's still too big.
+
+Span (duration) events can also carry `level: 1` for scene-setting context
+(e.g. `bleeding_kansas`, a years-long span) — these don't count against the
+5–8 point-event target, because the live instrument never tier-filters spans;
+they render unconditionally in the Duration strip at every zoom regardless of
+level. Level 1 span entries are additional context, not part of the
+point-event crown a viewer sees pop onto the timeline.
+
+Levels 2–5 have far more room to breathe. Disagreement there is a rounding
+error, not a structural problem — spend the real editorial effort on Level 1.
+
+## Span vs. point events
+
+If `end` would be 14+ days after `start`, make it a span (omit `end`
+otherwise). Multi-day battles, conventions, and trials under two weeks stay
+point events — the Duration strip is for genuinely long-running phenomena,
+not near-instantaneous events that happen to span a calendar boundary.
+
+## Date precision — no fabrication
+
+Use the most precise date you can actually verify (year, or year+month, or
+full year-month-day). Never invent a day or month to make an entry look more
+precise than the research supports — a plain year is fine and expected for
+some entries, especially in Levels 3–5. This matches the project's honesty
+bar elsewhere (the register system, the crime-lane coverage notes in
+`CLAUDE.md`): don't manufacture certainty that isn't there.
+
+## Sourcing
+
+Prefer primary/authoritative public sources: Library of Congress, National
+Archives, National Park Service, the House/Senate historical offices,
+Smithsonian, or a specific academic institution's published material. One or
+two sources per event is plenty — this isn't a bibliography. If nothing
+solid and specific is readily available, omit the `sources` key entirely
+rather than inventing or hand-waving a citation.
+
+## Epoch-boundary events
+
+Some events sit right on the seam between two epochs (Lincoln's
+assassination, four days after Appomattox and days into what becomes
+Reconstruction, is the clearest example — the live instrument currently
+counts it as A House Divided's own closing beat, while the older
+`reconstruction_events.yaml` draft counts it as Reconstruction's opening one).
+When a candidate event could plausibly belong to either neighbor, make an
+explicit call and say why in its `why` field, rather than silently including
+it in both files or dropping it from both.
+
+## Reconciliation (what happens to this file later)
+
+This YAML does not get parsed by the page. Merging it into
+`src/american-epochs.html`'s `EVENTS` array involves real editorial
+compression, not a field-for-field copy:
+
+- `start`/`end` (`YYYYMMDD`) → `y`/`month`/`day` and, for spans, `end`/
+  `endMonth`/`endDay`
+- `level` → `tier`
+- `title` → `label`
+- `description_short` + `description_long` + `why` → a single `note`: one
+  crisp interpretive sentence in the voice already used throughout
+  `american-epochs.html`, not a concatenation of the YAML's three fields
+- `kind`, `tags`, and `sources` don't carry over to the live event object —
+  they're research/organization scaffolding for this file, not runtime data
+
+## Status across epochs
+
+| Epoch | File | Status |
+|---|---|---|
+| A House Divided (1854–1865) | `house_divided_events.yaml` | Done — 5-level, reconciled into the live instrument |
+| Reconstruction (1865–1877) | `reconstruction_events.yaml` | Draft exists, older 0/2-level schema — needs migrating to this format |
+| The Gilded Age (1877–1897) | — | Not started |
+| The Big Stick (1898–1912) | — | Not started |
+| The New Freedom (1913–1919) | — | Not started |
+| Return to Normalcy (1920–1932) | — | Not started |
+| A New Deal (1933–1940) | — | Not started |
+| The American Ascendancy (1941–1952) | — | Not started |
+| The Affluent Society (1953–1965) | — | Not started |
+| The Unravelling (1966–1979) | — | Not started |
+| Morning in America (1980–1991) | — | Not started |
+| The End of History (1992–2007) | — | Not started |
+| The Interregnum (2008–2015) | — | Not started |
+| The Reckoning (2016–present) | — | Not started |
+
+Tracked under ticket AE-10 (`tickets/AE-10-event-date-backfill.md`) — one
+epoch at a time, no required order, no deadline.

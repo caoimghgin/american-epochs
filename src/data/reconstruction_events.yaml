@@ -1,0 +1,244 @@
+
+- id: lincoln_assassinated
+  start: 18650414
+  end: 18650415
+  level: 0
+  kind: assassination
+  epoch: Reconstruction
+  title: Abraham Lincoln Assassinated
+  description_short: Lincoln is assassinated days after Union victory.
+  description_long: Lincoln's death removes the principal architect of postwar reconciliation and places Reconstruction under Andrew Johnson.
+  why: Opens Reconstruction under dramatically different leadership.
+  tags: [presidency, reconstruction]
+  sources: [National Archives]
+
+- id: andrew_johnson_president
+  start: 18650415
+  level: 1
+  kind: presidency
+  epoch: Reconstruction
+  title: Andrew Johnson Becomes President
+  description_short: Johnson inherits responsibility for Reconstruction.
+  description_long: Following Lincoln's assassination, Johnson assumes the presidency and quickly clashes with Congress over Reconstruction.
+  why: Sets the political direction of the epoch.
+  tags: [presidency]
+  sources: [White House]
+
+- id: freedmens_bureau
+  start: 18650303
+  level: 2
+  kind: legislation
+  epoch: Reconstruction
+  title: Freedmen's Bureau Established
+  description_short: Federal agency assists formerly enslaved people.
+  description_long: The Bureau provides education, legal assistance, labor contracts, and humanitarian aid during Reconstruction.
+  why: Represents the federal government's first large-scale reconstruction effort.
+  tags: [civil-rights, federal-power]
+  sources: [National Archives]
+
+- id: black_codes
+  start: 18651101
+  end: 18661231
+  level: 2
+  kind: legislation
+  epoch: Reconstruction
+  title: Black Codes Enacted
+  description_short: Southern states restrict the freedoms of freedpeople.
+  description_long: Former Confederate states enact laws limiting civil rights, prompting stronger federal intervention.
+  why: Demonstrates organized resistance to Reconstruction.
+  tags: [civil-rights, south]
+  sources: [Britannica]
+
+- id: civil_rights_act_1866
+  start: 18660409
+  level: 1
+  kind: legislation
+  epoch: Reconstruction
+  title: Civil Rights Act of 1866
+  description_short: Congress guarantees basic civil rights.
+  description_long: The first major federal civil rights law establishes birthright citizenship protections and overrides Johnson's veto.
+  why: Signals Congress's determination to shape Reconstruction.
+  tags: [civil-rights, congress]
+  sources: [National Archives]
+
+- id: fourteenth_amendment
+  start: 18680709
+  level: 0
+  kind: amendment
+  epoch: Reconstruction
+  title: Fourteenth Amendment Ratified
+  description_short: Citizenship and equal protection enter the Constitution.
+  description_long: The amendment nationalizes civil rights through due process and equal protection.
+  why: Fundamentally rewrites the constitutional order.
+  tags: [constitution, amendment]
+  sources: [National Archives]
+
+- id: reconstruction_acts
+  start: 18670302
+  level: 1
+  kind: legislation
+  epoch: Reconstruction
+  title: Reconstruction Acts
+  description_short: Congress places the South under military administration.
+  description_long: The Acts divide the South into military districts and establish requirements for readmission.
+  why: Marks Congressional control of Reconstruction.
+  tags: [congress, military]
+  sources: [Library of Congress]
+
+- id: military_reconstruction
+  start: 18670302
+  end: 18770731
+  level: 3
+  kind: policy
+  epoch: Reconstruction
+  title: Military Reconstruction
+  description_short: Federal military oversees Southern reconstruction.
+  description_long: Military districts supervise elections and constitutional reforms across the former Confederacy.
+  why: Visualizes the sustained federal presence.
+  tags: [military, federal-power]
+  sources: [Britannica]
+
+- id: johnson_impeached
+  start: 18680224
+  level: 1
+  kind: impeachment
+  epoch: Reconstruction
+  title: Andrew Johnson Impeached
+  description_short: Congress impeaches the President.
+  description_long: Johnson narrowly avoids removal after a constitutional confrontation with Congress.
+  why: Highlights the struggle over control of Reconstruction.
+  tags: [presidency, congress]
+  sources: [U.S. Senate]
+
+- id: grant_elected
+  start: 18681103
+  level: 1
+  kind: election
+  epoch: Reconstruction
+  title: Ulysses S. Grant Elected
+  description_short: Grant wins the presidency.
+  description_long: Grant's election reinforces Congressional Reconstruction and federal enforcement.
+  why: Public endorses continued Reconstruction.
+  tags: [election]
+  sources: [National Archives]
+
+- id: fifteenth_amendment
+  start: 18700203
+  level: 0
+  kind: amendment
+  epoch: Reconstruction
+  title: Fifteenth Amendment Ratified
+  description_short: Voting rights protected regardless of race.
+  description_long: The amendment prohibits denying the vote based on race, color, or previous condition of servitude.
+  why: Completes the Reconstruction Amendments.
+  tags: [constitution, amendment]
+  sources: [National Archives]
+
+- id: enforcement_acts
+  start: 18700531
+  end: 18710420
+  level: 2
+  kind: legislation
+  epoch: Reconstruction
+  title: Enforcement Acts
+  description_short: Congress combats voter intimidation.
+  description_long: A series of laws strengthen federal authority to protect elections and civil rights.
+  why: Expands federal enforcement powers.
+  tags: [civil-rights]
+  sources: [Library of Congress]
+
+- id: ku_klux_klan_act
+  start: 18710420
+  level: 1
+  kind: legislation
+  epoch: Reconstruction
+  title: Ku Klux Klan Act
+  description_short: Federal government targets political terrorism.
+  description_long: The Act authorizes federal intervention against Klan violence and conspiracies.
+  why: Peak assertion of federal authority during Reconstruction.
+  tags: [civil-rights, terrorism]
+  sources: [National Archives]
+
+- id: credit_mobilier
+  start: 18720904
+  level: 3
+  kind: scandal
+  epoch: Reconstruction
+  title: Crédit Mobilier Scandal
+  description_short: Corruption damages public confidence.
+  description_long: Revelations of railroad-related corruption weaken trust in the federal government.
+  why: Attention shifts from Reconstruction to corruption.
+  tags: [corruption]
+  sources: [Britannica]
+
+- id: panic_1873
+  start: 18730918
+  level: 1
+  kind: economic
+  epoch: Reconstruction
+  title: Panic of 1873
+  description_short: Severe financial panic begins a prolonged depression.
+  description_long: The economic collapse redirects national priorities away from Reconstruction.
+  why: Weakens political support for federal intervention.
+  tags: [economy]
+  sources: [Federal Reserve History]
+
+- id: civil_rights_act_1875
+  start: 18750301
+  level: 2
+  kind: legislation
+  epoch: Reconstruction
+  title: Civil Rights Act of 1875
+  description_short: Congress outlaws racial discrimination in public accommodations.
+  description_long: The last major civil rights law of Reconstruction before federal retreat.
+  why: Represents the high-water mark of Congressional Reconstruction.
+  tags: [civil-rights]
+  sources: [National Archives]
+
+- id: us_v_cruikshank
+  start: 18760327
+  level: 1
+  kind: supreme_court
+  epoch: Reconstruction
+  title: United States v. Cruikshank
+  description_short: Supreme Court limits federal civil rights enforcement.
+  description_long: The Court narrows federal authority to prosecute private violations of civil rights.
+  why: Judicial retreat undermines Reconstruction.
+  tags: [supreme-court]
+  sources: [Oyez]
+
+- id: election_1876
+  start: 18761107
+  level: 1
+  kind: election
+  epoch: Reconstruction
+  title: Presidential Election of 1876
+  description_short: Contested election produces constitutional crisis.
+  description_long: Hayes and Tilden dispute the presidency, leading to political compromise.
+  why: Final legitimacy crisis of the epoch.
+  tags: [election]
+  sources: [National Archives]
+
+- id: compromise_1877
+  start: 18770302
+  level: 0
+  kind: compromise
+  epoch: Reconstruction
+  title: Compromise of 1877
+  description_short: Federal troops withdrawn from the South.
+  description_long: The informal political agreement resolves the election dispute and effectively ends Reconstruction.
+  why: Ends the federal Reconstruction project.
+  tags: [reconstruction]
+  sources: [Britannica]
+
+- id: reconstruction_ends
+  start: 18770731
+  level: 0
+  kind: milestone
+  epoch: Reconstruction
+  title: Reconstruction Ends
+  description_short: The Reconstruction era comes to a close.
+  description_long: Federal military occupation concludes and Southern home rule resumes, marking the end of the Reconstruction epoch.
+  why: Defines the transition into the Gilded Age.
+  tags: [epoch-transition]
+  sources: [Library of Congress]

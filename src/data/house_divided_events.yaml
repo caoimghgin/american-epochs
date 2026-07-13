@@ -1,0 +1,1173 @@
+schema:
+  name: American Epochs Event Corpus
+  version: 2
+  date_format: YYYYMMDD
+  level_definition:
+    1: The epoch's "crown of the mountain" — always visible, at every zoom, from the very
+       widest view. One beat per structural hinge in the epoch's own arc, not a list of
+       "the important stuff." Target 5-8 entries regardless of how large or eventful the
+       epoch was; see curation_guidance below. Automatically revealed first as the viewer
+       zooms in from full history — never a manual toggle.
+    2: Major events, automatically revealed at the first closer zoom past Level 1.
+    3: Supporting events explaining mechanisms, shifts, and consequences.
+    4: Contextual events — political, military, social, institutional texture.
+    5: Fine-grained events for the closest inspection.
+  curation_guidance:
+    - Level 1 is the hardest and most important editorial call in the corpus. The
+      viewer never chooses to see it — it is what everyone sees whether they zoom in
+      or not, so it carries the whole epoch's argument on its own.
+    - Pick one entry per point where the epoch's own arc genuinely turns, not one
+      per famous name or battle. A working test - "does removing this entry break
+      the causal chain from the epoch's start to its end?" If not, it belongs at
+      Level 2 or below, however well-known it is.
+    - Target 5-8 Level 1 *point* events specifically. This is deliberately
+      independent of the epoch's total event count or length in years - a short,
+      quiet epoch and a long, violent one should still each converge on a
+      single-digit point-event crown. Span (duration) entries at Level 1 don't
+      count against this target and don't compete with it, because the live
+      instrument never tier-filters spans (they render unconditionally in the
+      Duration strip regardless of zoom) - a Level 1 span is scene-setting
+      context, not part of the point-event crown a viewer sees pop onto the timeline.
+    - A House Divided's own Level 1 went through two rounds of trimming (17 -> 10 ->
+      7) before converging on this final seven - Kansas-Nebraska Act, Lincoln
+      elected, Fort Sumter, Emancipation Proclamation, Gettysburg, Appomattox,
+      Lincoln assassinated. Notice what got cut on the second pass despite being
+      genuinely important - Dred Scott, John Brown's raid, South Carolina secedes
+      all moved to Level 2. They're real causes, but the seven that remain are the
+      ones the arc cannot be told without.
+    - Levels 2-5 have much more room to breathe - disagreement there is a rounding
+      error, not a structural problem. Spend the real editorial effort on Level 1.
+  notes:
+    - A missing end date indicates a point event.
+    - Dates represent the most defensible public date for display, not necessarily every stage of a legal or political process.
+    - This corpus is a research/authoring artifact, not something the instrument
+      loads at runtime (the project has no build step or YAML parser by design -
+      see CLAUDE.md). A human or LLM pass reconciles it by hand into the inline
+      EVENTS array in src/american-epochs.html.
+
+epoch:
+  id: house_divided
+  title: A House Divided
+  start: 18540530
+  end: 18651206
+  thesis: The United States loses the ability to resolve slavery and Union through ordinary politics, fights a civil war, and reconstructs its constitutional purpose around freedom and national citizenship.
+
+events:
+
+  # ---------------------------------------------------------------------------
+  # LEVEL 1 — NARRATIVE SPINE (7 entries: one beat per structural hinge — see
+  # curation_guidance in the schema block above)
+  # ---------------------------------------------------------------------------
+
+  - id: kansas_nebraska_act
+    start: 18540530
+    level: 1
+    kind: legislation
+    title: Kansas–Nebraska Act
+    description_short: Congress reopens the expansion of slavery through popular sovereignty.
+    description_long: The act organizes Kansas and Nebraska territories and allows their settlers to decide whether to permit slavery, effectively repealing the Missouri Compromise restriction north of 36°30′.
+    why: It reopens a question earlier compromises had contained and begins the epoch's legitimacy crisis.
+    tags: [slavery, federalism, congress, territories]
+    sources:
+      - name: Library of Congress
+        url: https://www.loc.gov/classroom-materials/civil-war-the-nation-moves-towards-war-1850-to-1861/
+
+  - id: bleeding_kansas
+    start: 18550330
+    end: 18581231
+    level: 1
+    kind: conflict
+    title: Bleeding Kansas
+    description_short: Pro- and anti-slavery settlers fight over the political future of Kansas.
+    description_long: Electoral fraud, rival governments, raids, and killings turn popular sovereignty into a prolonged territorial conflict.
+    why: It shows democratic procedure failing and sectional disagreement becoming organized violence.
+    tags: [slavery, violence, territories, legitimacy]
+    sources:
+      - name: Library of Congress
+        url: https://www.loc.gov/classroom-materials/civil-war-the-nation-moves-towards-war-1850-to-1861/
+
+  - id: lincoln_douglas_debates
+    start: 18580821
+    end: 18581015
+    level: 1
+    kind: debates
+    title: Lincoln–Douglas Debates
+    description_short: Lincoln and Douglas publicly define rival positions on slavery and self-government.
+    description_long: Seven Illinois Senate debates elevate the expansion of slavery into a national argument over equality, popular sovereignty, and the future of the Union.
+    why: They give unusually clear philosophical expression to the division.
+    tags: [politics, slavery, debates, union]
+    sources:
+      - name: Library of Congress
+        url: https://www.loc.gov/classroom-materials/civil-war-the-nation-moves-towards-war-1850-to-1861/
+
+  - id: lincoln_elected
+    start: 18601106
+    level: 1
+    kind: election
+    title: Abraham Lincoln Elected President
+    description_short: A Republican wins the presidency without carrying a Southern state.
+    description_long: Lincoln's victory confirms the power of a sectional antislavery-expansion coalition and persuades secessionists that their influence within the Union is collapsing.
+    why: It is the immediate political catalyst for secession.
+    tags: [election, secession, republican-party]
+
+  - id: fort_sumter
+    start: 18610412
+    end: 18610413
+    level: 1
+    kind: battle
+    title: Battle of Fort Sumter
+    description_short: Confederate forces open fire on a United States fort in Charleston Harbor.
+    description_long: The bombardment forces the federal garrison to surrender and prompts Lincoln to call for troops.
+    why: Constitutional conflict becomes open war.
+    tags: [civil-war, secession, military]
+    sources:
+      - name: National Park Service
+        url: https://www.nps.gov/liho/learn/historyculture/waryears.htm
+
+  - id: emancipation_proclamation
+    start: 18630101
+    level: 1
+    kind: proclamation
+    title: Emancipation Proclamation
+    description_short: Lincoln declares enslaved people in rebelling areas free.
+    description_long: The proclamation makes emancipation an explicit Union war aim and authorizes the enlistment of Black soldiers.
+    why: It transforms the moral and constitutional purpose of the war.
+    tags: [slavery, emancipation, civil-war, presidency]
+    sources:
+      - name: National Archives
+        url: https://www.archives.gov/milestone-documents/list
+
+  - id: gettysburg
+    start: 18630701
+    end: 18630703
+    level: 1
+    kind: battle
+    title: Battle of Gettysburg
+    description_short: Union forces defeat Lee's invasion of Pennsylvania.
+    description_long: Three days of fighting produce enormous casualties and end the Confederacy's most consequential invasion of the North.
+    why: It marks a decisive military turning point in the eastern war.
+    tags: [civil-war, military]
+    sources:
+      - name: National Park Service
+        url: https://www.nps.gov/gett/learn/historyculture/civil-war-timeline.htm
+
+  - id: appomattox
+    start: 18650409
+    level: 1
+    kind: surrender
+    title: Lee Surrenders at Appomattox
+    description_short: Robert E. Lee surrenders the Army of Northern Virginia to Ulysses S. Grant.
+    description_long: The surrender does not end every Confederate force immediately, but it effectively decides the war's military outcome.
+    why: The Union survives by force, opening the unresolved political problem of Reconstruction.
+    tags: [civil-war, surrender, union]
+
+  - id: lincoln_assassinated
+    start: 18650414
+    level: 1
+    kind: assassination
+    title: Lincoln Assassinated
+    description_short: John Wilkes Booth shoots Lincoln at Ford's Theatre five days after Appomattox.
+    description_long: Lincoln dies the next morning, April 15; Reconstruction begins under Andrew Johnson rather than the president who had just won the war.
+    why: The war's end and the presidency's continuity are severed at the same moment the postwar settlement most needed steady hands.
+    tags: [lincoln, assassination, reconstruction, presidency]
+    sources:
+      - name: National Park Service
+        url: https://www.nps.gov/foth/learn/historyculture/lincolns-assassination.htm
+
+  - id: thirteenth_amendment
+    start: 18650131
+    end: 18651206
+    level: 1
+    kind: amendment
+    title: Thirteenth Amendment
+    description_short: Slavery is abolished throughout the United States.
+    description_long: Congress passes the amendment on January 31 and the states complete ratification on December 6, prohibiting slavery and involuntary servitude except as punishment for crime.
+    why: The destruction of slavery becomes permanent constitutional law.
+    tags: [constitution, amendment, slavery, emancipation]
+    sources:
+      - name: National Archives
+        url: https://www.archives.gov/milestone-documents/list
+
+  # ---------------------------------------------------------------------------
+  # LEVEL 2 — MAJOR EVENTS
+  # ---------------------------------------------------------------------------
+
+  - id: republican_party_founded
+    start: 18540706
+    level: 2
+    kind: political_party
+    title: Republican Party Founded
+    description_short: Opponents of slavery's expansion form a new national political coalition.
+    description_long: Anti-Nebraska Whigs, Free Soilers, former Democrats, and other opponents of slavery's expansion coalesce into the Republican Party during 1854.
+    why: It demonstrates that the existing party system can no longer contain the sectional conflict.
+    tags: [politics, parties, slavery]
+    sources:
+      - name: Library of Congress
+        url: https://www.loc.gov/classroom-materials/civil-war-the-nation-moves-towards-war-1850-to-1861/
+
+  - id: sack_of_lawrence
+    start: 18560521
+    level: 2
+    kind: raid
+    title: Sack of Lawrence
+    description_short: Pro-slavery forces attack the antislavery town of Lawrence, Kansas.
+    description_long: A territorial posse destroys newspaper offices and buildings in the Free-State center of Lawrence.
+    why: It dramatizes the collapse of popular sovereignty into partisan violence.
+    tags: [bleeding-kansas, violence, slavery]
+
+  - id: caning_of_charles_sumner
+    start: 18560522
+    level: 2
+    kind: assault
+    title: Charles Sumner Caned
+    description_short: Representative Preston Brooks beats Senator Charles Sumner in the Senate chamber.
+    description_long: Brooks assaults Sumner after the senator's antislavery speech, and the attack is celebrated by many in the South and condemned across the North.
+    why: Violence reaches Congress itself and becomes a symbol of institutional collapse.
+    tags: [congress, violence, slavery]
+    sources:
+      - name: United States Senate
+        url: https://www.senate.gov/artandhistory/history/minute/The_Caning_of_Senator_Charles_Sumner.htm
+
+  - id: pottawatomie_massacre
+    start: 18560524
+    end: 18560525
+    level: 2
+    kind: massacre
+    title: Pottawatomie Massacre
+    description_short: John Brown's party kills five pro-slavery settlers in Kansas.
+    description_long: Brown and his followers retaliate for pro-slavery violence by killing five men along Pottawatomie Creek.
+    why: Retaliatory terror deepens the cycle of sectional violence.
+    tags: [bleeding-kansas, john-brown, violence]
+
+  - id: dred_scott_decision
+    start: 18570306
+    level: 2
+    kind: supreme_court
+    title: Dred Scott v. Sandford
+    description_short: The Supreme Court denies Black citizenship and limits Congress's power over slavery.
+    description_long: The Court rules that African Americans cannot be United States citizens and that Congress cannot prohibit slavery in the federal territories.
+    why: An attempted judicial settlement instead delegitimizes the Court and intensifies the sectional crisis.
+    tags: [supreme-court, slavery, constitution, citizenship]
+    sources:
+      - name: Library of Congress
+        url: https://www.loc.gov/classroom-materials/civil-war-the-nation-moves-towards-war-1850-to-1861/
+
+  - id: panic_of_1857
+    start: 18570824
+    end: 18591231
+    level: 2
+    kind: economic_crisis
+    title: Panic of 1857
+    description_short: A financial panic produces a severe sectionalized recession.
+    description_long: Bank and railroad failures create a downturn that strikes the industrial North more severely than the cotton South.
+    why: Divergent regional experiences reinforce opposing claims about the superiority of each social order.
+    tags: [economy, sectionalism, recession]
+
+  - id: house_divided_speech
+    start: 18580616
+    level: 2
+    kind: speech
+    title: “House Divided” Speech
+    description_short: Lincoln declares that the nation cannot endure permanently half slave and half free.
+    description_long: Accepting the Illinois Republican nomination for Senate, Lincoln argues that the slavery crisis is moving toward a national resolution rather than indefinite compromise.
+    why: The speech gives the epoch its name and identifies its governing contradiction.
+    tags: [speech, slavery, union, lincoln]
+
+  - id: john_brown_raid
+    start: 18591016
+    end: 18591018
+    level: 2
+    kind: raid
+    title: John Brown's Raid
+    description_short: Armed abolitionists seize the federal arsenal at Harpers Ferry.
+    description_long: John Brown attempts to initiate a broader uprising against slavery by capturing the United States armory at Harpers Ferry.
+    why: It convinces many Americans that revolutionary violence has overtaken ordinary politics.
+    tags: [abolition, violence, slavery]
+    sources:
+      - name: Library of Congress
+        url: https://guides.loc.gov/finding-antislavery-ancestors/timeline
+
+  - id: john_brown_executed
+    start: 18591202
+    level: 2
+    kind: execution
+    title: John Brown Executed
+    description_short: Virginia executes John Brown for the Harpers Ferry raid.
+    description_long: Brown's conduct at trial and execution turns him into a martyr for many Northern abolitionists and a symbol of existential danger in the South.
+    why: His death widens the moral and emotional gulf between sections.
+    tags: [john-brown, abolition, sectionalism]
+
+  - id: democratic_party_splits
+    start: 18600423
+    end: 18600623
+    level: 2
+    kind: political_crisis
+    title: Democratic Party Splits
+    description_short: Northern and Southern Democrats nominate separate presidential candidates.
+    description_long: Failed conventions at Charleston and Baltimore fracture the last major national party capable of competing across sections.
+    why: The national party system collapses immediately before secession.
+    tags: [politics, parties, election, sectionalism]
+
+  - id: south_carolina_secedes
+    start: 18601220
+    level: 2
+    kind: secession
+    title: South Carolina Secedes
+    description_short: South Carolina becomes the first state to leave the Union.
+    description_long: A state convention unanimously adopts an ordinance of secession, turning decades of sectional argument into a direct constitutional rupture.
+    why: The legitimacy crisis becomes an accomplished act of disunion.
+    tags: [secession, union, constitution]
+
+  - id: secession_winter
+    start: 18601220
+    end: 18610201
+    level: 2
+    kind: process
+    title: Lower South Secedes
+    description_short: Six additional Deep South states follow South Carolina out of the Union.
+    description_long: Mississippi, Florida, Alabama, Georgia, Louisiana, and Texas adopt ordinances of secession before Lincoln takes office.
+    why: Secession changes from a single-state protest into a regional revolution.
+    tags: [secession, confederacy, union]
+
+  - id: confederate_states_formed
+    start: 18610208
+    level: 2
+    kind: government
+    title: Confederate States of America Formed
+    description_short: Seceding states establish a rival national government.
+    description_long: Delegates at Montgomery organize the Confederate States of America and create institutions claiming sovereign authority over the seceded states.
+    why: Two governments now make incompatible claims to political legitimacy.
+    tags: [confederacy, secession, government]
+
+  - id: lincoln_first_inaugural
+    start: 18610304
+    level: 2
+    kind: speech
+    title: Lincoln's First Inaugural Address
+    description_short: Lincoln denies the legality of secession while promising not to attack slavery where it exists.
+    description_long: The new president presents the Union as perpetual, rejects unilateral secession, and appeals to Americans' shared constitutional memory.
+    why: It states the Union government's constitutional position immediately before war.
+    tags: [lincoln, presidency, secession, constitution]
+
+  - id: lincoln_calls_for_volunteers
+    start: 18610415
+    level: 2
+    kind: executive_action
+    title: Lincoln Calls for 75,000 Volunteers
+    description_short: Lincoln summons militia to suppress the rebellion.
+    description_long: The call for troops after Fort Sumter forces remaining slave states to choose between the Union and the Confederacy.
+    why: It transforms a Deep South rebellion into a broader sectional war.
+    tags: [civil-war, military, presidency]
+
+  - id: upper_south_secedes
+    start: 18610417
+    end: 18610608
+    level: 2
+    kind: process
+    title: Upper South Secedes
+    description_short: Virginia, Arkansas, North Carolina, and Tennessee join the Confederacy.
+    description_long: Lincoln's call for troops prompts four Upper South states to leave the Union, adding population, industry, and strategic depth to the Confederacy.
+    why: It completes the basic territorial shape of the Civil War.
+    tags: [secession, confederacy, civil-war]
+
+  - id: first_bull_run
+    start: 18610721
+    level: 2
+    kind: battle
+    title: First Battle of Bull Run
+    description_short: The first major land battle ends in Union defeat.
+    description_long: Confederate victory near Manassas destroys widespread expectations that the rebellion will be suppressed quickly.
+    why: It reveals that reunion will require a long and costly war.
+    tags: [civil-war, military]
+    sources:
+      - name: Library of Congress
+        url: https://www.loc.gov/pictures/static/data/cwp/resources/timeline.html
+
+  - id: first_confiscation_act
+    start: 18610806
+    level: 2
+    kind: legislation
+    title: First Confiscation Act
+    description_short: Congress authorizes seizure of enslaved labor used to support the rebellion.
+    description_long: The act removes the federal government's obligation to return enslaved people employed in the Confederate war effort.
+    why: Federal war policy begins moving from Union restoration toward emancipation.
+    tags: [slavery, emancipation, congress, civil-war]
+
+  - id: antietam
+    start: 18620917
+    level: 2
+    kind: battle
+    title: Battle of Antietam
+    description_short: The bloodiest single day in American military history halts Lee's Maryland invasion.
+    description_long: The Union's strategic success gives Lincoln the opportunity to announce preliminary emancipation.
+    why: Military events create the political opening for transforming the war's purpose.
+    tags: [civil-war, military, emancipation]
+
+  - id: preliminary_emancipation_proclamation
+    start: 18620922
+    level: 2
+    kind: proclamation
+    title: Preliminary Emancipation Proclamation
+    description_short: Lincoln warns that slaves in rebelling states will be declared free.
+    description_long: Issued after Antietam, the preliminary proclamation gives the Confederacy until January 1 to return to the Union.
+    why: It publicly commits the administration to emancipation as a war policy.
+    tags: [emancipation, slavery, presidency]
+
+  - id: vicksburg_campaign
+    start: 18630329
+    end: 18630704
+    level: 2
+    kind: campaign
+    title: Vicksburg Campaign
+    description_short: Union forces capture the Confederacy's key Mississippi River stronghold.
+    description_long: Grant's campaign culminates in Vicksburg's surrender, giving the Union control of the Mississippi and dividing the Confederacy.
+    why: Together with Gettysburg, it decisively shifts the war's strategic balance.
+    tags: [civil-war, military, mississippi]
+
+  - id: new_york_draft_riots
+    start: 18630713
+    end: 18630716
+    level: 2
+    kind: riot
+    title: New York City Draft Riots
+    description_short: Resistance to conscription erupts into racial and class violence.
+    description_long: Predominantly working-class rioters attack draft offices, Black residents, homes, and institutions before federal troops restore order.
+    why: The riots expose the limits of Northern unity and the racial conflict within the Union cause.
+    tags: [civil-war, conscription, race, violence]
+
+  - id: gettysburg_address
+    start: 18631119
+    level: 2
+    kind: speech
+    title: Gettysburg Address
+    description_short: Lincoln defines the war as a test of equality and popular government.
+    description_long: At the dedication of the national cemetery, Lincoln links the Union's survival to the Declaration's proposition of human equality and calls for a new birth of freedom.
+    why: It philosophically refounds the nation the Union is fighting to preserve.
+    tags: [speech, equality, union, declaration]
+
+  - id: atlanta_campaign
+    start: 18640507
+    end: 18640902
+    level: 2
+    kind: campaign
+    title: Atlanta Campaign
+    description_short: Union armies drive through northern Georgia toward Atlanta.
+    description_long: Sherman's sustained campaign forces Confederate retreat and culminates in the capture of Atlanta.
+    why: Battlefield progress reshapes the 1864 election and the war's political future.
+    tags: [civil-war, military, election]
+
+  - id: sherman_captures_atlanta
+    start: 18640902
+    level: 2
+    kind: military_victory
+    title: Sherman Captures Atlanta
+    description_short: Union forces take the Confederacy's major rail and industrial center.
+    description_long: Atlanta's fall damages Confederate capacity, raises Northern morale, and strengthens Lincoln's reelection prospects.
+    why: It makes Union military victory and political continuation of the war far more likely.
+    tags: [civil-war, military, election]
+
+  - id: lincoln_reelected
+    start: 18641108
+    level: 2
+    kind: election
+    title: Lincoln Reelected
+    description_short: Northern voters endorse continued war and emancipation.
+    description_long: Lincoln defeats George McClellan and gains a mandate to pursue Union victory and constitutional abolition.
+    why: Democratic politics survives wartime strain and reaffirms the transformed Union project.
+    tags: [election, civil-war, emancipation]
+
+  - id: march_to_the_sea
+    start: 18641115
+    end: 18641221
+    level: 2
+    kind: campaign
+    title: Sherman's March to the Sea
+    description_short: Union forces cut through Georgia from Atlanta to Savannah.
+    description_long: Sherman's army destroys railroads, supplies, and other resources supporting the Confederate war effort while demonstrating its inability to defend its interior.
+    why: The campaign attacks the material and psychological foundations of Confederate resistance.
+    tags: [civil-war, military, total-war]
+
+  # ---------------------------------------------------------------------------
+  # LEVEL 3 — MECHANISMS AND CONSEQUENCES
+  # ---------------------------------------------------------------------------
+
+  - id: new_england_emigrant_aid_company
+    start: 18540724
+    level: 3
+    kind: organization
+    title: New England Emigrant Aid Company Organized
+    description_short: Antislavery organizers sponsor migration to Kansas.
+    description_long: The company helps free-state settlers move west in an effort to determine Kansas's political future through population.
+    why: Organized migration turns territorial settlement into a national political contest.
+    tags: [bleeding-kansas, migration, abolition]
+
+  - id: kansas_bogus_legislature
+    start: 18550702
+    level: 3
+    kind: government
+    title: Pro-Slavery Kansas Legislature Convenes
+    description_short: A legislature elected amid fraud enacts a severe pro-slavery code.
+    description_long: Free-state settlers reject the territorial legislature as illegitimate and begin creating rival institutions.
+    why: Competing governments demonstrate the failure of accepted democratic authority.
+    tags: [bleeding-kansas, legitimacy, slavery]
+
+  - id: topeka_constitution
+    start: 18551215
+    level: 3
+    kind: constitution
+    title: Topeka Constitution Adopted
+    description_short: Free-state settlers approve a rival constitution for Kansas.
+    description_long: The Topeka movement seeks admission as a free state outside the pro-slavery territorial government's authority.
+    why: Kansas develops rival constitutional orders before the nation does.
+    tags: [bleeding-kansas, constitution, legitimacy]
+
+  - id: republican_national_convention_1856
+    start: 18560617
+    end: 18560619
+    level: 3
+    kind: convention
+    title: First Republican National Convention
+    description_short: Republicans nominate John C. Frémont for president.
+    description_long: The young party campaigns against the extension of slavery under the slogan of free soil, free speech, free men, and Frémont.
+    why: Opposition to slavery's expansion becomes a viable national electoral force.
+    tags: [republican-party, election, slavery]
+
+  - id: election_1856
+    start: 18561104
+    level: 3
+    kind: election
+    title: Presidential Election of 1856
+    description_short: James Buchanan defeats Frémont and Fillmore.
+    description_long: Republicans lose their first presidential campaign but dominate much of the North, revealing an emerging sectional party alignment.
+    why: The electoral map previews the political geography of disunion.
+    tags: [election, parties, sectionalism]
+
+  - id: lecompton_constitution
+    start: 18571107
+    end: 18580802
+    level: 3
+    kind: constitutional_crisis
+    title: Lecompton Constitution Crisis
+    description_short: A pro-slavery Kansas constitution divides Democrats and is rejected by voters.
+    description_long: Buchanan supports the Lecompton constitution despite disputed procedures, while Douglas opposes it in the name of popular sovereignty.
+    why: The crisis fractures the Democratic Party and discredits compromise.
+    tags: [kansas, democracy, slavery, democratic-party]
+
+  - id: helper_impending_crisis
+    start: 18570326
+    level: 3
+    kind: publication
+    title: The Impending Crisis of the South Published
+    description_short: Hinton Rowan Helper attacks slavery as economically harmful to nonslaveholding whites.
+    description_long: The book becomes a major Republican campaign text and provokes fierce Southern opposition.
+    why: Antislavery politics expands beyond moral abolition toward free-labor economics.
+    tags: [publication, slavery, free-labor, republican-party]
+
+  - id: lincoln_cooper_union
+    start: 18600227
+    level: 3
+    kind: speech
+    title: Lincoln's Cooper Union Address
+    description_short: Lincoln argues that the founders permitted federal restriction of slavery.
+    description_long: The New York speech establishes Lincoln as a credible national candidate and presents Republican policy as conservative constitutionalism.
+    why: It frames resistance to slavery's expansion as fidelity to the founding rather than revolution.
+    tags: [speech, constitution, slavery, election]
+
+  - id: crittenden_compromise
+    start: 18601218
+    end: 18610116
+    level: 3
+    kind: failed_compromise
+    title: Crittenden Compromise Fails
+    description_short: A final major effort to protect slavery constitutionally cannot win agreement.
+    description_long: Senator John Crittenden proposes amendments restoring and extending the Missouri Compromise line, but Republicans reject the expansion of slavery.
+    why: The old method of sectional compromise reaches its endpoint.
+    tags: [compromise, slavery, secession, congress]
+
+  - id: confederate_constitution
+    start: 18610311
+    level: 3
+    kind: constitution
+    title: Confederate Constitution Adopted
+    description_short: The Confederacy adopts a permanent constitution protecting slavery.
+    description_long: The document resembles the United States Constitution but explicitly safeguards slavery and restricts certain federal economic powers.
+    why: The rival government formalizes the social order it has seceded to preserve.
+    tags: [confederacy, constitution, slavery]
+
+  - id: contraband_decision
+    start: 18610524
+    level: 3
+    kind: military_policy
+    title: Butler Declares Escaped Slaves “Contraband”
+    description_short: Union forces refuse to return enslaved people used by Confederates.
+    description_long: At Fort Monroe, General Benjamin Butler treats escaped enslaved laborers as confiscated enemy property, creating a practical path toward freedom.
+    why: Emancipation begins from battlefield necessity before becoming settled national policy.
+    tags: [slavery, emancipation, military-policy]
+
+  - id: trent_affair
+    start: 18611108
+    end: 18620101
+    level: 3
+    kind: diplomatic_crisis
+    title: Trent Affair
+    description_short: The seizure of Confederate envoys brings the Union close to war with Britain.
+    description_long: A United States naval officer removes Confederate diplomats from a British mail steamer; Lincoln's administration releases them to defuse the crisis.
+    why: The Civil War's outcome is shown to depend partly on international legitimacy.
+    tags: [diplomacy, britain, confederacy, civil-war]
+
+  - id: legal_tender_act
+    start: 18620225
+    level: 3
+    kind: legislation
+    title: Legal Tender Act
+    description_short: Congress authorizes a national paper currency known as greenbacks.
+    description_long: The act expands federal financial authority and helps fund the Union war effort.
+    why: War accelerates the construction of a stronger national state.
+    tags: [finance, federal-power, civil-war, congress]
+
+  - id: homestead_act
+    start: 18620520
+    level: 3
+    kind: legislation
+    title: Homestead Act
+    description_short: Federal land is offered to settlers who occupy and improve it.
+    description_long: The act grants eligible settlers claims to 160 acres of surveyed public land, accelerating western settlement and advancing the free-labor vision.
+    why: The Union begins constructing the social order that will follow victory.
+    tags: [westward-expansion, free-labor, legislation]
+    sources:
+      - name: National Archives
+        url: https://www.archives.gov/milestone-documents/homestead-act
+
+  - id: pacific_railway_act
+    start: 18620701
+    level: 3
+    kind: legislation
+    title: Pacific Railway Act
+    description_short: Congress supports construction of a transcontinental railroad.
+    description_long: Federal land and loans back rail lines intended to connect the continent and consolidate national economic power.
+    why: The Union defines its postwar continental and industrial future while fighting for survival.
+    tags: [railroads, industrialization, westward-expansion]
+
+  - id: morrill_land_grant_act
+    start: 18620702
+    level: 3
+    kind: legislation
+    title: Morrill Land-Grant Act
+    description_short: Federal land grants finance colleges for agriculture and the mechanical arts.
+    description_long: The act creates a national system of publicly supported practical higher education, although its land endowments derive substantially from Indigenous dispossession.
+    why: It expresses the Union's emerging vision of a modern, educated, industrial republic.
+    tags: [education, industrialization, legislation, indigenous-land]
+    sources:
+      - name: National Archives
+        url: https://www.archives.gov/milestone-documents/morrill-act
+
+  - id: second_confiscation_act
+    start: 18620717
+    level: 3
+    kind: legislation
+    title: Second Confiscation Act
+    description_short: Congress frees enslaved people owned by persons supporting the rebellion.
+    description_long: The act broadens confiscation and emancipation policy while authorizing seizure of rebel property.
+    why: Congress moves federal law closer to general emancipation.
+    tags: [slavery, emancipation, congress, civil-war]
+
+  - id: enrollment_act
+    start: 18630303
+    level: 3
+    kind: legislation
+    title: Enrollment Act
+    description_short: The first federal military draft is established.
+    description_long: The act creates national conscription while permitting commutation payments and substitutes, generating deep class resentment.
+    why: Mobilization expands federal power and exposes unequal burdens of war.
+    tags: [conscription, federal-power, civil-war, class]
+
+  - id: bureau_colored_troops
+    start: 18630522
+    level: 3
+    kind: military_policy
+    title: Bureau of Colored Troops Established
+    description_short: The War Department formally organizes Black military service.
+    description_long: The bureau standardizes recruitment and administration of United States Colored Troops.
+    why: Formerly enslaved and free Black Americans become armed participants in preserving and redefining the Union.
+    tags: [military, emancipation, black-history, civil-war]
+
+  - id: fort_wagner
+    start: 18630718
+    level: 3
+    kind: battle
+    title: Assault on Fort Wagner
+    description_short: The 54th Massachusetts demonstrates the valor of Black Union troops.
+    description_long: Although the assault fails, the regiment's performance helps transform Northern perceptions of Black military service.
+    why: Black citizenship claims gain force through sacrifice in the Union cause.
+    tags: [civil-war, black-history, military, citizenship]
+
+  - id: wade_davis_bill
+    start: 18640702
+    end: 18640704
+    level: 3
+    kind: legislation
+    title: Wade–Davis Bill Pocket-Vetoed
+    description_short: Lincoln rejects Congress's more stringent plan for restoring Confederate states.
+    description_long: The failed bill reveals an emerging conflict between presidential and congressional approaches to Reconstruction.
+    why: The political struggle over the postwar order begins before the fighting ends.
+    tags: [reconstruction, congress, presidency, civil-war]
+
+  - id: hampton_roads_conference
+    start: 18650203
+    level: 3
+    kind: peace_conference
+    title: Hampton Roads Conference
+    description_short: Union and Confederate representatives fail to negotiate peace.
+    description_long: Lincoln insists upon restoration of the Union and the practical consequences of emancipation, while Confederate representatives seek independence.
+    why: Even near defeat, the rival governments cannot reconcile their foundational claims.
+    tags: [peace, confederacy, union, emancipation]
+
+  # ---------------------------------------------------------------------------
+  # LEVEL 4 — CONTEXT AND TEXTURE
+  # ---------------------------------------------------------------------------
+
+  - id: repeal_missouri_compromise_confirmed
+    start: 18540530
+    level: 4
+    kind: constitutional_change
+    title: Missouri Compromise Restriction Repealed
+    description_short: The 1820 geographic restriction on slavery loses legal force.
+    description_long: The Kansas–Nebraska Act declares the Missouri Compromise restriction inoperative and void.
+    why: A durable settlement is explicitly dismantled.
+    tags: [slavery, compromise, federalism]
+
+  - id: free_state_town_lawrence_founded
+    start: 18540801
+    level: 4
+    kind: settlement
+    title: Lawrence Founded
+    description_short: Antislavery settlers establish a political center in Kansas.
+    description_long: Lawrence becomes the principal Free-State stronghold and a recurring target of pro-slavery forces.
+    why: The national conflict becomes embedded in rival communities on the ground.
+    tags: [bleeding-kansas, settlement, abolition]
+
+  - id: freeport_doctrine
+    start: 18580827
+    level: 4
+    kind: debate_statement
+    title: Douglas States the Freeport Doctrine
+    description_short: Douglas argues that territories can exclude slavery despite Dred Scott.
+    description_long: During the Lincoln–Douglas debates, Douglas maintains that slavery cannot survive without supportive local legislation.
+    why: His attempt to reconcile popular sovereignty with Dred Scott deepens his break with Southern Democrats.
+    tags: [debates, slavery, democratic-party]
+
+  - id: raid_on_harpers_ferry_suppressed
+    start: 18591018
+    level: 4
+    kind: military_action
+    title: Harpers Ferry Raid Suppressed
+    description_short: United States Marines capture John Brown.
+    description_long: A force commanded by Robert E. Lee storms the engine house and ends Brown's attempted insurrection.
+    why: Future Civil War figures appear on opposing sides of the approaching conflict.
+    tags: [john-brown, military, abolition]
+
+  - id: election_1860_campaign
+    start: 18600518
+    end: 18601106
+    level: 4
+    kind: campaign
+    title: Four-Way Presidential Campaign
+    description_short: Four candidates compete along sharply sectional lines.
+    description_long: Lincoln, Douglas, Breckinridge, and Bell represent incompatible coalitions and constitutional responses to the slavery crisis.
+    why: The campaign demonstrates that no shared national political center remains.
+    tags: [election, parties, sectionalism]
+
+  - id: buchanan_state_union_1860
+    start: 18601203
+    level: 4
+    kind: presidential_message
+    title: Buchanan Denies Secession but Rejects Coercion
+    description_short: The president argues that states cannot leave but that the federal government cannot force them to remain.
+    description_long: Buchanan's annual message exposes the executive paralysis of the secession winter.
+    why: The sitting government cannot articulate an actionable defense of the Union.
+    tags: [presidency, secession, constitution]
+
+  - id: star_of_the_west
+    start: 18610109
+    level: 4
+    kind: military_incident
+    title: Star of the West Fired Upon
+    description_short: South Carolina batteries repel a ship attempting to resupply Fort Sumter.
+    description_long: The incident is an early exchange of hostile fire during the secession crisis, though it does not yet initiate general war.
+    why: Armed confrontation begins before Fort Sumter's formal bombardment.
+    tags: [secession, fort-sumter, military]
+
+  - id: border_states_remain
+    start: 18610620
+    level: 4
+    kind: political_outcome
+    title: Border Slave States Remain in Union
+    description_short: Delaware, Maryland, Kentucky, and Missouri do not join the Confederacy.
+    description_long: Their contested loyalty gives the Union strategic territory, population, transportation links, and political complexity.
+    why: The war is not a simple division between free and slave states.
+    tags: [border-states, union, slavery]
+
+  - id: battle_of_wilsons_creek
+    start: 18610810
+    level: 4
+    kind: battle
+    title: Battle of Wilson's Creek
+    description_short: Confederate forces win a major early battle in Missouri.
+    description_long: The battle reveals the intensity of the struggle for the border states and the war's reach west of the Mississippi.
+    why: Control of the Union itself remains contested beyond the eastern theater.
+    tags: [civil-war, missouri, military]
+    sources:
+      - name: National Park Service
+        url: https://www.nps.gov/gett/learn/historyculture/civil-war-timeline.htm
+
+  - id: monitor_merrimack
+    start: 18620308
+    end: 18620309
+    level: 4
+    kind: naval_battle
+    title: Battle of Hampton Roads
+    description_short: Ironclad warships transform naval warfare.
+    description_long: USS Monitor and CSS Virginia fight the first battle between ironclads after Virginia devastates wooden Union ships.
+    why: The conflict accelerates technological transformation as well as political transformation.
+    tags: [civil-war, navy, technology]
+
+  - id: shiloh
+    start: 18620406
+    end: 18620407
+    level: 4
+    kind: battle
+    title: Battle of Shiloh
+    description_short: Enormous casualties reveal the war's escalating scale.
+    description_long: Union forces survive a surprise Confederate attack in Tennessee and retain the strategic initiative in the western theater.
+    why: The human cost of preserving the Union becomes unmistakable.
+    tags: [civil-war, military, casualties]
+
+  - id: district_columbia_emancipation
+    start: 18620416
+    level: 4
+    kind: legislation
+    title: Slavery Abolished in Washington, D.C.
+    description_short: Congress ends slavery in the national capital with compensated emancipation.
+    description_long: The District of Columbia Emancipation Act frees enslaved people in Washington and compensates loyal owners.
+    why: Federal emancipation moves from military improvisation into enacted law.
+    tags: [emancipation, slavery, congress]
+
+  - id: new_orleans_captured
+    start: 18620501
+    level: 4
+    kind: military_victory
+    title: Union Captures New Orleans
+    description_short: The Confederacy loses its largest city and principal port.
+    description_long: Union naval forces take New Orleans, sharply weakening Confederate control of the lower Mississippi.
+    why: The blockade and western strategy begin constricting the Confederate state.
+    tags: [civil-war, navy, louisiana]
+
+  - id: slavery_territories_abolished
+    start: 18620619
+    level: 4
+    kind: legislation
+    title: Slavery Prohibited in Federal Territories
+    description_short: Congress bans slavery in all current and future United States territories.
+    description_long: The measure resolves the territorial expansion question that had destabilized national politics for a generation.
+    why: The original political dispute of the epoch is settled by wartime legislation.
+    tags: [slavery, territories, congress]
+
+  - id: seven_days_battles
+    start: 18620625
+    end: 18620701
+    level: 4
+    kind: campaign
+    title: Seven Days Battles
+    description_short: Lee drives McClellan away from Richmond.
+    description_long: Confederate attacks end the Union Peninsula Campaign and elevate Robert E. Lee's military standing.
+    why: Union failure prolongs the war and increases pressure for a more radical strategy.
+    tags: [civil-war, military, virginia]
+
+  - id: first_black_regiment_south_carolina
+    start: 18630131
+    level: 4
+    kind: military_service
+    title: First South Carolina Volunteers Mustered
+    description_short: Formerly enslaved men enter federal service in an early Black regiment.
+    description_long: The regiment becomes an important precedent for the large-scale enlistment of Black soldiers after emancipation.
+    why: Emancipation is converted into organized military and civic agency.
+    tags: [black-history, military, emancipation]
+
+  - id: chancellorsville
+    start: 18630430
+    end: 18630506
+    level: 4
+    kind: battle
+    title: Battle of Chancellorsville
+    description_short: Lee wins a dramatic victory but loses Stonewall Jackson.
+    description_long: The Confederate victory precedes Lee's invasion of Pennsylvania and carries a serious command cost.
+    why: The Confederacy reaches a moment of military confidence immediately before Gettysburg.
+    tags: [civil-war, military]
+
+  - id: national_banking_act
+    start: 18640225
+    level: 4
+    kind: legislation
+    title: National Banking Act
+    description_short: Congress strengthens a nationally chartered banking system.
+    description_long: The law promotes a uniform national currency and expands federal influence over banking.
+    why: Wartime necessity builds durable national economic institutions.
+    tags: [banking, federal-power, economy, civil-war]
+
+  - id: wilderness_overland_campaign
+    start: 18640505
+    end: 18640624
+    level: 4
+    kind: campaign
+    title: Overland Campaign
+    description_short: Grant sustains relentless operations against Lee in Virginia.
+    description_long: Battles from the Wilderness through Cold Harbor produce staggering casualties but keep pressure on the Confederate army.
+    why: Union strategy shifts from seeking a single decisive battle to exhausting Confederate capacity.
+    tags: [civil-war, military, virginia]
+
+  - id: valley_campaign_1864
+    start: 18640807
+    end: 18641019
+    level: 4
+    kind: campaign
+    title: Sheridan's Shenandoah Valley Campaign
+    description_short: Union forces defeat Confederate armies and destroy the valley's resources.
+    description_long: Sheridan secures the Shenandoah Valley and removes a major source of Confederate food and strategic threat.
+    why: Union military power increasingly reaches the Confederacy's sustaining infrastructure.
+    tags: [civil-war, military, total-war]
+
+  - id: savannah_captured
+    start: 18641221
+    level: 4
+    kind: military_victory
+    title: Savannah Captured
+    description_short: Sherman's army reaches the Atlantic and occupies Savannah.
+    description_long: The capture completes the March to the Sea and confirms the Confederacy's inability to defend its interior.
+    why: Confederate territorial coherence is visibly collapsing.
+    tags: [civil-war, military, georgia]
+
+  - id: hampton_roads_freedmen
+    start: 18641231
+    level: 4
+    kind: social_process
+    title: Contraband Communities Expand
+    description_short: Self-emancipated people build communities around Union lines.
+    description_long: Across occupied territory, formerly enslaved families seek protection, work, schooling, and autonomy under unstable wartime conditions.
+    why: Freedom is not merely proclaimed from above; it is claimed and constructed from below.
+    tags: [emancipation, black-history, social-history]
+
+  - id: richmond_falls
+    start: 18650403
+    level: 4
+    kind: military_victory
+    title: Richmond Falls
+    description_short: Union forces occupy the Confederate capital.
+    description_long: The Confederate government evacuates Richmond as Union troops enter the city after the breakthrough at Petersburg.
+    why: The rival government's institutional center collapses.
+    tags: [civil-war, confederacy, military]
+
+  # ---------------------------------------------------------------------------
+  # LEVEL 5 — CLOSE INSPECTION
+  # ---------------------------------------------------------------------------
+
+  - id: destruction_osawatomie
+    start: 18560830
+    level: 5
+    kind: battle
+    title: Battle of Osawatomie
+    description_short: Pro-slavery forces defeat John Brown's Free-State defenders.
+    description_long: The fighting and destruction of Osawatomie make Brown a celebrated militant figure among some Northern antislavery activists.
+    why: The future Harpers Ferry raider emerges from the violence of Kansas.
+    tags: [bleeding-kansas, john-brown, violence]
+
+  - id: english_bill_kansas
+    start: 18580430
+    level: 5
+    kind: legislation
+    title: English Bill Offered to Kansas
+    description_short: Congress ties statehood under the Lecompton Constitution to a reduced land grant.
+    description_long: Kansas voters reject the proposal, ending the immediate attempt to admit the territory under the pro-slavery constitution.
+    why: Procedural maneuvering cannot repair the legitimacy failure in Kansas.
+    tags: [kansas, congress, slavery, legitimacy]
+
+  - id: lincoln_loses_senate_wins_prominence
+    start: 18581102
+    level: 5
+    kind: election_outcome
+    title: Douglas Retains Senate Seat
+    description_short: Republicans win more popular support, but legislative apportionment returns Douglas to the Senate.
+    description_long: Lincoln loses the immediate contest while gaining national prominence from the debates.
+    why: Political defeat prepares Lincoln for presidential leadership.
+    tags: [lincoln, douglas, election]
+
+  - id: john_brown_trial
+    start: 18591027
+    end: 18591102
+    level: 5
+    kind: trial
+    title: John Brown Tried and Sentenced
+    description_short: Brown uses his trial to condemn slavery and defend his actions.
+    description_long: His composed courtroom statements circulate nationally and help transform a failed raid into a moral spectacle.
+    why: Public interpretation of an event becomes as consequential as the event itself.
+    tags: [john-brown, trial, abolition]
+
+  - id: corwin_amendment
+    start: 18610302
+    level: 5
+    kind: proposed_amendment
+    title: Corwin Amendment Approved by Congress
+    description_short: Congress proposes permanently protecting slavery from federal interference.
+    description_long: The unratified amendment is offered as a final reassurance to slave states still considering secession.
+    why: The Union initially seeks preservation without abolishing slavery.
+    tags: [constitution, slavery, compromise]
+
+  - id: maryland_legislature_secured
+    start: 18610427
+    level: 5
+    kind: civil_liberties_crisis
+    title: Habeas Corpus Suspended on Military Route
+    description_short: Lincoln authorizes suspension of habeas corpus between Philadelphia and Washington.
+    description_long: The administration uses extraordinary powers to secure transportation and suppress suspected sabotage in Maryland.
+    why: Saving constitutional government immediately creates conflict over constitutional limits.
+    tags: [civil-liberties, presidency, war-powers, maryland]
+
+  - id: ex_parte_merryman
+    start: 18610528
+    level: 5
+    kind: court_case
+    title: Ex parte Merryman
+    description_short: Chief Justice Taney challenges Lincoln's unilateral suspension of habeas corpus.
+    description_long: The executive declines to follow Taney's circuit-court ruling during the military emergency.
+    why: Civil war produces an early confrontation over emergency power and judicial authority.
+    tags: [civil-liberties, supreme-court, presidency, war-powers]
+
+  - id: congress_civil_war_session
+    start: 18610704
+    level: 5
+    kind: congressional_session
+    title: Special Session of Congress Convenes
+    description_short: Congress retroactively supports major emergency measures taken by Lincoln.
+    description_long: The legislature authorizes military expansion and helps legitimate executive actions taken after Fort Sumter.
+    why: The constitutional branches adapt rapidly to rebellion.
+    tags: [congress, presidency, war-powers]
+
+  - id: fremont_emancipation_order
+    start: 18610830
+    level: 5
+    kind: military_order
+    title: Frémont Issues Emancipation Order
+    description_short: A Union general declares slaves of Missouri rebels free.
+    description_long: Lincoln revokes the broad order to protect border-state loyalty, exposing tension between military emancipation and political caution.
+    why: The path to emancipation is contested within the Union government.
+    tags: [emancipation, missouri, military-policy, lincoln]
+
+  - id: joint_committee_conduct_war
+    start: 18611210
+    level: 5
+    kind: congressional_oversight
+    title: Joint Committee on the Conduct of the War Established
+    description_short: Congress creates a powerful body to investigate military performance and loyalty.
+    description_long: Radical Republicans use the committee to scrutinize generals, strategy, and the administration's conduct of the war.
+    why: Civilian control of war becomes entangled with ideological struggle over its purpose.
+    tags: [congress, military, oversight, politics]
+
+  - id: cotton_diplomacy_fails
+    start: 18620101
+    end: 18631231
+    level: 5
+    kind: diplomatic_process
+    title: Confederate Cotton Diplomacy Fails
+    description_short: Britain and France do not intervene to secure Southern cotton.
+    description_long: European stockpiles, alternative supplies, military uncertainty, and antislavery politics weaken the Confederacy's leverage.
+    why: International recognition never supplies the legitimacy the Confederacy needs.
+    tags: [diplomacy, britain, france, confederacy]
+
+  - id: greenbacks_issued
+    start: 18620310
+    level: 5
+    kind: currency
+    title: United States Notes Enter Circulation
+    description_short: Federal paper money begins financing the Union war effort.
+    description_long: Greenbacks make the national government's promises directly visible in everyday economic life.
+    why: State-building becomes tangible in the currency citizens use.
+    tags: [currency, finance, federal-power]
+
+  - id: naval_battle_memphis
+    start: 18620606
+    level: 5
+    kind: naval_battle
+    title: Union Captures Memphis
+    description_short: A naval victory opens more of the Mississippi River.
+    description_long: Union gunboats defeat the Confederate river fleet and occupy Memphis.
+    why: The Anaconda strategy advances through control of transportation networks.
+    tags: [civil-war, navy, mississippi]
+
+  - id: militiamen_act_1862
+    start: 18620717
+    level: 5
+    kind: legislation
+    title: Militia Act of 1862
+    description_short: Congress authorizes employment of Black men in military service.
+    description_long: The law permits the president to receive persons of African descent for labor or military service and provides freedom for some participants and families.
+    why: Congress lays statutory groundwork for Black enlistment.
+    tags: [black-history, military, emancipation, congress]
+
+  - id: suspension_habeas_nationwide
+    start: 18620924
+    level: 5
+    kind: executive_action
+    title: Habeas Corpus Suspended for Disloyal Acts
+    description_short: Lincoln broadens military detention authority during the war.
+    description_long: The proclamation subjects persons discouraging enlistment or resisting the draft to martial law.
+    why: The Union's defense raises enduring questions about liberty under emergency rule.
+    tags: [civil-liberties, presidency, war-powers]
+
+  - id: west_virginia_statehood
+    start: 18630620
+    level: 5
+    kind: statehood
+    title: West Virginia Admitted to Union
+    description_short: Unionist counties separate from Confederate Virginia to form a new state.
+    description_long: Wartime statehood rewards Union loyalty while raising difficult constitutional questions about consent and partition.
+    why: The Union reorganizes federalism while claiming to preserve it.
+    tags: [statehood, federalism, civil-war]
+
+  - id: copperhead_banishment_vallandigham
+    start: 18630519
+    level: 5
+    kind: civil_liberties_crisis
+    title: Vallandigham Banished to Confederacy
+    description_short: A military commission convicts a leading antiwar Democrat.
+    description_long: Lincoln commutes Clement Vallandigham's imprisonment to banishment, intensifying debate over dissent and military jurisdiction.
+    why: Wartime opposition tests the boundaries of democratic legitimacy.
+    tags: [civil-liberties, dissent, democratic-party, war-powers]
+
+  - id: emancipation_maryland
+    start: 18641101
+    level: 5
+    kind: state_constitution
+    title: Maryland Abolishes Slavery
+    description_short: A new state constitution ends slavery in Maryland.
+    description_long: Emancipation advances within a loyal border state before national constitutional abolition.
+    why: The boundary between slave and free Union disappears before the Thirteenth Amendment is ratified.
+    tags: [emancipation, maryland, constitution]
+
+  - id: fort_fisher_falls
+    start: 18650115
+    level: 5
+    kind: battle
+    title: Fort Fisher Falls
+    description_short: Union forces close the Confederacy's last major Atlantic port.
+    description_long: The capture of Fort Fisher shuts access to Wilmington, North Carolina, and sharply reduces Confederate supply.
+    why: The blockade becomes effectively complete as the Confederacy nears collapse.
+    tags: [civil-war, navy, blockade]
+
+  - id: thirteenth_amendment_house_passage
+    start: 18650131
+    level: 5
+    kind: congressional_vote
+    title: House Passes Thirteenth Amendment
+    description_short: The House reaches the required two-thirds majority for constitutional abolition.
+    description_long: After an earlier failure, the amendment passes with Republican support and enough Democratic votes to send it to the states.
+    why: The moral outcome of the war is converted into a viable constitutional settlement.
+    tags: [constitution, amendment, slavery, congress]

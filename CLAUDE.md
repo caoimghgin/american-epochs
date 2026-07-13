@@ -98,8 +98,18 @@ american-epochs/
 ├── CLAUDE.md
 └── src/
     ├── american-epochs.html    # The instrument — open directly in browser
-    └── american-epochs_v1.md  # Written framework: full epoch justifications
+    ├── american-epochs_v1.md  # Written framework: full epoch justifications
+    └── data/
+        ├── EVENT_CORPUS_GUIDE.md      # Format + curation spec for per-epoch research
+        ├── house_divided_events.yaml  # Done — reconciled into the live instrument
+        └── reconstruction_events.yaml # Draft, older schema — next candidate (AE-10)
 ```
+
+Files under `src/data/` are research/authoring artifacts, not runtime data —
+the instrument has no YAML parser or build step. A finished corpus is
+reconciled by hand into the inline `EVENTS` array in `american-epochs.html`.
+See `src/data/EVENT_CORPUS_GUIDE.md` for the format, the 5-level curation
+principle, and per-epoch status.
 
 ## Development Notes
 
