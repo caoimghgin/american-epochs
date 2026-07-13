@@ -1023,10 +1023,17 @@ function drawEvents(top, h, axisY){
   // AE-2: cull events outside the current view (with a small buffer) — with
   // continuous pan/zoom this list gets rebuilt on every animation frame, so
   // not row-packing the ~150 events that aren't even on screen matters.
+  // Bug fixed here: this must compare the same fractional-year position the
+  // dot is actually drawn at, not the bare ev.y — a late-year event (e.g.
+  // October) was getting culled the moment viewStart crept past its whole
+  // calendar year, even though its true position was still well inside view.
   const buffer = (viewEnd - viewStart) * 0.05;
   const visible = EVENTS
-    .filter(ev => !ev.span && ev.tier <= visibleTier && ev.y >= viewStart - buffer && ev.y <= viewEnd + buffer)
-    .sort((a, b) => a.y - b.y);
+    .filter(ev => !ev.span && ev.tier <= visibleTier)
+    .map(ev => ({ ev, fy: fractionalYear(ev.y, ev.month, ev.day) }))
+    .filter(({ fy }) => fy >= viewStart - buffer && fy <= viewEnd + buffer)
+    .sort((a, b) => a.fy - b.fy)
+    .map(({ ev }) => ev);
 
   visible.forEach(ev => {
     const x = xOf(fractionalYear(ev.y, ev.month, ev.day));
