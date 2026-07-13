@@ -319,7 +319,7 @@ const EVENTS = [
   { y:1861, end:1865, label:'Civil War',     span:true, note:'The war that ends the constitutional order built around slavery.' },
   { y:1914, end:1918, label:'World War I',   span:true, note:'The U.S. enters in 1917; the war that breaks Wilsonian idealism as much as it vindicates it.' },
   { y:1929, end:1933, label:'Great Depression', span:true, note:'NBER dates the contraction August 1929 to March 1933 — the longest on record.' },
-  { y:1941, end:1945, label:'World War II',  span:true, note:'The crucible in which American hegemony was forged.' },
+  { y:1941, month:12, day:7, end:1945, endMonth:9, endDay:2, label:'World War II', span:true, note:'The crucible in which American hegemony was forged.' },
   { y:1972, end:1974, label:'Watergate',     span:true, note:'Institutional rot reaches the presidency. Legitimacy begins to drain.' },
   { y:1973, end:1979, label:'Stagflation',   span:true, note:'The empirical refutation of Keynesianism. Inflation + stagnation = the end of the postwar economic settlement.' },
   { y:2003, end:2011, label:'Iraq War',      span:true, note:'The occupation that proved the confidence of the End of History was misplaced.' },
@@ -332,7 +332,7 @@ const EVENTS = [
   { y:1858, tier:2, label:'Lincoln-Douglas debates' },
   { y:1859, tier:2, label:'Harpers Ferry raid',  note:'John Brown\'s raid on the federal armory — an armed attempt to spark a slave uprising.' },
   { y:1860, tier:1, label:'Lincoln elected' },
-  { y:1861, tier:1, label:'Fort Sumter',         note:'The first shots of the war.' },
+  { y:1861, month:4, day:12, tier:1, label:'Fort Sumter', note:'The first shots of the war.' },
   { y:1863, tier:2, label:'Emancipation Proclamation' },
   { y:1863, tier:3, label:'Gettysburg' },
   { y:1865, tier:1, label:'Appomattox',          note:'Lee surrenders; the war ends.' },
@@ -398,8 +398,8 @@ const EVENTS = [
   { y:1940, tier:1, label:'Selective Service Act', note:'The first peacetime draft in American history.' },
   { y:1940, tier:2, label:'FDR wins third term',   note:'Breaks 150 years of two-term precedent.' },
 
-  { y:1941, tier:1, label:'Lend-Lease',         note:'The structural pivot — U.S. becomes creditor & arsenal of the Allied powers.' },
-  { y:1941, tier:1, label:'Pearl Harbor' },
+  { y:1941, month:3, day:11, tier:1, label:'Lend-Lease', note:'The structural pivot — U.S. becomes creditor & arsenal of the Allied powers.' },
+  { y:1941, month:12, day:7, tier:1, label:'Pearl Harbor' },
   { y:1944, tier:1, label:'Bretton Woods',       note:'Dollar supremacy formalized. The financial architecture of the American century set.' },
   { y:1945, tier:2, label:'Hiroshima' },
   { y:1948, tier:2, label:'Marshall Plan' },
@@ -611,6 +611,35 @@ const MONTH_ZOOM_SCALE   = 3.18;
 const MAX_ZOOM_SCALE     = 4.85;
 const MAX_PX_PER_YEAR = FLOOR_PX_PER_YEAR * Math.pow(2, MAX_ZOOM_SCALE);
 const MONTH_ABBR = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+/* ============================================================
+   EVENT DATE PRECISION (AE-8)
+   ============================================================ */
+// EVENTS entries carry a required `y` (year) plus optional `month` (1-12)
+// and `day` (1-31) — additive precision, never required. Point events use
+// y/month/day; span events use the same fields for the start and
+// end/endMonth/endDay for the end. An event with just `y` behaves exactly
+// as it always has.
+function daysInMonth(y, m){ return new Date(y, m, 0).getDate(); } // m is 1-based
+
+// Fractional year for POSITIONING ONLY — never used for epoch-membership
+// filtering, sorting, or anything that already correctly uses the plain
+// integer year.
+function fractionalYear(y, month, day){
+  if(month == null) return y;
+  const dim = daysInMonth(y, month);
+  const d = day || 1;
+  return y + (month - 1 + (d - 1) / dim) / 12;
+}
+
+// Precision-aware display for tooltips/detail panel — never fabricates a
+// day or month that isn't actually known.
+function formatEventDate(y, month, day){
+  if(month == null) return String(y);
+  if(day == null) return MONTH_NAMES[month - 1] + ' ' + y;
+  return MONTH_NAMES[month - 1] + ' ' + day + ', ' + y;
+}
 
 let maxViewSpan = Infinity; // years — recomputed from the container width every render()
 let minViewSpan = 0.05;     // years — ditto, derived from MAX_PX_PER_YEAR instead of a flat constant
@@ -679,10 +708,10 @@ function computeSpanLayout(){
   const spans = EVENTS.filter(ev => ev.span).sort((a,b) => a.y - b.y);
   const laneEndX = [];
   const assignments = spans.map(ev => {
-    const x0 = xOf(ev.y);
+    const x0 = xOf(fractionalYear(ev.y, ev.month, ev.day));
     let lane = laneEndX.findIndex(ex => x0 > ex + 10);
     if(lane === -1){ lane = laneEndX.length; laneEndX.push(0); }
-    laneEndX[lane] = xOf(ev.end);
+    laneEndX[lane] = xOf(fractionalYear(ev.end, ev.endMonth, ev.endDay));
     return lane;
   });
   const laneCount = Math.max(1, laneEndX.length);
@@ -868,7 +897,7 @@ function drawEvents(top, h, axisY){
     .sort((a, b) => a.y - b.y);
 
   visible.forEach(ev => {
-    const x = xOf(ev.y);
+    const x = xOf(fractionalYear(ev.y, ev.month, ev.day));
     const labelW = ev.label.length * charW + 10;
 
     // find lowest row whose last label clears; if none clears, the row is
@@ -903,7 +932,7 @@ function drawEvents(top, h, axisY){
     const t = cleared ? txt(ev.label,{x:x, y:labelY,
       'text-anchor':'middle', class:'ev-label'}, chart) : null;
 
-    const tipHtml = `<span class="tt-yr">${ev.y}</span> · ${ev.label}${ev.note ? '<br>' + ev.note : ''}`;
+    const tipHtml = `<span class="tt-yr">${formatEventDate(ev.y, ev.month, ev.day)}</span> · ${ev.label}${ev.note ? '<br>' + ev.note : ''}`;
     [dot, t].filter(Boolean).forEach(node => {
       node.style.cursor = 'pointer';
       node.addEventListener('mousemove', e => showTip(tipHtml, e));
@@ -921,8 +950,14 @@ function drawSpans(top, layout){
 
   spans.forEach((ev, i) => {
     const lane = assignments[i];
-    const x0 = xOf(ev.y);
-    const x1 = xOf(ev.end + 0.4);   // tiny nudge so end-cap is visible
+    const x0 = xOf(fractionalYear(ev.y, ev.month, ev.day));
+    // Nudge the end-cap out so it doesn't visually sit exactly on a tick —
+    // only when the end date is year-only precision (the nudge, +0.4yr, is
+    // far too coarse once a real month/day end date exists; a precise date
+    // naturally won't land exactly on a tick anyway).
+    const x1 = xOf(ev.endMonth != null
+      ? fractionalYear(ev.end, ev.endMonth, ev.endDay)
+      : ev.end + 0.4);
     const y  = top + lane * (SPAN_LANE_H + SPAN_LANE_GAP);
     const w  = Math.max(6, x1 - x0);
     const cy = y + SPAN_LANE_H / 2;
@@ -957,7 +992,7 @@ function drawSpans(top, layout){
         fill:'none', stroke:'var(--now)', 'stroke-width':1.5, rx:3}, g);
     }
 
-    const tipHtml = `<span class="tt-yr">${ev.y}–${ev.end}</span> · ${ev.label}${ev.note ? '<br>' + ev.note : ''}`;
+    const tipHtml = `<span class="tt-yr">${formatEventDate(ev.y, ev.month, ev.day)}–${formatEventDate(ev.end, ev.endMonth, ev.endDay)}</span> · ${ev.label}${ev.note ? '<br>' + ev.note : ''}`;
     g.addEventListener('mousemove', e => showTip(tipHtml, e));
     g.addEventListener('mouseleave', hideTip);
     g.addEventListener('click', () => selectEvent(ev));
@@ -1219,7 +1254,7 @@ function selectEvent(ev){
   detail.innerHTML = `
     <div class="d-eyebrow">Event${ev.span ? ' · duration' : ev.tier===1 ? ' · tier 1' : ' · tier 2'}</div>
     <h2>${ev.label}</h2>
-    <div class="d-years">${ev.y}${ev.span ? ' – '+ev.end : ''}${ep ? ' · '+ep.name : ''}</div>
+    <div class="d-years">${formatEventDate(ev.y, ev.month, ev.day)}${ev.span ? ' – '+formatEventDate(ev.end, ev.endMonth, ev.endDay) : ''}${ep ? ' · '+ep.name : ''}</div>
     <div class="d-prose"><p>${ev.note ? ev.note : 'A defining event of this epoch. (Annotate freely — this panel reads the <code>note</code> field on each event.)'}</p></div>`;
   render();
 }

@@ -2,7 +2,7 @@
 id: AE-8
 title: Event dates support year-month-day precision
 type: Epic
-status: Backlog
+status: In Progress
 priority: Medium
 reporter: Kevin Muldoon
 assignee: Unassigned
@@ -31,13 +31,14 @@ Raised directly after AE-5 shipped: the axis now resolves down to individual mon
 - Add optional `month` and `day` fields to `EVENTS` entries — both additive, absent by default, never required. An event with just `y` behaves exactly as today; `y`+`month` positions within the year; `y`+`month`+`day` positions within the month, accounting for actual days-in-month (leap years included).
 - A small helper computes an effective fractional year *for positioning only* (`eventFractionalYear(ev)`); `ev.y` itself stays the plain integer everything else already relies on (epoch-membership checks, tier filtering, sorting don't need to change).
 - Detail panel / tooltip date display becomes precision-aware: "1941" / "March 1941" / "March 11, 1941," depending on what's actually known — never fabricating a day that isn't documented.
-- Two distinct chunks of work, likely worth splitting into stories once picked up (same pattern as AE-1 and AE-7):
-  1. **Mechanical support** — schema fields, the positioning helper, precision-aware date formatting. Small, contained, no data entry required. This is the lower-hanging half.
-  2. **Backfill pass** across the ~150 existing events — real content work: extracting months/days already sitting in existing prose where available, leaving events at year-only precision where a month/day genuinely isn't part of the existing research (honest gaps, not filled in with guesses).
+Split into two stories, same pattern as AE-1:
+
+1. [AE-9](completed/AE-9-event-date-mechanical-support.md) — mechanical support (schema fields, positioning helper, precision-aware date formatting) — **Done**
+2. [AE-10](AE-10-event-date-backfill.md) — backfill pass across the ~150 existing events
 
 ## Acceptance Criteria
 
-Not yet defined — break into stories (mechanical support vs. backfill) once picked up.
+Tracked per-story — see AE-9 and AE-10.
 
 ## Non-Goals
 
@@ -48,3 +49,4 @@ Not yet defined — break into stories (mechanical support vs. backfill) once pi
 
 - Follows directly from [AE-5](completed/AE-5-quarter-year-axis-tier.md) (sub-year axis tiers) — filed once that shipped and the data-precision gap became visible
 - Precedent for splitting research/backfill from mechanical work: [AE-7](AE-7-extend-epochs-to-1775.md)
+- Child stories: AE-9 (Done), AE-10 (Backlog)
