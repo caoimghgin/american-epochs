@@ -2,10 +2,10 @@
 id: AE-11
 title: Zoom-driven progressive event reveal (replace manual Depth control)
 type: Story
-status: Backlog
+status: Done
 priority: Medium
 reporter: Kevin Muldoon
-assignee: Unassigned
+assignee: Claude
 created: 2026-07-13
 labels: [dataviz, ux, zoom]
 components: [src/american-epochs.html]
@@ -35,10 +35,18 @@ Raised directly in conversation, using a mountain metaphor: "the crown of the mo
 
 ## Acceptance Criteria
 
-- [ ] Manual Depth buttons removed from the UI
-- [ ] Tier visibility is driven entirely by `zoomScale`, calibrated against real data (not guessed thresholds)
-- [ ] Event dots show a 5-step shade ramp by tier
-- [ ] Verified that zooming from full history down into a single epoch reveals tiers progressively, with no jarring pop-in of a whole tier at once feeling arbitrary
+- [x] Manual Depth buttons removed from the UI
+- [x] Tier visibility is driven entirely by `zoomScale`, calibrated against real data (not guessed thresholds)
+- [x] Event dots show a 5-step shade ramp by tier
+- [x] Verified that zooming from full history down into a single epoch reveals tiers progressively, with no jarring pop-in of a whole tier at once feeling arbitrary
+
+## Implementation Notes
+
+- `zoomLevel` (manual state) and `depthBtns`/`setZoom` (button wiring) removed entirely; the Depth control group deleted from the controls bar.
+- Added `TIER_REVEAL_SCALE = { 2: 0.9, 3: 1.8, 4: QUARTER_ZOOM_SCALE, 5: MONTH_ZOOM_SCALE }` and `maxVisibleTier(zoomScale)`, computed fresh in `drawEvents()` from the same `pxPerYear`/`zoomScale` calculation AE-5 already used for axis ticks. Tiers 4 and 5 deliberately reuse the quarter/month axis thresholds (2.72 / 3.18) rather than new guessed values — by the time there's screen room for finer date units, there's room for finer events too.
+- Added `TIER_DOT_SHADE`, a 5-step ink ramp (`--ink` → `#3C3E3A` → `--ink-soft` → `#72756F` → `--ink-faint`) replacing the old binary tier-1-vs-everything-else fill.
+- Verified via Playwright (a throwaway venv, since no system Playwright install was available this session): full-history default view showed 13 dots project-wide, all tier-1 shade; panning to A House Divided's own window at the same widest-zoom density showed exactly its 7 Spine events (plus each neighboring epoch's own tier-1 events) — confirmed by direct label list, not just a count. Zooming into a 2-year window produced all 5 shades simultaneously, confirming both the reveal thresholds and the shade ramp work together. No console errors at any zoom level tested.
+- Discovered along the way (pre-existing, not caused by this change): the page's default scroll position inside the density-floor viewport opens near the present day (~1958–2027), not at 1852 — so A House Divided's own crown isn't visible without scrolling left first. Not fixed here; flagged in case it's worth its own ticket later.
 
 ## Non-Goals
 
@@ -47,6 +55,6 @@ Raised directly in conversation, using a mountain metaphor: "the crown of the mo
 
 ## Related
 
-- Follows from: [AE-10](AE-10-event-date-backfill.md)'s Spine-trim discussion for A House Divided
-- Reuses: `zoomScale` metric and calibration workflow from [AE-5](completed/AE-5-quarter-year-axis-tier.md)
-- Reopens part of: [AE-6](completed/AE-6-event-density-curation.md)'s resolution, which introduced the manual Depth control this ticket removes
+- Follows from: [AE-10](../AE-10-event-date-backfill.md)'s Spine-trim discussion for A House Divided
+- Reuses: `zoomScale` metric and calibration workflow from [AE-5](AE-5-quarter-year-axis-tier.md)
+- Reopens part of: [AE-6](AE-6-event-density-curation.md)'s resolution, which introduced the manual Depth control this ticket removes

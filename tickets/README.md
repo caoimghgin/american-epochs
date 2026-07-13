@@ -49,4 +49,4 @@ Body sections, in order:
 | [AE-8](AE-8-event-date-precision.md) | Event dates support year-month-day precision | Epic | In Progress | Medium |
 | [AE-9](completed/AE-9-event-date-mechanical-support.md) | Event date precision — mechanical support | Story | Done | Medium |
 | [AE-10](AE-10-event-date-backfill.md) | Epoch-by-epoch event corpus adoption (date precision + 5-level depth) | Story | In Progress | Low |
-| [AE-11](AE-11-zoom-driven-progressive-reveal.md) | Zoom-driven progressive event reveal (replace manual Depth control) | Story | Backlog | Medium |
+| [AE-11](completed/AE-11-zoom-driven-progressive-reveal.md) | Zoom-driven progressive event reveal (replace manual Depth control) | Story | Done | Medium |

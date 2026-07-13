@@ -127,14 +127,6 @@
     <span class="ctl-label">Lanes</span>
   </div>
   <div class="ctl-group">
-    <span class="ctl-label">Depth</span>
-    <button class="mode-btn" id="z1Btn" title="Visible at the widest view and persistent at every zoom level — the epoch's narrative spine">Spine</button>
-    <button class="mode-btn active" id="z2Btn" title="Major events revealed at the first closer zoom (default)">Major</button>
-    <button class="mode-btn" id="z3Btn" title="Supporting events that explain mechanisms, shifts, and consequences">Mechanism</button>
-    <button class="mode-btn" id="z4Btn" title="Contextual events that add political, military, social, and institutional texture">Context</button>
-    <button class="mode-btn" id="z5Btn" title="Fine-grained events for the closest inspection">Detail</button>
-  </div>
-  <div class="ctl-group">
     <button class="mode-btn" id="resetViewBtn" title="Reset to the default view (Escape)">↺ Reset</button>
   </div>
   <div class="ctl-group">
@@ -654,7 +646,6 @@ const lanes = {
   rft:{on:false,        label:'RFT regime',     register:'argued',   color:'var(--argued)'},
 };
 let stripped     = false;
-let zoomLevel    = 2;       // 1=Overview  2=Standard  3=Detail
 let selected     = null;    // {type:'epoch'|'cycle'|'event', ...} — last clicked thing, for the detail panel + ring highlight
 
 // AE-2: continuous view state — the exact [viewStart, viewEnd] year window
@@ -730,6 +721,22 @@ const MONTH_ZOOM_SCALE   = 3.18;
 const MAX_ZOOM_SCALE     = 4.85;
 const MAX_PX_PER_YEAR = FLOOR_PX_PER_YEAR * Math.pow(2, MAX_ZOOM_SCALE);
 const MONTH_ABBR = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+// AE-11: event depth is authored pacing, not a viewer setting — no manual
+// Depth control. Tier 1 (Spine) is always visible; tiers 2-5 unlock as the
+// same zoom-scale metric AE-5 uses for axis ticks climbs past these
+// thresholds. Tiers 4 and 5 deliberately land on the same scale values as
+// the quarter/month axis tiers (2.72 / 3.18) — by the time there's room for
+// finer date units, there's room for finer events too.
+const TIER_REVEAL_SCALE = { 2: 0.9, 3: 1.8, 4: QUARTER_ZOOM_SCALE, 5: MONTH_ZOOM_SCALE };
+function maxVisibleTier(zoomScale){
+  let tier = 1;
+  for(let t = 2; t <= 5; t++){ if(zoomScale >= TIER_REVEAL_SCALE[t]) tier = t; }
+  return tier;
+}
+// 5-step ink ramp so depth reads visually before a label is even legible —
+// tier 1 (Spine) darkest, tier 5 (Detail) lightest.
+const TIER_DOT_SHADE = { 1:'var(--ink)', 2:'#3C3E3A', 3:'var(--ink-soft)', 4:'#72756F', 5:'var(--ink-faint)' };
 const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
 /* ============================================================
@@ -1007,12 +1014,18 @@ function drawEvents(top, h, axisY){
   const charW  = 6.0;
   const rowEndX = new Array(maxRows).fill(-1e9);
 
+  // AE-11: how much of the mountain is revealed is a function of zoom, not
+  // a viewer choice — same zoomScale metric AE-5 uses for axis ticks.
+  const pxPerYear = (W - PAD_L - PAD_R) / (viewEnd - viewStart);
+  const zoomScale = Math.log2(pxPerYear / FLOOR_PX_PER_YEAR);
+  const visibleTier = maxVisibleTier(zoomScale);
+
   // AE-2: cull events outside the current view (with a small buffer) — with
   // continuous pan/zoom this list gets rebuilt on every animation frame, so
   // not row-packing the ~150 events that aren't even on screen matters.
   const buffer = (viewEnd - viewStart) * 0.05;
   const visible = EVENTS
-    .filter(ev => !ev.span && ev.tier <= zoomLevel && ev.y >= viewStart - buffer && ev.y <= viewEnd + buffer)
+    .filter(ev => !ev.span && ev.tier <= visibleTier && ev.y >= viewStart - buffer && ev.y <= viewEnd + buffer)
     .sort((a, b) => a.y - b.y);
 
   visible.forEach(ev => {
@@ -1044,7 +1057,7 @@ function drawEvents(top, h, axisY){
         fill:'none', stroke:'var(--now)', 'stroke-width':1.5}, chart);
     }
     const dot = el('circle',{cx:x, cy:dotY, r:dotR,
-      fill: ev.tier===1 ? 'var(--ink)' : 'var(--ink-soft)',
+      fill: TIER_DOT_SHADE[ev.tier],
       class:'ev-dot'}, chart);
 
     // label — omitted when the row is overcrowded (dot + tooltip still work)
@@ -1390,15 +1403,6 @@ Object.entries(lanes).forEach(([key, l]) => {
   b.addEventListener('click', () => { l.on = !l.on; b.classList.toggle('on'); b.classList.toggle('off'); render(); });
   tg.appendChild(b);
 });
-
-const depthBtns = [1,2,3,4,5].map(n => document.getElementById('z'+n+'Btn'));
-
-function setZoom(level){
-  zoomLevel = level;
-  depthBtns.forEach((b, i) => b.classList.toggle('active', i+1 === level));
-  render();
-}
-depthBtns.forEach((b, i) => b.addEventListener('click', () => setZoom(i+1)));
 
 document.getElementById('resetViewBtn').addEventListener('click', resetView);
 document.addEventListener('keydown', e => { if(e.key === 'Escape') resetView(); });

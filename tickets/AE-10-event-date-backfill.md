@@ -52,4 +52,4 @@ AE-9 built the mechanism (schema + positioning + display). Kevin supplied a genu
 - Epic: [AE-8](AE-8-event-date-precision.md)
 - Depends on: [AE-9](completed/AE-9-event-date-mechanical-support.md)
 - Resolved [AE-6](completed/AE-6-event-density-curation.md) (the 5-level depth scheme came from this work)
-- Prompted [AE-11](AE-11-zoom-driven-progressive-reveal.md) (replacing the manual Depth control with automatic zoom-tied reveal)
+- Prompted [AE-11](completed/AE-11-zoom-driven-progressive-reveal.md) (replacing the manual Depth control with automatic zoom-tied reveal)
