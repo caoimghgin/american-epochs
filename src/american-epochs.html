@@ -361,39 +361,40 @@ const EVENTS = [
 
   // — Point events ——————————————————————————————————————————————
   // The House Divided (1854–1865) — AE-10 backfill, 5-level scheme
-  // Level 1 — narrative spine
+  // Level 1 — narrative spine (trimmed to 10, from an original 17 — see AE-10 ticket notes)
   { y:1854, month:5, day:30, tier:1, label:'Kansas-Nebraska Act', note:'Repeals the Missouri Compromise line; the Whig Party collapses within months and the Republican Party forms in response.' },
-  { y:1854, month:7, day:6, tier:1, label:'Republican Party founded', note:'Anti-Nebraska Whigs, Free Soilers, and antislavery Democrats coalesce into a new national party — proof the existing party system can no longer contain the slavery question.' },
-  { y:1856, month:5, day:22, tier:1, label:'Caning of Charles Sumner', note:'Rep. Preston Brooks beats Sen. Sumner unconscious on the Senate floor after an antislavery speech — celebrated across much of the South, condemned across the North. Violence reaches Congress itself.' },
   { y:1857, month:3, day:6, tier:1, label:'Dred Scott', note:'The Supreme Court rules Black Americans, free or enslaved, can never be citizens, and that Congress cannot bar slavery from the territories — a judicial attempt at settlement that instead deepens the crisis.' },
   { y:1859, month:10, day:16, tier:1, label:'John Brown\'s raid', note:'An armed attempt to seize the federal arsenal at Harpers Ferry and spark a slave uprising — convinces many Americans that revolutionary violence has overtaken ordinary politics.' },
   { y:1860, month:11, day:6, tier:1, label:'Lincoln elected', note:'A Republican wins the presidency without carrying a single Southern state, confirming secessionists\' fear that their influence within the Union is collapsing.' },
   { y:1860, month:12, day:20, tier:1, label:'South Carolina secedes', note:'The first state to leave the Union — decades of sectional argument become a direct constitutional rupture.' },
-  { y:1861, month:2, day:8, tier:1, label:'Confederate States formed', note:'Delegates at Montgomery organize a rival national government — two governments now make incompatible claims to legitimate authority.' },
   { y:1861, month:4, day:12, tier:1, label:'Fort Sumter', note:'The first shots of the war.' },
-  { y:1861, month:7, day:21, tier:1, label:'First Battle of Bull Run', note:'Confederate victory near Manassas destroys widespread hopes that the rebellion will be suppressed quickly.' },
-  { y:1862, month:5, day:20, tier:1, label:'Homestead Act', note:'Grants federal land to settlers who improve it, advancing a free-labor vision of westward expansion even as the war continues.' },
-  { y:1862, month:7, day:2, tier:1, label:'Morrill Land-Grant Act', note:'Federal land funds colleges for agriculture and the mechanical arts — the Union investing in a modern industrial republic mid-war.' },
   { y:1863, month:1, day:1, tier:1, label:'Emancipation Proclamation', note:'Declares enslaved people in rebelling states forever free and authorizes Black military service — the war\'s purpose is redefined.' },
   { y:1863, month:7, day:1, tier:1, label:'Gettysburg', note:'Union victory halts Lee\'s invasion of the North over three days of fighting — the war\'s decisive turning point in the East.' },
-  { y:1863, month:11, day:19, tier:1, label:'Gettysburg Address', note:'Lincoln links the Union\'s survival to the Declaration\'s proposition of equality and calls for "a new birth of freedom" — philosophically refounding the nation.' },
-  { y:1864, month:9, day:2, tier:1, label:'Sherman captures Atlanta', note:'The fall of the Confederacy\'s rail and industrial center lifts Northern morale and secures Lincoln\'s reelection prospects.' },
-  { y:1864, month:11, day:8, tier:1, label:'Lincoln reelected', note:'Voters endorse continued war and emancipation, defeating George McClellan — democratic politics survives wartime strain.' },
+  { y:1865, month:4, day:9, tier:1, label:'Appomattox', note:'Lee surrenders the Army of Northern Virginia to Grant — the war is decided by force, opening the unresolved question of Reconstruction.' },
+  { y:1865, month:4, day:14, tier:1, label:'Lincoln assassinated', note:'Shot at Ford\'s Theatre five days after Appomattox; dies the next morning — Reconstruction begins under Andrew Johnson instead of the man who\'d just won the war.' },
 
   // Level 2 — major events
+  { y:1854, month:7, day:6, tier:2, label:'Republican Party founded', note:'Anti-Nebraska Whigs, Free Soilers, and antislavery Democrats coalesce into a new national party — proof the existing party system can no longer contain the slavery question.' },
   { y:1856, month:5, day:21, tier:2, label:'Sack of Lawrence', note:'A pro-slavery posse destroys the antislavery Kansas town\'s newspaper offices and buildings — popular sovereignty collapsing into partisan violence.' },
+  { y:1856, month:5, day:22, tier:2, label:'Caning of Charles Sumner', note:'Rep. Preston Brooks beats Sen. Sumner unconscious on the Senate floor after an antislavery speech — celebrated across much of the South, condemned across the North. Violence reaches Congress itself.' },
   { y:1856, month:5, day:24, tier:2, label:'Pottawatomie Massacre', note:'John Brown\'s party kills five pro-slavery settlers in retaliation over two nights — the cycle of sectional violence deepens.' },
   { y:1858, month:6, day:16, tier:2, label:'"House Divided" speech', note:'Accepting the Illinois Republican Senate nomination, Lincoln argues the nation cannot endure permanently half slave and half free — giving the epoch its name.' },
   { y:1859, month:12, day:2, tier:2, label:'John Brown executed', note:'Virginia hangs Brown for the Harpers Ferry raid; his conduct at trial turns him into a martyr in the North and a symbol of existential danger in the South.' },
+  { y:1861, month:2, day:8, tier:2, label:'Confederate States formed', note:'Delegates at Montgomery organize a rival national government — two governments now make incompatible claims to legitimate authority.' },
   { y:1861, month:3, day:4, tier:2, label:'Lincoln\'s First Inaugural', note:'The new president denies secession\'s legality while promising not to touch slavery where it already exists.' },
   { y:1861, month:4, day:15, tier:2, label:'Lincoln calls for volunteers', note:'The call for 75,000 troops after Fort Sumter forces the remaining slave states to choose a side.' },
+  { y:1861, month:7, day:21, tier:2, label:'First Battle of Bull Run', note:'Confederate victory near Manassas destroys widespread hopes that the rebellion will be suppressed quickly.' },
   { y:1861, month:8, day:6, tier:2, label:'First Confiscation Act', note:'Congress ends the federal obligation to return enslaved people used to support the rebellion — war policy begins drifting toward emancipation.' },
   { y:1862, month:9, day:17, tier:2, label:'Battle of Antietam', note:'The bloodiest single day in American military history halts Lee\'s Maryland invasion, giving Lincoln his opening to announce emancipation.' },
   { y:1862, month:9, day:22, tier:2, label:'Preliminary Emancipation Proclamation', note:'Issued after Antietam, it warns that slaves in rebelling states will be declared free unless the Confederacy returns to the Union by January 1.' },
   { y:1863, month:7, day:13, tier:2, label:'NYC Draft Riots', note:'Four days of working-class resistance to conscription erupt into racial and class violence, exposing the limits of Northern unity.' },
-  { y:1865, month:4, day:9, tier:2, label:'Appomattox', note:'Lee surrenders the Army of Northern Virginia to Grant — the war is decided by force, opening the unresolved question of Reconstruction.' },
+  { y:1863, month:11, day:19, tier:2, label:'Gettysburg Address', note:'Lincoln links the Union\'s survival to the Declaration\'s proposition of equality and calls for "a new birth of freedom" — philosophically refounding the nation.' },
+  { y:1864, month:9, day:2, tier:2, label:'Sherman captures Atlanta', note:'The fall of the Confederacy\'s rail and industrial center lifts Northern morale and secures Lincoln\'s reelection prospects.' },
+  { y:1864, month:11, day:8, tier:2, label:'Lincoln reelected', note:'Voters endorse continued war and emancipation, defeating George McClellan — democratic politics survives wartime strain.' },
 
   // Level 3 — mechanisms and consequences
+  { y:1862, month:5, day:20, tier:3, label:'Homestead Act', note:'Grants federal land to settlers who improve it, advancing a free-labor vision of westward expansion even as the war continues.' },
+  { y:1862, month:7, day:2, tier:3, label:'Morrill Land-Grant Act', note:'Federal land funds colleges for agriculture and the mechanical arts — the Union investing in a modern industrial republic mid-war.' },
   { y:1854, month:7, day:24, tier:3, label:'Emigrant Aid Company organized', note:'Antislavery organizers sponsor free-state migration to Kansas — settlement itself becomes a political weapon.' },
   { y:1855, month:7, day:2, tier:3, label:'Pro-slavery Kansas legislature convenes', note:'Elected amid fraud, it enacts a severe slave code; free-state settlers reject its legitimacy and build rival institutions.' },
   { y:1855, month:12, day:15, tier:3, label:'Topeka Constitution adopted', note:'Free-state settlers approve a rival constitution seeking admission as a free state — Kansas develops competing constitutional orders before the nation does.' },
