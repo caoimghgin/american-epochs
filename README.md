@@ -6,7 +6,7 @@ An interactive instrument for navigating American history through a legitimacy-c
 
 | Epoch | Years | Theme |
 |---|---|---|
-| The House Divided | 1854–1865 | The party system fails to contain slavery; the constitutional order goes to war with itself |
+| A House Divided | 1854–1865 | The party system fails to contain slavery; the constitutional order goes to war with itself |
 | Reconstruction | 1865–1877 | Multiracial democracy attempted, backed by federal troops, abandoned within a generation |
 | The Gilded Age | 1877–1897 | Industrial capitalism unchecked for two decades, calling it prosperity |
 | The Big Stick | 1898–1912 | Imperial and regulatory confidence compounding — until the coalition splits at its own peak |
@@ -23,7 +23,7 @@ An interactive instrument for navigating American history through a legitimacy-c
 
 ## Framework
 
-**The House Divided** stands alone, before any cycle: not a crisis phase of an existing order, but the 1787 constitutional order — the one built around slavery — ending outright at Appomattox.
+**A House Divided** stands alone, before any cycle: not a crisis phase of an existing order, but the 1787 constitutional order — the one built around slavery — ending outright at Appomattox.
 
 Everything after traces three legitimacy cycles, each following a **Rise → Apex → Crisis** arc (two of them opening with a **Genesis** phase — a founding period whose survival was itself contested, before Rise gets to build on secure ground):
 

@@ -44,7 +44,7 @@ Two decisions settled during design discussion, worth recording so they don't ge
 
 - [x] Zooming/panning is continuous across the full 1854–present range, not confined to jumping between the three current states
 - [x] Axis relabels itself appropriately at every scale, not just two fixed resolutions (AE-5 added quarter and month tiers on top of AE-2's original two)
-- [x] Label suppression handles crowding at every layer — **resolved differently than originally envisioned**: a flat per-item "does it fit" check turned out to be sufficient once zoom is genuinely continuous (you zoom in to resolve density, same as every other layer), rather than the priority-ordered scheme this criterion originally called for. Verified against House Divided's real 101-event corpus (AE-6/AE-10), the densest real stretch in the dataset — labels decline gracefully, nothing goes illegible, no priority system needed.
+- [x] Label suppression handles crowding at every layer — **resolved differently than originally envisioned**: a flat per-item "does it fit" check turned out to be sufficient once zoom is genuinely continuous (you zoom in to resolve density, same as every other layer), rather than the priority-ordered scheme this criterion originally called for. Verified against A House Divided's real 101-event corpus (AE-6/AE-10), the densest real stretch in the dataset — labels decline gracefully, nothing goes illegible, no priority system needed.
 - [x] Existing features survive the rebuild unchanged in behavior: register system (factual/structural/argued), detail panel on click, statistical overlay toggles, cycle/epoch selection highlighting
 
 ## Non-Goals

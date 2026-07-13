@@ -13,7 +13,7 @@ components: [src/american-epochs.html]
 
 ## Summary
 
-Extend the epoch/cycle data back from 1854 (The House Divided's current start) to 1775 (Lexington and Concord — "the first shots" of the Revolutionary War) — roughly 6–8 more epochs, comparable in scope to the 1854–1941 epoch-expansion pass that produced The House Divided through A New Deal.
+Extend the epoch/cycle data back from 1854 (A House Divided's current start) to 1775 (Lexington and Concord — "the first shots" of the Revolutionary War) — roughly 6–8 more epochs, comparable in scope to the 1854–1941 epoch-expansion pass that produced A House Divided through A New Deal.
 
 ## Motivation
 
@@ -21,7 +21,7 @@ Raised directly in conversation: pushing the framework back to the start of the 
 
 ## Current State
 
-- `EPOCHS` currently starts at The House Divided (1854), `cycle:null`, `phase:'Rupture'` — the same "rupture between two orders" treatment this new work would need to apply again, further back, at 1775.
+- `EPOCHS` currently starts at A House Divided (1854), `cycle:null`, `phase:'Rupture'` — the same "rupture between two orders" treatment this new work would need to apply again, further back, at 1775.
 - No epoch/cycle data exists before 1854. `PRESIDENTS` starts at Pierce (1853); `RECESSIONS` uses NBER data from December 1854 (NBER's own earliest dated contraction).
 - `FLOOR_PX_PER_YEAR` (AE-4) was chosen against the narrowest *currently existing* epoch's label ("The New Freedom," 6 years) — not verified against whatever the narrowest epoch in this new span turns out to be.
 - A rough sketch was discussed at length but never finalized or written into the codebase — see Proposed Approach.
@@ -30,12 +30,12 @@ Raised directly in conversation: pushing the framework back to the start of the 
 
 Rough sketch only, not a spec — needs its own research/naming pass with the same depth as the 1854–1941 work before anything lands in `EPOCHS`:
 
-- **The Revolution (1775–1783)** — a second standalone Rupture, same treatment as The House Divided: belongs to no cycle, since it's the founding rupture the whole framework's constitutional order depends on, not a crisis phase of an existing one.
+- **The Revolution (1775–1783)** — a second standalone Rupture, same treatment as A House Divided: belongs to no cycle, since it's the founding rupture the whole framework's constitutional order depends on, not a crisis phase of an existing one.
 - Everything after likely forms at least one more full cycle:
   - *Genesis*: The Confederation (1783–1789) — the Articles of Confederation failing, Shays' Rebellion, the Constitutional Convention
   - *Rise*: The Federalist Republic (1789–1801ish) — Washington/Adams, the First Party System forming in real time
   - *Apex*: the Jeffersonian era (1801–1815ish) — Louisiana Purchase, the War of 1812 ("Ascendancy" is already taken by 1941–52, needs a different name)
-  - *Crisis*, possibly double (matching the existing Crisis-pair pattern used twice already): Era of Good Feelings (1815–1828ish, deceptive one-party unity cracking on the Missouri Compromise) → Jacksonian Democracy / Manifest Destiny (1828–1854ish), feeding directly into The House Divided's 1854 start
+  - *Crisis*, possibly double (matching the existing Crisis-pair pattern used twice already): Era of Good Feelings (1815–1828ish, deceptive one-party unity cracking on the Missouri Compromise) → Jacksonian Democracy / Manifest Destiny (1828–1854ish), feeding directly into A House Divided's 1854 start
 - **Open methodological question, flagged but not resolved during the original discussion**: this span crosses three genuinely different party systems (First Party System, a one-party interregnum, Second Party System), each with different structural logic — property-qualified electorates vs. mass suffrage, no organized national parties before the 1790s, etc. The Rise→Apex→Crisis framework may need to flex, or split differently, in ways it hasn't had to anywhere else in the timeline so far. This is the real risk in the ticket, not the history itself.
 
 ## Acceptance Criteria

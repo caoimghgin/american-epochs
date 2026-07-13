@@ -10,7 +10,7 @@ The project is a single HTML file (`src/american-epochs.html`) with zero externa
 
 **One standalone rupture, preceding any cycle:**
 
-- **The House Divided (1854–1865)** — phase `Rupture`, `cycle: null`. The party system fails to contain slavery and the constitutional order built around it goes to war with itself. This doesn't belong to a cycle: it's not a crisis phase of an existing order, it's the 1787 constitutional order ending outright. Nothing before it is modeled — pre–Civil War America runs on different structural logic (no standing federal bureaucracy, no income tax, slavery as the central organizing question) than the industrial-and-after nation-state the rest of the framework assumes.
+- **A House Divided (1854–1865)** — phase `Rupture`, `cycle: null`. The party system fails to contain slavery and the constitutional order built around it goes to war with itself. This doesn't belong to a cycle: it's not a crisis phase of an existing order, it's the 1787 constitutional order ending outright. Nothing before it is modeled — pre–Civil War America runs on different structural logic (no standing federal bureaucracy, no income tax, slavery as the central organizing question) than the industrial-and-after nation-state the rest of the framework assumes.
 
 **Three legitimacy cycles:**
 
@@ -55,7 +55,7 @@ The visualization uses an archival paper aesthetic — deliberate, not decorativ
 
 **Epoch hues** (equal visual weight, non-valenced — no epoch should read as "good" or "bad" through color). Token numbers are assignment order, not chronological order — the original seven (`e1`–`e7`) kept their numbers when the seven earlier epochs were appended as `e8`–`e14`, to avoid a gratuitous renumbering diff:
 ```css
---e1: #6B8E9E   /* Ascendancy */          --e8:  #6B7280  /* The House Divided */
+--e1: #6B8E9E   /* Ascendancy */          --e8:  #6B7280  /* A House Divided */
 --e2: #7FA07A   /* Affluent Society */    --e9:  #C2A66B  /* Reconstruction */
 --e3: #B89B6E   /* Unravelling */         --e10: #B08D57  /* The Gilded Age */
 --e4: #9E8AA8   /* Morning in America */  --e11: #5D7A94  /* The Big Stick */
@@ -106,7 +106,7 @@ american-epochs/
 - No build step. Open the HTML file directly.
 - All styles are in a `<style>` block in `<head>`. All JS is in a `<script>` block before `</body>`.
 - The SVG chart is generated programmatically from data arrays in JS:
-  - `EPOCHS` — one entry per epoch (`id`, `name`, `start`, `end`, `color`, `cycle`, `phase`, `oneliner`, `rationale[]`). `cycle` is `null` for The House Divided; `phase` is one of `Rise`/`Apex`/`Crisis` plus `Genesis` and `Rupture`. The array must stay in chronological order — `drawEpochs()` uses adjacent-index comparison to render the seam gradient between neighboring epochs.
+  - `EPOCHS` — one entry per epoch (`id`, `name`, `start`, `end`, `color`, `cycle`, `phase`, `oneliner`, `rationale[]`). `cycle` is `null` for A House Divided; `phase` is one of `Rise`/`Apex`/`Crisis` plus `Genesis` and `Rupture`. The array must stay in chronological order — `drawEpochs()` uses adjacent-index comparison to render the seam gradient between neighboring epochs.
   - `CYCLES` — `{ id, name }` only; each cycle's date span is derived on the fly from whichever `EPOCHS` entries reference that `cycle` id, not stored redundantly.
   - `EVENTS`, `PRESIDENTS`, `RECESSIONS`, `CRIME`, `RFT` — unchanged in shape from before; `PRESIDENTS` now starts at Pierce (1853), `RECESSIONS` uses NBER's dated contractions back to December 1854.
   - `YEAR_MIN`/`YEAR_MAX` bound the whole axis (currently 1852–2027) — the small lead-in before `YEAR_MIN` matches the first epoch's `lead` field, same convention used for Ascendancy's own 1939 lead before its 1941 start.
