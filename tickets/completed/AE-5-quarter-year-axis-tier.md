@@ -56,5 +56,5 @@ Sketched directly during design discussion: "there should be at least one more l
 
 ## Related
 
-- Epic: [AE-1](../AE-1-continuous-zoom-rebuild.md)
+- Epic: [AE-1](AE-1-continuous-zoom-rebuild.md)
 - Depends on: AE-2 (and practically, AE-3, to reach this zoom depth by hand)

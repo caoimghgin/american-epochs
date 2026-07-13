@@ -2,7 +2,7 @@
 id: AE-1
 title: Continuous zoom rebuild — flexible-scale timeline navigation
 type: Epic
-status: In Progress
+status: Done
 priority: Low
 reporter: Kevin Muldoon
 assignee: Unassigned
@@ -32,20 +32,20 @@ The concept worth adopting is continuous/semantic zoom. The literal tile-fetchin
 
 Broken into five stories after a design discussion sketching the target zoom states (full-history overview, an arbitrary mid-zoom window, and a planned deepest tier). See each story for detail:
 
-1. [AE-2](completed/AE-2-continuous-view-state-core.md) — continuous view-state core (foundational; everything below depends on it) — **Done**
-2. [AE-3](completed/AE-3-wheel-zoom-drag-pan.md) — wheel-zoom + drag-pan input, click-to-snap kept as a convenience — **Done**
-3. [AE-4](completed/AE-4-density-floor-side-scroll.md) — density floor + side-scroll for the full-history view — **Done**
-4. [AE-5](completed/AE-5-quarter-year-axis-tier.md) — sub-year axis tiers (quarters, months) + max-zoom cap — **Done**
-5. [AE-6](AE-6-event-density-curation.md) — event density vs. zoom depth (explicitly deferred, tracked separately)
+1. [AE-2](AE-2-continuous-view-state-core.md) — continuous view-state core (foundational; everything below depends on it) — **Done**
+2. [AE-3](AE-3-wheel-zoom-drag-pan.md) — wheel-zoom + drag-pan input, click-to-snap kept as a convenience — **Done**
+3. [AE-4](AE-4-density-floor-side-scroll.md) — density floor + side-scroll for the full-history view — **Done**
+4. [AE-5](AE-5-quarter-year-axis-tier.md) — sub-year axis tiers (quarters, months) + max-zoom cap — **Done**
+5. [AE-6](AE-6-event-density-curation.md) — event density vs. zoom depth — **Done** (resolved via AE-10's 5-level scheme)
 
 Two decisions settled during design discussion, worth recording so they don't get re-litigated mid-implementation: event labels stay vertical-only (row-scootch), not a 2D/angled-leader-line solver — simpler, and sufficient; and cycle/epoch click-to-zoom is kept as an animated convenience layered on top of free pan/zoom, not replaced by it.
 
 ## Acceptance Criteria
 
-- [ ] Zooming/panning is continuous across the full 1854–present range, not confined to jumping between the three current states
-- [ ] Axis relabels itself appropriately at every scale, not just two fixed resolutions
-- [ ] Label suppression is priority-ordered (structural pivots and wider epochs outlast minor events and narrow epochs under crowding), not a flat per-item fits/doesn't-fit check
-- [ ] Existing features survive the rebuild unchanged in behavior: register system (factual/structural/argued), detail panel on click, statistical overlay toggles, cycle/epoch selection highlighting
+- [x] Zooming/panning is continuous across the full 1854–present range, not confined to jumping between the three current states
+- [x] Axis relabels itself appropriately at every scale, not just two fixed resolutions (AE-5 added quarter and month tiers on top of AE-2's original two)
+- [x] Label suppression handles crowding at every layer — **resolved differently than originally envisioned**: a flat per-item "does it fit" check turned out to be sufficient once zoom is genuinely continuous (you zoom in to resolve density, same as every other layer), rather than the priority-ordered scheme this criterion originally called for. Verified against House Divided's real 101-event corpus (AE-6/AE-10), the densest real stretch in the dataset — labels decline gracefully, nothing goes illegible, no priority system needed.
+- [x] Existing features survive the rebuild unchanged in behavior: register system (factual/structural/argued), detail panel on click, statistical overlay toggles, cycle/epoch selection highlighting
 
 ## Non-Goals
 
@@ -57,5 +57,6 @@ Two decisions settled during design discussion, worth recording so they don't ge
 - Discrete cycle-zoom tier + label-suppression fixes: commits `349cd46` (v3 epoch zoom), `4f099f8` (v4 data expansion + cycle zoom + label suppression), `aaed21d` (cycle-rail label suppression)
 - Child stories: AE-2, AE-3, AE-4, AE-5, AE-6
 - Tag `pre-continuous-zoom-rebuild` marks the last commit before this epic's work began — revert here if the rebuild goes sideways
+- [AE-10](../AE-10-event-date-backfill.md) supplied the 5-level scheme that resolved AE-6
 - [ChronoZoom — Microsoft Research](https://www.microsoft.com/en-us/research/project/chronozoom/)
 - [GitHub - ChronoZoom (open source)](https://github.com/alterm4nn/ChronoZoom)

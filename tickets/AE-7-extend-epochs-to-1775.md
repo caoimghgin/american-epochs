@@ -49,5 +49,5 @@ Not yet defined — this is an Epic to break into stories once picked up, the sa
 
 ## Related
 
-- Referenced as pending in [AE-1](AE-1-continuous-zoom-rebuild.md) and [AE-4](completed/AE-4-density-floor-side-scroll.md)'s Non-Goals sections
+- Referenced as pending in [AE-1](completed/AE-1-continuous-zoom-rebuild.md) and [AE-4](completed/AE-4-density-floor-side-scroll.md)'s Non-Goals sections
 - Precedent for scope/depth of work required: the 1854–1941 epoch-expansion pass, commit `4f099f8`

@@ -39,13 +39,13 @@ Body sections, in order:
 
 | ID | Title | Type | Status | Priority |
 |---|---|---|---|---|
-| [AE-1](AE-1-continuous-zoom-rebuild.md) | Continuous zoom rebuild — flexible-scale timeline navigation | Epic | In Progress | Low |
+| [AE-1](completed/AE-1-continuous-zoom-rebuild.md) | Continuous zoom rebuild — flexible-scale timeline navigation | Epic | Done | Low |
 | [AE-2](completed/AE-2-continuous-view-state-core.md) | Continuous view-state core | Story | Done | High |
 | [AE-3](completed/AE-3-wheel-zoom-drag-pan.md) | Wheel-zoom + drag-pan input | Story | Done | High |
 | [AE-4](completed/AE-4-density-floor-side-scroll.md) | Density floor + side-scroll for full-history view | Story | Done | Medium |
 | [AE-5](completed/AE-5-quarter-year-axis-tier.md) | Sub-year axis tiers (quarters + months) and a hard max-zoom cap | Story | Done | Low |
-| [AE-6](AE-6-event-density-curation.md) | Event density vs. zoom depth (curation) | Story | Backlog | Low |
+| [AE-6](completed/AE-6-event-density-curation.md) | Event density vs. zoom depth (curation) | Story | Done | Low |
 | [AE-7](AE-7-extend-epochs-to-1775.md) | Extend epochs back to 1775 (the Revolution through Manifest Destiny) | Epic | Backlog | Low |
 | [AE-8](AE-8-event-date-precision.md) | Event dates support year-month-day precision | Epic | In Progress | Medium |
 | [AE-9](completed/AE-9-event-date-mechanical-support.md) | Event date precision — mechanical support | Story | Done | Medium |
-| [AE-10](AE-10-event-date-backfill.md) | Backfill month/day precision across existing events | Story | Backlog | Low |
+| [AE-10](AE-10-event-date-backfill.md) | Epoch-by-epoch event corpus adoption (date precision + 5-level depth) | Story | In Progress | Low |

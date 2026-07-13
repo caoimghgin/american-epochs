@@ -1,11 +1,11 @@
 ---
 id: AE-10
-title: Backfill month/day precision across existing events
+title: Epoch-by-epoch event corpus adoption (date precision + 5-level depth)
 type: Story
-status: Backlog
+status: In Progress
 priority: Low
 reporter: Kevin Muldoon
-assignee: Unassigned
+assignee: Claude
 created: 2026-07-12
 labels: [content, research]
 components: [src/american-epochs.html]
@@ -14,38 +14,39 @@ epic: AE-8
 
 ## Summary
 
-Go through the ~150 existing `EVENTS` entries and add `month`/`day` (or `endMonth`/`endDay` for spans) wherever it's genuinely known, using the schema and rendering support [AE-9](completed/AE-9-event-date-mechanical-support.md) already shipped. Three obvious dates (Fort Sumter, Lend-Lease, Pearl Harbor, and the World War II span) are already done as AE-9's demonstration — this is the rest.
+Grew beyond its original scope (just backfilling month/day onto existing events) into something bigger: replacing each epoch's placeholder-level event list with a professionally-researched, multi-level corpus — full date precision plus AE-6's 5-level depth scheme (Spine/Major/Mechanism/Context/Detail) — one epoch at a time. **The House Divided is done**; the other 13 epochs still have their original, much thinner tier 1-3 event sets.
 
 ## Motivation
 
-AE-9 built the mechanism; this is the actual content work that makes it pay off everywhere, not just on three cherry-picked events.
+AE-9 built the mechanism (schema + positioning + display). Kevin supplied a genuinely rich, well-sourced 101-event YAML corpus for The House Divided, organized into exactly the 5-level depth hierarchy AE-6 had been waiting to resolve — turning "backfill some dates" into "adopt real per-epoch research at real depth."
 
 ## Current State
 
-- ~147 of ~150 `EVENTS` entries are still year-only.
-- A meaningful fraction already state their actual month (sometimes day) directly in their own `note` prose — e.g. "Volcker's appointment (August 1979)," "Carmichael's 'Black Power' (June)" — so a real chunk of this is extracting a date that's already been researched and written down, not fresh research.
-- The rest will need actual lookup — this is where the real time goes.
+- **The House Divided (1854–1865): done.** 101 YAML events reviewed, 100 kept (one dropped as a near-duplicate of the Kansas-Nebraska Act entry), reconciled against the ~10 events already there. 83 became point events across all 5 tiers; 17 genuinely long-running phenomena (2+ weeks) became new `span:true` Duration-strip entries — short 1–7 day battles/conventions/trials stayed as point events rather than cluttering the Duration strip with near-instantaneous "spans." One factual correction caught and fixed before merge: the 14th Amendment's ratification date (a Reconstruction-epoch entry, wrong by one month).
+- Every other epoch's events are still in their original, much sparser tier 1–3 state from the original 1854–1941 and 1941–present expansion passes.
+- A `reconstruction_events.yaml` draft already exists (19 events, older 0/2-level schema, not yet the richer 5-level format) — the natural next candidate.
 
 ## Proposed Approach
 
-- Not a single mechanical pass — go epoch by epoch (or tier by tier, starting with tier-1 structural pivots, since those matter most at deep zoom) rather than all 150 at once.
-- Where the month/day is already in the `note` text, extract it directly.
-- Where it isn't, look it up — but hold the same honesty bar the rest of the project already keeps (register system, the crime-lane coverage note, etc.): if a genuinely precise day isn't establishable or isn't really the point (e.g., a slow-moving trend rather than a discrete event), leave it at year-only rather than inventing a plausible-sounding date.
-- Span events' *end* dates are often fuzzier than their starts (wars and crises rarely have as clean an end date as a start date) — expect more of these to stay year-only or month-only on the end side even once the start is precise.
+- One epoch at a time, not a single mechanical pass across everything.
+- Each epoch needs its own well-researched corpus (like House Divided's) rather than a generic backfill — this is real historical curation work per epoch, not just date-lookup.
+- Before merging any future epoch's data: verify factual claims that can be checked (dates especially), reconcile against whatever's already in `EVENTS` for that epoch, and make an editorial call on span vs. point treatment for multi-day events.
+- Hold the same honesty bar as the rest of the project (register system, crime-lane coverage notes): no fabricated precision where the actual date isn't genuinely known.
 
 ## Acceptance Criteria
 
-- [ ] Tier-1 structural-pivot events have month precision wherever it's genuinely documented
-- [ ] Span events have start precision at least as often as tier-1 point events; end precision where it's real, left year-only where the actual end is genuinely fuzzy
-- [ ] No fabricated days — every added `day` traces to an actual documented date, not an estimate
-- [ ] Spot-checked at deep zoom: a densely-dated month (e.g. late 1979, several events close together) reads as legibly separated rather than still overlapping
+- [x] The House Divided has full 5-level depth and date precision, verified via Playwright at real density (18/31/86 events across Spine/Major/Detail)
+- [ ] Reconstruction (1865–1877) gets the same treatment, starting from the existing draft YAML
+- [ ] Remaining 12 epochs get the same treatment over time — no deadline, no required order
 
 ## Non-Goals
 
-- Doesn't require reaching 100% coverage — partial, honest backfill (some events precise, some still year-only) is the expected end state, not a bug to fix later
+- Doesn't require reaching every epoch before this ticket can be considered valuable — each epoch's pass is independently useful, this is explicitly incremental
 - Doesn't touch epoch start/end boundaries (still deliberately whole-year, per AE-8's Non-Goals)
+- Doesn't fabricate precision — an epoch can stay partially year-only if that's honestly where the research lands
 
 ## Related
 
 - Epic: [AE-8](AE-8-event-date-precision.md)
 - Depends on: [AE-9](completed/AE-9-event-date-mechanical-support.md)
+- Resolved [AE-6](completed/AE-6-event-density-curation.md) (the 5-level depth scheme came from this work)

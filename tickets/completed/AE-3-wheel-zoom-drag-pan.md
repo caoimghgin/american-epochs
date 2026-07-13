@@ -58,5 +58,5 @@ After AE-2 lands: a continuous `viewStart`/`viewEnd` exists and can be set progr
 
 ## Related
 
-- Epic: [AE-1](../AE-1-continuous-zoom-rebuild.md)
+- Epic: [AE-1](AE-1-continuous-zoom-rebuild.md)
 - Depends on: AE-2

@@ -128,9 +128,11 @@
   </div>
   <div class="ctl-group">
     <span class="ctl-label">Depth</span>
-    <button class="mode-btn" id="z1Btn" title="Structural pivots only">Overview</button>
-    <button class="mode-btn active" id="z2Btn" title="Major events (default)">Standard</button>
-    <button class="mode-btn" id="z3Btn" title="All events including granular detail">Detail</button>
+    <button class="mode-btn" id="z1Btn" title="Visible at the widest view and persistent at every zoom level — the epoch's narrative spine">Spine</button>
+    <button class="mode-btn active" id="z2Btn" title="Major events revealed at the first closer zoom (default)">Major</button>
+    <button class="mode-btn" id="z3Btn" title="Supporting events that explain mechanisms, shifts, and consequences">Mechanism</button>
+    <button class="mode-btn" id="z4Btn" title="Contextual events that add political, military, social, and institutional texture">Context</button>
+    <button class="mode-btn" id="z5Btn" title="Fine-grained events for the closest inspection">Detail</button>
   </div>
   <div class="ctl-group">
     <button class="mode-btn" id="resetViewBtn" title="Reset to the default view (Escape)">↺ Reset</button>
@@ -309,14 +311,46 @@ const CYCLES = [
 ];
 
 /*
-  tier 1 — structural pivots (Overview): always visible, epoch-defining moments
-  tier 2 — major events (Standard): important second-order events
-  tier 3 — granular detail (Detail): reserved for future additions
-  span:true events live in the duration strip, not the dot cloud
+  Five-level depth scheme (adopted from the House Divided event corpus,
+  AE-10 — this is the resolution of AE-6's "which events show at which
+  zoom depth" design question, not a separate mechanism):
+    tier 1 — Spine: visible at the widest view, persistent at every zoom —
+             the epoch's narrative spine
+    tier 2 — Major: major events revealed at the first closer zoom (default)
+    tier 3 — Mechanism: supporting events explaining mechanisms, shifts,
+             consequences
+    tier 4 — Context: political/military/social/institutional texture
+    tier 5 — Detail: fine-grained events for the closest inspection
+  Only House Divided (1854-1865) is populated at this density so far —
+  every other epoch's events still just use tier 1-3, which is why they
+  don't visibly change behavior under the new 5-button Depth control.
+  span:true events live in the duration strip, not the dot cloud, and
+  aren't tier-filtered at all (always visible regardless of Depth).
 */
 const EVENTS = [
   // — Span events (duration strip) ——————————————————————————————
+  // AE-10: only genuinely long-running (2+ week) House Divided phenomena
+  // get span treatment here — shorter multi-day battles/conventions/trials
+  // render as point events below instead, so the Duration strip stays
+  // readable rather than filling with dozens of near-instantaneous "spans."
+  { y:1855, month:3, day:30, end:1858, endMonth:12, endDay:31, label:'Bleeding Kansas', span:true, note:'Electoral fraud, rival territorial governments, and settler violence turn "popular sovereignty" into years of guerrilla conflict — democratic procedure visibly failing.' },
+  { y:1857, month:8, day:24, end:1859, endMonth:12, endDay:31, label:'Panic of 1857', span:true, note:'A financial panic strikes the industrial North harder than the cotton South, reinforcing opposing regional claims about whose economic order is superior.' },
+  { y:1857, month:11, day:7, end:1858, endMonth:8, endDay:2, label:'Lecompton Constitution crisis', span:true, note:'A pro-slavery Kansas constitution divides Democrats and is ultimately rejected by voters — the crisis fractures the party and discredits compromise.' },
+  { y:1858, month:8, day:21, end:1858, endMonth:10, endDay:15, label:'Lincoln-Douglas debates', span:true, note:'Seven Illinois debates elevate slavery\'s expansion into a national argument over equality, popular sovereignty, and the Union\'s future.' },
+  { y:1860, month:4, day:23, end:1860, endMonth:6, endDay:23, label:'Democratic Party splits', span:true, note:'Failed conventions at Charleston and Baltimore fracture the last major party still competing across sections.' },
+  { y:1860, month:5, day:18, end:1860, endMonth:11, endDay:6, label:'Four-way 1860 campaign', span:true, note:'Lincoln, Douglas, Breckinridge, and Bell represent incompatible coalitions — no shared national political center remains.' },
+  { y:1860, month:12, day:18, end:1861, endMonth:1, endDay:16, label:'Crittenden Compromise fails', span:true, note:'A final attempt to protect slavery constitutionally cannot win Republican agreement — the old method of sectional compromise reaches its end.' },
+  { y:1860, month:12, day:20, end:1861, endMonth:2, endDay:1, label:'Lower South secedes', span:true, note:'Mississippi, Florida, Alabama, Georgia, Louisiana, and Texas follow South Carolina out of the Union before Lincoln even takes office.' },
   { y:1861, end:1865, label:'Civil War',     span:true, note:'The war that ends the constitutional order built around slavery.' },
+  { y:1861, month:4, day:17, end:1861, endMonth:6, endDay:8, label:'Upper South secedes', span:true, note:'Virginia, Arkansas, North Carolina, and Tennessee join the Confederacy, adding population, industry, and strategic depth.' },
+  { y:1861, month:11, day:8, end:1862, endMonth:1, endDay:1, label:'Trent Affair', span:true, note:'The seizure of Confederate envoys from a British ship brings the Union to the brink of war with Britain — the war\'s outcome depends partly on international legitimacy.' },
+  { y:1862, month:1, day:1, end:1863, endMonth:12, endDay:31, label:'Confederate cotton diplomacy fails', span:true, note:'European stockpiles, alternative suppliers, and antislavery politics mean Britain and France never intervene on the Confederacy\'s behalf.' },
+  { y:1863, month:3, day:29, end:1863, endMonth:7, endDay:4, label:'Vicksburg campaign', span:true, note:'Grant\'s campaign culminates in Vicksburg\'s surrender, giving the Union the Mississippi and splitting the Confederacy in two.' },
+  { y:1864, month:5, day:5, end:1864, endMonth:6, endDay:24, label:'Overland Campaign', span:true, note:'Grant\'s relentless operations from the Wilderness through Cold Harbor produce staggering losses but keep constant pressure on Lee.' },
+  { y:1864, month:5, day:7, end:1864, endMonth:9, endDay:2, label:'Atlanta campaign', span:true, note:'Sherman\'s sustained campaign through Georgia forces Confederate retreat and reshapes the 1864 election.' },
+  { y:1864, month:8, day:7, end:1864, endMonth:10, endDay:19, label:'Sheridan\'s Shenandoah Valley campaign', span:true, note:'Union forces defeat Confederate armies and strip the valley of resources, removing a major source of Confederate supply.' },
+  { y:1864, month:11, day:15, end:1864, endMonth:12, endDay:21, label:'Sherman\'s March to the Sea', span:true, note:'Union forces cut through Georgia destroying railroads and supplies — total war aimed at the Confederacy\'s capacity to resist.' },
+  { y:1865, month:1, day:31, end:1865, endMonth:12, endDay:6, label:'Thirteenth Amendment', span:true, note:'Passed by Congress in January, ratified in December — slavery is permanently abolished except as punishment for crime.' },
   { y:1914, end:1918, label:'World War I',   span:true, note:'The U.S. enters in 1917; the war that breaks Wilsonian idealism as much as it vindicates it.' },
   { y:1929, end:1933, label:'Great Depression', span:true, note:'NBER dates the contraction August 1929 to March 1933 — the longest on record.' },
   { y:1941, month:12, day:7, end:1945, endMonth:9, endDay:2, label:'World War II', span:true, note:'The crucible in which American hegemony was forged.' },
@@ -326,16 +360,100 @@ const EVENTS = [
   { y:2020, end:2021, label:'COVID-19',      span:true, note:'State capacity tested and found wanting; the pandemic exposed a government hollowed out by decades of defunding.' },
 
   // — Point events ——————————————————————————————————————————————
-  // The House Divided (1854–1865)
-  { y:1854, tier:1, label:'Kansas-Nebraska Act', note:'Repeals the Missouri Compromise line; the Whig Party collapses within months and the Republican Party forms in response.' },
-  { y:1857, tier:1, label:'Dred Scott',          note:'The Supreme Court rules Black Americans, free or enslaved, can never be citizens.' },
-  { y:1858, tier:2, label:'Lincoln-Douglas debates' },
-  { y:1859, tier:2, label:'Harpers Ferry raid',  note:'John Brown\'s raid on the federal armory — an armed attempt to spark a slave uprising.' },
-  { y:1860, tier:1, label:'Lincoln elected' },
+  // The House Divided (1854–1865) — AE-10 backfill, 5-level scheme
+  // Level 1 — narrative spine
+  { y:1854, month:5, day:30, tier:1, label:'Kansas-Nebraska Act', note:'Repeals the Missouri Compromise line; the Whig Party collapses within months and the Republican Party forms in response.' },
+  { y:1854, month:7, day:6, tier:1, label:'Republican Party founded', note:'Anti-Nebraska Whigs, Free Soilers, and antislavery Democrats coalesce into a new national party — proof the existing party system can no longer contain the slavery question.' },
+  { y:1856, month:5, day:22, tier:1, label:'Caning of Charles Sumner', note:'Rep. Preston Brooks beats Sen. Sumner unconscious on the Senate floor after an antislavery speech — celebrated across much of the South, condemned across the North. Violence reaches Congress itself.' },
+  { y:1857, month:3, day:6, tier:1, label:'Dred Scott', note:'The Supreme Court rules Black Americans, free or enslaved, can never be citizens, and that Congress cannot bar slavery from the territories — a judicial attempt at settlement that instead deepens the crisis.' },
+  { y:1859, month:10, day:16, tier:1, label:'John Brown\'s raid', note:'An armed attempt to seize the federal arsenal at Harpers Ferry and spark a slave uprising — convinces many Americans that revolutionary violence has overtaken ordinary politics.' },
+  { y:1860, month:11, day:6, tier:1, label:'Lincoln elected', note:'A Republican wins the presidency without carrying a single Southern state, confirming secessionists\' fear that their influence within the Union is collapsing.' },
+  { y:1860, month:12, day:20, tier:1, label:'South Carolina secedes', note:'The first state to leave the Union — decades of sectional argument become a direct constitutional rupture.' },
+  { y:1861, month:2, day:8, tier:1, label:'Confederate States formed', note:'Delegates at Montgomery organize a rival national government — two governments now make incompatible claims to legitimate authority.' },
   { y:1861, month:4, day:12, tier:1, label:'Fort Sumter', note:'The first shots of the war.' },
-  { y:1863, tier:2, label:'Emancipation Proclamation' },
-  { y:1863, tier:3, label:'Gettysburg' },
-  { y:1865, tier:1, label:'Appomattox',          note:'Lee surrenders; the war ends.' },
+  { y:1861, month:7, day:21, tier:1, label:'First Battle of Bull Run', note:'Confederate victory near Manassas destroys widespread hopes that the rebellion will be suppressed quickly.' },
+  { y:1862, month:5, day:20, tier:1, label:'Homestead Act', note:'Grants federal land to settlers who improve it, advancing a free-labor vision of westward expansion even as the war continues.' },
+  { y:1862, month:7, day:2, tier:1, label:'Morrill Land-Grant Act', note:'Federal land funds colleges for agriculture and the mechanical arts — the Union investing in a modern industrial republic mid-war.' },
+  { y:1863, month:1, day:1, tier:1, label:'Emancipation Proclamation', note:'Declares enslaved people in rebelling states forever free and authorizes Black military service — the war\'s purpose is redefined.' },
+  { y:1863, month:7, day:1, tier:1, label:'Gettysburg', note:'Union victory halts Lee\'s invasion of the North over three days of fighting — the war\'s decisive turning point in the East.' },
+  { y:1863, month:11, day:19, tier:1, label:'Gettysburg Address', note:'Lincoln links the Union\'s survival to the Declaration\'s proposition of equality and calls for "a new birth of freedom" — philosophically refounding the nation.' },
+  { y:1864, month:9, day:2, tier:1, label:'Sherman captures Atlanta', note:'The fall of the Confederacy\'s rail and industrial center lifts Northern morale and secures Lincoln\'s reelection prospects.' },
+  { y:1864, month:11, day:8, tier:1, label:'Lincoln reelected', note:'Voters endorse continued war and emancipation, defeating George McClellan — democratic politics survives wartime strain.' },
+
+  // Level 2 — major events
+  { y:1856, month:5, day:21, tier:2, label:'Sack of Lawrence', note:'A pro-slavery posse destroys the antislavery Kansas town\'s newspaper offices and buildings — popular sovereignty collapsing into partisan violence.' },
+  { y:1856, month:5, day:24, tier:2, label:'Pottawatomie Massacre', note:'John Brown\'s party kills five pro-slavery settlers in retaliation over two nights — the cycle of sectional violence deepens.' },
+  { y:1858, month:6, day:16, tier:2, label:'"House Divided" speech', note:'Accepting the Illinois Republican Senate nomination, Lincoln argues the nation cannot endure permanently half slave and half free — giving the epoch its name.' },
+  { y:1859, month:12, day:2, tier:2, label:'John Brown executed', note:'Virginia hangs Brown for the Harpers Ferry raid; his conduct at trial turns him into a martyr in the North and a symbol of existential danger in the South.' },
+  { y:1861, month:3, day:4, tier:2, label:'Lincoln\'s First Inaugural', note:'The new president denies secession\'s legality while promising not to touch slavery where it already exists.' },
+  { y:1861, month:4, day:15, tier:2, label:'Lincoln calls for volunteers', note:'The call for 75,000 troops after Fort Sumter forces the remaining slave states to choose a side.' },
+  { y:1861, month:8, day:6, tier:2, label:'First Confiscation Act', note:'Congress ends the federal obligation to return enslaved people used to support the rebellion — war policy begins drifting toward emancipation.' },
+  { y:1862, month:9, day:17, tier:2, label:'Battle of Antietam', note:'The bloodiest single day in American military history halts Lee\'s Maryland invasion, giving Lincoln his opening to announce emancipation.' },
+  { y:1862, month:9, day:22, tier:2, label:'Preliminary Emancipation Proclamation', note:'Issued after Antietam, it warns that slaves in rebelling states will be declared free unless the Confederacy returns to the Union by January 1.' },
+  { y:1863, month:7, day:13, tier:2, label:'NYC Draft Riots', note:'Four days of working-class resistance to conscription erupt into racial and class violence, exposing the limits of Northern unity.' },
+  { y:1865, month:4, day:9, tier:2, label:'Appomattox', note:'Lee surrenders the Army of Northern Virginia to Grant — the war is decided by force, opening the unresolved question of Reconstruction.' },
+
+  // Level 3 — mechanisms and consequences
+  { y:1854, month:7, day:24, tier:3, label:'Emigrant Aid Company organized', note:'Antislavery organizers sponsor free-state migration to Kansas — settlement itself becomes a political weapon.' },
+  { y:1855, month:7, day:2, tier:3, label:'Pro-slavery Kansas legislature convenes', note:'Elected amid fraud, it enacts a severe slave code; free-state settlers reject its legitimacy and build rival institutions.' },
+  { y:1855, month:12, day:15, tier:3, label:'Topeka Constitution adopted', note:'Free-state settlers approve a rival constitution seeking admission as a free state — Kansas develops competing constitutional orders before the nation does.' },
+  { y:1856, month:6, day:17, tier:3, label:'First Republican National Convention', note:'The young party nominates John C. Frémont on a platform against slavery\'s expansion.' },
+  { y:1856, month:11, day:4, tier:3, label:'Election of 1856', note:'James Buchanan defeats Frémont, but the Republicans\' strength across the North previews the political geography of disunion.' },
+  { y:1857, month:3, day:26, tier:3, label:'"The Impending Crisis of the South" published', note:'Hinton Rowan Helper attacks slavery as harmful to nonslaveholding whites — antislavery politics expands toward free-labor economics.' },
+  { y:1860, month:2, day:27, tier:3, label:'Lincoln\'s Cooper Union address', note:'Lincoln argues the founders permitted federal restriction of slavery, establishing himself as a credible national candidate.' },
+  { y:1861, month:3, day:11, tier:3, label:'Confederate Constitution adopted', note:'A permanent constitution resembling the U.S. Constitution, but explicitly safeguarding slavery.' },
+  { y:1861, month:5, day:24, tier:3, label:'Butler\'s "contraband" decision', note:'At Fort Monroe, Gen. Butler refuses to return escaped slaves used by Confederates — emancipation begins from battlefield necessity, before it\'s policy.' },
+  { y:1862, month:2, day:25, tier:3, label:'Legal Tender Act', note:'Congress authorizes "greenbacks," a national paper currency — war accelerates the construction of a stronger national state.' },
+  { y:1862, month:7, day:1, tier:3, label:'Pacific Railway Act', note:'Federal land and loans back a transcontinental railroad — the Union defines its continental, industrial future while fighting for survival.' },
+  { y:1862, month:7, day:17, tier:3, label:'Second Confiscation Act', note:'Congress frees enslaved people owned by rebellion supporters, moving federal law closer to general emancipation.' },
+  { y:1863, month:3, day:3, tier:3, label:'Enrollment Act', note:'The first federal military draft, with commutation payments and substitutes allowed — mobilization expands federal power and exposes unequal burdens of war.' },
+  { y:1863, month:5, day:22, tier:3, label:'Bureau of Colored Troops established', note:'The War Department standardizes recruitment of Black soldiers into United States Colored Troops.' },
+  { y:1863, month:7, day:18, tier:3, label:'Assault on Fort Wagner', note:'The 54th Massachusetts\' failed but valorous assault helps transform Northern perceptions of Black military service.' },
+  { y:1864, month:7, day:2, tier:3, label:'Wade-Davis Bill pocket-vetoed', note:'Lincoln rejects Congress\'s stricter plan for restoring Confederate states — a struggle over Reconstruction begins before the war even ends.' },
+  { y:1865, month:2, day:3, tier:3, label:'Hampton Roads Conference', note:'Union and Confederate representatives fail to negotiate peace — even near defeat, the rival governments can\'t reconcile their foundational claims.' },
+
+  // Level 4 — context and texture
+  { y:1854, month:8, day:1, tier:4, label:'Lawrence, Kansas founded', note:'Antislavery settlers establish what becomes the principal Free-State stronghold — and a recurring target for pro-slavery raiders.' },
+  { y:1858, month:8, day:27, tier:4, label:'Freeport Doctrine', note:'During the debates, Douglas argues territories can exclude slavery in practice despite Dred Scott — reconciling popular sovereignty with the ruling deepens his break with Southern Democrats.' },
+  { y:1859, month:10, day:18, tier:4, label:'Harpers Ferry raid suppressed', note:'U.S. Marines under Robert E. Lee storm the engine house and capture John Brown — future Civil War commanders meet on opposing sides of the coming conflict.' },
+  { y:1860, month:12, day:3, tier:4, label:'Buchanan: states can\'t secede, can\'t be coerced', note:'The president\'s annual message exposes the executive paralysis of the secession winter.' },
+  { y:1861, month:1, day:9, tier:4, label:'Star of the West fired upon', note:'South Carolina batteries repel a ship attempting to resupply Fort Sumter — hostile fire begins before the fort\'s formal bombardment.' },
+  { y:1861, month:6, day:20, tier:4, label:'Border slave states remain in Union', note:'Delaware, Maryland, Kentucky, and Missouri stay loyal — the war is not a simple division between free and slave states.' },
+  { y:1861, month:8, day:10, tier:4, label:'Battle of Wilson\'s Creek', note:'A major Confederate victory in Missouri reveals how contested the border states remain, beyond the eastern theater.' },
+  { y:1862, month:3, day:8, tier:4, label:'Battle of Hampton Roads', note:'USS Monitor and CSS Virginia fight the first battle between ironclads over two days — naval warfare is transformed mid-war.' },
+  { y:1862, month:4, day:6, tier:4, label:'Battle of Shiloh', note:'Union forces survive a surprise attack in Tennessee; the staggering casualties make the war\'s human cost unmistakable.' },
+  { y:1862, month:4, day:16, tier:4, label:'D.C. Emancipation Act', note:'Congress ends slavery in the national capital with compensated emancipation — federal emancipation moves from improvisation to enacted law.' },
+  { y:1862, month:5, day:1, tier:4, label:'Union captures New Orleans', note:'The Confederacy loses its largest city and principal port, sharply weakening its hold on the lower Mississippi.' },
+  { y:1862, month:6, day:19, tier:4, label:'Slavery banned in federal territories', note:'Congress resolves, by wartime statute, the territorial-expansion dispute that had destabilized national politics for a generation.' },
+  { y:1862, month:6, day:25, tier:4, label:'Seven Days Battles', note:'Lee drives McClellan away from Richmond over a week of fighting, elevating his own standing and prolonging the war.' },
+  { y:1863, month:1, day:31, tier:4, label:'First South Carolina Volunteers mustered', note:'Formerly enslaved men enter federal service in an early Black regiment — a precedent for large-scale Black enlistment.' },
+  { y:1863, month:4, day:30, tier:4, label:'Battle of Chancellorsville', note:'A dramatic Confederate victory, but Lee loses Stonewall Jackson — Confederate confidence peaks just before Gettysburg.' },
+  { y:1864, month:2, day:25, tier:4, label:'National Banking Act', note:'Congress promotes a uniform national currency and expands federal influence over banking — wartime necessity builds durable institutions.' },
+  { y:1864, month:12, day:21, tier:4, label:'Savannah captured', note:'Sherman\'s army reaches the Atlantic, completing the March to the Sea and confirming the Confederacy can\'t defend its interior.' },
+  { y:1864, month:12, day:31, tier:4, label:'Contraband communities expand', note:'Across occupied territory, self-emancipated families build communities around Union lines — freedom claimed from below, not just proclaimed from above.' },
+  { y:1865, month:4, day:3, tier:4, label:'Richmond falls', note:'The Confederate government evacuates its capital as Union troops break through at Petersburg — the rival government\'s institutional center collapses.' },
+
+  // Level 5 — closest inspection
+  { y:1856, month:8, day:30, tier:5, label:'Battle of Osawatomie', note:'Pro-slavery forces defeat John Brown\'s Free-State defenders and burn the town — making Brown a celebrated militant among some Northern abolitionists.' },
+  { y:1858, month:4, day:30, tier:5, label:'English Bill offered to Kansas', note:'Congress ties statehood under the Lecompton Constitution to a reduced land grant; voters reject it, ending the immediate push to admit Kansas as a slave state.' },
+  { y:1858, month:11, day:2, tier:5, label:'Douglas retains Senate seat', note:'Republicans win more of the popular vote, but legislative apportionment returns Douglas to the Senate — Lincoln\'s defeat brings him national prominence.' },
+  { y:1859, month:10, day:27, tier:5, label:'John Brown tried and sentenced', note:'His composed courtroom statements condemning slavery circulate nationally over the week-long trial, turning a failed raid into a moral spectacle.' },
+  { y:1861, month:3, day:2, tier:5, label:'Corwin Amendment approved by Congress', note:'An unratified amendment permanently protecting slavery from federal interference — a final reassurance offered to slave states still weighing secession.' },
+  { y:1861, month:4, day:27, tier:5, label:'Habeas corpus suspended (Maryland route)', note:'Lincoln authorizes suspension between Philadelphia and Washington to secure troop transport and suppress suspected sabotage.' },
+  { y:1861, month:5, day:28, tier:5, label:'Ex parte Merryman', note:'Chief Justice Taney rules against Lincoln\'s unilateral suspension of habeas corpus; the executive declines to comply — an early clash over emergency power.' },
+  { y:1861, month:7, day:4, tier:5, label:'Special session of Congress convenes', note:'Congress retroactively authorizes the emergency military measures Lincoln took after Fort Sumter.' },
+  { y:1861, month:8, day:30, tier:5, label:'Frémont\'s emancipation order', note:'A Union general declares Missouri rebels\' slaves free; Lincoln revokes the order to protect border-state loyalty, exposing tension within his own government.' },
+  { y:1861, month:12, day:10, tier:5, label:'Joint Committee on the Conduct of the War established', note:'Radical Republicans use the new committee to scrutinize generals, strategy, and the administration\'s conduct of the war.' },
+  { y:1862, month:3, day:10, tier:5, label:'Greenbacks enter circulation', note:'Federal paper money makes the national government\'s promises directly visible in everyday economic life.' },
+  { y:1862, month:6, day:6, tier:5, label:'Union captures Memphis', note:'A naval victory opens more of the Mississippi River to Union control.' },
+  { y:1862, month:7, day:17, tier:5, label:'Militia Act of 1862', note:'Congress authorizes Black men\'s military or labor service, laying statutory groundwork for large-scale Black enlistment.' },
+  { y:1862, month:9, day:24, tier:5, label:'Habeas corpus suspended nationwide', note:'Lincoln subjects those discouraging enlistment or resisting the draft to martial law — the Union\'s defense raises enduring questions about liberty under emergency rule.' },
+  { y:1863, month:5, day:19, tier:5, label:'Vallandigham banished to the Confederacy', note:'A military commission convicts a leading antiwar Democrat; Lincoln commutes his sentence to banishment — wartime dissent tests democratic legitimacy.' },
+  { y:1863, month:6, day:20, tier:5, label:'West Virginia admitted to the Union', note:'Unionist counties split from Confederate Virginia to form a new state — federalism reorganized in the name of preserving it.' },
+  { y:1864, month:11, day:1, tier:5, label:'Maryland abolishes slavery', note:'A new state constitution ends slavery in a loyal border state before the Thirteenth Amendment is even ratified.' },
+  { y:1865, month:1, day:15, tier:5, label:'Fort Fisher falls', note:'Union forces close the Confederacy\'s last major Atlantic port at Wilmington — the blockade becomes effectively complete.' },
+  { y:1865, month:1, day:31, tier:5, label:'House passes the Thirteenth Amendment', note:'The House finally reaches the two-thirds majority needed, after an earlier failure, sending constitutional abolition to the states.' },
+
   { y:1865, tier:2, label:'Lincoln assassinated' },
 
   // Reconstruction (1865–1877)
@@ -1272,18 +1390,14 @@ Object.entries(lanes).forEach(([key, l]) => {
   tg.appendChild(b);
 });
 
-const z1Btn = document.getElementById('z1Btn');
-const z2Btn = document.getElementById('z2Btn');
-const z3Btn = document.getElementById('z3Btn');
+const depthBtns = [1,2,3,4,5].map(n => document.getElementById('z'+n+'Btn'));
 
 function setZoom(level){
   zoomLevel = level;
-  [z1Btn, z2Btn, z3Btn].forEach((b, i) => b.classList.toggle('active', i+1 === level));
+  depthBtns.forEach((b, i) => b.classList.toggle('active', i+1 === level));
   render();
 }
-z1Btn.addEventListener('click', () => setZoom(1));
-z2Btn.addEventListener('click', () => setZoom(2));
-z3Btn.addEventListener('click', () => setZoom(3));
+depthBtns.forEach((b, i) => b.addEventListener('click', () => setZoom(i+1)));
 
 document.getElementById('resetViewBtn').addEventListener('click', resetView);
 document.addEventListener('keydown', e => { if(e.key === 'Escape') resetView(); });
