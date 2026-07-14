@@ -94,10 +94,31 @@ error, not a structural problem — spend the real editorial effort on Level 1.
 
 ## Span vs. point events
 
-If `end` would be 14+ days after `start`, make it a span (omit `end`
-otherwise). Multi-day battles, conventions, and trials under two weeks stay
-point events — the Duration strip is for genuinely long-running phenomena,
-not near-instantaneous events that happen to span a calendar boundary.
+Record the true factual date range in this YAML regardless of how it will
+eventually render — `start`/`end` here is a research question ("how long did
+this actually last"), not a display question. A months-long campaign really
+did last months; write that down even if it won't end up as a Duration-strip
+bar (see below).
+
+**The live instrument's Duration strip is reserved for genuinely long-running
+phenomena — roughly two years or more.** Anything shorter renders as a point
+event positioned at its **end date**, not its start, because the end is
+usually the moment the event actually resolves into something (a campaign
+*culminates* in a surrender or a capture; a crisis *fails* or *concludes*).
+This is a reconciliation-time decision, made when merging into
+`american-epochs.html`, not something this YAML needs to anticipate — but if
+you already know an entry's duration is well under two years, don't be
+surprised when it surfaces as a point event later rather than a span.
+
+This threshold came from direct experience: A House Divided's first pass at
+reconciliation used a much shorter cutoff (14 days) and ended up with over a
+dozen short campaigns and crises cluttering the Duration strip at moderate
+zoom — a multi-month campaign and a three-day battle read almost the same
+width on screen, which defeats the point of having a separate lane for
+duration at all. Two years is deliberately conservative: it's reserved for
+things a viewer should perceive as *background conditions* (a war, a
+depression, a scandal that drags on), not events that merely took more than
+a week to play out.
 
 ## Date precision — no fabrication
 
