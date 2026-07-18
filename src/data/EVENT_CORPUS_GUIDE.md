@@ -2,8 +2,14 @@
 
 Format and curation spec for researching one epoch's events, so the work can be
 farmed out to other LLMs (or humans) without them needing this project's full
-chat history — just this file, `CLAUDE.md`, and `house_divided_events.yaml` as
-the worked example.
+chat history — just this file, `CLAUDE.md`, `FOUNDATIONAL_EDITORIAL_PRINCIPLES.md`,
+and `house_divided_events.yaml`/`reconstruction_events.yaml` as worked examples.
+
+Read `FOUNDATIONAL_EDITORIAL_PRINCIPLES.md` first if you haven't — it's the
+*why* behind everything in this file (progressive disclosure as the design
+unit, not the event; the event-selection tests; the recurring American
+question this whole project keeps circling back to). This guide is the
+*how*: schema, thresholds, sourcing, reconciliation mechanics.
 
 ## What this is, and isn't
 
@@ -92,6 +98,17 @@ point-event crown a viewer sees pop onto the timeline.
 Levels 2–5 have far more room to breathe. Disagreement there is a rounding
 error, not a structural problem — spend the real editorial effort on Level 1.
 
+**5–8 is a default, not a hard cap.** Reconstruction's Level 1 intentionally
+carries nine point events, not seven or eight, because the Panic of 1873 and
+*United States v. Cruikshank* mark genuinely distinct mechanisms of retreat
+(economic collapse vs. judicial narrowing) — collapsing them into one entry
+would blur two different causal stories into a false single one. The bar for
+exceeding the default is explicit justification written into the corpus
+(`reconstruction_events.yaml`'s own `curation_guidance` says so directly, and
+`reconstruction_outline.md` spells out why), not just "this epoch felt like
+it needed more." An undocumented 9-event crown is scope creep; a documented
+one is an editorial decision someone can disagree with on the merits.
+
 ## Span vs. point events
 
 Record the true factual date range in this YAML regardless of how it will
@@ -142,12 +159,23 @@ rather than inventing or hand-waving a citation.
 
 Some events sit right on the seam between two epochs (Lincoln's
 assassination, four days after Appomattox and days into what becomes
-Reconstruction, is the clearest example — the live instrument currently
-counts it as A House Divided's own closing beat, while the older
-`reconstruction_events.yaml` draft counts it as Reconstruction's opening one).
-When a candidate event could plausibly belong to either neighbor, make an
-explicit call and say why in its `why` field, rather than silently including
-it in both files or dropping it from both.
+Reconstruction, is the clearest example — the live instrument counts it as
+A House Divided's own closing beat; an early Reconstruction draft once
+counted it too, before the duplicate was caught and removed during
+reconciliation). When a candidate event could plausibly belong to either
+neighbor, make an explicit call and say why in its `why` field, rather than
+silently including it in both files or dropping it from both.
+
+## Optional: a per-epoch outline
+
+For an epoch this size or larger, it's worth writing a short companion
+`<epoch_id>_outline.md` alongside the YAML — see `reconstruction_outline.md`
+for the pattern: historical thesis, foundational question, a big-picture
+story in a paragraph, an act structure if the epoch has one, an explicit
+Level 1 spine with reasoning, and boundary decisions. This isn't required by
+the schema, but it's where the *argument* for a corpus's editorial choices
+lives — the YAML says what the Level 1 events are; the outline says why
+those nine and not a different nine.
 
 ## Reconciliation (what happens to this file later)
 
@@ -170,7 +198,7 @@ compression, not a field-for-field copy:
 | Epoch | File | Status |
 |---|---|---|
 | A House Divided (1854–1865) | `house_divided_events.yaml` | Done — 5-level, reconciled into the live instrument |
-| Reconstruction (1865–1877) | `reconstruction_events.yaml` | Done — 5-level, reconciled into the live instrument |
+| Reconstruction (1865–1877) | `reconstruction_events.yaml` | Done — 114 events, 5-level, reconciled into the live instrument (see `reconstruction_outline.md`) |
 | The Gilded Age (1877–1897) | — | Not started |
 | The Big Stick (1898–1912) | — | Not started |
 | The New Freedom (1913–1919) | — | Not started |

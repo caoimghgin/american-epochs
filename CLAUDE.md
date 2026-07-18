@@ -100,9 +100,11 @@ american-epochs/
     ├── american-epochs.html    # The instrument — open directly in browser
     ├── american-epochs_v1.md  # Written framework: full epoch justifications
     └── data/
-        ├── EVENT_CORPUS_GUIDE.md      # Format + curation spec for per-epoch research
-        ├── house_divided_events.yaml  # Done — reconciled into the live instrument
-        └── reconstruction_events.yaml # Draft, older schema — next candidate (AE-10)
+        ├── EVENT_CORPUS_GUIDE.md               # Format + curation spec for per-epoch research
+        ├── FOUNDATIONAL_EDITORIAL_PRINCIPLES.md # Why the hierarchy exists — read before the guide
+        ├── house_divided_events.yaml            # Done — reconciled into the live instrument
+        ├── reconstruction_events.yaml            # Done — reconciled into the live instrument
+        └── reconstruction_outline.md             # Thesis, story, and Level 1 spine reasoning for Reconstruction
 ```
 
 Files under `src/data/` are research/authoring artifacts, not runtime data —
