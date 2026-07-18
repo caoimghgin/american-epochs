@@ -48,5 +48,6 @@ Body sections, in order:
 | [AE-7](AE-7-extend-epochs-to-1775.md) | Extend epochs back to 1775 (the Revolution through Manifest Destiny) | Epic | Backlog | Low |
 | [AE-8](AE-8-event-date-precision.md) | Event dates support year-month-day precision | Epic | In Progress | Medium |
 | [AE-9](completed/AE-9-event-date-mechanical-support.md) | Event date precision — mechanical support | Story | Done | Medium |
-| [AE-10](AE-10-event-date-backfill.md) | Epoch-by-epoch event corpus adoption (date precision + 5-level depth) | Story | In Progress | Low |
+| [AE-10](AE-10-event-date-backfill.md) | Epoch-by-epoch event corpus adoption (date precision + 5-level depth) | Story | In Progress | Medium |
 | [AE-11](completed/AE-11-zoom-driven-progressive-reveal.md) | Zoom-driven progressive event reveal (replace manual Depth control) | Story | Done | Medium |
+| [AE-12](AE-12-mobile-pinch-zoom.md) | Mobile pinch-to-zoom / touch gesture support | Story | Backlog | Medium |
