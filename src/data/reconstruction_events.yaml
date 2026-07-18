@@ -1,244 +1,553 @@
+schema:
+  name: American Epochs Event Corpus
+  version: 2
+  date_format: YYYYMMDD
+  level_definition:
+    1: The epoch's "crown of the mountain" — always visible, at every zoom, from the very
+       widest view. One beat per structural hinge in the epoch's own arc, not a list of
+       "the important stuff." Target 5-8 entries regardless of how large or eventful the
+       epoch was; see curation_guidance below. Automatically revealed first as the viewer
+       zooms in from full history — never a manual toggle.
+    2: Major events, automatically revealed at the first closer zoom past Level 1.
+    3: Supporting events explaining mechanisms, shifts, and consequences.
+    4: Contextual events — political, military, social, institutional texture.
+    5: Fine-grained events for the closest inspection.
+  curation_guidance:
+    - Level 1 is the hardest and most important editorial call in the corpus. The
+      viewer never chooses to see it — it is what everyone sees whether they zoom in
+      or not, so it carries the whole epoch's argument on its own.
+    - Pick one entry per point where the epoch's own arc genuinely turns, not one
+      per famous name or battle. A working test - "does removing this entry break
+      the causal chain from the epoch's start to its end?" If not, it belongs at
+      Level 2 or below, however well-known it is.
+    - Target 5-8 Level 1 point events specifically, independent of epoch length.
+      Reconstruction's own Level 1 is the three constitutional amendments plus the
+      two Acts that build and then defend them, opening on the first and closing on
+      the informal deal that abandons the whole project - see the events below.
+    - See house_divided_events.yaml for the fuller worked example this guidance
+      was written against, and EVENT_CORPUS_GUIDE.md for the complete spec.
+  notes:
+    - A missing end date indicates a point event.
+    - Dates represent the most defensible public date for display, not necessarily
+      every stage of a legal or political process.
+    - This corpus is a research/authoring artifact, not something the instrument
+      loads at runtime (the project has no build step or YAML parser by design -
+      see CLAUDE.md). A human or LLM pass reconciles it by hand into the inline
+      EVENTS array in src/american-epochs.html.
+    - Thinner than house_divided_events.yaml by design, not oversight - this corpus
+      merges Kevin's two supplied drafts plus a small number of well-documented
+      supplementary events, rather than a from-scratch 100-event research pass.
+      Levels 4-5 in particular have real room to grow in a future increment.
+    - Two factual corrections made while reconciling the supplied drafts - the
+      Enforcement Acts / Ku Klux Klan Act culminate on 1871-04-20, not 1872-04-20
+      as one draft had it (a likely transcription slip - the Third Enforcement Act,
+      popularly the Ku Klux Klan Act, was signed April 20, 1871). And "Compromise
+      of 1877" is dated to the actual troop withdrawal (South Carolina Apr 10,
+      Louisiana Apr 24 - the last state, so Apr 24 is used as the resolving date)
+      rather than the informal Wormley House deal in late February, which had no
+      single signing date and settled the election, not the troop withdrawal itself.
 
-- id: lincoln_assassinated
-  start: 18650414
-  end: 18650415
-  level: 0
-  kind: assassination
-  epoch: Reconstruction
-  title: Abraham Lincoln Assassinated
-  description_short: Lincoln is assassinated days after Union victory.
-  description_long: Lincoln's death removes the principal architect of postwar reconciliation and places Reconstruction under Andrew Johnson.
-  why: Opens Reconstruction under dramatically different leadership.
-  tags: [presidency, reconstruction]
-  sources: [National Archives]
-
-- id: andrew_johnson_president
+epoch:
+  id: reconstruction
+  title: Reconstruction
   start: 18650415
-  level: 1
-  kind: presidency
-  epoch: Reconstruction
-  title: Andrew Johnson Becomes President
-  description_short: Johnson inherits responsibility for Reconstruction.
-  description_long: Following Lincoln's assassination, Johnson assumes the presidency and quickly clashes with Congress over Reconstruction.
-  why: Sets the political direction of the epoch.
-  tags: [presidency]
-  sources: [White House]
+  end: 18770424
+  thesis: >
+    Reconstruction sought to convert Union victory into a constitutional republic
+    of equal citizenship. Three constitutional amendments and a decade of federal
+    military enforcement briefly reshaped the South before political exhaustion,
+    judicial retrenchment, and an informal electoral bargain ended federal
+    protection and left the amendments' promises unenforced for a generation.
 
-- id: freedmens_bureau
-  start: 18650303
-  level: 2
-  kind: legislation
-  epoch: Reconstruction
-  title: Freedmen's Bureau Established
-  description_short: Federal agency assists formerly enslaved people.
-  description_long: The Bureau provides education, legal assistance, labor contracts, and humanitarian aid during Reconstruction.
-  why: Represents the federal government's first large-scale reconstruction effort.
-  tags: [civil-rights, federal-power]
-  sources: [National Archives]
+events:
 
-- id: black_codes
-  start: 18651101
-  end: 18661231
-  level: 2
-  kind: legislation
-  epoch: Reconstruction
-  title: Black Codes Enacted
-  description_short: Southern states restrict the freedoms of freedpeople.
-  description_long: Former Confederate states enact laws limiting civil rights, prompting stronger federal intervention.
-  why: Demonstrates organized resistance to Reconstruction.
-  tags: [civil-rights, south]
-  sources: [Britannica]
+  # ---------------------------------------------------------------------------
+  # LEVEL 1 — NARRATIVE SPINE (7 entries: the three Reconstruction Amendments,
+  # the two Acts that build and defend them, and the Acts that open and close
+  # federal enforcement)
+  # ---------------------------------------------------------------------------
 
-- id: civil_rights_act_1866
-  start: 18660409
-  level: 1
-  kind: legislation
-  epoch: Reconstruction
-  title: Civil Rights Act of 1866
-  description_short: Congress guarantees basic civil rights.
-  description_long: The first major federal civil rights law establishes birthright citizenship protections and overrides Johnson's veto.
-  why: Signals Congress's determination to shape Reconstruction.
-  tags: [civil-rights, congress]
-  sources: [National Archives]
+  - id: thirteenth_amendment_ratified
+    start: 18651206
+    level: 1
+    kind: constitutional_amendment
+    title: Thirteenth Amendment Ratified
+    description_short: Slavery is abolished throughout the United States.
+    description_long: >
+      Ratification of the Thirteenth Amendment permanently abolishes slavery
+      except as punishment for crime, replacing the legal foundation the
+      Confederacy fought to preserve.
+    why: Reconstruction begins by converting a slave republic into a free one -
+      the amendment settles the war's central question before the epoch's own
+      political fights over what freedom actually means even begin.
+    tags: [slavery, constitution, freedom]
+    sources:
+      - name: National Archives
+        url: https://www.archives.gov/milestone-documents/13th-amendment
 
-- id: fourteenth_amendment
-  start: 18680709
-  level: 0
-  kind: amendment
-  epoch: Reconstruction
-  title: Fourteenth Amendment Ratified
-  description_short: Citizenship and equal protection enter the Constitution.
-  description_long: The amendment nationalizes civil rights through due process and equal protection.
-  why: Fundamentally rewrites the constitutional order.
-  tags: [constitution, amendment]
-  sources: [National Archives]
+  - id: civil_rights_act_1866
+    start: 18660409
+    level: 1
+    kind: legislation
+    title: Civil Rights Act of 1866
+    description_short: Congress establishes national citizenship and civil rights over Andrew Johnson's veto.
+    description_long: >
+      Congress overrides President Johnson's veto to declare all persons born in
+      the United States (except Indians not taxed) citizens, with equal rights to
+      make contracts, sue, and hold property regardless of race.
+    why: The first federal civil rights statute, and the first time Congress
+      overrides Johnson on Reconstruction - the fight over what freedom means is
+      now a fight between the branches of government, not just North and South.
+    tags: [citizenship, congress]
+    sources:
+      - name: National Archives
+        url: https://www.archives.gov/milestone-documents/civil-rights-act
 
-- id: reconstruction_acts
-  start: 18670302
-  level: 1
-  kind: legislation
-  epoch: Reconstruction
-  title: Reconstruction Acts
-  description_short: Congress places the South under military administration.
-  description_long: The Acts divide the South into military districts and establish requirements for readmission.
-  why: Marks Congressional control of Reconstruction.
-  tags: [congress, military]
-  sources: [Library of Congress]
+  - id: reconstruction_acts
+    start: 18670302
+    level: 1
+    kind: legislation
+    title: Reconstruction Acts
+    description_short: Former Confederate states are placed under military reconstruction.
+    description_long: >
+      Congress divides ten former Confederate states into five military districts
+      and requires new constitutions guaranteeing Black male suffrage before
+      readmission - passed the same day as the Tenure of Office Act restricting
+      Johnson's own power to resist.
+    why: Federal power moves from statute to direct military administration -
+      Congress, not the president, now runs Reconstruction.
+    tags: [military, reconstruction, congress]
+    sources:
+      - name: Library of Congress
+        url: https://www.loc.gov/classroom-materials/united-states-history-primary-source-timeline/reconstruction-and-its-aftermath/
 
-- id: military_reconstruction
-  start: 18670302
-  end: 18770731
-  level: 3
-  kind: policy
-  epoch: Reconstruction
-  title: Military Reconstruction
-  description_short: Federal military oversees Southern reconstruction.
-  description_long: Military districts supervise elections and constitutional reforms across the former Confederacy.
-  why: Visualizes the sustained federal presence.
-  tags: [military, federal-power]
-  sources: [Britannica]
+  - id: fourteenth_amendment
+    start: 18680709
+    level: 1
+    kind: constitutional_amendment
+    title: Fourteenth Amendment Ratified
+    description_short: Citizenship and equal protection become constitutional guarantees.
+    description_long: >
+      The amendment nationalizes birthright citizenship and prohibits states from
+      denying due process or equal protection of the laws - overturning Dred
+      Scott's holding at the constitutional level.
+    why: Equality moves from statute (the 1866 Act, repealable by a later Congress)
+      into the Constitution itself, where it's much harder to undo.
+    tags: [constitution, equal_protection, citizenship]
+    sources:
+      - name: National Archives
+        url: https://www.archives.gov/milestone-documents/14th-amendment
 
-- id: johnson_impeached
-  start: 18680224
-  level: 1
-  kind: impeachment
-  epoch: Reconstruction
-  title: Andrew Johnson Impeached
-  description_short: Congress impeaches the President.
-  description_long: Johnson narrowly avoids removal after a constitutional confrontation with Congress.
-  why: Highlights the struggle over control of Reconstruction.
-  tags: [presidency, congress]
-  sources: [U.S. Senate]
+  - id: fifteenth_amendment
+    start: 18700203
+    level: 1
+    kind: constitutional_amendment
+    title: Fifteenth Amendment Ratified
+    description_short: Race-based denial of voting rights is constitutionally prohibited.
+    description_long: >
+      States are forbidden from denying or abridging the right to vote on account
+      of race, color, or previous condition of servitude - for men; women of all
+      races remain excluded.
+    why: Completes the constitutional project - citizenship, equal protection, and
+      now the vote are all federal guarantees, at least on paper.
+    tags: [voting, constitution]
+    sources:
+      - name: National Archives
+        url: https://www.archives.gov/milestone-documents/15th-amendment
 
-- id: grant_elected
-  start: 18681103
-  level: 1
-  kind: election
-  epoch: Reconstruction
-  title: Ulysses S. Grant Elected
-  description_short: Grant wins the presidency.
-  description_long: Grant's election reinforces Congressional Reconstruction and federal enforcement.
-  why: Public endorses continued Reconstruction.
-  tags: [election]
-  sources: [National Archives]
+  - id: enforcement_acts
+    start: 18700531
+    end: 18710420
+    level: 1
+    kind: legislation
+    title: Enforcement Acts culminate in the Ku Klux Klan Act
+    description_short: Federal government asserts direct authority to suppress Klan violence.
+    description_long: >
+      Three Enforcement Acts (May 1870, February 1871, and the Third Enforcement
+      Act of April 20, 1871 - popularly the Ku Klux Klan Act) authorize federal
+      prosecution of election-related terror and let the president suspend habeas
+      corpus to break Klan organizations directly.
+    why: The high-water mark of federal willingness to use force protecting
+      Reconstruction governments - everything after this is retreat, not advance.
+    tags: [kkk, enforcement, civil-rights]
+    sources:
+      - name: National Archives
+        url: https://www.archives.gov/milestone-documents/enforcement-act-of-1871
 
-- id: fifteenth_amendment
-  start: 18700203
-  level: 0
-  kind: amendment
-  epoch: Reconstruction
-  title: Fifteenth Amendment Ratified
-  description_short: Voting rights protected regardless of race.
-  description_long: The amendment prohibits denying the vote based on race, color, or previous condition of servitude.
-  why: Completes the Reconstruction Amendments.
-  tags: [constitution, amendment]
-  sources: [National Archives]
+  - id: compromise_1877
+    start: 18770226
+    end: 18770424
+    level: 1
+    kind: political_compromise
+    title: Compromise of 1877
+    description_short: An informal bargain resolves the disputed 1876 election; federal troops are withdrawn from the last two Southern statehouses.
+    description_long: >
+      An unwritten deal reached around the Wormley House hotel in late February
+      1877 resolves the Hayes-Tilden electoral dispute in Hayes's favor. After his
+      March 5 inauguration, Hayes orders federal troops out of the South Carolina
+      statehouse (April 10) and then Louisiana's (April 24, the last state) -
+      Republican state governments in both collapse within days.
+    why: Reconstruction ends not by law or amendment but by an informal bargain
+      abandoning enforcement - the amendments stay on the books, unenforced, for
+      the better part of a century.
+    tags: [election, redemption, compromise]
+    sources:
+      - name: Library of Congress
+        url: https://www.loc.gov/classroom-materials/united-states-history-primary-source-timeline/reconstruction-and-its-aftermath/compromise-of-1877/
 
-- id: enforcement_acts
-  start: 18700531
-  end: 18710420
-  level: 2
-  kind: legislation
-  epoch: Reconstruction
-  title: Enforcement Acts
-  description_short: Congress combats voter intimidation.
-  description_long: A series of laws strengthen federal authority to protect elections and civil rights.
-  why: Expands federal enforcement powers.
-  tags: [civil-rights]
-  sources: [Library of Congress]
+  # ---------------------------------------------------------------------------
+  # LEVEL 2 — MAJOR EVENTS
+  # ---------------------------------------------------------------------------
 
-- id: ku_klux_klan_act
-  start: 18710420
-  level: 1
-  kind: legislation
-  epoch: Reconstruction
-  title: Ku Klux Klan Act
-  description_short: Federal government targets political terrorism.
-  description_long: The Act authorizes federal intervention against Klan violence and conspiracies.
-  why: Peak assertion of federal authority during Reconstruction.
-  tags: [civil-rights, terrorism]
-  sources: [National Archives]
+  - id: freedmens_bureau
+    start: 18650303
+    level: 2
+    kind: legislation
+    title: Freedmen's Bureau Established
+    description_short: Federal agency assists formerly enslaved people with education, labor, and legal aid.
+    description_long: >
+      Congress creates the Bureau of Refugees, Freedmen, and Abandoned Lands
+      to provide food, medical care, schools, and labor-contract oversight
+      across the defeated South.
+    why: The federal government's first large-scale attempt to convert legal
+      freedom into material and civic support.
+    tags: [civil-rights, federal-power]
+    sources:
+      - name: National Archives
+        url: https://www.archives.gov/education/lessons/freedmens-bureau
 
-- id: credit_mobilier
-  start: 18720904
-  level: 3
-  kind: scandal
-  epoch: Reconstruction
-  title: Crédit Mobilier Scandal
-  description_short: Corruption damages public confidence.
-  description_long: Revelations of railroad-related corruption weaken trust in the federal government.
-  why: Attention shifts from Reconstruction to corruption.
-  tags: [corruption]
-  sources: [Britannica]
+  - id: kkk_founded
+    start: 1866
+    level: 2
+    kind: organization
+    title: Ku Klux Klan Founded
+    description_short: Confederate veterans found a secret society in Pulaski, Tennessee.
+    description_long: >
+      What begins as a social club quickly becomes a vehicle for organized
+      violence against freedpeople and Reconstruction officials across the
+      South. The exact founding date is not precisely documented.
+    why: Names the organization the Enforcement Acts are built to suppress
+      five years later.
+    tags: [kkk, violence, organization]
 
-- id: panic_1873
-  start: 18730918
-  level: 1
-  kind: economic
-  epoch: Reconstruction
-  title: Panic of 1873
-  description_short: Severe financial panic begins a prolonged depression.
-  description_long: The economic collapse redirects national priorities away from Reconstruction.
-  why: Weakens political support for federal intervention.
-  tags: [economy]
-  sources: [Federal Reserve History]
+  - id: memphis_massacre
+    start: 18660501
+    end: 18660503
+    level: 2
+    kind: massacre
+    title: Memphis Massacre
+    description_short: White mobs, including police, kill dozens of Black residents over three days.
+    description_long: >
+      Rioting in Memphis kills at least 46 Black residents and destroys homes,
+      churches, and schools - one of two mass-violence events in 1866 that help
+      convince Congress military oversight, not just statute, is required.
+    why: Demonstrates that civil rights on paper cannot protect Black
+      communities without federal enforcement on the ground.
+    tags: [violence, south]
+    sources:
+      - name: Equal Justice Initiative
+        url: https://calendar.eji.org/racial-injustice/may/01
 
-- id: civil_rights_act_1875
-  start: 18750301
-  level: 2
-  kind: legislation
-  epoch: Reconstruction
-  title: Civil Rights Act of 1875
-  description_short: Congress outlaws racial discrimination in public accommodations.
-  description_long: The last major civil rights law of Reconstruction before federal retreat.
-  why: Represents the high-water mark of Congressional Reconstruction.
-  tags: [civil-rights]
-  sources: [National Archives]
+  - id: new_orleans_massacre
+    start: 18660730
+    level: 2
+    kind: massacre
+    title: New Orleans Massacre
+    description_short: White mobs and police attack a Republican constitutional convention, killing dozens.
+    description_long: >
+      An assault on delegates seeking Black suffrage at the Mechanics' Institute
+      kills at least 34 Black residents and 3 white Republican sympathizers.
+    why: Alongside Memphis, hardens Northern opinion toward Congressional
+      Reconstruction and directly shapes the 1867 Reconstruction Acts.
+    tags: [violence, south, suffrage]
+    sources:
+      - name: Library of Congress
+        url: https://www.loc.gov/classroom-materials/united-states-history-primary-source-timeline/reconstruction-and-its-aftermath/
 
-- id: us_v_cruikshank
-  start: 18760327
-  level: 1
-  kind: supreme_court
-  epoch: Reconstruction
-  title: United States v. Cruikshank
-  description_short: Supreme Court limits federal civil rights enforcement.
-  description_long: The Court narrows federal authority to prosecute private violations of civil rights.
-  why: Judicial retreat undermines Reconstruction.
-  tags: [supreme-court]
-  sources: [Oyez]
+  - id: black_codes_enacted
+    start: 186511
+    level: 2
+    kind: legislation
+    title: Black Codes Enacted
+    description_short: Southern states restrict the freedoms of freedpeople starting with Mississippi and South Carolina.
+    description_long: >
+      Former Confederate states enact laws restricting Black land ownership,
+      labor mobility, and legal standing - re-creating conditions close to
+      bondage under a new name, and continuing to spread through 1866.
+    why: Organized Southern resistance to Reconstruction begins almost
+      immediately, before Congress has even finished writing its own answer.
+    tags: [civil-rights, south]
+    sources:
+      - name: Encyclopaedia Britannica
+        url: https://www.britannica.com/topic/black-code
 
-- id: election_1876
-  start: 18761107
-  level: 1
-  kind: election
-  epoch: Reconstruction
-  title: Presidential Election of 1876
-  description_short: Contested election produces constitutional crisis.
-  description_long: Hayes and Tilden dispute the presidency, leading to political compromise.
-  why: Final legitimacy crisis of the epoch.
-  tags: [election]
-  sources: [National Archives]
+  - id: johnson_impeached
+    start: 18680224
+    end: 18680526
+    level: 2
+    kind: impeachment
+    title: Andrew Johnson Impeached
+    description_short: The House impeaches Johnson; the Senate acquits him by one vote.
+    description_long: >
+      Johnson is impeached after removing Secretary of War Edwin Stanton in
+      defiance of the Tenure of Office Act. The Senate acquits on the decisive
+      11th article by a single vote on May 16, then on the remaining articles
+      by May 26.
+    why: The constitutional confrontation over who controls Reconstruction
+      comes as close as it ever will to removing a sitting president.
+    tags: [presidency, congress]
+    sources:
+      - name: U.S. Senate
+        url: https://www.senate.gov/about/powers-procedures/impeachment/impeachment-andrew-johnson.htm
 
-- id: compromise_1877
-  start: 18770302
-  level: 0
-  kind: compromise
-  epoch: Reconstruction
-  title: Compromise of 1877
-  description_short: Federal troops withdrawn from the South.
-  description_long: The informal political agreement resolves the election dispute and effectively ends Reconstruction.
-  why: Ends the federal Reconstruction project.
-  tags: [reconstruction]
-  sources: [Britannica]
+  - id: grant_elected
+    start: 18681103
+    level: 2
+    kind: election
+    title: Ulysses S. Grant Elected
+    description_short: Grant wins the presidency on a platform of continued Reconstruction.
+    description_long: >
+      Grant defeats Horatio Seymour, winning most former Confederate states
+      that have been readmitted and reinforcing Congressional Reconstruction
+      with an executive willing to enforce it.
+    why: The electorate endorses continued federal enforcement, at least for
+      one more term.
+    tags: [election, presidency]
+    sources:
+      - name: National Archives
+        url: https://www.archives.gov/milestone-documents/list
 
-- id: reconstruction_ends
-  start: 18770731
-  level: 0
-  kind: milestone
-  epoch: Reconstruction
-  title: Reconstruction Ends
-  description_short: The Reconstruction era comes to a close.
-  description_long: Federal military occupation concludes and Southern home rule resumes, marking the end of the Reconstruction epoch.
-  why: Defines the transition into the Gilded Age.
-  tags: [epoch-transition]
-  sources: [Library of Congress]
+  - id: hiram_revels_seated
+    start: 18700225
+    level: 2
+    kind: political_milestone
+    title: Hiram Revels Seated as First Black U.S. Senator
+    description_short: Mississippi sends the first Black member to the U.S. Senate.
+    description_long: >
+      Revels is seated after a contentious debate over his eligibility, three
+      weeks after the Fifteenth Amendment's ratification - he fills the Senate
+      seat once held by Jefferson Davis.
+    why: Constitutional promise becomes visible political fact, in the most
+      symbolically loaded seat available.
+    tags: [black-history, congress, symbolism]
+    sources:
+      - name: U.S. Senate
+        url: https://www.senate.gov/senators/FeaturedBios/Featured_Bio_Revels.htm
+
+  - id: credit_mobilier
+    start: 18720904
+    level: 2
+    kind: scandal
+    title: Crédit Mobilier Scandal Exposed
+    description_short: Railroad-related corruption implicates a sitting vice president and House members.
+    description_long: >
+      Reporting exposes a bribery scheme in which Union Pacific insiders funneled
+      stock to sitting members of Congress to head off investigation of
+      construction-cost fraud.
+    why: National attention starts shifting from Reconstruction toward
+      corruption and, soon after, economic collapse.
+    tags: [corruption, congress]
+    sources:
+      - name: History, Art & Archives, U.S. House of Representatives
+        url: https://history.house.gov/HistoricalHighlight/Detail/36567
+
+  - id: colfax_massacre
+    start: 18730413
+    level: 2
+    kind: massacre
+    title: Colfax Massacre
+    description_short: A white paramilitary force kills over 100 Black men in Louisiana in the era's deadliest single act of Reconstruction violence.
+    description_long: >
+      After a disputed local election, armed white Democrats besiege and burn
+      the Grant Parish courthouse, killing an estimated 100-150 Black
+      defenders, many after they had already surrendered.
+    why: The federal prosecutions that follow, and their collapse at the
+      Supreme Court, become the direct occasion for United States v. Cruikshank.
+    tags: [violence, louisiana, terror]
+    sources:
+      - name: Equal Justice Initiative
+        url: https://calendar.eji.org/racial-injustice/april/13
+
+  - id: panic_1873
+    start: 18730918
+    level: 2
+    kind: economic
+    title: Panic of 1873
+    description_short: A severe financial panic begins a prolonged national depression.
+    description_long: >
+      The failure of Jay Cooke & Company, overextended on railroad financing,
+      triggers a bank panic and a depression that lasts through the rest of
+      the decade.
+    why: Economic collapse redirects Northern political attention and appetite
+      for continued federal intervention in the South.
+    tags: [economy]
+    sources:
+      - name: Federal Reserve History
+        url: https://www.federalreservehistory.org/essays/panic-of-1873
+
+  - id: slaughterhouse_cases
+    start: 18730414
+    level: 2
+    kind: court_case
+    title: Slaughter-House Cases
+    description_short: The Supreme Court narrows the Fourteenth Amendment's reach.
+    description_long: >
+      The Court interprets the Privileges or Immunities Clause narrowly,
+      limiting federal protection of individual rights against state action
+      and reserving most rights protection to the states themselves.
+    why: Judicial retrenchment begins limiting Reconstruction's constitutional
+      reach less than five years after the Fourteenth Amendment's ratification.
+    tags: [supreme_court, constitution]
+    sources:
+      - name: Oyez
+        url: https://www.oyez.org/cases/1850-1900/83us36
+
+  - id: civil_rights_act_1875
+    start: 18750301
+    level: 2
+    kind: legislation
+    title: Civil Rights Act of 1875
+    description_short: Congress outlaws racial discrimination in public accommodations and transportation.
+    description_long: >
+      The last major civil rights law of Reconstruction bars discrimination in
+      inns, public conveyances, and theaters - it will be struck down by the
+      Supreme Court in 1883, after federal enforcement has already ended.
+    why: The legislative high-water mark of Congressional Reconstruction,
+      passed as political will to sustain it is already fading.
+    tags: [civil-rights, congress]
+    sources:
+      - name: National Archives
+        url: https://www.archives.gov/milestone-documents/civil-rights-act-1875
+
+  - id: us_v_cruikshank
+    start: 18760327
+    level: 2
+    kind: court_case
+    title: United States v. Cruikshank
+    description_short: The Supreme Court overturns the Colfax Massacre convictions, gutting federal civil-rights enforcement.
+    description_long: >
+      The Court holds the Fourteenth Amendment restrains only state action, not
+      private individuals, voiding the only convictions obtained for the
+      Colfax killings.
+    why: Judicial retreat removes the federal government's main legal tool
+      against private racial terror, three years before Reconstruction itself ends.
+    tags: [supreme_court, violence]
+    sources:
+      - name: Oyez
+        url: https://www.oyez.org/cases/1850-1900/92us542
+
+  - id: election_1876
+    start: 18761107
+    level: 2
+    kind: election
+    title: Presidential Election of 1876
+    description_short: A disputed Hayes-Tilden election produces a constitutional crisis.
+    description_long: >
+      Tilden wins the popular vote and appears to lead the electoral count, but
+      disputed returns from three Southern states leave the outcome
+      unresolved for months, referred to a special Electoral Commission.
+    why: The final legitimacy crisis of the epoch, resolved only by the
+      backroom bargain that becomes the Compromise of 1877.
+    tags: [election, legitimacy]
+    sources:
+      - name: National Archives
+        url: https://www.archives.gov/milestone-documents/list
+
+  # ---------------------------------------------------------------------------
+  # LEVEL 3 — MECHANISMS AND CONSEQUENCES
+  # ---------------------------------------------------------------------------
+
+  - id: military_reconstruction
+    start: 18670302
+    end: 18770424
+    level: 3
+    kind: policy
+    title: Military Reconstruction
+    description_short: Federal troops oversee Southern elections and constitution-writing for a decade.
+    description_long: >
+      Five military districts supervise voter registration, elections, and
+      new state constitutions across the former Confederacy from the
+      Reconstruction Acts until the final 1877 withdrawal.
+    why: The sustained federal presence that makes the amendments' promises
+      briefly real on the ground, not just on paper.
+    tags: [military, federal-power]
+    sources:
+      - name: Encyclopaedia Britannica
+        url: https://www.britannica.com/event/Reconstruction-United-States-history
+
+  - id: fifteenth_amendment_proposed
+    start: 18690226
+    level: 3
+    kind: proposed_amendment
+    title: Fifteenth Amendment Proposed by Congress
+    description_short: Congress sends the voting-rights amendment to the states.
+    description_long: >
+      Congress approves the amendment's text and sends it to the states for
+      ratification, roughly a year before the three-quarters threshold is met.
+    why: Distinguishes the political act of proposing from the harder,
+      longer fight to actually ratify.
+    tags: [constitution, congress, voting]
+
+  - id: tenure_of_office_act
+    start: 18670302
+    level: 3
+    kind: legislation
+    title: Tenure of Office Act
+    description_short: Congress restricts the president's power to remove his own cabinet officers.
+    description_long: >
+      Passed the same day as the first Reconstruction Act, over Johnson's veto,
+      the act requires Senate consent before the president can remove certain
+      officials - aimed squarely at protecting Secretary of War Stanton.
+    why: Johnson's later defiance of this exact law becomes the formal basis
+      for his impeachment the following year.
+    tags: [presidency, congress]
+
+  # ---------------------------------------------------------------------------
+  # LEVEL 4 — CONTEXT AND TEXTURE
+  # ---------------------------------------------------------------------------
+
+  - id: presidential_reconstruction_begins
+    start: 18650529
+    level: 4
+    kind: presidential_policy
+    title: Johnson's Presidential Reconstruction Begins
+    description_short: Johnson offers the South lenient, rapid readmission with minimal federal conditions.
+    description_long: >
+      Johnson's amnesty proclamation and state-by-state reconstruction plan
+      ask little beyond nominal loyalty oaths and formal abolition, letting
+      former Confederates quickly regain political power.
+    why: Sets up the direct confrontation with Congress that produces the
+      1866-67 legislation overriding his approach entirely.
+    tags: [presidency, policy]
+
+  - id: freedmens_bureau_bill_vetoed
+    start: 18660219
+    level: 4
+    kind: veto
+    title: Johnson Vetoes the Freedmen's Bureau Extension
+    description_short: Johnson vetoes a bill extending and strengthening the Bureau.
+    description_long: >
+      Johnson's veto, later overridden by Congress in a second version of the
+      bill passed that July, signals his broader opposition to Congressional
+      Reconstruction.
+    why: An early, direct preview of the president-versus-Congress fight that
+      defines the epoch's first several years.
+    tags: [presidency, congress, veto]
+
+
+  # ---------------------------------------------------------------------------
+  # LEVEL 5 — CLOSE INSPECTION
+  # ---------------------------------------------------------------------------
+
+  - id: south_carolina_troops_withdrawn
+    start: 18770410
+    level: 5
+    kind: military_action
+    title: Federal Troops Withdrawn from South Carolina
+    description_short: Hayes orders troops out of the Columbia statehouse; the Republican government collapses within days.
+    description_long: >
+      Governor Chamberlain concedes to Democrat Wade Hampton once federal
+      troops guarding the statehouse are withdrawn.
+    why: The first of the two dominoes that complete Reconstruction's end,
+      two weeks before Louisiana follows.
+    tags: [south-carolina, redemption]

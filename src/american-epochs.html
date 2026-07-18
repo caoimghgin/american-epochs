@@ -329,6 +329,7 @@ const EVENTS = [
   { y:1857, month:8, day:24, end:1859, endMonth:12, endDay:31, label:'Panic of 1857', span:true, note:'A financial panic strikes the industrial North harder than the cotton South, reinforcing opposing regional claims about whose economic order is superior.' },
   { y:1861, end:1865, label:'Civil War',     span:true, note:'The war that ends the constitutional order built around slavery.' },
   { y:1862, month:1, day:1, end:1863, endMonth:12, endDay:31, label:'Confederate cotton diplomacy fails', span:true, note:'European stockpiles, alternative suppliers, and antislavery politics mean Britain and France never intervene on the Confederacy\'s behalf.' },
+  { y:1867, month:3, day:2, end:1877, endMonth:4, endDay:24, label:'Military Reconstruction', span:true, note:'Five military districts oversee Southern elections and constitution-writing for a decade — the sustained federal presence that makes the amendments\' promises briefly real on the ground.' },
   { y:1914, end:1918, label:'World War I',   span:true, note:'The U.S. enters in 1917; the war that breaks Wilsonian idealism as much as it vindicates it.' },
   { y:1929, end:1933, label:'Great Depression', span:true, note:'NBER dates the contraction August 1929 to March 1933 — the longest on record.' },
   { y:1941, month:12, day:7, end:1945, endMonth:9, endDay:2, label:'World War II', span:true, note:'The crucible in which American hegemony was forged.' },
@@ -444,13 +445,45 @@ const EVENTS = [
   { y:1865, month:1, day:15, tier:5, label:'Fort Fisher falls', note:'Union forces close the Confederacy\'s last major Atlantic port at Wilmington — the blockade becomes effectively complete.' },
   { y:1865, month:1, day:31, tier:5, label:'House passes the Thirteenth Amendment', note:'The House finally reaches the two-thirds majority needed, after an earlier failure, sending constitutional abolition to the states.' },
 
-  // Reconstruction (1865–1877)
-  { y:1865, tier:2, label:'Klan founded' },
-  { y:1865, month:12, day:6, tier:1, label:'13th Amendment',      note:'Passed by Congress in January, ratified in December — slavery is abolished throughout the United States except as punishment for crime.' },
-  { y:1868, tier:1, label:'14th Amendment',      note:'Birthright citizenship and equal protection.' },
-  { y:1868, tier:2, label:'Johnson impeached' },
-  { y:1870, tier:1, label:'15th Amendment',      note:'Bars denying the vote by race — for men; women of all races remain excluded.' },
-  { y:1877, tier:1, label:'Compromise of 1877',  note:'Federal troops withdraw from the South; Reconstruction enforcement ends.' },
+  // Reconstruction (1865–1877) — AE-10 backfill, 5-level scheme
+  // Level 1 — narrative spine (7 events: three constitutional amendments, the
+  // two Acts that build and defend them, and the Acts that open and close
+  // federal enforcement)
+  { y:1865, month:12, day:6, tier:1, label:'13th Amendment', note:'Passed by Congress in January, ratified in December — slavery is abolished throughout the United States except as punishment for crime.' },
+  { y:1866, month:4, day:9, tier:1, label:'Civil Rights Act of 1866', note:'Congress overrides Johnson\'s veto to declare all persons born in the U.S. citizens with equal rights to contract, sue, and hold property — the first federal civil rights statute, and the first override of Johnson on Reconstruction.' },
+  { y:1867, month:3, day:2, tier:1, label:'Reconstruction Acts', note:'Congress divides the former Confederacy into five military districts and requires new constitutions guaranteeing Black male suffrage before readmission — Congress, not the president, now runs Reconstruction.' },
+  { y:1868, month:7, day:9, tier:1, label:'14th Amendment', note:'Citizenship, due process, and equal protection become constitutional guarantees — equality moves from statute, repealable by a later Congress, into the Constitution itself.' },
+  { y:1870, month:2, day:3, tier:1, label:'15th Amendment', note:'Bars denying the vote by race — for men; women of all races remain excluded. Completes the constitutional project begun by the 13th and 14th Amendments.' },
+  { y:1871, month:4, day:20, tier:1, label:'Enforcement Acts culminate in the Ku Klux Klan Act', note:'Three Enforcement Acts let the federal government prosecute election terror directly and suspend habeas corpus to break Klan organizations — the high-water mark of federal willingness to use force protecting Reconstruction governments.' },
+  { y:1877, month:4, day:24, tier:1, label:'Compromise of 1877', note:'An unwritten bargain over the disputed 1876 election ends with federal troops withdrawn from the last two Southern statehouses (South Carolina Apr. 10, Louisiana Apr. 24) — Reconstruction ends by informal abandonment, not by law.' },
+
+  // Level 2 — major events
+  { y:1865, month:3, day:3, tier:2, label:'Freedmen\'s Bureau established', note:'Federal agency assists formerly enslaved people with education, labor contracts, and legal aid — the government\'s first large-scale attempt to convert legal freedom into material support.' },
+  { y:1865, month:11, tier:2, label:'Black Codes enacted', note:'Southern states, starting with Mississippi and South Carolina, restrict Black land ownership, labor mobility, and legal standing — organized resistance to Reconstruction begins before Congress has even finished writing its own answer.' },
+  { y:1866, tier:2, label:'Klan founded', note:'Confederate veterans found a secret society in Pulaski, Tennessee, that quickly becomes a vehicle for organized violence against freedpeople — the exact founding date isn\'t precisely documented.' },
+  { y:1866, month:5, day:3, tier:2, label:'Memphis Massacre', note:'White mobs, including police, kill at least 46 Black residents over three days — proof that civil rights on paper cannot protect communities without federal enforcement on the ground.' },
+  { y:1866, month:7, day:30, tier:2, label:'New Orleans Massacre', note:'White mobs and police attack a Republican constitutional convention seeking Black suffrage, killing dozens — alongside Memphis, hardens Northern opinion toward Congressional Reconstruction.' },
+  { y:1868, month:5, day:26, tier:2, label:'Johnson impeached', note:'The House impeaches Johnson for defying the Tenure of Office Act; the Senate acquits him by a single vote on the decisive article before concluding the trial.' },
+  { y:1868, month:11, day:3, tier:2, label:'Grant elected', note:'Grant defeats Horatio Seymour on a platform of continued Reconstruction, reinforcing Congress\'s approach with an executive willing to enforce it.' },
+  { y:1870, month:2, day:25, tier:2, label:'Hiram Revels seated', note:'Mississippi sends the first Black member to the U.S. Senate, three weeks after the 15th Amendment\'s ratification — he fills the seat once held by Jefferson Davis.' },
+  { y:1872, month:9, day:4, tier:2, label:'Crédit Mobilier scandal exposed', note:'Reporting exposes a bribery scheme funneling railroad stock to sitting members of Congress — national attention starts shifting from Reconstruction toward corruption.' },
+  { y:1873, month:4, day:13, tier:2, label:'Colfax Massacre', note:'A white paramilitary force kills an estimated 100-150 Black defenders at a Louisiana courthouse, many after they had already surrendered — the era\'s deadliest single act of Reconstruction violence.' },
+  { y:1873, month:4, day:14, tier:2, label:'Slaughter-House Cases', note:'The Supreme Court narrows the 14th Amendment\'s Privileges or Immunities Clause, limiting federal protection of individual rights against state action — judicial retrenchment begins.' },
+  { y:1873, month:9, day:18, tier:2, label:'Panic of 1873', note:'The failure of Jay Cooke & Company triggers a bank panic and a depression lasting the rest of the decade — economic collapse redirects Northern appetite for continued federal intervention.' },
+  { y:1875, month:3, day:1, tier:2, label:'Civil Rights Act of 1875', note:'Congress outlaws racial discrimination in public accommodations and transportation — the legislative high-water mark of Congressional Reconstruction, passed as the political will to sustain it is already fading.' },
+  { y:1876, month:3, day:27, tier:2, label:'United States v. Cruikshank', note:'The Supreme Court overturns the only convictions obtained for the Colfax killings, holding the 14th Amendment restrains only state action — removes the federal government\'s main legal tool against private racial terror.' },
+  { y:1876, month:11, day:7, tier:2, label:'Election of 1876', note:'Tilden wins the popular vote, but disputed returns from three Southern states leave the outcome unresolved for months — the final legitimacy crisis of the epoch.' },
+
+  // Level 3 — mechanisms and consequences
+  { y:1867, month:3, day:2, tier:3, label:'Tenure of Office Act', note:'Passed the same day as the first Reconstruction Act, it requires Senate consent before the president can remove certain officials — Johnson\'s later defiance of this exact law becomes the formal basis for his impeachment.' },
+  { y:1869, month:2, day:26, tier:3, label:'15th Amendment proposed by Congress', note:'Congress approves the amendment\'s text and sends it to the states — the political act of proposing, distinct from the harder fight to actually ratify a year later.' },
+
+  // Level 4 — context and texture
+  { y:1865, month:5, day:29, tier:4, label:'Johnson\'s Presidential Reconstruction begins', note:'Johnson\'s amnesty proclamation asks little beyond nominal loyalty oaths, letting former Confederates quickly regain power — sets up the direct confrontation with Congress that follows.' },
+  { y:1866, month:2, day:19, tier:4, label:'Johnson vetoes Freedmen\'s Bureau extension', note:'Later overridden by Congress that July — an early, direct preview of the president-versus-Congress fight that defines the epoch\'s first several years.' },
+
+  // Level 5 — closest inspection
+  { y:1877, month:4, day:10, tier:5, label:'Federal troops withdrawn from South Carolina', note:'Governor Chamberlain concedes to Democrat Wade Hampton once troops guarding the Columbia statehouse are withdrawn — the first of the two dominoes that complete Reconstruction\'s end.' },
 
   // The Gilded Age (1877–1897)
   { y:1877, tier:2, label:'Great Railroad Strike' },

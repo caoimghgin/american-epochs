@@ -170,7 +170,7 @@ compression, not a field-for-field copy:
 | Epoch | File | Status |
 |---|---|---|
 | A House Divided (1854–1865) | `house_divided_events.yaml` | Done — 5-level, reconciled into the live instrument |
-| Reconstruction (1865–1877) | `reconstruction_events.yaml` | Draft exists, older 0/2-level schema — needs migrating to this format |
+| Reconstruction (1865–1877) | `reconstruction_events.yaml` | Done — 5-level, reconciled into the live instrument |
 | The Gilded Age (1877–1897) | — | Not started |
 | The Big Stick (1898–1912) | — | Not started |
 | The New Freedom (1913–1919) | — | Not started |
