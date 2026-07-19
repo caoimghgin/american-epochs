@@ -331,7 +331,6 @@ const EVENTS = [
   { y:1862, month:1, day:1, end:1863, endMonth:12, endDay:31, label:'Confederate cotton diplomacy fails', span:true, note:'European stockpiles, alternative suppliers, and antislavery politics mean Britain and France never intervene on the Confederacy\'s behalf.' },
   { y:1865, month:4, day:15, end:1867, endMonth:3, endDay:2, label:'Presidential Reconstruction', span:true, note:'Andrew Johnson directs rapid restoration of the former Confederate states. It establishes the inadequate settlement that provokes congressional intervention.' },
   { y:1866, month:1, day:1, end:1877, endMonth:12, endDay:31, label:'Sharecropping Expands', span:true, note:'Landowners and laborers increasingly divide crops instead of paying wages. It explains how emancipation can coexist with durable economic dependence.' },
-  { y:1867, month:3, day:2, end:1877, endMonth:4, endDay:24, label:'Congressional Reconstruction', span:true, note:'Congress directs the reconstruction and readmission of the former Confederacy. It is the period in which the constitutional promise is translated into governing institutions.' },
   { y:1874, month:4, day:1, end:1876, endMonth:12, endDay:31, label:'White League Organizes', span:true, note:'Openly armed white supremacist organizations form to overthrow Louisiana\'s Republican government, the clearest through-line of organized white terror during Reconstruction\'s final years.' },
   { y:1914, end:1918, label:'World War I',   span:true, note:'The U.S. enters in 1917; the war that breaks Wilsonian idealism as much as it vindicates it.' },
   { y:1929, end:1933, label:'Great Depression', span:true, note:'NBER dates the contraction August 1929 to March 1933 — the longest on record.' },
@@ -449,9 +448,12 @@ const EVENTS = [
   { y:1865, month:1, day:31, tier:5, label:'House passes the Thirteenth Amendment', note:'The House finally reaches the two-thirds majority needed, after an earlier failure, sending constitutional abolition to the states.' },
 
   // Reconstruction (1865–1877) — AE-10 backfill, 5-level scheme, expanded corpus
-  // Level 1 — narrative spine (9 point events + 2 scene-setting spans; a
+  // Level 1 — narrative spine (9 point events + 1 scene-setting span; a
   // deliberate expansion from the usual 5-8 target because the Panic of 1873
-  // and Cruikshank mark genuinely distinct mechanisms of retreat)
+  // and Cruikshank mark genuinely distinct mechanisms of retreat.
+  // Congressional Reconstruction was cut as its own span — at ~10 of the
+  // epoch's 12 years, it read as barely distinct from the epoch band itself;
+  // the First Reconstruction Act point event already marks its start)
   { y:1865, month:12, day:6, tier:1, label:'Thirteenth Amendment Ratified', note:'The Constitution abolishes slavery throughout the United States. It destroys the legal foundation of the old order and creates the unresolved question of what freedom will mean.' },
   { y:1866, month:4, day:9, tier:1, label:'Civil Rights Act of 1866', note:'Congress establishes national citizenship and equal civil rights. The nation claims authority to protect citizenship against hostile state governments.' },
   { y:1867, month:3, day:2, tier:1, label:'First Reconstruction Act', note:'Congress places most former Confederate states under military Reconstruction. Congress replaces rapid restoration with a federally supervised reconstruction of Southern government.' },

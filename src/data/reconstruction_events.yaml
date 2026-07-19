@@ -53,6 +53,13 @@ schema:
     White-League entries both nominally represent "organized white terror" from the outline's list; only White
     League Organizes stays a span, since it has the clearest direct ties to already-recorded violence (Coushatta,
     Vicksburg, Battle of Liberty Place) - Knights of the White Camelia becomes a point event at its founding instead.
+  - A second, further cut (2026-07-19) - Kevin questioned congressional_reconstruction itself once the other five
+    were gone - at 1867-03-02 to 1877-04-24 (~10 of the epoch's ~12 years), it reads as barely distinct from the
+    epoch band's own boundaries, not a bounded phase the viewer needs marked separately. Removed as a span entirely
+    (not converted to a point event - first_reconstruction_act, already Level 1, marks the same start date).
+    presidential_reconstruction, by contrast, is kept - a genuinely bounded ~2-year phase that contrasts with what follows
+    (Johnson's restoration vs. Congress's), not most of the epoch relabeled. This corpus's own Level 1 is now 9
+    point events plus 1 scene-setting span, not 2.
 epoch:
   id: reconstruction
   title: Reconstruction

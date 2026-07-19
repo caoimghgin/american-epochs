@@ -136,12 +136,22 @@ they cleared the threshold (a federal bureau's operating years, a bank's
 charter-to-failure span, a political-club's membership window) — Kevin
 caught it immediately on sight: real institutions, but institutional facts
 that happen to have a date range, not background conditions the whole epoch
-turns on. `reconstruction_outline.md` had already named the epoch's actual
-four — Presidential Reconstruction, Congressional Reconstruction, organized
-white terror, sharecropping — and the extra five just hadn't been checked
-against that list before reconciling. Write down the real duration in the
-YAML regardless; decide separately, against the epoch's own outline if one
+turns on. `reconstruction_outline.md` had already named the epoch's intended
+long-running conditions, and the extra five just hadn't been checked against
+that list before reconciling. Write down the real duration in the YAML
+regardless; decide separately, against the epoch's own outline if one
 exists, whether it's earned the permanent lane.
+
+Even an outline's own named list isn't the final word — a second look cut
+"Congressional Reconstruction" itself (~10 of the epoch's ~12 years) once the
+other five were gone, because at that length it read as barely distinct from
+the epoch band's own boundaries, not a phase earning a separate always-on
+mark. Its sibling "Presidential Reconstruction" (~2 years) stayed, because it
+genuinely *contrasts* with what follows rather than just relabeling most of
+the epoch. The test isn't "is this a named, bounded period" — it's "does the
+viewer learn something by seeing this marked as distinct from the epoch
+itself, at every zoom, forever." A span covering most of an epoch usually
+fails that test even when it clears every other bar.
 
 This threshold came from direct experience: A House Divided's first pass at
 reconciliation used a much shorter cutoff (14 days) and ended up with over a

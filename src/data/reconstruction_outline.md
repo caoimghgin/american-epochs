@@ -100,8 +100,13 @@ different mechanisms of retreat.
   document. Corrected during reconciliation from an earlier "end of March" draft date,
   which undercounted by about three weeks against this same outline's own troop-withdrawal
   entries.
-- **Long-running conditions** such as Presidential Reconstruction, Congressional
-  Reconstruction, organized white terror, and sharecropping are recorded as spans.
+- **Long-running conditions** such as Presidential Reconstruction, organized white
+  terror, and sharecropping are recorded as spans. Congressional Reconstruction
+  was originally drafted as a fourth span but cut during reconciliation (2026-07-19):
+  at ~10 of the epoch's ~12 years, it read as barely distinct from the epoch band's
+  own boundaries rather than a bounded phase earning its own always-visible mark —
+  unlike Presidential Reconstruction, which genuinely contrasts with what follows.
+  The First Reconstruction Act point event already marks where it begins.
 
 ## What the viewer should understand
 
