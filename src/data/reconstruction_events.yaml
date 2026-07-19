@@ -41,6 +41,18 @@ schema:
     the same kind of entry (a named political period, not a campaign or crisis with a discrete resolution), and
     splitting two structurally identical phase-markers into different render types would be an arbitrary result of
     a mechanical rule applied without judgment.
+  - Duration alone is necessary but not sufficient for span treatment. Kevin caught this directly after reviewing
+    the live render - five entries technically cleared the 2-year threshold (freedmens_bureau_extended,
+    freedmans_savings_bank, union_league_mobilization, public_education_reconstruction, knights_of_white_camelia)
+    but didn't earn the Duration strip's permanent, always-on real estate the way the outline's own four intended
+    "long-running conditions" (Presidential Reconstruction, Congressional Reconstruction, organized white terror,
+    sharecropping) do - they read as institutional facts that happen to have a date range, not background
+    conditions the whole epoch turns on. Reconciled instead as point events (or, for the Freedman's Savings Bank,
+    folded into its existing "Fails" entry rather than adding a second one) - see reconstruction_outline.md's own
+    "Long-running conditions" line, which named only four all along. The two Knights-of-White-Camelia and
+    White-League entries both nominally represent "organized white terror" from the outline's list; only White
+    League Organizes stays a span, since it has the clearest direct ties to already-recorded violence (Coushatta,
+    Vicksburg, Battle of Liberty Place) - Knights of the White Camelia becomes a point event at its founding instead.
 epoch:
   id: reconstruction
   title: Reconstruction

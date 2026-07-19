@@ -127,6 +127,22 @@ This is a reconciliation-time decision, made when merging into
 you already know an entry's duration is well under two years, don't be
 surprised when it surfaces as a point event later rather than a span.
 
+**Duration alone is necessary but not sufficient.** Clearing two years earns
+an entry a look, not a place. The Duration strip is always-on, at every zoom
+— the same "does the viewer need to see this whether they zoom in or not"
+bar as Level 1, just for conditions instead of moments. Reconstruction's
+first full reconciliation gave five entries span treatment purely because
+they cleared the threshold (a federal bureau's operating years, a bank's
+charter-to-failure span, a political-club's membership window) — Kevin
+caught it immediately on sight: real institutions, but institutional facts
+that happen to have a date range, not background conditions the whole epoch
+turns on. `reconstruction_outline.md` had already named the epoch's actual
+four — Presidential Reconstruction, Congressional Reconstruction, organized
+white terror, sharecropping — and the extra five just hadn't been checked
+against that list before reconciling. Write down the real duration in the
+YAML regardless; decide separately, against the epoch's own outline if one
+exists, whether it's earned the permanent lane.
+
 This threshold came from direct experience: A House Divided's first pass at
 reconciliation used a much shorter cutoff (14 days) and ended up with over a
 dozen short campaigns and crises cluttering the Duration strip at moderate
