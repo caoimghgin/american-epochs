@@ -195,13 +195,18 @@ silently including it in both files or dropping it from both.
 ## Optional: a per-epoch outline
 
 For an epoch this size or larger, it's worth writing a short companion
-`<epoch_id>_outline.md` alongside the YAML — see `reconstruction_outline.md`
-for the pattern: historical thesis, foundational question, a big-picture
-story in a paragraph, an act structure if the epoch has one, an explicit
-Level 1 spine with reasoning, and boundary decisions. This isn't required by
-the schema, but it's where the *argument* for a corpus's editorial choices
-lives — the YAML says what the Level 1 events are; the outline says why
-those nine and not a different nine.
+`<epoch_id>_outline.md` alongside the YAML, produced by the Editorial Review
+sequence in `FOUNDATIONAL_EDITORIAL_PRINCIPLES.md` (outline the story →
+build an unfiltered candidate list → cluster conceptually → choose Level 1 →
+draft the handoff → write YAML). See `reconstruction_outline.md` for most of
+the pattern: historical thesis, foundational question, a big-picture story
+in a paragraph, an act structure if the epoch has one, an explicit Level 1
+spine with reasoning, and boundary decisions — it predates the epoch-identity
+paragraph and handoff sentence the process now also calls for, so treat
+those two as additions rather than expecting to find them there yet. This
+isn't required by the schema, but it's where the *argument* for a corpus's
+editorial choices lives — the YAML says what the Level 1 events are; the
+outline says why those nine and not a different nine.
 
 ## Reconciliation (what happens to this file later)
 
@@ -225,7 +230,7 @@ compression, not a field-for-field copy:
 |---|---|---|
 | A House Divided (1854–1865) | `house_divided_events.yaml` | Done — 5-level, reconciled into the live instrument |
 | Reconstruction (1865–1877) | `reconstruction_events.yaml` | Done — 114 events, 5-level, reconciled into the live instrument (see `reconstruction_outline.md`) |
-| The Gilded Age (1877–1897) | — | Not started |
+| The Gilded Age (1877–1897) | `gilded_age_events.yaml` | Done, first pass — 118 events (8/15/25/47/21 points + 2 spans, after a gap-fill pass on sparse years), 5-level, reconciled into the live instrument (see `gilded_age_outline.md`). Dates drafted from memory, not yet source-checked |
 | The Big Stick (1898–1912) | — | Not started |
 | The New Freedom (1913–1919) | — | Not started |
 | Return to Normalcy (1920–1932) | — | Not started |

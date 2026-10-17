@@ -1,0 +1,1644 @@
+schema:
+  name: American Epochs Event Corpus
+  version: 2
+  date_format: YYYYMMDD
+  level_definition:
+    1: The epoch's "crown of the mountain" — always visible, at every zoom, from the very widest view. One beat
+      per structural hinge in the epoch's own arc, not a list of "the important stuff." Target 5-8 entries regardless
+      of how large or eventful the epoch was; see curation_guidance below. Automatically revealed first as the viewer
+      zooms in from full history — never a manual toggle.
+    2: Major events, automatically revealed at the first closer zoom past Level 1.
+    3: Supporting events explaining mechanisms, shifts, and consequences.
+    4: Contextual events — political, military, social, institutional texture.
+    5: Fine-grained events for the closest inspection.
+  curation_guidance:
+  - Level 1 is the hardest and most important editorial call in the corpus. The viewer never chooses to see it —
+    it is what everyone sees whether they zoom in or not, so it carries the whole epoch's argument on its own.
+  - Pick one entry per point where the epoch's own arc genuinely turns, not one per famous name or battle. A working
+    test - "does removing this entry break the causal chain from the epoch's start to its end?" If not, it belongs
+    at Level 2 or below, however well-known it is.
+  - Target 5-8 Level 1 point events specifically. This is deliberately independent of the epoch's total event count
+    or length in years. Reconstruction intentionally carries nine point events because the Panic of 1873 and United
+    States v. Cruikshank describe distinct political and judicial turns and the editor has approved a slightly crowded
+    crown.
+  - Span (duration) entries at Level 1 do not count against the point-event target because the live instrument never
+    tier-filters spans; they provide scene-setting context.
+  - Levels 2-5 have much more room to breathe. Disagreement there is a rounding error, not a structural problem.
+    Spend the real editorial effort on Level 1.
+  notes:
+  - A missing end date indicates a point event.
+  - Dates represent the most defensible public date for display, not necessarily every stage of a legal or political
+    process. Year-only entries use January 1 as a placeholder and say so in their description_long.
+  - This corpus is a research/authoring artifact. A human or LLM reconciles it into the live EVENTS array.
+  - The hierarchy supplies the big picture first and progressively reveals explanations, mechanisms, consequences,
+    and texture.
+  - Levels were assigned by Claude as a first-pass editorial judgment (see gilded_age_outline.md for the Level 1
+    reasoning). Dates are from memory and not yet checked against sources, so verify before reconciling. No source
+    URLs are included, per the guide's rule against unverifiable citations.
+  - Spans follow the "duration is necessary but not sufficient" rule from EVENT_CORPUS_GUIDE.md. Two spans earn
+    permanent lane space (depression_of_1893, populist_insurgency). Mass immigration, price deflation, the Indian
+    Wars' final phase, and railroad consolidation each run most of the epoch and are kept as point events instead.
+  - pullman_strike (1894-05-11 to 1894-07-20) and homestead_strike (1892-06-30 to 1892-11-20) are recorded with
+    true ranges but are under two years, so they reconcile as point events at their end dates.
+  - Haymarket was promoted from Level 2 to Level 1 in review by Kevin on 2026-10-17, because it closes Act I as the second bookend
+    of the Great Upheaval that opens with great_railroad_strike, which leaves Level 1 at 8 points.
+  - Boundary decisions. The Compromise of 1877 and the troop withdrawals belong to Reconstruction, which ends
+    1877-04-24. munn_v_illinois (1877-03-01) predates this epoch by weeks and is included at Level 3 because the
+    regulation fight it opens belongs here. The epoch ends at McKinley's inauguration, and the Big Stick opens with
+    the Spanish-American War.
+epoch:
+  id: gilded_age
+  title: The Gilded Age
+  start: 18770425
+  end: 18970304
+  thesis: Industrial capitalism transforms the United States faster than its political institutions can adapt. Workers,
+    farmers, and reformers try every available lever (strikes, state legislatures, courts, third parties, Congress)
+    and find federal force and federal courts available to protect property but not yet to restrain it. The Populist
+    challenge is defeated in 1896, and industrial capital becomes the dominant organizing force while public control
+    is postponed rather than abandoned.
+events:
+# ---------------------------------------------------------------- Level 1: spans
+- id: depression_of_1893
+  start: 18930505
+  end: 18970331
+  level: 1
+  kind: economic_period
+  title: Depression of 1893
+  description_short: The deepest economic downturn the country had yet experienced grinds on for roughly four years.
+  description_long: Bank failures, railroad bankruptcies, and mass unemployment follow the stock market crash of May
+    1893. Estimates of peak unemployment run well above 15 percent, and there is no federal relief system of any kind.
+  why: It converts two decades of unresolved industrial conflict into a decision point, producing Coxey's Army, the
+    Pullman Strike, and the Populist surge of 1896.
+  tags:
+  - depression
+  - unemployment
+  - gold-standard
+- id: populist_insurgency
+  start: 18900101
+  end: 18961103
+  level: 1
+  kind: political_movement
+  title: Populist Insurgency
+  description_short: Farmers' Alliances become a national third party and the broadest democratic challenge to the
+    new industrial order.
+  description_long: The Alliances move from cooperative buying schemes to electoral politics in 1890, found the
+    People's Party in 1892, and fuse with the Democrats behind Bryan in 1896. The span runs from the Alliances'
+    1890 electoral breakthrough to the election that ends the movement as an independent force. Start date is
+    year-level (1890).
+  why: It is the largest mass attempt to put democratic control over industrial capital, and its defeat is the epoch's
+    historical answer.
+  tags:
+  - populism
+  - farmers
+  - third-party
+# ---------------------------------------------------------------- Level 1: points
+- id: great_railroad_strike
+  start: 18770714
+  level: 1
+  kind: strike
+  title: Great Railroad Strike
+  description_short: A wage-cut strike on the B&O Railroad spreads across the country and is broken by federal troops.
+  description_long: Beginning at Martinsburg, West Virginia on July 14, 1877, the strike spreads to Baltimore, Pittsburgh,
+    Chicago, and St. Louis. President Hayes sends federal troops to several cities, and over a hundred people die.
+  why: Within months of withdrawing troops from the South, the federal government deploys them against strikers,
+    showing which side national power has chosen.
+  tags:
+  - labor
+  - railroads
+  - federal-troops
+- id: interstate_commerce_act
+  start: 18870204
+  level: 1
+  kind: legislation
+  title: Interstate Commerce Act
+  description_short: Congress creates the first federal regulatory agency to oversee railroad rates.
+  description_long: The act bans rate discrimination and pooling and creates the Interstate Commerce Commission. Its
+    enforcement powers are weak, and courts soon narrow them.
+  why: It is the federal government's first attempt to answer who governs the new economy, and its weakness sets
+    the era's pattern.
+  tags:
+  - regulation
+  - railroads
+  - congress
+- id: sherman_antitrust_act
+  start: 18900702
+  level: 1
+  kind: legislation
+  title: Sherman Antitrust Act
+  description_short: Congress outlaws combinations in restraint of trade.
+  description_long: The act passes with near-unanimous support but is rarely enforced in its first decade, and the
+    Supreme Court reads it narrowly in United States v. E.C. Knight. It is used more often against unions than
+    against trusts.
+  why: It establishes the principle of federal anti-monopoly authority while demonstrating the gap between law and
+    enforcement that defines the era.
+  tags:
+  - antitrust
+  - trusts
+  - congress
+- id: omaha_platform
+  start: 18920704
+  level: 1
+  kind: political_event
+  title: Omaha Platform and People's Party
+  description_short: The People's Party adopts a national platform of public control over money, land, and railroads.
+  description_long: Meeting in Omaha on July 2 to 4, the party nominates James B. Weaver and adopts a platform calling
+    for a graduated income tax, free coinage of silver, government ownership of railroads and telegraphs, and direct
+    election of senators. Weaver wins over a million votes and twenty-two electoral votes that November.
+  why: It turns scattered agrarian grievance into a national program for democratic control of the industrial economy.
+  tags:
+  - populism
+  - third-party
+  - platform
+- id: panic_of_1893
+  start: 18930505
+  level: 1
+  kind: economic_crisis
+  title: Panic of 1893
+  description_short: A stock market crash and cascade of railroad and bank failures begins a four-year depression.
+  description_long: The Philadelphia and Reading Railroad collapses in February, and the market crashes in May. Gold
+    reserves drain, credit contracts, and thousands of firms and hundreds of banks fail.
+  why: It ends the stalemate of the previous fifteen years by making the question of who governs the economy impossible
+    to avoid.
+  tags:
+  - panic
+  - gold-standard
+  - railroads
+- id: pullman_strike
+  start: 18940511
+  end: 18940720
+  level: 1
+  kind: strike
+  title: Pullman Strike
+  description_short: A strike at the Pullman Palace Car Company becomes a national railroad boycott, broken by federal
+    troops and a court injunction.
+  description_long: Pullman workers strike over wage cuts in May 1894, and the American Railway Union under Eugene Debs
+    boycotts Pullman cars nationwide. Attorney General Olney obtains a federal injunction, President Cleveland sends
+    troops over the objection of Illinois Governor Altgeld, and Debs is jailed.
+  why: It shows the executive branch and the courts acting together to break organized labor on behalf of the railroads.
+  tags:
+  - labor
+  - injunction
+  - federal-troops
+- id: mckinley_elected_1896
+  start: 18961103
+  level: 1
+  kind: election
+  title: McKinley Defeats Bryan
+  description_short: William McKinley and the gold standard defeat William Jennings Bryan's Democratic-Populist fusion.
+  description_long: Bryan campaigns on free silver and against concentrated economic power; McKinley, with a record
+    campaign fund raised by Mark Hanna, carries the industrial Northeast and Midwest. The result realigns national
+    politics around Republican dominance for a generation.
+  why: The argument over who governs the industrial economy is decided at the ballot box in favor of industrial
+    capital, which is where the next epoch begins.
+  tags:
+  - election
+  - gold-standard
+  - realignment
+- id: haymarket_affair
+  start: 18860504
+  level: 1
+  kind: violence
+  title: Haymarket Affair
+  description_short: A bomb explodes at a Chicago labor rally for the eight-hour day, and police gunfire follows.
+  description_long: A rally on May 4, 1886 follows a day of police violence against striking workers. A bomb kills a
+    police officer, and the ensuing shooting kills several more people. Eight anarchists are convicted, and four are
+    later hanged despite no evidence connecting them to the bomb.
+  why: It closes the Great Upheaval that opened with the 1877 railroad strike, turning public opinion against organized
+    labor and ending the Knights of Labor's moment of national influence.
+  tags:
+  - labor
+  - anarchism
+  - chicago
+# ---------------------------------------------------------------- Level 2
+- id: standard_oil_trust
+  start: 18820102
+  level: 2
+  kind: corporate
+  title: Standard Oil Trust Formed
+  description_short: Rockefeller's Standard Oil companies are placed under a single board of trustees.
+  description_long: The trust agreement consolidates dozens of refineries and pipelines, controlling the large majority
+    of American refining. The "trust" form soon becomes shorthand for all industrial consolidation.
+  why: It is the era's emblem of private power at national scale, and the target the Sherman Act is named against.
+  tags:
+  - trusts
+  - monopoly
+  - oil
+- id: chinese_exclusion_act
+  start: 18820506
+  level: 2
+  kind: legislation
+  title: Chinese Exclusion Act
+  description_short: Congress bars Chinese laborers from immigrating, the first federal law to exclude a group by
+    nationality.
+  description_long: Passed after years of anti-Chinese agitation on the West Coast, the act suspends Chinese labor
+    immigration for ten years and bars Chinese immigrants from naturalization. It is repeatedly extended.
+  why: It answers the Reconstruction question of who belongs in a way that reverses the universal claim, written into
+    the new industrial labor market.
+  tags:
+  - immigration
+  - race
+  - labor
+- id: pendleton_act
+  start: 18830116
+  level: 2
+  kind: legislation
+  title: Pendleton Civil Service Reform Act
+  description_short: Congress creates a merit-based federal civil service, in the wake of Garfield's assassination.
+  description_long: The act bans the spoils system for a small share of federal jobs and creates the Civil Service
+    Commission. It is the first major reform of how parties staff government.
+  why: It is the parties' answer to the question of who governs, loosening patronage but also pushing parties toward
+    big-business donors for funding.
+  tags:
+  - civil-service
+  - patronage
+  - reform
+- id: wabash_decision
+  start: 18861025
+  level: 2
+  kind: court_case
+  title: Wabash v. Illinois
+  description_short: The Supreme Court rules that states cannot regulate rates on railroad shipments crossing state lines.
+  description_long: The decision overturns the Granger-era approach of state rate regulation and leaves a regulatory
+    vacuum that only Congress can fill.
+  why: It pushes the question of who governs the railroads from the states up to Washington, directly producing the
+    Interstate Commerce Act.
+  tags:
+  - railroads
+  - federalism
+  - supreme-court
+- id: dawes_act
+  start: 18870208
+  level: 2
+  kind: legislation
+  title: Dawes Severalty Act
+  description_short: Congress breaks up tribal lands into individual allotments and opens "surplus" land to white settlement.
+  description_long: The act allots 160 acres to heads of households and sells the remainder. By 1934, Native-held land
+    has fallen from about 138 million acres to 48 million.
+  why: It applies the era's logic of private property and individual enterprise to the last independent political
+    communities on the continent.
+  tags:
+  - native-americans
+  - land
+  - assimilation
+- id: homestead_strike
+  start: 18920630
+  end: 18921120
+  level: 2
+  kind: strike
+  title: Homestead Strike
+  description_short: Carnegie Steel locks out its workers, and a gun battle with Pinkerton agents leaves seven workers
+    and three agents dead.
+  description_long: Henry Clay Frick shuts the Homestead, Pennsylvania mill and brings in Pinkerton guards on July 6.
+    State militia then occupies the town, and the Amalgamated Association of Iron and Steel Workers is broken.
+  why: It shows what capital will do when organized labor holds ground, and demonstrates private force, state militia,
+    and law enforcement working together.
+  tags:
+  - labor
+  - steel
+  - pinkertons
+- id: wounded_knee
+  start: 18901229
+  level: 2
+  kind: violence
+  title: Wounded Knee Massacre
+  description_short: The U.S. Army kills some 250 Lakota at Wounded Knee Creek, effectively ending the Indian Wars.
+  description_long: Troops of the Seventh Cavalry disarming a band of Miniconjou Lakota open fire, and most of the dead
+    are women and children. The 1890 census report famously finds no continuous frontier line left.
+  why: It closes the continental conquest on which industrial expansion rested, and the frontier's closing reshapes
+    the national self-image.
+  tags:
+  - native-americans
+  - frontier
+  - military
+- id: mississippi_constitution_1890
+  start: 18901101
+  level: 2
+  kind: constitution
+  title: Mississippi Constitution of 1890
+  description_short: Mississippi adopts poll taxes and literacy tests that disfranchise most Black voters.
+  description_long: The convention's stated purpose is to eliminate Black political participation without naming race.
+    Other Southern states follow the "Mississippi Plan," and by 1908 most of the South has disfranchised Black citizens.
+  why: It is the legal mechanism by which the Reconstruction settlement is finally dismantled, completed with Plessy
+    six years later.
+  tags:
+  - disfranchisement
+  - jim-crow
+  - south
+- id: election_of_1892
+  start: 18921108
+  level: 2
+  kind: election
+  title: Election of 1892
+  description_short: Cleveland defeats Harrison, and the People's Party wins over a million votes.
+  description_long: Cleveland returns to the presidency with Democrats controlling both houses of Congress, and Weaver
+    carries Colorado, Kansas, Idaho, and Nevada. The third party's showing is the strongest of any since the Civil War.
+  why: It confirms Populism as a national force and puts the Panic of 1893 on a Democratic administration committed
+    to the gold standard.
+  tags:
+  - election
+  - populism
+  - cleveland
+- id: coxeys_army
+  start: 18940501
+  level: 2
+  kind: protest
+  title: Coxey's Army Reaches Washington
+  description_short: Unemployed workers march on Washington demanding federal public works.
+  description_long: Jacob Coxey leads a few hundred men from Ohio, with other "industrial armies" marching from across
+    the country. Coxey is arrested for walking on the Capitol lawn. The march is the first mass protest on Washington.
+  why: It asks for the first time that the federal government take responsibility for unemployment, a demand that
+    will return in the 1930s.
+  tags:
+  - unemployment
+  - protest
+  - public-works
+- id: in_re_debs
+  start: 18950527
+  level: 2
+  kind: court_case
+  title: In re Debs
+  description_short: The Supreme Court upholds the federal injunction used to break the Pullman boycott.
+  description_long: The unanimous decision holds that the national government may use injunctions to prevent
+    obstruction of interstate commerce and the mail. Debs's contempt sentence stands.
+  why: It gives the courts a permanent tool against strikes and ratifies the alliance between federal courts and
+    industrial capital.
+  tags:
+  - labor
+  - injunction
+  - supreme-court
+- id: e_c_knight
+  start: 18950121
+  level: 2
+  kind: court_case
+  title: United States v. E.C. Knight Co.
+  description_short: The Supreme Court holds that manufacturing is not "commerce," gutting the Sherman Act against
+    the sugar trust.
+  description_long: The Court rules that the American Sugar Refining Company's control of about 98 percent of the
+    country's refining capacity is not a restraint of interstate commerce, because manufacturing precedes commerce.
+  why: It demonstrates the courts reading down the era's regulatory laws, five years after the Sherman Act passed.
+  tags:
+  - antitrust
+  - supreme-court
+  - commerce-clause
+- id: pollock_v_farmers_loan
+  start: 18950520
+  level: 2
+  kind: court_case
+  title: Pollock v. Farmers' Loan & Trust
+  description_short: The Supreme Court strikes down the federal income tax.
+  description_long: The 5-4 decision invalidates the income tax passed in the Wilson-Gorman Tariff, overturning
+    decades of precedent. The decision stands until the Sixteenth Amendment in 1913.
+  why: It shows the courts blocking the most direct democratic tool for redistributing industrial wealth, leaving a
+    constitutional amendment as the only route.
+  tags:
+  - income-tax
+  - supreme-court
+  - taxation
+- id: plessy_v_ferguson
+  start: 18960518
+  level: 2
+  kind: court_case
+  title: Plessy v. Ferguson
+  description_short: The Supreme Court upholds racial segregation under the doctrine of "separate but equal."
+  description_long: The Court rules 7-1 that a Louisiana law requiring separate railroad cars does not violate the
+    Fourteenth Amendment. Justice Harlan's lone dissent argues that the Constitution is color-blind.
+  why: It writes the post-Reconstruction settlement into constitutional doctrine, closing the epoch's other question,
+    who is a bearer of rights.
+  tags:
+  - segregation
+  - supreme-court
+  - fourteenth-amendment
+- id: cross_of_gold_speech
+  start: 18960709
+  level: 2
+  kind: speech
+  title: Cross of Gold Speech
+  description_short: William Jennings Bryan's convention speech wins him the Democratic nomination.
+  description_long: Speaking for free silver, Bryan declares "you shall not crucify mankind upon a cross of gold." The
+    convention nominates him the next day at age thirty-six, and the party adopts a Populist-leaning platform.
+  why: It turns the monetary argument into a moral argument about who the economy serves, and fuses the Democratic
+    Party with the Populist agenda.
+  tags:
+  - bryan
+  - free-silver
+  - speech
+# ---------------------------------------------------------------- Level 3
+- id: munn_v_illinois
+  start: 18770301
+  level: 3
+  kind: court_case
+  title: Munn v. Illinois
+  description_short: The Supreme Court upholds state regulation of grain elevator rates.
+  description_long: Chief Justice Waite holds that businesses "affected with a public interest" may be regulated. The
+    ruling predates the epoch's April 1877 opening by weeks but anchors the whole era's regulation debate.
+  why: It is the origin point of the question who governs private economic power. Included here, rather than in
+    Reconstruction, because the regulation fight it opens belongs to this epoch.
+  tags:
+  - regulation
+  - supreme-court
+  - granger
+- id: molly_maguires_hanged
+  start: 18770621
+  level: 4
+  kind: legal
+  title: Molly Maguires Hanged
+  description_short: Ten Irish coal miners are hanged in Pennsylvania after trials built on a Pinkerton informer.
+  description_long: The "Day of the Rope" on June 21, 1877 follows a Pinkerton agent's infiltration of the miners'
+    secret society during a coal strike. The executions weaken the miners' union in the anthracite region.
+  why: It prefigures the private-agent-plus-state method of breaking labor that Homestead will repeat.
+  tags:
+  - labor
+  - coal
+  - pinkertons
+- id: bland_allison_act
+  start: 18780228
+  level: 3
+  kind: legislation
+  title: Bland-Allison Act
+  description_short: Congress overrides Hayes's veto to require limited silver coinage.
+  description_long: The act requires the Treasury to buy two to four million dollars of silver monthly. It is a
+    compromise between hard-money Easterners and silver-and-inflation Westerners and Southerners.
+  why: It starts the long monetary fight that culminates in 1896.
+  tags:
+  - silver
+  - money
+  - congress
+- id: edison_pearl_street_station
+  start: 18820904
+  level: 3
+  kind: technology
+  title: Pearl Street Station
+  description_short: Edison's New York power plant begins supplying electric light to lower Manhattan.
+  description_long: The first commercial central power station in the country opens on September 4, 1882. Electrification
+    becomes one of the second industrial revolution's main engines.
+  why: It represents the technology side of the era, innovation creating new industries faster than laws can classify them.
+  tags:
+  - electricity
+  - technology
+  - edison
+- id: civil_rights_cases
+  start: 18831015
+  level: 3
+  kind: court_case
+  title: Civil Rights Cases
+  description_short: The Supreme Court strikes down the Civil Rights Act of 1875's ban on discrimination in public
+    accommodations.
+  description_long: The Court holds that the Fourteenth Amendment restrains state action, not private discrimination.
+    Justice Harlan dissents.
+  why: It continues the retreat from Reconstruction in the epoch's early years and narrows what the amendments
+    protect.
+  tags:
+  - civil-rights
+  - supreme-court
+  - state-action
+- id: northern_pacific_completed
+  start: 18830908
+  level: 3
+  kind: infrastructure
+  title: Northern Pacific Completed
+  description_short: The last spike is driven on the Northern Pacific, the second transcontinental line.
+  description_long: By 1893 five transcontinental lines cross the country, built with large federal land grants and
+    financed by speculative capital. Several fail within a decade.
+  why: Railroads are the era's first national corporations and its main source of regulatory conflict.
+  tags:
+  - railroads
+  - infrastructure
+  - land-grants
+- id: santa_clara_county
+  start: 18860510
+  level: 3
+  kind: court_case
+  title: Santa Clara County v. Southern Pacific Railroad
+  description_short: The Supreme Court's reporter records the Court treating corporations as persons under the
+    Fourteenth Amendment.
+  description_long: The opinion itself does not rule on the question, but the reporter's headnote states the Court's
+    view that corporations are persons for equal protection purposes. Courts then treat that as settled doctrine.
+  why: It turns an amendment written for freedpeople into a shield for corporations.
+  tags:
+  - corporations
+  - fourteenth-amendment
+  - supreme-court
+- id: american_federation_of_labor
+  start: 18861208
+  level: 3
+  kind: organization
+  title: American Federation of Labor Founded
+  description_short: Skilled-trade unions form the AFL under Samuel Gompers.
+  description_long: In contrast to the Knights of Labor's broad reform ambitions, the AFL organizes craft unions
+    around wages, hours, and conditions.
+  why: It marks labor's turn from restructuring the economy to bargaining within it.
+  tags:
+  - labor
+  - gompers
+  - unions
+- id: dependent_pension_act
+  start: 18900627
+  level: 4
+  kind: legislation
+  title: Dependent Pension Act
+  description_short: Congress extends Union veterans' pensions to nearly all disabled veterans.
+  description_long: By the early 1890s pensions consume a very large share of the federal budget, making them the largest federal
+    social program until the New Deal and a major patronage tool for the Republican Party.
+  why: It shows the federal government spending on a large scale, but for a partisan constituency and not on workers
+    or farmers generally.
+  tags:
+  - pensions
+  - veterans
+  - patronage
+- id: sherman_silver_purchase_act
+  start: 18900714
+  level: 3
+  kind: legislation
+  title: Sherman Silver Purchase Act
+  description_short: Congress doubles federal silver purchases, pegged to Treasury notes redeemable in gold.
+  description_long: The act is a compromise delivering silver purchases to Western states in return for the McKinley
+    Tariff. It accelerates gold outflows and is a trigger for the 1893 gold crisis.
+  why: It ties the monetary fight directly to the coming panic and sets up the repeal fight that splits the Democrats.
+  tags:
+  - silver
+  - gold
+  - money
+- id: mckinley_tariff
+  start: 18901001
+  level: 3
+  kind: legislation
+  title: McKinley Tariff
+  description_short: Congress raises average tariff rates to about 50 percent.
+  description_long: The highest peacetime tariff to that point protects manufacturers and fuels the Democratic landslide
+    in the 1890 midterms. It brings William McKinley national attention.
+  why: It shows industrial interests writing the terms of national economic policy.
+  tags:
+  - tariff
+  - protectionism
+  - mckinley
+- id: carnegie_steel_formed
+  start: 18920701
+  level: 3
+  kind: corporate
+  title: Carnegie Steel Company Formed
+  description_short: Carnegie consolidates his steel holdings into a single vertically integrated firm.
+  description_long: The merger of Carnegie's mills and other holdings, just before Homestead, creates the largest steel
+    producer in the world, controlling ore, coke, rail, and mills.
+  why: It exemplifies the vertical integration that makes corporations larger than most state governments.
+  tags:
+  - steel
+  - vertical-integration
+  - carnegie
+- id: ocala_demands
+  start: 18901201
+  level: 3
+  kind: political_event
+  title: Ocala Demands
+  description_short: The Southern Farmers' Alliance meets in Ocala, Florida and issues a program including the
+    subtreasury plan.
+  description_long: The December 1890 convention proposes federal warehouses to store crops and issue low-interest
+    credit. The Alliance's cooperative strategy turns political here.
+  why: It is the programmatic bridge between the Alliance movement and the People's Party platform two years later.
+  tags:
+  - populism
+  - farmers
+  - subtreasury
+- id: columbian_exposition
+  start: 18930501
+  level: 3
+  kind: cultural
+  title: World's Columbian Exposition
+  description_short: Chicago opens a world's fair celebrating American industrial and cultural arrival.
+  description_long: Twenty-seven million visitors attend the White City in the midst of the 1893 depression. The fair
+    showcases electric power, steel construction, and a vision of orderly urban life.
+  why: It shows the era's self-image of progress, set against the depression happening outside its gates.
+  tags:
+  - fair
+  - chicago
+  - progress
+- id: turner_frontier_thesis
+  start: 18930712
+  level: 3
+  kind: intellectual
+  title: Turner's Frontier Thesis
+  description_short: Historian Frederick Jackson Turner argues the frontier has shaped American democracy and is now closed.
+  description_long: Presented at the Chicago meeting of the American Historical Association during the World's
+    Fair, the essay argues that open land made American democracy and individualism. With the 1890 census declaring
+    the frontier closed, it raises the question of what comes next.
+  why: It names the end of an era's safety valve at exactly the moment industrial conflict peaks.
+  tags:
+  - frontier
+  - democracy
+  - historiography
+- id: american_railway_union_founded
+  start: 18930620
+  level: 3
+  kind: organization
+  title: American Railway Union Founded
+  description_short: Eugene Debs forms an industrial union open to all railroad workers.
+  description_long: Unlike the craft-based brotherhoods, the ARU organizes all railroad workers regardless of skill.
+    It grows to 150,000 members in a year and is destroyed by the Pullman boycott.
+  why: It is the epoch's most ambitious attempt at industrial unionism, and the vehicle for its sharpest defeat.
+  tags:
+  - labor
+  - debs
+  - railroads
+- id: silver_purchase_repeal
+  start: 18931101
+  level: 3
+  kind: legislation
+  title: Repeal of the Silver Purchase Act
+  description_short: Cleveland forces repeal over his own party's silver wing.
+  description_long: Cleveland calls a special session to protect the gold standard. Repeal passes with Republican votes
+    and splits the Democratic Party between its gold and silver factions.
+  why: It sets up the Democratic realignment that produces Bryan three years later.
+  tags:
+  - gold-standard
+  - cleveland
+  - democrats
+- id: altgeld_pardons_haymarket
+  start: 18930626
+  level: 4
+  kind: political_event
+  title: Altgeld Pardons Haymarket Prisoners
+  description_short: Illinois Governor John Altgeld pardons the three surviving Haymarket defendants.
+  description_long: Altgeld argues that the trial was unfair and the jury packed. The pardon ends his national
+    political prospects and makes him a target of conservative attacks.
+  why: It shows the cost of siding with labor in the era's political economy.
+  tags:
+  - labor
+  - altgeld
+  - haymarket
+- id: gold_reserve_morgan_bond_deal
+  start: 18950208
+  level: 3
+  kind: finance
+  title: Morgan Bond Deal
+  description_short: J.P. Morgan and a banking syndicate lend the Treasury gold to defend the gold standard.
+  description_long: With federal gold reserves collapsing, Cleveland arranges a private bond sale to Morgan and
+    August Belmont. The terms generate large profits for the bankers and enrage silver advocates.
+  why: It shows a private banker rescuing the federal currency, the starkest picture of the question of who governs.
+  tags:
+  - gold
+  - morgan
+  - finance
+- id: atlanta_compromise
+  start: 18950918
+  level: 3
+  kind: speech
+  title: Atlanta Compromise Address
+  description_short: Booker T. Washington proposes that Black Southerners accept segregation in exchange for economic
+    advancement.
+  description_long: Speaking at the Cotton States Exposition, Washington urges vocational education and economic progress
+    over political agitation. The speech makes him the most prominent Black leader in the country and draws criticism
+    from W.E.B. Du Bois and others.
+  why: It captures the Black community's strategy for survival under the new Southern settlement.
+  tags:
+  - race
+  - washington
+  - accommodation
+- id: republican_nominates_mckinley
+  start: 18960618
+  level: 3
+  kind: political_event
+  title: Republicans Nominate McKinley
+  description_short: The Republican Party nominates McKinley on a gold-standard platform.
+  description_long: Under Mark Hanna's management, the party commits to the gold standard and protective tariffs,
+    prompting Western silver Republicans to walk out.
+  why: It fixes the 1896 contest as a clean choice between industrial capital and the Populist-Democratic alternative.
+  tags:
+  - election
+  - mckinley
+  - hanna
+- id: populists_endorse_bryan
+  start: 18960724
+  level: 3
+  kind: political_event
+  title: People's Party Endorses Bryan
+  description_short: The Populists nominate Bryan, ending their independent identity.
+  description_long: At the St. Louis convention, fusionists prevail over "mid-roaders" who wanted an independent
+    ticket. Bryan declines to accept the Populist vice-presidential choice, Tom Watson.
+  why: It is both the moment of the movement's greatest influence and its effective end as an independent party.
+  tags:
+  - populism
+  - fusion
+  - bryan
+- id: midterm_1894
+  start: 18941106
+  level: 4
+  kind: election
+  title: Republican Landslide of 1894
+  description_short: Republicans gain over a hundred House seats as voters punish Cleveland for the depression.
+  description_long: The largest midterm swing in the nation's history up to then gives Republicans a commanding
+    majority. Populists gain votes in the South and West but not enough to break through.
+  why: It sets the stage for 1896 by giving the Republicans control of the national narrative.
+  tags:
+  - election
+  - midterm
+  - realignment
+- id: mckinley_inaugurated
+  start: 18970304
+  level: 3
+  kind: political_event
+  title: McKinley Inaugurated
+  description_short: McKinley takes office as the epoch closes.
+  description_long: The new administration ushers in prosperity, the Dingley Tariff, and within a year the Spanish-American
+    War.
+  why: It marks the epoch's formal end and the handoff to the confident, expansive Big Stick era.
+  tags:
+  - mckinley
+  - inauguration
+  - transition
+# ---------------------------------------------------------------- Level 4
+- id: chief_joseph_surrender
+  start: 18771005
+  level: 4
+  kind: military
+  title: Chief Joseph Surrenders
+  description_short: The Nez Perce end their 1,170-mile flight toward Canada.
+  description_long: After four months of pursuit by the U.S. Army, Chief Joseph surrenders in Montana, 40 miles from
+    the border. The Nez Perce are sent to reservations in Kansas and Oklahoma.
+  why: It is one of the epoch's emblematic ends to Native resistance as the West is opened to railroads and settlement.
+  tags:
+  - native-americans
+  - west
+  - military
+- id: greenback_labor_party
+  start: 18780101
+  level: 4
+  kind: political_event
+  title: Greenback-Labor Party Peaks
+  description_short: The Greenback-Labor coalition wins about a million votes and fourteen House seats in 1878.
+  description_long: The party campaigns for paper money and labor reform and fades after the 1880 election. It is the
+    first national third party focused on industrial-era economic grievance. Date is year-level (1878).
+  why: It is the first of the era's third-party attempts, showing the demand predated Populism by a decade.
+  tags:
+  - third-party
+  - greenbacks
+  - labor
+- id: progress_and_poverty
+  start: 18790101
+  level: 4
+  kind: intellectual
+  title: Progress and Poverty
+  description_short: Henry George argues that land rents explain why wealth and poverty rise together.
+  description_long: The book sells millions of copies and inspires reform movements. Its single-tax proposal is
+    debated across the Atlantic. Date is year-level (1879).
+  why: It articulates the era's central puzzle, rising wealth alongside rising poverty.
+  tags:
+  - economics
+  - george
+  - reform
+- id: edison_light_bulb
+  start: 18791022
+  level: 4
+  kind: technology
+  title: Edison's Incandescent Lamp
+  description_short: Edison's carbon-filament lamp burns for about thirteen hours at Menlo Park.
+  description_long: The test marks the beginning of commercially practical electric lighting. Edison's invention
+    factory pioneers industrial research as a business.
+  why: It marks the technology that powers the second industrial revolution.
+  tags:
+  - electricity
+  - technology
+  - edison
+- id: carlisle_indian_school
+  start: 18791101
+  level: 4
+  kind: institution
+  title: Carlisle Indian Industrial School Opens
+  description_short: The first federally supported off-reservation boarding school opens in Pennsylvania.
+  description_long: Founder Richard Pratt later sums up the aim as "Kill the Indian, and save the man." Children are separated from
+    families and forbidden to speak their languages.
+  why: It is the era's assimilation policy at its most direct.
+  tags:
+  - native-americans
+  - assimilation
+  - education
+- id: garfield_assassinated
+  start: 18810702
+  level: 3
+  kind: political_event
+  title: Garfield Shot
+  description_short: A disappointed office-seeker shoots President Garfield, who dies in September.
+  description_long: Charles Guiteau, denied a federal post, shoots Garfield at a Washington railroad station on July 2,
+    1881. Garfield dies September 19, and Chester Arthur succeeds him.
+  why: It turns the spoils system from an abstract problem into a national scandal and produces the Pendleton Act.
+  tags:
+  - patronage
+  - assassination
+  - reform
+- id: brooklyn_bridge_opens
+  start: 18830524
+  level: 5
+  kind: infrastructure
+  title: Brooklyn Bridge Opens
+  description_short: The steel-wire suspension bridge opens, the longest of its kind in the world.
+  description_long: Built over fourteen years, it becomes an icon of industrial engineering. Dozens of workers die
+    during construction.
+  why: It represents the era's engineering confidence.
+  tags:
+  - infrastructure
+  - engineering
+  - new-york
+- id: standard_railway_time
+  start: 18831118
+  level: 4
+  kind: infrastructure
+  title: Standard Railway Time
+  description_short: Railroads adopt four continental time zones.
+  description_long: The railroads act on their own authority, replacing hundreds of local solar times. Congress does
+    not make standard time law until 1918.
+  why: It shows private industry setting national rules before government does.
+  tags:
+  - railroads
+  - time
+  - standardization
+- id: cleveland_elected_1884
+  start: 18841104
+  level: 4
+  kind: election
+  title: Cleveland Elected
+  description_short: Grover Cleveland becomes the first Democratic president since the Civil War.
+  description_long: The close race turns on New York and a late campaign gaffe by Blaine's allies. Cleveland governs as
+    a limited-government conservative.
+  why: It ends the Republican postwar monopoly of the presidency.
+  tags:
+  - election
+  - cleveland
+  - democrats
+- id: knights_of_labor_wabash_victory
+  start: 18850801
+  level: 4
+  kind: strike
+  title: Knights of Labor Defeat Jay Gould
+  description_short: The Knights win a strike against Gould's Southwest railway system.
+  description_long: The August 1885 victory triggers a surge in membership to over 700,000 by 1886. Gould's
+    counteroffensive after a second strike in 1886 breaks the order.
+  why: It is labor's high-water mark in the epoch.
+  tags:
+  - labor
+  - knights-of-labor
+  - railroads
+- id: rock_springs_massacre
+  start: 18850902
+  level: 4
+  kind: violence
+  title: Rock Springs Massacre
+  description_short: White miners kill at least 28 Chinese miners in Wyoming Territory.
+  description_long: The attack follows labor competition and anti-Chinese agitation. Federal troops restore order,
+    but no one is convicted.
+  why: It shows the violence behind the exclusion movement and the labor-race overlap.
+  tags:
+  - chinese
+  - labor
+  - violence
+- id: eight_hour_day_strikes
+  start: 18860501
+  level: 3
+  kind: strike
+  title: May Day Eight-Hour Strikes
+  description_short: Hundreds of thousands of workers strike for the eight-hour day.
+  description_long: The nationwide movement, strongest in Chicago, precedes Haymarket by three days. May 1 later
+    becomes International Workers' Day in commemoration.
+  why: It is the scale of mobilization that makes Haymarket's backlash so consequential.
+  tags:
+  - labor
+  - eight-hour-day
+  - chicago
+- id: geronimo_surrenders
+  start: 18860904
+  level: 4
+  kind: military
+  title: Geronimo Surrenders
+  description_short: The last major Apache resistance ends in Arizona.
+  description_long: Geronimo surrenders to General Miles after a campaign of 5,000 soldiers pursuing fewer than forty
+    Apache. The Chiricahua are exiled to Florida.
+  why: It marks the practical end of organized armed resistance in the Southwest.
+  tags:
+  - native-americans
+  - apache
+  - military
+- id: yick_wo_v_hopkins
+  start: 18860510
+  level: 4
+  kind: court_case
+  title: Yick Wo v. Hopkins
+  description_short: The Supreme Court strikes down a San Francisco ordinance enforced only against Chinese laundries.
+  description_long: The unanimous decision holds that a facially neutral law applied discriminatorily violates equal
+    protection. It decides on the same day as Santa Clara County.
+  why: It shows the Fourteenth Amendment's equal protection clause surviving, applied to non-citizens.
+  tags:
+  - equal-protection
+  - chinese
+  - supreme-court
+- id: statue_of_liberty
+  start: 18861028
+  level: 4
+  kind: cultural
+  title: Statue of Liberty Dedicated
+  description_short: France's gift is dedicated in New York Harbor.
+  description_long: Emma Lazarus's poem is added to the pedestal in 1903. The statue becomes the symbol of immigrant
+    arrival.
+  why: It frames the immigration that supplies the industrial workforce as an act of national generosity.
+  tags:
+  - immigration
+  - symbol
+  - new-york
+- id: texas_seed_bill_veto
+  start: 18870216
+  level: 5
+  kind: political_event
+  title: Cleveland Vetoes Texas Seed Bill
+  description_short: Cleveland vetoes drought relief, declaring "though the people support the government, the
+    government should not support the people."
+  description_long: The $10,000 appropriation would have bought seed for drought-stricken Texas farmers. Cleveland's
+    veto message becomes a touchstone of laissez-faire federal restraint.
+  why: It puts in a single sentence the era's official answer to what government owes citizens in distress.
+  tags:
+  - laissez-faire
+  - cleveland
+  - veto
+- id: haymarket_executions
+  start: 18871111
+  level: 4
+  kind: legal
+  title: Haymarket Anarchists Hanged
+  description_short: Four of the convicted Haymarket defendants are executed.
+  description_long: A fifth defendant dies by suicide in jail the day before. Tens of thousands line the funeral procession in Chicago.
+  why: It completes the repression that follows the bombing.
+  tags:
+  - labor
+  - haymarket
+  - execution
+- id: looking_backward
+  start: 18880101
+  level: 4
+  kind: intellectual
+  title: Looking Backward
+  description_short: Edward Bellamy's utopian novel imagines a peaceful socialist future.
+  description_long: The book sells hundreds of thousands of copies and inspires Nationalist Clubs across the country.
+    Date is year-level (1888).
+  why: It shows the era's popular appetite for an alternative to industrial capitalism.
+  tags:
+  - utopia
+  - socialism
+  - literature
+- id: harrison_elected_1888
+  start: 18881106
+  level: 4
+  kind: election
+  title: Harrison Elected Despite Losing Popular Vote
+  description_short: Benjamin Harrison wins the Electoral College while Cleveland wins the popular vote.
+  description_long: The campaign turns on the tariff, and Republican businessmen raise record sums. Harrison's
+    administration is the era's high point of Republican legislative activism.
+  why: It shows the system's tilt toward industrial interests in an era of narrow, tightly managed elections.
+  tags:
+  - election
+  - tariff
+  - electoral-college
+- id: oklahoma_land_run
+  start: 18890422
+  level: 4
+  kind: settlement
+  title: Oklahoma Land Run
+  description_short: Settlers race to claim two million acres of former Indian Territory.
+  description_long: Fifty thousand people claim land in a single day. The run typifies the era's final distribution
+    of Native lands.
+  why: It is a closing moment of frontier expansion.
+  tags:
+  - land
+  - frontier
+  - oklahoma
+- id: gospel_of_wealth
+  start: 18890601
+  level: 4
+  kind: intellectual
+  title: Carnegie's "Gospel of Wealth"
+  description_short: Andrew Carnegie argues that the rich have a duty to distribute their fortunes in their lifetime.
+  description_long: Published in the North American Review in June 1889, the essay defends great fortunes as the result
+    of competition and urges philanthropy as the answer to inequality.
+  why: It is capital's self-justification, an answer to the era's question in the voice of its winners.
+  tags:
+  - carnegie
+  - philanthropy
+  - inequality
+- id: hull_house
+  start: 18890918
+  level: 4
+  kind: institution
+  title: Hull House Founded
+  description_short: Jane Addams and Ellen Gates Starr open a settlement house in Chicago.
+  description_long: Hull House offers education, childcare, and advocacy for immigrant families, and becomes the model
+    for the settlement movement.
+  why: It is the reform alternative to both laissez-faire and radicalism, and the training ground of the Progressives.
+  tags:
+  - reform
+  - immigrants
+  - addams
+- id: chae_chan_ping
+  start: 18890513
+  level: 4
+  kind: court_case
+  title: Chae Chan Ping v. United States
+  description_short: The Supreme Court upholds federal power to exclude immigrants as an attribute of sovereignty.
+  description_long: The "Chinese Exclusion Case" establishes the plenary power doctrine. Congress can exclude
+    foreigners with little judicial review.
+  why: It makes immigration control a near-absolute federal power.
+  tags:
+  - immigration
+  - supreme-court
+  - plenary-power
+- id: johnstown_flood
+  start: 18890531
+  level: 5
+  kind: disaster
+  title: Johnstown Flood
+  description_short: A dam failure kills over 2,200 people in Pennsylvania.
+  description_long: The South Fork dam, owned by a club of wealthy industrialists, had been poorly maintained. Survivors
+    win no damages in court.
+  why: It shows the cost of unregulated private power on ordinary people.
+  tags:
+  - disaster
+  - negligence
+  - pennsylvania
+- id: how_the_other_half_lives
+  start: 18900101
+  level: 4
+  kind: intellectual
+  title: How the Other Half Lives
+  description_short: Jacob Riis exposes New York tenement conditions in photographs and text.
+  description_long: The book galvanizes reform of urban housing and shows the human cost of industrial urbanization.
+    Date is year-level (1890).
+  why: It makes industrial poverty visible to middle-class readers.
+  tags:
+  - tenements
+  - reform
+  - photography
+- id: nawsa_formed
+  start: 18900218
+  level: 4
+  kind: organization
+  title: National American Woman Suffrage Association
+  description_short: The rival suffrage organizations merge into NAWSA.
+  description_long: Susan B. Anthony and Elizabeth Cady Stanton's group joins Lucy Stone's. The reunited movement
+    narrows its message to suffrage alone.
+  why: It is one more answer to who is a bearer of rights, inside the epoch.
+  tags:
+  - suffrage
+  - women
+  - organization
+- id: chicago_milwaukee_v_minnesota
+  start: 18900324
+  level: 4
+  kind: court_case
+  title: Chicago, Milwaukee & St. Paul Railway v. Minnesota
+  description_short: The Supreme Court holds that courts may review the reasonableness of state-set railroad rates.
+  description_long: The decision lets judges override legislatively set rates as a deprivation of property without due
+    process. It starts the era of substantive due process.
+  why: It shows courts claiming the final word on economic regulation.
+  tags:
+  - regulation
+  - due-process
+  - supreme-court
+- id: lodge_force_bill
+  start: 18900702
+  level: 4
+  kind: legislation
+  title: Federal Elections (Force) Bill
+  description_short: The House passes federal oversight of Southern elections, and the Senate abandons it in January 1891.
+  description_long: The bill would have placed federal supervision over congressional elections to protect Black
+    voting. Its death, traded for silver legislation, ends the last serious federal attempt to enforce the
+    Fifteenth Amendment until 1957.
+  why: It is the final federal rejection of Reconstruction's enforcement approach.
+  tags:
+  - voting-rights
+  - congress
+  - south
+- id: louisiana_separate_car_act
+  start: 18900710
+  level: 4
+  kind: legislation
+  title: Louisiana Separate Car Act
+  description_short: Louisiana requires separate railroad cars for Black and white passengers.
+  description_long: A Citizens' Committee of New Orleans challenges the law, producing the test case Plessy v. Ferguson.
+  why: It is the immediate source of the case that nationalizes segregation law.
+  tags:
+  - segregation
+  - louisiana
+  - railroads
+- id: wyoming_statehood_suffrage
+  start: 18900710
+  level: 5
+  kind: political_event
+  title: Wyoming Admitted With Woman Suffrage
+  description_short: Wyoming becomes the first state to enter the Union with woman suffrage in its constitution.
+  description_long: The territory had granted women the vote in 1869 and refuses to give it up as a condition of
+    statehood.
+  why: It is an early crack in the question of who may vote.
+  tags:
+  - suffrage
+  - women
+  - wyoming
+- id: sitting_bull_killed
+  start: 18901215
+  level: 5
+  kind: violence
+  title: Sitting Bull Killed
+  description_short: Indian police kill the Lakota leader during an arrest attempt.
+  description_long: The attempt to arrest him is tied to fears over the Ghost Dance movement. His death preceded
+    Wounded Knee by two weeks.
+  why: It is a prelude to the Wounded Knee massacre.
+  tags:
+  - native-americans
+  - lakota
+  - ghost-dance
+- id: ellis_island_opens
+  start: 18920101
+  level: 3
+  kind: institution
+  title: Ellis Island Opens
+  description_short: The federal immigration station opens in New York Harbor.
+  description_long: Annie Moore, a teenager from Cork, is the first person processed. Over the next sixty years about
+    twelve million immigrants pass through.
+  why: It marks the federal government's assumption of immigration control as the labor market goes national.
+  tags:
+  - immigration
+  - new-york
+  - labor
+- id: ohio_v_standard_oil
+  start: 18920302
+  level: 4
+  kind: court_case
+  title: Ohio Orders Standard Oil Trust Dissolved
+  description_short: The Ohio Supreme Court orders the Standard Oil Trust to dissolve.
+  description_long: The trust reorganizes as a holding company in New Jersey, taking advantage of the state's lax
+    incorporation law. The ruling demonstrates how corporations avoid state-level regulation.
+  why: It shows capital's ability to evade regulation by moving.
+  tags:
+  - trusts
+  - standard-oil
+  - state-law
+- id: memphis_lynching
+  start: 18920309
+  level: 4
+  kind: violence
+  title: Memphis Lynching and Ida B. Wells
+  description_short: A mob lynches three Black grocers in Memphis, prompting Ida B. Wells's anti-lynching campaign.
+  description_long: Wells's reporting leads to her exile from Memphis and her pamphlet "Southern Horrors." Lynching
+    peaks in the early 1890s, with roughly 150 deaths per year.
+  why: It shows the violence undergirding the Southern settlement and the response of a Black press.
+  tags:
+  - lynching
+  - wells
+  - race
+- id: geary_act
+  start: 18920505
+  level: 4
+  kind: legislation
+  title: Geary Act
+  description_short: Congress extends Chinese exclusion for ten years and requires residence certificates.
+  description_long: The act requires Chinese residents to carry documentation or face deportation. It is renewed
+    in 1902 and made permanent in 1904.
+  why: It extends the exclusion regime and deepens its enforcement.
+  tags:
+  - immigration
+  - chinese
+  - exclusion
+- id: hawaii_overthrow
+  start: 18930117
+  level: 4
+  kind: foreign_policy
+  title: Overthrow of the Hawaiian Kingdom
+  description_short: American businessmen, backed by U.S. Marines, depose Queen Liliuokalani.
+  description_long: The planters' provisional government seeks annexation, which Cleveland refuses. Annexation
+    follows under McKinley in 1898.
+  why: It is the epoch's first step toward the overseas empire that defines the next one.
+  tags:
+  - hawaii
+  - imperialism
+  - business
+- id: railroad_safety_appliance_act
+  start: 18930302
+  level: 5
+  kind: legislation
+  title: Railway Safety Appliance Act
+  description_short: Congress requires automatic couplers and air brakes on interstate trains.
+  description_long: Thousands of railroad workers die or are maimed each year, many in coupling accidents. The act is
+    among the first federal workplace safety laws.
+  why: It is an early example of government regulating conditions inside private industry.
+  tags:
+  - safety
+  - railroads
+  - regulation
+- id: colorado_woman_suffrage
+  start: 18931107
+  level: 5
+  kind: political_event
+  title: Colorado Votes for Woman Suffrage
+  description_short: Colorado becomes the first state to grant women the vote by popular referendum.
+  description_long: The Populist-influenced state electorate approves the amendment. Idaho and Utah follow within a
+    few years.
+  why: It shows Populism's democratic reforms reaching into new rights.
+  tags:
+  - suffrage
+  - populism
+  - colorado
+- id: immigration_restriction_league
+  start: 18940101
+  level: 5
+  kind: organization
+  title: Immigration Restriction League Founded
+  description_short: Boston Brahmins organize to restrict southern and eastern European immigration.
+  description_long: The league promotes literacy tests and pseudo-scientific racial theory. Date is year-level (1894).
+  why: It shows the coming nativism that defines the Progressive Era.
+  tags:
+  - immigration
+  - nativism
+  - restriction
+- id: wilson_gorman_tariff
+  start: 18940828
+  level: 5
+  kind: legislation
+  title: Wilson-Gorman Tariff
+  description_short: A tariff bill becomes law without Cleveland's signature, including a modest income tax.
+  description_long: The Senate guts the House's reform, adding duties for protected industries. Cleveland denounces
+    the result as "party perfidy and party dishonor."
+  why: It is the source of the income tax struck down in Pollock.
+  tags:
+  - tariff
+  - income-tax
+  - congress
+- id: venezuela_crisis
+  start: 18951217
+  level: 4
+  kind: foreign_policy
+  title: Venezuela Boundary Crisis
+  description_short: Cleveland asserts the Monroe Doctrine against Britain in a border dispute with Venezuela.
+  description_long: His message to Congress states that the U.S. is practically sovereign on the continent. Britain
+    eventually accepts arbitration.
+  why: It is a precursor of the more assertive foreign policy of the Big Stick.
+  tags:
+  - monroe-doctrine
+  - britain
+  - foreign-policy
+- id: utah_statehood
+  start: 18960104
+  level: 5
+  kind: political_event
+  title: Utah Becomes a State
+  description_short: Utah is admitted after renouncing polygamy, with woman suffrage in its constitution.
+  description_long: Utah becomes the 45th state after a decades-long standoff with Washington over polygamy.
+  why: It is a closing beat of the continental settlement.
+  tags:
+  - statehood
+  - utah
+  - west
+- id: rural_free_delivery
+  start: 18961001
+  level: 5
+  kind: infrastructure
+  title: Rural Free Delivery Begins
+  description_short: The Post Office begins delivering mail to farms in West Virginia.
+  description_long: The service is a concession to rural demands for public infrastructure, and expands rapidly
+    after 1900.
+  why: It shows a Populist demand eventually met by government.
+  tags:
+  - postal
+  - rural
+  - infrastructure
+- id: niagara_power
+  start: 18961116
+  level: 5
+  kind: technology
+  title: Niagara Power Reaches Buffalo
+  description_short: Westinghouse alternating current from Niagara Falls powers Buffalo.
+  description_long: The first long-distance power transmission proves the viability of the AC system for industry.
+  why: It points to the next generation of industrial scale.
+  tags:
+  - electricity
+  - westinghouse
+  - infrastructure
+# ---------------------------------------------------------------- Gap fill (1878-1891 sparse years)
+- id: posse_comitatus_act
+  start: 18780618
+  level: 4
+  kind: legislation
+  title: Posse Comitatus Act
+  description_short: Congress bars the army from enforcing domestic law without authorization.
+  description_long: Passed by a Democratic Congress through an Army appropriations rider, the act ends the use of
+    federal troops to police Southern elections, the Reconstruction-era practice. It does not stop the army being used
+    against strikers under other authority.
+  why: It is the legal epilogue to Reconstruction's military enforcement, and a reminder that troops would be
+    redirected, not retired.
+  tags:
+  - military
+  - reconstruction
+  - federal-power
+- id: resumption_of_specie_payments
+  start: 18790101
+  level: 3
+  kind: finance
+  title: Resumption of Specie Payments
+  description_short: The Treasury resumes redeeming greenbacks in gold at face value.
+  description_long: The Resumption Act of 1875 takes effect on schedule, ending the Civil War paper-money era. The
+    policy fixes the dollar to gold and sets the course of price deflation for the next two decades.
+  why: It anchors the gold-versus-silver fight that runs to 1896 and tilts the economy toward creditors over debtors.
+  tags:
+  - gold-standard
+  - greenbacks
+  - deflation
+- id: exodusters
+  start: 18790101
+  level: 4
+  kind: migration
+  title: Exodusters Leave the South
+  description_short: Thousands of Black Southerners migrate to Kansas after Redemption ends their political protection.
+  description_long: Tens of thousands leave Louisiana, Mississippi, and Texas in the spring of 1879, many led by
+    Benjamin "Pap" Singleton. It is the first large-scale Black migration out of the South after emancipation.
+    Date is year-level (1879).
+  why: It shows Black Southerners answering the post-Reconstruction settlement by voting with their feet.
+  tags:
+  - migration
+  - race
+  - kansas
+- id: standing_bear_v_crook
+  start: 18790512
+  level: 4
+  kind: court_case
+  title: Standing Bear v. Crook
+  description_short: A federal court rules that a Ponca chief is a person with the right to sue for his freedom.
+  description_long: Judge Elmer Dundy holds that an Indian is a "person" under the law and cannot be held on a
+    reservation against his will. The ruling does not make Native Americans citizens.
+  why: It is an early judicial answer to who is a bearer of rights, applied to Native peoples.
+  tags:
+  - native-americans
+  - rights
+  - courts
+- id: hayes_vetoes_chinese_restriction
+  start: 18790301
+  level: 5
+  kind: political_event
+  title: Hayes Vetoes Chinese Restriction Bill
+  description_short: Hayes vetoes a bill limiting Chinese passengers on ships, citing the Burlingame Treaty.
+  description_long: The veto delays Chinese exclusion by three years and pushes the administration to renegotiate the
+    treaty instead.
+  why: It marks the point at which exclusion became a matter of national policy rather than West Coast agitation.
+  tags:
+  - chinese
+  - immigration
+  - veto
+- id: garfield_elected_1880
+  start: 18801102
+  level: 4
+  kind: election
+  title: Garfield Elected
+  description_short: James Garfield narrowly wins the presidency, with Chester Arthur as his running mate.
+  description_long: Garfield's popular margin over Winfield Hancock is under 10,000 votes. The Republican ticket is a
+    compromise between the Stalwart and Half-Breed factions of the party's patronage fight.
+  why: It sets up the patronage quarrel that Garfield's assassination turns into civil service reform.
+  tags:
+  - election
+  - patronage
+  - republicans
+- id: angell_treaty
+  start: 18801117
+  level: 4
+  kind: treaty
+  title: Angell Treaty With China
+  description_short: China agrees that the U.S. may regulate, limit, or suspend Chinese immigration.
+  description_long: The revision of the Burlingame Treaty gives Congress the diplomatic cover to pass the Chinese
+    Exclusion Act two years later.
+  why: It is the legal groundwork for exclusion.
+  tags:
+  - chinese
+  - immigration
+  - treaty
+- id: pullman_town_built
+  start: 18800101
+  level: 5
+  kind: corporate
+  title: Pullman Builds Its Company Town
+  description_short: George Pullman begins building a planned company town south of Chicago.
+  description_long: Pullman owns the houses, shops, church, and library, and sets rents to return a profit. Residents
+    have no vote over the town's rules. Date is year-level (1880).
+  why: It sets the stage for the 1894 strike, where the company's control of workers' lives is the central grievance.
+  tags:
+  - company-town
+  - pullman
+  - labor
+- id: tuskegee_institute
+  start: 18810704
+  level: 4
+  kind: institution
+  title: Tuskegee Institute Founded
+  description_short: Booker T. Washington opens a normal school for Black students in Alabama.
+  description_long: The school grows into the center of Washington's program of vocational education and economic
+    self-help under segregation.
+  why: It is the institutional base of the accommodationist strategy later set out in the Atlanta Compromise.
+  tags:
+  - education
+  - race
+  - washington
+- id: federation_of_organized_trades
+  start: 18811115
+  level: 5
+  kind: organization
+  title: Federation of Organized Trades and Labor Unions
+  description_short: Craft unions meet in Pittsburgh to form a national federation.
+  description_long: Samuel Gompers is among the founders. The body is the direct predecessor of the AFL, formed five
+    years later.
+  why: It marks the first move from local craft unions to a national organization built around wages and hours.
+  tags:
+  - labor
+  - gompers
+  - unions
+- id: sitting_bull_surrenders
+  start: 18810719
+  level: 5
+  kind: military
+  title: Sitting Bull Surrenders
+  description_short: Sitting Bull returns from Canada and surrenders at Fort Buford.
+  description_long: He is held at Fort Randall for nearly two years, then placed on the Standing Rock Reservation.
+  why: It marks the end of free Lakota life on the plains.
+  tags:
+  - native-americans
+  - lakota
+  - west
+- id: tennessee_jim_crow_car_law
+  start: 18810101
+  level: 5
+  kind: legislation
+  title: Tennessee Passes First Jim Crow Car Law
+  description_short: Tennessee requires separate railroad cars for Black and white first-class passengers.
+  description_long: Tennessee is generally credited with the first such state statute after Reconstruction, and other
+    Southern states follow over the next two decades. Date is year-level (1881).
+  why: It shows segregation by statute beginning well before Plessy.
+  tags:
+  - segregation
+  - jim-crow
+  - railroads
+- id: bureau_of_labor
+  start: 18840627
+  level: 4
+  kind: institution
+  title: U.S. Bureau of Labor Established
+  description_short: Congress creates a small federal bureau to collect statistics on labor conditions.
+  description_long: Placed in the Interior Department, the bureau has no enforcement authority. It becomes the
+    Department of Labor in 1913.
+  why: It is the federal government's first formal acknowledgment that labor is a national concern.
+  tags:
+  - labor
+  - bureaucracy
+  - congress
+- id: blaine_rum_romanism_rebellion
+  start: 18841029
+  level: 5
+  kind: political_event
+  title: "Rum, Romanism, and Rebellion"
+  description_short: A Blaine supporter's remark insults Irish Catholic voters days before the 1884 election.
+  description_long: Blaine fails to disavow the remark, and Democrats circulate it widely in New York. Cleveland carries
+    the state by about 1,100 votes.
+  why: It shows how narrowly decided and how ethnically organized the era's politics were.
+  tags:
+  - election
+  - ethnicity
+  - blaine
+- id: foran_act
+  start: 18850226
+  level: 4
+  kind: legislation
+  title: Alien Contract Labor Law
+  description_short: Congress bars employers from importing foreign workers under contract.
+  description_long: The Foran Act responds to union complaints about strikebreakers recruited abroad. Its enforcement
+    is weak, and exceptions are broad.
+  why: It shows organized labor winning federal action on immigration while losing it on strikes.
+  tags:
+  - immigration
+  - labor
+  - congress
+- id: home_insurance_building
+  start: 18850101
+  level: 4
+  kind: technology
+  title: Home Insurance Building
+  description_short: Chicago's ten-story steel-frame Home Insurance Building is often called the first skyscraper.
+  description_long: William Le Baron Jenney's design uses a metal skeleton to carry the load. Steel framing and the
+    elevator reshape American cities. Date is year-level (1885).
+  why: It is the physical form of industrial capital, a building type created by the corporations it houses.
+  tags:
+  - architecture
+  - chicago
+  - steel
+- id: cleveland_tariff_message
+  start: 18871206
+  level: 4
+  kind: political_event
+  title: Cleveland's Tariff Message
+  description_short: Cleveland devotes his entire annual message to Congress to reducing the tariff.
+  description_long: The message makes tariff reform the central issue of 1888 and aligns the Democrats against
+    protection for industry.
+  why: It makes the tariff the standard dividing line over whom government should favor.
+  tags:
+  - tariff
+  - cleveland
+  - democrats
+- id: australian_ballot
+  start: 18880101
+  level: 4
+  kind: reform
+  title: Australian Ballot Adopted
+  description_short: Massachusetts adopts the secret government-printed ballot, and other states follow quickly.
+  description_long: By 1896 most states have adopted the reform, which ends party-printed ballots and open vote buying.
+    In the South it also eases literacy-test disfranchisement. Date is year-level (1888).
+  why: It is a direct attack on machine politics, and the parties' mechanism of control.
+  tags:
+  - elections
+  - reform
+  - machines
+- id: kodak_camera
+  start: 18880101
+  level: 5
+  kind: technology
+  title: Kodak Camera Introduced
+  description_short: George Eastman sells a simple roll-film camera with the slogan "You press the button, we do the rest."
+  description_long: Mass-market photography follows. Date is year-level (1888).
+  why: It shows the era's consumer products reaching ordinary households.
+  tags:
+  - photography
+  - consumer
+  - technology
+- id: sprague_electric_streetcar
+  start: 18880202
+  level: 5
+  kind: technology
+  title: Richmond Electric Streetcar
+  description_short: Frank Sprague's electric streetcar system begins running in Richmond, Virginia.
+  description_long: The first large, successful electric street railway spreads to hundreds of cities within a few years.
+  why: It reshapes urban life and reinforces the economic pull of cities over countryside.
+  tags:
+  - electricity
+  - cities
+  - transit
+- id: peoples_party_cincinnati
+  start: 18910519
+  level: 3
+  kind: political_event
+  title: People's Party Founded at Cincinnati
+  description_short: Farm and labor delegates meet in Cincinnati and form a national third party.
+  description_long: The May 1891 convention calls for a nominating convention in 1892. It brings together Alliance
+    leaders, labor activists, and Greenback veterans.
+  why: It is the organizational birth of the Populist party, the step between the Ocala Demands and the Omaha Platform.
+  tags:
+  - populism
+  - third-party
+  - organization
+- id: immigration_act_1891
+  start: 18910303
+  level: 4
+  kind: legislation
+  title: Immigration Act of 1891
+  description_short: Congress creates a federal Bureau of Immigration and expands excluded categories.
+  description_long: The act shifts inspection from the states to federal officers and adds those likely to become a
+    public charge and certain others to the excluded list. It leads directly to the opening of Ellis Island.
+  why: It makes immigration regulation a central federal function.
+  tags:
+  - immigration
+  - bureaucracy
+  - congress
+- id: new_orleans_lynching
+  start: 18910314
+  level: 4
+  kind: violence
+  title: New Orleans Lynching of Italians
+  description_short: A mob lynches eleven Italian immigrants after a murder trial acquittal.
+  description_long: The killings spark a diplomatic crisis with Italy, which recalls its ambassador. The federal
+    government declines to prosecute, paying an indemnity.
+  why: It shows nativist violence and the limits of federal power over local mobs.
+  tags:
+  - lynching
+  - immigration
+  - italy
+- id: forest_reserve_act
+  start: 18910303
+  level: 5
+  kind: legislation
+  title: Forest Reserve Act
+  description_short: Congress lets the president set aside public forest land as reserves.
+  description_long: Harrison designates millions of acres within two years. It is the beginning of federal public-land
+    conservation.
+  why: It is an early assertion of public control over the commons, which Theodore Roosevelt will expand.
+  tags:
+  - conservation
+  - public-lands
+  - federal-power
+- id: readjuster_movement
+  start: 18791104
+  level: 4
+  kind: political_movement
+  title: Readjusters Win Virginia
+  description_short: A biracial coalition under William Mahone wins control of Virginia's legislature.
+  description_long: The Readjusters combine Black voters and white Populist-leaning Democrats behind scaling down the
+    state debt and funding public schools. They govern through 1883, and Democrats retake the state after a campaign
+    of racial violence, including the Danville riot of November 1883.
+  why: It shows that the post-Reconstruction South was still politically open in the 1880s, before disfranchisement
+    and segregation hardened in the 1890s.
+  tags:
+  - virginia
+  - biracial-politics
+  - south
