@@ -1,0 +1,1517 @@
+schema:
+  name: American Epochs Event Corpus
+  version: 2
+  date_format: YYYYMMDD
+  level_definition:
+    1: The epoch's "crown of the mountain" — always visible, at every zoom, from the very widest view. One beat
+      per structural hinge in the epoch's own arc, not a list of "the important stuff." Target 5-8 entries regardless
+      of how large or eventful the epoch was; see curation_guidance below. Automatically revealed first as the viewer
+      zooms in from full history — never a manual toggle.
+    2: Major events, automatically revealed at the first closer zoom past Level 1.
+    3: Supporting events explaining mechanisms, shifts, and consequences.
+    4: Contextual events — political, military, social, institutional texture.
+    5: Fine-grained events for the closest inspection.
+  curation_guidance:
+  - Level 1 is the hardest and most important editorial call in the corpus. The viewer never chooses to see it —
+    it is what everyone sees whether they zoom in or not, so it carries the whole epoch's argument on its own.
+  - Pick one entry per point where the epoch's own arc genuinely turns, not one per famous name or battle. A working
+    test - "does removing this entry break the causal chain from the epoch's start to its end?" If not, it belongs
+    at Level 2 or below, however well-known it is.
+  - Target 5-8 Level 1 point events specifically. This is deliberately independent of the epoch's total event count
+    or length in years. Reconstruction intentionally carries nine point events because the Panic of 1873 and United
+    States v. Cruikshank describe distinct political and judicial turns and the editor has approved a slightly crowded
+    crown.
+  - Span (duration) entries at Level 1 do not count against the point-event target because the live instrument never
+    tier-filters spans; they provide scene-setting context.
+  - Levels 2-5 have much more room to breathe. Disagreement there is a rounding error, not a structural problem.
+    Spend the real editorial effort on Level 1.
+  notes:
+  - A missing end date indicates a point event.
+  - Dates represent the most defensible public date for display, not necessarily every stage of a legal or political
+    process.
+  - date_precision (year or month) applies to start, and end_precision (month) to the end of a range. Where set, the
+    placeholder in the date field must not be rendered as exact. Absent means a full day-level date. date_verified
+    true means the date was confirmed against an identifiable source.
+  - This corpus is a research/authoring artifact. A human or LLM reconciles it into the live EVENTS array.
+  - Levels were assigned by Claude as a first-pass editorial judgment (see affluent_society_outline.md for the Level 1
+    reasoning). All dates are drafted from memory and none are yet source-verified, so verify before treating as
+    settled. No source URLs are included, per the guide's rule against unverifiable citations. Figures to check first
+    include the Interstate system's size and cost, Watts casualty counts, March on Washington attendance, and Vietnam
+    casualty totals.
+  - vietnam_war (1964-08-07 to 1975-04-30) is a cross-epoch span owned by this corpus because it begins here. It crosses
+    the epoch end by about nine years. The Unravelling corpus must carry its end events, the Paris Peace Accords and the
+    Fall of Saigon. The span runs from authorization to collapse. The alternative conventions (U.S. combat years 1965 to
+    1973, or the Pentagon's 1955 to 1975) were considered and rejected in the outline.
+  - cuban_missile_crisis, montgomery_bus_boycott, birmingham_campaign, watts_riot, and the Selma march are recorded with
+    true ranges but are under two years, so they reconcile as point events at their end dates.
+  - Watts stays at Level 2 and the Time "We Are All Keynesians Now" cover (the last day of the epoch) is Level 4.
+  - Boundary decisions. The corpus opens on 1953-01-01 and closes on 1965-12-31. Eisenhower's election is the
+    Ascendancy's closing beat, and the Social Security expansion and Interstate Highway Act here carry the ratification
+    signal. Hart-Celler (October 1965) ends the national-origins system the 1924 act built, and closes the immigration
+    thread's arc inside this epoch.
+epoch:
+  id: affluent_society
+  title: The Affluent Society
+  start: 19530101
+  end: 19651231
+  thesis: The Ascendancy's victory is consolidated at home. Eisenhower, a Republican, leaves Social Security and the regulatory
+    state intact, expands both, and builds the Interstate Highway System, while wages rise with productivity and the GI Bill and
+    suburban housing build a mass middle class. The Cold War turns inward with Sputnik and the missile crisis, and the
+    settlement's second clause, who stands inside it, becomes the decade's defining struggle. Brown, Montgomery, Little Rock, the
+    sit-ins, Birmingham, and Selma force the government to extend its terms, and the Civil Rights Act and the Voting Rights Act
+    are their result. Kennedy's assassination makes room for Johnson's Great Society, Medicare and Medicaid, and a war in
+    Vietnam that arrives as the consensus peaks.
+events:
+# ---------------------------------------------------------------- Level 1: span
+- id: vietnam_war
+  start: 19640807
+  end: 19750430
+  level: 1
+  kind: war
+  title: Vietnam War
+  description_short: The American war in Vietnam, from the Gulf of Tonkin Resolution to the Fall of Saigon.
+  description_long: The span runs from Congress's authorization on August 7, 1964 to the fall of South Vietnam's capital on April 30,
+    1975. About 58,000 Americans and millions of Vietnamese die. It is owned by this corpus because it begins here, and it crosses
+    the epoch end by nine years. The Unravelling corpus must carry its end events, the Paris Peace Accords and the Fall of Saigon.
+  why: It is the war that the Great Society's consensus could not carry, authorized at its height and lost at its end.
+  tags:
+  - vietnam
+  - war
+  - cold-war
+# ---------------------------------------------------------------- Level 1: points
+- id: brown_v_board
+  start: 19540517
+  level: 1
+  kind: court_case
+  title: Brown v. Board of Education
+  description_short: The Supreme Court unanimously rules that racial segregation in public schools is unconstitutional.
+  description_long: Chief Justice Earl Warren writes that separate educational facilities are inherently unequal. The decision
+    overturns Plessy for public education, and the Court's order to desegregate "with all deliberate speed" follows a year later.
+  why: It makes the question's second clause, who stands inside the settlement, the epoch's defining struggle.
+  tags:
+  - segregation
+  - supreme-court
+  - education
+- id: interstate_highway_act
+  start: 19560629
+  level: 1
+  kind: legislation
+  title: Interstate Highway Act
+  description_short: Congress authorizes a 41,000-mile highway system, the largest public works program in American history.
+  description_long: Eisenhower, a Republican who had seen Germany's autobahns, signs the $25 billion program funded by a gas tax. The
+    system reshapes cities, suburbs, and trucking, and reinforces the car-based economy.
+  why: It is the opposition party building on the New Deal state, and gives the affluent society its physical form.
+  tags:
+  - highways
+  - infrastructure
+  - eisenhower
+- id: sputnik
+  start: 19571004
+  level: 1
+  kind: technology
+  title: Sputnik
+  description_short: The Soviet Union launches the first artificial satellite, and Americans fear they are falling behind.
+  description_long: The launch triggers a national debate over schools and science, and leads to NASA and the National Defense
+    Education Act. A second, heavier satellite carrying a dog follows a month later.
+  why: It turns the Cold War inward and breaks the era's complacency, bringing federal money to science and schools.
+  tags:
+  - space-race
+  - science
+  - education
+- id: kennedy_elected
+  start: 19601108
+  level: 1
+  kind: election
+  title: Kennedy Elected
+  description_short: John F. Kennedy narrowly defeats Richard Nixon, becoming the youngest elected president and the first Catholic.
+  description_long: The margin is about 112,000 votes. The televised debates, in which Kennedy looks poised and Nixon ill at ease,
+    are widely credited with helping him.
+  why: It is a generational turn that promises more of the settlement's terms, won on television by a hair.
+  tags:
+  - election
+  - kennedy
+  - television
+- id: cuban_missile_crisis
+  start: 19621016
+  end: 19621028
+  level: 1
+  kind: crisis
+  title: Cuban Missile Crisis
+  description_short: Thirteen days of confrontation over Soviet missiles in Cuba bring the superpowers to the edge of nuclear war.
+  description_long: Kennedy imposes a naval quarantine, and Khrushchev agrees on October 28 to remove the missiles in exchange for
+    a public pledge not to invade Cuba and a secret promise to remove American missiles from Turkey.
+  why: It is the Cold War's closest approach to catastrophe, and the era's second great anxiety.
+  tags:
+  - cuba
+  - nuclear
+  - kennedy
+- id: kennedy_assassinated
+  start: 19631122
+  level: 1
+  kind: political_event
+  title: Kennedy Assassinated
+  description_short: President Kennedy is shot in Dallas, and Lyndon Johnson takes the oath on Air Force One.
+  description_long: The killing is watched by the country on television for four days. Johnson tells Congress that the best tribute to
+    Kennedy would be the civil rights bill.
+  why: It is the shock that makes room for the Great Society.
+  tags:
+  - assassination
+  - kennedy
+  - johnson
+- id: civil_rights_act_1964
+  start: 19640702
+  level: 1
+  kind: legislation
+  title: Civil Rights Act of 1964
+  description_short: Congress outlaws discrimination in public accommodations, employment, and federally funded programs.
+  description_long: The act ends legal segregation in hotels, restaurants, and public places and bans employment discrimination
+    by race, sex, and religion. It passes after a Senate filibuster by Southern Democrats that lasts for more than fifty days.
+  why: It extends the settlement's terms in law, the largest civil rights statute since Reconstruction.
+  tags:
+  - civil-rights
+  - legislation
+  - johnson
+- id: voting_rights_act
+  start: 19650806
+  level: 1
+  kind: legislation
+  title: Voting Rights Act
+  description_short: Congress bans literacy tests and other devices that deny Black citizens the vote, and authorizes federal oversight.
+  description_long: The act follows the violence in Selma and sends federal examiners into Southern counties. Black voter registration
+    in the South rises sharply within a few years.
+  why: It is the legislative apex of the consensus, the Fifteenth Amendment finally enforced.
+  tags:
+  - voting-rights
+  - civil-rights
+  - johnson
+# ---------------------------------------------------------------- Level 2
+- id: korean_armistice
+  start: 19530727
+  level: 2
+  kind: war
+  title: Korean Armistice
+  description_short: An armistice at Panmunjom ends the fighting in Korea, with the peninsula still divided.
+  description_long: The agreement ends the war that closed the Ascendancy, as Eisenhower had promised. No peace treaty follows.
+  why: It starts the epoch with a calm that makes plenty possible, and leaves a permanent Cold War frontier.
+  tags:
+  - korea
+  - armistice
+  - eisenhower
+- id: social_security_expansion_1954
+  start: 19540901
+  level: 2
+  kind: legislation
+  title: Social Security Expanded
+  description_short: A Republican Congress and president extend Social Security to about ten million more workers.
+  description_long: Eisenhower had written to his brother that any party trying to abolish Social Security would vanish from politics, and
+    his administration proposes the expansion, adding farm and domestic workers among others.
+  why: It is the clearest evidence of the ratification signal, the opposition party accepting the New Deal's terms.
+  tags:
+  - social-security
+  - eisenhower
+  - ratification
+- id: montgomery_bus_boycott
+  start: 19551205
+  end: 19561220
+  level: 2
+  kind: protest
+  title: Montgomery Bus Boycott
+  description_short: Black residents of Montgomery boycott the city's buses for 381 days, led by a young minister, Martin Luther King Jr.
+  description_long: The boycott begins four days after Rosa Parks's arrest, and ends with a Supreme Court ruling that bus
+    segregation is unconstitutional. It establishes nonviolent mass protest as a method and makes King a national figure.
+  why: It shows the movement's method and force, the people outside the settlement organizing for entry.
+  tags:
+  - civil-rights
+  - boycott
+  - king
+- id: little_rock
+  start: 19570924
+  level: 2
+  kind: political_event
+  title: Little Rock Nine
+  description_short: Eisenhower sends the 101st Airborne to Little Rock to enforce the integration of Central High School.
+  description_long: Governor Orval Faubus had used the Arkansas National Guard to block nine Black students. Federal troops escort
+    them to class.
+  why: It shows that desegregation required federal force, and a Republican president using it.
+  tags:
+  - desegregation
+  - eisenhower
+  - arkansas
+- id: affluent_society_book
+  start: 19580101
+  level: 2
+  kind: intellectual
+  title: Galbraith's The Affluent Society
+  description_short: John Kenneth Galbraith argues that the problem of production is solved and private wealth sits beside public squalor.
+  description_long: The book names the era and shifts the question from producing wealth to distributing it and improving its
+    quality. Date is year-level (1958).
+  why: It names the epoch and states the question of the first clause, whether plenty will be shared.
+  tags:
+  - galbraith
+  - economics
+  - affluence
+  date_precision: year
+- id: greensboro_sit_ins
+  start: 19600201
+  level: 2
+  kind: protest
+  title: Greensboro Sit-Ins
+  description_short: Four Black college students sit down at a whites-only lunch counter in Greensboro, North Carolina, starting a wave of sit-ins.
+  description_long: Within two months the sit-ins spread to more than fifty cities, and students form the Student Nonviolent
+    Coordinating Committee.
+  why: It begins the student phase of the movement, a mass direct-action challenge to Southern exclusion.
+  tags:
+  - sit-ins
+  - civil-rights
+  - students
+- id: eisenhower_farewell
+  start: 19610117
+  level: 2
+  kind: speech
+  title: Eisenhower's Farewell Address
+  description_short: Eisenhower warns the nation against the "unwarranted influence" of the military-industrial complex.
+  description_long: The speech comes from the general who presided over the largest peacetime military buildup and warns that the
+    arms industry and military had acquired too much power.
+  why: It is the era's own warning about the cost of the Cold War state it built.
+  tags:
+  - eisenhower
+  - military
+  - warning
+- id: berlin_wall
+  start: 19610813
+  level: 2
+  kind: crisis
+  title: Berlin Wall Built
+  description_short: East Germany seals the border in Berlin with barbed wire and then a concrete wall.
+  description_long: Kennedy accepts the division, calling the wall "a hell of a lot better than a war." The wall stands for 28 years.
+  why: It is the Cold War's symbol, and the settlement's limit in Europe.
+  tags:
+  - berlin
+  - cold-war
+  - germany
+- id: birmingham_campaign
+  start: 19630403
+  end: 19630510
+  level: 2
+  kind: protest
+  title: Birmingham Campaign
+  description_short: Marches and sit-ins meet police dogs and fire hoses in Birmingham, Alabama, and the images appall the nation.
+  description_long: King writes his Letter from Birmingham Jail in April, and hundreds of schoolchildren march in May. The city
+    agrees to desegregate lunch counters and other facilities.
+  why: It turns the Southern exclusion into a national moral crisis, and prepares the Civil Rights Act.
+  tags:
+  - civil-rights
+  - birmingham
+  - king
+- id: march_on_washington
+  start: 19630828
+  level: 2
+  kind: protest
+  title: March on Washington
+  description_short: About 250,000 people gather at the Lincoln Memorial for jobs and freedom, where King gives his "I Have a Dream" speech.
+  description_long: The march is organized by A. Philip Randolph and others and is the largest political gathering in the capital to
+    that date.
+  why: It builds the national consensus behind the civil rights bill.
+  tags:
+  - civil-rights
+  - king
+  - washington
+- id: gulf_of_tonkin_resolution
+  start: 19640807
+  level: 2
+  kind: legislation
+  title: Gulf of Tonkin Resolution
+  description_short: Congress authorizes the president to use force in Southeast Asia after reported attacks on U.S. ships.
+  description_long: The vote is unanimous in the House and 88 to 2 in the Senate. Later evidence shows the second attack never
+    happened.
+  why: It is a blank check for the war, authorized at the consensus's height.
+  tags:
+  - vietnam
+  - congress
+  - johnson
+- id: johnson_landslide
+  start: 19641103
+  level: 2
+  kind: election
+  title: Johnson's Landslide
+  description_short: Lyndon Johnson defeats Barry Goldwater with 61 percent of the vote, the largest popular margin of the century.
+  description_long: The result gives Johnson a Congress with large Democratic majorities, and the Great Society follows.
+  why: It is the mandate for the Great Society, at the settlement's height.
+  tags:
+  - election
+  - johnson
+  - great-society
+- id: selma_bloody_sunday
+  start: 19650307
+  level: 2
+  kind: violence
+  title: Bloody Sunday at Selma
+  description_short: State troopers attack voting-rights marchers at the Edmund Pettus Bridge in Selma, Alabama.
+  description_long: Television shows the beatings, and Johnson addresses Congress eight days later, saying "we shall overcome." The
+    march to Montgomery follows.
+  why: It is the violence that produces the Voting Rights Act.
+  tags:
+  - voting-rights
+  - selma
+  - violence
+- id: da_nang_landing
+  start: 19650308
+  level: 2
+  kind: military
+  title: Marines Land at Da Nang
+  description_short: The first American combat troops arrive in South Vietnam.
+  description_long: The landing follows the start of the Rolling Thunder bombing campaign. By the end of the year about 180,000
+    American troops are in Vietnam.
+  why: It begins the ground war, on the same day the consensus is approaching its peak.
+  tags:
+  - vietnam
+  - marines
+  - escalation
+- id: medicare_medicaid
+  start: 19650730
+  level: 2
+  kind: legislation
+  title: Medicare and Medicaid
+  description_short: Johnson signs health insurance for the elderly and the poor, with Harry Truman at his side.
+  description_long: The programs, signed in Independence, Missouri, make the federal government the chief payer of health care for tens
+    of millions.
+  why: It is the Great Society's social-insurance peak, the answer to the first clause of the question.
+  tags:
+  - health
+  - medicare
+  - great-society
+- id: watts_riot
+  start: 19650811
+  end: 19650816
+  level: 2
+  kind: violence
+  title: Watts Riot
+  description_short: Six days of rioting in Los Angeles's Black Watts neighborhood kill 34 people and destroy about a thousand buildings.
+  description_long: The riot begins after a traffic stop and shows that Black frustration in Northern and Western cities was not met
+    by the Southern civil rights laws.
+  why: It is the first crack, five days after the Voting Rights Act, at the moment of triumph.
+  tags:
+  - race
+  - violence
+  - los-angeles
+- id: hart_celler_act
+  start: 19651003
+  level: 2
+  kind: legislation
+  title: Hart–Celler Act
+  description_short: Congress abolishes the national-origins quota system, replacing it with a preference for family reunification and skills.
+  description_long: Johnson signs the act at the Statue of Liberty and says it will not change the country's makeup. It ends
+    the system of 1924 and later transforms the immigrant population, with a new cap on Western Hemisphere immigration.
+  why: It reverses the immigration thread's closure, the 1924 logic of membership ended in the same year as the Voting Rights Act.
+  tags:
+  - immigration
+  - quotas
+  - great-society
+# ---------------------------------------------------------------- Level 3
+- id: eisenhower_inaugurated
+  start: 19530120
+  level: 3
+  kind: political_event
+  title: Eisenhower Inaugurated
+  description_short: Dwight Eisenhower becomes the first Republican president in twenty years.
+  description_long: He accepts the New Deal's structure while changing its tone, and names a cabinet of businessmen.
+  why: It opens the epoch with the opposition in power and the settlement unrepealed.
+  tags:
+  - eisenhower
+  - inauguration
+  - republicans
+- id: hew_created
+  start: 19530411
+  level: 3
+  kind: institution
+  title: Department of Health, Education, and Welfare Created
+  description_short: Eisenhower's administration creates a cabinet department for health, education, and welfare.
+  description_long: Oveta Culp Hobby becomes its first secretary. The department consolidates the New Deal's social programs.
+  why: It shows a Republican administration building a cabinet department for the welfare state.
+  tags:
+  - welfare
+  - bureaucracy
+  - eisenhower
+- id: iran_coup_1953
+  start: 19530819
+  level: 3
+  kind: foreign_policy
+  title: Iran Coup
+  description_short: The CIA and Britain help overthrow Iran's elected prime minister, Mohammad Mossadegh.
+  description_long: The operation restores the Shah to power and secures Western oil interests. Its consequences return in 1979.
+  why: It begins the pattern of covert action that the Cold War leadership relies on.
+  tags:
+  - iran
+  - cia
+  - covert-action
+- id: army_mccarthy_hearings
+  start: 19540422
+  end: 19540617
+  level: 3
+  kind: political_event
+  title: Army–McCarthy Hearings
+  description_short: Televised Senate hearings expose Senator McCarthy's bullying, and his support collapses.
+  description_long: Army counsel Joseph Welch asks him on camera, "Have you no sense of decency, sir?"
+  why: It is the beginning of the end of McCarthyism, brought down by television.
+  tags:
+  - mccarthyism
+  - television
+  - senate
+- id: dien_bien_phu
+  start: 19540507
+  level: 3
+  kind: war
+  title: Dien Bien Phu
+  description_short: Vietnamese forces defeat the French at Dien Bien Phu, ending French rule in Indochina.
+  description_long: Eisenhower declines to intervene. The Geneva Accords in July divide Vietnam at the 17th parallel.
+  why: It starts the American inheritance of the Vietnam commitment.
+  tags:
+  - vietnam
+  - france
+  - geneva
+- id: mccarthy_censured
+  start: 19541202
+  level: 3
+  kind: political_event
+  title: McCarthy Censured
+  description_short: The Senate votes 67 to 22 to censure Senator McCarthy.
+  description_long: McCarthy's power ends, and he dies in 1957.
+  why: It marks the end of the Red Scare's peak.
+  tags:
+  - mccarthyism
+  - senate
+  - censure
+- id: polio_vaccine
+  start: 19550412
+  level: 3
+  kind: science
+  title: Polio Vaccine Declared Safe
+  description_short: Jonas Salk's polio vaccine is announced as safe and effective.
+  description_long: The vaccine had been funded by the March of Dimes, and the announcement is greeted with national celebration.
+  why: It is a triumph of mass science and the era's confidence in progress.
+  tags:
+  - polio
+  - science
+  - health
+- id: brown_ii
+  start: 19550531
+  level: 3
+  kind: court_case
+  title: Brown II
+  description_short: The Supreme Court orders desegregation "with all deliberate speed."
+  description_long: The vague standard leaves implementation to local federal courts and invites a decade of resistance.
+  why: It shows the gap between a right and its enforcement.
+  tags:
+  - segregation
+  - supreme-court
+  - enforcement
+- id: emmett_till
+  start: 19550828
+  level: 3
+  kind: violence
+  title: Emmett Till Murdered
+  description_short: A 14-year-old Black boy from Chicago is kidnapped and killed in Mississippi, and his killers are acquitted.
+  description_long: His mother insists on an open casket, and the photographs appear in Jet magazine and shock the country.
+  why: It is a national awakening to the South's violence.
+  tags:
+  - lynching
+  - race
+  - mississippi
+- id: rosa_parks
+  start: 19551201
+  level: 3
+  kind: political_event
+  title: Rosa Parks Arrested
+  description_short: Rosa Parks refuses to give up her bus seat to a white passenger in Montgomery and is arrested.
+  description_long: The NAACP activist's arrest sparks the boycott.
+  why: It is the spark of the movement.
+  tags:
+  - civil-rights
+  - montgomery
+  - parks
+- id: afl_cio_merger
+  start: 19551205
+  level: 3
+  kind: organization
+  title: AFL–CIO Merger
+  description_short: The AFL and CIO merge, uniting about 15 million workers.
+  description_long: George Meany becomes the first president. Union membership is about a third of the nonfarm workforce.
+  why: It is organized labor at its peak, a partner in the settlement.
+  tags:
+  - labor
+  - unions
+  - meany
+- id: eisenhower_reelected
+  start: 19561106
+  level: 3
+  kind: election
+  title: Eisenhower Reelected
+  description_short: Eisenhower defeats Adlai Stevenson again, 457 electoral votes to 73.
+  description_long: The result confirms the settlement's popularity.
+  why: It confirms the consensus.
+  tags:
+  - election
+  - eisenhower
+  - consensus
+- id: civil_rights_act_1957
+  start: 19570909
+  level: 3
+  kind: legislation
+  title: Civil Rights Act of 1957
+  description_short: Congress passes the first civil rights law since Reconstruction, a weak voting-rights measure.
+  description_long: Senator Strom Thurmond filibusters for more than 24 hours. The act creates a Civil Rights Commission.
+  why: It breaks the long silence, in a limited way.
+  tags:
+  - civil-rights
+  - voting-rights
+  - congress
+- id: nasa_created
+  start: 19580729
+  level: 3
+  kind: institution
+  title: NASA Created
+  description_short: Eisenhower signs the law creating the National Aeronautics and Space Administration.
+  description_long: The agency takes over the American space effort in response to Sputnik.
+  why: It is the federal answer to Sputnik, the Cold War turned inward.
+  tags:
+  - space-race
+  - nasa
+  - science
+- id: ndea
+  start: 19580902
+  level: 3
+  kind: legislation
+  title: National Defense Education Act
+  description_short: Congress funds science, math, and foreign-language education, and student loans.
+  description_long: The first large-scale federal aid to education is justified as defense.
+  why: It is the Cold War justifying federal education spending.
+  tags:
+  - education
+  - science
+  - cold-war
+- id: castro_takes_power
+  start: 19590101
+  level: 3
+  kind: political_event
+  title: Castro Takes Power in Cuba
+  description_short: Fidel Castro's revolution overthrows Cuba's dictator, Fulgencio Batista.
+  description_long: Castro's turn toward the Soviet Union brings the Cold War ninety miles from Florida.
+  why: It sets up the Bay of Pigs and the missile crisis.
+  tags:
+  - cuba
+  - castro
+  - revolution
+- id: u2_incident
+  start: 19600501
+  level: 3
+  kind: crisis
+  title: U-2 Shot Down
+  description_short: The Soviet Union downs an American spy plane, and Eisenhower admits the flights.
+  description_long: The incident collapses a planned summit in Paris.
+  why: It ends a hopeful moment and exposes the secrecy of the Cold War.
+  tags:
+  - espionage
+  - soviet-union
+  - summit
+- id: birth_control_pill
+  start: 19600509
+  level: 3
+  kind: science
+  title: Birth Control Pill Approved
+  description_short: The FDA approves the first oral contraceptive.
+  description_long: The pill gives women unprecedented control over reproduction and spreads rapidly.
+  why: It is a technological change with a social effect larger than most laws.
+  tags:
+  - contraception
+  - women
+  - science
+- id: kennedy_nixon_debate
+  start: 19600926
+  level: 3
+  kind: political_event
+  title: First Kennedy–Nixon Debate
+  description_short: The first televised presidential debate is watched by about 70 million people.
+  description_long: Radio listeners think Nixon did well and television viewers think Kennedy won.
+  why: It makes television central to presidential politics.
+  tags:
+  - television
+  - debate
+  - kennedy
+- id: kennedy_inaugural
+  start: 19610120
+  level: 3
+  kind: speech
+  title: Kennedy's Inaugural Address
+  description_short: Kennedy asks Americans to "ask not what your country can do for you."
+  description_long: The speech frames the Cold War as a "long twilight struggle" and pledges to bear any burden.
+  why: It states the era's confidence and its open-ended commitments.
+  tags:
+  - kennedy
+  - inauguration
+  - cold-war
+- id: bay_of_pigs
+  start: 19610417
+  level: 3
+  kind: military
+  title: Bay of Pigs
+  description_short: A CIA-trained force of Cuban exiles invades Cuba and is defeated within three days.
+  description_long: Kennedy had inherited the plan and declines to provide air cover. The failure humiliates the administration.
+  why: It is the new president's first failure, and leads to the missile crisis.
+  tags:
+  - cuba
+  - cia
+  - kennedy
+- id: freedom_rides
+  start: 19610504
+  level: 3
+  kind: protest
+  title: Freedom Rides
+  description_short: Black and white activists ride interstate buses through the South to test the desegregation of bus terminals.
+  description_long: A bus is firebombed near Anniston, Alabama, and riders are beaten. The Kennedy administration intervenes.
+  why: It forces the federal government to enforce desegregation.
+  tags:
+  - civil-rights
+  - freedom-riders
+  - transportation
+- id: moon_speech
+  start: 19610525
+  level: 3
+  kind: speech
+  title: Kennedy's Moon Speech
+  description_short: Kennedy commits the nation to landing a man on the Moon before the decade ends.
+  description_long: The goal responds to Gagarin's flight, and the project eventually costs about $25 billion.
+  why: It converts the Cold War into a space race, the era's greatest national project.
+  tags:
+  - space-race
+  - kennedy
+  - apollo
+- id: silent_spring
+  start: 19620927
+  level: 3
+  kind: intellectual
+  title: Silent Spring
+  description_short: Rachel Carson's book exposes the harm of pesticides and begins the modern environmental movement.
+  description_long: The book challenges the era's faith in technology, and leads to new federal environmental laws.
+  why: It opens a question about the cost of the plenty.
+  tags:
+  - environment
+  - carson
+  - science
+- id: james_meredith
+  start: 19621001
+  level: 3
+  kind: political_event
+  title: James Meredith Enters Ole Miss
+  description_short: James Meredith integrates the University of Mississippi after a riot in which two people are killed.
+  description_long: Kennedy sends federal marshals and thousands of troops.
+  why: It is another showdown between federal power and Southern resistance.
+  tags:
+  - desegregation
+  - mississippi
+  - education
+- id: feminine_mystique
+  start: 19630201
+  level: 3
+  kind: intellectual
+  title: The Feminine Mystique
+  description_short: Betty Friedan's book describes the dissatisfaction of educated suburban women.
+  description_long: The book sells millions of copies and helps launch the modern women's movement. Date is month-level (February 1963).
+  why: It names the question of who is outside, from inside the suburban home.
+  tags:
+  - women
+  - feminism
+  - suburbs
+  date_precision: month
+- id: kennedy_civil_rights_speech
+  start: 19630611
+  level: 3
+  kind: speech
+  title: Kennedy's Civil Rights Speech
+  description_short: Kennedy addresses the nation on civil rights as a moral issue and announces a bill.
+  description_long: The speech comes hours after Governor George Wallace's stand in the schoolhouse door, and the night before Medgar
+    Evers is murdered.
+  why: It commits the presidency to the cause.
+  tags:
+  - civil-rights
+  - kennedy
+  - speech
+- id: sixteenth_street_bombing
+  start: 19630915
+  level: 3
+  kind: violence
+  title: 16th Street Baptist Church Bombing
+  description_short: A bomb kills four Black girls at a Birmingham church.
+  description_long: The attack is carried out by the Klan, and the killers are not convicted for years.
+  why: It shows the violence behind the exclusion, weeks after the March on Washington.
+  tags:
+  - race
+  - violence
+  - birmingham
+- id: diem_assassinated
+  start: 19631102
+  level: 3
+  kind: political_event
+  title: Diem Assassinated
+  description_short: South Vietnamese generals overthrow and kill President Ngo Dinh Diem with American acquiescence.
+  description_long: The coup deepens the American stake in South Vietnam's future.
+  why: It deepens the commitment before Kennedy's own death.
+  tags:
+  - vietnam
+  - coup
+  - diem
+- id: war_on_poverty
+  start: 19640108
+  level: 3
+  kind: speech
+  title: War on Poverty Declared
+  description_short: Johnson declares an "unconditional war on poverty in America" in his State of the Union address.
+  description_long: The Economic Opportunity Act follows in August, creating Head Start, the Job Corps, and community action.
+  why: It is the Great Society's answer to the first clause, sharing the plenty.
+  tags:
+  - poverty
+  - johnson
+  - great-society
+- id: tax_cut_1964
+  start: 19640226
+  level: 3
+  kind: legislation
+  title: Revenue Act of 1964
+  description_short: Congress cuts taxes to stimulate the economy, a Keynesian measure proposed by Kennedy.
+  description_long: The cut helps drive a long expansion and is seen as proof that economic management works.
+  why: It is the high-water mark of confidence in Keynesian management.
+  tags:
+  - taxes
+  - keynes
+  - economy
+- id: freedom_summer
+  start: 19640621
+  level: 3
+  kind: violence
+  title: Freedom Summer Murders
+  description_short: Three civil rights workers disappear in Mississippi, and are found murdered, as hundreds of volunteers register voters.
+  description_long: The case of James Chaney, Andrew Goodman, and Michael Schwerner draws the FBI into the state.
+  why: It shows the cost of the voting-rights campaign.
+  tags:
+  - voting-rights
+  - mississippi
+  - violence
+- id: economic_opportunity_act
+  start: 19640820
+  level: 3
+  kind: legislation
+  title: Economic Opportunity Act
+  description_short: Congress creates the Office of Economic Opportunity and programs for the poor.
+  description_long: The act funds Head Start, the Job Corps, and community action programs.
+  why: It is the legislative form of the war on poverty.
+  tags:
+  - poverty
+  - great-society
+  - congress
+- id: selma_to_montgomery
+  start: 19650321
+  end: 19650325
+  level: 3
+  kind: protest
+  title: Selma to Montgomery March
+  description_short: Marchers, protected by federal troops, walk fifty miles to Montgomery, Alabama.
+  description_long: About 25,000 people reach the state capitol on March 25.
+  why: It completes the Selma campaign that leads to the Voting Rights Act.
+  tags:
+  - voting-rights
+  - selma
+  - king
+- id: esea_1965
+  start: 19650411
+  level: 3
+  kind: legislation
+  title: Elementary and Secondary Education Act
+  description_short: Congress provides federal aid to schools, targeted at poor districts.
+  description_long: The law is signed in a one-room schoolhouse in Johnson's Texas hometown.
+  why: It is the federal commitment to education in poor areas.
+  tags:
+  - education
+  - great-society
+  - funding
+- id: rolling_thunder
+  start: 19650302
+  level: 3
+  kind: military
+  title: Operation Rolling Thunder
+  description_short: The U.S. begins a sustained bombing campaign against North Vietnam.
+  description_long: The campaign lasts three years.
+  why: It begins the escalation.
+  tags:
+  - vietnam
+  - bombing
+  - escalation
+- id: griswold_v_connecticut
+  start: 19650607
+  level: 3
+  kind: court_case
+  title: Griswold v. Connecticut
+  description_short: The Supreme Court strikes down a ban on contraceptives for married couples, finding a right to privacy.
+  description_long: The right of privacy later underlies Roe v. Wade.
+  why: It opens a new line of rights doctrine.
+  tags:
+  - privacy
+  - contraception
+  - supreme-court
+# ---------------------------------------------------------------- Level 4
+- id: stalin_dies
+  start: 19530305
+  level: 4
+  kind: political_event
+  title: Stalin Dies
+  description_short: Stalin dies, and the Soviet leadership begins a struggle for succession.
+  description_long: The change brings a brief thaw.
+  why: It opens the possibility of easing the Cold War.
+  tags:
+  - soviet-union
+  - stalin
+  - succession
+- id: rosenbergs_executed
+  start: 19530619
+  level: 4
+  kind: legal
+  title: Rosenbergs Executed
+  description_short: Julius and Ethel Rosenberg are executed for passing atomic secrets to the Soviet Union.
+  description_long: They are the only American civilians executed for espionage during the Cold War.
+  why: It is the Red Scare's climactic case.
+  tags:
+  - espionage
+  - anticommunism
+  - execution
+- id: playboy_founded
+  start: 19531201
+  level: 5
+  kind: cultural
+  title: Playboy Founded
+  description_short: Hugh Hefner publishes the first issue of Playboy, with Marilyn Monroe.
+  description_long: The magazine becomes a symbol of changing sexual attitudes. Date is month-level (December 1953).
+  why: It is an early sign of the coming cultural change.
+  tags:
+  - culture
+  - media
+  - sexuality
+  date_precision: month
+- id: murrow_mccarthy
+  start: 19540309
+  level: 4
+  kind: cultural
+  title: Murrow Challenges McCarthy
+  description_short: Edward R. Murrow devotes a See It Now broadcast to McCarthy's methods.
+  description_long: The program is a landmark of television journalism.
+  why: It shows television's power to check demagoguery.
+  tags:
+  - television
+  - journalism
+  - mccarthyism
+- id: under_god
+  start: 19540614
+  level: 5
+  kind: policy
+  title: Under God Added to the Pledge
+  description_short: Congress adds the words "under God" to the Pledge of Allegiance.
+  description_long: The change reflects the Cold War's contrast with atheist communism.
+  why: It shows religion as a Cold War marker.
+  tags:
+  - religion
+  - pledge
+  - cold-war
+- id: operation_wetback
+  start: 19540601
+  level: 4
+  kind: policy
+  title: Operation Wetback
+  description_short: The INS conducts a mass deportation campaign against Mexican migrants, claiming to remove more than a million.
+  description_long: The campaign comes while the Bracero Program brings Mexican workers in legally. Date is month-level (June 1954).
+  why: It shows the immigration thread's enforcement side, the state turning Mexican labor on and off.
+  tags:
+  - immigration
+  - mexico
+  - deportation
+  date_precision: month
+- id: guatemala_coup
+  start: 19540627
+  level: 4
+  kind: foreign_policy
+  title: Guatemala Coup
+  description_short: The CIA helps overthrow Guatemala's elected president, Jacobo Árbenz.
+  description_long: The coup protects the interests of the United Fruit Company and is justified as anticommunism.
+  why: It is another covert action in the Cold War's pattern.
+  tags:
+  - guatemala
+  - cia
+  - covert-action
+- id: seato
+  start: 19540908
+  level: 5
+  kind: treaty
+  title: SEATO Formed
+  description_short: The U.S. and seven other nations form the Southeast Asia Treaty Organization.
+  description_long: The treaty is later cited as a basis for the Vietnam commitment.
+  why: It extends the alliance system to Asia.
+  tags:
+  - alliance
+  - asia
+  - treaty
+- id: mcdonalds_franchise
+  start: 19550415
+  level: 5
+  kind: corporate
+  title: McDonald's Franchise Begins
+  description_short: Ray Kroc opens the first franchised McDonald's in Des Plaines, Illinois.
+  description_long: The chain becomes a symbol of standardized mass consumption.
+  why: It is the affluent society's consumer culture.
+  tags:
+  - franchise
+  - consumer
+  - food
+- id: disneyland_opens
+  start: 19550717
+  level: 5
+  kind: cultural
+  title: Disneyland Opens
+  description_short: Walt Disney opens his theme park in Anaheim, California.
+  description_long: The park is a showcase of the suburban, car-based middle-class leisure.
+  why: It is a symbol of the era's confidence.
+  tags:
+  - culture
+  - california
+  - leisure
+- id: southern_manifesto
+  start: 19560312
+  level: 4
+  kind: political_event
+  title: Southern Manifesto
+  description_short: One hundred and one Southern members of Congress pledge to resist Brown by all lawful means.
+  description_long: The signatories include nearly all Southern senators and representatives.
+  why: It is the organized congressional resistance to Brown.
+  tags:
+  - segregation
+  - congress
+  - massive-resistance
+- id: elvis_sullivan
+  start: 19560909
+  level: 4
+  kind: cultural
+  title: Elvis on Ed Sullivan
+  description_short: Elvis Presley appears on The Ed Sullivan Show before an audience of about 60 million.
+  description_long: Rock and roll becomes a mass youth culture, crossing racial lines.
+  why: It is a sign of the new youth culture.
+  tags:
+  - music
+  - television
+  - youth
+- id: hungary_uprising
+  start: 19561023
+  level: 4
+  kind: war
+  title: Hungarian Uprising
+  description_short: Hungarians revolt against Soviet rule, and Soviet tanks crush the uprising within weeks.
+  description_long: The United States offers rhetoric but no help, which shows the limits of rollback.
+  why: It exposes the gap between liberation rhetoric and containment.
+  tags:
+  - hungary
+  - soviet-union
+  - rollback
+- id: suez_crisis
+  start: 19561105
+  level: 4
+  kind: crisis
+  title: Suez Crisis
+  description_short: Britain, France, and Israel invade Egypt, and Eisenhower forces them to withdraw.
+  description_long: The episode shows Britain's decline and America's leadership of the West.
+  why: It completes the transfer of leadership from Britain to the United States.
+  tags:
+  - suez
+  - britain
+  - egypt
+- id: eisenhower_doctrine
+  start: 19570105
+  level: 4
+  kind: policy
+  title: Eisenhower Doctrine
+  description_short: Eisenhower pledges American help to Middle Eastern countries resisting communism.
+  description_long: Congress approves the use of force and economic aid.
+  why: It extends containment to the Middle East.
+  tags:
+  - middle-east
+  - containment
+  - eisenhower
+- id: on_the_road
+  start: 19570905
+  level: 5
+  kind: cultural
+  title: On the Road Published
+  description_short: Jack Kerouac's novel becomes the manifesto of the Beat generation.
+  description_long: The book celebrates restlessness and rejection of suburban conformity.
+  why: It is a counter-voice to the affluent society.
+  tags:
+  - literature
+  - beats
+  - counterculture
+- id: recession_1957_58
+  start: 19570801
+  end: 19580430
+  level: 4
+  kind: economic_crisis
+  title: Recession of 1957–58
+  description_short: A sharp recession raises unemployment to about 7 percent.
+  description_long: The downturn is the worst of the postwar years to that point. Dates are month-level.
+  why: It shows that the business cycle had not ended.
+  tags:
+  - recession
+  - unemployment
+  - economy
+  date_precision: month
+  end_precision: month
+- id: explorer_1
+  start: 19580131
+  level: 4
+  kind: technology
+  title: Explorer 1
+  description_short: The U.S. launches its first satellite, four months after Sputnik.
+  description_long: The satellite discovers the Van Allen radiation belts.
+  why: It is the American reply to Sputnik.
+  tags:
+  - space-race
+  - satellite
+  - science
+- id: cooper_v_aaron
+  start: 19580929
+  level: 4
+  kind: court_case
+  title: Cooper v. Aaron
+  description_short: The Supreme Court rules that states must obey its desegregation orders, rejecting Arkansas's defiance.
+  description_long: The justices sign the opinion individually, to underline unanimity.
+  why: It asserts the Court's supremacy over state resistance.
+  tags:
+  - desegregation
+  - supreme-court
+  - arkansas
+- id: lebanon_landing
+  start: 19580715
+  level: 4
+  kind: military
+  title: Marines Land in Lebanon
+  description_short: Eisenhower sends Marines to Lebanon under the Eisenhower Doctrine.
+  description_long: The troops withdraw within months.
+  why: It is the doctrine's first use.
+  tags:
+  - lebanon
+  - marines
+  - middle-east
+- id: alaska_hawaii_statehood
+  start: 19590821
+  level: 4
+  kind: political_event
+  title: Hawaii Becomes a State
+  description_short: Hawaii becomes the 50th state, five months after Alaska, the first state with a majority non-white population.
+  description_long: Hawaii's admission completes the process begun with annexation in 1898.
+  why: It closes the empire thread of the Big Stick with full membership.
+  tags:
+  - statehood
+  - hawaii
+  - empire
+- id: landrum_griffin
+  start: 19590914
+  level: 4
+  kind: legislation
+  title: Landrum–Griffin Act
+  description_short: Congress regulates union internal affairs and tightens limits on picketing.
+  description_long: The act responds to the McClellan hearings' revelations of union corruption.
+  why: It is another curb on unions within the settlement.
+  tags:
+  - labor
+  - unions
+  - corruption
+- id: steel_strike_1959
+  start: 19590715
+  end: 19591107
+  level: 4
+  kind: strike
+  title: Steel Strike of 1959
+  description_short: The steelworkers strike for 116 days, and a Taft–Hartley injunction ends it.
+  description_long: The settlement shows that labor and capital could bargain, within limits.
+  why: It tests the labor settlement.
+  tags:
+  - labor
+  - steel
+  - strike
+- id: kitchen_debate
+  start: 19590724
+  level: 4
+  kind: speech
+  title: Kitchen Debate
+  description_short: Vice President Nixon and Soviet Premier Khrushchev argue the merits of their systems in a model American kitchen in Moscow.
+  description_long: The exchange is a showcase of consumer plenty as a Cold War weapon.
+  why: It states the era's argument that affluence defeats communism.
+  tags:
+  - nixon
+  - khrushchev
+  - consumerism
+- id: sncc_founded
+  start: 19600415
+  level: 4
+  kind: organization
+  title: SNCC Founded
+  description_short: Student activists form the Student Nonviolent Coordinating Committee in Raleigh, North Carolina.
+  description_long: SNCC becomes the movement's most radical wing and a source of the voter-registration drives.
+  why: It brings a new generation into the struggle.
+  tags:
+  - students
+  - civil-rights
+  - organization
+- id: peace_corps
+  start: 19610301
+  level: 4
+  kind: institution
+  title: Peace Corps Established
+  description_short: Kennedy creates a volunteer program to send Americans to developing countries.
+  description_long: The program embodies the era's idealism.
+  why: It is the soft-power form of the Cold War.
+  tags:
+  - volunteers
+  - development
+  - kennedy
+- id: gagarin_orbit
+  start: 19610412
+  level: 4
+  kind: technology
+  title: Gagarin Orbits the Earth
+  description_short: Yuri Gagarin becomes the first human in space, and Alan Shepard follows three weeks later for America.
+  description_long: The Soviet lead in the space race deepens.
+  why: It prompts Kennedy's Moon commitment.
+  tags:
+  - space-race
+  - soviet-union
+  - spaceflight
+- id: mapp_v_ohio
+  start: 19610619
+  level: 4
+  kind: court_case
+  title: Mapp v. Ohio
+  description_short: The Supreme Court bars the use of illegally seized evidence in state courts.
+  description_long: The decision is part of the Warren Court's rights revolution.
+  why: It extends constitutional protections to the states.
+  tags:
+  - supreme-court
+  - criminal-procedure
+  - rights
+- id: baker_v_carr
+  start: 19620326
+  level: 4
+  kind: court_case
+  title: Baker v. Carr
+  description_short: The Supreme Court holds that malapportioned legislative districts can be challenged in court, starting "one person, one vote."
+  description_long: The decision leads to the redrawing of state and congressional districts.
+  why: It makes representation a justiciable right.
+  tags:
+  - voting
+  - supreme-court
+  - apportionment
+- id: john_glenn
+  start: 19620220
+  level: 4
+  kind: technology
+  title: John Glenn Orbits the Earth
+  description_short: John Glenn becomes the first American to orbit the Earth.
+  description_long: He is celebrated as a national hero.
+  why: It is an American answer to Gagarin.
+  tags:
+  - space-race
+  - spaceflight
+  - glenn
+- id: port_huron_statement
+  start: 19620601
+  level: 4
+  kind: intellectual
+  title: Port Huron Statement
+  description_short: Students for a Democratic Society issue a manifesto calling for participatory democracy.
+  description_long: The document founds the New Left. Date is month-level (June 1962).
+  why: It is the first critique of the settlement from the left.
+  tags:
+  - students
+  - new-left
+  - sds
+  date_precision: month
+- id: engel_v_vitale
+  start: 19620625
+  level: 4
+  kind: court_case
+  title: Engel v. Vitale
+  description_short: The Supreme Court bars official prayer in public schools.
+  description_long: The decision draws a strong backlash from religious conservatives.
+  why: It begins a long conflict over religion and the state.
+  tags:
+  - religion
+  - schools
+  - supreme-court
+- id: gideon_v_wainwright
+  start: 19630318
+  level: 4
+  kind: court_case
+  title: Gideon v. Wainwright
+  description_short: The Supreme Court holds that states must provide lawyers to poor defendants in felony cases.
+  description_long: The decision is unanimous.
+  why: It extends a right to the poor.
+  tags:
+  - supreme-court
+  - counsel
+  - rights
+- id: equal_pay_act
+  start: 19630610
+  level: 4
+  kind: legislation
+  title: Equal Pay Act
+  description_short: Congress bans paying men and women different wages for equal work.
+  description_long: The law has limited initial effect.
+  why: It is an early federal measure for women's economic rights.
+  tags:
+  - women
+  - wages
+  - equal-pay
+- id: medgar_evers
+  start: 19630612
+  level: 4
+  kind: violence
+  title: Medgar Evers Assassinated
+  description_short: The NAACP's Mississippi field secretary is shot dead outside his home.
+  description_long: His killer, Byron De La Beckwith, is not convicted until 1994.
+  why: It comes hours after Kennedy's speech, and shows the stakes.
+  tags:
+  - civil-rights
+  - mississippi
+  - assassination
+- id: hotline_agreement
+  start: 19630620
+  level: 5
+  kind: diplomacy
+  title: Moscow–Washington Hotline
+  description_short: The U.S. and Soviet Union agree to a direct communications link after the missile crisis.
+  description_long: The link is a lesson from the crisis.
+  why: It shows crisis management after the brink.
+  tags:
+  - cold-war
+  - communications
+  - arms-control
+- id: test_ban_treaty
+  start: 19630805
+  level: 4
+  kind: treaty
+  title: Limited Test Ban Treaty
+  description_short: The U.S., Britain, and the Soviet Union ban nuclear tests in the atmosphere, space, and underwater.
+  description_long: The Senate ratifies the treaty in September.
+  why: It is the first arms control after the missile crisis.
+  tags:
+  - nuclear
+  - arms-control
+  - treaty
+- id: beatles_sullivan
+  start: 19640209
+  level: 4
+  kind: cultural
+  title: Beatles on Ed Sullivan
+  description_short: The Beatles appear on The Ed Sullivan Show before about 73 million viewers.
+  description_long: The British Invasion transforms American popular music.
+  why: It is the start of the 1960s youth culture's mass moment.
+  tags:
+  - music
+  - television
+  - youth
+- id: cassius_clay_liston
+  start: 19640225
+  level: 5
+  kind: cultural
+  title: Cassius Clay Wins the Heavyweight Title
+  description_short: Cassius Clay defeats Sonny Liston and soon takes the name Muhammad Ali.
+  description_long: Ali's later refusal of the draft makes him a symbol.
+  why: It is a sign of Black public voice.
+  tags:
+  - sports
+  - ali
+  - race
+- id: nyt_v_sullivan
+  start: 19640309
+  level: 4
+  kind: court_case
+  title: New York Times v. Sullivan
+  description_short: The Supreme Court limits libel suits by public officials, protecting criticism of government.
+  description_long: The decision arises from a civil rights advertisement.
+  why: It protects the press and the movement.
+  tags:
+  - press
+  - free-speech
+  - supreme-court
+- id: great_society_speech
+  start: 19640522
+  level: 4
+  kind: speech
+  title: Johnson's Great Society Speech
+  description_short: Johnson announces his goal of a "Great Society" in a commencement address at the University of Michigan.
+  description_long: He calls for an end to poverty and racial injustice.
+  why: It names the program.
+  tags:
+  - johnson
+  - great-society
+  - speech
+- id: mfdp_atlantic_city
+  start: 19640822
+  level: 4
+  kind: political_event
+  title: Freedom Democrats at Atlantic City
+  description_short: Fannie Lou Hamer tells the Democratic convention of beatings in Mississippi, and the party refuses to seat the Freedom Democrats.
+  description_long: The compromise offered disillusions many young activists.
+  why: It shows the limit of the party's willingness.
+  tags:
+  - civil-rights
+  - democrats
+  - hamer
+- id: free_speech_movement
+  start: 19641001
+  level: 4
+  kind: protest
+  title: Free Speech Movement
+  description_short: Berkeley students occupy a police car and begin a campus protest movement.
+  description_long: The movement begins over a ban on political activity and spreads.
+  why: It starts the campus protest of the later 1960s.
+  tags:
+  - students
+  - berkeley
+  - protest
+- id: bracero_ends
+  start: 19641231
+  level: 4
+  kind: policy
+  title: Bracero Program Ends
+  description_short: Congress ends the Bracero Program, which had brought millions of Mexican farm workers.
+  description_long: The end of the program ushers in new migration patterns and farmworker organizing.
+  why: It ends the exemption from the quota system that Mexican labor enjoyed.
+  tags:
+  - immigration
+  - mexico
+  - agriculture
+- id: malcolm_x_killed
+  start: 19650221
+  level: 4
+  kind: violence
+  title: Malcolm X Assassinated
+  description_short: Malcolm X is shot dead at a rally in Harlem.
+  description_long: His autobiography and ideas shape the movement's turn toward Black Power.
+  why: It removes the leading voice of the movement's radical alternative.
+  tags:
+  - race
+  - assassination
+  - malcolm-x
+- id: moynihan_report
+  start: 19650301
+  level: 4
+  kind: intellectual
+  title: Moynihan Report
+  description_short: Daniel Patrick Moynihan's report on the Black family argues that family structure holds back Black progress.
+  description_long: The report is leaked and widely criticized as blaming the victim. Date is month-level (March 1965).
+  why: It frames the later debate about poverty and race.
+  tags:
+  - poverty
+  - family
+  - race
+  date_precision: month
+- id: dominican_intervention
+  start: 19650428
+  level: 4
+  kind: military
+  title: U.S. Intervenes in the Dominican Republic
+  description_short: Johnson sends 22,000 troops to the Dominican Republic to prevent what he fears is a communist takeover.
+  description_long: The intervention revives the Roosevelt Corollary's logic.
+  why: It continues the hemispheric-intervention thread.
+  tags:
+  - dominican-republic
+  - intervention
+  - latin-america
+- id: head_start
+  start: 19650501
+  level: 4
+  kind: institution
+  title: Head Start Launched
+  description_short: A preschool program for poor children begins as part of the War on Poverty.
+  description_long: The program serves hundreds of thousands in its first summer. Date is month-level (May 1965).
+  why: It is a lasting Great Society program.
+  tags:
+  - education
+  - poverty
+  - children
+  date_precision: month
+- id: higher_education_act
+  start: 19651108
+  level: 4
+  kind: legislation
+  title: Higher Education Act
+  description_short: Congress creates federal scholarships and loans for college students.
+  description_long: The act greatly expands college access.
+  why: It extends the GI Bill's logic to the whole population.
+  tags:
+  - education
+  - great-society
+  - students
+- id: time_keynesians
+  start: 19651231
+  level: 4
+  kind: cultural
+  title: "We Are All Keynesians Now"
+  description_short: Time magazine's cover story declares the consensus around Keynesian economic management.
+  description_long: The phrase is later attributed to Richard Nixon in 1971. The cover story marks the peak of the belief.
+  why: It is the consensus at its height, and its last day.
+  tags:
+  - keynes
+  - economics
+  - consensus
+# ---------------------------------------------------------------- Level 5
+- id: eisenhower_heart_attack
+  start: 19550924
+  level: 5
+  kind: political_event
+  title: Eisenhower's Heart Attack
+  description_short: Eisenhower suffers a heart attack in Denver, and recovers to run again.
+  description_long: The episode raises the question of presidential disability.
+  why: It shows the vulnerability of the presidency.
+  tags:
+  - eisenhower
+  - health
+  - presidency
+- id: barbie_introduced
+  start: 19590309
+  level: 5
+  kind: cultural
+  title: Barbie Introduced
+  description_short: Mattel introduces the Barbie doll at the New York Toy Fair.
+  description_long: The doll becomes a symbol of consumer culture and gender roles.
+  why: It is an emblem of the era's consumer culture.
+  tags:
+  - consumer
+  - toys
+  - gender
+- id: telstar
+  start: 19620710
+  level: 5
+  kind: technology
+  title: Telstar Launched
+  description_short: The first communications satellite relays live television across the Atlantic.
+  description_long: The satellite shows the new global media.
+  why: It marks the start of live global communication.
+  tags:
+  - satellite
+  - television
+  - technology
+- id: nea_neh_created
+  start: 19650929
+  level: 5
+  kind: institution
+  title: NEA and NEH Created
+  description_short: Johnson signs the law creating the National Endowments for the Arts and the Humanities.
+  description_long: The federal government begins direct support of culture.
+  why: It extends the Great Society into culture.
+  tags:
+  - arts
+  - humanities
+  - great-society
