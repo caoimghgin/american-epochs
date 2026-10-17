@@ -51,3 +51,5 @@ Body sections, in order:
 | [AE-10](AE-10-event-date-backfill.md) | Epoch-by-epoch event corpus adoption (date precision + 5-level depth) | Story | In Progress | Medium |
 | [AE-11](completed/AE-11-zoom-driven-progressive-reveal.md) | Zoom-driven progressive event reveal (replace manual Depth control) | Story | Done | Medium |
 | [AE-12](AE-12-mobile-pinch-zoom.md) | Mobile pinch-to-zoom / touch gesture support | Story | Backlog | Medium |
+| [AE-13](completed/AE-13-foundational-editorial-principles-consolidation.md) | Consolidate foundational editorial principles into a single canonical document | Task | Done | Medium |
+| [AE-14](AE-14-epoch-handoff-field.md) | Epoch handoff field — data model, rendering, and 14-epoch backfill | Story | Backlog | Low |
