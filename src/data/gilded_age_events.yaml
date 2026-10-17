@@ -26,6 +26,9 @@ schema:
   - Levels 2-5 have much more room to breathe. Disagreement there is a rounding error, not a structural problem.
     Spend the real editorial effort on Level 1.
   notes:
+  - date_precision applies to start, and end_precision (month) to the end date of a range. Pullman and Homestead use a
+    month-level end because sources disagree on the exact day the strikes ended (Pullman mid-July 1894 per the NPS;
+    Homestead's return-to-work votes ran November 18 to 20, 1892).
   - A missing end date indicates a point event.
   - Dates represent the most defensible public date for display, not necessarily every stage of a legal or political
     process. Entries with date_precision of year or month carry a placeholder in `start` (the 1st) that must not be rendered as exact;
@@ -103,6 +106,7 @@ events:
 - id: great_railroad_strike
   start: 18770714
   level: 1
+  date_verified: true
   kind: strike
   title: Great Railroad Strike
   description_short: A wage-cut strike on the B&O Railroad spreads across the country and is broken by federal troops.
@@ -132,6 +136,7 @@ events:
 - id: sherman_antitrust_act
   start: 18900702
   level: 1
+  date_verified: true
   kind: legislation
   title: Sherman Antitrust Act
   description_short: Congress outlaws combinations in restraint of trade.
@@ -176,6 +181,7 @@ events:
   start: 18940511
   end: 18940720
   level: 1
+  end_precision: month
   kind: strike
   title: Pullman Strike
   description_short: A strike at the Pullman Palace Car Company becomes a national railroad boycott, broken by federal
@@ -236,6 +242,7 @@ events:
 - id: chinese_exclusion_act
   start: 18820506
   level: 2
+  date_verified: true
   kind: legislation
   title: Chinese Exclusion Act
   description_short: Congress bars Chinese laborers from immigrating, the first federal law to exclude a group by
@@ -251,6 +258,7 @@ events:
 - id: pendleton_act
   start: 18830116
   level: 2
+  date_verified: true
   kind: legislation
   title: Pendleton Civil Service Reform Act
   description_short: Congress creates a merit-based federal civil service, in the wake of Garfield's assassination.
@@ -279,6 +287,7 @@ events:
 - id: dawes_act
   start: 18870208
   level: 2
+  date_verified: true
   kind: legislation
   title: Dawes Severalty Act
   description_short: Congress breaks up tribal lands into individual allotments and opens "surplus" land to white settlement.
@@ -294,6 +303,7 @@ events:
   start: 18920630
   end: 18921120
   level: 2
+  end_precision: month
   kind: strike
   title: Homestead Strike
   description_short: Carnegie Steel locks out its workers, and a gun battle with Pinkerton agents leaves seven workers
@@ -366,6 +376,7 @@ events:
 - id: in_re_debs
   start: 18950527
   level: 2
+  date_verified: true
   kind: court_case
   title: In re Debs
   description_short: The Supreme Court upholds the federal injunction used to break the Pullman boycott.
@@ -380,6 +391,7 @@ events:
 - id: e_c_knight
   start: 18950121
   level: 2
+  date_verified: true
   kind: court_case
   title: United States v. E.C. Knight Co.
   description_short: The Supreme Court holds that manufacturing is not "commerce," gutting the Sherman Act against
@@ -394,6 +406,7 @@ events:
 - id: pollock_v_farmers_loan
   start: 18950520
   level: 2
+  date_verified: true
   kind: court_case
   title: Pollock v. Farmers' Loan & Trust
   description_short: The Supreme Court strikes down the federal income tax.
@@ -408,6 +421,7 @@ events:
 - id: plessy_v_ferguson
   start: 18960518
   level: 2
+  date_verified: true
   kind: court_case
   title: Plessy v. Ferguson
   description_short: The Supreme Court upholds racial segregation under the doctrine of "separate but equal."
@@ -491,6 +505,7 @@ events:
 - id: civil_rights_cases
   start: 18831015
   level: 3
+  date_verified: true
   kind: court_case
   title: Civil Rights Cases
   description_short: The Supreme Court strikes down the Civil Rights Act of 1875's ban on discrimination in public
@@ -586,10 +601,11 @@ events:
 - id: carnegie_steel_formed
   start: 18920701
   level: 3
+  date_verified: true
   kind: corporate
   title: Carnegie Steel Company Formed
   description_short: Carnegie consolidates his steel holdings into a single vertically integrated firm.
-  description_long: The merger of Carnegie's mills and other holdings, just before Homestead, creates the largest steel
+  description_long: The July 1 consolidation of Carnegie's mills and other holdings, just before Homestead (a Pennsylvania incorporation reportedly predates it in March), creates the largest steel
     producer in the world, controlling ore, coke, rail, and mills.
   why: It exemplifies the vertical integration that makes corporations larger than most state governments.
   tags:
@@ -936,6 +952,7 @@ events:
 - id: yick_wo_v_hopkins
   start: 18860510
   level: 4
+  date_verified: true
   kind: court_case
   title: Yick Wo v. Hopkins
   description_short: The Supreme Court strikes down a San Francisco ordinance enforced only against Chinese laundries.
@@ -1042,6 +1059,7 @@ events:
 - id: hull_house
   start: 18890918
   level: 4
+  date_precision: month
   kind: institution
   title: Hull House Founded
   description_short: Jane Addams and Ellen Gates Starr open a settlement house in Chicago.
@@ -1464,6 +1482,7 @@ events:
 - id: federation_of_organized_trades
   start: 18811115
   level: 5
+  date_verified: true
   kind: organization
   title: Federation of Organized Trades and Labor Unions
   description_short: Craft unions meet in Pittsburgh to form a national federation.
@@ -1660,9 +1679,10 @@ events:
 - id: readjuster_movement
   start: 18791104
   level: 4
+  date_precision: year
   kind: political_movement
   title: Readjusters Win Virginia
-  description_short: A biracial coalition under William Mahone wins control of Virginia's legislature.
+  description_short: A biracial coalition under William Mahone wins control of Virginia's legislature in the 1879 elections.
   description_long: The Readjusters combine Black voters and white Populist-leaning Democrats behind scaling down the
     state debt and funding public schools. They govern through 1883, and Democrats retake the state after a campaign
     of racial violence, including the Danville riot of November 1883.

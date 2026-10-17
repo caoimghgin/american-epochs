@@ -53,3 +53,4 @@ Body sections, in order:
 | [AE-12](AE-12-mobile-pinch-zoom.md) | Mobile pinch-to-zoom / touch gesture support | Story | Backlog | Medium |
 | [AE-13](completed/AE-13-foundational-editorial-principles-consolidation.md) | Consolidate foundational editorial principles into a single canonical document | Task | Done | Medium |
 | [AE-14](AE-14-epoch-handoff-field.md) | Epoch handoff field — data model, rendering, and 14-epoch backfill | Story | Backlog | Low |
+| [AE-15](AE-15-gilded-age-fact-verification.md) | Source-verify the remaining Gilded Age dates and factual claims | Task | Backlog | Medium |

@@ -1,0 +1,119 @@
+id,title,level,recorded_start,recorded_end,audit_status,source_url,audit_note
+depression_of_1893,Depression of 1893,1,18930505,18970331,ambiguous,,Economic period endpoints depend on dating convention; March 31 1897 requires source
+populist_insurgency,Populist Insurgency,1,18900101,18961103,not_independently_verified,,Year-only placeholder: verify year; do not imply January 1 precision
+great_railroad_strike,Great Railroad Strike,1,18770714,,ambiguous,https://www.digitalhistory.uh.edu/teachers/historyonline/gildedage_chron.cfm,July 14 conventional but historical accounts distinguish initial walkout and broader strike
+interstate_commerce_act,Interstate Commerce Act,1,18870204,,confirmed,https://www.archives.gov/milestone-documents/interstate-commerce-act,Act approved Feb 4
+sherman_antitrust_act,Sherman Antitrust Act,1,18900702,,confirmed,https://www.archives.gov/milestone-documents/list,Act approved Jul 2
+omaha_platform,Omaha Platform and People's Party,1,18920704,,not_independently_verified,,Requires event-specific source check
+panic_of_1893,Panic of 1893,1,18930505,,ambiguous,https://www.digitalhistory.uh.edu/teachers/historyonline/gildedage_chron.cfm,May 5 market event is not necessarily onset of larger panic
+pullman_strike,Pullman Strike,1,18940511,18940720,ambiguous,https://www.nps.gov/pull/learn/historyculture/the-strike-of-1894.htm,May 11 start confirmed; July 20 end not established; NPS says boycott dissolved mid-July
+mckinley_elected_1896,McKinley Defeats Bryan,1,18961103,,not_independently_verified,,Requires event-specific source check
+haymarket_affair,Haymarket Affair,1,18860504,,not_independently_verified,,Requires event-specific source check
+standard_oil_trust,Standard Oil Trust Formed,2,18820102,,confirmed,https://www.archives.gov/milestone-documents/sherman-anti-trust-act,National Archives explicitly dates formation January 2 1882.
+chinese_exclusion_act,Chinese Exclusion Act,2,18820506,,confirmed,https://www.archives.gov/milestone-documents/chinese-exclusion-act,Act approved May 6
+pendleton_act,Pendleton Civil Service Reform Act,2,18830116,,confirmed,https://www.archives.gov/milestone-documents/pendleton-act,Act approved Jan 16
+wabash_decision,Wabash v. Illinois,2,18861025,,not_independently_verified,,Requires event-specific source check
+dawes_act,Dawes Severalty Act,2,18870208,,confirmed,https://www.archives.gov/milestone-documents/list,Act approved Feb 8
+homestead_strike,Homestead Strike,2,18920630,18921120,ambiguous,https://npgallery.nps.gov/GetAsset/b5995cb9-a14e-4f7e-bd62-6202081b7c14/,Nov 18-19 worker votes complicate exact Nov 20 endpoint
+wounded_knee,Wounded Knee Massacre,2,18901229,,not_independently_verified,,Requires event-specific source check
+mississippi_constitution_1890,Mississippi Constitution of 1890,2,18901101,,not_independently_verified,,Requires event-specific source check
+election_of_1892,Election of 1892,2,18921108,,not_independently_verified,,Requires event-specific source check
+coxeys_army,Coxey's Army Reaches Washington,2,18940501,,not_independently_verified,,Requires event-specific source check
+in_re_debs,In re Debs,2,18950527,,confirmed,https://www.govinfo.gov/app/details/USREPORTS-158/context,Decision May 27
+e_c_knight,United States v. E.C. Knight Co.,2,18950121,,confirmed,https://www.supremecourt.gov/pdfs/USReports/USREPORTS-156_PDFA.pdf,Official U.S. Reports: decided January 21 1895.
+pollock_v_farmers_loan,Pollock v. Farmers' Loan & Trust,2,18950520,,confirmed,https://www.govinfo.gov/app/details/USREPORTS-158/USREPORTS-158-601,Decision May 20
+plessy_v_ferguson,Plessy v. Ferguson,2,18960518,,confirmed,https://fedsoc.org/case/term/1793-1949,Decision date May 18 1896; secondary case index.
+cross_of_gold_speech,Cross of Gold Speech,2,18960709,,not_independently_verified,,Requires event-specific source check
+munn_v_illinois,Munn v. Illinois,3,18770301,,not_independently_verified,,Requires event-specific source check
+molly_maguires_hanged,Molly Maguires Hanged,4,18770621,,not_independently_verified,,Requires event-specific source check
+bland_allison_act,Bland-Allison Act,3,18780228,,not_independently_verified,,Requires event-specific source check
+edison_pearl_street_station,Pearl Street Station,3,18820904,,not_independently_verified,,Requires event-specific source check
+civil_rights_cases,Civil Rights Cases,3,18831015,,confirmed,https://fedsoc.org/case/term/1793-1949,Decision date October 15 1883; secondary case index.
+northern_pacific_completed,Northern Pacific Completed,3,18830908,,not_independently_verified,,Requires event-specific source check
+santa_clara_county,Santa Clara County v. Southern Pacific Railroad,3,18860510,,not_independently_verified,,Requires event-specific source check
+american_federation_of_labor,American Federation of Labor Founded,3,18861208,,not_independently_verified,,Requires event-specific source check
+dependent_pension_act,Dependent Pension Act,4,18900627,,not_independently_verified,,Requires event-specific source check
+sherman_silver_purchase_act,Sherman Silver Purchase Act,3,18900714,,not_independently_verified,,Requires event-specific source check
+mckinley_tariff,McKinley Tariff,3,18901001,,not_independently_verified,,Requires event-specific source check
+carnegie_steel_formed,Carnegie Steel Company Formed,3,18920701,,not_independently_verified,,Requires event-specific source check
+ocala_demands,Ocala Demands,3,18901201,,not_independently_verified,,Requires event-specific source check
+columbian_exposition,World's Columbian Exposition,3,18930501,,not_independently_verified,,Requires event-specific source check
+turner_frontier_thesis,Turner's Frontier Thesis,3,18930712,,not_independently_verified,,Requires event-specific source check
+american_railway_union_founded,American Railway Union Founded,3,18930620,,not_independently_verified,,Requires event-specific source check
+silver_purchase_repeal,Repeal of the Silver Purchase Act,3,18931101,,not_independently_verified,,Requires event-specific source check
+altgeld_pardons_haymarket,Altgeld Pardons Haymarket Prisoners,4,18930626,,not_independently_verified,,Requires event-specific source check
+gold_reserve_morgan_bond_deal,Morgan Bond Deal,3,18950208,,not_independently_verified,,Requires event-specific source check
+atlanta_compromise,Atlanta Compromise Address,3,18950918,,not_independently_verified,,Requires event-specific source check
+republican_nominates_mckinley,Republicans Nominate McKinley,3,18960618,,not_independently_verified,,Requires event-specific source check
+populists_endorse_bryan,People's Party Endorses Bryan,3,18960724,,not_independently_verified,,Requires event-specific source check
+midterm_1894,Republican Landslide of 1894,4,18941106,,not_independently_verified,,Requires event-specific source check
+mckinley_inaugurated,McKinley Inaugurated,3,18970304,,not_independently_verified,,Requires event-specific source check
+chief_joseph_surrender,Chief Joseph Surrenders,4,18771005,,not_independently_verified,,Requires event-specific source check
+greenback_labor_party,Greenback-Labor Party Peaks,4,18780101,,not_independently_verified,,Year-only placeholder: verify year; do not imply January 1 precision
+progress_and_poverty,Progress and Poverty,4,18790101,,not_independently_verified,,Year-only placeholder: verify year; do not imply January 1 precision
+edison_light_bulb,Edison's Incandescent Lamp,4,18791022,,not_independently_verified,,Requires event-specific source check
+carlisle_indian_school,Carlisle Indian Industrial School Opens,4,18791101,,not_independently_verified,,Requires event-specific source check
+garfield_assassinated,Garfield Shot,3,18810702,,not_independently_verified,,Requires event-specific source check
+brooklyn_bridge_opens,Brooklyn Bridge Opens,5,18830524,,not_independently_verified,,Requires event-specific source check
+standard_railway_time,Standard Railway Time,4,18831118,,not_independently_verified,,Requires event-specific source check
+cleveland_elected_1884,Cleveland Elected,4,18841104,,not_independently_verified,,Requires event-specific source check
+knights_of_labor_wabash_victory,Knights of Labor Defeat Jay Gould,4,18850801,,not_independently_verified,,Requires event-specific source check
+rock_springs_massacre,Rock Springs Massacre,4,18850902,,not_independently_verified,,Requires event-specific source check
+eight_hour_day_strikes,May Day Eight-Hour Strikes,3,18860501,,not_independently_verified,,Requires event-specific source check
+geronimo_surrenders,Geronimo Surrenders,4,18860904,,not_independently_verified,,Requires event-specific source check
+yick_wo_v_hopkins,Yick Wo v. Hopkins,4,18860510,,confirmed,https://fedsoc.org/case/term/1793-1949,Decision date May 10 1886; secondary case index.
+statue_of_liberty,Statue of Liberty Dedicated,4,18861028,,not_independently_verified,,Requires event-specific source check
+texas_seed_bill_veto,Cleveland Vetoes Texas Seed Bill,5,18870216,,not_independently_verified,,Requires event-specific source check
+haymarket_executions,Haymarket Anarchists Hanged,4,18871111,,not_independently_verified,,Requires event-specific source check
+looking_backward,Looking Backward,4,18880101,,not_independently_verified,,Year-only placeholder: verify year; do not imply January 1 precision
+harrison_elected_1888,Harrison Elected Despite Losing Popular Vote,4,18881106,,not_independently_verified,,Requires event-specific source check
+oklahoma_land_run,Oklahoma Land Run,4,18890422,,not_independently_verified,,Requires event-specific source check
+gospel_of_wealth,"Carnegie's ""Gospel of Wealth""",4,18890601,,not_independently_verified,,Requires event-specific source check
+hull_house,Hull House Founded,4,18890918,,ambiguous,https://npgallery.nps.gov/pdfhost/docs/NRHP/Text/66000315.pdf,Sep 4 move-in date documented; Sep 18 opening needs separate support
+chae_chan_ping,Chae Chan Ping v. United States,4,18890513,,not_independently_verified,,Requires event-specific source check
+johnstown_flood,Johnstown Flood,5,18890531,,not_independently_verified,,Requires event-specific source check
+how_the_other_half_lives,How the Other Half Lives,4,18900101,,not_independently_verified,,Year-only placeholder: verify year; do not imply January 1 precision
+nawsa_formed,National American Woman Suffrage Association,4,18900218,,not_independently_verified,,Requires event-specific source check
+chicago_milwaukee_v_minnesota,"Chicago, Milwaukee & St. Paul Railway v. Minnesota",4,18900324,,not_independently_verified,,Requires event-specific source check
+lodge_force_bill,Federal Elections (Force) Bill,4,18900702,,not_independently_verified,,Requires event-specific source check
+louisiana_separate_car_act,Louisiana Separate Car Act,4,18900710,,not_independently_verified,,Requires event-specific source check
+wyoming_statehood_suffrage,Wyoming Admitted With Woman Suffrage,5,18900710,,not_independently_verified,,Requires event-specific source check
+sitting_bull_killed,Sitting Bull Killed,5,18901215,,not_independently_verified,,Requires event-specific source check
+ellis_island_opens,Ellis Island Opens,3,18920101,,not_independently_verified,,Year-only placeholder: verify year; do not imply January 1 precision
+ohio_v_standard_oil,Ohio Orders Standard Oil Trust Dissolved,4,18920302,,not_independently_verified,,Requires event-specific source check
+memphis_lynching,Memphis Lynching and Ida B. Wells,4,18920309,,not_independently_verified,,Requires event-specific source check
+geary_act,Geary Act,4,18920505,,not_independently_verified,,Requires event-specific source check
+hawaii_overthrow,Overthrow of the Hawaiian Kingdom,4,18930117,,not_independently_verified,,Requires event-specific source check
+railroad_safety_appliance_act,Railway Safety Appliance Act,5,18930302,,not_independently_verified,,Requires event-specific source check
+colorado_woman_suffrage,Colorado Votes for Woman Suffrage,5,18931107,,not_independently_verified,,Requires event-specific source check
+immigration_restriction_league,Immigration Restriction League Founded,5,18940101,,not_independently_verified,,Year-only placeholder: verify year; do not imply January 1 precision
+wilson_gorman_tariff,Wilson-Gorman Tariff,5,18940828,,not_independently_verified,,Requires event-specific source check
+venezuela_crisis,Venezuela Boundary Crisis,4,18951217,,not_independently_verified,,Requires event-specific source check
+utah_statehood,Utah Becomes a State,5,18960104,,not_independently_verified,,Requires event-specific source check
+rural_free_delivery,Rural Free Delivery Begins,5,18961001,,not_independently_verified,,Requires event-specific source check
+niagara_power,Niagara Power Reaches Buffalo,5,18961116,,not_independently_verified,,Requires event-specific source check
+posse_comitatus_act,Posse Comitatus Act,4,18780618,,not_independently_verified,,Requires event-specific source check
+resumption_of_specie_payments,Resumption of Specie Payments,3,18790101,,not_independently_verified,,Year-only placeholder: verify year; do not imply January 1 precision
+exodusters,Exodusters Leave the South,4,18790101,,not_independently_verified,,Year-only placeholder: verify year; do not imply January 1 precision
+standing_bear_v_crook,Standing Bear v. Crook,4,18790512,,not_independently_verified,,Requires event-specific source check
+hayes_vetoes_chinese_restriction,Hayes Vetoes Chinese Restriction Bill,5,18790301,,not_independently_verified,,Requires event-specific source check
+garfield_elected_1880,Garfield Elected,4,18801102,,not_independently_verified,,Requires event-specific source check
+angell_treaty,Angell Treaty With China,4,18801117,,not_independently_verified,,Requires event-specific source check
+pullman_town_built,Pullman Builds Its Company Town,5,18800101,,not_independently_verified,,Year-only placeholder: verify year; do not imply January 1 precision
+tuskegee_institute,Tuskegee Institute Founded,4,18810704,,not_independently_verified,,Requires event-specific source check
+federation_of_organized_trades,Federation of Organized Trades and Labor Unions,5,18811115,,not_independently_verified,,Requires event-specific source check
+sitting_bull_surrenders,Sitting Bull Surrenders,5,18810719,,not_independently_verified,,Requires event-specific source check
+tennessee_jim_crow_car_law,Tennessee Passes First Jim Crow Car Law,5,18810101,,not_independently_verified,,Year-only placeholder: verify year; do not imply January 1 precision
+bureau_of_labor,U.S. Bureau of Labor Established,4,18840627,,not_independently_verified,,Requires event-specific source check
+blaine_rum_romanism_rebellion,"Rum, Romanism, and Rebellion",5,18841029,,not_independently_verified,,Requires event-specific source check
+foran_act,Alien Contract Labor Law,4,18850226,,not_independently_verified,,Requires event-specific source check
+home_insurance_building,Home Insurance Building,4,18850101,,not_independently_verified,,Year-only placeholder: verify year; do not imply January 1 precision
+cleveland_tariff_message,Cleveland's Tariff Message,4,18871206,,not_independently_verified,,Requires event-specific source check
+australian_ballot,Australian Ballot Adopted,4,18880101,,not_independently_verified,,Year-only placeholder: verify year; do not imply January 1 precision
+kodak_camera,Kodak Camera Introduced,5,18880101,,not_independently_verified,,Year-only placeholder: verify year; do not imply January 1 precision
+sprague_electric_streetcar,Richmond Electric Streetcar,5,18880202,,not_independently_verified,,Requires event-specific source check
+peoples_party_cincinnati,People's Party Founded at Cincinnati,3,18910519,,not_independently_verified,,Requires event-specific source check
+immigration_act_1891,Immigration Act of 1891,4,18910303,,not_independently_verified,,Requires event-specific source check
+new_orleans_lynching,New Orleans Lynching of Italians,4,18910314,,not_independently_verified,,Requires event-specific source check
+forest_reserve_act,Forest Reserve Act,5,18910303,,not_independently_verified,,Requires event-specific source check
+readjuster_movement,Readjusters Win Virginia,4,18791104,,not_independently_verified,,Requires event-specific source check
