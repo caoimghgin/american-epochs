@@ -1,0 +1,1380 @@
+schema:
+  name: American Epochs Event Corpus
+  version: 2
+  date_format: YYYYMMDD
+  level_definition:
+    1: The epoch's "crown of the mountain" — always visible, at every zoom, from the very widest view. One beat
+      per structural hinge in the epoch's own arc, not a list of "the important stuff." Target 5-8 entries regardless
+      of how large or eventful the epoch was; see curation_guidance below. Automatically revealed first as the viewer
+      zooms in from full history — never a manual toggle.
+    2: Major events, automatically revealed at the first closer zoom past Level 1.
+    3: Supporting events explaining mechanisms, shifts, and consequences.
+    4: Contextual events — political, military, social, institutional texture.
+    5: Fine-grained events for the closest inspection.
+  curation_guidance:
+  - Level 1 is the hardest and most important editorial call in the corpus. The viewer never chooses to see it —
+    it is what everyone sees whether they zoom in or not, so it carries the whole epoch's argument on its own.
+  - Pick one entry per point where the epoch's own arc genuinely turns, not one per famous name or battle. A working
+    test - "does removing this entry break the causal chain from the epoch's start to its end?" If not, it belongs
+    at Level 2 or below, however well-known it is.
+  - Target 5-8 Level 1 point events specifically. This is deliberately independent of the epoch's total event count
+    or length in years. Reconstruction intentionally carries nine point events because the Panic of 1873 and United
+    States v. Cruikshank describe distinct political and judicial turns and the editor has approved a slightly crowded
+    crown.
+  - Span (duration) entries at Level 1 do not count against the point-event target because the live instrument never
+    tier-filters spans; they provide scene-setting context.
+  - Levels 2-5 have much more room to breathe. Disagreement there is a rounding error, not a structural problem.
+    Spend the real editorial effort on Level 1.
+  notes:
+  - A missing end date indicates a point event.
+  - Dates represent the most defensible public date for display, not necessarily every stage of a legal or political
+    process.
+  - date_precision (year or month) applies to start, and end_precision (month) to the end of a range. Where set, the
+    placeholder in the date field must not be rendered as exact. Absent means a full day-level date. date_verified
+    true means the date was confirmed against an identifiable source.
+  - This corpus is a research/authoring artifact. A human or LLM reconciles it into the live EVENTS array.
+  - Levels were assigned by Claude as a first-pass editorial judgment (see american_ascendancy_outline.md for the Level 1
+    reasoning). All dates are drafted from memory and none are yet source-verified, so verify before treating as
+    settled. No source URLs are included, per the guide's rule against unverifiable citations. Figures to check first
+    include Lend-Lease's total (about $50 billion), the Marshall Plan's total (about $13 billion), the 1946 strike
+    total (4.6 million), and war casualty counts.
+  - Level 1 carries nine point events, not the usual five to eight. The Truman Doctrine, the Marshall Plan, and NATO are
+    three distinct mechanisms of the same Cold War structure (the commitment in ideas, in money, and in an institution).
+    NATO was promoted to Level 1 in review by Kevin. If the crown needs to return to eight, the Truman Doctrine is the one
+    to demote.
+  - Three spans. world_war_ii replaces the span already in the live instrument. korean_war (1950-06-25 to 1953-07-27)
+    crosses the epoch end by seven months. cold_war (1947-03-12 to 1991-12-26) is owned by this corpus because it begins
+    here, crosses four later epoch boundaries by design, and is the first cross-epoch element in the instrument. The End
+    of History corpus must carry the dissolution of the Soviet Union as its end event.
+  - midway, yalta, the Casablanca conference, and the Berlin airlift are recorded with true ranges but are under two
+    years, so they reconcile as point events at their end dates.
+  - Internment (executive_order_9066) stays at Level 2, a decision made in review. The price at home is carried at Level 2
+    with Executive Order 9981, Shelley v. Kraemer, and McCarthy's Wheeling speech.
+  - Boundary decisions. The corpus opens on 1941-01-01 and follows the New Deal corpus, which closes at the end of 1940.
+    It closes on 1952-12-31, with Eisenhower's election as the closing Level 1 beat. His inauguration and the Korean
+    armistice open the Affluent Society.
+epoch:
+  id: american_ascendancy
+  title: The American Ascendancy
+  start: 19410101
+  end: 19521231
+  thesis: The New Deal state, built to govern an economy, turns outward. Lend-Lease makes the United States the arsenal and
+    creditor of the Allies before it fights, and Pearl Harbor brings two wars. Wartime mobilization ends the Depression, Bretton
+    Woods makes the dollar the world's reserve currency, and the atomic bombs end the Pacific war and begin a new kind of power.
+    From 1947 the Truman Doctrine, the Marshall Plan, and NATO build an alliance system that other countries join by
+    invitation, and containment turns a competition for power into a contest of ideas that will last for decades. At home the
+    New Deal consensus holds, the GI Bill builds a middle class, and Truman desegregates the military, while a second Red Scare,
+    a limited war in Korea, and the exclusion of Black veterans from much of the benefit show the cost. The era ends with the
+    election of a Republican general who will not repeal the New Deal.
+events:
+# ---------------------------------------------------------------- Level 1: spans
+- id: world_war_ii
+  start: 19411207
+  end: 19450902
+  level: 1
+  kind: war
+  title: World War II
+  description_short: The crucible in which American hegemony was forged.
+  description_long: The United States fights in Europe and the Pacific at once from December 7, 1941 to the Japanese surrender on
+    September 2, 1945. About 16 million Americans serve, and about 400,000 die.
+  why: It ends the Depression, mobilizes the economy and the state at unprecedented scale, and leaves the United States as the
+    strongest power on earth.
+  tags:
+  - war
+  - mobilization
+  - hegemony
+- id: cold_war
+  start: 19470312
+  end: 19911226
+  level: 1
+  kind: geopolitical_period
+  title: Cold War
+  description_short: Forty-four years of ideological and strategic rivalry between the United States and the Soviet Union.
+  description_long: The span runs from the Truman Doctrine on March 12, 1947 to the dissolution of the Soviet Union on December 26,
+    1991. It is fought through alliances, arms races, proxy wars, and competing models of political economy, and it crosses
+    five epochs of this project. It is owned by this corpus because it begins here, and the End of History corpus carries its
+    ending.
+  why: It is the ideological contest that organizes American foreign policy for two generations, and the frame that holds
+    four epochs together.
+  tags:
+  - cold-war
+  - soviet-union
+  - containment
+- id: korean_war
+  start: 19500625
+  end: 19530727
+  level: 1
+  kind: war
+  title: Korean War
+  description_short: A three-year limited war on the Korean peninsula ends in a stalemate and an armistice.
+  description_long: American and UN forces fight North Korea and then China from June 25, 1950 to the armistice on July 27, 1953.
+    About 36,000 Americans die. The span crosses the epoch boundary by seven months, a deliberate exception.
+  why: It is the Cold War's first hot war, and it shows the limits of containment and its cost at home.
+  tags:
+  - korea
+  - limited-war
+  - cold-war
+# ---------------------------------------------------------------- Level 1: points
+- id: lend_lease_act
+  start: 19410311
+  level: 1
+  kind: legislation
+  title: Lend-Lease
+  description_short: Congress authorizes the president to supply war materiel to nations whose defense is vital to the United States.
+  description_long: The program provides about $50 billion in aid to Britain, the Soviet Union, China, and others. Britain pays in
+    part by selling off overseas assets and trade preferences, which accelerates the end of its empire.
+  why: It is the structural pivot. The United States becomes creditor and arsenal of the Allies before it fights.
+  tags:
+  - lend-lease
+  - britain
+  - arsenal
+- id: pearl_harbor
+  start: 19411207
+  level: 1
+  kind: war
+  title: Pearl Harbor
+  description_short: Japan attacks the U.S. Pacific Fleet in Hawaii, and Congress declares war the next day.
+  description_long: About 2,400 Americans die, and Germany and Italy declare war on the United States on December 11.
+  why: It brings two wars at once and ends the isolationist argument.
+  tags:
+  - japan
+  - war
+  - hawaii
+- id: bretton_woods
+  start: 19440722
+  level: 1
+  kind: diplomacy
+  title: Bretton Woods
+  description_short: Forty-four nations agree to peg their currencies to the dollar, which is convertible to gold at $35 an ounce.
+  description_long: The conference creates the International Monetary Fund and the World Bank. The United States holds about two
+    thirds of the world's monetary gold, and its dollar becomes the reserve currency.
+  why: It is the monetary expression of American leadership, the financial architecture of the American century.
+  tags:
+  - bretton-woods
+  - dollar
+  - gold
+- id: hiroshima
+  start: 19450806
+  level: 1
+  kind: war
+  title: Hiroshima
+  description_short: The United States drops an atomic bomb on Hiroshima, and another on Nagasaki three days later.
+  description_long: The bombs kill well over 100,000 people, and Japan announces its surrender on August 15. The Manhattan Project
+    had cost about $2 billion and employed about 130,000 people.
+  why: It ends the Pacific war and begins a new kind of power, with a moral debate that does not end.
+  tags:
+  - atomic-bomb
+  - japan
+  - war
+- id: truman_doctrine
+  start: 19470312
+  level: 1
+  kind: speech
+  title: Truman Doctrine
+  description_short: Truman asks Congress for aid to Greece and Turkey and pledges support for free peoples resisting subjugation.
+  description_long: Britain can no longer sustain its commitments in the eastern Mediterranean. Truman frames the choice as one
+    between two ways of life, and Congress approves $400 million.
+  why: It is the commitment in the language of an ideological contest, and the start of containment.
+  tags:
+  - containment
+  - greece
+  - ideology
+- id: marshall_plan
+  start: 19480403
+  level: 1
+  kind: legislation
+  title: Marshall Plan
+  description_short: Truman signs the Economic Cooperation Act, committing about $13 billion to rebuild Western Europe.
+  description_long: Secretary of State George Marshall had proposed the program in a June 1947 speech at Harvard. The aid is offered
+    to the Soviet bloc too, which declines. It runs through 1952.
+  why: It is the instrument of leadership, aid, not conquest, which rebuilds allies and ties them to American economic design.
+  tags:
+  - marshall-plan
+  - europe
+  - aid
+- id: nato
+  start: 19490404
+  level: 1
+  kind: treaty
+  title: NATO
+  description_short: Twelve nations sign the North Atlantic Treaty, a collective defense alliance.
+  description_long: The treaty is the first peacetime military alliance the United States has joined since the 1778 alliance with
+    France. An attack on one member is an attack on all.
+  why: It makes the commitment permanent and the American role in Europe structural.
+  tags:
+  - nato
+  - alliance
+  - europe
+- id: north_korea_invades
+  start: 19500625
+  level: 1
+  kind: war
+  title: North Korea Invades South Korea
+  description_short: North Korean forces cross the 38th parallel, and Truman commits American forces within days.
+  description_long: Truman acts without a congressional declaration and under UN authority. The attack comes after the Soviet bomb
+    and the fall of China, and the administration reads it as a test of containment.
+  why: It makes the Cold War hot and begins the limited-war politics that will follow.
+  tags:
+  - korea
+  - containment
+  - war
+- id: eisenhower_elected
+  start: 19521104
+  level: 1
+  kind: election
+  title: Eisenhower Elected
+  description_short: Dwight Eisenhower wins in a landslide, ending twenty years of Democratic control of the presidency.
+  description_long: Eisenhower promises to go to Korea and end the war, and he carries 39 states. He will accept the New Deal's
+    structure while changing its tone.
+  why: It is the opposition party's acceptance of the New Deal frame, which closes this epoch and opens the next.
+  tags:
+  - election
+  - eisenhower
+  - ratification
+# ---------------------------------------------------------------- Level 2
+- id: fepc_established
+  start: 19410625
+  level: 2
+  kind: policy
+  title: Executive Order 8802 and the FEPC
+  description_short: Roosevelt bans discrimination in defense industries after A. Philip Randolph threatens a march on Washington.
+  description_long: The Fair Employment Practices Committee is the first federal anti-discrimination agency since Reconstruction.
+    It has little enforcement power.
+  why: It is the first federal step on the question's second clause in this epoch, achieved by Black organizing and the pressure of war.
+  tags:
+  - race
+  - employment
+  - randolph
+- id: executive_order_9066
+  start: 19420219
+  level: 2
+  kind: policy
+  title: Japanese American Internment
+  description_short: Executive Order 9066 authorizes the removal of about 120,000 people of Japanese descent from the West Coast.
+  description_long: About two thirds are U.S. citizens, and they are held in camps for most of the war. The Supreme Court upholds
+    the policy in Korematsu (1944). Congress apologizes and pays redress in 1988.
+  why: It is the clearest case of the question's second clause, the country fighting for freedom abroad while denying it at home.
+  tags:
+  - internment
+  - japanese-americans
+  - civil-liberties
+- id: battle_of_midway
+  start: 19420604
+  end: 19420607
+  level: 2
+  kind: military
+  title: Battle of Midway
+  description_short: U.S. carrier aircraft sink four Japanese carriers, turning the Pacific war.
+  description_long: The victory, six months after Pearl Harbor, ends Japan's offensive momentum.
+  why: It marks the turn in the Pacific, and the arsenal's output beginning to tell.
+  tags:
+  - pacific
+  - navy
+  - turning-point
+- id: d_day
+  start: 19440606
+  level: 2
+  kind: military
+  title: D-Day
+  description_short: Allied forces land in Normandy in the largest amphibious invasion in history.
+  description_long: About 156,000 troops cross the Channel on the first day, and the Western Front opens.
+  why: It is the decisive Western campaign, and the American army fighting as the leading Allied force.
+  tags:
+  - normandy
+  - europe
+  - invasion
+- id: gi_bill
+  start: 19440622
+  level: 2
+  kind: legislation
+  title: GI Bill
+  description_short: Congress offers veterans education benefits, home and business loans, and unemployment pay.
+  description_long: About half of all veterans use the education benefits, and millions buy homes with GI loans. Local administration
+    and bank practice exclude many Black veterans from the benefits.
+  why: It is the empirical basis of the next epoch's affluence and the program through which exclusion works.
+  tags:
+  - veterans
+  - education
+  - housing
+- id: fdr_dies
+  start: 19450412
+  level: 2
+  kind: political_event
+  title: Roosevelt Dies
+  description_short: Roosevelt dies in Warm Springs, Georgia, and Harry Truman becomes president.
+  description_long: Truman knows almost nothing of the atomic bomb project or of the diplomacy of the alliance.
+  why: It passes the New Deal's leadership to a successor who will carry its institutions into the Cold War.
+  tags:
+  - roosevelt
+  - truman
+  - succession
+- id: un_charter_senate
+  start: 19450728
+  level: 2
+  kind: treaty
+  title: Senate Approves the UN Charter
+  description_short: The Senate approves the United Nations Charter 89 to 2.
+  description_long: The vote comes less than twenty-six years after the Senate rejected the League of Nations, and the United
+    States hosts the new body in New York.
+  why: It reverses the New Freedom's failure, with the country embracing the international role it had refused.
+  tags:
+  - united-nations
+  - senate
+  - internationalism
+- id: taft_hartley
+  start: 19470623
+  level: 2
+  kind: legislation
+  title: Taft–Hartley Act
+  description_short: Congress overrides Truman's veto to restrict unions' tactics and let states ban the union shop.
+  description_long: The act bans closed shops, secondary boycotts, and requires union officers to swear non-communist oaths.
+  why: It is the conservative coalition's first major curb on the Wagner Act, the limit on labor inside the settlement.
+  tags:
+  - labor
+  - unions
+  - conservative-coalition
+- id: national_security_act
+  start: 19470726
+  level: 2
+  kind: legislation
+  title: National Security Act
+  description_short: Congress creates the Department of Defense, the CIA, and the National Security Council.
+  description_long: The act unifies the military services and builds the permanent machinery of a national security state.
+  why: It is the institutional form of the Cold War at home, a standing apparatus for a permanent contest.
+  tags:
+  - national-security
+  - cia
+  - institutions
+- id: shelley_v_kraemer
+  start: 19480503
+  level: 2
+  kind: court_case
+  title: Shelley v. Kraemer
+  description_short: The Supreme Court holds that courts cannot enforce racially restrictive housing covenants.
+  description_long: The ruling is unanimous. Private discrimination continues through other devices, including federal lending
+    guidelines.
+  why: It is a landmark on the rights thread, limited by the housing system the New Deal built.
+  tags:
+  - housing
+  - race
+  - supreme-court
+- id: executive_order_9981
+  start: 19480726
+  level: 2
+  kind: policy
+  title: Executive Order 9981
+  description_short: Truman orders the desegregation of the armed forces.
+  description_long: Implementation is slow, and the Army is not fully integrated until the Korean War. Truman acts after Congress
+    declines civil rights legislation.
+  why: It is the first presidential step toward desegregation, driven by the Cold War's need to answer Soviet propaganda.
+  tags:
+  - race
+  - military
+  - truman
+- id: berlin_airlift
+  start: 19480624
+  end: 19490512
+  level: 2
+  kind: military
+  title: Berlin Blockade and Airlift
+  description_short: The Soviet Union blockades West Berlin, and the Allies supply the city by air for nearly a year.
+  description_long: The airlift flies more than 2 million tons of supplies into the city. The Soviets lift the blockade on May 12, 1949.
+  why: It is the first test of containment in Europe, won without a shot.
+  tags:
+  - berlin
+  - cold-war
+  - airlift
+- id: soviet_atomic_bomb
+  start: 19490829
+  level: 2
+  kind: military
+  title: Soviet Union Tests an Atomic Bomb
+  description_short: The Soviet Union detonates its first atomic device years ahead of American estimates.
+  description_long: The test ends the American atomic monopoly and prompts the decision to build a hydrogen bomb.
+  why: It ends the sense that the contest is not close, and begins the arms race.
+  tags:
+  - atomic-bomb
+  - soviet-union
+  - arms-race
+- id: mccarthy_wheeling_speech
+  start: 19500209
+  level: 2
+  kind: speech
+  title: McCarthy's Wheeling Speech
+  description_short: Senator Joseph McCarthy claims to hold a list of communists in the State Department.
+  description_long: The speech in Wheeling, West Virginia launches the senator's campaign and the period named for him. No list
+    is ever produced.
+  why: It is the domestic price of the Cold War, anticommunism turned into a weapon against fellow citizens.
+  tags:
+  - mccarthyism
+  - anticommunism
+  - red-scare
+# ---------------------------------------------------------------- Level 3
+- id: four_freedoms
+  start: 19410106
+  level: 3
+  kind: speech
+  title: Four Freedoms Speech
+  description_short: Roosevelt names four freedoms (of speech, of worship, from want, and from fear) as the aims of the democracies.
+  description_long: The speech frames Lend-Lease before Congress and the war's moral purpose.
+  why: It sets out the rights language that the Cold War, and the country's critics, will later hold it to.
+  tags:
+  - freedoms
+  - roosevelt
+  - rights
+- id: american_century
+  start: 19410217
+  level: 3
+  kind: intellectual
+  title: Luce's American Century
+  description_short: Henry Luce's Life essay urges Americans to accept the role of "the most powerful and vital nation in the world."
+  description_long: The essay appears a month before Lend-Lease passes. Luce argues that the century should be American.
+  why: It names the era, and states the ambition before the power exists.
+  tags:
+  - luce
+  - leadership
+  - ideology
+- id: atlantic_charter
+  start: 19410814
+  level: 3
+  kind: diplomacy
+  title: Atlantic Charter
+  description_short: Roosevelt and Churchill issue a joint statement of war aims, including self-determination and freedom of trade.
+  description_long: The principles become the basis of the postwar order and later of the UN, and imply the end of colonial empires.
+  why: It is the first statement of the postwar vision, American principles in an Anglo-American text.
+  tags:
+  - churchill
+  - war-aims
+  - self-determination
+- id: war_production_board
+  start: 19420116
+  level: 3
+  kind: institution
+  title: War Production Board
+  description_short: Roosevelt creates the board that converts American industry to war production.
+  description_long: Automakers stop building cars, and the economy produces about two thirds of the Allies' munitions.
+  why: It is the mobilization of the arsenal, the New Deal state turned to production at scale.
+  tags:
+  - production
+  - mobilization
+  - industry
+- id: manhattan_project
+  start: 19420813
+  level: 3
+  kind: science
+  title: Manhattan Project Begins
+  description_short: The Army creates the Manhattan Engineer District to build an atomic bomb.
+  description_long: The project grows from the Einstein letter and the earlier research committees into a vast secret enterprise.
+  why: It is the largest government science project in history, and the origin of a new instrument of power.
+  tags:
+  - atomic-bomb
+  - science
+  - secrecy
+- id: smith_v_allwright
+  start: 19440403
+  level: 3
+  kind: court_case
+  title: Smith v. Allwright
+  description_short: The Supreme Court strikes down the white primary in the South.
+  description_long: The decision opens the Democratic primaries to Black voters in states that had barred them.
+  why: It is a first judicial crack in the post-Reconstruction political system.
+  tags:
+  - voting-rights
+  - race
+  - supreme-court
+- id: korematsu
+  start: 19441218
+  level: 3
+  kind: court_case
+  title: Korematsu v. United States
+  description_short: The Supreme Court upholds the exclusion of Japanese Americans from the West Coast, 6–3.
+  description_long: The decision is repudiated in later decades. Justice Robert Jackson's dissent warns of the weapon the ruling leaves.
+  why: It confirms the internment in constitutional law.
+  tags:
+  - internment
+  - supreme-court
+  - civil-liberties
+- id: yalta_conference
+  start: 19450204
+  end: 19450211
+  level: 3
+  kind: diplomacy
+  title: Yalta Conference
+  description_short: Roosevelt, Churchill, and Stalin plan the end of the war and the shape of postwar Europe.
+  description_long: The agreements on Poland and Soviet entry into the Pacific war become subjects of later controversy.
+  why: It is the high point of the wartime alliance, and the origin of postwar disputes.
+  tags:
+  - yalta
+  - stalin
+  - diplomacy
+- id: un_charter_signed
+  start: 19450626
+  level: 3
+  kind: treaty
+  title: UN Charter Signed
+  description_short: Fifty nations sign the United Nations Charter in San Francisco.
+  description_long: The Security Council gives the great powers a veto.
+  why: It is the League's successor, with the United States as host and sponsor.
+  tags:
+  - united-nations
+  - charter
+  - internationalism
+- id: trinity_test
+  start: 19450716
+  level: 3
+  kind: science
+  title: Trinity Test
+  description_short: The first atomic bomb is detonated in the New Mexico desert.
+  description_long: J. Robert Oppenheimer and the scientists at Los Alamos watch the first nuclear explosion.
+  why: It proves the weapon on which the postwar power rests.
+  tags:
+  - atomic-bomb
+  - new-mexico
+  - science
+- id: nagasaki
+  start: 19450809
+  level: 3
+  kind: war
+  title: Nagasaki
+  description_short: The United States drops a second atomic bomb, on Nagasaki.
+  description_long: The Soviet Union declares war on Japan the same day.
+  why: It completes the nuclear attack that ends the war.
+  tags:
+  - atomic-bomb
+  - japan
+  - war
+- id: japan_surrender
+  start: 19450902
+  level: 3
+  kind: war
+  title: Japan Surrenders
+  description_short: Japan signs the surrender aboard the USS Missouri in Tokyo Bay.
+  description_long: Douglas MacArthur begins the American occupation, which lasts until 1952.
+  why: It ends the war and begins the occupation that remakes Japan.
+  tags:
+  - japan
+  - surrender
+  - occupation
+- id: imf_world_bank_founded
+  start: 19451227
+  level: 3
+  kind: institution
+  title: IMF and World Bank Established
+  description_short: The International Monetary Fund and the World Bank come into being with the ratification of the Bretton Woods agreements.
+  description_long: The two institutions are headquartered in Washington and shaped by American votes.
+  why: It builds the financial institutions of the American-led order.
+  tags:
+  - imf
+  - world-bank
+  - institutions
+- id: long_telegram
+  start: 19460222
+  level: 3
+  kind: diplomacy
+  title: Kennan's Long Telegram
+  description_short: George Kennan sends a telegram from Moscow arguing for firm, patient containment of Soviet power.
+  description_long: The message reshapes Washington's view of the Soviet Union and is the intellectual source of containment.
+  why: It is the strategic idea behind the Cold War.
+  tags:
+  - kennan
+  - containment
+  - soviet-union
+- id: iron_curtain_speech
+  start: 19460305
+  level: 3
+  kind: speech
+  title: Iron Curtain Speech
+  description_short: Winston Churchill warns in Missouri that an "iron curtain" has descended across Europe.
+  description_long: Truman sits on the platform. The speech gives the divided Europe a name.
+  why: It publicly frames the rift.
+  tags:
+  - churchill
+  - cold-war
+  - europe
+- id: employment_act_1946
+  start: 19460220
+  level: 3
+  kind: legislation
+  title: Employment Act of 1946
+  description_short: Congress commits the federal government to promote maximum employment and creates the Council of Economic Advisers.
+  description_long: The act weakens the original bill's full-employment guarantee but makes economic management a federal duty.
+  why: It writes the New Deal's responsibility for the economy into permanent law.
+  tags:
+  - employment
+  - economics
+  - keynes
+- id: postwar_strike_wave
+  start: 19460101
+  level: 3
+  kind: strike
+  title: Postwar Strike Wave
+  description_short: About 4.6 million workers strike in 1946, the largest strike year in American history.
+  description_long: The strikes in steel, autos, coal, and railroads follow the end of wartime wage controls and set up the Taft–Hartley
+    backlash. Date is year-level (1946).
+  why: It is the labor push that provokes the conservative coalition's response.
+  tags:
+  - labor
+  - strikes
+  - reconversion
+  date_precision: year
+- id: philippine_independence
+  start: 19460704
+  level: 3
+  kind: political_event
+  title: Philippine Independence
+  description_short: The United States grants the Philippines independence on schedule, as promised in 1934.
+  description_long: The islands' independence begins on July 4, 1946, with American military bases and trade ties preserved.
+  why: It closes the empire thread begun in 1898, one of the few voluntary unwindings of an imperial possession.
+  tags:
+  - philippines
+  - empire
+  - independence
+- id: atomic_energy_act
+  start: 19460801
+  level: 3
+  kind: legislation
+  title: Atomic Energy Act
+  description_short: Congress places atomic energy under a civilian commission.
+  description_long: The act establishes the Atomic Energy Commission and civilian control of nuclear weapons.
+  why: It settles who controls the new weapon.
+  tags:
+  - atomic-energy
+  - civilian-control
+  - congress
+- id: jackie_robinson
+  start: 19470415
+  level: 3
+  kind: cultural
+  title: Jackie Robinson Breaks the Color Line
+  description_short: Jackie Robinson debuts for the Brooklyn Dodgers, the first Black player in the major leagues in the modern era.
+  description_long: Robinson endures abuse and becomes a national symbol. The integration of baseball precedes the military's.
+  why: It is the most visible early breach of segregation in American life.
+  tags:
+  - race
+  - baseball
+  - integration
+- id: loyalty_program
+  start: 19470321
+  level: 3
+  kind: policy
+  title: Federal Loyalty Program
+  description_short: Truman orders loyalty investigations of federal employees.
+  description_long: The program examines millions of employees and dismisses hundreds.
+  why: It is the executive branch's own anticommunism, before McCarthy.
+  tags:
+  - loyalty
+  - anticommunism
+  - civil-service
+- id: marshall_harvard_speech
+  start: 19470605
+  level: 3
+  kind: speech
+  title: Marshall's Harvard Speech
+  description_short: Secretary of State Marshall proposes a program of American aid to rebuild Europe.
+  description_long: The speech is short and understated, and it sets in motion the European Recovery Program.
+  why: It begins the plan that becomes the instrument of leadership.
+  tags:
+  - marshall-plan
+  - europe
+  - speech
+- id: israel_recognized
+  start: 19480514
+  level: 3
+  kind: diplomacy
+  title: U.S. Recognizes Israel
+  description_short: Truman recognizes the new State of Israel minutes after its declaration of independence.
+  description_long: The decision comes against the advice of the State Department.
+  why: It begins a long American commitment, and connects to the Holocaust and the refugee question.
+  tags:
+  - israel
+  - middle-east
+  - recognition
+- id: truman_upset_1948
+  start: 19481102
+  level: 3
+  kind: election
+  title: Truman's Upset Victory
+  description_short: Truman defeats Thomas Dewey in a result almost every pollster and newspaper missed.
+  description_long: The Democratic coalition holds despite the Dixiecrat and Progressive Party defections.
+  why: It confirms that the New Deal coalition survived Roosevelt.
+  tags:
+  - election
+  - truman
+  - coalition
+- id: prc_founded
+  start: 19491001
+  level: 3
+  kind: political_event
+  title: People's Republic of China Proclaimed
+  description_short: Mao Zedong proclaims the People's Republic of China after the Nationalists flee to Taiwan.
+  description_long: The "loss of China" becomes a domestic political issue and feeds McCarthyism.
+  why: It changes the Cold War in Asia and the politics at home.
+  tags:
+  - china
+  - communism
+  - asia
+- id: nsc_68
+  start: 19500407
+  level: 3
+  kind: policy
+  title: NSC-68
+  description_short: A secret National Security Council paper calls for a large rearmament in response to the Soviet threat.
+  description_long: The paper recommends tripling defense spending and defines the Cold War as a struggle between freedom and slavery.
+  why: It militarizes containment and sets the Cold War's budget.
+  tags:
+  - containment
+  - defense
+  - rearmament
+- id: inchon_landing
+  start: 19500915
+  level: 3
+  kind: military
+  title: Inchon Landing
+  description_short: MacArthur's amphibious landing at Inchon reverses the war and recaptures Seoul.
+  description_long: UN forces then push north of the 38th parallel, expanding the war's aims.
+  why: It is the war's high point of confidence, before China enters.
+  tags:
+  - korea
+  - macarthur
+  - amphibious
+- id: chinese_intervention
+  start: 19501125
+  level: 3
+  kind: military
+  title: China Enters the Korean War
+  description_short: Hundreds of thousands of Chinese troops attack UN forces and drive them back south.
+  description_long: The intervention turns a short war into a long one and ends hopes of unifying Korea.
+  why: It shows the limits of American power and ends the dream of rollback.
+  tags:
+  - korea
+  - china
+  - war
+- id: macarthur_dismissed
+  start: 19510411
+  level: 3
+  kind: political_event
+  title: Truman Fires MacArthur
+  description_short: Truman relieves General Douglas MacArthur for publicly challenging his policy of limited war.
+  description_long: MacArthur returns to a hero's welcome, and the Senate hearings that follow weaken his case.
+  why: It asserts civilian control of the military over a popular general.
+  tags:
+  - civil-military
+  - truman
+  - korea
+- id: san_francisco_peace_treaty
+  start: 19510908
+  level: 3
+  kind: treaty
+  title: Treaty of San Francisco With Japan
+  description_short: Forty-eight nations sign a peace treaty with Japan, and the U.S. and Japan sign a security treaty.
+  description_long: The treaty ends the occupation in April 1952 and keeps American bases on Japanese soil.
+  why: It turns Japan from enemy to ally, a model of the era's leadership.
+  tags:
+  - japan
+  - peace
+  - alliance
+- id: youngstown_decision
+  start: 19520602
+  level: 3
+  kind: court_case
+  title: Youngstown Sheet & Tube v. Sawyer
+  description_short: The Supreme Court rules that Truman cannot seize the steel mills without congressional authority.
+  description_long: The decision, 6–3, limits executive power at the height of wartime emergency.
+  why: It is a limit on the presidency the era had enlarged.
+  tags:
+  - supreme-court
+  - executive-power
+  - steel
+- id: mccarran_walter_act
+  start: 19520627
+  level: 3
+  kind: legislation
+  title: McCarran–Walter Act
+  description_short: Congress overrides Truman's veto to keep the national-origins quota system, while ending the bar on Asian naturalization.
+  description_long: The act preserves the 1924 quotas and adds ideological exclusions of suspected subversives.
+  why: It carries the immigration thread through the Cold War, with the 1924 logic intact.
+  tags:
+  - immigration
+  - quotas
+  - cold-war
+- id: hydrogen_bomb_test
+  start: 19521101
+  level: 3
+  kind: science
+  title: First Hydrogen Bomb Test
+  description_short: The United States detonates the first hydrogen bomb in the Pacific, destroying an island.
+  description_long: The device is hundreds of times more powerful than the Hiroshima bomb. The Soviet Union follows in 1953.
+  why: It takes the arms race to a new order of magnitude.
+  tags:
+  - hydrogen-bomb
+  - arms-race
+  - nuclear
+# ---------------------------------------------------------------- Level 4
+- id: greer_incident
+  start: 19410904
+  level: 5
+  kind: military
+  title: USS Greer Attacked
+  description_short: A German submarine fires on the U.S. destroyer Greer, and Roosevelt orders ships to shoot on sight.
+  description_long: The undeclared naval war in the Atlantic begins months before Pearl Harbor.
+  why: It shows America already fighting before it declares war.
+  tags:
+  - navy
+  - atlantic
+  - undeclared-war
+- id: double_v_campaign
+  start: 19420201
+  level: 4
+  kind: political_movement
+  title: Double V Campaign
+  description_short: The Pittsburgh Courier urges victory over fascism abroad and over racism at home.
+  description_long: The campaign gives the Black press and community a wartime frame for civil rights. Date is month-level (February 1942).
+  why: It names the contradiction in the question's second clause.
+  tags:
+  - race
+  - press
+  - civil-rights
+  date_precision: month
+- id: bracero_program
+  start: 19420804
+  level: 4
+  kind: policy
+  title: Bracero Program Begins
+  description_short: The U.S. and Mexico agree to bring Mexican farm workers to the U.S. on temporary contracts.
+  description_long: The program brings millions of workers over the next two decades, a labor supply outside the quota system.
+  why: It continues the immigration thread's exemption of Mexican labor.
+  tags:
+  - immigration
+  - mexico
+  - agriculture
+- id: chicago_pile_1
+  start: 19421202
+  level: 4
+  kind: science
+  title: First Controlled Chain Reaction
+  description_short: Enrico Fermi's team achieves the first self-sustaining nuclear chain reaction at the University of Chicago.
+  description_long: The experiment, in a squash court under a stadium, proves that an atomic bomb is possible.
+  why: It is the scientific step from theory to weapon.
+  tags:
+  - atomic-bomb
+  - fermi
+  - science
+- id: operation_torch
+  start: 19421108
+  level: 4
+  kind: military
+  title: Operation Torch
+  description_short: American and British forces land in North Africa, the first Allied invasion of the war.
+  description_long: The landing gives the American army its first large-scale combat in the European theater.
+  why: It begins the Western campaign that leads to Normandy.
+  tags:
+  - north-africa
+  - europe
+  - invasion
+- id: casablanca_conference
+  start: 19430114
+  end: 19430124
+  level: 4
+  kind: diplomacy
+  title: Casablanca Conference
+  description_short: Roosevelt and Churchill meet in Morocco and demand the Axis powers' unconditional surrender.
+  description_long: The policy of unconditional surrender shapes the war's aims and its end.
+  why: It sets the war's terms.
+  tags:
+  - churchill
+  - surrender
+  - diplomacy
+- id: zoot_suit_riots
+  start: 19430603
+  level: 4
+  kind: violence
+  title: Zoot Suit Riots
+  description_short: Sailors and civilians attack Mexican American youths in Los Angeles for a week.
+  description_long: Police arrest the victims, not the attackers.
+  why: It shows the wartime exclusion of Mexican Americans.
+  tags:
+  - race
+  - mexican-americans
+  - violence
+- id: detroit_race_riot
+  start: 19430620
+  level: 4
+  kind: violence
+  title: Detroit Race Riot
+  description_short: A three-day riot kills 34 people, 25 of them Black, in the center of the war industry.
+  description_long: Federal troops restore order. The violence follows the migration of workers to war jobs.
+  why: It shows the strain of the Great Migration in the arsenal city.
+  tags:
+  - race
+  - violence
+  - detroit
+- id: withholding_tax
+  start: 19430609
+  level: 4
+  kind: legislation
+  title: Current Tax Payment Act
+  description_short: Congress introduces payroll withholding of income tax.
+  description_long: Withholding makes the income tax a mass tax and the wartime state financeable.
+  why: It builds the fiscal machinery of the modern state.
+  tags:
+  - taxes
+  - withholding
+  - war-finance
+- id: smith_connally_act
+  start: 19430625
+  level: 4
+  kind: legislation
+  title: Smith–Connally Act
+  description_short: Congress overrides Roosevelt's veto to limit wartime strikes and allow seizure of struck plants.
+  description_long: The act is a conservative-coalition measure aimed at John L. Lewis and the miners.
+  why: It previews Taft–Hartley.
+  tags:
+  - labor
+  - strikes
+  - conservative-coalition
+- id: tehran_conference
+  start: 19431128
+  level: 4
+  kind: diplomacy
+  title: Tehran Conference
+  description_short: Roosevelt, Churchill, and Stalin meet for the first time and agree on a cross-Channel invasion.
+  description_long: The meeting also discusses the postwar order.
+  why: It is the first summit of the Big Three.
+  tags:
+  - stalin
+  - diplomacy
+  - alliance
+- id: war_refugee_board
+  start: 19440122
+  level: 4
+  kind: institution
+  title: War Refugee Board Created
+  description_short: Roosevelt creates a board to rescue Jewish and other refugees, after the Treasury exposes State Department obstruction.
+  description_long: The board helps save tens of thousands, but it comes late.
+  why: It is a belated response to the immigration thread's closed door.
+  tags:
+  - refugees
+  - holocaust
+  - immigration
+- id: battle_of_the_bulge
+  start: 19441216
+  level: 4
+  kind: military
+  title: Battle of the Bulge
+  description_short: Germany's last major offensive in the west fails after the costliest battle for American forces in the war.
+  description_long: About 19,000 Americans die in the battle.
+  why: It is the largest American battle, and ends German offense.
+  tags:
+  - europe
+  - military
+  - war
+- id: v_e_day
+  start: 19450508
+  level: 4
+  kind: war
+  title: V-E Day
+  description_short: Germany surrenders unconditionally, and the war in Europe ends.
+  description_long: Truman celebrates his sixty-first birthday the same day.
+  why: It marks the end of the European war.
+  tags:
+  - europe
+  - victory
+  - war
+- id: potsdam_conference
+  start: 19450717
+  level: 4
+  kind: diplomacy
+  title: Potsdam Conference
+  description_short: Truman, Stalin, and Churchill meet in occupied Germany and issue the ultimatum to Japan.
+  description_long: Truman learns of the Trinity test during the conference.
+  why: It shows the new president and the new weapon at the same table.
+  tags:
+  - truman
+  - stalin
+  - japan
+- id: nuremberg_trials
+  start: 19451120
+  level: 4
+  kind: legal
+  title: Nuremberg Trials Begin
+  description_short: An international tribunal begins trying Nazi leaders for war crimes and crimes against humanity.
+  description_long: American prosecutor Robert Jackson leads the case, and the verdicts come in October 1946.
+  why: It makes legal accountability part of American leadership.
+  tags:
+  - nuremberg
+  - war-crimes
+  - law
+- id: eniac
+  start: 19460214
+  level: 5
+  kind: technology
+  title: ENIAC Unveiled
+  description_short: The Army and the University of Pennsylvania reveal the first general-purpose electronic computer.
+  description_long: The machine fills a large room.
+  why: It is the beginning of the computer age, funded by wartime need.
+  tags:
+  - computers
+  - technology
+  - army
+- id: baruch_plan
+  start: 19460614
+  level: 4
+  kind: diplomacy
+  title: Baruch Plan
+  description_short: The U.S. proposes international control of atomic energy, and the Soviets reject it.
+  description_long: The plan would have required inspections that the Soviets refuse.
+  why: It is the last chance for nuclear control, and its failure begins the arms race.
+  tags:
+  - atomic-energy
+  - arms-control
+  - soviet-union
+- id: japan_constitution
+  start: 19470503
+  level: 4
+  kind: political_event
+  title: Japan's Postwar Constitution Takes Effect
+  description_short: A constitution drafted under American occupation renounces war and guarantees civil rights.
+  description_long: Article 9 bars Japan from maintaining war potential.
+  why: It remakes a former enemy as a democracy.
+  tags:
+  - japan
+  - constitution
+  - occupation
+- id: hollywood_ten
+  start: 19471124
+  level: 4
+  kind: legal
+  title: Hollywood Ten Cited for Contempt
+  description_short: The House votes to cite ten screenwriters and directors for refusing to answer questions about communism.
+  description_long: The studios blacklist them the next day.
+  why: It shows anticommunism's reach into culture.
+  tags:
+  - blacklist
+  - huac
+  - hollywood
+- id: levittown
+  start: 19471001
+  level: 4
+  kind: housing
+  title: Levittown Opens
+  description_short: William Levitt begins selling mass-produced houses on Long Island to veterans.
+  description_long: The development bars Black buyers, in common with much of the postwar suburb. Date is month-level (October 1947).
+  why: It is the model of postwar suburban housing, and its exclusion.
+  tags:
+  - suburbs
+  - housing
+  - race
+  date_precision: month
+- id: to_secure_these_rights
+  start: 19471029
+  level: 4
+  kind: policy
+  title: To Secure These Rights
+  description_short: Truman's Committee on Civil Rights issues a report calling for federal action against segregation and discrimination.
+  description_long: The report sets out an agenda that Congress will not pass for another generation.
+  why: It names the second clause in an official document.
+  tags:
+  - civil-rights
+  - truman
+  - report
+- id: transistor
+  start: 19471223
+  level: 4
+  kind: technology
+  title: Transistor Demonstrated
+  description_short: Bell Labs scientists demonstrate the first working transistor.
+  description_long: The device replaces vacuum tubes and underlies modern electronics.
+  why: It begins the technology that the next epochs rest on.
+  tags:
+  - electronics
+  - bell-labs
+  - technology
+- id: czech_coup
+  start: 19480225
+  level: 4
+  kind: political_event
+  title: Communist Coup in Czechoslovakia
+  description_short: Communists seize power in Prague, ending the country's last democratic government in Eastern Europe.
+  description_long: The coup shocks the West and speeds the passage of the Marshall Plan.
+  why: It is the event that hardens Western opinion.
+  tags:
+  - czechoslovakia
+  - communism
+  - europe
+- id: vandenberg_resolution
+  start: 19480611
+  level: 4
+  kind: legislation
+  title: Vandenberg Resolution
+  description_short: The Senate approves American participation in peacetime regional alliances.
+  description_long: The resolution is the legal path to NATO.
+  why: It shows the Senate's turn from isolation.
+  tags:
+  - senate
+  - alliance
+  - nato
+- id: dixiecrat_revolt
+  start: 19480717
+  level: 4
+  kind: political_event
+  title: Dixiecrat Revolt
+  description_short: Southern Democrats walk out over the party's civil rights plank and nominate Strom Thurmond.
+  description_long: The States' Rights Democrats carry four Deep South states.
+  why: It is the first open break of the Southern wing from the New Deal coalition.
+  tags:
+  - southern-democrats
+  - civil-rights
+  - thurmond
+- id: hiss_case
+  start: 19480803
+  level: 4
+  kind: legal
+  title: Hiss Case Begins
+  description_short: Whittaker Chambers names Alger Hiss, a former State Department official, as a communist before HUAC.
+  description_long: Hiss is convicted of perjury in January 1950.
+  why: It gives McCarthyism its seed and a prominent case.
+  tags:
+  - anticommunism
+  - huac
+  - hiss
+- id: fair_deal
+  start: 19490105
+  level: 4
+  kind: policy
+  title: Truman's Fair Deal
+  description_short: Truman proposes national health insurance, civil rights laws, and expanded Social Security in his State of the Union.
+  description_long: Congress passes only the Housing Act of 1949 and Social Security extensions.
+  why: It shows the limit of the coalition after 1948.
+  tags:
+  - truman
+  - fair-deal
+  - social-policy
+- id: point_four
+  start: 19490120
+  level: 4
+  kind: policy
+  title: Point Four Program
+  description_short: Truman announces technical aid to developing countries in his inaugural address.
+  description_long: The program is the start of American development assistance.
+  why: It extends the Marshall idea to the rest of the world.
+  tags:
+  - development
+  - aid
+  - truman
+- id: housing_act_1949
+  start: 19490715
+  level: 4
+  kind: legislation
+  title: Housing Act of 1949
+  description_short: Congress funds slum clearance and public housing.
+  description_long: The act's urban renewal program displaces many poor and Black residents.
+  why: It is the Fair Deal's one success, with an uneven legacy.
+  tags:
+  - housing
+  - urban-renewal
+  - congress
+- id: hydrogen_bomb_decision
+  start: 19500131
+  level: 4
+  kind: policy
+  title: Truman Orders the Hydrogen Bomb
+  description_short: Truman announces the decision to develop the hydrogen bomb.
+  description_long: The decision follows the Soviet test and the arrest of the spy Klaus Fuchs.
+  why: It escalates the arms race.
+  tags:
+  - hydrogen-bomb
+  - arms-race
+  - truman
+- id: hiss_convicted
+  start: 19500121
+  level: 4
+  kind: legal
+  title: Hiss Convicted of Perjury
+  description_short: A jury convicts Alger Hiss, sentencing him to five years.
+  description_long: The verdict is a landmark for the anticommunist right.
+  why: It fuels the climate McCarthy exploits.
+  tags:
+  - anticommunism
+  - hiss
+  - trial
+- id: indochina_aid
+  start: 19500508
+  level: 4
+  kind: foreign_policy
+  title: U.S. Aid to French Indochina
+  description_short: Truman announces military aid to France for its war against the Viet Minh.
+  description_long: The first American commitment in Vietnam is small and framed as anticommunist.
+  why: It plants the seed of the Unravelling's war.
+  tags:
+  - vietnam
+  - france
+  - containment
+- id: mccarran_internal_security
+  start: 19500923
+  level: 4
+  kind: legislation
+  title: McCarran Internal Security Act
+  description_short: Congress overrides Truman's veto to require communist organizations to register.
+  description_long: The act authorizes detention in an emergency.
+  why: It is the anticommunist state in statute.
+  tags:
+  - anticommunism
+  - civil-liberties
+  - congress
+- id: rosenberg_arrests
+  start: 19500717
+  level: 4
+  kind: legal
+  title: Rosenbergs Arrested
+  description_short: Julius Rosenberg is arrested for passing atomic secrets to the Soviet Union, and Ethel follows in August.
+  description_long: The couple are convicted in 1951 and executed in 1953.
+  why: It links the Soviet bomb to domestic espionage.
+  tags:
+  - espionage
+  - atomic-bomb
+  - anticommunism
+- id: twenty_second_amendment
+  start: 19510227
+  level: 4
+  kind: constitutional_amendment
+  title: Twenty-Second Amendment Ratified
+  description_short: The Constitution limits presidents to two terms.
+  description_long: The amendment follows Roosevelt's four elections.
+  why: It is the conservative reaction to the New Deal presidency.
+  tags:
+  - presidency
+  - constitution
+  - term-limits
+- id: anzus_treaty
+  start: 19510901
+  level: 4
+  kind: treaty
+  title: ANZUS Treaty
+  description_short: The U.S., Australia, and New Zealand sign a Pacific security treaty.
+  description_long: It is part of the Pacific alliance network built alongside the Japan treaty.
+  why: It builds the Pacific counterpart of NATO.
+  tags:
+  - alliance
+  - pacific
+  - australia
+- id: rosenberg_trial
+  start: 19510329
+  level: 4
+  kind: legal
+  title: Rosenbergs Convicted
+  description_short: A jury convicts Julius and Ethel Rosenberg of conspiracy to commit espionage, and they receive death sentences.
+  description_long: The case divides American opinion.
+  why: It is a central case of the Red Scare.
+  tags:
+  - espionage
+  - anticommunism
+  - trial
+- id: steel_seizure
+  start: 19520408
+  level: 4
+  kind: political_event
+  title: Truman Seizes the Steel Mills
+  description_short: Truman orders the seizure of the nation's steel mills to prevent a strike during the Korean War.
+  description_long: The Supreme Court strikes it down in June.
+  why: It tests the limit of executive power in wartime.
+  tags:
+  - executive-power
+  - steel
+  - korea
+- id: puerto_rico_commonwealth
+  start: 19520725
+  level: 4
+  kind: political_event
+  title: Puerto Rico Becomes a Commonwealth
+  description_short: Puerto Rico adopts a constitution and the status of a self-governing commonwealth.
+  description_long: The status leaves Puerto Ricans as citizens without a vote for president.
+  why: It continues the empire thread begun in 1898.
+  tags:
+  - puerto-rico
+  - territories
+  - empire
+- id: eisenhower_nominated
+  start: 19520711
+  level: 4
+  kind: political_event
+  title: Eisenhower Nominated
+  description_short: Republicans nominate Eisenhower over Senator Robert Taft.
+  description_long: The choice of the internationalist wing confirms the party's acceptance of the postwar role.
+  why: It sets the party's course.
+  tags:
+  - republicans
+  - eisenhower
+  - internationalism
+# ---------------------------------------------------------------- Level 5
+- id: reuben_james
+  start: 19411031
+  level: 5
+  kind: military
+  title: USS Reuben James Sunk
+  description_short: A German submarine sinks the American destroyer Reuben James, killing about 100.
+  description_long: It is the first U.S. Navy ship lost to enemy action in the war.
+  why: It shows the undeclared war's cost.
+  tags:
+  - navy
+  - atlantic
+  - germany
+- id: iwo_jima
+  start: 19450219
+  level: 5
+  kind: military
+  title: Iwo Jima
+  description_short: Marines land on Iwo Jima in a five-week battle that costs about 6,800 American lives.
+  description_long: The raising of the flag on Mount Suribachi becomes the war's most famous image.
+  why: It is the war's best-known symbol of sacrifice.
+  tags:
+  - marines
+  - pacific
+  - war
+- id: kefauver_hearings
+  start: 19510312
+  level: 5
+  kind: political_event
+  title: Kefauver Hearings
+  description_short: A Senate committee's televised hearings on organized crime draw a huge audience.
+  description_long: The hearings show television's power in politics.
+  why: It shows the new medium's role.
+  tags:
+  - television
+  - crime
+  - senate
+- id: armistice_talks_begin
+  start: 19510710
+  level: 5
+  kind: diplomacy
+  title: Korean Armistice Talks Begin
+  description_short: Negotiators meet at Kaesong, beginning two years of talks while the fighting continues.
+  description_long: The talks drag on over the question of prisoner repatriation.
+  why: It shows a war that cannot end cleanly.
+  tags:
+  - korea
+  - armistice
+  - negotiation
+- id: checkers_speech
+  start: 19520923
+  level: 5
+  kind: speech
+  title: Nixon's Checkers Speech
+  description_short: Richard Nixon defends his campaign fund on national television, mentioning his dog Checkers.
+  description_long: The speech saves his place on the ticket.
+  why: It is an early demonstration of television in politics.
+  tags:
+  - nixon
+  - television
+  - campaign
+- id: go_to_korea
+  start: 19521024
+  level: 5
+  kind: speech
+  title: "I Shall Go to Korea"
+  description_short: Eisenhower promises to go to Korea if elected, a pledge that helps win the election.
+  description_long: The promise addresses voters' weariness with the stalemate.
+  why: It ties the election to the war.
+  tags:
+  - eisenhower
+  - korea
+  - campaign

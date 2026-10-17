@@ -112,7 +112,11 @@ american-epochs/
         ├── new_freedom_events.yaml               # Done (first pass) — reconciled into the live instrument
         ├── new_freedom_outline.md                # Identity, thesis, Level 1 spine reasoning, handoff for the New Freedom
         ├── return_to_normalcy_events.yaml        # Done (first pass) — reconciled into the live instrument
-        └── return_to_normalcy_outline.md         # Identity, thesis, Level 1 spine reasoning, handoff for Return to Normalcy
+        ├── return_to_normalcy_outline.md         # Identity, thesis, Level 1 spine reasoning, handoff for Return to Normalcy
+        ├── new_deal_events.yaml                  # Done (first pass) — reconciled into the live instrument
+        ├── new_deal_outline.md                   # Identity, thesis, Level 1 spine reasoning, handoff for A New Deal
+        ├── american_ascendancy_events.yaml       # Done (first pass) — reconciled into the live instrument
+        └── american_ascendancy_outline.md        # Identity, thesis, Level 1 spine reasoning, handoff for the American Ascendancy
 ```
 
 Files under `src/data/` are research/authoring artifacts, not runtime data —

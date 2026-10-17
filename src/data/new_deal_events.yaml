@@ -1,0 +1,1383 @@
+schema:
+  name: American Epochs Event Corpus
+  version: 2
+  date_format: YYYYMMDD
+  level_definition:
+    1: The epoch's "crown of the mountain" — always visible, at every zoom, from the very widest view. One beat
+      per structural hinge in the epoch's own arc, not a list of "the important stuff." Target 5-8 entries regardless
+      of how large or eventful the epoch was; see curation_guidance below. Automatically revealed first as the viewer
+      zooms in from full history — never a manual toggle.
+    2: Major events, automatically revealed at the first closer zoom past Level 1.
+    3: Supporting events explaining mechanisms, shifts, and consequences.
+    4: Contextual events — political, military, social, institutional texture.
+    5: Fine-grained events for the closest inspection.
+  curation_guidance:
+  - Level 1 is the hardest and most important editorial call in the corpus. The viewer never chooses to see it —
+    it is what everyone sees whether they zoom in or not, so it carries the whole epoch's argument on its own.
+  - Pick one entry per point where the epoch's own arc genuinely turns, not one per famous name or battle. A working
+    test - "does removing this entry break the causal chain from the epoch's start to its end?" If not, it belongs
+    at Level 2 or below, however well-known it is.
+  - Target 5-8 Level 1 point events specifically. This is deliberately independent of the epoch's total event count
+    or length in years. Reconstruction intentionally carries nine point events because the Panic of 1873 and United
+    States v. Cruikshank describe distinct political and judicial turns and the editor has approved a slightly crowded
+    crown.
+  - Span (duration) entries at Level 1 do not count against the point-event target because the live instrument never
+    tier-filters spans; they provide scene-setting context.
+  - Levels 2-5 have much more room to breathe. Disagreement there is a rounding error, not a structural problem.
+    Spend the real editorial effort on Level 1.
+  notes:
+  - A missing end date indicates a point event.
+  - Dates represent the most defensible public date for display, not necessarily every stage of a legal or political
+    process.
+  - date_precision (year or month) applies to start, and end_precision (month) to the end of a range. Where set, the
+    placeholder in the date field must not be rendered as exact. Absent means a full day-level date. date_verified
+    true means the date was confirmed against an identifiable source.
+  - This corpus is a research/authoring artifact. A human or LLM reconciles it into the live EVENTS array.
+  - Levels were assigned by Claude as a first-pass editorial judgment (see new_deal_outline.md for the Level 1
+    reasoning). All dates are drafted from memory and none are yet source-verified, so verify before treating as
+    settled. No source URLs are included, per the guide's rule against unverifiable citations. Figures to check first
+    include the Dust Bowl exodus (about 2.5 million), union membership growth, and WPA employment totals.
+  - Spans follow the "duration is necessary but not sufficient" rule. Only dust_bowl earns a permanent lane.
+    emergency_banking_act, hundred_days, court_packing_fails, flint_sit_down_strike, roosevelt_recession, the
+    antilynching filibuster, and the Battle of Britain are recorded with true ranges but are under two years, so they
+    reconcile as point events at their end dates.
+  - Level 1 includes hundred_days (1933-03-09 to 1933-06-16), which renders as a point on June 16, the day the National
+    Industrial Recovery Act and Glass-Steagall were signed.
+  - Boundary decisions. The corpus opens at Roosevelt's inauguration (1933-03-04). The winter's bank panics, the
+    election of 1932, and the Twentieth Amendment belong to Return to Normalcy. The corpus closes at the end of 1940
+    and keeps the draft, the destroyers deal, the third term, and the Arsenal of Democracy speech. Lend-Lease passes in
+    March 1941 and opens the Ascendancy. The Great Depression span in the live instrument ends in March 1933 and is
+    not extended.
+epoch:
+  id: new_deal
+  title: A New Deal
+  start: 19330304
+  end: 19401231
+  thesis: Within four years Roosevelt builds the modern American state, with bank rescue and deposit insurance, securities
+    regulation, relief and public jobs, farm supports, the right to organize, Social Security, rural electrification, and
+    a federal role in housing. The Supreme Court strikes down the National Recovery Administration and the farm program,
+    Roosevelt wins a 1936 landslide and overreaches with a plan to enlarge the Court, and the plan fails but the Court yields
+    to the program's legal basis anyway. A 1937 recession, a conservative coalition of Southern Democrats and Republicans,
+    and the war in Europe end the expansion. The order that survives governs the economy and extends security to many, but
+    on terms set by the coalition that made it possible, which leaves out agricultural and domestic workers.
+events:
+# ---------------------------------------------------------------- Level 1: span
+- id: dust_bowl
+  start: 19340101
+  end: 19391231
+  level: 1
+  kind: environmental_period
+  title: Dust Bowl
+  description_short: Drought and wind erosion devastate the southern Plains, driving hundreds of thousands of families off the land.
+  description_long: Decades of plowing the grasslands leave the soil exposed when the drought hits. Black blizzards of dust darken
+    the sky across the Plains, and about 2.5 million people leave the Plains states during the 1930s. Dates are year-level (1934
+    to 1939).
+  why: It frames the relief programs, the farm policy, and the migration of the era, a disaster that the new state is expected to
+    answer.
+  tags:
+  - dust-bowl
+  - agriculture
+  - migration
+  date_precision: year
+# ---------------------------------------------------------------- Level 1: points
+- id: emergency_banking_act
+  start: 19330306
+  end: 19330309
+  level: 1
+  kind: legislation
+  title: Bank Holiday and Emergency Banking Act
+  description_short: Roosevelt closes every bank in the country, and Congress passes the Emergency Banking Act in a few hours.
+  description_long: The House passes the bill without a printed copy on March 9, five days after the inauguration. Banks reopen
+    under federal inspection, and Roosevelt's first fireside chat persuades depositors to return their money.
+  why: It is the rescue. The government becomes the lender of last resort for the country, and confidence returns within days.
+  tags:
+  - banking
+  - rescue
+  - roosevelt
+- id: hundred_days
+  start: 19330309
+  end: 19330616
+  level: 1
+  kind: legislation
+  title: The Hundred Days
+  description_short: Congress passes fifteen major laws in Roosevelt's first hundred days, creating most of the New Deal's agencies.
+  description_long: The session runs from March 9 to June 16, 1933, and produces relief, public jobs, farm supports, the Tennessee
+    Valley Authority, securities regulation, deposit insurance, and the National Industrial Recovery Act.
+  why: It is the founding burst, the moment the national government assumes responsibility for the economy at scale.
+  tags:
+  - congress
+  - legislation
+  - roosevelt
+- id: wagner_act
+  start: 19350705
+  level: 1
+  kind: legislation
+  title: Wagner Act
+  description_short: Congress guarantees workers the right to organize and bargain collectively, and creates the National Labor Relations Board.
+  description_long: The act protects workers from employer retaliation and requires employers to bargain with certified unions. It
+    excludes agricultural and domestic workers. Union membership roughly triples by the end of the decade.
+  why: It is the labor pillar of the New Deal Order, the answer to the Gilded Age's use of federal force against strikes.
+  tags:
+  - labor
+  - unions
+  - congress
+- id: social_security_act
+  start: 19350814
+  level: 1
+  kind: legislation
+  title: Social Security Act
+  description_short: Congress creates old-age pensions and unemployment insurance, the permanent core of the welfare state.
+  description_long: The act covers most industrial workers but excludes agricultural and domestic workers, which leaves out a large
+    share of Black and Mexican American workers. Payments begin in 1940.
+  why: It is the program that outlasts every attack, and where the question's second clause is clearest, since protection is built
+    with exclusions.
+  tags:
+  - social-security
+  - welfare
+  - exclusion
+- id: court_packing_fails
+  start: 19370205
+  end: 19370722
+  level: 1
+  kind: political_event
+  title: Court-Packing Plan Fails
+  description_short: The Senate recommits Roosevelt's plan to add justices to the Supreme Court, handing him his worst defeat.
+  description_long: Roosevelt proposes the plan on February 5, 1937, after winning forty-six states. His own party revolts, and the
+    Court changes direction anyway in March and April by upholding state minimum wage and the Wagner Act.
+  why: It is the contest over survival, a real attempt to override a coequal branch, and the order's legal basis is secured even as
+    the plan fails.
+  tags:
+  - supreme-court
+  - constitution
+  - roosevelt
+- id: conservative_coalition
+  start: 19381108
+  level: 1
+  kind: election
+  title: Conservative Coalition Forms
+  description_short: Republicans gain 81 House seats in the midterms, and they join Southern Democrats in a bloc that blocks new reform.
+  description_long: Roosevelt's attempt to purge conservative Democrats in the primaries failed that summer. The bloc controls key
+    committees for decades and blocks labor and civil rights bills.
+  why: It is the New Deal Order's built-in limit, the price Southern Democrats set for their votes.
+  tags:
+  - congress
+  - midterm
+  - southern-democrats
+- id: selective_service_act
+  start: 19400916
+  level: 1
+  kind: legislation
+  title: Selective Service Act
+  description_short: Congress enacts the first peacetime draft in American history.
+  description_long: The act requires men aged 21 to 35 to register, with 900,000 to be drafted each year. It passes after the fall
+    of France.
+  why: It turns the story from domestic argument to mobilization.
+  tags:
+  - draft
+  - mobilization
+  - war
+# ---------------------------------------------------------------- Level 2
+- id: fdr_inaugurated
+  start: 19330304
+  level: 2
+  kind: political_event
+  title: Franklin Roosevelt Inaugurated
+  description_short: Roosevelt takes office declaring that "the only thing we have to fear is fear itself."
+  description_long: Banks are closed or restricted in nearly every state, and about a quarter of the workforce is unemployed.
+  why: It opens the epoch and gives its tone, a confident, experimental government.
+  tags:
+  - roosevelt
+  - inauguration
+  - fear
+- id: banking_act_1933
+  start: 19330616
+  level: 2
+  kind: legislation
+  title: Glass–Steagall Act and the FDIC
+  description_short: Congress separates commercial and investment banking and creates federal deposit insurance.
+  description_long: The Banking Act of 1933 restores trust in the banking system. Deposit insurance becomes one of the New Deal's
+    most durable legacies.
+  why: It builds the permanent regulatory structure for finance, the Big Stick's unfinished business after the Panic of 1907.
+  tags:
+  - banking
+  - fdic
+  - regulation
+- id: nira
+  start: 19330616
+  level: 2
+  kind: legislation
+  title: National Industrial Recovery Act
+  description_short: Congress creates the National Recovery Administration to organize business into fair-competition codes.
+  description_long: The act also creates a public works program and guarantees workers the right to organize. The NRA relies on
+    voluntary compliance and a blue eagle emblem.
+  why: It is the New Deal's most ambitious experiment, governing the economy through business itself, and its failure shapes
+    everything after.
+  tags:
+  - nra
+  - industry
+  - recovery
+- id: prohibition_repealed
+  start: 19331205
+  level: 2
+  kind: constitutional_amendment
+  title: Prohibition Repealed
+  description_short: The Twenty-First Amendment repeals the Eighteenth, the only time an amendment has been repealed.
+  description_long: Utah becomes the thirty-sixth state to ratify. The repeal restores a legal alcohol industry and a new source of
+    tax revenue.
+  why: It ends the decade's failed attempt to govern private life, and marks the shift in what government tries to do.
+  tags:
+  - prohibition
+  - constitution
+  - repeal
+- id: wpa_created
+  start: 19350408
+  level: 2
+  kind: institution
+  title: Works Progress Administration
+  description_short: Congress funds the largest federal jobs program to date, which employs millions.
+  description_long: The WPA employs about 8.5 million people over its life, building roads, bridges, schools, and airports, and
+    employing artists and writers. Harry Hopkins runs it.
+  why: It makes the government the employer of last resort, the Second New Deal's signature response to unemployment.
+  tags:
+  - jobs
+  - relief
+  - hopkins
+- id: schechter_decision
+  start: 19350527
+  level: 2
+  kind: court_case
+  title: Schechter Poultry v. United States
+  description_short: The Supreme Court unanimously strikes down the National Industrial Recovery Act.
+  description_long: The Court holds that the act delegates too much legislative power and stretches the commerce clause. The
+    decision is known as "Black Monday" in the administration.
+  why: It is the first great test of the New Deal's survival, and Roosevelt's response eventually leads to the court-packing fight.
+  tags:
+  - supreme-court
+  - nra
+  - commerce-clause
+- id: election_1936
+  start: 19361103
+  level: 2
+  kind: election
+  title: Roosevelt's Landslide Reelection
+  description_short: Roosevelt wins 46 of 48 states, defeating Alf Landon in the largest electoral victory since 1820.
+  description_long: The New Deal coalition of urban workers, Southerners, Black voters, and farmers is formed. Black voters shift
+    from the Republican Party to the Democrats in large numbers.
+  why: It gives the order a mandate and a coalition, and sets up the overreach that follows.
+  tags:
+  - election
+  - coalition
+  - roosevelt
+- id: flint_sit_down_strike
+  start: 19361230
+  end: 19370211
+  level: 2
+  kind: strike
+  title: Flint Sit-Down Strike
+  description_short: Autoworkers occupy General Motors plants for six weeks and win recognition of the UAW.
+  description_long: The strike begins December 30, 1936, and ends February 11, 1937. Governor Frank Murphy refuses to use the
+    National Guard to evict the strikers.
+  why: It is the labor movement winning in the way the Gilded Age's strikes lost, with the state declining to side with capital.
+  tags:
+  - labor
+  - strike
+  - uaw
+- id: west_coast_hotel
+  start: 19370329
+  level: 2
+  kind: court_case
+  title: West Coast Hotel v. Parrish
+  description_short: The Supreme Court upholds a state minimum wage law, reversing its position of the previous year.
+  description_long: Justice Owen Roberts changes his vote, and the 5–4 ruling is called "the switch in time that saved nine."
+    The Court upholds the Wagner Act and Social Security within two months.
+  why: It is the legal turning point, the Court yielding to the modern regulatory state.
+  tags:
+  - supreme-court
+  - minimum-wage
+  - constitution
+- id: roosevelt_recession
+  start: 19370501
+  end: 19380630
+  level: 2
+  kind: economic_crisis
+  title: Roosevelt Recession
+  description_short: A sharp downturn follows spending cuts and tax increases, and unemployment rises again.
+  description_long: The NBER dates the contraction from May 1937 to June 1938. Industrial output falls by a third and unemployment
+    climbs back above 19 percent. Dates are month-level.
+  why: It shows that the economy had not yet recovered on its own, and breaks the confidence of the second term.
+  tags:
+  - recession
+  - unemployment
+  - spending
+  date_precision: month
+  end_precision: month
+- id: fair_labor_standards_act
+  start: 19380625
+  level: 2
+  kind: legislation
+  title: Fair Labor Standards Act
+  description_short: Congress sets a national minimum wage of 25 cents an hour and a 44-hour week, and bans most child labor.
+  description_long: The act is the last major New Deal law, and it excludes agricultural and domestic workers, as the earlier laws did.
+  why: It is the final reform before the coalition's stall, and again the exclusions mark who was inside.
+  tags:
+  - minimum-wage
+  - child-labor
+  - labor
+- id: germany_invades_poland
+  start: 19390901
+  level: 2
+  kind: war
+  title: Germany Invades Poland
+  description_short: Germany attacks Poland, and Britain and France declare war, starting World War II in Europe.
+  description_long: Roosevelt declares neutrality and then moves to revise the neutrality laws to allow arms sales to Britain and
+    France.
+  why: It begins the turn from domestic argument to mobilization.
+  tags:
+  - war
+  - europe
+  - neutrality
+- id: fall_of_france
+  start: 19400622
+  level: 2
+  kind: war
+  title: Fall of France
+  description_short: France signs an armistice with Germany, leaving Britain alone.
+  description_long: The shock leads to rearmament, the draft, and the destroyers deal within months.
+  why: It is the event that makes American mobilization a national consensus.
+  tags:
+  - war
+  - france
+  - rearmament
+- id: destroyers_for_bases
+  start: 19400902
+  level: 2
+  kind: diplomacy
+  title: Destroyers-for-Bases Deal
+  description_short: Roosevelt trades fifty old destroyers to Britain for leases on British bases in the Western Hemisphere.
+  description_long: The agreement, made without Congress, is a first step into the war that skirts the neutrality laws.
+  why: It is the first big American commitment to the Allied side, executive action without legislation.
+  tags:
+  - britain
+  - navy
+  - executive
+- id: election_1940
+  start: 19401105
+  level: 2
+  kind: election
+  title: Roosevelt Wins a Third Term
+  description_short: Roosevelt defeats Wendell Willkie and breaks the two-term tradition set by Washington.
+  description_long: The campaign turns on the war, and Roosevelt promises that American boys will not be sent into foreign wars.
+  why: It breaks a 150-year precedent and confirms that the story is now about the war.
+  tags:
+  - election
+  - third-term
+  - roosevelt
+# ---------------------------------------------------------------- Level 3
+- id: first_fireside_chat
+  start: 19330312
+  level: 3
+  kind: speech
+  title: First Fireside Chat
+  description_short: Roosevelt explains the banking crisis to the country on the radio.
+  description_long: The talks give the presidency a direct voice in American homes.
+  why: It makes radio an instrument of the presidency.
+  tags:
+  - radio
+  - roosevelt
+  - communication
+- id: civilian_conservation_corps
+  start: 19330331
+  level: 3
+  kind: institution
+  title: Civilian Conservation Corps
+  description_short: Congress creates a program that puts young men to work in forests and parks.
+  description_long: About three million young men serve over nine years, planting billions of trees and building park facilities.
+    The camps are largely segregated.
+  why: It is the first relief program, popular and visible.
+  tags:
+  - jobs
+  - conservation
+  - youth
+- id: gold_standard_abandoned
+  start: 19330419
+  level: 3
+  kind: finance
+  title: U.S. Leaves the Gold Standard
+  description_short: Roosevelt takes the dollar off the gold standard for domestic use.
+  description_long: The move, with a ban on private gold holdings, lets prices rise and the money supply expand. The Gold Reserve Act
+    of January 1934 sets a new gold price of $35 an ounce.
+  why: It ends the monetary order of the 1890s that McKinley's election defended.
+  tags:
+  - gold-standard
+  - money
+  - deflation
+- id: agricultural_adjustment_act
+  start: 19330512
+  level: 3
+  kind: legislation
+  title: Agricultural Adjustment Act
+  description_short: Congress pays farmers to reduce production in order to raise crop prices.
+  description_long: The act subsidizes landowners, and displaces many tenant farmers and sharecroppers, especially Black Southerners.
+  why: It is the answer to the farm crisis Coolidge vetoed, and it shows the exclusions inside its own design.
+  tags:
+  - agriculture
+  - subsidies
+  - sharecroppers
+- id: tennessee_valley_authority
+  start: 19330518
+  level: 3
+  kind: institution
+  title: Tennessee Valley Authority
+  description_short: Congress creates a federal corporation to build dams and bring electric power and flood control to the Tennessee Valley.
+  description_long: The TVA is the largest public power and regional development project in American history.
+  why: It is public ownership of infrastructure on a scale the Gilded Age would not have imagined.
+  tags:
+  - power
+  - infrastructure
+  - regional-development
+- id: securities_act
+  start: 19330527
+  level: 3
+  kind: legislation
+  title: Securities Act of 1933
+  description_short: Congress requires companies to disclose information when selling stocks and bonds.
+  description_long: The law makes issuers truthful about what they sell, and follows with the Securities Exchange Act in 1934.
+  why: It answers the speculation of the 1920s.
+  tags:
+  - securities
+  - regulation
+  - finance
+- id: homeowners_loan_corporation
+  start: 19330613
+  level: 3
+  kind: institution
+  title: Home Owners' Loan Corporation
+  description_short: Congress creates a federal agency to refinance mortgages in default.
+  description_long: The HOLC refinances about a million homes. Its appraisal maps, with Black and immigrant neighborhoods coded
+    red, shape lending for decades.
+  why: It saves homeowners and builds the system of redlining, the same act of protection and exclusion.
+  tags:
+  - housing
+  - redlining
+  - mortgages
+- id: sec_created
+  start: 19340606
+  level: 3
+  kind: institution
+  title: Securities and Exchange Commission
+  description_short: Congress creates the SEC to regulate the stock markets, with Joseph Kennedy as its first chairman.
+  description_long: The agency polices exchanges, brokers, and corporate disclosure.
+  why: It is the permanent regulator of the market that crashed.
+  tags:
+  - securities
+  - regulation
+  - sec
+- id: indian_reorganization_act
+  start: 19340618
+  level: 3
+  kind: legislation
+  title: Indian Reorganization Act
+  description_short: Congress ends allotment and lets tribes adopt self-government and recover some land.
+  description_long: The act reverses the Dawes Act's assimilation policy, and is the "Indian New Deal" led by John Collier.
+  why: It reverses Gilded Age policy, an answer to the question of who is counted.
+  tags:
+  - native-americans
+  - self-government
+  - collier
+- id: national_housing_act
+  start: 19340628
+  level: 3
+  kind: legislation
+  title: National Housing Act and the FHA
+  description_short: Congress creates the Federal Housing Administration to insure home mortgages.
+  description_long: The FHA's insured long-term loans make mass homeownership possible, but its guidelines favor white
+    suburban neighborhoods.
+  why: It builds the middle-class home and the segregation of housing together.
+  tags:
+  - housing
+  - mortgages
+  - fha
+- id: black_sunday
+  start: 19350414
+  level: 3
+  kind: disaster
+  title: Black Sunday Dust Storm
+  description_short: A huge dust storm blackens the sky across the southern Plains.
+  description_long: The storm carries soil as far as the East Coast and makes the Dust Bowl a national story.
+  why: It is the Dust Bowl's defining day.
+  tags:
+  - dust-bowl
+  - disaster
+  - plains
+- id: rural_electrification
+  start: 19350511
+  level: 3
+  kind: institution
+  title: Rural Electrification Administration
+  description_short: Roosevelt creates an agency to bring electric power to farms.
+  description_long: In 1935 about 90 percent of rural homes lack electricity, and by 1950 about 90 percent have it.
+  why: It extends the new state to rural America.
+  tags:
+  - electricity
+  - rural
+  - infrastructure
+- id: cio_founded
+  start: 19351109
+  level: 3
+  kind: organization
+  title: CIO Founded
+  description_short: John L. Lewis and other union leaders form the Committee for Industrial Organization.
+  description_long: The CIO organizes unskilled workers in mass-production industries, including Black and immigrant workers the AFL
+    had often excluded.
+  why: It is the labor movement the Wagner Act made possible.
+  tags:
+  - labor
+  - cio
+  - industrial-unionism
+- id: huey_long_assassinated
+  start: 19350910
+  level: 3
+  kind: political_event
+  title: Huey Long Assassinated
+  description_short: Senator Huey Long, Roosevelt's most dangerous critic from the left, dies after being shot in Baton Rouge.
+  description_long: Long's "Share Our Wealth" plan had millions of supporters and was a threat to Roosevelt's 1936 prospects.
+  why: It removes the era's most powerful challenge from the populist left.
+  tags:
+  - populism
+  - long
+  - assassination
+- id: butler_decision
+  start: 19360106
+  level: 3
+  kind: court_case
+  title: United States v. Butler
+  description_short: The Supreme Court strikes down the Agricultural Adjustment Act's processing tax, 6–3.
+  description_long: The decision ends the first farm program, and Congress passes a new version in 1938 on a different basis.
+  why: It is the second great setback in the contest over the New Deal's survival.
+  tags:
+  - supreme-court
+  - agriculture
+  - taxation
+- id: court_plan_announced
+  start: 19370205
+  level: 3
+  kind: political_event
+  title: Roosevelt Proposes Enlarging the Court
+  description_short: Roosevelt asks Congress to let him appoint up to six new justices.
+  description_long: His rationale is the burden of elderly judges, and the unspoken reason is the Court's rulings against the New
+    Deal.
+  why: It is the moment of overreach that turns the Court fight into a fight within Roosevelt's party.
+  tags:
+  - supreme-court
+  - roosevelt
+  - overreach
+- id: jones_laughlin
+  start: 19370412
+  level: 3
+  kind: court_case
+  title: NLRB v. Jones & Laughlin Steel
+  description_short: The Supreme Court upholds the Wagner Act, 5–4.
+  description_long: The decision expands the commerce clause to cover labor relations in industries that affect interstate commerce.
+  why: It secures the legal foundation for the labor pillar.
+  tags:
+  - supreme-court
+  - labor
+  - commerce-clause
+- id: dies_committee
+  start: 19380526
+  level: 3
+  kind: institution
+  title: Dies Committee Created
+  description_short: The House creates a committee to investigate un-American activities, the forerunner of HUAC.
+  description_long: Martin Dies, a Texas Democrat, targets the New Deal and labor as communist-influenced.
+  why: It is the start of the anticommunist politics that shapes the later Order.
+  tags:
+  - anticommunism
+  - huac
+  - congress
+- id: kristallnacht
+  start: 19381109
+  level: 3
+  kind: foreign_policy
+  title: Kristallnacht
+  description_short: Nazi mobs destroy Jewish businesses and synagogues across Germany, and thousands of Jews are arrested.
+  description_long: Roosevelt recalls the American ambassador but does not raise the immigration quotas.
+  why: It tests the 1924 quota system's consequences, and shows what the law leaves out.
+  tags:
+  - holocaust
+  - refugees
+  - immigration
+- id: marian_anderson_concert
+  start: 19390409
+  level: 3
+  kind: cultural
+  title: Marian Anderson at the Lincoln Memorial
+  description_short: After the DAR bars her from Constitution Hall, Marian Anderson sings to 75,000 people at the Lincoln Memorial.
+  description_long: Eleanor Roosevelt resigns from the DAR and helps arrange the concert.
+  why: It is a public moment on who is counted, with the government's tacit support.
+  tags:
+  - race
+  - music
+  - eleanor-roosevelt
+- id: st_louis_refused
+  start: 19390604
+  level: 3
+  kind: foreign_policy
+  title: The St. Louis Turned Away
+  description_short: The United States refuses entry to a ship of 937 Jewish refugees from Germany, which returns to Europe.
+  description_long: About a quarter of its passengers die in the Holocaust. The U.S. quota for Germany remains filled by existing
+    applicants.
+  why: It is the most direct consequence of the immigration thread's closed door.
+  tags:
+  - refugees
+  - immigration
+  - holocaust
+- id: neutrality_revised
+  start: 19391104
+  level: 3
+  kind: legislation
+  title: Neutrality Act Revised
+  description_short: Congress allows "cash and carry" arms sales to the Allies.
+  description_long: The change lets Britain and France buy arms from the United States, and it ends the arms embargo.
+  why: It is the first legislative step toward Lend-Lease.
+  tags:
+  - neutrality
+  - arms
+  - congress
+- id: arsenal_of_democracy
+  start: 19401229
+  level: 3
+  kind: speech
+  title: Arsenal of Democracy Speech
+  description_short: Roosevelt tells the country that it must be "the great arsenal of democracy."
+  description_long: The fireside chat prepares the public for Lend-Lease, which Roosevelt had announced on December 17.
+  why: It sets the terms of the next epoch, an economy turned to the defense of others.
+  tags:
+  - war
+  - lend-lease
+  - speech
+- id: lend_lease_proposed
+  start: 19401217
+  level: 3
+  kind: political_event
+  title: Roosevelt Proposes Lend-Lease
+  description_short: Roosevelt compares aid to Britain to lending a neighbor a garden hose to put out a fire.
+  description_long: The proposal frames what becomes the Lend-Lease Act of March 1941.
+  why: It is the pivot from neutrality to arsenal, ending the epoch and opening the next.
+  tags:
+  - lend-lease
+  - britain
+  - war
+# ---------------------------------------------------------------- Level 4
+- id: frances_perkins
+  start: 19330304
+  level: 4
+  kind: political_event
+  title: Frances Perkins Becomes Secretary of Labor
+  description_short: Perkins becomes the first woman in a presidential cabinet.
+  description_long: She is a main architect of Social Security and the Fair Labor Standards Act.
+  why: It marks the new access to government for women reformers.
+  tags:
+  - women
+  - labor
+  - cabinet
+- id: fera_created
+  start: 19330512
+  level: 4
+  kind: institution
+  title: Federal Emergency Relief Administration
+  description_short: Congress sends federal money to the states for direct relief, under Harry Hopkins.
+  description_long: The agency makes direct federal relief a national policy for the first time.
+  why: It ends the Hoover-era voluntarism.
+  tags:
+  - relief
+  - hopkins
+  - states
+- id: soviet_recognition
+  start: 19331116
+  level: 4
+  kind: diplomacy
+  title: U.S. Recognizes the Soviet Union
+  description_short: Roosevelt establishes diplomatic relations with Moscow after sixteen years.
+  description_long: The move follows years of nonrecognition and hopes for trade and a counterweight to Japan.
+  why: It begins the relationship that becomes the Cold War.
+  tags:
+  - soviet-union
+  - diplomacy
+  - recognition
+- id: civil_works_administration
+  start: 19331108
+  level: 4
+  kind: institution
+  title: Civil Works Administration
+  description_short: Roosevelt creates a crash jobs program that employs four million people in the first winter.
+  description_long: The program is dismantled in spring 1934 after criticism of its cost.
+  why: It is a rehearsal for the WPA.
+  tags:
+  - jobs
+  - relief
+  - winter
+- id: montevideo_conference
+  start: 19331226
+  level: 4
+  kind: diplomacy
+  title: Good Neighbor Policy at Montevideo
+  description_short: The U.S. accepts the principle that no state has the right to intervene in another's affairs.
+  description_long: The pledge starts a retreat from Roosevelt-era interventions, and U.S. Marines leave Haiti in 1934.
+  why: It reverses the Roosevelt Corollary.
+  tags:
+  - latin-america
+  - nonintervention
+  - good-neighbor
+- id: gold_reserve_act
+  start: 19340130
+  level: 4
+  kind: legislation
+  title: Gold Reserve Act
+  description_short: Congress fixes the dollar at $35 an ounce of gold and transfers the nation's gold to the Treasury.
+  description_long: The devaluation lets the money supply grow, and it sets the price that Bretton Woods later adopts.
+  why: It sets the monetary standard the postwar order inherits.
+  tags:
+  - gold
+  - money
+  - treasury
+- id: share_our_wealth
+  start: 19340201
+  level: 4
+  kind: political_movement
+  title: Huey Long Launches Share Our Wealth
+  description_short: Long proposes capping fortunes and guaranteeing every family a minimum income.
+  description_long: Share Our Wealth clubs reach millions. Date is month-level (February 1934).
+  why: It is the populist left's challenge that pushes Roosevelt toward the Second New Deal.
+  tags:
+  - populism
+  - long
+  - wealth
+  date_precision: month
+- id: philippine_independence_act
+  start: 19340324
+  level: 4
+  kind: legislation
+  title: Philippine Independence Act
+  description_short: Congress promises the Philippines independence after a ten-year transition.
+  description_long: The Tydings–McDuffie Act sets independence for 1946. The Philippines would be the empire's only voluntary unwinding.
+  why: It reverses the Big Stick's imperial acquisition.
+  tags:
+  - philippines
+  - empire
+  - independence
+- id: west_coast_longshoremen
+  start: 19340705
+  level: 4
+  kind: strike
+  title: Bloody Thursday and the San Francisco General Strike
+  description_short: Police kill two strikers in San Francisco, and a general strike follows.
+  description_long: The longshoremen's strike wins union recognition, and shows the new labor militancy of 1934.
+  why: It shows labor pressure before the Wagner Act.
+  tags:
+  - labor
+  - strike
+  - san-francisco
+- id: liberty_league
+  start: 19340822
+  level: 4
+  kind: organization
+  title: American Liberty League Founded
+  description_short: Wealthy businessmen and conservative Democrats form a group to oppose the New Deal.
+  description_long: Backers include the du Pont family and former Democratic nominees Al Smith and John W. Davis.
+  why: It is the organized opposition of business elites, who called Roosevelt a traitor to his class.
+  tags:
+  - opposition
+  - business
+  - conservatism
+- id: midterm_1934
+  start: 19341106
+  level: 4
+  kind: election
+  title: Democrats Gain in 1934 Midterms
+  description_short: Democrats add seats in both chambers, a rare gain for the president's party.
+  description_long: The result is read as a vote of confidence and is followed by the Second New Deal.
+  why: It shows the first term's popularity.
+  tags:
+  - election
+  - midterm
+  - democrats
+- id: humphreys_executor
+  start: 19350527
+  level: 4
+  kind: court_case
+  title: Humphrey's Executor v. United States
+  description_short: The Supreme Court rules that the president cannot fire members of independent regulatory commissions at will.
+  description_long: The decision, issued the same day as Schechter, reinforces the independence of agencies such as the FTC.
+  why: It limits executive power over the new administrative state.
+  tags:
+  - supreme-court
+  - agencies
+  - removal-power
+- id: neutrality_act_1935
+  start: 19350831
+  level: 4
+  kind: legislation
+  title: First Neutrality Act
+  description_short: Congress bars arms sales to all belligerents in a foreign war.
+  description_long: Later acts extend the policy, as Americans conclude that arms sales dragged the country into World War I.
+  why: It is the isolationist reaction to the last war, in law.
+  tags:
+  - neutrality
+  - isolationism
+  - congress
+- id: hoover_dam_dedicated
+  start: 19350930
+  level: 4
+  kind: infrastructure
+  title: Hoover Dam Dedicated
+  description_short: Roosevelt dedicates the dam on the Colorado River, the largest in the world at the time.
+  description_long: The dam, authorized in 1928, employs thousands of Depression workers.
+  why: It is the era's emblem of federal infrastructure.
+  tags:
+  - infrastructure
+  - west
+  - water
+- id: wealth_tax_act
+  start: 19350830
+  level: 4
+  kind: legislation
+  title: Revenue Act of 1935
+  description_short: Congress raises taxes on high incomes, estates, and corporations in the "Wealth Tax" act.
+  description_long: The top rate rises to 79 percent, and the act answers Huey Long's challenge.
+  why: It is a response to the populist left, and a reversal of the 1920s tax policy.
+  tags:
+  - taxes
+  - wealth
+  - redistribution
+- id: redlining_maps
+  start: 19350101
+  level: 4
+  kind: policy
+  title: HOLC Redlining Maps
+  description_short: Federal appraisers grade neighborhoods by risk, coding Black and immigrant areas red.
+  description_long: The maps are drawn for more than 200 cities between 1935 and 1940, and guide private and federal lending for
+    decades. Date is year-level (1935).
+  why: It builds discrimination into the system of federal lending.
+  tags:
+  - housing
+  - redlining
+  - race
+  date_precision: year
+- id: carter_v_carter_coal
+  start: 19360518
+  level: 4
+  kind: court_case
+  title: Carter v. Carter Coal
+  description_short: The Supreme Court strikes down a law regulating the coal industry's wages and hours.
+  description_long: The Court says that mining is not interstate commerce.
+  why: It is another blow in the Court's resistance before the switch.
+  tags:
+  - supreme-court
+  - coal
+  - commerce
+- id: morehead_v_tipaldo
+  start: 19360601
+  level: 4
+  kind: court_case
+  title: Morehead v. Tipaldo
+  description_short: The Supreme Court strikes down a New York minimum wage law for women, 5–4.
+  description_long: The ruling leaves no way for states to set minimum wages, and prompts public anger.
+  why: It is the position the Court reverses within a year.
+  tags:
+  - minimum-wage
+  - supreme-court
+  - states
+- id: us_steel_recognizes_cio
+  start: 19370302
+  level: 4
+  kind: strike
+  title: U.S. Steel Recognizes the CIO
+  description_short: The nation's largest steel company agrees to bargain with the Steel Workers Organizing Committee.
+  description_long: The deal reverses the outcome of 1892 and 1919, without a strike.
+  why: It shows how the Wagner Act changed the terms of labor conflict.
+  tags:
+  - labor
+  - steel
+  - cio
+- id: steward_machine
+  start: 19370524
+  level: 4
+  kind: court_case
+  title: Steward Machine Co. v. Davis
+  description_short: The Supreme Court upholds the unemployment compensation tax in Social Security, 5–4.
+  description_long: A second ruling, Helvering v. Davis, upholds old-age pensions.
+  why: It confirms Social Security's constitutionality.
+  tags:
+  - supreme-court
+  - social-security
+  - taxation
+- id: memorial_day_massacre
+  start: 19370530
+  level: 4
+  kind: violence
+  title: Memorial Day Massacre
+  description_short: Chicago police fire on striking steelworkers outside Republic Steel, killing ten.
+  description_long: Newsreel footage shows police shooting marchers in the back, and Republic Steel and other "Little Steel"
+    firms hold out against the union.
+  why: It shows that the Wagner Act did not end labor violence.
+  tags:
+  - labor
+  - violence
+  - chicago
+- id: us_housing_act
+  start: 19370901
+  level: 4
+  kind: legislation
+  title: U.S. Housing Act
+  description_short: Congress funds local public housing authorities to build low-rent housing.
+  description_long: The act begins the federal public housing program.
+  why: It extends federal action to housing for the poor.
+  tags:
+  - housing
+  - public-housing
+  - congress
+- id: hugo_black_klan
+  start: 19370901
+  level: 5
+  kind: political_event
+  title: Hugo Black's Klan Past Revealed
+  description_short: Newly appointed Justice Hugo Black is revealed to have once been a Klan member.
+  description_long: Black says on the radio that he resigned from the Klan and stays on the Court. Date is month-level (September
+    1937).
+  why: It shows the Court's new Roosevelt appointees, and what the old Southern coalition carried.
+  tags:
+  - supreme-court
+  - klan
+  - appointments
+  date_precision: month
+- id: quarantine_speech
+  start: 19371005
+  level: 4
+  kind: speech
+  title: Quarantine Speech
+  description_short: Roosevelt calls for an international "quarantine" of aggressor nations, and public opinion rejects it.
+  description_long: The speech in Chicago meets a strong isolationist reaction, and Roosevelt retreats.
+  why: It shows how far public opinion lagged behind his view of the danger.
+  tags:
+  - isolationism
+  - foreign-policy
+  - roosevelt
+- id: panay_incident
+  start: 19371212
+  level: 4
+  kind: military
+  title: Panay Incident
+  description_short: Japanese aircraft sink the U.S. gunboat Panay on the Yangtze.
+  description_long: Japan apologizes and pays an indemnity, and the public wants no war over it.
+  why: It shows the limits of American willingness to act in Asia.
+  tags:
+  - japan
+  - china
+  - navy
+- id: antilynching_filibuster
+  start: 19380106
+  end: 19380221
+  level: 4
+  kind: political_event
+  title: Senate Filibuster Kills Anti-Lynching Bill
+  description_short: Southern Democrats filibuster the Gavagan anti-lynching bill for six weeks until it is withdrawn.
+  description_long: Roosevelt does not press the issue, because he needs Southern votes.
+  why: It shows the coalition's price, the clearest instance of who was not protected.
+  tags:
+  - lynching
+  - race
+  - filibuster
+- id: roosevelt_purge
+  start: 19380901
+  level: 4
+  kind: political_event
+  title: Roosevelt's Purge of Conservative Democrats
+  description_short: Roosevelt campaigns against conservative Democrats in the primaries, and most of them win.
+  description_long: His target in Georgia, Senator Walter George, wins easily. Date is month-level (September 1938).
+  why: It is the last attempt to remake the party.
+  tags:
+  - democrats
+  - primaries
+  - roosevelt
+  date_precision: month
+- id: munich_agreement
+  start: 19380930
+  level: 4
+  kind: diplomacy
+  title: Munich Agreement
+  description_short: Britain and France concede the Sudetenland to Hitler, and Roosevelt welcomes it.
+  description_long: The deal is a symbol of appeasement.
+  why: It shows the failure of the European order that America stood outside.
+  tags:
+  - appeasement
+  - europe
+  - hitler
+- id: joe_louis_schmeling
+  start: 19380622
+  level: 4
+  kind: cultural
+  title: Joe Louis Defeats Max Schmeling
+  description_short: Joe Louis knocks out the German Max Schmeling in the first round, a moment of national celebration.
+  description_long: The fight is seen as a contest between democracy and Nazism, and Louis becomes a hero across racial lines.
+  why: It shows race and nation entangled at the edge of the war.
+  tags:
+  - race
+  - sports
+  - nazism
+- id: gaines_decision
+  start: 19381212
+  level: 4
+  kind: court_case
+  title: Missouri ex rel. Gaines v. Canada
+  description_short: The Supreme Court rules that a state must admit a Black student to its law school or provide an equal alternative.
+  description_long: The case is part of the NAACP's strategy of attacking segregation through the "equal" in "separate but equal."
+  why: It starts the legal path that ends in Brown.
+  tags:
+  - segregation
+  - naacp
+  - education
+- id: wagner_rogers_bill
+  start: 19390201
+  level: 4
+  kind: legislation
+  title: Wagner–Rogers Refugee Children Bill
+  description_short: Congress declines to admit 20,000 German Jewish refugee children outside the quota system.
+  description_long: The bill dies in committee after opposition from restrictionists, and the administration does not support it.
+    Date is month-level (February 1939).
+  why: It is the immigration thread's moral test, and the quotas' answer.
+  tags:
+  - refugees
+  - immigration
+  - holocaust
+  date_precision: month
+- id: reorganization_act
+  start: 19390403
+  level: 4
+  kind: legislation
+  title: Reorganization Act of 1939
+  description_short: Congress lets Roosevelt reorganize the executive branch, creating the Executive Office of the President.
+  description_long: The Executive Office is established in September, and the Bureau of the Budget moves inside it.
+  why: It builds the institution of the modern presidency.
+  tags:
+  - executive
+  - bureaucracy
+  - presidency
+- id: grapes_of_wrath
+  start: 19390414
+  level: 4
+  kind: cultural
+  title: The Grapes of Wrath Published
+  description_short: John Steinbeck's novel of an Oklahoma family's migration to California becomes a bestseller.
+  description_long: The book gives the Dust Bowl exodus a face and a national audience.
+  why: It makes the era's displacement part of national memory.
+  tags:
+  - literature
+  - dust-bowl
+  - migration
+- id: hatch_act
+  start: 19390802
+  level: 4
+  kind: legislation
+  title: Hatch Act
+  description_short: Congress bars most federal employees from political activity.
+  description_long: The act responds to accusations that the WPA was used for partisan purposes.
+  why: It is the conservative coalition's first limit on the new bureaucracy.
+  tags:
+  - civil-service
+  - politics
+  - congress
+- id: executive_office_created
+  start: 19390908
+  level: 4
+  kind: institution
+  title: Executive Office of the President Created
+  description_short: Roosevelt creates the Executive Office, putting the Bureau of the Budget under presidential control.
+  description_long: The office becomes the permanent staff of the modern presidency.
+  why: It builds the machinery the war will use.
+  tags:
+  - executive
+  - presidency
+  - bureaucracy
+- id: smith_act
+  start: 19400628
+  level: 4
+  kind: legislation
+  title: Smith Act
+  description_short: Congress makes it a crime to advocate overthrowing the government by force and requires alien registration.
+  description_long: The act is later used against Communist Party leaders in the Cold War.
+  why: It is the peacetime sedition law, the legal tool of the next epoch's anticommunism.
+  tags:
+  - sedition
+  - communism
+  - civil-liberties
+- id: willkie_nominated
+  start: 19400628
+  level: 4
+  kind: political_event
+  title: Willkie Nominated
+  description_short: Republicans nominate Wendell Willkie, an internationalist businessman and former Democrat.
+  description_long: Willkie supports aid to Britain, which removes the war from the campaign's divisions.
+  why: It makes the war a bipartisan consensus.
+  tags:
+  - republicans
+  - willkie
+  - election
+- id: ndac_created
+  start: 19400529
+  level: 4
+  kind: institution
+  title: National Defense Advisory Commission
+  description_short: Roosevelt creates a body to coordinate defense production.
+  description_long: The commission is the first step toward the war economy, and it draws business executives into government.
+  why: It begins the mobilization of industry.
+  tags:
+  - mobilization
+  - industry
+  - defense
+- id: battle_of_britain
+  start: 19400710
+  end: 19401031
+  level: 4
+  kind: war
+  title: Battle of Britain
+  description_short: The Royal Air Force defeats the German air campaign over Britain.
+  description_long: The result keeps Britain in the war and makes American aid worthwhile.
+  why: It justifies the bet on Britain.
+  tags:
+  - britain
+  - air-war
+  - war
+- id: tripartite_pact
+  start: 19400927
+  level: 4
+  kind: diplomacy
+  title: Tripartite Pact
+  description_short: Germany, Italy, and Japan sign a military alliance.
+  description_long: The pact links the European and Asian wars and targets the United States.
+  why: It makes the two wars one.
+  tags:
+  - axis
+  - japan
+  - germany
+# ---------------------------------------------------------------- Level 5
+- id: epic_campaign
+  start: 19341106
+  level: 5
+  kind: election
+  title: Upton Sinclair Loses the EPIC Campaign
+  description_short: Upton Sinclair loses the California governor's race after a campaign to "End Poverty in California."
+  description_long: His campaign is a major populist challenge, and he is defeated by a heavy business-backed campaign.
+  why: It is one more measure of pressure from the left.
+  tags:
+  - california
+  - populism
+  - sinclair
+- id: jesse_owens
+  start: 19360809
+  level: 5
+  kind: cultural
+  title: Jesse Owens at the Berlin Olympics
+  description_short: Jesse Owens wins four gold medals in Hitler's Berlin.
+  description_long: His success challenges Nazi racial theories, though he returns to a segregated country.
+  why: It shows the irony of race and nation.
+  tags:
+  - race
+  - sports
+  - nazism
+- id: hindenburg
+  start: 19370506
+  level: 5
+  kind: disaster
+  title: Hindenburg Disaster
+  description_short: The German airship burns while landing in New Jersey, killing 36.
+  description_long: The accident ends the era of passenger airships.
+  why: It marks the end of an age of technological confidence.
+  tags:
+  - disaster
+  - aviation
+  - germany
+- id: war_of_the_worlds
+  start: 19381030
+  level: 5
+  kind: cultural
+  title: War of the Worlds Broadcast
+  description_short: Orson Welles's radio drama about a Martian invasion frightens some listeners.
+  description_long: The broadcast shows radio's power and the public's nerves on the eve of war.
+  why: It shows the anxieties of the moment.
+  tags:
+  - radio
+  - media
+  - welles
+- id: gone_with_the_wind_film
+  start: 19391215
+  level: 5
+  kind: cultural
+  title: Gone With the Wind Premieres
+  description_short: The film opens in Atlanta, with its Black cast members barred from the premiere.
+  description_long: The film wins ten Academy Awards.
+  why: It shows how popular culture romanticizes the Lost Cause.
+  tags:
+  - film
+  - race
+  - culture
+- id: ogdensburg_agreement
+  start: 19400818
+  level: 5
+  kind: diplomacy
+  title: Ogdensburg Agreement
+  description_short: Roosevelt and Canadian Prime Minister Mackenzie King create a joint defense board.
+  description_long: The agreement ties the two countries' defense together.
+  why: It is another step toward mobilization.
+  tags:
+  - canada
+  - defense
+  - alliance
+# ---------------------------------------------------------------- Gap fill (thin years 1936 and 1935; threads into the Ascendancy)
+- id: resettlement_administration
+  start: 19350430
+  level: 5
+  kind: institution
+  title: Resettlement Administration Created
+  description_short: Roosevelt creates an agency to help displaced farmers and relocate poor rural families.
+  description_long: Rexford Tugwell runs the agency, which sponsors planned communities and hires photographers who record the era's
+    most famous images of rural poverty.
+  why: It is the New Deal's attempt to answer rural displacement, and it produces the visual record of the Dust Bowl years.
+  tags:
+  - agriculture
+  - poverty
+  - photography
+- id: ethiopia_invaded
+  start: 19351003
+  level: 5
+  kind: war
+  title: Italy Invades Ethiopia
+  description_short: Mussolini's army attacks Ethiopia, and the League of Nations fails to stop it.
+  description_long: The war prompts the first Neutrality Act's application, and shows the League's weakness.
+  why: It is an early sign of the order's collapse.
+  tags:
+  - fascism
+  - league-of-nations
+  - africa
+- id: ashwander_v_tva
+  start: 19360217
+  level: 4
+  kind: court_case
+  title: Ashwander v. Tennessee Valley Authority
+  description_short: The Supreme Court upholds the TVA's sale of electric power from Wilson Dam.
+  description_long: The 8–1 decision is a rare win for the New Deal during a year of defeats at the Court.
+  why: It secures public power's legal footing, though narrowly.
+  tags:
+  - supreme-court
+  - tva
+  - power
+- id: soil_conservation_act
+  start: 19360229
+  level: 4
+  kind: legislation
+  title: Soil Conservation and Domestic Allotment Act
+  description_short: Congress pays farmers to plant soil-conserving crops, a substitute for the struck-down AAA.
+  description_long: The act reframes crop subsidies as conservation, which survives the Court's objection in Butler.
+  why: It shows the New Deal adapting to survive the Court.
+  tags:
+  - agriculture
+  - conservation
+  - supreme-court
+- id: rhineland_remilitarized
+  start: 19360307
+  level: 5
+  kind: war
+  title: Germany Remilitarizes the Rhineland
+  description_short: Hitler sends troops into the demilitarized Rhineland, breaking the Versailles Treaty, and meets no resistance.
+  description_long: The move is an early test of the settlement the United States had refused to join.
+  why: It shows the postwar order Americans had declined to defend.
+  tags:
+  - germany
+  - versailles
+  - appeasement
+- id: rendezvous_with_destiny
+  start: 19360627
+  level: 4
+  kind: speech
+  title: Rendezvous With Destiny Speech
+  description_short: Roosevelt accepts renomination, saying that "this generation of Americans has a rendezvous with destiny."
+  description_long: In Philadelphia, he attacks "economic royalists" who seek to control government.
+  why: It frames the 1936 election as a contest between democracy and concentrated wealth.
+  tags:
+  - roosevelt
+  - speech
+  - election
+- id: spanish_civil_war
+  start: 19360717
+  level: 4
+  kind: war
+  title: Spanish Civil War Begins
+  description_short: A military revolt against Spain's republic starts a civil war that draws in Germany, Italy, and the Soviet Union.
+  description_long: The U.S. maintains an arms embargo, and about 2,800 Americans volunteer for the Abraham Lincoln Brigade.
+  why: It is a rehearsal for the larger war, and an early split over neutrality.
+  tags:
+  - spain
+  - neutrality
+  - volunteers
+- id: literary_digest_poll
+  start: 19361031
+  level: 5
+  kind: cultural
+  title: Literary Digest Poll Fails
+  description_short: The magazine's poll predicts a Landon victory, and Roosevelt wins in a landslide.
+  description_long: The poll's sample was drawn from car and telephone owners, a biased group in the Depression. George Gallup's
+    smaller scientific poll predicts the winner correctly.
+  why: It marks the birth of modern polling, and shows how skewed the old sample of America was.
+  tags:
+  - polling
+  - election
+  - statistics
+- id: einstein_szilard_letter
+  start: 19390802
+  level: 4
+  kind: science
+  title: Einstein–Szilárd Letter
+  description_short: Albert Einstein signs a letter warning Roosevelt that Germany may build an atomic bomb.
+  description_long: Leo Szilard drafts it, and Alexander Sachs delivers it to Roosevelt in October. It leads to an advisory
+    committee on uranium.
+  why: It starts the path to the atomic bomb, one of the Ascendancy's defining instruments.
+  tags:
+  - atomic-bomb
+  - science
+  - einstein
+- id: worlds_fair_1939
+  start: 19390430
+  level: 5
+  kind: cultural
+  title: New York World's Fair Opens
+  description_short: The "World of Tomorrow" fair opens in Queens, with Futurama and the promise of a car-based future.
+  description_long: The fair opens four months before the war begins, and shows an optimistic American vision of technology.
+  why: It displays the confidence that returns after the Depression.
+  tags:
+  - fair
+  - technology
+  - future
+- id: churchill_prime_minister
+  start: 19400510
+  level: 5
+  kind: political_event
+  title: Churchill Becomes Prime Minister
+  description_short: Winston Churchill takes office as Britain's wartime leader on the day Germany invades France.
+  description_long: His correspondence with Roosevelt begins within days.
+  why: It starts the personal partnership that drives Lend-Lease.
+  tags:
+  - britain
+  - churchill
+  - alliance
+- id: ndrc_created
+  start: 19400627
+  level: 4
+  kind: institution
+  title: National Defense Research Committee
+  description_short: Roosevelt creates a committee under Vannevar Bush to mobilize science for the war.
+  description_long: The committee organizes civilian scientists on radar, proximity fuzes, and, later, the atomic bomb.
+  why: It builds the partnership of government and science that becomes a feature of the next epoch.
+  tags:
+  - science
+  - mobilization
+  - research

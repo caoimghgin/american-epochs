@@ -50,5 +50,7 @@ Rough sketch, not a spec:
 
 ## Related
 
+- First real cross-epoch element already in the instrument: the Cold War span (1947 to 1991), owned by `american_ascendancy_events.yaml` and documented as a deliberate exception in `EVENT_CORPUS_GUIDE.md`. It is a natural first user of whatever threads mechanism gets built.
+
 - Prompted by: `src/data/return_to_normalcy_outline.md` (the immigration thread note)
 - Overlaps: [AE-14](AE-14-epoch-handoff-field.md) (both expose intellectual succession) and [AE-15](AE-15-gilded-age-fact-verification.md) (the verification pass could also standardize tags)

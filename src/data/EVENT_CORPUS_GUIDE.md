@@ -158,6 +158,15 @@ viewer learn something by seeing this marked as distinct from the epoch
 itself, at every zoom, forever." A span covering most of an epoch usually
 fails that test even when it clears every other bar.
 
+**Cross-epoch spans are a deliberate exception.** The Cold War (1947 to 1991) crosses
+five epochs, and the guide's rule against spans that cover most of an epoch exists to
+stop a span from merely relabeling that epoch. A span that belongs to no single epoch
+and holds several together does a different job: the viewer learns that one condition
+runs under all of them. Such a span is owned by the corpus where it begins, carries its
+true full dates in the YAML and the live array, and its ending event is carried by the
+corpus where it ends. It is the first real cross-epoch element in the instrument, and a
+natural first user of the threads idea in `tickets/AE-16-cross-epoch-threads.md`.
+
 This threshold came from direct experience: A House Divided's first pass at
 reconciliation used a much shorter cutoff (14 days) and ended up with over a
 dozen short campaigns and crises cluttering the Duration strip at moderate
@@ -239,8 +248,8 @@ compression, not a field-for-field copy:
 | The Big Stick (1898–1912) | `big_stick_events.yaml` | Done, first pass — 114 events (8/14/23/53/15 points + 1 span), 5-level, reconciled into the live instrument (see `big_stick_outline.md`). Dates drafted from memory, not yet source-checked |
 | The New Freedom (1913–1919) | `new_freedom_events.yaml` | Done, first pass — 105 events (7/16/25/44/12 points + the World War I span), 5-level, reconciled into the live instrument (see `new_freedom_outline.md`). Dates drafted from memory, not yet source-checked |
 | Return to Normalcy (1920–1932) | `return_to_normalcy_events.yaml` | Done, first pass — 100 events (8/12/24/41/14 points + the Great Depression span), 5-level, reconciled into the live instrument (see `return_to_normalcy_outline.md`). Dates drafted from memory, not yet source-checked |
-| A New Deal (1933–1940) | — | Not started |
-| The American Ascendancy (1941–1952) | — | Not started |
+| A New Deal (1933–1940) | `new_deal_events.yaml` | Done, first pass — 105 events (7/15/24/45/13 points + the Dust Bowl span), 5-level, reconciled into the live instrument (see `new_deal_outline.md`). Dates drafted from memory, not yet source-checked |
+| The American Ascendancy (1941–1952) | `american_ascendancy_events.yaml` | Done, first pass — 106 events (9/14/33/39/8 points + three spans: World War II, the Korean War, and the Cold War), 5-level, reconciled into the live instrument (see `american_ascendancy_outline.md`). Dates drafted from memory, not yet source-checked |
 | The Affluent Society (1953–1965) | — | Not started |
 | The Unravelling (1966–1979) | — | Not started |
 | Morning in America (1980–1991) | — | Not started |
