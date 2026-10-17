@@ -1,0 +1,1557 @@
+schema:
+  name: American Epochs Event Corpus
+  version: 2
+  date_format: YYYYMMDD
+  level_definition:
+    1: The epoch's "crown of the mountain" — always visible, at every zoom, from the very widest view. One beat
+      per structural hinge in the epoch's own arc, not a list of "the important stuff." Target 5-8 entries regardless
+      of how large or eventful the epoch was; see curation_guidance below. Automatically revealed first as the viewer
+      zooms in from full history — never a manual toggle.
+    2: Major events, automatically revealed at the first closer zoom past Level 1.
+    3: Supporting events explaining mechanisms, shifts, and consequences.
+    4: Contextual events — political, military, social, institutional texture.
+    5: Fine-grained events for the closest inspection.
+  curation_guidance:
+  - Level 1 is the hardest and most important editorial call in the corpus. The viewer never chooses to see it —
+    it is what everyone sees whether they zoom in or not, so it carries the whole epoch's argument on its own.
+  - Pick one entry per point where the epoch's own arc genuinely turns, not one per famous name or battle. A working
+    test - "does removing this entry break the causal chain from the epoch's start to its end?" If not, it belongs
+    at Level 2 or below, however well-known it is.
+  - Target 5-8 Level 1 point events specifically. This is deliberately independent of the epoch's total event count
+    or length in years. Reconstruction intentionally carries nine point events because the Panic of 1873 and United
+    States v. Cruikshank describe distinct political and judicial turns and the editor has approved a slightly crowded
+    crown.
+  - Span (duration) entries at Level 1 do not count against the point-event target because the live instrument never
+    tier-filters spans; they provide scene-setting context.
+  - Levels 2-5 have much more room to breathe. Disagreement there is a rounding error, not a structural problem.
+    Spend the real editorial effort on Level 1.
+  notes:
+  - A missing end date indicates a point event.
+  - Dates represent the most defensible public date for display, not necessarily every stage of a legal or political
+    process.
+  - date_precision (year or month) applies to start, and end_precision (month) to the end of a range. Where set, the
+    placeholder in the date field must not be rendered as exact. Absent means a full day-level date. date_verified
+    true means the date was confirmed against an identifiable source.
+  - This corpus is a research/authoring artifact. A human or LLM reconciles it into the live EVENTS array.
+  - Levels were assigned by Claude as a first-pass editorial judgment (see big_stick_outline.md for the Level 1
+    reasoning). All dates are drafted from memory and none are yet source-verified, so verify before treating as
+    settled. No source URLs are included, per the guide's rule against unverifiable citations.
+  - Level 1 was spacing-checked against emptiness, with no gap between Level 1 points longer than about 3.5 years.
+  - Spans follow the "duration is necessary but not sufficient" rule. Only philippine_american_war earns a permanent
+    lane. spanish_american_war, mckinley_assassinated, anthracite_coal_strike, and lawrence_textile_strike are
+    recorded with true ranges but are under two years, so they reconcile as point events at their end dates.
+  - Boundary decisions. The corpus opens with the USS Maine (1898-02-15) and closes at Election Day 1912. About eleven
+    months of 1897 after McKinley's inauguration belong to neither corpus. The Sixteenth Amendment is proposed here
+    (1909) and ratified in the New Freedom (1913). The Federal Reserve belongs to the next epoch.
+epoch:
+  id: big_stick
+  title: The Big Stick
+  start: 18980215
+  end: 19121105
+  thesis: The Gilded Age's unanswered question gets an answer, which is that the national executive and a new class of
+    federal regulators will govern. Roosevelt breaks up a railroad trust, settles a coal strike, inspects meat, polices
+    the Caribbean, and builds a canal, and the Republican Party follows him to the edge of what that authority can
+    mean. The same period extends the nation's rule over people outside its electorate and writes segregation into
+    Southern law and Northern habit. The confidence is real, and so is the exclusion. It ends when the coalition that
+    created the activist state destroys itself in 1912 arguing over how activist it should be.
+events:
+# ---------------------------------------------------------------- Level 1: span
+- id: philippine_american_war
+  start: 18990204
+  end: 19020704
+  level: 1
+  kind: war
+  title: Philippine–American War
+  description_short: The United States fights a three-year war to suppress Filipino independence after taking the
+    islands from Spain.
+  description_long: Fighting begins in Manila on February 4, 1899, after the Treaty of Paris transfers the Philippines.
+    Emilio Aguinaldo's republic is defeated by conventional and then guerrilla campaigns marked by harsh reprisals,
+    and Roosevelt declares the war over on July 4, 1902. Hundreds of thousands of Filipinos die, mostly from disease
+    and famine. Fighting with the Moro peoples continues for years afterward.
+  why: It is the empire's cost made concrete, a republic ruling people who never consented and defending that rule
+    by force.
+  tags:
+  - philippines
+  - empire
+  - war
+# ---------------------------------------------------------------- Level 1: points
+- id: spanish_american_war
+  start: 18980425
+  end: 18980812
+  level: 1
+  kind: war
+  title: Spanish–American War
+  description_short: A ten-week war with Spain makes the United States an overseas power.
+  description_long: Congress declares war on April 25, 1898 (retroactive to April 21), and Dewey destroys the Spanish
+    fleet at Manila Bay on May 1. An armistice follows on August 12, and the Treaty of Paris cedes the Philippines,
+    Puerto Rico, and Guam, with Cuba under American control.
+  why: The country that began by rejecting colonies now governs people who never voted on it, which sets the epoch's
+    foundational question.
+  tags:
+  - war
+  - empire
+  - spain
+- id: mckinley_assassinated
+  start: 19010906
+  end: 19010914
+  level: 1
+  kind: political_event
+  title: McKinley Assassinated
+  description_short: An anarchist shoots President McKinley in Buffalo, and Theodore Roosevelt becomes president.
+  description_long: Leon Czolgosz shoots McKinley at the Pan-American Exposition on September 6, 1901, and McKinley
+    dies on September 14. At forty-two, Roosevelt is the youngest president in the nation's history.
+  why: It brings the activist presidency to power, the instrument through which the epoch's answer to who governs
+    will be given.
+  tags:
+  - assassination
+  - roosevelt
+  - presidency
+- id: northern_securities_suit
+  start: 19020219
+  level: 1
+  kind: legal
+  title: Northern Securities Suit
+  description_short: Roosevelt's Justice Department sues to break up the Morgan-Hill railroad holding company.
+  description_long: Attorney General Philander Knox announces the antitrust suit without warning J.P. Morgan, who
+    protests that the president should have settled it privately. The Supreme Court orders the company dissolved in
+    1904 by a 5–4 vote.
+  why: It is the executive, not Congress or the courts alone, moving against concentrated capital, the direct answer
+    to the Gilded Age's unanswered question.
+  tags:
+  - antitrust
+  - roosevelt
+  - railroads
+- id: roosevelt_corollary
+  start: 19041206
+  level: 1
+  kind: foreign_policy
+  title: Roosevelt Corollary
+  description_short: Roosevelt claims an American right to police the Western Hemisphere.
+  description_long: In his annual message to Congress, Roosevelt declares that "chronic wrongdoing" by Latin American
+    states may require the United States to exercise international police power. The corollary follows the Venezuelan
+    blockade and justifies interventions in the Dominican Republic, Cuba, Nicaragua, and Haiti.
+  why: It is the foreign-policy half of the same governing impulse, and the best-known statement of "big stick"
+    diplomacy.
+  tags:
+  - monroe-doctrine
+  - latin-america
+  - intervention
+- id: pure_food_meat_inspection
+  start: 19060630
+  level: 1
+  kind: legislation
+  title: Pure Food and Drug and Meat Inspection Acts
+  description_short: Congress creates federal oversight of what Americans eat and the drugs they take.
+  description_long: Public outrage after Upton Sinclair's The Jungle and a Roosevelt-commissioned report on
+    Chicago's packinghouses pass both laws on June 30, 1906. The Pure Food and Drug Act later becomes the basis of the
+    Food and Drug Administration.
+  why: It is the high-water mark of the Square Deal, regulation reaching ordinary products and not just railroads.
+  tags:
+  - regulation
+  - food
+  - progressivism
+- id: panic_of_1907
+  start: 19071022
+  level: 1
+  kind: economic_crisis
+  title: Panic of 1907
+  description_short: A run on New York trust companies nearly collapses the financial system until J.P. Morgan
+    organizes a rescue.
+  description_long: The failure of a copper-corner scheme leads to a run on the Knickerbocker Trust Company on October
+    22, 1907, and then on others. With no central bank, Morgan locks the city's bankers in his library until they
+    agree to a rescue fund, and Treasury deposits help.
+  why: It shows the limit of Progressive regulation, since finance still answered to a private banker. The lesson
+    leads to the Federal Reserve in the next epoch.
+  tags:
+  - panic
+  - banking
+  - morgan
+- id: new_nationalism_speech
+  start: 19100831
+  level: 1
+  kind: speech
+  title: New Nationalism Speech
+  description_short: Roosevelt breaks with Taft's version of the Republican Party in a speech at Osawatomie, Kansas.
+  description_long: Roosevelt calls for a strong national government to protect human welfare over property rights,
+    including regulation of corporations, a graduated income tax, and labor protections. It is more radical than
+    anything he did as president and widens the split with Republican conservatives.
+  why: It begins the fracture, with the party's own founder of the activist state turning against its caretaker.
+  tags:
+  - roosevelt
+  - progressivism
+  - taft
+- id: election_of_1912
+  start: 19121105
+  level: 1
+  kind: election
+  title: Election of 1912
+  description_short: The Republican vote splits between Taft and Roosevelt, and Wilson wins with 42 percent.
+  description_long: Roosevelt's Progressive Party finishes second with 27 percent, ahead of Taft's 23, and Socialist
+    Eugene Debs wins about 6 percent. Wilson carries forty states and a majority of the electoral votes.
+  why: The coalition that built the activist state destroys itself from pride, not opposition, closing the epoch at
+    its own peak.
+  tags:
+  - election
+  - wilson
+  - progressive-party
+# ---------------------------------------------------------------- Level 2
+- id: uss_maine
+  start: 18980215
+  level: 2
+  kind: military
+  title: USS Maine Explodes
+  description_short: An American battleship explodes in Havana harbor, killing about 260 sailors.
+  description_long: The cause is still disputed, but the yellow press blames Spain and the cry "Remember the Maine"
+    drives the country toward war.
+  why: It is the trigger of the war that opens the epoch.
+  tags:
+  - maine
+  - cuba
+  - spain
+- id: treaty_of_paris_1898
+  start: 18981210
+  level: 2
+  kind: treaty
+  title: Treaty of Paris
+  description_short: Spain cedes the Philippines, Puerto Rico, and Guam, and gives up Cuba, for $20 million.
+  description_long: The Senate ratifies it on February 6, 1899, by a single vote over the two-thirds needed, after a
+    national debate over whether the republic should hold colonies.
+  why: It is the legal moment the country acquires subjects with no vote.
+  tags:
+  - empire
+  - treaty
+  - philippines
+- id: insular_cases
+  start: 19010527
+  level: 2
+  kind: court_case
+  title: Downes v. Bidwell and the Insular Cases
+  description_short: The Supreme Court holds that the Constitution does not fully apply in the new overseas territories.
+  description_long: In a fractured decision, the Court rules that Puerto Rico belongs to but is not part of the
+    United States, so Congress may tax it differently. A series of Insular Cases creates the doctrine of
+    "unincorporated territories."
+  why: It is the constitutional statement of the empire, people governed outside the document that justifies the
+    government.
+  tags:
+  - territories
+  - supreme-court
+  - constitution
+- id: speak_softly
+  start: 19010902
+  level: 2
+  kind: speech
+  title: Speak Softly Speech
+  description_short: Roosevelt quotes the proverb "speak softly and carry a big stick" at the Minnesota State Fair.
+  description_long: He delivers the line days before McKinley is shot. The phrase gives the era its name and becomes
+    shorthand for his foreign policy.
+  why: It names the epoch and its governing style, power backed by readiness to use it.
+  tags:
+  - roosevelt
+  - diplomacy
+  - speech
+- id: us_steel_formed
+  start: 19010301
+  level: 2
+  kind: corporate
+  title: U.S. Steel Formed
+  description_short: J.P. Morgan consolidates Carnegie Steel and others into the first billion-dollar corporation.
+  description_long: The merger caps the Great Merger Movement and controls about two-thirds of American steel
+    production. Date is month-level (March 1901).
+  why: It shows industrial consolidation continuing under the activist state, setting the scale regulators must
+    confront.
+  tags:
+  - steel
+  - morgan
+  - consolidation
+  date_precision: month
+- id: anthracite_coal_strike
+  start: 19020512
+  end: 19021023
+  level: 2
+  kind: strike
+  title: Anthracite Coal Strike
+  description_short: Roosevelt mediates a miners' strike as a neutral arbiter, the first such intervention.
+  description_long: About 140,000 miners strike for higher pay and shorter hours, and Roosevelt threatens to send the
+    army to run the mines. The mine owners, led by George Baer, accept arbitration, and the miners win a raise.
+  why: It reverses the Gilded Age's pattern of federal power in strikes, where government acts as arbiter and not as
+    strikebreaker.
+  tags:
+  - labor
+  - coal
+  - arbitration
+- id: hay_bunau_varilla_treaty
+  start: 19031118
+  level: 2
+  kind: treaty
+  title: Hay–Bunau-Varilla Treaty
+  description_short: The United States secures the Panama Canal Zone, days after Panama's U.S.-backed secession from
+    Colombia.
+  description_long: American warships keep Colombia from suppressing the revolt, the U.S. recognizes Panama within
+    days, and Panama's envoy signs a treaty granting the zone in perpetuity.
+  why: It shows the executive's power to reshape the map, and the canal is the epoch's greatest engineering result.
+  tags:
+  - panama
+  - canal
+  - empire
+- id: hepburn_act
+  start: 19060629
+  level: 2
+  kind: legislation
+  title: Hepburn Act
+  description_short: Congress gives the Interstate Commerce Commission power to set railroad rates.
+  description_long: The act strengthens the ICC's enforcement powers after two decades of weakness and lets it fix
+    maximum rates. It is the first real regulatory teeth since the Interstate Commerce Act of 1887.
+  why: It is the clearest callback to the Gilded Age, the same railroads and the same law, finally made enforceable.
+  tags:
+  - railroads
+  - regulation
+  - icc
+- id: brownsville_affair
+  start: 19060813
+  level: 2
+  kind: political_event
+  title: Brownsville Affair
+  description_short: Roosevelt dishonorably discharges 167 Black soldiers after a shooting in Brownsville, Texas.
+  description_long: White residents blame the Black soldiers of the 25th Infantry for a night of shooting on August
+    13 and 14, 1906. Roosevelt discharges the entire battalion without trial in November. A later review clears most
+    of them.
+  why: It shows the limit of the era's activist state, which could govern a hemisphere but not stand with its own Black
+    soldiers.
+  tags:
+  - race
+  - army
+  - roosevelt
+- id: election_1908_taft
+  start: 19081103
+  level: 2
+  kind: election
+  title: Taft Elected
+  description_short: Roosevelt's chosen successor, William Howard Taft, defeats William Jennings Bryan.
+  description_long: Roosevelt sets the program and Taft inherits it, along with a party of rival factions. Taft keeps
+    much of the program, including more antitrust suits than Roosevelt brought, but not the temperament.
+  why: It makes the party's split possible, since an activist movement now depends on a caretaker.
+  tags:
+  - election
+  - taft
+  - succession
+- id: naacp_founded
+  start: 19090212
+  level: 2
+  kind: organization
+  title: NAACP Founded
+  description_short: A biracial group of reformers issues the call that creates the National Association for the
+    Advancement of Colored People.
+  description_long: The call is issued on Lincoln's centennial after the 1908 Springfield riot, with W.E.B. Du Bois,
+    Ida B. Wells, Jane Addams, and others. It becomes the main organization for Black civil rights litigation.
+  why: It is the organized response to the exclusion that the era's activist state tolerated.
+  tags:
+  - civil-rights
+  - race
+  - du-bois
+- id: standard_oil_v_us
+  start: 19110515
+  level: 2
+  kind: court_case
+  title: Standard Oil Co. v. United States
+  description_short: The Supreme Court orders the Standard Oil monopoly dissolved, but under a "rule of reason."
+  description_long: The Court breaks Standard Oil into thirty-four companies and holds that the Sherman Act bans only
+    "unreasonable" restraints of trade. The decision is a victory for the trust-busters and a limit on the law.
+  why: It completes the arc from Standard Oil Trust (1882) to dissolution, while leaving judges to decide what
+    counts as reasonable.
+  tags:
+  - antitrust
+  - supreme-court
+  - standard-oil
+- id: republican_convention_1912
+  start: 19120622
+  level: 2
+  kind: political_event
+  title: Republican Convention of 1912
+  description_short: The convention renominates Taft over Roosevelt's supporters' protests, and Roosevelt's delegates walk out.
+  description_long: Taft's control of the party machinery wins him the nomination, and Roosevelt calls the result a
+    fraud. Roosevelt's followers prepare a new party.
+  why: It is the moment the coalition breaks, in a hall, over procedure.
+  tags:
+  - republicans
+  - taft
+  - roosevelt
+- id: progressive_party_founded
+  start: 19120805
+  level: 2
+  kind: political_event
+  title: Progressive Party Founded
+  description_short: Roosevelt accepts the nomination of the new Progressive ("Bull Moose") Party in Chicago.
+  description_long: The convention adopts a platform calling for women's suffrage, labor protections, and social
+    insurance, and Roosevelt declares himself "fit as a bull moose."
+  why: It gives the activist-state argument its own party, at the cost of the party that produced it.
+  tags:
+  - progressive-party
+  - roosevelt
+  - bull-moose
+# ---------------------------------------------------------------- Level 3
+- id: war_declared_on_spain
+  start: 18980425
+  level: 3
+  kind: political_event
+  title: Congress Declares War on Spain
+  description_short: Congress declares war, retroactive to April 21, after the Teller Amendment disclaims annexing Cuba.
+  description_long: McKinley asks for authority to intervene in Cuba, and Congress passes the declaration with the
+    Teller Amendment, which promises Cuban independence.
+  why: It is the formal opening of the war and the promise that the empire then breaks for the Philippines.
+  tags:
+  - war
+  - spain
+  - congress
+- id: williams_v_mississippi
+  start: 18980425
+  level: 3
+  kind: court_case
+  title: Williams v. Mississippi
+  description_short: The Supreme Court upholds Mississippi's disfranchising constitution.
+  description_long: The Court finds no discrimination in poll taxes and literacy tests that were written to exclude
+    Black voters, because the text is race-neutral. It clears the way for other Southern states.
+  why: It carries the Gilded Age's disfranchisement into constitutional law as the new epoch begins.
+  tags:
+  - disfranchisement
+  - supreme-court
+  - jim-crow
+- id: dewey_manila_bay
+  start: 18980501
+  level: 3
+  kind: military
+  title: Battle of Manila Bay
+  description_short: Commodore Dewey destroys the Spanish Pacific fleet in a few hours.
+  description_long: The victory makes Dewey a hero and puts the Philippines in American hands, a surprise acquisition
+    nobody had planned for.
+  why: It is the move that turns a war about Cuba into one about Asia.
+  tags:
+  - navy
+  - philippines
+  - dewey
+- id: hawaii_annexed
+  start: 18980707
+  level: 3
+  kind: legislation
+  title: Hawaii Annexed
+  description_short: Congress annexes Hawaii by joint resolution, using the war as justification.
+  description_long: The Newlands Resolution passes by simple majorities, since the Senate lacks the two-thirds needed
+    for a treaty. It completes the process begun in the 1893 overthrow.
+  why: It is the empire's quiet acquisition, accomplished by a legislative shortcut.
+  tags:
+  - hawaii
+  - annexation
+  - empire
+- id: wilmington_massacre
+  start: 18981110
+  level: 3
+  kind: violence
+  title: Wilmington Coup and Massacre
+  description_short: White supremacists overthrow Wilmington, North Carolina's elected biracial government and kill
+    Black residents.
+  description_long: After a campaign of white supremacy, a mob burns the Black newspaper office and forces the mayor
+    and council to resign. The dead number at least dozens, and no one is prosecuted.
+  why: It shows what the exclusion looked like in practice while the nation looked abroad.
+  tags:
+  - race
+  - violence
+  - north-carolina
+- id: open_door_notes
+  start: 18990906
+  level: 3
+  kind: diplomacy
+  title: Open Door Notes
+  description_short: Secretary of State John Hay asks the powers to keep China open to American trade.
+  description_long: The notes assert equal commercial access without committing the U.S. to colonies in China. The
+    powers give evasive answers, but Hay announces their acceptance.
+  why: It is the empire's commercial form, influence without territory.
+  tags:
+  - china
+  - trade
+  - diplomacy
+- id: gold_standard_act
+  start: 19000314
+  level: 3
+  kind: legislation
+  title: Gold Standard Act
+  description_short: Congress formally fixes the dollar to gold, ending the silver fight of the 1890s.
+  description_long: The act settles by statute what the 1896 election settled politically. Gold discoveries in
+    Alaska and South Africa have already ended the deflation that fed Populism.
+  why: It closes the Gilded Age's monetary question and shows how thoroughly 1896 was decided.
+  tags:
+  - gold-standard
+  - money
+  - congress
+- id: aguinaldo_captured
+  start: 19010323
+  level: 3
+  kind: military
+  title: Aguinaldo Captured
+  description_short: American forces capture Filipino leader Emilio Aguinaldo by a ruse.
+  description_long: Aguinaldo's capture ends the conventional phase of the war and leads to his oath of allegiance, but
+    guerrilla fighting continues on Samar and elsewhere.
+  why: It is the turning point in the Philippine war.
+  tags:
+  - philippines
+  - war
+  - aguinaldo
+- id: platt_amendment
+  start: 19010302
+  level: 3
+  kind: legislation
+  title: Platt Amendment
+  description_short: Congress makes Cuba's constitution give the U.S. the right to intervene and to lease naval bases.
+  description_long: Cuba must write the amendment into its constitution as a condition of American withdrawal. The U.S.
+    keeps Guantánamo Bay and the right to intervene for decades.
+  why: It is a model of the epoch's imperial form, nominal independence with American control.
+  tags:
+  - cuba
+  - empire
+  - sovereignty
+- id: newlands_reclamation_act
+  start: 19020617
+  level: 3
+  kind: legislation
+  title: Newlands Reclamation Act
+  description_short: Congress uses federal land-sale revenue to build irrigation projects in the West.
+  description_long: The Reclamation Service builds dams and canals across arid western states, a large federal
+    investment in the region's development.
+  why: It shows the activist state building as well as regulating.
+  tags:
+  - conservation
+  - west
+  - water
+- id: department_of_commerce_labor
+  start: 19030214
+  level: 3
+  kind: institution
+  title: Department of Commerce and Labor Created
+  description_short: Congress creates a cabinet department with a Bureau of Corporations to investigate big business.
+  description_long: The bureau gathers data on corporations and becomes the investigative arm of Roosevelt's
+    trust policy, a forerunner of the Federal Trade Commission.
+  why: It builds a standing federal capacity to watch industry, the bureaucratic side of the activist state.
+  tags:
+  - bureaucracy
+  - corporations
+  - regulation
+- id: panamanian_independence
+  start: 19031103
+  level: 3
+  kind: foreign_policy
+  title: Panama Declares Independence
+  description_short: Panama secedes from Colombia with American naval support.
+  description_long: The revolt succeeds without fighting, after U.S. warships block Colombian troops, and the U.S.
+    recognizes the new republic within days.
+  why: It is the Corollary-style executive action behind the canal.
+  tags:
+  - panama
+  - colombia
+  - intervention
+- id: northern_securities_decision
+  start: 19040314
+  level: 3
+  kind: court_case
+  title: Northern Securities Co. v. United States
+  description_short: The Supreme Court orders the Northern Securities holding company dissolved, 5–4.
+  description_long: The decision establishes that the Sherman Act applies to holding-company mergers, a rare enforcement
+    victory after the E.C. Knight setback.
+  why: It confirms the executive's trust-busting authority and answers E.C. Knight.
+  tags:
+  - antitrust
+  - supreme-court
+  - railroads
+- id: election_1904_landslide
+  start: 19041108
+  level: 3
+  kind: election
+  title: Roosevelt Wins in a Landslide
+  description_short: Roosevelt wins a full term with 56 percent of the vote, the largest popular margin to that date.
+  description_long: He promises a "square deal" to every man and pledges not to seek another term in 1908. The pledge
+    later complicates his 1912 return.
+  why: It gives the activist presidency its own electoral mandate.
+  tags:
+  - election
+  - roosevelt
+  - square-deal
+- id: treaty_of_portsmouth
+  start: 19050905
+  level: 3
+  kind: diplomacy
+  title: Treaty of Portsmouth
+  description_short: Roosevelt mediates an end to the Russo-Japanese War and wins the Nobel Peace Prize.
+  description_long: The treaty is signed in New Hampshire and gives Roosevelt the global standing the Big Stick
+    implies, though it also feeds Japanese resentment.
+  why: It shows the executive acting as a world power broker.
+  tags:
+  - japan
+  - russia
+  - nobel
+- id: lochner_v_new_york
+  start: 19050417
+  level: 3
+  kind: court_case
+  title: Lochner v. New York
+  description_short: The Supreme Court strikes down a New York law limiting bakers' working hours.
+  description_long: The Court finds that the law interferes with liberty of contract under the Fourteenth Amendment. The
+    case gives its name to an era of judicial skepticism of economic regulation.
+  why: It shows the courts still claiming the final word, setting the limits for the activist state.
+  tags:
+  - labor
+  - supreme-court
+  - due-process
+- id: the_jungle
+  start: 19060201
+  level: 3
+  kind: intellectual
+  title: The Jungle Published
+  description_short: Upton Sinclair's novel about Chicago's packinghouses shocks the public.
+  description_long: Sinclair intends to expose the workers' conditions, but readers fixate on the food contamination.
+    The book spurs the meat inspection law. Date is month-level (February 1906).
+  why: It is the best-known example of the muckraking that powers the era's reforms.
+  tags:
+  - muckraking
+  - food
+  - sinclair
+  date_precision: month
+- id: great_white_fleet
+  start: 19071216
+  level: 3
+  kind: military
+  title: Great White Fleet Departs
+  description_short: Sixteen battleships begin a fourteen-month voyage around the world.
+  description_long: Roosevelt sends the fleet to show American naval power, and it returns in February 1909. The
+    voyage is the era's most visible demonstration of the Big Stick.
+  why: It is the epoch's confidence on display, power projected without a shot.
+  tags:
+  - navy
+  - diplomacy
+  - roosevelt
+- id: sixteenth_amendment_proposed
+  start: 19090712
+  level: 3
+  kind: constitutional_amendment
+  title: Sixteenth Amendment Proposed
+  description_short: Congress sends the states an amendment authorizing a federal income tax.
+  description_long: The amendment answers Pollock (1895) directly. Ratification comes in February 1913, in the next
+    epoch.
+  why: It is the constitutional route to the fiscal power the activist state needs.
+  tags:
+  - income-tax
+  - constitution
+  - taxation
+- id: payne_aldrich_tariff
+  start: 19090805
+  level: 3
+  kind: legislation
+  title: Payne–Aldrich Tariff
+  description_short: Taft signs a tariff that raises rates on many goods despite promises to lower them.
+  description_long: Progressive Republicans in the Midwest oppose the bill, and Taft calls it the best tariff the party
+    ever passed. The statement alienates the insurgents.
+  why: It is the first public break between Taft and the party's reformers.
+  tags:
+  - tariff
+  - taft
+  - insurgents
+- id: ballinger_pinchot
+  start: 19100107
+  level: 3
+  kind: political_event
+  title: Taft Fires Pinchot
+  description_short: Taft dismisses Forest Service chief Gifford Pinchot in a conservation dispute.
+  description_long: Pinchot had accused Interior Secretary Richard Ballinger of favoring private interests over public
+    lands. The firing confirms to Progressives that Taft has abandoned Roosevelt's conservation program.
+  why: It makes the split personal and symbolic, with conservation on the line.
+  tags:
+  - conservation
+  - taft
+  - pinchot
+- id: triangle_fire
+  start: 19110325
+  level: 3
+  kind: disaster
+  title: Triangle Shirtwaist Fire
+  description_short: A fire in a New York garment factory kills 146 workers, mostly young immigrant women.
+  description_long: Locked exit doors and inadequate fire escapes cause most of the deaths. The fire leads to new factory
+    safety laws in New York and nationwide.
+  why: It exposes what the activist state had not yet reached, ordinary workplaces.
+  tags:
+  - labor
+  - safety
+  - new-york
+# ---------------------------------------------------------------- Level 4
+- id: teller_amendment
+  start: 18980420
+  level: 4
+  kind: legislation
+  title: Teller Amendment
+  description_short: Congress disclaims any intention of annexing Cuba.
+  description_long: The amendment passes with the resolution for intervention and binds the U.S. to Cuban independence,
+    a commitment the Platt Amendment later qualifies.
+  why: It is the promise the empire later bends.
+  tags:
+  - cuba
+  - congress
+  - independence
+- id: san_juan_hill
+  start: 18980701
+  level: 4
+  kind: military
+  title: San Juan Hill
+  description_short: Roosevelt's Rough Riders and the regular army take the heights outside Santiago, Cuba.
+  description_long: The charge makes Roosevelt a national hero and launches his political rise.
+  why: It is the personal origin of the figure who defines the epoch.
+  tags:
+  - roosevelt
+  - rough-riders
+  - cuba
+- id: anti_imperialist_league
+  start: 18981119
+  level: 4
+  kind: organization
+  title: Anti-Imperialist League Founded
+  description_short: Prominent Americans organize against annexing the Philippines.
+  description_long: Members include Mark Twain, Andrew Carnegie, William Jennings Bryan, and Jane Addams, united by the
+    argument that empire contradicts republican self-government.
+  why: It is the epoch's own contemporary critique of its foundational compromise.
+  tags:
+  - empire
+  - opposition
+  - twain
+- id: foraker_act
+  start: 19000412
+  level: 4
+  kind: legislation
+  title: Foraker Act
+  description_short: Congress sets up a civil government in Puerto Rico with appointed officials.
+  description_long: Puerto Ricans can elect only a lower house, and the president appoints the governor and upper house.
+    The island's residents are not made U.S. citizens.
+  why: It is the colonial structure the Insular Cases then justify.
+  tags:
+  - puerto-rico
+  - territories
+  - congress
+- id: boxer_relief
+  start: 19000814
+  level: 4
+  kind: military
+  title: Boxer Rebellion Relief Expedition
+  description_short: American troops join an international force to relieve the besieged legations in Beijing.
+  description_long: About 2,500 U.S. soldiers and marines take part. The episode extends American military reach into
+    Asia.
+  why: It marks the first major American intervention on the Asian mainland.
+  tags:
+  - china
+  - intervention
+  - military
+- id: election_1900
+  start: 19001106
+  level: 4
+  kind: election
+  title: McKinley Reelected
+  description_short: McKinley defeats Bryan again, with Roosevelt as his running mate.
+  description_long: Bryan runs against imperialism and the trusts but loses by a wider margin than in 1896, helped by
+    returning prosperity.
+  why: It confirms the 1896 settlement and puts Roosevelt a heartbeat from the presidency.
+  tags:
+  - election
+  - mckinley
+  - bryan
+- id: booker_washington_dinner
+  start: 19011016
+  level: 4
+  kind: political_event
+  title: Roosevelt Dines With Booker T. Washington
+  description_short: Roosevelt hosts Washington for dinner at the White House, provoking a storm of Southern protest.
+  description_long: The first such invitation to a Black guest draws hostility across the South, and Roosevelt avoids
+    repeating it.
+  why: It shows the limit of racial change under an activist president.
+  tags:
+  - race
+  - washington
+  - roosevelt
+- id: hay_pauncefote_treaty
+  start: 19011118
+  level: 4
+  kind: treaty
+  title: Hay–Pauncefote Treaty
+  description_short: Britain gives up its claim to joint control over any isthmian canal.
+  description_long: The treaty clears the way for a purely American canal and marks Britain's accommodation to the
+    United States in the hemisphere.
+  why: It is a diplomatic precondition for Panama.
+  tags:
+  - canal
+  - britain
+  - treaty
+- id: balangiga
+  start: 19010928
+  level: 4
+  kind: violence
+  title: Balangiga Massacre and Samar Campaign
+  description_short: Filipino fighters kill 48 American soldiers on Samar, and the army retaliates across the island.
+  description_long: General Jacob Smith orders the island turned into "a howling wilderness." Smith is court-martialed,
+    and the campaign becomes a public scandal at home.
+  why: It is the war's worst atrocity and the empire's moral price.
+  tags:
+  - philippines
+  - atrocity
+  - war
+- id: philippine_organic_act
+  start: 19020701
+  level: 4
+  kind: legislation
+  title: Philippine Organic Act
+  description_short: Congress sets up a civil government for the Philippines under an appointed commission.
+  description_long: The act creates a path to a legislature and promises eventual self-government without a date.
+  why: It shows the republic's compromise, benevolent rule without consent.
+  tags:
+  - philippines
+  - congress
+  - territories
+- id: cuban_independence
+  start: 19020520
+  level: 4
+  kind: foreign_policy
+  title: Cuba Becomes Independent
+  description_short: American occupation ends, but the Platt Amendment keeps American control.
+  description_long: Cuba's formal independence begins on May 20, 1902, under American supervision.
+  why: It is the epoch's model of controlled independence.
+  tags:
+  - cuba
+  - independence
+  - empire
+- id: tarbell_standard_oil
+  start: 19021101
+  level: 4
+  kind: intellectual
+  title: Tarbell's History of the Standard Oil Company
+  description_short: Ida Tarbell begins her exposé of Standard Oil in McClure's Magazine.
+  description_long: The series runs nineteen installments through 1904 and becomes a landmark of muckraking journalism.
+    Date is month-level (November 1902).
+  why: It turns public opinion against the trusts, the pressure behind Roosevelt's policy.
+  tags:
+  - muckraking
+  - standard-oil
+  - journalism
+  date_precision: month
+- id: elkins_act
+  start: 19030219
+  level: 4
+  kind: legislation
+  title: Elkins Act
+  description_short: Congress makes railroad rebates illegal for shippers as well as carriers.
+  description_long: The railroads themselves support the act because rebates cost them money, an early example of
+    regulated industries welcoming regulation.
+  why: It strengthens the ICC before the Hepburn Act.
+  tags:
+  - railroads
+  - rebates
+  - regulation
+- id: wisconsin_direct_primary
+  start: 19030101
+  level: 4
+  kind: reform
+  title: Wisconsin Direct Primary Law
+  description_short: Wisconsin under Robert La Follette adopts the first statewide direct primary.
+  description_long: Voters, not party conventions, choose nominees. The reform spreads across the country within a
+    decade. Date is year-level (1903).
+  why: It is the reform that gives voters a direct say over party control.
+  tags:
+  - primaries
+  - la-follette
+  - reform
+  date_precision: year
+- id: kitty_hawk
+  start: 19031217
+  level: 4
+  kind: technology
+  title: First Powered Flight
+  description_short: The Wright brothers fly at Kitty Hawk, North Carolina.
+  description_long: The first flight covers 120 feet in twelve seconds.
+  why: It signals the technological confidence of the age.
+  tags:
+  - aviation
+  - technology
+  - wright
+- id: forest_service_created
+  start: 19050201
+  level: 4
+  kind: institution
+  title: U.S. Forest Service Created
+  description_short: Roosevelt and Gifford Pinchot create a federal agency to manage national forests.
+  description_long: By 1909, Roosevelt has set aside about 150 million acres of national forests.
+  why: It is the executive building a permanent public stake in the nation's land.
+  tags:
+  - conservation
+  - pinchot
+  - forests
+- id: niagara_movement
+  start: 19050701
+  level: 4
+  kind: organization
+  title: Niagara Movement
+  description_short: W.E.B. Du Bois and other Black leaders meet in Ontario to demand full civil rights.
+  description_long: Barred from a hotel on the American side, the group meets on the Canadian side of Niagara Falls and
+    rejects Booker T. Washington's accommodation. Date is month-level (July 1905).
+  why: It is the direct precursor of the NAACP.
+  tags:
+  - civil-rights
+  - du-bois
+  - race
+  date_precision: month
+- id: iww_founded
+  start: 19050627
+  level: 4
+  kind: organization
+  title: Industrial Workers of the World Founded
+  description_short: Radical unionists in Chicago form the IWW, or Wobblies, to organize all workers.
+  description_long: The IWW rejects the AFL's craft unionism for industrial organizing and rapidly becomes a target of
+    repression.
+  why: It is the radical labor alternative to the AFL's bargaining.
+  tags:
+  - labor
+  - iww
+  - radicals
+- id: san_francisco_earthquake
+  start: 19060418
+  level: 4
+  kind: disaster
+  title: San Francisco Earthquake and Fire
+  description_short: An earthquake and fires destroy much of San Francisco and kill about 3,000 people.
+  description_long: The disaster brings a large federal relief effort and a rebuilding boom.
+  why: It is a disaster that tests the era's institutions.
+  tags:
+  - disaster
+  - california
+  - relief
+- id: atlanta_race_riot
+  start: 19060922
+  level: 4
+  kind: violence
+  title: Atlanta Race Riot
+  description_short: A white mob attacks Black residents in Atlanta for three days, killing dozens.
+  description_long: The violence follows a campaign by newspapers and politicians about Black criminality. It leads to
+    new Black organizing.
+  why: It shows the violent edge of the segregation settlement in a major city.
+  tags:
+  - race
+  - violence
+  - atlanta
+- id: tillman_act
+  start: 19070126
+  level: 4
+  kind: legislation
+  title: Tillman Act
+  description_short: Congress bans corporate contributions to federal campaigns.
+  description_long: The act responds to revelations about corporate funding of the 1904 campaign. It is weakly
+    enforced, but it begins federal campaign finance law.
+  why: It is the reformers' attempt to answer who governs by limiting money in politics.
+  tags:
+  - campaign-finance
+  - corporations
+  - reform
+- id: immigration_act_1907
+  start: 19070220
+  level: 4
+  kind: legislation
+  title: Immigration Act of 1907
+  description_short: Congress raises the head tax and creates a commission to study immigration.
+  description_long: The commission's 1911 report supports restriction and shapes later quota laws. Immigration
+    reaches its peak of about 1.2 million this year.
+  why: It starts the policy path from open immigration to quotas.
+  tags:
+  - immigration
+  - restriction
+  - commission
+- id: oklahoma_statehood
+  start: 19071116
+  level: 4
+  kind: political_event
+  title: Oklahoma Statehood
+  description_short: Oklahoma enters the Union with a constitution that establishes segregation.
+  description_long: The new state combines Oklahoma and Indian Territories, ending the separate Indian nations.
+  why: It completes the end of Indian Territory and extends Jim Crow into a new state.
+  tags:
+  - statehood
+  - jim-crow
+  - native-americans
+- id: muller_v_oregon
+  start: 19080224
+  level: 4
+  kind: court_case
+  title: Muller v. Oregon
+  description_short: The Supreme Court upholds limits on women's working hours, accepting a sociological brief.
+  description_long: Louis Brandeis's brief relies on social-science evidence and not legal precedent, a new kind of
+    argument that shapes later litigation.
+  why: It shows the Court accepting regulation when backed by evidence, in contrast to Lochner.
+  tags:
+  - labor
+  - women
+  - brandeis
+- id: springfield_riot
+  start: 19080814
+  level: 4
+  kind: violence
+  title: Springfield Race Riot
+  description_short: A white mob attacks Black residents of Abraham Lincoln's hometown.
+  description_long: The riot lasts three days and kills several people. It spurs the founding of the NAACP.
+  why: It is the immediate trigger for the NAACP, in Lincoln's own city.
+  tags:
+  - race
+  - violence
+  - illinois
+- id: model_t
+  start: 19081001
+  level: 4
+  kind: technology
+  title: Ford Introduces the Model T
+  description_short: Henry Ford releases an affordable car for ordinary families.
+  description_long: The assembly line that follows in 1913 turns the car into a mass product.
+  why: It shows the industrial economy reaching consumers.
+  tags:
+  - automobiles
+  - ford
+  - manufacturing
+- id: aldrich_vreeland
+  start: 19080530
+  level: 4
+  kind: legislation
+  title: Aldrich–Vreeland Act
+  description_short: Congress allows emergency currency and creates the National Monetary Commission.
+  description_long: The act is a stopgap after the Panic of 1907. The commission's study leads to the Federal Reserve.
+  why: It is the first reform response to the Panic.
+  tags:
+  - banking
+  - currency
+  - commission
+- id: cannon_revolt
+  start: 19100319
+  level: 4
+  kind: political_event
+  title: Revolt Against Speaker Cannon
+  description_short: Insurgent Republicans and Democrats strip Speaker Joseph Cannon of his powers over committees.
+  description_long: The revolt breaks the Speaker's near-dictatorial control of the House.
+  why: It is the same insurgency that splits the party, now inside Congress.
+  tags:
+  - congress
+  - insurgents
+  - cannon
+- id: mann_elkins_act
+  start: 19100618
+  level: 4
+  kind: legislation
+  title: Mann–Elkins Act
+  description_short: Congress extends ICC power over telephone and telegraph companies and rate changes.
+  description_long: Taft signs the act that extends federal regulation of rates to communications.
+  why: It shows Taft continuing the regulatory program.
+  tags:
+  - regulation
+  - icc
+  - communications
+- id: lawrence_textile_strike
+  start: 19120112
+  end: 19120314
+  level: 4
+  kind: strike
+  end_precision: month
+  title: Lawrence Textile Strike
+  description_short: Immigrant textile workers strike for two months in Massachusetts, led by the IWW.
+  description_long: The strike wins a raise after a national outcry over police violence against strikers' families.
+  why: It shows immigrant workers winning concessions in a new kind of strike.
+  tags:
+  - labor
+  - iww
+  - immigrants
+- id: nicaragua_intervention
+  start: 19120801
+  level: 4
+  kind: foreign_policy
+  title: Marines Land in Nicaragua
+  description_short: Taft sends Marines to Nicaragua to protect American-backed interests.
+  description_long: The occupation lasts until 1933 and is a leading example of Dollar Diplomacy. Date is month-level
+    (August 1912).
+  why: It is the Corollary in practice.
+  tags:
+  - nicaragua
+  - intervention
+  - dollar-diplomacy
+  date_precision: month
+- id: roosevelt_shot
+  start: 19121014
+  level: 4
+  kind: political_event
+  title: Roosevelt Shot in Milwaukee
+  description_short: A would-be assassin shoots Roosevelt, who finishes his speech before going to the hospital.
+  description_long: The bullet, slowed by a speech manuscript and glasses case, lodges in his chest.
+  why: It is the 1912 campaign's most dramatic moment.
+  tags:
+  - roosevelt
+  - assassination
+  - campaign
+# ---------------------------------------------------------------- Level 5
+- id: ellis_island_record_day
+  start: 19070417
+  level: 5
+  kind: migration
+  title: Ellis Island's Busiest Day
+  description_short: Ellis Island processes a record 11,747 immigrants in a single day.
+  description_long: The year 1907 sets the all-time record for annual arrivals.
+  why: It shows immigration at its peak, the labor force of the industrial economy.
+  tags:
+  - immigration
+  - ellis-island
+  - record
+- id: standard_oil_fine
+  start: 19070803
+  level: 5
+  kind: court_case
+  title: Landis Fines Standard Oil $29 Million
+  description_short: Judge Kenesaw Mountain Landis fines Standard Oil of Indiana a record sum.
+  description_long: The fine is later overturned on appeal.
+  why: It shows how far the enforcement drive went, and how appeals tempered it.
+  tags:
+  - standard-oil
+  - fines
+  - courts
+- id: oregon_initiative
+  start: 19020101
+  level: 5
+  kind: reform
+  title: Oregon Adopts Initiative and Referendum
+  description_short: Oregon voters approve direct democracy measures, creating the "Oregon System."
+  description_long: Other western states follow within years. Date is year-level (1902).
+  why: It is the reformers' direct-democracy answer to party control.
+  tags:
+  - direct-democracy
+  - oregon
+  - reform
+  date_precision: year
+- id: venezuela_blockade
+  start: 19021201
+  level: 5
+  kind: foreign_policy
+  title: Venezuelan Blockade
+  description_short: Britain, Germany, and Italy blockade Venezuela to collect debts.
+  description_long: Roosevelt pressures the powers to arbitrate. The crisis feeds the Roosevelt Corollary. Date is
+    month-level (December 1902).
+  why: It is the immediate cause of the Corollary.
+  tags:
+  - venezuela
+  - europe
+  - monroe-doctrine
+  date_precision: month
+- id: socialist_party_founded
+  start: 19010701
+  level: 5
+  kind: organization
+  title: Socialist Party of America Founded
+  description_short: Eugene Debs and others unite socialist groups in a new national party.
+  description_long: The party grows to a million votes by 1912. Date is month-level (July 1901).
+  why: It is the organized left of the era.
+  tags:
+  - socialism
+  - debs
+  - party
+  date_precision: month
+- id: titanic
+  start: 19120415
+  level: 5
+  kind: disaster
+  title: Titanic Sinks
+  description_short: The ocean liner sinks on its maiden voyage, killing about 1,500.
+  description_long: The disaster brings new international safety rules.
+  why: It is a cultural reminder of the age's technological confidence and its limits.
+  tags:
+  - disaster
+  - safety
+  - ocean
+- id: arizona_statehood
+  start: 19120214
+  level: 5
+  kind: political_event
+  title: Arizona Becomes the 48th State
+  description_short: Arizona joins the Union, completing the contiguous United States.
+  description_long: New Mexico became the 47th state a month earlier.
+  why: It completes the continental map.
+  tags:
+  - statehood
+  - west
+  - arizona
+# ---------------------------------------------------------------- Gap fill (thin years 1899-1911)
+- id: treaty_of_paris_ratified
+  start: 18990206
+  level: 4
+  kind: political_event
+  title: Senate Ratifies the Treaty of Paris
+  description_short: The Senate approves the treaty by a single vote over the two-thirds required.
+  description_long: The vote follows a national debate over annexation and a Philippine war that begins two days
+    earlier. Bryan urges Democrats to ratify and fight imperialism at the polls.
+  why: It decides the empire by a margin of one vote.
+  tags:
+  - senate
+  - empire
+  - treaty
+- id: samoa_partition
+  start: 18991202
+  level: 5
+  kind: treaty
+  title: Samoa Partitioned
+  description_short: The U.S., Britain, and Germany divide the Samoan Islands, giving the U.S. Tutuila and its harbor.
+  description_long: The Tripartite Convention secures the naval station at Pago Pago.
+  why: It is part of the Pacific naval chain that supports the empire.
+  tags:
+  - samoa
+  - navy
+  - pacific
+- id: theory_of_the_leisure_class
+  start: 18990101
+  level: 5
+  kind: intellectual
+  title: Veblen's Theory of the Leisure Class
+  description_short: Thorstein Veblen coins "conspicuous consumption" and satirizes the wealthy.
+  description_long: The book becomes a classic critique of the era's fortunes. Date is year-level (1899).
+  why: It is the era's sharpest social criticism of its new wealth.
+  tags:
+  - economics
+  - veblen
+  - critique
+  date_precision: year
+- id: galveston_hurricane
+  start: 19000908
+  level: 4
+  kind: disaster
+  title: Galveston Hurricane
+  description_short: A hurricane kills about 6,000 to 8,000 people in Galveston, Texas, the deadliest U.S. natural disaster.
+  description_long: The city rebuilds behind a seawall and adopts a commission form of government that becomes a
+    Progressive Era model.
+  why: It leads to a reform in how cities govern themselves.
+  tags:
+  - disaster
+  - texas
+  - commission-government
+- id: spindletop
+  start: 19010110
+  level: 4
+  kind: technology
+  title: Spindletop Gusher
+  description_short: A well near Beaumont, Texas gushes oil, opening the Texas oil boom.
+  description_long: The discovery makes Texas a major producer and challenges Standard Oil's dominance.
+  why: It begins the oil age that will define the century's economy.
+  tags:
+  - oil
+  - texas
+  - energy
+- id: pan_american_exposition
+  start: 19010501
+  level: 5
+  kind: cultural
+  title: Pan-American Exposition Opens
+  description_short: Buffalo hosts a world's fair showing electric power and hemispheric trade, where McKinley is shot.
+  description_long: The fair runs until November 2. McKinley visits on September 5 and 6.
+  why: It sets the scene of McKinley's death.
+  tags:
+  - fair
+  - buffalo
+  - electricity
+- id: ford_motor_company
+  start: 19030616
+  level: 4
+  kind: corporate
+  title: Ford Motor Company Founded
+  description_short: Henry Ford incorporates the company that will make the automobile a mass product.
+  description_long: The company is founded with twelve investors and about $28,000 in cash.
+  why: It marks the start of the car's industrial age.
+  tags:
+  - automobiles
+  - ford
+  - manufacturing
+- id: souls_of_black_folk
+  start: 19030401
+  level: 4
+  kind: intellectual
+  title: The Souls of Black Folk
+  description_short: W.E.B. Du Bois publishes essays attacking Booker T. Washington's accommodation and naming the "color line."
+  description_long: The book's argument that "the problem of the twentieth century is the problem of the color line"
+    becomes a founding text of the civil rights movement. Date is month-level (April 1903).
+  why: It gives the rights thread of the epoch its intellectual voice.
+  tags:
+  - du-bois
+  - race
+  - civil-rights
+  date_precision: month
+- id: hay_herran_rejected
+  start: 19030812
+  level: 4
+  kind: diplomacy
+  title: Colombia Rejects the Hay–Herrán Treaty
+  description_short: Colombia's Senate rejects the canal treaty, and Roosevelt turns to backing Panamanian secession.
+  description_long: Roosevelt denounces the Colombians as "bandits" and begins encouraging a revolt in Panama.
+  why: It is the immediate cause of the Panama intervention.
+  tags:
+  - panama
+  - colombia
+  - canal
+- id: panama_canal_construction
+  start: 19040504
+  level: 3
+  kind: infrastructure
+  title: U.S. Takes Over Canal Construction
+  description_short: The United States takes over the French canal effort and begins the largest engineering project to date.
+  description_long: The project requires conquering yellow fever and malaria in the Zone and moving enormous amounts
+    of earth. It opens on August 15, 1914.
+  why: It is the epoch's signature engineering project, a federal enterprise on a scale only the activist state
+    could attempt.
+  tags:
+  - panama
+  - canal
+  - engineering
+- id: ny_subway_opens
+  start: 19041027
+  level: 5
+  kind: infrastructure
+  title: New York Subway Opens
+  description_short: The first line of the New York City subway opens to the public.
+  description_long: Mass transit marks the city's growth.
+  why: It shows the age's urban infrastructure.
+  tags:
+  - transit
+  - new-york
+  - infrastructure
+- id: dominican_receivership
+  start: 19050201
+  level: 4
+  kind: foreign_policy
+  title: Dominican Customs Receivership
+  description_short: The U.S. takes control of the Dominican Republic's customs revenues to pay its foreign debts.
+  description_long: The arrangement is the first major application of the Roosevelt Corollary. Date is month-level
+    (February 1905).
+  why: It is the Corollary's first implementation.
+  tags:
+  - dominican-republic
+  - corollary
+  - finance
+  date_precision: month
+- id: armstrong_investigation
+  start: 19050101
+  level: 4
+  kind: legal
+  title: Armstrong Insurance Investigation
+  description_short: A New York legislative inquiry led by Charles Evans Hughes exposes insurance company abuses.
+  description_long: The hearings reveal executives' misuse of policyholder funds and lead to state reform laws. Date is
+    year-level (1905).
+  why: It shows investigation driving reform, with finance as the target.
+  tags:
+  - insurance
+  - hughes
+  - reform
+  date_precision: year
+- id: roosevelt_inaugurated_1905
+  start: 19050304
+  level: 5
+  kind: political_event
+  title: Roosevelt Inaugurated
+  description_short: Roosevelt takes the oath for his own term.
+  description_long: The inauguration opens his second term, with the strongest mandate of the era.
+  why: It marks the start of his regulatory second term.
+  tags:
+  - roosevelt
+  - inauguration
+  - presidency
+- id: antiquities_act
+  start: 19060608
+  level: 4
+  kind: legislation
+  title: Antiquities Act
+  description_short: Congress lets the president protect historic and natural sites by proclamation as national monuments.
+  description_long: Roosevelt uses it to protect Devils Tower and later the Grand Canyon.
+  why: It is a new executive power over public land.
+  tags:
+  - conservation
+  - public-lands
+  - executive
+- id: bud_dajo
+  start: 19060301
+  level: 4
+  kind: violence
+  title: Battle of Bud Dajo
+  description_short: American troops kill hundreds of Moro villagers, including women and children, in the Philippines.
+  description_long: Roosevelt congratulates the commanding officer, and Mark Twain denounces the killing. Date is
+    month-level (March 1906).
+  why: It is the empire's violence continuing years after the war was declared over.
+  tags:
+  - philippines
+  - moro
+  - atrocity
+  date_precision: month
+- id: cuba_second_occupation
+  start: 19060929
+  level: 4
+  kind: foreign_policy
+  title: Second American Occupation of Cuba
+  description_short: The U.S. establishes a provisional government in Cuba after a disputed election leads to revolt.
+  description_long: The occupation under Charles Magoon lasts until 1909, a use of the Platt Amendment's right of
+    intervention.
+  why: It is the Platt Amendment's intervention right exercised.
+  tags:
+  - cuba
+  - occupation
+  - platt
+- id: roosevelt_panama_trip
+  start: 19061109
+  level: 5
+  kind: political_event
+  title: Roosevelt Visits Panama
+  description_short: Roosevelt becomes the first sitting president to travel abroad.
+  description_long: He inspects the canal works in a steam shovel.
+  why: It shows the personal presidency at its most visible.
+  tags:
+  - roosevelt
+  - panama
+  - presidency
+- id: gentlemens_agreement
+  start: 19070101
+  level: 4
+  kind: diplomacy
+  title: Gentlemen's Agreement With Japan
+  description_short: Japan agrees to limit emigration to the U.S. in exchange for an end to San Francisco's school segregation.
+  description_long: The informal agreement follows anti-Japanese agitation on the West Coast. Date is year-level (1907).
+  why: It shows exclusion as diplomacy, the same logic as the Chinese exclusion laws.
+  tags:
+  - japan
+  - immigration
+  - california
+  date_precision: year
+- id: bureau_of_investigation
+  start: 19080701
+  level: 4
+  kind: institution
+  title: Bureau of Investigation Created
+  description_short: The attorney general creates a permanent corps of federal investigators, the future FBI.
+  description_long: Congress had restricted the Justice Department's use of Secret Service agents, and the Bureau is
+    created by executive action. Date is month-level (July 1908).
+  why: It shows the executive building administrative capacity without a statute.
+  tags:
+  - fbi
+  - bureaucracy
+  - executive
+  date_precision: month
+- id: taft_inaugurated
+  start: 19090304
+  level: 4
+  kind: political_event
+  title: Taft Inaugurated
+  description_short: William Howard Taft succeeds Roosevelt, who leaves on an African safari.
+  description_long: Roosevelt's absence leaves Taft to manage a restive party.
+  why: It starts the succession that the 1912 split will end.
+  tags:
+  - taft
+  - inauguration
+  - succession
+- id: great_white_fleet_returns
+  start: 19090222
+  level: 5
+  kind: military
+  title: Great White Fleet Returns
+  description_short: The fleet completes its round-the-world voyage and Roosevelt greets it at Hampton Roads.
+  description_long: The voyage visited twenty ports on six continents.
+  why: It closes the show of naval power.
+  tags:
+  - navy
+  - roosevelt
+  - fleet
+- id: peary_north_pole
+  start: 19090406
+  level: 5
+  kind: cultural
+  title: Peary Claims the North Pole
+  description_short: Robert Peary announces reaching the North Pole, a claim later disputed.
+  description_long: The achievement is celebrated across the country in the era of exploration.
+  why: It is a symbol of national confidence.
+  tags:
+  - exploration
+  - peary
+  - arctic
+- id: mann_act
+  start: 19100625
+  level: 4
+  kind: legislation
+  title: Mann Act
+  description_short: Congress bans transporting women across state lines for "immoral purposes."
+  description_long: The "White Slave Traffic Act" extends federal police power over morals and is later used in
+    selective prosecutions.
+  why: It extends federal power into private conduct.
+  tags:
+  - morals
+  - federal-power
+  - congress
+- id: johnson_jeffries_fight
+  start: 19100704
+  level: 4
+  kind: cultural
+  title: Johnson–Jeffries Fight
+  description_short: Black heavyweight champion Jack Johnson beats former champion Jim Jeffries, setting off riots across the country.
+  description_long: Violence breaks out against Black Americans in dozens of cities.
+  why: It shows how thin the surface of race relations was.
+  tags:
+  - race
+  - boxing
+  - violence
+- id: la_times_bombing
+  start: 19101001
+  level: 4
+  kind: violence
+  title: Los Angeles Times Bombing
+  description_short: A bomb destroys the anti-union Los Angeles Times building, killing twenty-one people.
+  description_long: The McNamara brothers, union members, are arrested, and their eventual confession damages the labor
+    movement.
+  why: It shows the violence in the labor conflict, and its political cost for labor.
+  tags:
+  - labor
+  - violence
+  - california
+- id: midterm_1910
+  start: 19101108
+  level: 4
+  kind: election
+  title: Democrats Win the House
+  description_short: Insurgent Republicans and Democrats punish Taft's party, giving Democrats control of the House.
+  description_long: The result confirms the Republican split and points toward 1912.
+  why: It is the first electoral result of the split.
+  tags:
+  - election
+  - midterm
+  - democrats
+- id: national_progressive_republican_league
+  start: 19110121
+  level: 4
+  kind: organization
+  title: National Progressive Republican League
+  description_short: Robert La Follette and allies organize a movement within the party to challenge Taft.
+  description_long: The group is the first organization of the insurgent challenge and is soon overtaken by Roosevelt.
+  why: It is the organizational start of the 1912 revolt.
+  tags:
+  - la-follette
+  - republicans
+  - insurgents
+- id: american_tobacco_dissolved
+  start: 19110529
+  level: 4
+  kind: court_case
+  title: American Tobacco Co. v. United States
+  description_short: The Supreme Court orders the tobacco trust broken up.
+  description_long: Issued two weeks after Standard Oil, the decision again applies the "rule of reason."
+  why: It confirms the rule of reason and the enforcement drive.
+  tags:
+  - antitrust
+  - tobacco
+  - supreme-court
+- id: california_woman_suffrage
+  start: 19111010
+  level: 4
+  kind: political_event
+  title: California Votes for Woman Suffrage
+  description_short: California voters approve woman suffrage by a narrow margin.
+  description_long: The result is the largest state to grant women the vote so far.
+  why: It is the epoch's rights expansion at the ballot box.
+  tags:
+  - suffrage
+  - women
+  - california

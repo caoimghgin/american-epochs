@@ -14,7 +14,7 @@ epic: AE-8
 
 ## Summary
 
-The Gilded Age corpus was written by Claude from memory, with no source URLs. Of its 118 events, 21 have a date confirmed against an identifiable source. The other 97, mostly Levels 3–5, still need checking, along with the numeric and attributive claims in their descriptions.
+The Gilded Age corpus (and, as of 2026-10-17, the Big Stick corpus too) was written by Claude from memory, with no source URLs. Of its 118 events, 21 have a date confirmed against an identifiable source. The other 97, mostly Levels 3–5, still need checking, along with the numeric and attributive claims in their descriptions.
 
 ## Motivation
 
@@ -43,6 +43,10 @@ The project's honesty bar (register system, no fabricated precision) applies to 
 - [ ] Numeric and attributive claims in descriptions spot-checked, with corrections applied to the live array
 - [ ] `gilded_age_events.yaml` and `EVENTS` agree after the pass (tier counts and dates), verified by script
 - [ ] The corpus guide's status row and AE-10's Gilded Age note updated to say the epoch is source-verified
+
+## Scope note
+
+`big_stick_events.yaml` (114 events) has the same status as the Gilded Age had before its audit: nothing is source-verified. Run the same procedure on it, preferably after the Gilded Age is finished so the method is settled. The title still says Gilded Age because that is where the ticket started.
 
 ## Non-Goals
 
