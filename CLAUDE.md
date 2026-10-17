@@ -110,7 +110,9 @@ american-epochs/
         ├── big_stick_events.yaml                 # Done (first pass) — reconciled into the live instrument
         ├── big_stick_outline.md                  # Identity, thesis, Level 1 spine reasoning, handoff for the Big Stick
         ├── new_freedom_events.yaml               # Done (first pass) — reconciled into the live instrument
-        └── new_freedom_outline.md                # Identity, thesis, Level 1 spine reasoning, handoff for the New Freedom
+        ├── new_freedom_outline.md                # Identity, thesis, Level 1 spine reasoning, handoff for the New Freedom
+        ├── return_to_normalcy_events.yaml        # Done (first pass) — reconciled into the live instrument
+        └── return_to_normalcy_outline.md         # Identity, thesis, Level 1 spine reasoning, handoff for Return to Normalcy
 ```
 
 Files under `src/data/` are research/authoring artifacts, not runtime data —

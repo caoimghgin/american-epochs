@@ -54,3 +54,4 @@ Body sections, in order:
 | [AE-13](completed/AE-13-foundational-editorial-principles-consolidation.md) | Consolidate foundational editorial principles into a single canonical document | Task | Done | Medium |
 | [AE-14](AE-14-epoch-handoff-field.md) | Epoch handoff field — data model, rendering, and 14-epoch backfill | Story | Backlog | Low |
 | [AE-15](AE-15-gilded-age-fact-verification.md) | Source-verify the remaining Gilded Age dates and factual claims (and Big Stick) | Task | Backlog | Medium |
+| [AE-16](AE-16-cross-epoch-threads.md) | Cross-epoch threads — surface themes that run across several epochs | Story | Backlog | Low |

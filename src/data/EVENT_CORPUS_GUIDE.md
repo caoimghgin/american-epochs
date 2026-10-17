@@ -238,7 +238,7 @@ compression, not a field-for-field copy:
 | The Gilded Age (1877–1897) | `gilded_age_events.yaml` | Done, first pass — 118 events (8/15/25/47/21 points + 2 spans, after a gap-fill pass on sparse years), 5-level, reconciled into the live instrument (see `gilded_age_outline.md`). Dates drafted from memory, not yet source-checked |
 | The Big Stick (1898–1912) | `big_stick_events.yaml` | Done, first pass — 114 events (8/14/23/53/15 points + 1 span), 5-level, reconciled into the live instrument (see `big_stick_outline.md`). Dates drafted from memory, not yet source-checked |
 | The New Freedom (1913–1919) | `new_freedom_events.yaml` | Done, first pass — 105 events (7/16/25/44/12 points + the World War I span), 5-level, reconciled into the live instrument (see `new_freedom_outline.md`). Dates drafted from memory, not yet source-checked |
-| Return to Normalcy (1920–1932) | — | Not started |
+| Return to Normalcy (1920–1932) | `return_to_normalcy_events.yaml` | Done, first pass — 100 events (8/12/24/41/14 points + the Great Depression span), 5-level, reconciled into the live instrument (see `return_to_normalcy_outline.md`). Dates drafted from memory, not yet source-checked |
 | A New Deal (1933–1940) | — | Not started |
 | The American Ascendancy (1941–1952) | — | Not started |
 | The Affluent Society (1953–1965) | — | Not started |

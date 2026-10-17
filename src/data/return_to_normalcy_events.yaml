@@ -1,0 +1,1335 @@
+schema:
+  name: American Epochs Event Corpus
+  version: 2
+  date_format: YYYYMMDD
+  level_definition:
+    1: The epoch's "crown of the mountain" — always visible, at every zoom, from the very widest view. One beat
+      per structural hinge in the epoch's own arc, not a list of "the important stuff." Target 5-8 entries regardless
+      of how large or eventful the epoch was; see curation_guidance below. Automatically revealed first as the viewer
+      zooms in from full history — never a manual toggle.
+    2: Major events, automatically revealed at the first closer zoom past Level 1.
+    3: Supporting events explaining mechanisms, shifts, and consequences.
+    4: Contextual events — political, military, social, institutional texture.
+    5: Fine-grained events for the closest inspection.
+  curation_guidance:
+  - Level 1 is the hardest and most important editorial call in the corpus. The viewer never chooses to see it —
+    it is what everyone sees whether they zoom in or not, so it carries the whole epoch's argument on its own.
+  - Pick one entry per point where the epoch's own arc genuinely turns, not one per famous name or battle. A working
+    test - "does removing this entry break the causal chain from the epoch's start to its end?" If not, it belongs
+    at Level 2 or below, however well-known it is.
+  - Target 5-8 Level 1 point events specifically. This is deliberately independent of the epoch's total event count
+    or length in years. Reconstruction intentionally carries nine point events because the Panic of 1873 and United
+    States v. Cruikshank describe distinct political and judicial turns and the editor has approved a slightly crowded
+    crown.
+  - Span (duration) entries at Level 1 do not count against the point-event target because the live instrument never
+    tier-filters spans; they provide scene-setting context.
+  - Levels 2-5 have much more room to breathe. Disagreement there is a rounding error, not a structural problem.
+    Spend the real editorial effort on Level 1.
+  notes:
+  - A missing end date indicates a point event.
+  - Dates represent the most defensible public date for display, not necessarily every stage of a legal or political
+    process.
+  - date_precision (year or month) applies to start, and end_precision (month) to the end of a range. Where set, the
+    placeholder in the date field must not be rendered as exact. Absent means a full day-level date. date_verified
+    true means the date was confirmed against an identifiable source.
+  - This corpus is a research/authoring artifact. A human or LLM reconciles it into the live EVENTS array.
+  - Levels were assigned by Claude as a first-pass editorial judgment (see return_to_normalcy_outline.md for the Level 1
+    reasoning). All dates are drafted from memory and none are yet source-verified, so verify before treating as
+    settled. No source URLs are included, per the guide's rule against unverifiable citations. Figures to check first
+    include the Great Migration's 1920s total (about 800,000), Italy's pre- and post-1924 quotas, and the market's
+    losses after the Crash.
+  - The great_depression span (1929-08-01 to 1933-03-31) replaces the year-level span already in the live instrument and
+    deliberately crosses the epoch end of 1933-03-03, because the NBER trough falls in the New Deal's first month.
+  - bonus_army is recorded as a range (1932-05-29 to 1932-07-28) but is under two years, so it reconciles as a point
+    event at its end date. scopes_trial and depression_1920_21 follow the same rule.
+  - Boundary decisions. The corpus opens on 1920-01-01, which takes in the January 1920 Palmer Raids that the New
+    Freedom handed forward, and closes the day before Roosevelt's inauguration so that the election of 1932, the winter
+    bank panics, and the Twentieth Amendment fall here. The Bonus Army is the closing Level 1 beat. Prohibition begins
+    here and is repealed in the New Deal's first year.
+epoch:
+  id: return_to_normalcy
+  title: Return to Normalcy
+  start: 19200101
+  end: 19330303
+  thesis: After the New Freedom's war and its repudiation, the national government steps back. Harding, Coolidge, and
+    Hoover cut taxes on the wealthy, raise tariffs, staff the regulatory agencies with friends of the industries they
+    oversee, close the door on immigration, and decline to help farmers. The economy booms on automobiles, radio,
+    installment credit, and a stock market bought on margin, while wealth concentrates and agriculture is in depression
+    from 1920 onward. When the boom breaks in 1929 the same ideology refuses a counterweight, and by 1932 a quarter of
+    the workforce is unemployed, the banks are failing, and the Army has driven its own veterans out of Washington.
+events:
+# ---------------------------------------------------------------- Level 1: span
+- id: great_depression
+  start: 19290801
+  end: 19330331
+  level: 1
+  kind: economic_period
+  title: Great Depression
+  description_short: NBER dates the contraction August 1929 to March 1933, the longest on record.
+  description_long: Industrial output falls by about half, roughly a quarter of the workforce is unemployed at the trough, and
+    thousands of banks fail. The span deliberately crosses the epoch boundary of March 3, 1933, because the trough falls
+    in the first month of the New Deal.
+  why: It is the shared background of this epoch's last three years and the New Deal's opening weeks, the visible cost of an
+    ideology with no counterweight.
+  tags:
+  - depression
+  - unemployment
+  - banking
+# ---------------------------------------------------------------- Level 1: points
+- id: harding_elected
+  start: 19201102
+  level: 1
+  kind: election
+  title: Harding Elected
+  description_short: Warren Harding wins by the largest popular margin of the era on a promise of a "return to normalcy."
+  description_long: Harding carries sixty percent of the vote and every state outside the South. His campaign phrase, coined
+    in a May 1920 speech in Boston, names a retreat from Wilson's wartime state and its crusades.
+  why: The country chooses a government that asks little of it, which gives the epoch its name and its first plank.
+  tags:
+  - election
+  - normalcy
+  - republicans
+- id: immigration_act_1924
+  start: 19240526
+  level: 1
+  kind: legislation
+  title: Immigration Act of 1924
+  description_short: Congress sets national-origin quotas on European immigration and bars Asian immigrants entirely.
+  description_long: The law caps annual immigration at about 165,000, allots each nationality two percent of its 1890 U.S.
+    population, and requires visas issued abroad. The 1890 base predates the large Southern and Eastern European wave, so
+    Italy's yearly quota falls from about 42,000 to under 4,000. The Western Hemisphere is exempt, and the Border Patrol
+    is founded days later.
+  why: It is the epoch's clearest answer to who is left outside. The state steps back from the economy and advances on
+    membership, ranking peoples by ancestry and leaving no category for flight from persecution.
+  tags:
+  - immigration
+  - quotas
+  - nativism
+- id: business_of_america
+  start: 19250117
+  level: 1
+  kind: speech
+  title: "The Business of America Is Business"
+  description_short: Coolidge tells newspaper editors that "the chief business of the American people is business."
+  description_long: The speech to the American Society of Newspaper Editors is often quoted in compressed form. It expresses
+    a governing philosophy in which public policy serves commerce and the economy governs itself.
+  why: It is the ideology stated by the president who embodies it, the claim the whole epoch tests.
+  tags:
+  - coolidge
+  - business
+  - ideology
+- id: mcnary_haugen_veto
+  start: 19270225
+  level: 1
+  kind: political_event
+  title: Coolidge Vetoes McNary–Haugen
+  description_short: Coolidge vetoes a bill to support farm prices, and vetoes it again in 1928.
+  description_long: The bill would have had the government buy surplus crops and sell them abroad. Farm prices had collapsed
+    after the war and never recovered, leaving the rural economy in a depression through the boom years.
+  why: It is the first clear sign that normalcy had losers and that the state would not intervene for them.
+  tags:
+  - agriculture
+  - veto
+  - coolidge
+- id: hoover_elected
+  start: 19281106
+  level: 1
+  kind: election
+  title: Hoover Elected
+  description_short: Herbert Hoover wins in a landslide after promising the final triumph over poverty.
+  description_long: In his August 1928 acceptance speech Hoover says the country is "nearer to the final triumph over
+    poverty than ever before in the history of any land." He carries forty states, including parts of the South.
+  why: It is normalcy at its peak and its irony, a mandate for the system eleven months before it breaks.
+  tags:
+  - election
+  - hoover
+  - prosperity
+- id: stock_market_crash
+  start: 19291029
+  level: 1
+  kind: economic_crisis
+  title: Stock Market Crash
+  description_short: Share prices collapse on Black Tuesday, wiping out billions after the Black Thursday panic.
+  description_long: The market peaked on September 3, 1929, and the selling accelerates from October 24. By mid-November
+    the Dow has lost nearly half of its September peak, and by 1932 close to 90 percent.
+  why: The boom breaks, and the same ideology that inflated it has no answer.
+  tags:
+  - crash
+  - stocks
+  - speculation
+- id: smoot_hawley_tariff
+  start: 19300617
+  level: 1
+  kind: legislation
+  title: Smoot–Hawley Tariff
+  description_short: Hoover signs the highest tariff in history over the objections of over a thousand economists.
+  description_long: The act raises duties on thousands of imports, and other countries retaliate. World trade shrinks
+    sharply in the years that follow.
+  why: It is the ideology's response to the crisis, and it deepens it, the clearest case of the absence of a counterweight.
+  tags:
+  - tariff
+  - trade
+  - hoover
+- id: bonus_army
+  start: 19320529
+  end: 19320728
+  level: 1
+  kind: protest
+  title: Bonus Army
+  description_short: The Army clears thousands of World War I veterans from Washington with tear gas and bayonets.
+  description_long: About 17,000 veterans and their families camp in Washington to demand early payment of their service
+    bonus. After the Senate rejects the bill, Hoover orders the camps cleared on July 28, and Douglas MacArthur leads
+    troops against them.
+  why: The decade's idea of normalcy ends with the state's force turned on its own veterans, and it ends the epoch.
+  tags:
+  - veterans
+  - protest
+  - hoover
+# ---------------------------------------------------------------- Level 2
+- id: prohibition_begins
+  start: 19200117
+  level: 2
+  kind: policy
+  title: Prohibition Begins
+  description_short: The Eighteenth Amendment takes effect, banning the manufacture and sale of alcohol.
+  description_long: The Volstead Act's enforcement is underfunded and unevenly applied, and the ban creates a large illegal
+    market. It is repealed in December 1933.
+  why: It is the decade's most famous policy and an example of the state governing private life while leaving the economy alone.
+  tags:
+  - prohibition
+  - enforcement
+  - crime
+- id: nineteenth_amendment_ratified
+  start: 19200818
+  level: 2
+  kind: constitutional_amendment
+  title: Nineteenth Amendment Ratified
+  description_short: Tennessee becomes the thirty-sixth state to ratify woman suffrage.
+  description_long: The state's legislature approves it by a single vote, and the amendment is certified on August 26.
+  why: It answers who participates in the affirmative, even as the decade closes other doors.
+  tags:
+  - suffrage
+  - women
+  - constitution
+- id: tulsa_massacre
+  start: 19210531
+  level: 2
+  kind: violence
+  title: Tulsa Race Massacre
+  description_short: A white mob destroys the Greenwood district, Tulsa's prosperous Black neighborhood, killing dozens or more.
+  description_long: Over about eighteen hours, mobs burn about 35 blocks and leave thousands homeless. No one is convicted, and
+    the event is largely left out of public memory for decades.
+  why: It shows what exclusion looked like in practice, and the state's refusal to protect Black prosperity.
+  tags:
+  - race
+  - violence
+  - oklahoma
+- id: revenue_act_1921
+  start: 19211123
+  level: 2
+  kind: legislation
+  title: Revenue Act of 1921
+  description_short: Congress cuts the top income tax rate and repeals the wartime excess-profits tax.
+  description_long: Treasury Secretary Andrew Mellon's tax policy cuts rates further in 1924 and 1926. Over the decade the top
+    rate falls from 73 percent to 25 percent.
+  why: It rolls back the Sixteenth Amendment's fiscal state at the top, and tilts the boom toward concentrated wealth.
+  tags:
+  - taxes
+  - mellon
+  - wealth
+- id: fordney_mccumber_tariff
+  start: 19220921
+  level: 2
+  kind: legislation
+  title: Fordney–McCumber Tariff
+  description_short: Congress raises tariffs sharply, reversing the Wilson-era reductions.
+  description_long: The act protects American industry and agriculture, and it contributes to Europe's difficulty repaying its war
+    debts.
+  why: It is the decade's first move toward protection, preparing the way for Smoot–Hawley.
+  tags:
+  - tariff
+  - trade
+  - congress
+- id: teapot_dome_hearings
+  start: 19231022
+  level: 2
+  kind: scandal
+  title: Teapot Dome Scandal
+  description_short: Senate hearings expose Interior Secretary Albert Fall's secret oil leases in exchange for cash and loans.
+  description_long: Fall had leased the Teapot Dome naval oil reserve in Wyoming to a private company in 1922. He is later
+    convicted of bribery, the first cabinet officer jailed for his conduct in office.
+  why: It is the era's emblem of government for sale, though voters did not punish it.
+  tags:
+  - corruption
+  - oil
+  - harding
+- id: harding_dies
+  start: 19230802
+  level: 2
+  kind: political_event
+  title: Harding Dies in Office
+  description_short: Harding dies in San Francisco, and Calvin Coolidge becomes president.
+  description_long: Harding's death arrives just before the full scale of the scandals reaches the public. Coolidge's
+    reputation for honesty insulates the administration.
+  why: It brings the president who embodies the epoch's ideology to power.
+  tags:
+  - harding
+  - coolidge
+  - succession
+- id: scopes_trial
+  start: 19250710
+  end: 19250721
+  level: 2
+  kind: court_case
+  title: Scopes Trial
+  description_short: A Tennessee teacher is convicted of teaching evolution in a nationally covered trial.
+  description_long: Clarence Darrow cross-examines William Jennings Bryan on the Bible. Scopes is fined $100, and the
+    conviction is later overturned on a technicality.
+  why: It stages the decade's fight between the new America and the old in a courtroom.
+  tags:
+  - evolution
+  - culture-war
+  - tennessee
+- id: great_migration_surges
+  start: 19240101
+  level: 2
+  kind: migration
+  title: Great Migration Surges
+  description_short: About 800,000 Black Southerners move north during the 1920s as the quotas cut off European labor.
+  description_long: The war cut European immigration to a trickle, and the 1921 and 1924 laws kept it low. Northern factories and
+    stockyards recruit Black workers, who are drawn by wages several times Southern pay and pushed by the boll weevil, floods, and
+    lynching. Date is year-level (1924).
+  why: It is the labor consequence of the immigration laws and the largest internal movement of the era.
+  tags:
+  - migration
+  - race
+  - labor
+  date_precision: year
+- id: sacco_vanzetti_executed
+  start: 19270823
+  level: 2
+  kind: legal
+  title: Sacco and Vanzetti Executed
+  description_short: Two Italian anarchist immigrants are executed in Massachusetts after a trial widely seen as unfair.
+  description_long: Their 1921 conviction for a robbery and murder rested on thin evidence, and the case becomes an international
+    cause. Massachusetts formally exonerates them in 1977.
+  why: It shows the fusion of nativism and the Red Scare, and what the state did to the people the quotas would later keep out.
+  tags:
+  - immigration
+  - anarchism
+  - justice
+- id: rfc_created
+  start: 19320122
+  level: 2
+  kind: institution
+  title: Reconstruction Finance Corporation
+  description_short: Congress creates a federal lender to rescue banks and railroads, Hoover's first major break with voluntarism.
+  description_long: The agency lends billions to banks and businesses but not to individuals or states in its first months. It
+    becomes a workhorse of the New Deal.
+  why: It is the first sign that the ideology was retreating, three years after the crash and too late.
+  tags:
+  - banking
+  - hoover
+  - relief
+- id: election_1932
+  start: 19321108
+  level: 2
+  kind: election
+  title: Roosevelt Elected
+  description_short: Franklin Roosevelt defeats Hoover in a landslide, carrying 42 of 48 states.
+  description_long: Hoover wins only six states. The country repudiates the ideology of the decade but does not yet know what
+    will replace it.
+  why: It is the repudiation of normalcy, and the first beat of the next epoch's story.
+  tags:
+  - election
+  - roosevelt
+  - realignment
+# ---------------------------------------------------------------- Level 3
+- id: normalcy_speech
+  start: 19200514
+  level: 3
+  kind: speech
+  title: Harding's "Normalcy" Speech
+  description_short: Harding calls for "not heroism but healing, not nostrums but normalcy" in a Boston speech.
+  description_long: The word "normalcy" was considered a mistake by critics, but became the campaign's slogan.
+  why: It gives the epoch its name.
+  tags:
+  - harding
+  - speech
+  - normalcy
+- id: palmer_raids_january_1920
+  start: 19200102
+  level: 3
+  kind: violence
+  title: Palmer Raids Peak
+  description_short: The Justice Department arrests thousands of suspected radicals in over thirty cities in one night.
+  description_long: The raids follow the November 1919 wave, and about 500 people are deported. Public opinion turns against
+    Palmer by spring.
+  why: It is the end of the wartime repression, closing the New Freedom's Red Scare as this epoch begins.
+  tags:
+  - red-scare
+  - deportation
+  - civil-liberties
+- id: emergency_quota_act
+  start: 19210519
+  level: 3
+  kind: legislation
+  title: Emergency Quota Act
+  description_short: Congress limits immigration to three percent of each nationality's 1910 U.S. population.
+  description_long: The first numerical limits on European immigration cut arrivals from about 800,000 to about 300,000 a
+    year.
+  why: It is the first step in the immigration thread, setting the principle the 1924 act extends.
+  tags:
+  - immigration
+  - quotas
+  - nativism
+- id: depression_1920_21
+  start: 19200101
+  end: 19210731
+  end_precision: month
+  level: 3
+  kind: economic_crisis
+  title: Postwar Depression of 1920–21
+  description_short: A sharp recession cuts output and sends unemployment above eleven percent.
+  description_long: Prices fall by about a third, and farm incomes collapse. The government does little, and the economy
+    recovers within about eighteen months.
+  why: It is the first test of the hands-off approach, which appears to pass and so reinforces it.
+  tags:
+  - depression
+  - recession
+  - farm-crisis
+- id: coolidge_elected_1924
+  start: 19241104
+  level: 3
+  kind: election
+  title: Coolidge Elected
+  description_short: Coolidge wins a full term, and Robert La Follette's Progressive ticket gets 17 percent.
+  description_long: The campaign slogan is "Keep Cool with Coolidge." La Follette's showing is the strongest third-party
+    result since 1912.
+  why: It confirms the mandate for normalcy, and measures the size of the dissent.
+  tags:
+  - election
+  - coolidge
+  - progressives
+- id: indian_citizenship_act
+  start: 19240602
+  level: 3
+  kind: legislation
+  title: Indian Citizenship Act
+  description_short: Congress grants citizenship to all Native Americans born in the United States.
+  description_long: Many states continue to deny Native people the vote for decades.
+  why: It is a rare expansion of membership in a decade of closures.
+  tags:
+  - native-americans
+  - citizenship
+  - voting
+- id: border_patrol_created
+  start: 19240528
+  level: 3
+  kind: institution
+  title: Border Patrol Created
+  description_short: Congress creates the U.S. Border Patrol two days after passing the Immigration Act.
+  description_long: The force starts with about 450 officers and is charged with preventing unlawful entry along the Canadian and
+    Mexican borders.
+  why: It builds the enforcement apparatus for the quota system, and makes "illegal" entry a category.
+  tags:
+  - immigration
+  - enforcement
+  - border
+- id: klan_march_washington
+  start: 19250808
+  level: 3
+  kind: protest
+  title: Klan March on Washington
+  description_short: About 30,000 robed Klansmen march down Pennsylvania Avenue.
+  description_long: The Klan, which had about four million members at its mid-1920s peak, sinks quickly afterward amid scandals.
+  why: It shows the public power of the exclusion movement at its height.
+  tags:
+  - klan
+  - race
+  - nativism
+- id: harlem_renaissance
+  start: 19250101
+  level: 3
+  kind: cultural
+  title: The New Negro and the Harlem Renaissance
+  description_short: Alain Locke's anthology The New Negro announces a flowering of Black art and writing in Harlem.
+  description_long: Langston Hughes, Zora Neale Hurston, Duke Ellington, and others emerge from the community the Great
+    Migration created. Date is year-level (1925).
+  why: It is the cultural result of the migration and a new self-definition of Black America.
+  tags:
+  - culture
+  - race
+  - harlem
+  date_precision: year
+- id: lindbergh_flight
+  start: 19270521
+  level: 3
+  kind: cultural
+  title: Lindbergh Flies the Atlantic
+  description_short: Charles Lindbergh lands in Paris after the first solo nonstop transatlantic flight.
+  description_long: He becomes the decade's greatest hero, and the flight symbolizes its faith in technology and individual
+    achievement.
+  why: It is the epoch's emblem of confidence, in the individual and in technology.
+  tags:
+  - aviation
+  - celebrity
+  - technology
+- id: mississippi_flood
+  start: 19270401
+  level: 3
+  kind: disaster
+  title: Great Mississippi Flood
+  description_short: The river breaks its levees, flooding 27,000 square miles and displacing hundreds of thousands, mostly Black.
+  description_long: Hoover's relief work makes his national reputation, but Black refugees are held in camps and forced to
+    work. The flood accelerates the Great Migration and weakens Southern Black loyalty to the Republican Party. Date is
+    month-level (April 1927).
+  why: It builds Hoover's reputation and exposes the racial order's treatment of Black victims.
+  tags:
+  - disaster
+  - hoover
+  - race
+  date_precision: month
+- id: hoover_poverty_speech
+  start: 19280811
+  level: 3
+  kind: speech
+  title: Hoover's "Final Triumph Over Poverty" Speech
+  description_short: Hoover accepts the Republican nomination and claims the nation is nearing the end of poverty.
+  description_long: He delivers the speech at Stanford. It later becomes a symbol of the ideology's overconfidence.
+  why: It is the peak of the decade's confidence in its own system.
+  tags:
+  - hoover
+  - prosperity
+  - speech
+- id: black_thursday
+  start: 19291024
+  level: 3
+  kind: economic_crisis
+  title: Black Thursday
+  description_short: Stock prices plunge on huge trading volume, and a bankers' pool tries to prop up the market.
+  description_long: A group of Wall Street banks, including J.P. Morgan's, buys shares to steady the market, with only brief
+    success.
+  why: It is the first day of the crash, and the first sign that private rescue would not work.
+  tags:
+  - crash
+  - stocks
+  - bankers
+- id: bank_of_united_states_fails
+  start: 19301211
+  level: 3
+  kind: economic_crisis
+  title: Bank of United States Fails
+  description_short: A New York bank with 400,000 depositors, mostly immigrants and Jews, collapses.
+  description_long: The largest bank failure of its kind to that date starts a wave of bank panics. The Fed does not intervene.
+  why: It shows the banking system failing with no federal response.
+  tags:
+  - banking
+  - failure
+  - fed
+- id: hoover_moratorium
+  start: 19310620
+  level: 3
+  kind: foreign_policy
+  title: Hoover Moratorium
+  description_short: Hoover proposes a one-year pause on war debt and reparations payments.
+  description_long: The moratorium comes too late to stop the European banking crisis, and Britain leaves the gold standard
+    in September.
+  why: It is Hoover's international attempt to stem the crisis, and it fails.
+  tags:
+  - war-debts
+  - hoover
+  - gold-standard
+- id: glass_steagall_1932
+  start: 19320227
+  level: 3
+  kind: legislation
+  title: Glass–Steagall Act of 1932
+  description_short: Congress widens the Fed's ability to lend against government securities and ease credit.
+  description_long: The act is a limited emergency measure that is followed by the more famous Banking Act of 1933.
+  why: It shows the first legislative retreat from the hands-off approach.
+  tags:
+  - banking
+  - fed
+  - credit
+- id: norris_laguardia_act
+  start: 19320323
+  level: 3
+  kind: legislation
+  title: Norris–LaGuardia Act
+  description_short: Congress bars federal injunctions against peaceful strikes and bans yellow-dog contracts.
+  description_long: The law reverses the labor injunction that began with In re Debs in 1895.
+  why: It undoes the Gilded Age's central labor weapon, a sign of the repudiation to come.
+  tags:
+  - labor
+  - injunction
+  - congress
+- id: bank_holidays_1933
+  start: 19330214
+  level: 3
+  kind: economic_crisis
+  title: Bank Holidays Begin
+  description_short: Michigan closes all banks, starting a cascade of state bank holidays.
+  description_long: By inauguration day most states have closed their banks or restricted withdrawals.
+  why: It is the system's nadir, the country at a standstill as the epoch ends.
+  tags:
+  - banking
+  - panic
+  - michigan
+# ---------------------------------------------------------------- Level 4
+- id: wall_street_bombing
+  start: 19200916
+  level: 4
+  kind: violence
+  title: Wall Street Bombing
+  description_short: A bomb on Wall Street kills 38 people and wounds hundreds, and the perpetrators are never found.
+  description_long: The explosion occurs outside J.P. Morgan's offices and is blamed on anarchists.
+  why: It is the Red Scare's last major event and feeds fear of foreign radicals.
+  tags:
+  - bombing
+  - anarchism
+  - red-scare
+- id: kdka_first_broadcast
+  start: 19201102
+  level: 4
+  kind: technology
+  title: KDKA Broadcasts Election Returns
+  description_short: Pittsburgh's KDKA airs the first scheduled commercial radio broadcast, reporting the Harding result.
+  description_long: Radio spreads to millions of homes within a few years.
+  why: It begins the mass media that unifies the decade's culture.
+  tags:
+  - radio
+  - media
+  - technology
+- id: garvey_unia_convention
+  start: 19200801
+  level: 4
+  kind: organization
+  title: Garvey's UNIA Convention
+  description_short: Marcus Garvey's Universal Negro Improvement Association holds a mass convention in New York.
+  description_long: The movement of Black pride and economic independence reaches millions at its peak. Date is month-level
+    (August 1920).
+  why: It is the largest mass Black movement of the era, a response to exclusion that looks inward.
+  tags:
+  - race
+  - garvey
+  - pride
+  date_precision: month
+- id: budget_and_accounting_act
+  start: 19210610
+  level: 4
+  kind: legislation
+  title: Budget and Accounting Act
+  description_short: Congress creates the Bureau of the Budget and requires the president to submit an annual budget.
+  description_long: The act centralizes federal budgeting in the executive, an administrative step in a decade of small
+    government.
+  why: It shows the state's capacity growing even as its ambitions shrink.
+  tags:
+  - budget
+  - executive
+  - bureaucracy
+- id: sacco_vanzetti_convicted
+  start: 19210714
+  level: 4
+  kind: legal
+  title: Sacco and Vanzetti Convicted
+  description_short: A Massachusetts jury convicts the two Italian anarchists of murder.
+  description_long: The trial, held in the shadow of the Red Scare, features open prejudice against immigrants and radicals.
+  why: It begins the case that defines the decade's nativism and Red Scare.
+  tags:
+  - immigration
+  - anarchism
+  - justice
+- id: washington_naval_conference
+  start: 19211112
+  level: 4
+  kind: diplomacy
+  title: Washington Naval Conference
+  description_short: The major powers agree to limit battleship tonnage in a landmark arms-control treaty.
+  description_long: The conference concludes in February 1922 with the Five-Power Treaty. The agreement holds through the decade.
+  why: It shows the retreat from Wilson's internationalism taking the form of limited, practical agreements.
+  tags:
+  - navy
+  - treaty
+  - arms-control
+- id: debs_freed
+  start: 19211225
+  level: 4
+  kind: political_event
+  title: Harding Frees Debs
+  description_short: Harding commutes Eugene Debs's sentence and invites him to the White House.
+  description_long: Debs had run for president from prison in 1920 and received nearly a million votes.
+  why: It ends the wartime repression's most famous case.
+  tags:
+  - civil-liberties
+  - debs
+  - pardon
+- id: dyer_antilynching_bill
+  start: 19220126
+  level: 4
+  kind: legislation
+  title: Dyer Anti-Lynching Bill Passes the House
+  description_short: The House approves a federal anti-lynching bill, and a Senate filibuster kills it that December.
+  description_long: Southern Democrats block it, and the NAACP's campaign builds pressure for a bill that will fail repeatedly
+    for decades.
+  why: It shows the federal government declining to protect Black Southerners.
+  tags:
+  - lynching
+  - race
+  - congress
+- id: adkins_v_childrens_hospital
+  start: 19230409
+  level: 4
+  kind: court_case
+  title: Adkins v. Children's Hospital
+  description_short: The Supreme Court strikes down a minimum wage law for women in the District of Columbia.
+  description_long: The decision, 5–3, relies on liberty of contract and is a high point of judicial resistance to regulation.
+  why: It shows the courts supporting the ideology of the market.
+  tags:
+  - minimum-wage
+  - supreme-court
+  - labor
+- id: bonus_act_1924
+  start: 19240519
+  level: 4
+  kind: legislation
+  title: Adjusted Compensation Act
+  description_short: Congress overrides Coolidge's veto to give veterans certificates payable in 1945.
+  description_long: The delayed payout is the source of the 1932 demand for early payment.
+  why: It sets up the Bonus Army.
+  tags:
+  - veterans
+  - bonus
+  - congress
+- id: j_edgar_hoover_bureau
+  start: 19240510
+  level: 4
+  kind: institution
+  title: J. Edgar Hoover Heads the Bureau of Investigation
+  description_short: Attorney General Harlan Stone names Hoover acting director of the Bureau.
+  description_long: Hoover professionalizes the Bureau and remains in charge until his death in 1972.
+  why: It builds the state's investigative capacity as the economic state retreats.
+  tags:
+  - fbi
+  - bureaucracy
+  - hoover
+- id: great_gatsby
+  start: 19250410
+  level: 4
+  kind: cultural
+  title: The Great Gatsby Published
+  description_short: F. Scott Fitzgerald's novel dissects the decade's wealth and illusion.
+  description_long: The book sells modestly at first and later becomes a canonical American novel.
+  why: It is the decade's own critique of its dream.
+  tags:
+  - literature
+  - wealth
+  - fitzgerald
+- id: ossian_sweet_shooting
+  start: 19250909
+  level: 4
+  kind: violence
+  title: Ossian Sweet Defends His Home
+  description_short: A Black doctor in Detroit fires on a white mob outside his new home, and Clarence Darrow defends him.
+  description_long: The first trial ends in a hung jury, and a second leads to acquittal in 1926. The case becomes an NAACP landmark.
+  why: It shows the violence behind residential segregation in the North.
+  tags:
+  - race
+  - housing
+  - detroit
+- id: great_miami_hurricane
+  start: 19260918
+  level: 4
+  kind: disaster
+  title: Great Miami Hurricane
+  description_short: A hurricane devastates Miami, ending the Florida land boom.
+  description_long: The land bust has begun before the hurricane, and its end signals the speculative economy's first collapse.
+  why: It is a rehearsal for the stock market's collapse.
+  tags:
+  - speculation
+  - florida
+  - disaster
+- id: nbc_formed
+  start: 19261115
+  level: 4
+  kind: corporate
+  title: NBC Formed
+  description_short: RCA launches the first national radio network.
+  description_long: By 1929 about ten million households own radios.
+  why: It makes a national mass culture.
+  tags:
+  - radio
+  - media
+  - consumer
+- id: fed_rate_cut_1927
+  start: 19270801
+  level: 4
+  kind: finance
+  title: Fed Cuts Rates
+  description_short: The Federal Reserve lowers its discount rate to help Britain, adding fuel to the stock market.
+  description_long: Critics later blame the easy-money policy for the speculative surge. Date is month-level (August 1927).
+  why: It is an act of the central bank that helps inflate the bubble.
+  tags:
+  - fed
+  - money
+  - speculation
+  date_precision: month
+- id: jazz_singer
+  start: 19271006
+  level: 4
+  kind: cultural
+  title: The Jazz Singer
+  description_short: The first feature film with synchronized dialogue opens.
+  description_long: Sound ends the silent era within a few years.
+  why: It marks the decade's mass entertainment industry.
+  tags:
+  - film
+  - technology
+  - culture
+- id: boulder_canyon_project
+  start: 19281221
+  level: 4
+  kind: legislation
+  title: Boulder Canyon Project Act
+  description_short: Congress authorizes Hoover Dam, a large federal public works project.
+  description_long: The dam is built during the Depression and opened in 1936.
+  why: It shows even normalcy accepting federal infrastructure.
+  tags:
+  - infrastructure
+  - west
+  - water
+- id: kellogg_briand_pact
+  start: 19280827
+  level: 4
+  kind: treaty
+  title: Kellogg–Briand Pact
+  description_short: Fifteen nations sign on August 27, 1928, and sixty-two eventually join a treaty renouncing war as an instrument of national policy.
+  description_long: The pact has no enforcement mechanism.
+  why: It is the decade's idealism without commitment.
+  tags:
+  - peace
+  - treaty
+  - diplomacy
+- id: market_peak_1929
+  start: 19290903
+  level: 4
+  kind: finance
+  title: Stock Market Peaks
+  description_short: The Dow Jones Industrial Average reaches a high of 381, a level it will not regain for 25 years.
+  description_long: The market had risen about fivefold since 1924, driven by buying on margin.
+  why: It is the top of the speculative boom.
+  tags:
+  - stocks
+  - speculation
+  - boom
+- id: drought_1930
+  start: 19300101
+  level: 4
+  kind: disaster
+  title: Drought of 1930
+  description_short: A severe drought hits the Mississippi Valley and the South, hurting farmers already in distress.
+  description_long: Farmers' incomes fall further, and the drought is a prelude to the Dust Bowl of the mid-1930s. Date is
+    year-level (1930).
+  why: It adds a natural disaster to an economic one.
+  tags:
+  - drought
+  - farm-crisis
+  - agriculture
+  date_precision: year
+- id: scottsboro_arrests
+  start: 19310325
+  level: 4
+  kind: legal
+  title: Scottsboro Boys Arrested
+  description_short: Nine Black teenagers are arrested in Alabama for the alleged rape of two white women and are quickly sentenced to death.
+  description_long: The case becomes a national and international cause, and two Supreme Court cases in the 1930s grow out of it.
+  why: It shows the justice system's treatment of Black defendants at the Depression's depth.
+  tags:
+  - race
+  - justice
+  - alabama
+- id: british_gold_standard
+  start: 19310921
+  level: 4
+  kind: finance
+  title: Britain Leaves the Gold Standard
+  description_short: Britain abandons the gold standard, and the global financial order unravels.
+  description_long: The move forces other countries to devalue or restrict trade.
+  why: It shows the international order failing alongside the domestic one.
+  tags:
+  - gold-standard
+  - britain
+  - finance
+- id: hunger_march_1931
+  start: 19311207
+  level: 4
+  kind: protest
+  title: National Hunger March
+  description_short: About 1,600 marchers arrive in Washington to demand unemployment insurance and relief.
+  description_long: Communists organize the march, and the police stop it from reaching the White House. Congress ignores it.
+  why: It is a measure of the unaddressed distress.
+  tags:
+  - unemployment
+  - protest
+  - relief
+- id: mexican_repatriation
+  start: 19310101
+  level: 4
+  kind: policy
+  title: Mexican Repatriation Drive
+  description_short: Federal, state, and local officials pressure hundreds of thousands of Mexicans and Mexican Americans to leave.
+  description_long: Estimates run from hundreds of thousands to about a million people, many of them U.S. citizens, between 1929 and 1936. Date is year-level
+    (1931).
+  why: It shows the exclusion extending to the group the quota laws had exempted, once their labor was no longer needed.
+  tags:
+  - immigration
+  - mexico
+  - deportation
+  date_precision: year
+- id: ford_hunger_march
+  start: 19320307
+  level: 4
+  kind: violence
+  title: Ford Hunger March
+  description_short: Police and Ford guards fire on unemployed marchers outside the River Rouge plant, killing four.
+  description_long: A fifth marcher later dies of wounds.
+  why: It shows violence against the unemployed.
+  tags:
+  - unemployment
+  - labor
+  - detroit
+- id: emergency_relief_act
+  start: 19320721
+  level: 4
+  kind: legislation
+  title: Emergency Relief and Construction Act
+  description_short: Congress authorizes federal loans to the states for relief, a first small step.
+  description_long: The act passes after months of resistance by Hoover, and the sums are small.
+  why: It marks the first federal admission that relief is a national responsibility.
+  tags:
+  - relief
+  - congress
+  - hoover
+- id: home_loan_bank_act
+  start: 19320722
+  level: 4
+  kind: legislation
+  title: Federal Home Loan Bank Act
+  description_short: Congress creates a system of banks to support home lending.
+  description_long: The act is a precursor to the New Deal's housing programs.
+  why: It anticipates the New Deal's housing policy.
+  tags:
+  - housing
+  - banking
+  - credit
+- id: twentieth_amendment
+  start: 19330123
+  level: 4
+  kind: constitutional_amendment
+  title: Twentieth Amendment Ratified
+  description_short: The Constitution moves the presidential inauguration from March to January.
+  description_long: The amendment, aimed at shortening the lame-duck period, would have helped in the winter of 1932–33.
+  why: It is a belated fix for the interregnum that hurt the country.
+  tags:
+  - constitution
+  - inauguration
+  - transition
+- id: cermak_shot
+  start: 19330215
+  level: 4
+  kind: political_event
+  title: Attempt on Roosevelt's Life
+  description_short: A gunman fires at president-elect Roosevelt in Miami, killing Chicago Mayor Anton Cermak.
+  description_long: Roosevelt's calm response impresses the country.
+  why: It marks the transition in a tense winter.
+  tags:
+  - roosevelt
+  - assassination
+  - transition
+# ---------------------------------------------------------------- Level 5
+- id: rosewood_massacre
+  start: 19230101
+  level: 5
+  kind: violence
+  title: Rosewood Massacre
+  description_short: A white mob destroys the Black town of Rosewood, Florida.
+  description_long: Several Black residents and two white men die, and the town ceases to exist. Date is year-level (1923).
+  why: It is another instance of exclusion by violence.
+  tags:
+  - race
+  - violence
+  - florida
+  date_precision: year
+- id: fall_resigns
+  start: 19230304
+  level: 5
+  kind: political_event
+  title: Albert Fall Resigns
+  description_short: Interior Secretary Fall leaves office as the oil lease rumors grow.
+  description_long: He is later convicted for taking bribes.
+  why: It starts the unraveling of Teapot Dome.
+  tags:
+  - corruption
+  - harding
+  - oil
+- id: dawes_plan
+  start: 19240816
+  level: 5
+  kind: diplomacy
+  title: Dawes Plan Adopted
+  description_short: An American-led plan restructures German reparations and opens the way for American loans.
+  description_long: American bankers lend billions to Germany, which uses the money to pay reparations to Britain and France.
+  why: It ties European stability to American credit.
+  tags:
+  - reparations
+  - finance
+  - germany
+- id: model_t_ends
+  start: 19270531
+  level: 5
+  kind: corporate
+  title: Ford Ends Model T Production
+  description_short: Ford stops making the Model T after 15 million cars and retools for the Model A.
+  description_long: The change shows consumers valuing style over price.
+  why: It marks a turn in the consumer economy.
+  tags:
+  - automobiles
+  - ford
+  - consumer
+- id: st_valentines_massacre
+  start: 19290214
+  level: 5
+  kind: violence
+  title: St. Valentine's Day Massacre
+  description_short: Gangsters kill seven men in a Chicago garage, a high point of Prohibition-era violence.
+  description_long: The killings are widely attributed to Al Capone's organization.
+  why: It is a symbol of Prohibition's failure.
+  tags:
+  - prohibition
+  - crime
+  - chicago
+- id: fall_convicted
+  start: 19291025
+  level: 5
+  kind: legal
+  title: Albert Fall Convicted
+  description_short: A federal jury convicts Fall of taking a bribe, days before the Crash.
+  description_long: He is the first cabinet officer to go to prison for conduct in office.
+  why: It closes Teapot Dome.
+  tags:
+  - corruption
+  - oil
+  - justice
+- id: emergency_employment_committee
+  start: 19301017
+  level: 5
+  kind: institution
+  title: President's Emergency Committee for Employment
+  description_short: Hoover creates a committee to coordinate private and local jobs efforts.
+  description_long: The committee has no money or powers and relies on volunteers and local charity.
+  why: It is the voluntarism in practice.
+  tags:
+  - hoover
+  - relief
+  - voluntarism
+- id: hoovervilles
+  start: 19310101
+  level: 5
+  kind: social
+  title: Hoovervilles Spread
+  description_short: Shantytowns of the homeless rise in cities across the country.
+  description_long: The name mocks the president, and people sleep under "Hoover blankets" of newspaper. Date is year-level
+    (1931).
+  why: It is the visible face of unaddressed poverty.
+  tags:
+  - homelessness
+  - poverty
+  - hoover
+  date_precision: year
+- id: stimson_doctrine
+  start: 19320107
+  level: 5
+  kind: foreign_policy
+  title: Stimson Doctrine
+  description_short: The U.S. refuses to recognize Japan's conquest of Manchuria.
+  description_long: The doctrine is a protest without sanctions.
+  why: It is another expression of idealism without commitment.
+  tags:
+  - japan
+  - manchuria
+  - diplomacy
+- id: lindbergh_kidnapping
+  start: 19320301
+  level: 5
+  kind: crime
+  title: Lindbergh Baby Kidnapped
+  description_short: The infant son of Charles Lindbergh is taken from his home in New Jersey.
+  description_long: The case dominates the news, and the child is found dead.
+  why: It shows the public's appetite for distraction at the Depression's depth.
+  tags:
+  - crime
+  - celebrity
+  - media
+# ---------------------------------------------------------------- Gap fill (thin years 1922, 1926, 1928, 1930; immigration thread)
+- id: teapot_dome_lease
+  start: 19220407
+  level: 4
+  kind: scandal
+  title: Teapot Dome Lease Signed
+  description_short: Interior Secretary Fall secretly leases the Teapot Dome naval oil reserve to a private company.
+  description_long: The lease is awarded without competitive bidding. It surfaces in a Senate inquiry the following year.
+  why: It is the transaction behind the scandal, a public resource passing to a private firm through a friendly regulator.
+  tags:
+  - corruption
+  - oil
+  - harding
+- id: shopmen_strike_injunction
+  start: 19220701
+  end: 19220901
+  level: 3
+  kind: strike
+  title: Railroad Shopmen's Strike and Injunction
+  description_short: Railroad shop workers strike over wage cuts, and a federal court issues a sweeping injunction against them.
+  description_long: About 400,000 workers walk out on July 1. Attorney General Daugherty seeks an injunction that bars even
+    picketing and speech, and the strike collapses over the following weeks.
+  why: It shows the federal government again siding with capital in a labor dispute, the pattern Norris–LaGuardia later reverses.
+  tags:
+  - labor
+  - injunction
+  - railroads
+- id: ozawa_v_united_states
+  start: 19221113
+  level: 3
+  kind: court_case
+  title: Ozawa v. United States
+  description_short: The Supreme Court holds that a Japanese immigrant is not a "white person" eligible for naturalization.
+  description_long: Takao Ozawa had lived in the United States for twenty years. The following year the Court rules in the
+    Thind case that Indian immigrants are not white either.
+  why: It gives the immigration thread its legal premise, the "aliens ineligible to citizenship" the 1924 act then excludes.
+  tags:
+  - immigration
+  - race
+  - citizenship
+- id: cable_act
+  start: 19220922
+  level: 4
+  kind: legislation
+  title: Cable Act
+  description_short: Congress ends automatic loss of citizenship for most American women who marry foreigners, with an exception for Asian husbands.
+  description_long: A woman who marries a man ineligible for citizenship still loses hers, an exclusion aimed at Asian immigrants.
+  why: It shows how the ancestry logic of the quota laws reaches into marriage and citizenship.
+  tags:
+  - citizenship
+  - women
+  - immigration
+- id: thind_decision
+  start: 19230219
+  level: 4
+  kind: court_case
+  title: United States v. Bhagat Singh Thind
+  description_short: The Supreme Court holds that a high-caste Indian immigrant is not "white" under naturalization law.
+  description_long: The ruling strips citizenship from dozens of Indian Americans who had already naturalized.
+  why: It extends the racial logic of citizenship eligibility that the 1924 act builds on.
+  tags:
+  - immigration
+  - race
+  - citizenship
+- id: meyer_v_nebraska
+  start: 19230604
+  level: 4
+  kind: court_case
+  title: Meyer v. Nebraska
+  description_short: The Supreme Court strikes down a state ban on teaching foreign languages to young children.
+  description_long: The law was a legacy of wartime anti-German feeling, and the decision defends a liberty under the Fourteenth
+    Amendment.
+  why: It is a check on the Americanization campaign, one of the few in a nativist decade.
+  tags:
+  - civil-liberties
+  - education
+  - supreme-court
+- id: pierce_v_society_of_sisters
+  start: 19250601
+  level: 4
+  kind: court_case
+  title: Pierce v. Society of Sisters
+  description_short: The Supreme Court strikes down an Oregon law requiring children to attend public schools.
+  description_long: The law, backed by the Klan, was aimed at Catholic schools. The decision protects parents' right to choose.
+  why: It is another judicial limit on the decade's nativism.
+  tags:
+  - klan
+  - education
+  - supreme-court
+- id: revenue_act_1926
+  start: 19260226
+  level: 3
+  kind: legislation
+  title: Revenue Act of 1926
+  description_short: Congress cuts the top income tax rate to 25 percent and repeals the gift tax.
+  description_long: Mellon's tax policy reaches its peak, and estate and income taxes fall for the wealthy.
+  why: It completes the decade's tax retreat, and deepens the concentration of wealth that fed the speculation.
+  tags:
+  - taxes
+  - mellon
+  - wealth
+- id: railway_labor_act
+  start: 19260520
+  level: 4
+  kind: legislation
+  title: Railway Labor Act
+  description_short: Congress guarantees railroad workers the right to organize and sets up mediation for disputes.
+  description_long: The act, negotiated with the railroads and unions, is a rare case of agreed regulation in the decade.
+  why: It shows the limited form of labor policy the decade could accept.
+  tags:
+  - labor
+  - railroads
+  - mediation
+- id: ford_five_day_week
+  start: 19260925
+  level: 4
+  kind: corporate
+  title: Ford Adopts the Five-Day Week
+  description_short: Ford announces a five-day, 40-hour week at its factories.
+  description_long: Henry Ford argues that workers with leisure will buy more cars.
+  why: It shows industry shaping labor standards privately and tying them to the consumer economy.
+  tags:
+  - labor
+  - ford
+  - consumer
+- id: al_smith_nominated
+  start: 19280627
+  level: 3
+  kind: political_event
+  title: Al Smith Nominated
+  description_short: Democrats nominate Al Smith, the first Catholic to head a major party ticket.
+  description_long: Smith, a New York governor and son of immigrants, is opposed on grounds of his religion and his opposition to
+    Prohibition. He loses to Hoover in a landslide.
+  why: It tests the decade's nativism in the national election and shows the urban immigrant vote's rise.
+  tags:
+  - election
+  - catholics
+  - immigration
+- id: mcnary_haugen_second_veto
+  start: 19280523
+  level: 4
+  kind: political_event
+  title: Second McNary–Haugen Veto
+  description_short: Coolidge vetoes the farm relief bill again, after Congress passes it a second time.
+  description_long: He argues that price supports are unsound and a dangerous government intrusion into markets.
+  why: It confirms the first veto and the farm lobby's frustration.
+  tags:
+  - agriculture
+  - veto
+  - coolidge
+- id: steamboat_willie
+  start: 19281118
+  level: 5
+  kind: cultural
+  title: Steamboat Willie
+  description_short: Walt Disney's short film introduces Mickey Mouse with synchronized sound.
+  description_long: The cartoon launches an entertainment empire.
+  why: It marks the new mass culture.
+  tags:
+  - film
+  - culture
+  - disney
+- id: hoover_inaugurated
+  start: 19290304
+  level: 4
+  kind: political_event
+  title: Hoover Inaugurated
+  description_short: Hoover takes office after a campaign promising to extend the decade's prosperity.
+  description_long: He brings engineering and business experience to the presidency and plans an active program of voluntary
+    cooperation.
+  why: It starts the term that the Crash ends in effect within months.
+  tags:
+  - hoover
+  - inauguration
+  - presidency
+- id: national_origins_quotas
+  start: 19290701
+  level: 3
+  kind: legislation
+  title: National Origins Quotas Take Effect
+  description_short: The permanent quota system, based on the national origins of the entire 1920 population, begins.
+  description_long: The 1924 act had promised this formula, which sets the annual limit at 150,000 and gives Britain and Ireland
+    more than half of it. The system lasts until 1965.
+  why: It freezes the country's ethnic mix at an earlier era's proportions, the full expression of the 1924 act's nostalgia.
+  tags:
+  - immigration
+  - quotas
+  - nativism
+- id: agricultural_marketing_act
+  start: 19290615
+  level: 3
+  kind: legislation
+  title: Agricultural Marketing Act
+  description_short: Congress creates the Federal Farm Board to help farm cooperatives stabilize prices.
+  description_long: Hoover's answer to the farm crisis is a voluntary program with a $500 million revolving fund. It fails to
+    stop the price collapse after 1929.
+  why: It is Hoover's version of the program Coolidge vetoed, limited by the same ideology.
+  tags:
+  - agriculture
+  - hoover
+  - cooperatives
+- id: unemployment_day_1930
+  start: 19300306
+  level: 5
+  kind: protest
+  title: International Unemployment Day
+  description_short: Communist-led demonstrations draw tens of thousands of unemployed workers in American cities.
+  description_long: Police clash with demonstrators in several cities.
+  why: It is an early measure of the unemployment crisis's political temperature.
+  tags:
+  - unemployment
+  - protest
+  - communism
+- id: worst_is_over
+  start: 19300501
+  level: 4
+  kind: speech
+  title: "We Have Passed the Worst"
+  description_short: Hoover tells a business audience that the country has passed the worst of the Depression.
+  description_long: The statement is wrong, and it becomes a symbol of the administration's misjudgment.
+  why: It is the ideology's confidence, again, set against a worsening reality.
+  tags:
+  - hoover
+  - depression
+  - optimism
+- id: hoover_immigration_directive
+  start: 19300901
+  level: 4
+  kind: policy
+  title: Hoover Tightens Visa Rules
+  description_short: Hoover orders consuls to apply the "likely to become a public charge" rule strictly, cutting immigration.
+  description_long: The directive reduces immigration sharply under the existing quotas. It later limits refugees from Nazi
+    Germany, whose quota goes largely unfilled in the early 1930s. Date is month-level (September 1930).
+  why: It uses the quota system's discretion to close the door further, with long consequences for refugees.
+  tags:
+  - immigration
+  - refugees
+  - quotas
+  date_precision: month
+- id: empire_state_building
+  start: 19310501
+  level: 5
+  kind: cultural
+  title: Empire State Building Opens
+  description_short: The 102-story skyscraper opens in New York, built in just over a year.
+  description_long: It is the world's tallest building and stands mostly empty in the Depression.
+  why: It is the decade's last monument to confidence, finished in the slump.
+  tags:
+  - architecture
+  - new-york
+  - depression
+- id: capone_convicted
+  start: 19311017
+  level: 5
+  kind: legal
+  title: Capone Convicted
+  description_short: Al Capone is convicted of tax evasion and sentenced to eleven years.
+  description_long: The case shows the federal government's growing law-enforcement capacity.
+  why: It is a symbol of Prohibition's crime era ending.
+  tags:
+  - prohibition
+  - crime
+  - taxes
