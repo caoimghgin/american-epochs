@@ -255,6 +255,11 @@ Dates are from memory and go on the verification list when the corpus is written
   because it had no mechanism for responding when the market broke.
 - The 1932 election was a repudiation of an ideology, which leaves the question of
   what replaces it open.
+- The world was being redrawn while America stood aside. The German, Austro-Hungarian,
+  Russian, and Ottoman empires had fallen, and Europe and the Middle East were remade
+  by the Allies at Versailles, San Remo, and Lausanne without the United States. The
+  retreat of normalcy happens at the moment the old world order is destroyed, which
+  is part of why the next war and the later American role arrive as they do.
 
 ## Handoff
 

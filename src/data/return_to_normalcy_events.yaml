@@ -1333,3 +1333,55 @@ events:
   - prohibition
   - crime
   - taxes
+# ---------------------------------------------------------------- World context (the map redrawn without the United States)
+- id: senate_rejects_versailles_again
+  start: 19200319
+  level: 3
+  kind: political_event
+  title: Senate Rejects the Treaty a Second Time
+  description_short: The Senate votes down the Versailles treaty again, ending Wilson's hope of American membership in the League of Nations.
+  description_long: The vote is 49 to 35, short of the two-thirds required, with Wilson's own allies helping to defeat the version with
+    Lodge's reservations. Harding later makes a separate peace with Germany.
+  why: It makes the retreat official, at the moment the old European and Middle Eastern orders have just collapsed.
+  tags:
+  - league-of-nations
+  - senate
+  - isolationism
+- id: san_remo_mandates
+  start: 19200425
+  level: 4
+  kind: diplomacy
+  title: San Remo Conference Divides the Ottoman Middle East
+  description_short: The Allies assign Syria and Lebanon to France and Iraq and Palestine to Britain as League mandates.
+  description_long: The Ottoman, German, Austro-Hungarian, and Russian empires have all fallen, and the victors redraw the borders of
+    Europe and the Middle East. The United States, which declined a mandate, stays out. The Treaty of Sèvres follows in August.
+  why: It shows the world being remade by others while America declines to take part, the context for normalcy's retreat.
+  tags:
+  - middle-east
+  - mandates
+  - empire
+- id: separate_peace_germany
+  start: 19210825
+  level: 4
+  kind: treaty
+  title: U.S. Makes a Separate Peace With Germany
+  description_short: The United States signs its own treaty with Germany, keeping the rights of Versailles without its obligations.
+  description_long: Congress had ended the state of war by joint resolution in July, and the treaty is signed in Berlin on August 25.
+  why: It is the isolationist alternative to the League, engaging the postwar order only on American terms.
+  tags:
+  - germany
+  - treaty
+  - isolationism
+- id: treaty_of_lausanne
+  start: 19230724
+  level: 4
+  kind: treaty
+  title: Treaty of Lausanne
+  description_short: Turkey and the Allies sign the final settlement that replaces the Ottoman Empire with the modern Turkish state.
+  description_long: The treaty fixes Turkey's borders and provides for a compulsory population exchange with Greece. American observers
+    attend but do not sign.
+  why: It completes the remaking of the Middle East that began as the war ended, and America again stands apart.
+  tags:
+  - turkey
+  - ottoman-empire
+  - treaty
