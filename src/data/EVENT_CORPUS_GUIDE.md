@@ -57,6 +57,11 @@ entry). Then `events:`, a flat list. Each event:
     this is the interpretive claim, and it's what the live `note` field gets
     distilled from during reconciliation.
   tags: [slavery, federalism, congress, territories]
+  date_precision: year           # optional: year | month. Omit for a full day-level date.
+                                  # When set, start holds a placeholder (the 1st) that
+                                  # reconciliation must NOT render as an exact date.
+  date_verified: true            # optional: set only once the date is confirmed against
+                                  # an identifiable source
   sources:                        # omit the whole key if nothing solid exists
     - name: Library of Congress
       url: https://...

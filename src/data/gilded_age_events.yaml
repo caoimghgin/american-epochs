@@ -28,7 +28,9 @@ schema:
   notes:
   - A missing end date indicates a point event.
   - Dates represent the most defensible public date for display, not necessarily every stage of a legal or political
-    process. Year-only entries use January 1 as a placeholder and say so in their description_long.
+    process. Entries with date_precision of year or month carry a placeholder in `start` (the 1st) that must not be rendered as exact;
+    reconcile them with no month/day (year) or no day (month). Absent date_precision means a full day-level date. Entries
+    with date_verified true have had their date confirmed against an identifiable source in an external review.
   - This corpus is a research/authoring artifact. A human or LLM reconciles it into the live EVENTS array.
   - The hierarchy supplies the big picture first and progressively reveals explanations, mechanisms, consequences,
     and texture.
@@ -52,21 +54,26 @@ epoch:
   start: 18770425
   end: 18970304
   thesis: Industrial capitalism transforms the United States faster than its political institutions can adapt. Workers,
-    farmers, and reformers try every available lever (strikes, state legislatures, courts, third parties, Congress)
-    and find federal force and federal courts available to protect property but not yet to restrain it. The Populist
-    challenge is defeated in 1896, and industrial capital becomes the dominant organizing force while public control
-    is postponed rather than abandoned.
+    farmers, and reformers challenge concentrated economic power through strikes, elections, legislation, and the
+    courts, while those same institutions increasingly defend property and narrow the boundaries of political
+    participation. Congress establishes the first federal regulatory machinery, but its authority remains contested
+    and its enforcement limited. The crisis of 1893 brings these conflicts to a head, and McKinley's victory over
+    the Democratic-Populist challenge in 1896 secures the immediate ascendancy of industrial capital, postponing
+    rather than resolving the question of democratic control.
 events:
 # ---------------------------------------------------------------- Level 1: spans
 - id: depression_of_1893
-  start: 18930505
-  end: 18970331
+  start: 18930101
+  end: 18970304
   level: 1
   kind: economic_period
   title: Depression of 1893
   description_short: The deepest economic downturn the country had yet experienced grinds on for roughly four years.
-  description_long: Bank failures, railroad bankruptcies, and mass unemployment follow the stock market crash of May
-    1893. Estimates of peak unemployment run well above 15 percent, and there is no federal relief system of any kind.
+  description_long: The NBER dates the business-cycle peak to January 1893, and the May stock market crash
+    (the separate Panic of 1893 entry) deepens it. Bank failures, railroad bankruptcies, and mass unemployment follow,
+    with estimates of peak unemployment in the mid-teens or higher and no federal relief system of any kind. The
+    downturn has two contractions with a brief recovery between them, and recovery runs into mid-1897. The span is
+    clipped to the epoch's end at McKinley's inauguration.
   why: It converts two decades of unresolved industrial conflict into a decision point, producing Coxey's Army, the
     Pullman Strike, and the Populist surge of 1896.
   tags:
@@ -77,6 +84,7 @@ events:
   start: 18900101
   end: 18961103
   level: 1
+  date_precision: year
   kind: political_movement
   title: Populist Insurgency
   description_short: Farmers' Alliances become a national third party and the broadest democratic challenge to the
@@ -109,6 +117,7 @@ events:
 - id: interstate_commerce_act
   start: 18870204
   level: 1
+  date_verified: true
   kind: legislation
   title: Interstate Commerce Act
   description_short: Congress creates the first federal regulatory agency to oversee railroad rates.
@@ -188,8 +197,8 @@ events:
   description_long: Bryan campaigns on free silver and against concentrated economic power; McKinley, with a record
     campaign fund raised by Mark Hanna, carries the industrial Northeast and Midwest. The result realigns national
     politics around Republican dominance for a generation.
-  why: The argument over who governs the industrial economy is decided at the ballot box in favor of industrial
-    capital, which is where the next epoch begins.
+  why: The immediate contest over who governs the industrial economy goes to industrial capital at the ballot box.
+    Public control is postponed rather than settled, which is where the next epoch begins.
   tags:
   - election
   - gold-standard
@@ -204,7 +213,7 @@ events:
     police officer, and the ensuing shooting kills several more people. Eight anarchists are convicted, and four are
     later hanged despite no evidence connecting them to the bomb.
   why: It closes the Great Upheaval that opened with the 1877 railroad strike, turning public opinion against organized
-    labor and ending the Knights of Labor's moment of national influence.
+    labor and accelerating the Knights of Labor's decline.
   tags:
   - labor
   - anarchism
@@ -213,6 +222,7 @@ events:
 - id: standard_oil_trust
   start: 18820102
   level: 2
+  date_verified: true
   kind: corporate
   title: Standard Oil Trust Formed
   description_short: Rockefeller's Standard Oil companies are placed under a single board of trustees.
@@ -313,6 +323,7 @@ events:
 - id: mississippi_constitution_1890
   start: 18901101
   level: 2
+  date_verified: true
   kind: constitution
   title: Mississippi Constitution of 1890
   description_short: Mississippi adopts poll taxes and literacy tests that disfranchise most Black voters.
@@ -426,6 +437,7 @@ events:
 - id: munn_v_illinois
   start: 18770301
   level: 3
+  date_verified: true
   kind: court_case
   title: Munn v. Illinois
   description_short: The Supreme Court upholds state regulation of grain elevator rates.
@@ -587,6 +599,7 @@ events:
 - id: ocala_demands
   start: 18901201
   level: 3
+  date_precision: month
   kind: political_event
   title: Ocala Demands
   description_short: The Southern Farmers' Alliance meets in Ocala, Florida and issues a program including the
@@ -614,6 +627,7 @@ events:
 - id: turner_frontier_thesis
   start: 18930712
   level: 3
+  date_verified: true
   kind: intellectual
   title: Turner's Frontier Thesis
   description_short: Historian Frederick Jackson Turner argues the frontier has shaped American democracy and is now closed.
@@ -641,6 +655,7 @@ events:
 - id: silver_purchase_repeal
   start: 18931101
   level: 3
+  date_verified: true
   kind: legislation
   title: Repeal of the Silver Purchase Act
   description_short: Cleveland forces repeal over his own party's silver wing.
@@ -761,6 +776,7 @@ events:
 - id: greenback_labor_party
   start: 18780101
   level: 4
+  date_precision: year
   kind: political_event
   title: Greenback-Labor Party Peaks
   description_short: The Greenback-Labor coalition wins about a million votes and fourteen House seats in 1878.
@@ -774,6 +790,7 @@ events:
 - id: progress_and_poverty
   start: 18790101
   level: 4
+  date_precision: year
   kind: intellectual
   title: Progress and Poverty
   description_short: Henry George argues that land rents explain why wealth and poverty rise together.
@@ -800,10 +817,12 @@ events:
 - id: carlisle_indian_school
   start: 18791101
   level: 4
+  date_verified: true
   kind: institution
   title: Carlisle Indian Industrial School Opens
   description_short: The first federally supported off-reservation boarding school opens in Pennsylvania.
-  description_long: Founder Richard Pratt later sums up the aim as "Kill the Indian, and save the man." Children are separated from
+  description_long: Founder Richard Pratt later sums up the aim as "Kill the Indian, and save the man." The first students arrive on October 6,
+    and the school's official opening date is November 1. Children are separated from
     families and forbidden to speak their languages.
   why: It is the era's assimilation policy at its most direct.
   tags:
@@ -969,6 +988,7 @@ events:
 - id: looking_backward
   start: 18880101
   level: 4
+  date_precision: year
   kind: intellectual
   title: Looking Backward
   description_short: Edward Bellamy's utopian novel imagines a peaceful socialist future.
@@ -1008,6 +1028,7 @@ events:
 - id: gospel_of_wealth
   start: 18890601
   level: 4
+  date_precision: month
   kind: intellectual
   title: Carnegie's "Gospel of Wealth"
   description_short: Andrew Carnegie argues that the rich have a duty to distribute their fortunes in their lifetime.
@@ -1060,6 +1081,7 @@ events:
 - id: how_the_other_half_lives
   start: 18900101
   level: 4
+  date_precision: year
   kind: intellectual
   title: How the Other Half Lives
   description_short: Jacob Riis exposes New York tenement conditions in photographs and text.
@@ -1242,6 +1264,7 @@ events:
 - id: immigration_restriction_league
   start: 18940101
   level: 5
+  date_precision: year
   kind: organization
   title: Immigration Restriction League Founded
   description_short: Boston Brahmins organize to restrict southern and eastern European immigration.
@@ -1305,6 +1328,7 @@ events:
 - id: niagara_power
   start: 18961116
   level: 5
+  date_verified: true
   kind: technology
   title: Niagara Power Reaches Buffalo
   description_short: Westinghouse alternating current from Niagara Falls powers Buffalo.
@@ -1346,6 +1370,7 @@ events:
 - id: exodusters
   start: 18790101
   level: 4
+  date_precision: year
   kind: migration
   title: Exodusters Leave the South
   description_short: Thousands of Black Southerners migrate to Kansas after Redemption ends their political protection.
@@ -1412,6 +1437,7 @@ events:
 - id: pullman_town_built
   start: 18800101
   level: 5
+  date_precision: year
   kind: corporate
   title: Pullman Builds Its Company Town
   description_short: George Pullman begins building a planned company town south of Chicago.
@@ -1463,6 +1489,7 @@ events:
 - id: tennessee_jim_crow_car_law
   start: 18810101
   level: 5
+  date_precision: year
   kind: legislation
   title: Tennessee Passes First Jim Crow Car Law
   description_short: Tennessee requires separate railroad cars for Black and white first-class passengers.
@@ -1515,6 +1542,7 @@ events:
 - id: home_insurance_building
   start: 18850101
   level: 4
+  date_precision: year
   kind: technology
   title: Home Insurance Building
   description_short: Chicago's ten-story steel-frame Home Insurance Building is often called the first skyscraper.
@@ -1541,6 +1569,7 @@ events:
 - id: australian_ballot
   start: 18880101
   level: 4
+  date_precision: year
   kind: reform
   title: Australian Ballot Adopted
   description_short: Massachusetts adopts the secret government-printed ballot, and other states follow quickly.
@@ -1554,6 +1583,7 @@ events:
 - id: kodak_camera
   start: 18880101
   level: 5
+  date_precision: year
   kind: technology
   title: Kodak Camera Introduced
   description_short: George Eastman sells a simple roll-film camera with the slogan "You press the button, we do the rest."

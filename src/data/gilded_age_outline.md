@@ -14,13 +14,15 @@ govern an economy operating at continental scale.
 ## Historical thesis
 
 Industrial capitalism transformed the United States faster than its political
-institutions could adapt. Railroads, steel, and trusts created national markets
-and private concentrations of power that no state government could regulate and
-that the federal government had not yet been asked to. Workers, farmers, and
-reformers tried every available lever (strikes, state legislatures, courts,
-third parties, Congress) and met, again and again, the same answer: federal
-force and federal courts were available to protect property, and not yet
-available to restrain it.
+institutions could adapt. Workers, farmers, and reformers challenged concentrated
+economic power through strikes, elections, legislation, and the courts, while those
+same institutions increasingly defended property and narrowed the boundaries of
+political participation. Congress built the first federal regulatory machinery (the
+Interstate Commerce Act, the Sherman Act), but its authority stayed contested and its
+enforcement limited. The crisis of 1893 brought the conflict to a head, and
+McKinley's victory over the Democratic-Populist challenge in 1896 secured the
+immediate ascendancy of industrial capital, postponing rather than resolving the
+question of democratic control.
 
 ## Foundational question
 
