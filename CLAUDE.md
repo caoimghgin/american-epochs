@@ -108,7 +108,9 @@ american-epochs/
         ├── gilded_age_events.yaml                # Done (first pass) — reconciled into the live instrument
         ├── gilded_age_outline.md                 # Identity, thesis, Level 1 spine reasoning, handoff for the Gilded Age
         ├── big_stick_events.yaml                 # Done (first pass) — reconciled into the live instrument
-        └── big_stick_outline.md                  # Identity, thesis, Level 1 spine reasoning, handoff for the Big Stick
+        ├── big_stick_outline.md                  # Identity, thesis, Level 1 spine reasoning, handoff for the Big Stick
+        ├── new_freedom_events.yaml               # Done (first pass) — reconciled into the live instrument
+        └── new_freedom_outline.md                # Identity, thesis, Level 1 spine reasoning, handoff for the New Freedom
 ```
 
 Files under `src/data/` are research/authoring artifacts, not runtime data —

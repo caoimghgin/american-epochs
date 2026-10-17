@@ -1,0 +1,1388 @@
+schema:
+  name: American Epochs Event Corpus
+  version: 2
+  date_format: YYYYMMDD
+  level_definition:
+    1: The epoch's "crown of the mountain" — always visible, at every zoom, from the very widest view. One beat
+      per structural hinge in the epoch's own arc, not a list of "the important stuff." Target 5-8 entries regardless
+      of how large or eventful the epoch was; see curation_guidance below. Automatically revealed first as the viewer
+      zooms in from full history — never a manual toggle.
+    2: Major events, automatically revealed at the first closer zoom past Level 1.
+    3: Supporting events explaining mechanisms, shifts, and consequences.
+    4: Contextual events — political, military, social, institutional texture.
+    5: Fine-grained events for the closest inspection.
+  curation_guidance:
+  - Level 1 is the hardest and most important editorial call in the corpus. The viewer never chooses to see it —
+    it is what everyone sees whether they zoom in or not, so it carries the whole epoch's argument on its own.
+  - Pick one entry per point where the epoch's own arc genuinely turns, not one per famous name or battle. A working
+    test - "does removing this entry break the causal chain from the epoch's start to its end?" If not, it belongs
+    at Level 2 or below, however well-known it is.
+  - Target 5-8 Level 1 point events specifically. This is deliberately independent of the epoch's total event count
+    or length in years. Reconstruction intentionally carries nine point events because the Panic of 1873 and United
+    States v. Cruikshank describe distinct political and judicial turns and the editor has approved a slightly crowded
+    crown.
+  - Span (duration) entries at Level 1 do not count against the point-event target because the live instrument never
+    tier-filters spans; they provide scene-setting context.
+  - Levels 2-5 have much more room to breathe. Disagreement there is a rounding error, not a structural problem.
+    Spend the real editorial effort on Level 1.
+  notes:
+  - A missing end date indicates a point event.
+  - Dates represent the most defensible public date for display, not necessarily every stage of a legal or political
+    process.
+  - date_precision (year or month) applies to start, and end_precision (month) to the end of a range. Where set, the
+    placeholder in the date field must not be rendered as exact. Absent means a full day-level date. date_verified
+    true means the date was confirmed against an identifiable source.
+  - This corpus is a research/authoring artifact. A human or LLM reconciles it into the live EVENTS array.
+  - Levels were assigned by Claude as a first-pass editorial judgment (see new_freedom_outline.md for the Level 1
+    reasoning). All dates are drafted from memory and none are yet source-verified, so verify before treating as
+    settled. No source URLs are included, per the guide's rule against unverifiable citations.
+  - The world_war_i span (1914-07-28 to 1918-11-11) replaces the year-level span that already existed in the live
+    instrument. The United States' own belligerence (April 1917 to November 1918) is under two years and is carried
+    by the us_enters_wwi and armistice point events.
+  - Boundary decisions. The corpus opens the day after the 1912 election so that the Sixteenth Amendment (February 1913)
+    lands here, and closes at the end of 1919. The November 1919 Palmer raids are here and the January 1920 raids belong to
+    Return to Normalcy. The Nineteenth Amendment passes Congress here and is ratified in August 1920. The Eighteenth is
+    ratified here and takes effect in January 1920.
+epoch:
+  id: new_freedom
+  title: The New Freedom
+  start: 19121106
+  end: 19191231
+  thesis: Woodrow Wilson's first term completes the institutional program that Roosevelt improvised, and the Federal
+    Reserve, the income tax, direct election of senators, the Federal Trade Commission, and the Clayton Act give the
+    activist state a permanent legal body. Wilson wins reelection on peace, then leads the country into the European war
+    and uses the new apparatus on a scale nobody had imagined, including a draft, controlled prices and railroads, a
+    propaganda office, and prosecutions that jail dissenters for their speech. The peace he seeks fails in the Senate,
+    the unity the war demanded collapses into strikes, riots, and a Red Scare, and Wilson is incapacitated by a stroke.
+    The institutions survive, but the consent they rested on does not.
+events:
+# ---------------------------------------------------------------- Level 1: span
+- id: world_war_i
+  start: 19140728
+  end: 19181111
+  level: 1
+  kind: war
+  title: World War I
+  description_short: The war that breaks Wilsonian idealism as much as it vindicates it.
+  description_long: The European war begins on July 28, 1914, when Austria-Hungary declares war on Serbia, and ends with
+    the Armistice on November 11, 1918. The United States stays neutral until April 1917 and fights for about nineteen
+    months.
+  why: It is the background condition for most of the epoch and the instrument that turns reform's victory into repudiation.
+  tags:
+  - war
+  - europe
+  - neutrality
+# ---------------------------------------------------------------- Level 1: points
+- id: federal_reserve_act
+  start: 19131223
+  level: 1
+  kind: legislation
+  title: Federal Reserve Act
+  description_short: Congress creates a central banking system of twelve regional banks under a presidentially appointed board.
+  description_long: The act answers the Panic of 1907 and the long fight over who controls money, putting a public board at
+    the center of a banking system that J.P. Morgan had improvised. The reserve banks open for business in November 1914.
+  why: It is the institutional core of the New Freedom, the answer to the Big Stick's unfinished business of accountability for
+    finance.
+  tags:
+  - banking
+  - money
+  - institutions
+- id: lusitania_sinks
+  start: 19150507
+  level: 1
+  kind: war
+  title: Lusitania Sinks
+  description_short: A German submarine sinks the British liner Lusitania, killing 1,198 people including 128 Americans.
+  description_long: Wilson answers with protests, not war, and the German government gives limited pledges. Public opinion
+    turns against Germany, though most Americans still want to stay out.
+  why: It is the moment neutrality stops being a choice the United States fully controls.
+  tags:
+  - submarine
+  - neutrality
+  - germany
+- id: us_enters_wwi
+  start: 19170406
+  level: 1
+  kind: war
+  title: U.S. Enters World War I
+  description_short: Congress declares war on Germany after Wilson asks it to make the world "safe for democracy."
+  description_long: The vote follows Germany's resumption of unrestricted submarine warfare and the Zimmermann Telegram. Fifty
+    members of the House and six senators vote no.
+  why: It makes the activist state a war state, and sets what government may ask of its people.
+  tags:
+  - war
+  - wilson
+  - congress
+- id: espionage_act
+  start: 19170615
+  level: 1
+  kind: legislation
+  title: Espionage Act
+  description_short: Congress criminalizes interference with the war effort, and the law is used against dissenting speech.
+  description_long: Together with the Sedition Act of 1918, the law lets the government prosecute about two thousand people,
+    and shuts down newspapers by denying them mail privileges. Eugene Debs is among those sentenced.
+  why: It is where the foundational question about what government may ask becomes concrete, and the state demands loyalty
+    and prosecutes its absence.
+  tags:
+  - civil-liberties
+  - speech
+  - war
+- id: fourteen_points
+  start: 19180108
+  level: 1
+  kind: speech
+  title: Fourteen Points
+  description_short: Wilson sets out a program for a just peace, including a League of Nations.
+  description_long: In an address to Congress, Wilson names open diplomacy, free seas, self-determination, and an association
+    of nations as war aims. The speech makes him the voice of liberal internationalism worldwide.
+  why: It is the high-water mark of the idealism that the rest of the epoch undoes.
+  tags:
+  - diplomacy
+  - league-of-nations
+  - idealism
+- id: red_summer
+  start: 19190701
+  level: 1
+  kind: violence
+  title: Red Summer
+  description_short: White mobs attack Black communities in more than two dozen cities during the summer of 1919.
+  description_long: The violence runs from spring into autumn, peaking in Washington (July 19), Chicago (July 27), and Elaine,
+    Arkansas (September 30). Black veterans and workers who had supported the war effort fight back, and hundreds are
+    killed. Date is month-level (July 1919).
+  why: It is the failure at home, and shows that the "new freedom" excluded the people who had just fought and worked for the
+    war.
+  tags:
+  - race
+  - violence
+  - postwar
+  date_precision: month
+- id: senate_rejects_versailles
+  start: 19191119
+  level: 1
+  kind: political_event
+  title: Senate Rejects the Treaty of Versailles
+  description_short: The Senate votes down the treaty, with and without Lodge's reservations, and the U.S. never joins the League.
+  description_long: Wilson tells his supporters to vote against the version with Lodge's reservations, and the opponents of the
+    treaty and its supporters combine to defeat both versions. A further attempt in March 1920 also fails.
+  why: It is the failure abroad and the epoch's close, with Wilson's idealism rejected by the institution he had built.
+  tags:
+  - senate
+  - league-of-nations
+  - lodge
+# ---------------------------------------------------------------- Level 2
+- id: sixteenth_amendment_ratified
+  start: 19130203
+  level: 2
+  kind: constitutional_amendment
+  title: Sixteenth Amendment Ratified
+  description_short: The Constitution authorizes a federal income tax.
+  description_long: The thirty-sixth state ratifies, overturning the effect of Pollock (1895). The amendment gives the
+    federal government a revenue source that grows with the economy.
+  why: It supplies the fiscal basis of the permanent activist state and, within four years, the means of financing a war.
+  tags:
+  - income-tax
+  - constitution
+  - taxation
+- id: underwood_simmons_tariff
+  start: 19131003
+  level: 2
+  kind: legislation
+  title: Underwood–Simmons Tariff
+  description_short: Congress cuts tariff rates and enacts the first modern federal income tax.
+  description_long: The law lowers duties by about a quarter and uses a one-percent tax on higher incomes to replace the lost
+    revenue. It is the first major change in the tariff in decades.
+  why: It puts the New Freedom's first plank into law and begins the income tax's career.
+  tags:
+  - tariff
+  - income-tax
+  - congress
+- id: federal_workforce_segregated
+  start: 19130101
+  level: 2
+  kind: policy
+  title: Federal Workplaces Segregated
+  description_short: Wilson's cabinet officers begin segregating Black and white employees in federal offices.
+  description_long: The Post Office, Treasury, and other departments introduce separate work spaces, lunch rooms, and
+    restrooms, ending a half-century of integrated federal service. Black leaders including William Monroe Trotter
+    protest to Wilson in person. Date is year-level (1913).
+  why: It is the clearest early sign of the question's second clause, "whose freedom," and it comes from the administration that
+    coined "New Freedom."
+  tags:
+  - race
+  - civil-service
+  - segregation
+  date_precision: year
+- id: ftc_act
+  start: 19140926
+  level: 2
+  kind: legislation
+  title: Federal Trade Commission Act
+  description_short: Congress creates a commission with authority to investigate and prohibit unfair business practices.
+  description_long: The commission is meant to police monopoly continuously instead of through episodic lawsuits.
+  why: It builds the permanent administrative watchdog the Big Stick's trust-busting lacked.
+  tags:
+  - regulation
+  - antitrust
+  - bureaucracy
+- id: clayton_act
+  start: 19141015
+  level: 2
+  kind: legislation
+  title: Clayton Antitrust Act
+  description_short: Congress lists specific illegal business practices and exempts labor unions from antitrust law.
+  description_long: Samuel Gompers calls the labor provisions labor's "Magna Carta," though courts later read them narrowly.
+  why: It gives antitrust law specific rules and corrects its misuse against unions.
+  tags:
+  - antitrust
+  - labor
+  - congress
+- id: zimmermann_telegram
+  start: 19170301
+  level: 2
+  kind: diplomacy
+  title: Zimmermann Telegram Published
+  description_short: The U.S. press publishes a German proposal to ally with Mexico against the United States.
+  description_long: British intelligence intercepted the telegram, and the Wilson administration released it. It shifts
+    opinion in the Southwest and Midwest, where the war had been least popular.
+  why: It is the final push from neutrality toward war.
+  tags:
+  - germany
+  - mexico
+  - war
+- id: wilson_reelected_1916
+  start: 19161107
+  level: 2
+  kind: election
+  title: Wilson Reelected
+  description_short: Wilson narrowly defeats Charles Evans Hughes on the slogan "He kept us out of war."
+  description_long: The result is not clear until California reports two days later. Wilson wins with about 49 percent, and
+    the 1916 progressive laws (Adamson, Keating–Owen) helped him assemble the coalition.
+  why: It gives Wilson a peace mandate five months before he asks for war.
+  tags:
+  - election
+  - wilson
+  - peace
+- id: selective_service_act
+  start: 19170518
+  level: 2
+  kind: legislation
+  title: Selective Service Act of 1917
+  description_short: Congress authorizes a national draft, and about 24 million men register.
+  description_long: Local civilian boards run the system, unlike the Civil War draft. Millions serve, including hundreds
+    of thousands of Black soldiers in segregated units.
+  why: It is the most direct demand a government can make of citizens, and the epoch's central example of the question.
+  tags:
+  - draft
+  - war
+  - conscription
+- id: war_revenue_act
+  start: 19171003
+  level: 2
+  kind: legislation
+  title: War Revenue Act
+  description_short: Congress raises income taxes sharply to finance the war.
+  description_long: The top rate rises to 67 percent, and the number of Americans paying income tax grows to millions. The
+    income tax becomes the main source of federal revenue.
+  why: It converts the Sixteenth Amendment into the fiscal engine of the modern state.
+  tags:
+  - income-tax
+  - war
+  - finance
+- id: sedition_act
+  start: 19180516
+  level: 2
+  kind: legislation
+  title: Sedition Act
+  description_short: Congress makes it a crime to criticize the government, the flag, or the war effort.
+  description_long: The act extends the Espionage Act to cover "disloyal, profane, scurrilous, or abusive language." It is
+    repealed in 1920.
+  why: It carries wartime control of speech to its furthest point.
+  tags:
+  - civil-liberties
+  - speech
+  - war
+- id: debs_sentenced
+  start: 19180914
+  level: 2
+  kind: legal
+  title: Debs Sentenced to Ten Years
+  description_short: Eugene Debs is sentenced for an antiwar speech in Canton, Ohio.
+  description_long: Debs, a Socialist who won 900,000 votes for president in 1912, is convicted under the Espionage Act. His
+    sentence is commuted in 1921 by Harding.
+  why: It puts a face on the cost of the Espionage Act.
+  tags:
+  - civil-liberties
+  - debs
+  - socialism
+- id: armistice
+  start: 19181111
+  level: 2
+  kind: war
+  title: Armistice
+  description_short: Fighting on the Western Front stops at 11 a.m. on November 11.
+  description_long: About 116,000 Americans died in the war, more than half of them from disease.
+  why: It is the triumph that the epoch's collapse follows within a year.
+  tags:
+  - armistice
+  - war
+  - peace
+- id: palmer_raids_begin
+  start: 19191107
+  level: 2
+  kind: violence
+  title: Palmer Raids Begin
+  description_short: The Justice Department raids radical groups and begins deporting suspected anarchists and communists.
+  description_long: Attorney General A. Mitchell Palmer's raids are timed for the anniversary of the Russian Revolution. A
+    much larger wave follows on January 2, 1920.
+  why: It is the domestic wartime repression carried into peace.
+  tags:
+  - red-scare
+  - deportation
+  - civil-liberties
+- id: birth_of_a_nation
+  start: 19150208
+  level: 2
+  kind: cultural
+  title: The Birth of a Nation
+  description_short: D.W. Griffith's film glorifies the Ku Klux Klan and is screened at the White House.
+  description_long: The film is a cinematic landmark and a vehicle for Lost Cause mythology. The NAACP protests its release,
+    and it helps revive the Klan later in 1915.
+  why: It shows how mainstream the exclusion was inside the era's culture.
+  tags:
+  - race
+  - film
+  - klan
+- id: wilson_stroke
+  start: 19191002
+  level: 2
+  kind: political_event
+  title: Wilson's Stroke
+  description_short: Wilson suffers a stroke after a national tour to promote the treaty and is largely incapacitated.
+  description_long: His wife Edith and his doctor shield his condition from the public and Congress. He does not hold a
+    full cabinet meeting for months.
+  why: It explains why the treaty fight failed, and shows the personal basis of the whole epoch.
+  tags:
+  - wilson
+  - health
+  - treaty
+- id: versailles_signed
+  start: 19190628
+  level: 2
+  kind: treaty
+  title: Treaty of Versailles Signed
+  description_short: Germany signs the peace treaty, which includes the League of Nations Covenant.
+  description_long: The treaty is harsher than Wilson's Fourteen Points had promised. Wilson accepts compromises to
+    secure the League.
+  why: It is the compromised outcome of the idealism, and what the Senate then rejects.
+  tags:
+  - treaty
+  - league-of-nations
+  - germany
+# ---------------------------------------------------------------- Level 3
+- id: wilson_inaugurated
+  start: 19130304
+  level: 3
+  kind: political_event
+  title: Wilson Inaugurated
+  description_short: Woodrow Wilson takes office with a Democratic Congress, the first Democratic president since 1897.
+  description_long: He calls for a "New Freedom" that would free the economy from monopoly's grip.
+  why: It opens the legislative burst that follows.
+  tags:
+  - wilson
+  - inauguration
+  - democrats
+- id: seventeenth_amendment
+  start: 19130408
+  level: 3
+  kind: constitutional_amendment
+  title: Seventeenth Amendment Ratified
+  description_short: The Constitution provides for the direct election of senators.
+  description_long: The amendment ends selection by state legislatures, a long-standing Populist and Progressive demand.
+  why: It fulfils a Populist demand, democratic control over the body the Gilded Age's capital had dominated.
+  tags:
+  - senate
+  - constitution
+  - democracy
+- id: ludlow_massacre
+  start: 19140420
+  level: 3
+  kind: violence
+  title: Ludlow Massacre
+  description_short: The Colorado National Guard attacks a striking miners' tent colony, and about twenty people die, including children.
+  description_long: The miners work for Rockefeller's Colorado Fuel and Iron Company. Wilson sends federal troops to restore
+    order after ten days of fighting.
+  why: It shows that the Gilded Age's labor violence had not ended.
+  tags:
+  - labor
+  - violence
+  - colorado
+- id: veracruz_occupation
+  start: 19140421
+  level: 3
+  kind: foreign_policy
+  title: U.S. Occupies Veracruz
+  description_short: Wilson sends Marines to seize the Mexican port amid the Mexican Revolution.
+  description_long: The intervention follows an incident involving American sailors and kills about 200 Mexicans. American
+    forces withdraw in November.
+  why: It shows that the "New Freedom" president intervened as freely as his predecessors.
+  tags:
+  - mexico
+  - intervention
+  - navy
+- id: panama_canal_opens
+  start: 19140815
+  level: 3
+  kind: infrastructure
+  title: Panama Canal Opens
+  description_short: The first ship passes through the canal, a decade after construction began.
+  description_long: The opening is overshadowed by the outbreak of the European war two weeks earlier.
+  why: It completes the Big Stick's greatest project as the war begins.
+  tags:
+  - panama
+  - canal
+  - infrastructure
+- id: fed_reserve_banks_open
+  start: 19141116
+  level: 3
+  kind: institution
+  title: Federal Reserve Banks Open
+  description_short: The twelve regional banks begin operating.
+  description_long: The system is soon tested by the war's financing needs and expands rapidly.
+  why: It puts the institution into operation.
+  tags:
+  - banking
+  - fed
+  - institutions
+- id: great_migration
+  start: 19160101
+  level: 3
+  kind: migration
+  title: Great Migration Begins
+  description_short: Black Southerners begin moving north in large numbers for industrial jobs.
+  description_long: Wartime labor shortages and cut-off European immigration open the work, and boll weevil damage and
+    violence push people out. About 500,000 move by 1920 and millions in the following decades. Date is year-level (1916).
+  why: It is the epoch's answer to the exclusion, which is leaving. It changes the nation's politics and cities.
+  tags:
+  - migration
+  - race
+  - labor
+  date_precision: year
+- id: adamson_act
+  start: 19160903
+  level: 3
+  kind: legislation
+  title: Adamson Act
+  description_short: Congress mandates an eight-hour day for railroad workers, averting a national strike.
+  description_long: Wilson pushes the law through to avert a rail strike weeks before the election. The Supreme Court
+    upholds it in 1917.
+  why: It is the federal government setting hours and wages for private labor.
+  tags:
+  - labor
+  - railroads
+  - eight-hour-day
+- id: keating_owen_act
+  start: 19160901
+  level: 3
+  kind: legislation
+  title: Keating–Owen Child Labor Act
+  description_short: Congress bans interstate sale of goods made by child labor.
+  description_long: The Supreme Court strikes the law down in Hammer v. Dagenhart (1918), and a constitutional amendment
+    fails to pass the states.
+  why: It shows the limits of the activist state when the courts reject it.
+  tags:
+  - child-labor
+  - supreme-court
+  - regulation
+- id: east_st_louis_riot
+  start: 19170702
+  level: 3
+  kind: violence
+  title: East St. Louis Riot
+  description_short: White mobs kill dozens of Black residents of East St. Louis, Illinois, in one of the worst racial massacres of the era.
+  description_long: The violence follows labor tensions as Black workers arrive from the South to fill war jobs. Estimates
+    of the dead range from forty to over one hundred.
+  why: It is the first great wartime riot and prefigures the Red Summer.
+  tags:
+  - race
+  - violence
+  - labor
+- id: war_industries_board
+  start: 19170728
+  level: 3
+  kind: institution
+  title: War Industries Board
+  description_short: Wilson creates a board to coordinate war production, prices, and priorities.
+  description_long: Bernard Baruch takes charge in 1918, and the board directs much of the economy.
+  why: It is the closest the country comes to a planned economy before the New Deal.
+  tags:
+  - mobilization
+  - economy
+  - baruch
+- id: committee_on_public_information
+  start: 19170413
+  level: 3
+  kind: institution
+  title: Committee on Public Information
+  description_short: Wilson creates a propaganda agency under journalist George Creel.
+  description_long: The committee produces posters, films, and 75,000 volunteer "Four Minute Men" speakers to promote the
+    war.
+  why: It makes shaping opinion a function of government.
+  tags:
+  - propaganda
+  - creel
+  - war
+- id: food_administration
+  start: 19170810
+  level: 3
+  kind: institution
+  title: Food Administration Established
+  description_short: The Lever Act gives Herbert Hoover control of food production and distribution.
+  description_long: Voluntary conservation campaigns, such as "Meatless Mondays," supplement price controls. Hoover's
+    reputation grows.
+  why: It is another instance of the war state running the economy, and sets up Hoover's rise.
+  tags:
+  - food
+  - hoover
+  - mobilization
+- id: railroads_nationalized
+  start: 19171226
+  level: 3
+  kind: policy
+  title: Railroads Nationalized
+  description_short: Wilson places the nation's railroads under federal control for the war.
+  description_long: The U.S. Railroad Administration runs the lines until 1920. The experience shapes later debates about
+    government ownership.
+  why: It is the most dramatic expansion of state power in the economy.
+  tags:
+  - railroads
+  - nationalization
+  - war
+- id: first_aef_in_france
+  start: 19170626
+  level: 3
+  kind: military
+  title: First Troops Reach France
+  description_short: The first units of the American Expeditionary Forces arrive in France under Pershing.
+  description_long: The AEF grows to about two million men in France by the Armistice.
+  why: It shows American military power reaching Europe.
+  tags:
+  - military
+  - pershing
+  - france
+- id: midterm_1918
+  start: 19181105
+  level: 3
+  kind: election
+  title: Republicans Win Congress
+  description_short: Voters reject Wilson's plea to elect Democrats, and Republicans win both houses.
+  description_long: The result gives Henry Cabot Lodge, Wilson's strongest critic, control of the Senate Foreign Relations
+    Committee.
+  why: It sets up the Senate's rejection of the treaty.
+  tags:
+  - election
+  - midterm
+  - lodge
+- id: influenza_peak
+  start: 19181001
+  level: 3
+  kind: disaster
+  title: Influenza Pandemic Peaks
+  description_short: The 1918 flu kills about 195,000 Americans in October alone, the deadliest month.
+  description_long: The pandemic kills an estimated 675,000 Americans over its course. Wartime troop movements spread it,
+    and censorship hides it. Date is month-level (October 1918).
+  why: It is the epoch's other catastrophe, and it was hidden by the war state's control of information.
+  tags:
+  - pandemic
+  - health
+  - war
+  date_precision: month
+- id: eighteenth_amendment_ratified
+  start: 19190116
+  level: 3
+  kind: constitutional_amendment
+  title: Eighteenth Amendment Ratified
+  description_short: Thirty-six states ratify national Prohibition, which takes effect in January 1920.
+  description_long: The amendment, proposed in December 1917, represents a reform movement's victory built on wartime
+    anti-German feeling.
+  why: It is the Progressive impulse to legislate virtue, and an example of what the state may ask of its people.
+  tags:
+  - prohibition
+  - constitution
+  - reform
+- id: seattle_general_strike
+  start: 19190206
+  level: 3
+  kind: strike
+  title: Seattle General Strike
+  description_short: Sixty-five thousand workers stop work in Seattle, the first general strike in a major American city.
+  description_long: The strike lasts five days, and the city's mayor calls out troops. The press calls it a Bolshevik plot.
+  why: It starts the 1919 wave of labor conflict and the Red Scare it provokes.
+  tags:
+  - labor
+  - strike
+  - seattle
+- id: nineteenth_amendment_passes
+  start: 19190604
+  level: 3
+  kind: constitutional_amendment
+  title: Nineteenth Amendment Passes Congress
+  description_short: Congress sends the woman suffrage amendment to the states.
+  description_long: After decades of campaigning and wartime pickets, the Senate approves the amendment. Ratification
+    comes in August 1920.
+  why: It answers who participates, the epoch's first clause, in the affirmative.
+  tags:
+  - suffrage
+  - women
+  - constitution
+- id: chicago_race_riot
+  start: 19190727
+  level: 3
+  kind: violence
+  title: Chicago Race Riot
+  description_short: A week-long riot kills 38 people after a Black teenager drowns for crossing a beach's color line.
+  description_long: It is the worst of the Red Summer's riots, shaped by competition for jobs and housing during the Great
+    Migration.
+  why: It is the Red Summer's central event.
+  tags:
+  - race
+  - violence
+  - chicago
+- id: boston_police_strike
+  start: 19190909
+  level: 3
+  kind: strike
+  title: Boston Police Strike
+  description_short: Boston's police go on strike, and Governor Calvin Coolidge becomes a national figure by breaking it.
+  description_long: Coolidge's line, "There is no right to strike against the public safety by anybody, anywhere, any time,"
+    wins him the vice presidential nomination in 1920.
+  why: It shows how the 1919 conflicts shape the politics of the next epoch.
+  tags:
+  - labor
+  - coolidge
+  - police
+- id: great_steel_strike
+  start: 19190922
+  level: 3
+  kind: strike
+  title: Great Steel Strike
+  description_short: About 350,000 steelworkers strike for an eight-hour day and union recognition.
+  description_long: The companies break the strike by January 1920, using the Red Scare and racial divisions among workers.
+  why: It is the epoch's last great labor defeat, echoing 1892 and 1894.
+  tags:
+  - labor
+  - steel
+  - strike
+- id: wilson_western_tour
+  start: 19190903
+  level: 3
+  kind: political_event
+  title: Wilson's Western Tour
+  description_short: Wilson takes the treaty case to the public in an 8,000-mile tour and collapses on September 25.
+  description_long: He delivers more than thirty speeches in three weeks before health problems force him to cancel and return to
+    Washington. The stroke follows on October 2.
+  why: It is Wilson's last attempt to win the treaty by appealing over the Senate.
+  tags:
+  - wilson
+  - treaty
+  - tour
+# ---------------------------------------------------------------- Level 4
+- id: pujo_committee_report
+  start: 19130228
+  level: 4
+  kind: legal
+  title: Pujo Committee Report
+  description_short: A House committee documents a "money trust" of bankers controlling large parts of American finance.
+  description_long: The report's findings shape the Federal Reserve debate and Louis Brandeis's writing on concentrated
+    finance.
+  why: It is the case for the Fed made public.
+  tags:
+  - banking
+  - money-trust
+  - congress
+- id: armory_show
+  start: 19130217
+  level: 5
+  kind: cultural
+  title: Armory Show
+  description_short: An exhibition in New York introduces European modern art to Americans.
+  description_long: The show scandalizes critics and draws about 87,000 visitors.
+  why: It marks a break in culture that matches the one in politics.
+  tags:
+  - art
+  - culture
+  - new-york
+- id: ford_five_dollar_day
+  start: 19140105
+  level: 4
+  kind: corporate
+  title: Ford's Five-Dollar Day
+  description_short: Henry Ford doubles his workers' wages to five dollars a day.
+  description_long: The move reduces turnover and helps workers become Ford's customers.
+  why: It is a private answer to the labor question, one that anticipates mass consumption.
+  tags:
+  - labor
+  - ford
+  - wages
+- id: smith_lever_act
+  start: 19140508
+  level: 4
+  kind: legislation
+  title: Smith–Lever Act
+  description_short: Congress creates the cooperative agricultural extension service.
+  description_long: Federal funds back county agents who bring scientific farming to rural America.
+  why: It gives the farmers' Populist grievance an institutional answer.
+  tags:
+  - agriculture
+  - education
+  - congress
+- id: mothers_day_proclaimed
+  start: 19140509
+  level: 5
+  kind: political_event
+  title: Mother's Day Proclaimed
+  description_short: Wilson proclaims the second Sunday of May a national Mother's Day.
+  description_long: The proclamation follows a campaign by Anna Jarvis.
+  why: It shows the reach of national ritual into private life.
+  tags:
+  - culture
+  - wilson
+  - holiday
+- id: neutrality_proclaimed
+  start: 19140804
+  level: 4
+  kind: foreign_policy
+  title: Wilson Proclaims Neutrality
+  description_short: Wilson declares the United States neutral and later urges Americans to be "neutral in fact as well as in name."
+  description_long: The policy holds for nearly three years.
+  why: It is the baseline from which entry into the war has to be explained.
+  tags:
+  - neutrality
+  - wilson
+  - war
+- id: harrison_narcotics_act
+  start: 19141217
+  level: 4
+  kind: legislation
+  title: Harrison Narcotics Act
+  description_short: Congress taxes and regulates opiates and cocaine.
+  description_long: The act begins federal drug control, and later interpretations turn it into a prohibition.
+  why: It extends the federal police power into a new field.
+  tags:
+  - drugs
+  - regulation
+  - federal-power
+- id: ford_peace_ship
+  start: 19151204
+  level: 5
+  kind: political_event
+  title: Ford's Peace Ship
+  description_short: Henry Ford sails to Europe with peace activists, hoping to end the war.
+  description_long: The mission is ridiculed and achieves nothing.
+  why: It shows the strength of peace sentiment before 1917.
+  tags:
+  - peace
+  - ford
+  - pacifism
+- id: guinn_v_united_states
+  start: 19150621
+  level: 4
+  kind: court_case
+  title: Guinn v. United States
+  description_short: The Supreme Court strikes down Oklahoma's grandfather clause for voting.
+  description_long: The Court finds the clause's racial purpose violates the Fifteenth Amendment, though states find other
+    devices.
+  why: It is a rare federal check on disfranchisement in the epoch.
+  tags:
+  - voting-rights
+  - supreme-court
+  - race
+- id: haiti_occupation
+  start: 19150728
+  level: 4
+  kind: foreign_policy
+  title: U.S. Occupies Haiti
+  description_short: Marines land in Haiti and begin a nineteen-year occupation.
+  description_long: The U.S. takes control of customs and the military and imposes a new constitution. The occupation ends
+    in 1934.
+  why: It shows the Roosevelt Corollary continuing under Wilson.
+  tags:
+  - haiti
+  - intervention
+  - marines
+- id: wilson_marries_edith
+  start: 19151218
+  level: 5
+  kind: political_event
+  title: Wilson Marries Edith Galt
+  description_short: Wilson, a widower, marries Edith Bolling Galt.
+  description_long: Edith later becomes a gatekeeper to the incapacitated president.
+  why: It sets up the 1919 stroke's strange consequences.
+  tags:
+  - wilson
+  - marriage
+  - first-lady
+- id: pancho_villa_columbus
+  start: 19160309
+  level: 4
+  kind: military
+  title: Villa Raids Columbus, New Mexico
+  description_short: Pancho Villa's forces attack a border town, killing seventeen Americans.
+  description_long: Wilson sends Pershing and about 10,000 troops into Mexico to find Villa, an expedition that fails.
+  why: It is the Mexican Revolution's spillover and the army's rehearsal for Europe.
+  tags:
+  - mexico
+  - pershing
+  - border
+- id: sussex_pledge
+  start: 19160504
+  level: 4
+  kind: diplomacy
+  title: Sussex Pledge
+  description_short: Germany promises to limit submarine attacks on merchant ships after a Channel ferry is hit.
+  description_long: The pledge buys a year of peace until Germany renounces it in January 1917.
+  why: It is the diplomatic holding action that keeps neutrality alive.
+  tags:
+  - germany
+  - submarine
+  - diplomacy
+- id: dominican_occupation
+  start: 19160501
+  level: 4
+  kind: foreign_policy
+  title: U.S. Occupies the Dominican Republic
+  description_short: Marines occupy the country and impose military government for eight years.
+  description_long: The occupation lasts until 1924. Date is month-level (May 1916).
+  why: It continues the Corollary's logic.
+  tags:
+  - dominican-republic
+  - intervention
+  - marines
+  date_precision: month
+- id: brandeis_confirmed
+  start: 19160601
+  level: 4
+  kind: political_event
+  title: Brandeis Confirmed to the Supreme Court
+  description_short: The Senate confirms Louis Brandeis, the first Jewish justice, after a bitter fight.
+  description_long: Brandeis, a leading critic of big business, shaped the New Freedom's antitrust ideas.
+  why: It puts the New Freedom's chief theorist on the Court.
+  tags:
+  - supreme-court
+  - brandeis
+  - antitrust
+- id: national_defense_act
+  start: 19160603
+  level: 4
+  kind: legislation
+  title: National Defense Act of 1916
+  description_short: Congress expands the army and National Guard in the Preparedness campaign.
+  description_long: The act doubles the regular army's authorized size and creates the Reserve Officers' Training Corps.
+  why: It starts military expansion before the war.
+  tags:
+  - military
+  - preparedness
+  - congress
+- id: federal_farm_loan_act
+  start: 19160717
+  level: 4
+  kind: legislation
+  title: Federal Farm Loan Act
+  description_short: Congress creates federal land banks to provide farmers with long-term credit.
+  description_long: The act responds to Populist demands for rural credit.
+  why: It is a Populist plank enacted decades later.
+  tags:
+  - agriculture
+  - credit
+  - populism
+- id: preparedness_day_bombing
+  start: 19160722
+  level: 5
+  kind: violence
+  title: Preparedness Day Bombing
+  description_short: A bomb kills ten people at a Preparedness parade in San Francisco, and labor activists are convicted.
+  description_long: The convictions of Tom Mooney and Warren Billings, later seen as based on perjured testimony, become a
+    cause for the left.
+  why: It shows the fear that grips the home front.
+  tags:
+  - bombing
+  - labor
+  - san-francisco
+- id: black_tom_explosion
+  start: 19160730
+  level: 5
+  kind: violence
+  title: Black Tom Explosion
+  description_short: German saboteurs blow up a munitions depot in New Jersey.
+  description_long: The blast shakes buildings in Manhattan and is attributed to German agents.
+  why: It feeds fear of subversion before the war.
+  tags:
+  - sabotage
+  - germany
+  - new-jersey
+- id: national_park_service
+  start: 19160825
+  level: 4
+  kind: institution
+  title: National Park Service Created
+  description_short: Congress creates a federal agency to manage the national parks.
+  description_long: The agency's first director is Stephen Mather.
+  why: It continues the executive's role in conservation.
+  tags:
+  - conservation
+  - parks
+  - institutions
+- id: sanger_clinic
+  start: 19161016
+  level: 4
+  kind: institution
+  title: Sanger Opens a Birth Control Clinic
+  description_short: Margaret Sanger opens a birth control clinic in Brooklyn and is arrested days later.
+  description_long: The clinic leads to a legal fight over contraception that continues for decades.
+  why: It shows another contest over what the state may regulate.
+  tags:
+  - birth-control
+  - women
+  - sanger
+- id: peace_without_victory
+  start: 19170122
+  level: 4
+  kind: speech
+  title: Peace Without Victory
+  description_short: Wilson calls on the warring powers to accept a "peace without victory."
+  description_long: The speech appeals to the European belligerents and is ignored.
+  why: It is the idealism at its first height, before the war.
+  tags:
+  - wilson
+  - peace
+  - speech
+- id: nwp_pickets
+  start: 19170110
+  level: 3
+  kind: protest
+  title: Suffragists Picket the White House
+  description_short: The National Woman's Party begins silent picketing outside the White House.
+  description_long: The "Silent Sentinels" stay through the war, and many are arrested.
+  why: It pressures a wartime president on the democracy he claims to defend.
+  tags:
+  - suffrage
+  - protest
+  - women
+- id: unrestricted_submarine_warfare
+  start: 19170131
+  level: 4
+  kind: war
+  title: Germany Resumes Unrestricted Submarine Warfare
+  description_short: Germany announces it will sink all ships in the war zone.
+  description_long: The decision ends the Sussex pledge and brings a break in relations with the U.S. three days later.
+  why: It is the proximate cause of the war.
+  tags:
+  - germany
+  - submarine
+  - war
+- id: rankin_votes_no
+  start: 19170406
+  level: 5
+  kind: political_event
+  title: Rankin Votes Against the War
+  description_short: Jeannette Rankin, the first woman in Congress, votes against war on her first week.
+  description_long: She was among fifty House members who voted no.
+  why: It shows the dissent that the Espionage Act later punishes.
+  tags:
+  - women
+  - congress
+  - dissent
+- id: liberty_loan_act
+  start: 19170424
+  level: 4
+  kind: legislation
+  title: First Liberty Loan Act
+  description_short: Congress authorizes bonds to finance the war, sold in public campaigns.
+  description_long: Liberty Loan drives raise about $17 billion with heavy social pressure to buy.
+  why: It mobilizes private savings for the state.
+  tags:
+  - finance
+  - war
+  - bonds
+- id: bisbee_deportation
+  start: 19170712
+  level: 4
+  kind: violence
+  title: Bisbee Deportation
+  description_short: Vigilantes round up about 1,200 striking miners in Arizona and abandon them in the desert.
+  description_long: No one is convicted, and federal officials decline to intervene.
+  why: It is a wartime example of unpunished repression of labor.
+  tags:
+  - labor
+  - vigilantism
+  - arizona
+- id: silent_parade
+  start: 19170728
+  level: 4
+  kind: protest
+  title: Silent Parade
+  description_short: About 10,000 Black New Yorkers march down Fifth Avenue to protest lynching and the East St. Louis riot.
+  description_long: The NAACP organizes the protest, with children and women in white.
+  why: It is the Black response to the violence, in public view.
+  tags:
+  - race
+  - protest
+  - naacp
+- id: houston_riot
+  start: 19170823
+  level: 4
+  kind: violence
+  title: Houston Riot
+  description_short: Black soldiers of the 24th Infantry fight police in Houston, and the army hangs 13 of them after a secret court martial.
+  description_long: Nineteen soldiers are executed in all across three trials.
+  why: It shows how the wartime state treated its Black soldiers.
+  tags:
+  - race
+  - army
+  - texas
+- id: iww_raids
+  start: 19170905
+  level: 4
+  kind: violence
+  title: Federal Raids on the IWW
+  description_short: The Justice Department raids IWW offices nationwide and indicts over a hundred leaders.
+  description_long: The mass trial in Chicago convicts nearly all defendants and destroys the organization.
+  why: It is the Espionage Act's use against labor.
+  tags:
+  - labor
+  - iww
+  - repression
+- id: buchanan_v_warley
+  start: 19171105
+  level: 4
+  kind: court_case
+  title: Buchanan v. Warley
+  description_short: The Supreme Court strikes down a city ordinance requiring residential segregation.
+  description_long: The Court bases its decision on property rights, and cities turn to private covenants instead.
+  why: It is another rare federal check on segregation, with limited effect.
+  tags:
+  - segregation
+  - supreme-court
+  - housing
+- id: russian_revolution
+  start: 19171107
+  level: 5
+  kind: foreign_policy
+  title: Bolshevik Revolution
+  description_short: The Bolsheviks seize power in Russia.
+  description_long: The revolution leads to the Red Scare at home and to American intervention in Russia in 1918.
+  why: It supplies the specter that the Red Scare feeds on.
+  tags:
+  - russia
+  - communism
+  - red-scare
+- id: night_of_terror
+  start: 19171114
+  level: 4
+  kind: violence
+  title: Night of Terror
+  description_short: Guards at the Occoquan workhouse brutalize jailed suffragists.
+  description_long: The mistreatment of the picketers generates sympathy and support for the cause.
+  why: It turns public opinion toward suffrage.
+  tags:
+  - suffrage
+  - women
+  - prison
+- id: eighteenth_amendment_proposed
+  start: 19171218
+  level: 4
+  kind: constitutional_amendment
+  title: Eighteenth Amendment Proposed
+  description_short: Congress sends the states a constitutional ban on alcoholic beverages.
+  description_long: The war's anti-German feeling helps the cause.
+  why: It starts the path to national Prohibition.
+  tags:
+  - prohibition
+  - constitution
+  - congress
+- id: daylight_saving
+  start: 19180319
+  level: 5
+  kind: policy
+  title: Daylight Saving Time Adopted
+  description_short: Congress adopts daylight saving time as a wartime energy measure.
+  description_long: The policy is repealed in 1919 over farmers' objections and returns in the Second World War.
+  why: It is a small example of the wartime state reordering daily life.
+  tags:
+  - time
+  - war
+  - energy
+- id: cantigny
+  start: 19180528
+  level: 4
+  kind: military
+  title: Battle of Cantigny
+  description_short: The 1st Infantry Division captures Cantigny, the first American offensive of the war.
+  description_long: The attack shows the American army can fight at scale.
+  why: It is the war's first American victory.
+  tags:
+  - military
+  - france
+  - aef
+- id: overman_act
+  start: 19180520
+  level: 5
+  kind: legislation
+  title: Overman Act
+  description_short: Congress lets Wilson reorganize the executive branch for the war.
+  description_long: The act gives the president wide power over agencies.
+  why: It shows how far the war expanded executive authority.
+  tags:
+  - executive
+  - war
+  - bureaucracy
+- id: belleau_wood
+  start: 19180606
+  level: 4
+  kind: military
+  title: Battle of Belleau Wood
+  description_short: U.S. Marines fight a costly battle that helps halt a German advance toward Paris.
+  description_long: The battle lasts through June and is a source of Marine Corps pride.
+  why: It shows American forces' impact on the war.
+  tags:
+  - marines
+  - france
+  - military
+- id: schenck_v_united_states
+  start: 19190303
+  level: 4
+  kind: court_case
+  title: Schenck v. United States
+  description_short: The Supreme Court upholds the conviction of an antiwar leafleteer and announces the "clear and present danger" test.
+  description_long: Oliver Wendell Holmes writes that free speech does not protect shouting fire in a crowded theater. The
+    test is later turned in the direction of greater protection.
+  why: It is the Court's constitutional ratification of the Espionage Act.
+  tags:
+  - free-speech
+  - supreme-court
+  - espionage
+- id: debs_v_united_states
+  start: 19190310
+  level: 4
+  kind: court_case
+  title: Debs v. United States
+  description_short: The Supreme Court upholds Debs's conviction under the Espionage Act.
+  description_long: Debs goes to prison and runs for president in 1920 from his cell.
+  why: It confirms the repression's constitutionality.
+  tags:
+  - civil-liberties
+  - debs
+  - supreme-court
+- id: american_legion_founded
+  start: 19190301
+  level: 4
+  kind: organization
+  title: American Legion Founded
+  description_short: Veterans meeting in Paris form the American Legion.
+  description_long: The organization becomes a major force in postwar politics, often hostile to radicals. Date is
+    month-level (March 1919).
+  why: It gives the war's veterans a political voice, and the Red Scare an ally.
+  tags:
+  - veterans
+  - politics
+  - organization
+  date_precision: month
+- id: paris_peace_conference
+  start: 19190118
+  level: 4
+  kind: diplomacy
+  title: Paris Peace Conference Opens
+  description_short: Wilson becomes the first sitting president to visit Europe for the peace talks.
+  description_long: He stays for months, leaving domestic matters to subordinates.
+  why: It is the stage on which his idealism meets European power politics.
+  tags:
+  - peace
+  - wilson
+  - diplomacy
+- id: anarchist_bombings_1919
+  start: 19190602
+  level: 4
+  kind: violence
+  title: Anarchist Bombings
+  description_short: Bombs explode in eight cities, including outside Attorney General Palmer's home in Washington.
+  description_long: The attacks follow a wave of mail bombs in April, and are blamed on Italian anarchists.
+  why: It triggers the Palmer Raids.
+  tags:
+  - bombing
+  - anarchism
+  - red-scare
+- id: communist_parties_founded
+  start: 19190901
+  level: 4
+  kind: organization
+  title: Communist Parties Founded
+  description_short: Two rival Communist parties form in Chicago.
+  description_long: Their founding feeds the Red Scare, though both are small. Date is month-level (September 1919).
+  why: It supplies the real organization behind the Red Scare's fear.
+  tags:
+  - communism
+  - red-scare
+  - politics
+  date_precision: month
+- id: elaine_massacre
+  start: 19190930
+  level: 4
+  kind: violence
+  title: Elaine Massacre
+  description_short: White mobs and soldiers kill an estimated hundreds of Black farmers organizing a union in Arkansas.
+  description_long: Twelve Black men are sentenced to death, though the Supreme Court later orders new trials.
+  why: It is the Red Summer's worst rural massacre.
+  tags:
+  - race
+  - violence
+  - arkansas
+- id: abrams_v_united_states
+  start: 19191110
+  level: 4
+  kind: court_case
+  title: Abrams v. United States
+  description_short: The Supreme Court upholds convictions for leaflets criticizing the Russian intervention, with Holmes and Brandeis dissenting.
+  description_long: Holmes's dissent frames the "marketplace of ideas."
+  why: It is the beginning of the Court's turn toward free speech.
+  tags:
+  - free-speech
+  - supreme-court
+  - dissent
+- id: volstead_act
+  start: 19191028
+  level: 4
+  kind: legislation
+  title: Volstead Act
+  description_short: Congress passes enforcement law for Prohibition over Wilson's veto.
+  description_long: The act defines intoxicating liquor and sets penalties. Prohibition takes effect in January 1920.
+  why: It is the enforcement law for the era's last reform.
+  tags:
+  - prohibition
+  - congress
+  - enforcement
+# ---------------------------------------------------------------- Gap fill (thin years 1913, 1915, 1918)
+- id: department_of_labor
+  start: 19130304
+  level: 4
+  kind: institution
+  title: Department of Labor Created
+  description_short: Congress splits the Department of Commerce and Labor and creates a separate cabinet-level Labor Department.
+  description_long: Taft signs the bill on his last day in office, and William B. Wilson, a former miners' union leader, becomes
+    the first secretary.
+  why: It gives labor a seat in the cabinet, the institutional answer to the Gilded Age's lack of one.
+  tags:
+  - labor
+  - cabinet
+  - institutions
+- id: wilson_addresses_congress
+  start: 19130408
+  level: 5
+  kind: political_event
+  title: Wilson Addresses Congress in Person
+  description_short: Wilson revives the practice of delivering messages to Congress in person, first abandoned in 1801.
+  description_long: He delivers his tariff message on April 8 and goes on to use the practice to press for legislation.
+  why: It shows the personal presidency in the New Freedom's first year.
+  tags:
+  - wilson
+  - presidency
+  - congress
+- id: leo_frank_lynching
+  start: 19150817
+  level: 4
+  kind: violence
+  title: Leo Frank Lynched
+  description_short: A mob in Georgia lynches Leo Frank, a Jewish factory manager convicted of murder on flimsy evidence.
+  description_long: The case revives the Ku Klux Klan and leads to the founding of the Anti-Defamation League in 1913's
+    aftermath. Georgia pardons Frank in 1986.
+  why: It shows how mob violence and prejudice continued beside the era's reforms.
+  tags:
+  - antisemitism
+  - lynching
+  - georgia
+- id: booker_washington_dies
+  start: 19151114
+  level: 4
+  kind: political_event
+  title: Booker T. Washington Dies
+  description_short: The most prominent Black leader of the previous generation dies at Tuskegee.
+  description_long: His death clears the way for the more confrontational leadership of Du Bois and the NAACP.
+  why: It marks the passing of the accommodationist era the Atlanta Compromise began.
+  tags:
+  - race
+  - washington
+  - leadership
+- id: klan_revived
+  start: 19151125
+  level: 4
+  kind: organization
+  title: Ku Klux Klan Revived
+  description_short: William J. Simmons burns a cross on Stone Mountain, Georgia, and refounds the Klan.
+  description_long: The new Klan, inspired by The Birth of a Nation, targets Catholics, Jews, and immigrants as well as
+    Black Americans and grows to millions of members in the early 1920s.
+  why: It is the organized form of the exclusion the film glorified.
+  tags:
+  - klan
+  - race
+  - nativism
+- id: preparedness_campaign
+  start: 19151104
+  level: 5
+  kind: political_event
+  title: Wilson Announces a Preparedness Program
+  description_short: Wilson asks for a large expansion of the army and navy.
+  description_long: The plan sets in motion the National Defense Act of 1916 and a major naval building program.
+  why: It starts the shift of a neutral president toward readiness for war.
+  tags:
+  - military
+  - preparedness
+  - wilson
+- id: hammer_v_dagenhart
+  start: 19180603
+  level: 4
+  kind: court_case
+  title: Hammer v. Dagenhart
+  description_short: The Supreme Court strikes down the Keating–Owen Child Labor Act, 5–4.
+  description_long: The Court holds that Congress cannot use the commerce power to bar goods made by children from
+    interstate trade. The decision stands until 1941.
+  why: It shows the courts again setting the limits on the activist state.
+  tags:
+  - child-labor
+  - supreme-court
+  - commerce-clause
+- id: debs_canton_speech
+  start: 19180616
+  level: 4
+  kind: speech
+  title: Debs's Canton Speech
+  description_short: Eugene Debs delivers an antiwar speech in Canton, Ohio, that leads to his arrest.
+  description_long: Debs tells his audience that he is a "citizen of the world" and that the wars of rulers are fought
+    by workers. He is arrested two weeks later.
+  why: It is the speech the state prosecuted.
+  tags:
+  - debs
+  - antiwar
+  - speech
+- id: st_mihiel_offensive
+  start: 19180912
+  level: 4
+  kind: military
+  title: St. Mihiel Offensive
+  description_short: The American First Army under Pershing wins its first independent offensive.
+  description_long: The attack clears a salient southeast of Verdun and sets up the Meuse–Argonne offensive two weeks later.
+  why: It shows the AEF fighting as an American army.
+  tags:
+  - military
+  - pershing
+  - france
+- id: archangel_intervention
+  start: 19180901
+  level: 4
+  kind: military
+  title: U.S. Troops Intervene in Russia
+  description_short: American soldiers land at Archangel and Vladivostok as part of an Allied intervention in the Russian civil war.
+  description_long: About 13,000 U.S. troops take part, and they stay into 1920. Date is month-level (September 1918).
+  why: It extends the war's reach and feeds Soviet suspicion and American fear of the Bolsheviks.
+  tags:
+  - russia
+  - intervention
+  - military
+  date_precision: month
