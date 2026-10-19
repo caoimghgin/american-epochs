@@ -1,0 +1,2864 @@
+schema:
+  name: American Epochs Event Corpus
+  version: 2
+  date_format: YYYYMMDD
+  level_definition:
+    1: The epoch's "crown of the mountain" — always visible, at every zoom, from the very widest view. One beat per structural
+      hinge in the epoch's own arc, not a list of "the important stuff." Target 5-8 entries regardless of how large or eventful
+      the epoch was; see curation_guidance below. Automatically revealed first as the viewer zooms in from full history —
+      never a manual toggle.
+    2: Major events, automatically revealed at the first closer zoom past Level 1.
+    3: Supporting events explaining mechanisms, shifts, and consequences.
+    4: Contextual events — political, military, social, institutional texture.
+    5: Fine-grained events for the closest inspection.
+  curation_guidance:
+  - Level 1 is the hardest and most important editorial call in the corpus. The viewer never chooses to see it — it is what
+    everyone sees whether they zoom in or not, so it carries the whole epoch's argument on its own.
+  - Pick one entry per point where the epoch's own arc genuinely turns, not one per famous name or battle. A working test
+    - "does removing this entry break the causal chain from the epoch's start to its end?" If not, it belongs at Level 2 or
+    below, however well-known it is.
+  - Target 5-8 Level 1 point events specifically. This is deliberately independent of the epoch's total event count or length
+    in years. Reconstruction intentionally carries nine point events because the Panic of 1873 and United States v. Cruikshank
+    describe distinct political and judicial turns and the editor has approved a slightly crowded crown.
+  - Span (duration) entries at Level 1 do not count against the point-event target because the live instrument never tier-filters
+    spans; they provide scene-setting context.
+  - Levels 2-5 have much more room to breathe. Disagreement there is a rounding error, not a structural problem. Spend the
+    real editorial effort on Level 1.
+  notes:
+  - A missing end date indicates a point event.
+  - Dates represent the most defensible public date for display, not necessarily every stage of a legal or political process.
+  - date_precision (year or month) applies to start, and end_precision (month) to the end of a range. Where set, the placeholder
+    in the date field must not be rendered as exact. Absent means a full day-level date. date_verified true means the date
+    was confirmed against an identifiable source.
+  - This corpus is a research/authoring artifact. A human or LLM reconciles it into the live EVENTS array.
+  - 'AS-OF DATE: this corpus is written as of October 19, 2026, two weeks before the midterms. The epoch is open, and the
+    last stretch is provisional: events from the final twelve months have no settled significance, and none of them reaches
+    Level 1 unless it is structural beyond argument. The instrument should draw the final stretch as provisional.'
+  - Levels were assigned by Claude as a first-pass editorial judgment (see reckoning_outline.md). Dates for 2016 to 2024 are
+    drafted from memory and are not source-verified. Dates for 2025 and 2026 were researched on the web on the as-of date
+    and carry a source URL. date_verified is true only where a non-Wikipedia page was read for the date; otherwise the date
+    rests on Wikipedia or search summaries and should be re-checked against primary sources (congress.gov roll calls, supremecourt.gov,
+    whitehouse.gov) before it is treated as settled. Figures to check first include the CBO estimates for the 2025 tax law,
+    the Iran War casualty counts, the boat-strike totals, and the DHS shutdown lengths.
+  - The Level 1 carries eleven point events (well above the usual five to eight) plus the COVID-19 span. The editor directed
+    that the 2024 election, the DOGE dismantling of agencies, and the tariffs be Level 1 alongside the immunity decision and
+    the January 6 pardons, and that unusual events receive higher legibility. Five of the eleven fall between July 2024 and
+    April 2025, so the crown is dense at the right edge. Candidates to demote if labels collide are the 2020 emergency (the
+    COVID span carries it), Kabul, and the immunity decision.
+  - 'The COVID-19 span (2020-03-13 to 2023-05-11) replaces the live year-level span. The Afghanistan War span (2001-10-07
+    to 2021-08-30) is owned by the End of History corpus, and this corpus carries its end events: the Doha agreement (Level
+    2), the fall of Kabul (Level 1), and the last flight (Level 2).'
+  - The Iran War (2026-02-28) is Level 2, not Level 1, under the rule that nothing under twelve months old reaches Level 1
+    unless structural beyond argument. It is the first candidate for promotion once the war has an outcome. The Maduro capture,
+    the 2026 shutdown, and the 2026 Supreme Court decisions are likewise Level 2 or 3.
+  - 'The rule-of-law and preferred-treatment thread continues from the Interregnum: the immunity decision and the January
+    6 pardons (Level 1), the Arpaio pardon, the Stone commutation, and the Hunter Biden pardon (Level 3), and the Comey and
+    James indictments (Level 3). The immigration thread is carried by the travel ban, family separation, Remain in Mexico,
+    Title 42, the 2023 and 2024 border events, and the second term''s deportation program.'
+  - 'The corpus opens on 2016-01-01 and has no close. It ends at the as-of date. The handoff is the open question the framework
+    cannot answer: whether the period that began in 2016 resolves into a new settlement or deepens into the kind of crisis
+    that ends the cycle.'
+epoch:
+  id: reckoning
+  title: The Reckoning
+  start: 20160101
+  end: 20261019
+  thesis: 'The symptom is given the office, and the debts the order deferred come due. A candidate who won by repudiating
+    the consensus takes power in 2016. A pandemic tests the state, the killing of George Floyd reopens the racial question,
+    a mob enters the Capitol, the empire''s longest war ends in collapse, and the Supreme Court ends a fifty-year settlement
+    on abortion. Then the executive tests the institutions: immunity from prosecution, mass pardons, the dismantling of agencies,
+    tariffs by emergency decree, troops in cities, and a war begun without a vote. The courts and Congress respond unevenly.
+    The epoch has not resolved into a new order, and it is still open.'
+events:
+- id: trump_elected
+  start: 20161108
+  level: 1
+  kind: election
+  title: Trump Elected
+  description_short: Donald Trump wins the Electoral College, 304 to 227, while losing the popular vote by about 2.9 million.
+  description_long: A candidate with no prior office defeats Hillary Clinton and sixteen Republican rivals, against both parties'
+    establishments and nearly every poll. He carries Michigan, Wisconsin, and Pennsylvania by a combined margin of about 78,000
+    votes. The Senate had refused to act on Obama's Supreme Court nominee, so the winner also inherits the vacant seat.
+  why: 'The Interregnum''s question is answered: the symptom is given the office.'
+  tags:
+  - election
+  - trump
+  - populism
+  - electoral-college
+- id: covid_emergency
+  start: 20200313
+  level: 1
+  kind: public-health
+  title: COVID-19 National Emergency Declared
+  description_short: Trump declares a national emergency as the pandemic closes schools, businesses, and borders.
+  description_long: The World Health Organization had called the outbreak a pandemic two days earlier. Unemployment rose from
+    3.5 percent in February to 14.7 percent in April, the highest rate since records began in 1948. More than a million Americans
+    died of COVID-19 over the next three years, and the burden fell unevenly by age, occupation, and race.
+  why: A government hollowed out by decades of defunding is tested, and the loss falls on particular people.
+  tags:
+  - pandemic
+  - covid
+  - state-capacity
+  - public-health
+- id: covid_pandemic
+  start: 20200313
+  end: 20230511
+  level: 1
+  kind: public-health
+  title: COVID-19
+  description_short: The national emergency lasts from March 13, 2020 to May 11, 2023, the end of the federal public health
+    emergency.
+  description_long: The span covers lockdowns, the CARES Act and later relief, the first vaccines in December 2020, the Delta
+    and Omicron waves, and the mandates that followed. The federal public health emergency ended on May 11, 2023, the same
+    day as the Title 42 border rule.
+  why: The state's capacity is tested for three years, and the period names who bears the cost.
+  tags:
+  - pandemic
+  - covid
+  - public-health
+- id: george_floyd
+  start: 20200525
+  level: 1
+  kind: race
+  title: George Floyd Killed
+  description_short: A Minneapolis police officer kneels on George Floyd's neck for more than nine minutes, and a bystander's
+    video spreads worldwide.
+  description_long: Derek Chauvin is convicted of murder on April 20, 2021 and sentenced to 22 and a half years. The protests
+    that followed in the summer of 2020 reached every state, and a New York Times analysis estimated that between 15 and 26
+    million Americans took part, which would make them among the largest movements in the country's history.
+  why: The racial order's oldest debt reopens in public, in the middle of a pandemic.
+  tags:
+  - race
+  - policing
+  - protest
+  - minneapolis
+- id: january_6
+  start: 20210106
+  level: 1
+  kind: politics
+  title: January 6
+  description_short: A crowd that Trump addressed at the Ellipse enters the Capitol while Congress counts the electoral votes,
+    delaying certification by hours.
+  description_long: About 140 police officers were injured, and the House impeached Trump a week later, 232 to 197, with ten
+    Republicans in favor. The Senate voted 57 to 43 to convict, ten short of two-thirds. Congress certified Biden's victory
+    at about 3:40 a.m. on January 7. Roughly 1,500 people were eventually charged.
+  why: The transfer of power is tested by a mob, and the legitimacy deficit becomes physical.
+  tags:
+  - election
+  - capitol
+  - legitimacy
+  - rule-of-law
+- id: fall_of_kabul
+  start: 20210815
+  level: 1
+  kind: war
+  title: Fall of Kabul
+  description_short: The Taliban enter Kabul as President Ashraf Ghani flees, ending the twenty-year American war in Afghanistan
+    within days.
+  description_long: Biden had announced the withdrawal on April 14, following the February 2020 agreement Trump's administration
+    signed in Doha. The Afghan army collapsed faster than American intelligence had predicted. More than 120,000 people were
+    flown out in two weeks. The war killed about 2,400 American service members and cost roughly $2 trillion.
+  why: The empire's longest war ends in collapse, and the soldiers and Afghans who carried it are left to carry the end.
+  tags:
+  - afghanistan
+  - taliban
+  - withdrawal
+  - empire
+- id: dobbs
+  start: 20220624
+  level: 1
+  kind: court
+  title: Dobbs v. Jackson Women's Health Organization
+  description_short: The Supreme Court overrules Roe v. Wade and Planned Parenthood v. Casey, ending the constitutional right
+    to abortion.
+  description_long: A draft opinion had leaked on May 2. The decision was 6 to 3 on the Mississippi law and 5 to 4 on overruling
+    Roe. Within months more than a dozen states enforced bans on nearly all abortions, and voters in Kansas, Ohio, and other
+    states then sided with abortion rights at the ballot box.
+  why: The Court ends its longest-standing settlement, and the cost falls on the women of particular states.
+  tags:
+  - court
+  - abortion
+  - roe
+  - federalism
+- id: trump_v_united_states
+  start: 20240701
+  level: 1
+  kind: court
+  title: Trump v. United States
+  description_short: The Supreme Court holds, 6 to 3, that a president has absolute immunity for core constitutional acts
+    and presumptive immunity for official acts.
+  description_long: The case arose from the federal election-interference indictment. The majority also barred prosecutors
+    from using evidence of official acts to prove unofficial ones. Justice Sotomayor's dissent warned that the president had
+    become "a king above the law." The trial court could not proceed before the election.
+  why: The Court decides that the executive is not equally subject to the law it enforces.
+  tags:
+  - court
+  - executive-power
+  - rule-of-law
+  - immunity
+- id: trump_reelected
+  start: 20241105
+  level: 1
+  kind: election
+  title: Trump Re-elected
+  description_short: Trump defeats Kamala Harris, 312 to 226 electoral votes, and wins the popular vote by about 2.3 million,
+    becoming the first president since Grover Cleveland to win non-consecutive terms.
+  description_long: He won every swing state. He is a convicted felon and twice impeached, and wins the popular vote after
+    losing it in 2016 and 2020. The federal cases against him are dismissed after the election because of the Justice Department's
+    policy against prosecuting a sitting president.
+  why: The electorate returns the vehicle to office, after the institutions that might have judged him declined to.
+  tags:
+  - election
+  - trump
+  - legitimacy
+  - rule-of-law
+- id: january_6_pardons
+  start: 20250120
+  level: 1
+  kind: executive-power
+  title: The January 6 Pardons
+  description_short: On his first day back in office, Trump pardons about 1,500 people convicted or charged in the January
+    6 attack and commutes the sentences of 14 others.
+  description_long: The proclamation pardons everyone convicted of offenses related to the Capitol attack, directs the dismissal
+    of pending cases, and commutes 14 named sentences, including those of Oath Keepers and Proud Boys leaders convicted of
+    seditious conspiracy, to time served. The proclamation gives no count, and the Justice Department had charged about 1,583
+    people. Officers injured that day were among the victims.
+  why: The president forgives the people who attacked the transfer of power, on the day he completes it.
+  tags:
+  - pardon
+  - january-6
+  - executive-power
+  - preferred-treatment
+  - rule-of-law
+  date_verified: true
+  source: https://www.whitehouse.gov/presidential-actions/2025/01/granting-pardons-and-commutation-of-sentences-for-certain-offenses-relating-to-the-events-at-or-near-the-united-states-capitol-on-january-6-2021/
+- id: doge
+  start: 20250207
+  level: 1
+  kind: executive-power
+  title: DOGE Takes the Government Apart
+  description_short: The Department of Government Efficiency, led by Elon Musk, gains access to Treasury payment systems and
+    begins dismantling USAID and other agencies, and the courts begin to set limits.
+  description_long: An executive order on January 20 renamed the U.S. Digital Service the U.S. DOGE Service. It was not a
+    new agency, and it was given a temporary organization set to end on July 4, 2026. On February 7, a federal judge limited
+    its access at Treasury, and another blocked the placing of USAID employees on leave. About 317,000 federal employees left
+    in 2025, according to the Office of Personnel Management, most of them voluntarily, and USAID was shut down and merged
+    into the State Department on July 1.
+  why: The executive dismantles agencies that Congress created and funded, and the budget power is tested without a statute.
+  tags:
+  - doge
+  - executive-power
+  - administrative-state
+  - impoundment
+  - separation-of-powers
+  date_verified: true
+  source: https://www.whitehouse.gov/presidential-actions/2025/01/establishing-and-implementing-the-presidents-department-of-government-efficiency/
+- id: liberation_day_tariffs
+  start: 20250402
+  level: 1
+  kind: economics
+  title: '"Liberation Day" Tariffs'
+  description_short: Trump declares a national emergency over trade deficits and imposes a 10 percent tariff on nearly all
+    imports and higher rates on dozens of countries.
+  description_long: The order cited the International Emergency Economic Powers Act, which had never before been used to set
+    tariffs. Yale's Budget Lab estimated the average effective tariff rate at 22.5 percent, the highest since 1909. The country-specific
+    rates were suspended for ninety days on April 9, except China's, which rose to 125 percent before a May 12 truce in Geneva.
+    The Supreme Court held on February 20, 2026 that the statute did not authorize the tariffs.
+  why: A power that belongs to Congress is exercised by emergency declaration, and the effect reaches every household.
+  tags:
+  - tariffs
+  - executive-power
+  - trade
+  - separation-of-powers
+  - deindustrialization
+  date_verified: true
+  source: https://www.whitehouse.gov/presidential-actions/2025/04/regulating-imports-with-a-reciprocal-tariff-to-rectify-trade-practices-that-contribute-to-large-and-persistent-annual-united-states-goods-trade-deficits/
+- id: scalia_garland
+  start: 20160213
+  level: 2
+  kind: court
+  title: Scalia Dies, Garland Blocked
+  description_short: Justice Antonin Scalia dies, and the Senate refuses to consider Obama's nominee, Merrick Garland.
+  description_long: McConnell announces within hours that the next president should fill the seat. Obama nominates Garland
+    on March 16, and the Senate holds no hearing or vote. The nomination lapses on January 3, 2017. Trump fills the seat with
+    Neil Gorsuch on April 7, 2017, and later appoints two more justices.
+  why: The Court becomes the prize, and the blockade is the first move in the project that ends in Dobbs.
+  tags:
+  - court
+  - senate
+  - scalia
+  - garland
+- id: travel_ban
+  start: 20170127
+  level: 2
+  kind: immigration
+  title: The Travel Ban
+  description_short: Trump signs an executive order suspending entry from seven Muslim-majority countries and suspending the
+    refugee program.
+  description_long: The order is issued without notice to agencies and sends travelers into airports around the country, drawing
+    protests and lawsuits. Courts block it, and the administration issues a revised order in March and a third version in
+    September. The Supreme Court upholds the third version, 5 to 4, in Trump v. Hawaii on June 26, 2018.
+  why: Immigration becomes the executive's first test of what the courts will allow.
+  tags:
+  - immigration
+  - executive-power
+  - muslim-ban
+  - courts
+- id: charlottesville
+  start: 20170812
+  level: 2
+  kind: race
+  title: Charlottesville
+  description_short: White nationalists march in Charlottesville, Virginia, and one of them drives a car into a crowd, killing
+    Heather Heyer.
+  description_long: Hundreds marched with torches the night before, chanting "Jews will not replace us." On August 15, Trump
+    said there were "very fine people on both sides." The driver, James Alex Fields Jr., was convicted of murder and hate
+    crimes.
+  why: The racial order's open defenders step into the daylight, and the president declines to separate himself from them.
+  tags:
+  - race
+  - white-nationalism
+  - charlottesville
+  - trump
+- id: tcja
+  start: 20171222
+  level: 2
+  kind: legislation
+  title: Tax Cuts and Jobs Act
+  description_short: Trump signs the Tax Cuts and Jobs Act, cutting the corporate rate from 35 to 21 percent.
+  description_long: The Senate passed it 51 to 48 and the House 224 to 201, with no Democratic votes. Congress's Joint Committee
+    on Taxation estimated it would add about $1.5 trillion to deficits over a decade. The individual cuts were written to
+    expire after 2025, and the corporate cut was permanent.
+  why: 'The first term''s one major law repeats the 1981 bargain: the largest benefits go to capital, and the bill arrives
+    as debt.'
+  tags:
+  - tax
+  - legislation
+  - preferred-treatment
+  - deficit
+- id: family_separation
+  start: 20180506
+  level: 2
+  kind: immigration
+  title: Family Separation
+  description_short: The administration's "zero tolerance" policy prosecutes every illegal border crossing, and thousands
+    of children are separated from their parents.
+  description_long: Attorney General Sessions announced the policy on April 6, and separations began in earnest in early May.
+    More than 2,000 children were taken from parents in about six weeks. Trump signed an order ending the practice on June
+    20 after public outrage, and a federal judge ordered the families reunited. The government was later unable to reunite
+    hundreds of them quickly.
+  why: The immigration system's cost is imposed on children who are the least able to carry it.
+  tags:
+  - immigration
+  - border
+  - children
+  - zero-tolerance
+- id: mueller_report
+  start: 20190418
+  level: 2
+  kind: politics
+  title: The Mueller Report
+  description_short: The Justice Department releases the special counsel's report on Russian interference and the president's
+    conduct.
+  description_long: Robert Mueller found that Russia interfered in the 2016 election in a "sweeping and systematic" way, did
+    not find sufficient evidence to charge a conspiracy with the campaign, and declined to reach a conclusion on obstruction
+    of justice, writing that the report "does not exonerate" the president. Attorney General Barr had released a summary on
+    March 24 that said the evidence was not sufficient to establish obstruction.
+  why: The first test of whether the president can be held to the law ends without a conclusion.
+  tags:
+  - rule-of-law
+  - russia
+  - special-counsel
+  - obstruction
+- id: first_impeachment
+  start: 20191218
+  level: 2
+  kind: politics
+  title: First Impeachment
+  description_short: The House impeaches Trump for abuse of power and obstruction of Congress over his pressure on Ukraine,
+    and the Senate acquits him.
+  description_long: The House votes 230 to 197 on abuse of power and 229 to 198 on obstruction, with no Republican support.
+    The charges arise from a July 25 call in which he asked Ukraine's president to investigate Joe Biden while military aid
+    was withheld. The Senate acquits on February 5, 2020, 52 to 48 and 53 to 47. Mitt Romney is the only senator to vote against
+    his own party's president.
+  why: The constitutional remedy for an executive is tried and fails along party lines.
+  tags:
+  - impeachment
+  - ukraine
+  - executive-power
+  - rule-of-law
+- id: doha_agreement
+  start: 20200229
+  level: 2
+  kind: war
+  title: The Doha Agreement
+  description_short: The United States and the Taliban sign an agreement in Doha setting conditions for the withdrawal of
+    American troops from Afghanistan.
+  description_long: The Afghan government was not a party. The United States agreed to withdraw all forces within fourteen
+    months, and the Taliban promised to prevent attacks from Afghan soil and to negotiate with Kabul. Biden later said the
+    agreement left him few choices, and set the deadline first for September 11 and then for August 31, 2021.
+  why: The end of the war is negotiated with the enemy and without the ally.
+  tags:
+  - afghanistan
+  - taliban
+  - withdrawal
+  - diplomacy
+- id: cares_act
+  start: 20200327
+  level: 2
+  kind: legislation
+  title: CARES Act
+  description_short: Trump signs the $2.2 trillion Coronavirus Aid, Relief, and Economic Security Act, the largest rescue
+    in American history.
+  description_long: The Senate passed it 96 to 0 and the House by voice vote. It provided one-time payments of up to $1,200,
+    a $600 weekly unemployment supplement, and $349 billion in forgivable loans for small businesses. Later rounds of relief
+    followed in December 2020 and March 2021.
+  why: In the one case where the state moves at scale, the money reaches households before it reaches finance.
+  tags:
+  - pandemic
+  - relief
+  - legislation
+  - covid
+- id: barrett_confirmed
+  start: 20201026
+  level: 2
+  kind: court
+  title: Barrett Confirmed
+  description_short: The Senate confirms Amy Coney Barrett, 52 to 48, eight days before the 2020 election.
+  description_long: Justice Ruth Bader Ginsburg had died on September 18. In 2016 the Senate majority had refused to consider
+    a nominee eight months before the election. Barrett's confirmation gave the Court a six-to-three conservative majority.
+  why: The blockade's logic is reversed when it serves the other side, and the Court's majority is secured.
+  tags:
+  - court
+  - senate
+  - barrett
+  - ginsburg
+- id: election_2020
+  start: 20201103
+  level: 2
+  kind: election
+  title: The 2020 Election
+  description_short: Joe Biden defeats Trump, 306 to 232 electoral votes, with about 81 million votes to Trump's 74 million.
+  description_long: The networks called the race on November 7. Trump and his allies filed more than sixty lawsuits challenging
+    the result, and nearly all were dismissed, including a Texas suit the Supreme Court rejected on December 11. The Electoral
+    College met on December 14. Trump has continued to claim the election was stolen.
+  why: The incumbent refuses to concede, and the legitimacy of the count becomes a partisan fact.
+  tags:
+  - election
+  - biden
+  - legitimacy
+  - stop-the-steal
+- id: last_flight_kabul
+  start: 20210830
+  level: 2
+  kind: war
+  title: The Last Flight From Kabul
+  description_short: The last American military plane leaves Kabul, ending the war on the day before the withdrawal deadline.
+  description_long: Thirteen American service members and about 170 Afghans were killed in the bombing at Abbey Gate on August
+    26. Evacuations continued until the last day, and thousands of Americans' Afghan allies were left behind. The war, begun
+    on October 7, 2001, ended after nearly twenty years.
+  why: The Afghanistan span closes where it opened, in the hands of the Taliban.
+  tags:
+  - afghanistan
+  - withdrawal
+  - evacuation
+  - empire
+- id: ukraine_invasion
+  start: 20220224
+  level: 2
+  kind: war
+  title: Russia Invades Ukraine
+  description_short: Russia launches a full-scale invasion of Ukraine, the largest land war in Europe since 1945.
+  description_long: The United States and its allies responded with sanctions and arms. Congress appropriated about $175 billion
+    in aid across several bills through 2024, before the flow stalled in a fight over a supplemental bill that was passed
+    in April 2024.
+  why: The empire's overextension is tested in Europe within six months of leaving Afghanistan.
+  tags:
+  - ukraine
+  - russia
+  - war
+  - nato
+- id: inflation_peak
+  start: 20220613
+  level: 2
+  kind: economics
+  title: Inflation Peaks
+  description_short: Consumer prices rise 9.1 percent over twelve months, the largest increase in forty years.
+  description_long: The Labor Department reported the June figure on July 13. Inflation had been below 2 percent before the
+    pandemic and began to rise in 2021 as demand recovered and supply chains broke. The Federal Reserve raised its rate eleven
+    times between March 2022 and July 2023, from near zero to 5.25 to 5.5 percent.
+  why: A problem the order believed it had solved returns, and the price is paid by the households with the least slack.
+  tags:
+  - inflation
+  - economy
+  - fed
+  - cost-of-living
+- id: trump_indicted
+  start: 20230330
+  level: 2
+  kind: politics
+  title: Trump Indicted
+  description_short: A New York grand jury indicts Trump, the first criminal indictment of a former president.
+  description_long: 'The Manhattan district attorney charged him with 34 felony counts of falsifying business records over
+    hush-money payments in 2016. Three more indictments followed in 2023: federal charges over classified documents (June
+    8, 37 counts) and over the 2020 election (August 1, four counts), and a Georgia racketeering case (August 14, 41 counts
+    against 19 defendants).'
+  why: The legal system takes up the question of whether a former president answers to it, and the question becomes part of
+    the campaign.
+  tags:
+  - indictment
+  - rule-of-law
+  - trump
+  - courts
+- id: october_7
+  start: 20231007
+  level: 2
+  kind: war
+  title: October 7
+  description_short: Hamas attacks southern Israel, killing about 1,200 people and taking about 250 hostages, and the Gaza
+    war begins.
+  description_long: Israel's response killed tens of thousands of Gazans according to the territory's health ministry. The
+    United States supplied Israel with arms and diplomatic cover, and protests over the war spread to American campuses in
+    the spring of 2024.
+  why: A foreign war enters American politics at the center of a divided coalition and an election year.
+  tags:
+  - gaza
+  - israel
+  - hamas
+  - war
+- id: trump_convicted
+  start: 20240530
+  level: 2
+  kind: politics
+  title: Trump Convicted
+  description_short: A Manhattan jury convicts Trump on all 34 counts of falsifying business records, the first conviction
+    of a former president.
+  description_long: The jury deliberated for about eleven hours. Trump was sentenced on January 10, 2025, to an unconditional
+    discharge, which carried no jail or fine, ten days before his second inauguration. His other three cases were dismissed
+    or stalled.
+  why: A felony conviction does not bar a candidate, and the verdict becomes a campaign fact.
+  tags:
+  - trump
+  - conviction
+  - rule-of-law
+  - election
+- id: butler_shooting
+  start: 20240713
+  level: 2
+  kind: politics
+  title: Butler, Pennsylvania
+  description_short: A gunman fires at Trump at a rally in Butler, Pennsylvania, wounding his ear and killing a spectator,
+    Corey Comperatore.
+  description_long: The shooter, Thomas Crooks, was killed by a Secret Service sniper. The director of the Secret Service
+    resigned. Trump's raised fist and the photograph that followed were the image of the convention that week.
+  why: The most dramatic event of the campaign is a near-assassination, and it hardens the vehicle's story.
+  tags:
+  - trump
+  - assassination
+  - election
+  - secret-service
+- id: biden_withdraws
+  start: 20240721
+  level: 2
+  kind: election
+  title: Biden Withdraws
+  description_short: Biden ends his campaign and endorses Vice President Kamala Harris, less than four months before the election.
+  description_long: His June 27 debate performance had prompted weeks of pressure from Democratic leaders and donors. Harris
+    became the nominee without a primary.
+  why: The party's own legitimacy question resolves late, and too late to renew the argument for itself.
+  tags:
+  - election
+  - biden
+  - harris
+  - age
+- id: alien_enemies_act
+  start: 20250315
+  level: 2
+  kind: immigration
+  title: The Alien Enemies Act
+  description_short: Trump invokes the 1798 Alien Enemies Act against alleged Tren de Aragua members, and flights carrying
+    deportees leave for El Salvador despite a judge's order.
+  description_long: The proclamation was dated March 14 and posted on March 15. Judge James Boasberg issued a restraining
+    order and orally ordered the planes to return, but the flights continued to El Salvador, where deportees were held in
+    a mega-prison. On April 16 he found probable cause for criminal contempt, and an appeals court vacated that finding 2
+    to 1 on August 8. Kilmar Abrego Garcia, deported by mistake, became the test case. The Supreme Court held on April 10
+    that the government must facilitate his return.
+  why: The first test of whether the executive will obey a court order in its deportation program.
+  tags:
+  - immigration
+  - executive-power
+  - courts
+  - alien-enemies-act
+  - rule-of-law
+  date_verified: true
+  source: https://www.whitehouse.gov/presidential-actions/2025/03/invocation-of-the-alien-enemies-act-regarding-the-invasion-of-the-united-states-by-tren-de-aragua/
+- id: one_big_beautiful_bill
+  start: 20250704
+  level: 2
+  kind: legislation
+  title: One Big Beautiful Bill Act
+  description_short: Trump signs the tax and spending law that extends the 2017 tax cuts and cuts Medicaid and food assistance.
+  description_long: The Senate passed it 51 to 50 on July 1, with Vice President Vance breaking the tie, and the House agreed
+    218 to 214 on July 3. The Congressional Budget Office estimated it would add $3.4 trillion to deficits over ten years
+    and leave about 10 million more people uninsured by 2034. It also provided funds for immigration enforcement.
+  why: The first-term tax bargain is made permanent, and the cost falls on the programs and people it cuts.
+  tags:
+  - legislation
+  - tax
+  - medicaid
+  - deficit
+  - preferred-treatment
+  source: https://aha.org/news/headline/2025-07-21-cbo-projects-obbba-increase-uninsured-10-million-federal-deficit-34-trillion
+- id: dc_takeover
+  start: 20250811
+  level: 2
+  kind: executive-power
+  title: Washington Takeover
+  description_short: Trump federalizes the District of Columbia police and sends National Guard troops into the capital.
+  description_long: He invoked a provision of the Home Rule Act to take control of the Metropolitan Police Department for
+    thirty days, and deployed about 2,000 troops. Deployments followed in Memphis, Portland, and Chicago. On December 23,
+    the Supreme Court declined to lift an order blocking the Illinois deployment, writing that the government had not identified
+    a source of authority allowing the military to execute the laws there.
+  why: The military enters American cities under presidential order, and the courts set the first limit.
+  tags:
+  - executive-power
+  - national-guard
+  - military
+  - federalism
+  source: https://en.wikipedia.org/wiki/2025-2026_deployment_of_federal_forces_in_the_United_States
+- id: shutdown_ends_2025
+  start: 20251112
+  level: 2
+  kind: politics
+  title: The 43-Day Shutdown Ends
+  description_short: The longest full government shutdown in American history ends after 43 days, when the House passes a
+    funding bill, 222 to 209.
+  description_long: It began on October 1, when Congress failed to pass appropriations. The Senate had passed the bill 60
+    to 40 on November 10. The bill funded the government through January 30, 2026, and carried full-year appropriations for
+    three agencies.
+  why: The power of the purse becomes a standoff, and the executive's refusal to spend becomes part of the argument.
+  tags:
+  - shutdown
+  - congress
+  - appropriations
+  - executive-power
+  source: https://en.wikipedia.org/wiki/2025_United_States_government_shutdown
+- id: maduro_captured
+  start: 20260103
+  level: 2
+  kind: war
+  title: Maduro Captured
+  description_short: American forces capture Venezuelan president Nicolas Maduro in a raid on Caracas and fly him to New York
+    to face drug charges.
+  description_long: The operation followed a military buildup in the Caribbean since August and a blockade of sanctioned oil
+    tankers. Maduro was arraigned on January 5 in Manhattan federal court on charges including narco-terrorism conspiracy
+    and pleaded not guilty. Congress had not authorized the operation.
+  why: The executive removes a foreign head of state by force, and the legal basis is a criminal indictment.
+  tags:
+  - venezuela
+  - war-powers
+  - executive-power
+  - latin-america
+  date_verified: true
+  source: https://www.cbsnews.com/live-updates/venezuela-trump-maduro-charges/
+- id: minneapolis_pretti
+  start: 20260124
+  level: 2
+  kind: race
+  title: Minneapolis
+  description_short: Federal agents shoot and kill Alex Pretti, a Minneapolis nurse, seventeen days after another federal
+    agent killed Renee Good.
+  description_long: Both were U.S. citizens, shot during Operation Metro Surge, an immigration enforcement operation the Department
+    of Homeland Security expanded in January. Minnesota held a general strike on January 23 and another on January 30. The
+    operation ended on February 12. The killing set off the fight over Homeland Security funding.
+  why: The immigration thread and the policing thread meet, and a federal operation produces the Floyd-style test.
+  tags:
+  - immigration
+  - policing
+  - minneapolis
+  - ice
+  source: https://en.wikipedia.org/wiki/Operation_Metro_Surge
+- id: ieepa_ruling
+  start: 20260220
+  level: 2
+  kind: court
+  title: Learning Resources v. Trump
+  description_short: The Supreme Court holds, 6 to 3, that the emergency law the administration invoked does not authorize
+    tariffs.
+  description_long: Chief Justice Roberts wrote the opinion. Justice Kavanaugh dissented, joined by Thomas and Alito. More
+    than $130 billion in tariffs had been collected, and the Court set no mechanism for refunds. Trump signed a 10 percent
+    global tariff under a different statute the same day.
+  why: The separation of powers is tested on the tariff question, and the Court holds the line on one authority.
+  tags:
+  - court
+  - tariffs
+  - separation-of-powers
+  - executive-power
+  date_verified: true
+  source: https://www.jonesday.com/en/insights/2026/02/united-states-supreme-court-invalidates-ieepa-tariffs
+- id: iran_war
+  start: 20260228
+  level: 2
+  kind: war
+  title: The Iran War
+  description_short: The United States and Israel strike Iran, and Supreme Leader Ali Khamenei is killed in the opening attacks.
+  description_long: Congress had not authorized the war. Iran closed the Strait of Hormuz, and Brent crude rose from about
+    $61 to $118 by the end of March. A ceasefire began on April 7 and 8, and the Islamabad Memorandum set a negotiating period
+    on June 17, but the ceasefire collapsed on July 8. The Pentagon counts 21 American dead and 865 wounded as of mid-October.
+    No ceasefire was in force on October 19.
+  why: The empire's overextension arrives again, in the Gulf, without a vote.
+  tags:
+  - iran
+  - war
+  - war-powers
+  - oil
+  source: https://en.wikipedia.org/wiki/2026_Iran_war
+- id: callais
+  start: 20260429
+  level: 2
+  kind: court
+  title: Louisiana v. Callais
+  description_short: The Supreme Court holds, 6 to 3, that Louisiana's second majority-Black congressional district was an
+    unconstitutional racial gerrymander.
+  description_long: Justice Alito wrote the opinion, and Justice Kagan dissented. The Voting Rights Act's Section 2 was not
+    struck down, but liability now requires something close to a showing of intentional discrimination. States redrew congressional
+    maps for the midterms.
+  why: The Voting Rights Act, weakened in Shelby County, loses much of its remaining effect, before an election.
+  tags:
+  - court
+  - voting-rights
+  - redistricting
+  - race
+  date_verified: true
+  source: https://www.scotusblog.com/2026/04/in-major-voting-rights-act-case-supreme-court-strikes-down-redistricting-map-challenged-as-racia/
+- id: slaughter
+  start: 20260629
+  level: 2
+  kind: court
+  title: Trump v. Slaughter
+  description_short: The Supreme Court overrules Humphrey's Executor, 6 to 3, and holds that the president may remove members
+    of the Federal Trade Commission at will.
+  description_long: Chief Justice Roberts wrote the opinion. The 1935 precedent had protected independent agencies from presidential
+    removal for ninety years. On the same day, in Trump v. Cook, the Court refused 5 to 4 to let Trump remove Federal Reserve
+    Governor Lisa Cook for now.
+  why: The independent agency ends as a constitutional category, and the Federal Reserve is carved out.
+  tags:
+  - court
+  - executive-power
+  - independent-agencies
+  - removal-power
+  date_verified: true
+  source: https://www.scotusblog.com/2026/06/the-final-four-cases/
+- id: birthright_ruling
+  start: 20260630
+  level: 2
+  kind: court
+  title: Trump v. Barbara
+  description_short: The Supreme Court holds, 6 to 3, that the executive order ending birthright citizenship violates the
+    Fourteenth Amendment.
+  description_long: Chief Justice Roberts wrote the opinion. Trump had signed the order on his first day in office in 2025.
+    Justice Thomas dissented, joined by Gorsuch.
+  why: The Court holds against the executive on the clearest constitutional text in the second term's immigration program.
+  tags:
+  - court
+  - immigration
+  - citizenship
+  - 14th-amendment
+  date_verified: true
+  source: https://www.cbsnews.com/news/supreme-court-birthright-citizenship-trump-decision/
+- id: comey_fired
+  start: 20170509
+  level: 3
+  kind: politics
+  title: Comey Fired
+  description_short: Trump fires FBI Director James Comey, who was leading an investigation into Russian interference.
+  description_long: Trump told NBC News two days later that he had the Russia investigation in mind. Deputy Attorney General
+    Rod Rosenstein appointed Robert Mueller as special counsel on May 17.
+  why: The investigation into the president becomes the president's concern, and the special counsel follows.
+  tags:
+  - rule-of-law
+  - fbi
+  - russia
+  - special-counsel
+- id: arpaio_pardon
+  start: 20170825
+  level: 3
+  kind: politics
+  title: Arpaio Pardoned
+  description_short: Trump pardons former Maricopa County sheriff Joe Arpaio before sentencing for criminal contempt of court.
+  description_long: Arpaio had been convicted of defying a federal judge's order to stop racial profiling in immigration patrols.
+    It was Trump's first pardon.
+  why: The pardon power is used for an ally in the immigration fight, and the rule it forgives is a court order.
+  tags:
+  - pardon
+  - immigration
+  - executive-power
+  - preferred-treatment
+- id: las_vegas_shooting
+  start: 20171001
+  level: 3
+  kind: violence
+  title: Las Vegas Shooting
+  description_short: A gunman opens fire on a concert from a Las Vegas hotel, killing 60 people, the deadliest mass shooting
+    in modern American history.
+  description_long: Congress did not pass new gun legislation. The Trump administration banned bump stocks by regulation in
+    December 2018, a rule the Supreme Court struck down in 2024.
+  why: A mass killing at the scale of a battle produces no new law.
+  tags:
+  - guns
+  - mass-shooting
+  - las-vegas
+  - congress
+- id: metoo
+  start: 20171015
+  level: 3
+  kind: society
+  title: '#MeToo'
+  description_short: After the New York Times and The New Yorker report on Harvey Weinstein, a social media hashtag spreads
+    accusations of sexual harassment and assault across industries.
+  description_long: The reports ran on October 5 and 10, and the hashtag went viral on October 15. Within months, powerful
+    men in media, politics, and entertainment lost their positions, and Weinstein was convicted in 2020.
+  why: The order's tolerance for powerful men's behavior ends faster than its law could have ended it.
+  tags:
+  - metoo
+  - gender
+  - harassment
+  - power
+- id: parkland_shooting
+  start: 20180214
+  level: 3
+  kind: violence
+  title: Parkland
+  description_short: A gunman kills 17 people at Marjory Stoneman Douglas High School in Parkland, Florida.
+  description_long: The survivors organized the March for Our Lives, which drew hundreds of thousands to Washington on March
+    24. Florida raised its age limit for rifle purchases, and Congress passed no major law.
+  why: Teenagers lead the gun argument, and the law still does not move.
+  tags:
+  - guns
+  - mass-shooting
+  - schools
+  - activism
+- id: china_tariffs
+  start: 20180322
+  level: 3
+  kind: economics
+  title: China Tariffs
+  description_short: Trump signs a memorandum imposing tariffs on Chinese goods, opening the first major trade war since the
+    1930s.
+  description_long: The administration had imposed tariffs on steel and aluminum on March 8. By 2019 tariffs covered most
+    imports from China, and China retaliated against American farm goods. The Biden administration kept most of them in place.
+  why: The order's central bargain, free trade with China, is repudiated by an American president, and neither party restores
+    it.
+  tags:
+  - tariffs
+  - china
+  - trade
+  - deindustrialization
+- id: iran_deal_withdrawal
+  start: 20180508
+  level: 3
+  kind: diplomacy
+  title: Withdrawal From the Iran Deal
+  description_short: Trump withdraws the United States from the 2015 nuclear agreement with Iran and reimposes sanctions.
+  description_long: The other signatories, Britain, France, Germany, Russia, China, and the European Union, remained in the
+    agreement. Iran began exceeding its limits on enrichment in 2019. The Biden administration did not rejoin.
+  why: A signature achievement of the previous order is undone by executive action, and nothing replaces it.
+  tags:
+  - iran
+  - nuclear
+  - diplomacy
+  - executive-power
+- id: kavanaugh_confirmed
+  start: 20181006
+  level: 3
+  kind: court
+  title: Kavanaugh Confirmed
+  description_short: The Senate confirms Brett Kavanaugh, 50 to 48, after Christine Blasey Ford testifies that he assaulted
+    her in high school.
+  description_long: Kavanaugh denied the accusation. The FBI conducted a limited supplemental investigation at the Senate's
+    request. He succeeded Anthony Kennedy, the Court's swing vote, which moved the Court to the right.
+  why: The Court's majority is built in public, with the confirmation fight as the cost.
+  tags:
+  - court
+  - senate
+  - kavanaugh
+  - me-too
+- id: midterms_2018
+  start: 20181106
+  level: 3
+  kind: election
+  title: The 2018 Midterms
+  description_short: Democrats gain 40 seats and take the House, the largest Democratic gain since Watergate.
+  description_long: Republicans gained two seats in the Senate. Turnout was the highest for a midterm in a century, and the
+    House's new Democratic majority opened the investigations and the impeachment that followed.
+  why: The electorate reaches for the check the Constitution provides, and the check is partisan.
+  tags:
+  - election
+  - midterms
+  - house
+  - democrats
+- id: shutdown_2018
+  start: 20190125
+  level: 3
+  kind: politics
+  title: The Longest Shutdown
+  description_short: The 35-day partial government shutdown ends without funding for Trump's border wall.
+  description_long: The shutdown began on December 22, 2018, after Trump refused to sign a spending bill without $5.7 billion
+    for the wall. About 800,000 federal workers went unpaid. On February 15, Trump declared a national emergency to redirect
+    military funds to the wall.
+  why: The executive turns a funding refusal into an emergency, and Congress's power of the purse is bypassed.
+  tags:
+  - shutdown
+  - border-wall
+  - executive-power
+  - congress
+- id: remain_in_mexico
+  start: 20190129
+  level: 3
+  kind: immigration
+  title: Remain in Mexico
+  description_short: The administration begins sending asylum seekers back to Mexico to wait for their hearings in American
+    immigration courts.
+  description_long: The program, formally the Migrant Protection Protocols, returned about 70,000 people to Mexican border
+    cities, where many faced violence. Biden suspended it on his first day in office. The Supreme Court ruled in 2022 that
+    he could end it, after a Texas court ordered it restored.
+  why: The cost of immigration enforcement is exported to the people least able to carry it, in another country.
+  tags:
+  - immigration
+  - asylum
+  - border
+  - mexico
+- id: el_paso_shooting
+  start: 20190803
+  level: 3
+  kind: violence
+  title: El Paso
+  description_short: A gunman kills 23 people at a Walmart in El Paso, Texas, in an attack aimed at Mexican immigrants.
+  description_long: The shooter posted a manifesto describing a Hispanic "invasion" of Texas before the attack, language that
+    also appeared in political speech.
+  why: The immigration argument produces its own violence.
+  tags:
+  - immigration
+  - violence
+  - white-nationalism
+  - el-paso
+- id: title_42
+  start: 20200320
+  level: 3
+  kind: immigration
+  title: Title 42
+  description_short: The CDC invokes a public health law to turn back migrants at the border, suspending asylum processing.
+  description_long: The order cited the pandemic and allowed immigration officials to expel migrants without a hearing. The
+    Biden administration kept it, and it was used to expel migrants more than two million times before it ended on May 11,
+    2023.
+  why: The pandemic gives the border a legal tool that the immigration laws had not.
+  tags:
+  - immigration
+  - border
+  - covid
+  - asylum
+- id: dreamers_ruling
+  start: 20200618
+  level: 3
+  kind: court
+  title: DHS v. Regents
+  description_short: The Supreme Court holds, 5 to 4, that the administration's attempt to end DACA was arbitrary and capricious.
+  description_long: The decision rested on the manner of the rescission, not its legality. DACA protected about 650,000 people
+    brought to the United States as children. Later courts have ruled on the program's legality, and Congress has not passed
+    a law.
+  why: A generation of immigrants lives on a program that depends on an executive order and a court ruling.
+  tags:
+  - immigration
+  - daca
+  - court
+  - dreamers
+- id: stone_commutation
+  start: 20200710
+  level: 3
+  kind: politics
+  title: Stone's Sentence Commuted
+  description_short: Trump commutes the prison sentence of Roger Stone, days before he was to report, for crimes arising from
+    the Russia investigation.
+  description_long: Stone had been convicted of lying to Congress, witness tampering, and obstruction. Trump pardoned him
+    on December 23, along with Paul Manafort, and pardoned Michael Flynn on November 25.
+  why: The pardon power is used to undo the work of the investigation that implicated the president's circle.
+  tags:
+  - pardon
+  - rule-of-law
+  - russia
+  - preferred-treatment
+- id: vaccines_begin
+  start: 20201214
+  level: 3
+  kind: public-health
+  title: First COVID-19 Vaccinations
+  description_short: The first American vaccinations begin, eleven months after the first reported case.
+  description_long: The FDA had authorized the Pfizer-BioNTech vaccine on December 11 and Moderna's on December 18. By the
+    end of 2022, over 80 percent of Americans had received at least one dose, though uptake was uneven by region and party.
+  why: The state achieves its greatest feat in the pandemic, and the country divides over whether to accept it.
+  tags:
+  - covid
+  - vaccine
+  - public-health
+  - science
+- id: georgia_runoffs
+  start: 20210105
+  level: 3
+  kind: election
+  title: Georgia Runoffs
+  description_short: Democrats Raphael Warnock and Jon Ossoff win Georgia's Senate runoffs, giving Democrats control of a
+    50-50 Senate.
+  description_long: Warnock became Georgia's first Black senator. The result gave Biden a governing majority for two years,
+    on the eve of January 6.
+  why: The 2020 count ends in the Democrats' favor, a day before the Capitol is entered.
+  tags:
+  - election
+  - georgia
+  - senate
+  - democrats
+- id: biden_inaugurated
+  start: 20210120
+  level: 3
+  kind: election
+  title: Biden Inaugurated
+  description_short: Joe Biden is sworn in as the 46th president, with Kamala Harris the first woman, first Black woman, and
+    first South Asian American vice president.
+  description_long: Trump did not attend. About 25,000 National Guard troops secured the Capitol, two weeks after the riot.
+    Biden signed seventeen executive orders on his first day, including a halt to construction of the border wall.
+  why: The transfer of power takes place under armed guard.
+  tags:
+  - election
+  - biden
+  - harris
+  - inauguration
+- id: american_rescue_plan
+  start: 20210311
+  level: 3
+  kind: legislation
+  title: American Rescue Plan
+  description_short: Biden signs the $1.9 trillion American Rescue Plan, passed on party lines.
+  description_long: It included $1,400 payments, an expanded child tax credit, and aid to states. Some economists later argued
+    it contributed to the 2021 and 2022 inflation, and others argued the effect was small.
+  why: The state spends at the scale of the pandemic's damage, and the bill for it arrives as prices.
+  tags:
+  - pandemic
+  - relief
+  - legislation
+  - inflation
+- id: chauvin_convicted
+  start: 20210420
+  level: 3
+  kind: race
+  title: Chauvin Convicted
+  description_short: A Minneapolis jury convicts Derek Chauvin of the murder of George Floyd.
+  description_long: He was found guilty of second-degree murder, third-degree murder, and manslaughter, and sentenced to 22
+    and a half years. Congress did not pass the George Floyd Justice in Policing Act.
+  why: One officer is held to account, and the law governing policing does not change.
+  tags:
+  - race
+  - policing
+  - courts
+  - minneapolis
+- id: infrastructure_law
+  start: 20211115
+  level: 3
+  kind: legislation
+  title: Infrastructure Investment and Jobs Act
+  description_short: Biden signs a $1.2 trillion bipartisan infrastructure law for roads, bridges, broadband, and water.
+  description_long: The Senate passed it 69 to 30 and the House 228 to 206. It was the largest federal infrastructure investment
+    in decades, but the progressive Build Back Better bill that Democrats had linked to it died in the Senate.
+  why: A late attempt to repair the physical state passes with bipartisan votes, and the larger program does not.
+  tags:
+  - infrastructure
+  - legislation
+  - biden
+  - bipartisan
+- id: overdose_100k
+  start: 20211117
+  level: 3
+  kind: public-health
+  title: 100,000 Overdose Deaths
+  description_short: The CDC reports that more than 100,000 Americans died of drug overdoses in a twelve-month period, a record.
+  description_long: The 12 months ending in April 2021 had 100,306 deaths, driven by illicit fentanyl. The number peaked above
+    110,000 in the twelve months ending in the summer of 2023 and then fell sharply.
+  why: The drug debt arrives in a number, and the deaths are concentrated among those with the least protection.
+  tags:
+  - drugs
+  - fentanyl
+  - overdose
+  - public-health
+- id: roe_leak
+  start: 20220502
+  level: 3
+  kind: court
+  title: The Dobbs Draft Leaks
+  description_short: Politico publishes a leaked draft of the Supreme Court's opinion overruling Roe v. Wade.
+  description_long: The leak was the first of its kind for a Supreme Court opinion. Chief Justice Roberts ordered an investigation
+    that did not identify the source. Protests began outside the justices' homes, and an armed man was arrested near Justice
+    Kavanaugh's home in June.
+  why: The Court's deliberations are exposed before the decision, and the institution's standing is damaged by its leak.
+  tags:
+  - court
+  - abortion
+  - leak
+  - legitimacy
+- id: uvalde_shooting
+  start: 20220524
+  level: 3
+  kind: violence
+  title: Uvalde
+  description_short: A gunman kills 19 children and two teachers at Robb Elementary School in Uvalde, Texas.
+  description_long: Police waited more than an hour before confronting the shooter, according to investigations. Congress
+    passed the Bipartisan Safer Communities Act on June 25, the first major federal gun law in nearly three decades.
+  why: A massacre of children produces the first federal gun law in a generation, and the law is modest.
+  tags:
+  - guns
+  - schools
+  - mass-shooting
+  - uvalde
+- id: bruen
+  start: 20220623
+  level: 3
+  kind: court
+  title: New York State Rifle & Pistol Association v. Bruen
+  description_short: The Supreme Court strikes down a New York law restricting concealed carry, 6 to 3, and sets a new test
+    for gun regulation based on history and tradition.
+  description_long: The decision came a day before Dobbs and a day before the Senate passed the gun bill. It invalidated gun
+    laws in several states and prompted lower courts to reconsider others.
+  why: The Court's method of reading history sets a rule for guns, and it is applied to abortion the next day.
+  tags:
+  - court
+  - guns
+  - second-amendment
+  - originalism
+- id: mar_a_lago_search
+  start: 20220808
+  level: 3
+  kind: politics
+  title: Mar-a-Lago Search
+  description_short: FBI agents search Trump's Florida home and recover about 100 documents with classified markings.
+  description_long: The National Archives had recovered 15 boxes of material from the property in January. The search warrant
+    was approved by a federal magistrate judge. The search led to the June 2023 indictment.
+  why: A president's handling of classified material becomes a prosecution.
+  tags:
+  - trump
+  - classified-documents
+  - rule-of-law
+  - fbi
+- id: inflation_reduction_act
+  start: 20220816
+  level: 3
+  kind: legislation
+  title: Inflation Reduction Act
+  description_short: Biden signs the Inflation Reduction Act, the largest federal climate investment in American history.
+  description_long: The law passed the Senate 51 to 50 on Harris's tiebreaking vote. It authorized about $370 billion for
+    clean energy, capped Medicare drug costs, and was projected to be paid for by a corporate minimum tax. The CHIPS and Science
+    Act, signed a week earlier, provided $52 billion for semiconductor manufacturing.
+  why: The state returns to industrial policy after forty years, with the aim of rebuilding what the order had sent abroad.
+  tags:
+  - climate
+  - industrial-policy
+  - legislation
+  - deindustrialization
+- id: martha_vineyard_flights
+  start: 20220914
+  level: 3
+  kind: immigration
+  title: Martha's Vineyard Flights
+  description_short: Florida Governor Ron DeSantis flies about fifty migrants from Texas to Martha's Vineyard, Massachusetts.
+  description_long: Texas Governor Greg Abbott had begun busing migrants to Washington, D.C. in April and later sent them
+    to New York, Chicago, and other Democratic cities. Over two years the state sent more than 100,000 people. Migration was
+    becoming a burden for cities that had not carried it.
+  why: The immigration debt is redistributed to the places that had argued for open borders.
+  tags:
+  - immigration
+  - federalism
+  - border
+  - sanctuary
+- id: chatgpt
+  start: 20221130
+  level: 3
+  kind: technology
+  title: ChatGPT
+  description_short: OpenAI releases ChatGPT, which reaches 100 million users in two months.
+  description_long: The release set off a race among technology companies to build and deploy large language models, and in
+    2023 a debate over regulation and jobs. Congress passed no major AI law, and Biden signed an executive order on AI in
+    October 2023.
+  why: A new technology arrives in a political system that has no settled way of governing it.
+  tags:
+  - ai
+  - technology
+  - labor
+  - regulation
+- id: silicon_valley_bank
+  start: 20230310
+  level: 3
+  kind: economics
+  title: Silicon Valley Bank Fails
+  description_short: Silicon Valley Bank collapses, one of the largest bank failures in American history, followed by Signature
+    Bank and First Republic.
+  description_long: Regulators guaranteed all deposits, including those above the $250,000 insurance limit, on March 12. The
+    failures followed the Fed's rate increases, which had reduced the value of the banks' bond holdings.
+  why: The Fed's attempt to fight inflation breaks a bank, and the government again protects the depositors who are large.
+  tags:
+  - finance
+  - banking
+  - fed
+  - bailout
+- id: end_of_title_42
+  start: 20230511
+  level: 3
+  kind: immigration
+  title: The Emergencies End
+  description_short: The federal COVID-19 public health emergency ends, and Title 42 expires with it.
+  description_long: The border rule had been used to expel migrants more than two million times. The Biden administration
+    replaced it with new asylum restrictions and a program to process applications from outside the country.
+  why: The pandemic's legal exceptions are withdrawn, and the border returns to the question it began with.
+  tags:
+  - covid
+  - immigration
+  - border
+  - title-42
+- id: sffa_harvard
+  start: 20230629
+  level: 3
+  kind: court
+  title: Students for Fair Admissions v. Harvard
+  description_short: The Supreme Court holds, 6 to 3, that race-conscious college admissions programs violate the Constitution.
+  description_long: The majority held that Harvard and the University of North Carolina violated the Equal Protection Clause.
+    Justice Sotomayor wrote in dissent that the decision "cements a superficial rule of colorblindness."
+  why: The Court ends the era's chief remedy for the racial order's debts.
+  tags:
+  - court
+  - race
+  - affirmative-action
+  - education
+- id: student_loans_struck
+  start: 20230630
+  level: 3
+  kind: court
+  title: Biden v. Nebraska
+  description_short: The Supreme Court strikes down Biden's plan to cancel up to $20,000 of student debt for tens of millions
+    of borrowers, 6 to 3.
+  description_long: The plan would have cost about $400 billion. The administration tried other routes and was blocked again
+    in 2024. The Court held that the HEROES Act did not authorize the plan.
+  why: Student debt is not relieved, while pandemic loans to businesses were forgiven under the Paycheck Protection Program.
+  tags:
+  - court
+  - student-debt
+  - executive-power
+  - inequality
+- id: speaker_ousted
+  start: 20231003
+  level: 3
+  kind: politics
+  title: McCarthy Ousted
+  description_short: The House votes, 216 to 210, to remove Kevin McCarthy as Speaker, the first removal in American history.
+  description_long: Eight Republicans joined every Democrat. The House was without a Speaker for three weeks, until Mike Johnson
+    was elected on October 25.
+  why: The majority party cannot govern itself, and the House is the institution that shows it.
+  tags:
+  - congress
+  - house
+  - republicans
+  - dysfunction
+- id: border_record_dec_2023
+  start: 20231215
+  level: 3
+  kind: immigration
+  title: Record Border Crossings
+  description_short: Border Patrol and port-of-entry encounters at the southwest border reach about 250,000 in December 2023,
+    the highest monthly total on record.
+  description_long: Annual southwest border encounters had passed two million in fiscal years 2022 and 2023. Border cities
+    including El Paso and Eagle Pass, and cities such as New York and Chicago, struggled to house arrivals, and Texas deployed
+    the National Guard under Operation Lone Star.
+  why: The immigration system's overload becomes the Democratic administration's chief political liability.
+  tags:
+  - immigration
+  - border
+  - biden
+  - asylum
+- id: border_bill_fails
+  start: 20240207
+  level: 3
+  kind: immigration
+  title: The Border Bill Fails
+  description_short: The Senate blocks a bipartisan bill pairing border enforcement with aid to Ukraine and Israel after Trump
+    opposes it.
+  description_long: Negotiators led by James Lankford had agreed to the toughest border provisions in decades. The Republican
+    leadership withdrew support, and the vote on cloture failed 49 to 50. Biden then issued a proclamation on June 4 restricting
+    asylum when crossings exceed a threshold, and monthly crossings fell sharply.
+  why: The legislative route to solving the border is closed for electoral reasons, and the executive route is used instead.
+  tags:
+  - immigration
+  - congress
+  - border
+  - election
+- id: trump_v_anderson
+  start: 20240304
+  level: 3
+  kind: court
+  title: Trump v. Anderson
+  description_short: The Supreme Court holds, unanimously, that states cannot remove Trump from the ballot under the Fourteenth
+    Amendment's insurrection clause.
+  description_long: The justices disagreed on the reasoning. Five held that only Congress can enforce Section 3 against federal
+    candidates. The decision ended a Colorado ruling that had barred him from the primary ballot.
+  why: The Constitution's text on insurrection is read to require legislation, and the remedy is closed.
+  tags:
+  - court
+  - january-6
+  - ballot
+  - insurrection
+- id: biden_trump_debate
+  start: 20240627
+  level: 3
+  kind: election
+  title: The Atlanta Debate
+  description_short: Biden's debate performance against Trump in Atlanta prompts a wave of calls from his own party to withdraw.
+  description_long: He spoke haltingly and lost his train of thought. Within a week several House Democrats called for him
+    to step aside, and within a month he did.
+  why: A question the party had deferred for months is answered on live television.
+  tags:
+  - election
+  - biden
+  - debate
+  - age
+- id: loper_bright
+  start: 20240628
+  level: 3
+  kind: court
+  title: Loper Bright v. Raimondo
+  description_short: The Supreme Court overrules the Chevron doctrine, ending courts' deference to agencies' interpretations
+    of ambiguous laws.
+  description_long: The decision, 6 to 2 with Justice Jackson recused, overturned a 1984 precedent. It shifted power over
+    regulation from agencies to courts, at the moment the Court was also expanding presidential power over the executive branch.
+  why: The administrative state is cut back by the Court, before the executive moves to cut it back.
+  tags:
+  - court
+  - administrative-state
+  - regulation
+  - chevron
+- id: hunter_biden_pardon
+  start: 20241201
+  level: 3
+  kind: politics
+  title: Hunter Biden Pardoned
+  description_short: Biden pardons his son Hunter for federal gun and tax offenses and for any other crimes from 2014 on,
+    after saying repeatedly that he would not.
+  description_long: Hunter Biden had been convicted of gun charges in June 2024 and pleaded guilty to tax charges in September.
+    Biden said the prosecution had been selective and political. On January 20, 2025, Biden also issued preemptive pardons
+    for family members and for officials who had been targets of Trump's threats.
+  why: The pardon power is used for the president's family, in the same year the other side used it for allies.
+  tags:
+  - pardon
+  - biden
+  - preferred-treatment
+  - rule-of-law
+- id: inspectors_general_fired
+  start: 20250124
+  level: 3
+  kind: executive-power
+  title: Inspectors General Fired
+  description_short: Trump removes about 17 inspectors general on a Friday night, without the thirty days' notice to Congress
+    that the law requires.
+  description_long: The count was never officially confirmed, and the Justice Department's inspector general was not removed.
+    Senator Chuck Grassley, a Republican, noted that the law's notice requirement had not been met.
+  why: The offices that watch the executive from inside are cleared.
+  tags:
+  - executive-power
+  - inspectors-general
+  - oversight
+  - rule-of-law
+  date_verified: true
+  source: https://www.bostonglobe.com/2025/01/25/nation/donald-trump-fires-inspectors-general
+- id: adams_case_dropped
+  start: 20250210
+  level: 3
+  kind: rule-of-law
+  title: The Adams Case Dropped
+  description_short: The Justice Department orders the corruption case against New York Mayor Eric Adams dropped, and prosecutors
+    resign rather than comply.
+  description_long: Emil Bove ordered the interim U.S. attorney, Danielle Sassoon, to dismiss the case, and she resigned on
+    February 13. Judge Dale Ho dismissed the case with prejudice on April 2, rejecting the request to dismiss it without prejudice.
+    Adams had been indicted on bribery and fraud charges.
+  why: The prosecution of a political figure ends in exchange for cooperation, and prosecutors resign over it.
+  tags:
+  - rule-of-law
+  - doj
+  - preferred-treatment
+  - new-york
+  date_verified: true
+  source: https://www.nbcnewyork.com/news/local/eric-adams-corruption-case-memo/6200552
+- id: federal_workforce_cuts
+  start: 20250212
+  level: 3
+  kind: executive-power
+  title: Federal Workforce Reduced
+  description_short: The deadline passes for federal employees to accept a deferred resignation offer, and probationary employees
+    are fired in the same days.
+  description_long: About 154,000 employees took the deferred resignation program. A judge ordered about 24,000 probationary
+    workers reinstated on March 13, and the Supreme Court stayed that order on April 8. The Office of Personnel Management
+    counts about 317,000 departures in 2025 against about 68,000 hires.
+  why: The state's capacity is cut, after a pandemic that tested it.
+  tags:
+  - doge
+  - federal-workforce
+  - administrative-state
+  - executive-power
+  date_verified: true
+  source: https://www.fedmanager.com/news/opm-reports-317000-fed-departures-in-2025-dod-largest-drop-by-number
+- id: law_firm_orders
+  start: 20250306
+  level: 3
+  kind: executive-power
+  title: Orders Against Law Firms
+  description_short: Trump signs an executive order against the law firm Perkins Coie, and three more firms follow while several
+    others settle.
+  description_long: The order suspended security clearances and limited access to federal buildings. Judge Beryl Howell struck
+    it down on May 2 as unconstitutional, and judges struck down the orders against three other firms. Paul Weiss, Skadden,
+    Milbank, and Willkie settled for between $40 million and $100 million each in pro bono work.
+  why: The state's power is used against those who represent the president's opponents, and most of the firms pay.
+  tags:
+  - executive-power
+  - law-firms
+  - first-amendment
+  - retribution
+  date_verified: true
+  source: https://www.whitehouse.gov/presidential-actions/2025/03/addressing-risks-from-perkins-coie-llp/
+- id: la_guard_deployment
+  start: 20250607
+  level: 3
+  kind: executive-power
+  title: Los Angeles
+  description_short: Trump federalizes the California National Guard and sends Marines to Los Angeles over the governor's
+    objection, after protests against immigration raids.
+  description_long: The memorandum called at least 2,000 Guard members into federal service under a statute that allows it
+    in a rebellion or when the president cannot execute the laws. Judge Charles Breyer ruled on June 12 that the deployment
+    was illegal, and the Ninth Circuit stayed his order that night. About 4,000 Guard members and 700 Marines were deployed
+    in all.
+  why: The first domestic deployment of the military against a governor's wishes, ahead of the deployments that followed.
+  tags:
+  - executive-power
+  - national-guard
+  - military
+  - immigration
+  - federalism
+  date_verified: true
+  source: https://www.whitehouse.gov/presidential-actions/2025/06/department-of-defense-security-for-the-protection-of-department-of-homeland-security-functions/
+- id: iran_nuclear_strikes
+  start: 20250622
+  level: 3
+  kind: war
+  title: Strikes on Iran's Nuclear Sites
+  description_short: American bombers strike Iran's Fordow, Natanz, and Isfahan nuclear facilities, joining Israel's war,
+    and a ceasefire follows the next day.
+  description_long: The operation was called Midnight Hammer. Iran fired missiles at an American base in Qatar on June 23
+    without casualties, and Trump announced a ceasefire that evening. It was in effect on June 24. Congress had not authorized
+    the strikes.
+  why: The first use of force against Iran in the second term, eight months before the war.
+  tags:
+  - iran
+  - war
+  - nuclear
+  - executive-power
+  date_verified: true
+  source: https://fortune.com/2025/06/24/trump-iran-israel-ceasefire-deal-missiles-military-conflict
+- id: trump_v_casa
+  start: 20250627
+  level: 3
+  kind: court
+  title: Trump v. CASA
+  description_short: The Supreme Court holds, 6 to 3, that federal courts likely lack the authority to issue universal injunctions.
+  description_long: Justice Barrett wrote the opinion. The Court did not decide the merits of the birthright citizenship order,
+    but said injunctions may extend only as far as needed for complete relief to each plaintiff. Class actions and suits by
+    states followed.
+  why: The Court narrows the tool the lower courts had used to stop the executive.
+  tags:
+  - court
+  - injunctions
+  - executive-power
+  - birthright-citizenship
+  date_verified: true
+  source: https://www.scotusblog.com/cases/case-files/trump-v-casa-inc/
+- id: boat_strikes
+  start: 20250902
+  level: 3
+  kind: war
+  title: Strikes on Drug Boats
+  description_short: The military begins striking boats it says are carrying drugs off Venezuela, killing eleven people on
+    the first strike.
+  description_long: The campaign expanded to the Eastern Pacific in October and was named Operation Southern Spear in November.
+    By October 4, 2026, at least 238 people had been killed in at least 79 strikes. Congress has not authorized the strikes,
+    and the administration describes the targets as combatants in an armed conflict with cartels.
+  why: The drug war becomes a war, with lethal force against suspects who are not tried.
+  tags:
+  - drugs
+  - war-powers
+  - caribbean
+  - executive-power
+  source: https://en.wikipedia.org/wiki/United_States_strikes_on_alleged_drug_traffickers_during_Operation_Southern_Spear
+- id: kirk_assassination
+  start: 20250910
+  level: 3
+  kind: violence
+  title: Charlie Kirk Assassinated
+  description_short: Charlie Kirk, the 31-year-old founder of Turning Point USA, is shot and killed at Utah Valley University.
+  description_long: Tyler Robinson, 22, was arrested the next day and charged with aggravated murder. Trump announced a plan
+    to designate antifa a terrorist organization and signed a memorandum on September 25 directing federal action against
+    what it called political violence networks.
+  why: A political assassination of a movement leader, and the response widens the state's reach against the opposition.
+  tags:
+  - violence
+  - political-violence
+  - antifa
+  - free-speech
+  source: https://en.wikipedia.org/wiki/Reactions_to_the_assassination_of_Charlie_Kirk
+- id: comey_james_indicted
+  start: 20250925
+  level: 3
+  kind: rule-of-law
+  title: Comey and James Indicted
+  description_short: A federal grand jury indicts former FBI Director James Comey, and two weeks later New York Attorney General
+    Letitia James, both critics of Trump.
+  description_long: Comey was charged on September 25 with false statements and obstruction, and James on October 9 with bank
+    fraud. A judge ruled on November 24 that the prosecutor, Lindsey Halligan, had been unlawfully appointed, and dismissed
+    both indictments. Grand juries declined to indict James again. A new indictment of Comey followed on April 28, 2026.
+  why: The prosecutorial power is aimed at the president's critics, and the courts and grand juries slow it.
+  tags:
+  - rule-of-law
+  - doj
+  - prosecution
+  - retribution
+  source: https://en.wikipedia.org/wiki/Prosecution_of_James_Comey
+- id: gaza_ceasefire
+  start: 20251010
+  level: 3
+  kind: diplomacy
+  title: Gaza Ceasefire
+  description_short: A ceasefire takes effect in Gaza under a 20-point plan Trump announced on September 29, and Hamas frees
+    the last 20 living hostages on October 13.
+  description_long: The Security Council endorsed the plan on November 17. The agreement was reached two years and three days
+    after the October 7 attack.
+  why: The administration's one clear diplomatic result in the Middle East before the Iran War.
+  tags:
+  - gaza
+  - diplomacy
+  - ceasefire
+  - israel
+  source: https://en.wikipedia.org/wiki/Gaza_peace_plan
+- id: no_kings
+  start: 20251018
+  level: 3
+  kind: society
+  title: No Kings
+  description_short: Organizers estimate nearly seven million people at about 2,700 protests across the country.
+  description_long: An independent estimate put attendance at between five and six and a half million. It followed a smaller
+    No Kings protest on June 14.
+  why: Opposition on a scale not seen since 2017, and with fewer arrests.
+  tags:
+  - protest
+  - trump
+  - resistance
+  - democracy
+  source: https://en.wikipedia.org/wiki/October_2025_No_Kings_protests
+- id: epstein_transparency
+  start: 20251119
+  level: 3
+  kind: politics
+  title: Epstein Files Transparency Act
+  description_short: Trump signs a law requiring the Justice Department to release its files on Jeffrey Epstein, after the
+    House passed it 427 to 1.
+  description_long: The Justice Department had said on July 7 that it found no "client list" and would release nothing more.
+    The Senate passed the law by unanimous consent on November 19. Releases began on December 19 and continued into 2026,
+    including about 3.5 million documents on January 30.
+  why: A question about the powerful and the law they escape cuts across both parties.
+  tags:
+  - epstein
+  - rule-of-law
+  - congress
+  - preferred-treatment
+  source: https://en.wikipedia.org/wiki/Epstein_Files_Transparency_Act
+- id: trump_v_illinois
+  start: 20251223
+  level: 3
+  kind: court
+  title: Trump v. Illinois
+  description_short: The Supreme Court refuses to let Trump send National Guard troops into Illinois, writing that the government
+    had not identified a source of authority for the military to execute the laws there.
+  description_long: The order was unsigned. Alito, Thomas, and Gorsuch dissented. Trump announced on December 31 an end to
+    Guard deployment efforts in Los Angeles, Portland, and Chicago.
+  why: The Court sets the one limit the second term has met on domestic military use.
+  tags:
+  - court
+  - national-guard
+  - federalism
+  - military
+  date_verified: true
+  source: https://npr.org/2025/12/23/nx-s1-5641959/supreme-court-chicago-national-guard
+- id: dhs_lapse
+  start: 20260430
+  level: 3
+  kind: politics
+  title: The Homeland Security Shutdown Ends
+  description_short: Congress ends the longest lapse in Department of Homeland Security funding, 76 days for most of the department
+    and 116 days for the border agencies.
+  description_long: It began on February 14, when Senate Democrats refused to pass the funding bill after Alex Pretti's killing,
+    demanding body cameras and judicial warrants. A bill funding most of the department was signed on April 30. Customs, Border
+    Protection, and Immigration and Customs Enforcement stayed unfunded until June 10, when a reconciliation law gave them
+    almost $70 billion.
+  why: The immigration agencies' funding becomes the leverage point, and the money arrives by party-line vote.
+  tags:
+  - shutdown
+  - immigration
+  - dhs
+  - congress
+  date_verified: true
+  source: https://www.congress.gov/crs_external_products/R/PDF/R49105/R49105.6.pdf
+- id: cook_ruling
+  start: 20260629
+  level: 3
+  kind: court
+  title: Trump v. Cook
+  description_short: The Supreme Court refuses, 5 to 4, to let Trump remove Federal Reserve Governor Lisa Cook while her suit
+    proceeds.
+  description_long: Trump had announced her firing on August 25, 2025, citing allegations about her mortgage. Chief Justice
+    Roberts wrote that the statute's protections of notice and a chance to respond had not been provided. The Court did not
+    decide the merits.
+  why: The Fed is carved out from the removal power the Court extends to every other agency, for now.
+  tags:
+  - court
+  - fed
+  - removal-power
+  - independent-agencies
+  date_verified: true
+  source: https://www.scotusblog.com/2026/06/court-prevents-trump-from-firing-fed-governor/
+- id: garland_nominated
+  start: 20160316
+  level: 4
+  kind: court
+  title: Garland Nominated
+  description_short: Obama nominates Merrick Garland to the Supreme Court, and the Senate majority refuses to hold a hearing.
+  description_long: Garland was the chief judge of the D.C. Circuit. The nomination remained pending for 293 days, the longest
+    in the Court's history, and lapsed on January 3, 2017.
+  why: The blockade is a procedural act, and the nomination is its cost.
+  tags:
+  - court
+  - senate
+  - garland
+- id: pulse_shooting
+  start: 20160612
+  level: 4
+  kind: violence
+  title: Pulse Nightclub
+  description_short: A gunman kills 49 people at the Pulse nightclub in Orlando, Florida, then the deadliest mass shooting
+    in modern American history.
+  description_long: The attack targeted a gay nightclub on Latin night. The shooter pledged allegiance to ISIS during a call
+    to 911.
+  why: The year's violence arrives at the intersection of terrorism, guns, and the country's minorities.
+  tags:
+  - guns
+  - terrorism
+  - lgbtq
+  - orlando
+- id: womens_march
+  start: 20170121
+  level: 4
+  kind: society
+  title: The Women's March
+  description_short: Hundreds of thousands march in Washington and an estimated 3 to 5 million march across the country the
+    day after Trump's inauguration.
+  description_long: It was among the largest single-day protests in American history. The resistance that followed produced
+    the Democratic gains of 2018.
+  why: The opposition organizes before the first policy is made.
+  tags:
+  - protest
+  - trump
+  - gender
+  - resistance
+- id: daca_rescinded
+  start: 20170905
+  level: 4
+  kind: immigration
+  title: DACA Rescinded
+  description_short: The administration announces it will end the Deferred Action for Childhood Arrivals program and gives
+    Congress six months to act.
+  description_long: Courts blocked the rescission, and the Supreme Court ruled against the administration in June 2020. Congress
+    did not pass legislation to protect the roughly 700,000 enrollees.
+  why: A generation of young immigrants is placed at the mercy of a legislature that does not act.
+  tags:
+  - immigration
+  - daca
+  - dreamers
+  - congress
+- id: hurricane_maria
+  start: 20170920
+  level: 4
+  kind: disaster
+  title: Hurricane Maria
+  description_short: Hurricane Maria strikes Puerto Rico and kills thousands, according to later estimates, in one of the
+    deadliest American natural disasters in a century.
+  description_long: The official death toll was revised from 64 to 2,975 after a George Washington University study. The island
+    lost power for months, and the federal response was slower than in Texas and Florida after Harvey and Irma.
+  why: The unequal protection of citizens of the territory is exposed in a storm.
+  tags:
+  - disaster
+  - puerto-rico
+  - inequality
+  - state-capacity
+- id: pittsburgh_shooting
+  start: 20181027
+  level: 4
+  kind: violence
+  title: Tree of Life Shooting
+  description_short: A gunman kills 11 worshippers at the Tree of Life synagogue in Pittsburgh, the deadliest attack on Jews
+    in American history.
+  description_long: The shooter had posted about a migrant caravan and the Hebrew Immigrant Aid Society before the attack.
+  why: The immigration argument and the old hatred meet in a synagogue.
+  tags:
+  - violence
+  - antisemitism
+  - immigration
+  - pittsburgh
+- id: emergency_wall
+  start: 20190215
+  level: 4
+  kind: politics
+  title: Border Emergency Declared
+  description_short: Trump declares a national emergency to redirect military construction funds to build the border wall
+    after Congress declined to fund it.
+  description_long: Congress voted to terminate the emergency, and Trump vetoed the resolution, which the Senate could not
+    override. Courts allowed the funds to be spent while litigation continued. Biden halted wall construction on his first
+    day.
+  why: A spending decision Congress refused is made by emergency declaration.
+  tags:
+  - executive-power
+  - border-wall
+  - emergency
+  - congress
+- id: soleimani_killed
+  start: 20200103
+  level: 4
+  kind: war
+  title: Soleimani Killed
+  description_short: An American drone strike in Baghdad kills Iranian general Qasem Soleimani, escalating tensions with Iran.
+  description_long: Iran responded with missile strikes on American bases in Iraq on January 8, wounding more than 100 service
+    members. Congress passed a war powers resolution limiting further action, and Trump vetoed it.
+  why: An act of war is ordered by an executive acting alone, and Congress's reply is vetoed.
+  tags:
+  - iran
+  - war
+  - executive-power
+  - war-powers
+- id: arbery_taylor
+  start: 20200313
+  level: 4
+  kind: race
+  title: Breonna Taylor
+  description_short: Louisville police kill Breonna Taylor, a 26-year-old emergency medical technician, in her apartment during
+    a no-knock raid.
+  description_long: Ahmaud Arbery had been chased and killed by three men in Georgia on February 23, and the two deaths drew
+    national attention only in May. No officer was charged directly with her death. The raid was the basis for later limits
+    on no-knock warrants in several states.
+  why: The summer of 2020 is composed of deaths that had already happened.
+  tags:
+  - race
+  - policing
+  - louisville
+  - protest
+- id: lockdown_orders
+  start: 20200316
+  level: 4
+  kind: public-health
+  title: '"15 Days to Slow the Spread"'
+  description_short: The administration issues federal guidance to avoid gatherings and school and work, and states begin
+    ordering closures.
+  description_long: The guidelines were set for fifteen days and extended to April 30. Governors, not the federal government,
+    decided how long and how strictly. By April most states had issued stay-at-home orders.
+  why: The pandemic's response is fragmented across fifty governors and a federal executive that defers.
+  tags:
+  - covid
+  - federalism
+  - lockdown
+  - states
+- id: lafayette_square
+  start: 20200601
+  level: 4
+  kind: race
+  title: Lafayette Square
+  description_short: Federal officers clear protesters from Lafayette Square before Trump walks to St. John's Church for a
+    photograph.
+  description_long: Park Police and National Guard used chemical agents and force to clear peaceful protesters. Defense Secretary
+    Mark Esper later said he had not known the purpose of the trip. A National Guard deployment to Washington began that week.
+  why: The protests meet an executive who treats them as a matter of force.
+  tags:
+  - protest
+  - police
+  - executive-power
+  - washington
+- id: bostock
+  start: 20200615
+  level: 4
+  kind: court
+  title: Bostock v. Clayton County
+  description_short: The Supreme Court holds, 6 to 3, that federal law bars employment discrimination against gay and transgender
+    workers.
+  description_long: Justice Neil Gorsuch, a Trump appointee, wrote the majority opinion.
+  why: The Court's new majority surprises its sponsors, once.
+  tags:
+  - court
+  - lgbtq
+  - civil-rights
+  - employment
+- id: second_impeachment
+  start: 20210213
+  level: 4
+  kind: politics
+  title: Second Acquittal
+  description_short: The Senate votes 57 to 43 to convict Trump of incitement of insurrection, ten votes short of the two-thirds
+    required.
+  description_long: Seven Republicans joined every Democrat, the largest bipartisan vote to convict a president. Trump had
+    left office twenty-four days earlier. The trial came after the House impeached him on January 13.
+  why: The remedy for the Capitol riot is tried and fails on the constitutional margin.
+  tags:
+  - impeachment
+  - january-6
+  - senate
+  - rule-of-law
+- id: sb8_texas
+  start: 20210901
+  level: 4
+  kind: court
+  title: Texas S.B. 8
+  description_short: Texas's six-week abortion ban takes effect, enforced through private lawsuits, and the Supreme Court
+    declines to block it.
+  description_long: The law's design kept state officials from being sued. The Court's 5 to 4 order on the shadow docket allowed
+    it to take effect, nearly ten months before Dobbs.
+  why: The first break comes through a procedural device the Court declines to stop.
+  tags:
+  - abortion
+  - court
+  - shadow-docket
+  - texas
+- id: del_rio_haitians
+  start: 20210919
+  level: 4
+  kind: immigration
+  title: Del Rio
+  description_short: About 15,000 Haitian migrants gather under a bridge in Del Rio, Texas, and the administration expels
+    thousands.
+  description_long: Photographs of Border Patrol agents on horseback confronting migrants drew criticism from the administration's
+    own supporters. Many Haitians were flown back to Haiti under Title 42 or released with notices to appear.
+  why: The asylum system's overload becomes visible in one town.
+  tags:
+  - immigration
+  - haiti
+  - border
+  - title-42
+- id: buffalo_shooting
+  start: 20220514
+  level: 4
+  kind: violence
+  title: Buffalo
+  description_short: A gunman kills ten Black people at a supermarket in Buffalo, New York, in an attack motivated by white-supremacist
+    ideology.
+  description_long: The shooter cited the "great replacement" theory, which had also appeared in political rhetoric. He was
+    sentenced to life in prison without parole.
+  why: The old racial order and a new media environment meet in a supermarket.
+  tags:
+  - race
+  - white-nationalism
+  - guns
+  - buffalo
+- id: jan6_hearings
+  start: 20220609
+  level: 4
+  kind: politics
+  title: January 6 Committee Hearings
+  description_short: The House select committee holds the first of its televised hearings on the Capitol attack.
+  description_long: The committee interviewed more than a thousand witnesses. In December it referred Trump to the Justice
+    Department on four possible charges. The hearings drew about 20 million viewers.
+  why: Congress investigates the attack, and the investigation is itself part of the partisan argument.
+  tags:
+  - january-6
+  - congress
+  - investigation
+  - rule-of-law
+- id: kansas_abortion_vote
+  start: 20220802
+  level: 4
+  kind: election
+  title: Kansas Votes
+  description_short: Kansas voters reject, 59 to 41 percent, an amendment that would have removed abortion rights from the
+    state constitution.
+  description_long: It was the first statewide vote after Dobbs and drew record turnout in a primary. Voters in Michigan,
+    Ohio, Kentucky, and other states later made similar choices.
+  why: The people are asked directly and answer against the Court's direction.
+  tags:
+  - abortion
+  - election
+  - kansas
+  - federalism
+- id: midterms_2022
+  start: 20221108
+  level: 4
+  kind: election
+  title: The 2022 Midterms
+  description_short: Republicans win the House by a narrow margin, but the "red wave" the polls forecast fails to arrive,
+    and Democrats keep the Senate.
+  description_long: The party out of power usually gains dozens of seats in a president's first midterm, and the Republicans
+    gained nine. Voters had cited abortion and the threat to democracy, and candidates who had denied the 2020 result lost
+    in key races.
+  why: The electorate, once more, does not deliver the clear mandate that either side expects.
+  tags:
+  - election
+  - midterms
+  - dobbs
+  - democracy
+- id: tyre_nichols
+  start: 20230110
+  level: 4
+  kind: race
+  title: Tyre Nichols
+  description_short: Tyre Nichols dies three days after Memphis police officers beat him during a traffic stop.
+  description_long: Five officers, all Black, were charged with murder. Video of the beating was released on January 27. Congress
+    did not pass police reform legislation in response.
+  why: The policing debt is presented again, and nothing in the law changes.
+  tags:
+  - race
+  - policing
+  - memphis
+  - violence
+- id: debt_ceiling_2023
+  start: 20230603
+  level: 4
+  kind: politics
+  title: Debt Ceiling Standoff
+  description_short: Biden signs the Fiscal Responsibility Act, ending a standoff in which the government approached default.
+  description_long: House Republicans had demanded spending cuts in exchange for raising the borrowing limit. The law suspended
+    the limit until January 2025 and capped some spending. Fitch downgraded the government's credit rating on August 1.
+  why: The order's governing norms are tested by a self-inflicted fiscal crisis.
+  tags:
+  - debt-ceiling
+  - congress
+  - default
+  - fiscal
+- id: uaw_strike
+  start: 20230915
+  level: 4
+  kind: labor
+  title: UAW Strike
+  description_short: The United Auto Workers strike all three Detroit automakers at once for the first time in the union's
+    history.
+  description_long: The strike lasted six weeks and won raises of about 25 percent over the contract. Biden joined a picket
+    line on September 26, the first sitting president to do so.
+  why: Organized labor's first big win in a generation, in the industry that deindustrialization first hit.
+  tags:
+  - labor
+  - strike
+  - autos
+  - deindustrialization
+- id: campus_protests
+  start: 20240418
+  level: 4
+  kind: society
+  title: Campus Protests
+  description_short: Police arrest more than 100 protesters at Columbia University as encampments against the Gaza war spread
+    to campuses across the country.
+  description_long: More than 3,000 people were arrested on campuses in the spring. Several university presidents resigned
+    or were forced out after congressional hearings on antisemitism.
+  why: A foreign war divides the universities and the Democratic coalition.
+  tags:
+  - protest
+  - gaza
+  - campus
+  - free-speech
+- id: asylum_proclamation
+  start: 20240604
+  level: 4
+  kind: immigration
+  title: Biden's Asylum Proclamation
+  description_short: Biden issues a proclamation suspending asylum at the southern border when crossings exceed 2,500 a day.
+  description_long: The order took effect immediately, and daily encounters fell by more than half in the following months.
+    It was the strictest border policy of his term, adopted after the Senate bill failed.
+  why: The Democratic administration adopts the other side's immigration premise, and the border numbers fall.
+  tags:
+  - immigration
+  - asylum
+  - border
+  - biden
+- id: federal_cases_dismissed
+  start: 20241125
+  level: 4
+  kind: politics
+  title: Federal Cases Dismissed
+  description_short: Special counsel Jack Smith moves to dismiss the federal election case against Trump, and the judge grants
+    the motion.
+  description_long: The Justice Department said it could not prosecute a sitting president. The classified-documents case
+    had been dismissed in July by Judge Cannon, and Smith dropped the appeal on November 26. The Georgia case stalled after
+    the prosecutor was disqualified in December, and the New York sentence was an unconditional discharge on January 10, 2025.
+  why: The election, and not any court, ends the prosecutions.
+  tags:
+  - trump
+  - rule-of-law
+  - special-counsel
+  - election
+- id: abrego_garcia
+  start: 20250410
+  level: 4
+  kind: court
+  title: Abrego Garcia
+  description_short: The Supreme Court holds that the government must facilitate the return of Kilmar Abrego Garcia, a Maryland
+    man deported to El Salvador.
+  description_long: He was detained on March 12 and removed to a prison in El Salvador around March 15. Judge Paula Xinis
+    had ordered the government to facilitate his return by April 7.
+  why: The question of whether the executive will obey the courts becomes a single man's case.
+  tags:
+  - immigration
+  - courts
+  - deportation
+  - rule-of-law
+  date_verified: true
+  source: https://www.cbsnews.com/baltimore/news/abrego-garcia-government-immigration-mistakenly-deported
+- id: harvard_freeze
+  start: 20250414
+  level: 4
+  kind: executive-power
+  title: Harvard
+  description_short: The administration freezes more than $2.2 billion in grants to Harvard after the university rejects its
+    demands.
+  description_long: On May 22 the Department of Homeland Security ended Harvard's authority to enroll international students,
+    and a judge halted that order within hours. Judge Allison Burroughs ruled the freeze unlawful on September 3.
+  why: Federal funding is used as leverage over the universities' internal governance.
+  tags:
+  - universities
+  - executive-power
+  - first-amendment
+  - research
+  date_verified: true
+  source: https://news.wgcu.org/2025-04-15/trump-administration-freezes-more-than-2-2-billion-after-harvard-rejects-demands
+- id: usaid_closed
+  start: 20250701
+  level: 4
+  kind: executive-power
+  title: USAID Closed
+  description_short: The U.S. Agency for International Development is shut down and merged into the State Department.
+  description_long: A freeze on foreign aid was ordered on January 20, and a judge limited the placing of employees on leave
+    on February 7. The State Department announced the absorption on March 28. More than 80 percent of the agency's programs
+    had been terminated.
+  why: An agency established in 1961 is closed by executive action.
+  tags:
+  - doge
+  - usaid
+  - foreign-aid
+  - executive-power
+  - impoundment
+  date_verified: true
+  source: https://www.kuaf.com/npr-news/2025-07-01/usaid-officially-shuts-down-and-merges-remaining-operations-with-state-department
+- id: genius_act
+  start: 20250718
+  level: 4
+  kind: legislation
+  title: GENIUS Act
+  description_short: Trump signs the first federal law regulating stablecoins, passed 68 to 30 in the Senate and 308 to 122
+    in the House.
+  description_long: The law set reserve requirements for dollar-backed cryptocurrencies.
+  why: Cryptocurrency enters the financial order's rules.
+  tags:
+  - crypto
+  - legislation
+  - finance
+  - regulation
+  source: https://en.wikipedia.org/wiki/GENIUS_Act
+- id: rescissions_act
+  start: 20250724
+  level: 4
+  kind: legislation
+  title: Rescissions Act
+  description_short: Trump signs a $9 billion law cancelling funds already appropriated, mostly foreign aid and public broadcasting.
+  description_long: The Senate passed it 51 to 48 and the House 216 to 213.
+  why: Congress hands back its spending power, one package at a time.
+  tags:
+  - congress
+  - impoundment
+  - foreign-aid
+  - budget
+  source: https://en.wikipedia.org/wiki/Rescissions_Act_of_2025
+- id: alaska_summit
+  start: 20250815
+  level: 4
+  kind: diplomacy
+  title: Alaska Summit
+  description_short: Trump meets Vladimir Putin at an Alaska air base, the first meeting between the presidents since 2021.
+  description_long: The talks lasted under three hours and ended without an agreement or a ceasefire. A planned follow-up
+    in Budapest was later cancelled.
+  why: The war in Ukraine is discussed between the great powers, without Ukraine in the room.
+  tags:
+  - russia
+  - ukraine
+  - diplomacy
+  - summit
+  source: https://en.wikipedia.org/wiki/2025_Russia%E2%80%93United_States_summit
+- id: busan_summit
+  start: 20251030
+  level: 4
+  kind: diplomacy
+  title: Busan Summit
+  description_short: Trump and Xi Jinping meet in Busan and agree to a one-year trade truce.
+  description_long: The reported terms cut the average American tariff on Chinese goods from 57 to 47 percent and suspended
+    China's rare-earth export controls for a year. China agreed to resume buying American soybeans.
+  why: The trade war with China is stabilized by a deal between two leaders.
+  tags:
+  - china
+  - tariffs
+  - trade
+  - rare-earths
+  source: https://en.wikipedia.org/wiki/Busan_Summit
+- id: elections_2025
+  start: 20251104
+  level: 4
+  kind: election
+  title: The November 2025 Elections
+  description_short: Democrats win the New Jersey and Virginia governorships and the New York City mayoralty, and California
+    approves Proposition 50.
+  description_long: Abigail Spanberger and Mikie Sherrill won the governorships, and Zohran Mamdani won New York City with
+    about 50 percent. California voters approved a redrawn congressional map, 64 to 36 percent, in answer to Texas's mid-decade
+    redistricting.
+  why: The first test of the second term at the ballot box, and the start of the redistricting war.
+  tags:
+  - election
+  - redistricting
+  - democrats
+  - california
+  source: https://en.wikipedia.org/wiki/2025_California_Proposition_50
+- id: national_security_strategy
+  start: 20251205
+  level: 4
+  kind: diplomacy
+  title: National Security Strategy
+  description_short: The administration releases a National Security Strategy that adds a "Trump Corollary" to the Monroe
+    Doctrine.
+  description_long: The document gives priority to the Western Hemisphere and to border security. It followed the Caribbean
+    buildup and preceded the Venezuela blockade.
+  why: The empire's doctrine moves to the hemisphere, and the next month the operation follows.
+  tags:
+  - strategy
+  - monroe-doctrine
+  - venezuela
+  - foreign-policy
+- id: venezuela_blockade
+  start: 20251216
+  level: 4
+  kind: war
+  title: Venezuela Blockade
+  description_short: Trump announces a blockade of sanctioned oil tankers going to and from Venezuela.
+  description_long: The first tanker had been seized on December 10. About ten tankers were intercepted between December and
+    February. The blockade continued after Maduro's capture.
+  why: The campaign against Venezuela moves from boats to oil.
+  tags:
+  - venezuela
+  - blockade
+  - oil
+  - war-powers
+  source: https://en.wikipedia.org/wiki/2025%E2%80%932026_United_States_oil_blockade_of_Venezuela
+- id: good_shooting
+  start: 20260107
+  level: 4
+  kind: race
+  title: Renee Good Killed
+  description_short: A federal immigration agent shoots and kills Renee Good, a U.S. citizen, in her car in Minneapolis.
+  description_long: The agent was identified as Jonathan Ross. Homeland Security had announced Operation Metro Surge on December
+    4 and expanded it the day before.
+  why: The first of two killings that make Minneapolis a national argument.
+  tags:
+  - immigration
+  - policing
+  - minneapolis
+  - ice
+  source: https://en.wikipedia.org/wiki/Operation_Metro_Surge
+- id: greenland_tariffs
+  start: 20260121
+  level: 4
+  kind: diplomacy
+  title: Greenland Tariff Threat Withdrawn
+  description_short: Trump cancels a tariff threat against Denmark and seven other European countries over Greenland after
+    meeting NATO's chief at Davos.
+  description_long: He had threatened tariffs of 10 percent from February 1, rising to 25 percent in June, and said the two
+    sides had a framework for an Arctic security deal. No terms were published, and Denmark and Greenland said sovereignty
+    was not negotiable.
+  why: Tariffs become a tool for territorial demands against allies.
+  tags:
+  - greenland
+  - tariffs
+  - nato
+  - diplomacy
+  date_verified: true
+  source: https://www.pbs.org/newshour/world/trump-cancels-tariff-threat-over-greenland-says-nato-agreed-to-framework-of-future-arctic-deal
+- id: section_122_tariffs
+  start: 20260224
+  level: 4
+  kind: economics
+  title: Replacement Tariffs
+  description_short: A 10 percent global tariff under another statute takes effect, four days after the Supreme Court struck
+    down the first.
+  description_long: Trump signed the proclamation on February 20. The Court of International Trade ruled on May 7 that it
+    exceeded his authority, and an appeals court stayed that ruling on May 12. The administration also opened Section 301
+    investigations as a replacement.
+  why: A tariff the Court denies him is rebuilt under another statute within the week.
+  tags:
+  - tariffs
+  - trade
+  - courts
+  - executive-power
+  date_verified: true
+  source: https://www.skadden.com/insights/publications/2026/05/us-trade-court-strikes-down-section-122-tariffs
+- id: iran_ceasefire
+  start: 20260408
+  level: 4
+  kind: war
+  title: Iran Ceasefire
+  description_short: A two-week ceasefire, brokered by Pakistan, pauses the Iran War, and Vice President Vance leads talks
+    in Islamabad.
+  description_long: The talks failed on April 12, and the United States began a naval blockade of Iranian ports on April 13.
+    The ceasefire was extended several times and collapsed on July 8.
+  why: The war pauses, and the question of its aim goes unanswered.
+  tags:
+  - iran
+  - ceasefire
+  - diplomacy
+  - blockade
+  source: https://en.wikipedia.org/wiki/2026_Iran_war_ceasefire
+- id: comey_second_indictment
+  start: 20260428
+  level: 4
+  kind: rule-of-law
+  title: Comey Indicted Again
+  description_short: A grand jury in North Carolina indicts James Comey on two counts of threatening the president, over a
+    social media post of seashells arranged as "86 47."
+  description_long: A judge had thrown out the first indictment. Comey moved to dismiss, citing vindictive prosecution.
+  why: The prosecution of the president's critic continues in another district.
+  tags:
+  - rule-of-law
+  - doj
+  - prosecution
+  - free-speech
+  source: https://www.cnn.com/2026/04/28/politics/justice-department-indicts-ex-fbi-director-james-comey-again
+- id: virginia_map_voided
+  start: 20260508
+  level: 4
+  kind: election
+  title: Virginia Redistricting Voided
+  description_short: The Virginia Supreme Court voids, 4 to 3, a referendum approving a redrawn congressional map that voters
+    passed on April 21.
+  description_long: Texas, Missouri, California, Florida, and other states redrew maps in the mid-decade redistricting war.
+    Louisiana's primaries were delayed after Callais. The old Virginia maps stay in place for 2026.
+  why: The fight over the House is fought through the maps, and the courts decide the map.
+  tags:
+  - redistricting
+  - election
+  - courts
+  - midterms
+  source: https://www.cnn.com/2026/05/08/politics/virginia-supreme-court-redistricting
+- id: warsh_fed_chair
+  start: 20260513
+  level: 4
+  kind: economics
+  title: Warsh Confirmed
+  description_short: The Senate confirms Kevin Warsh as Federal Reserve chair, 54 to 45, and he is sworn in on May 22.
+  description_long: Jerome Powell's term as chair ended in May, and he stayed on as a governor. On September 16 the Fed raised
+    rates a quarter point, to 3.75 to 4 percent, its first increase since 2023.
+  why: The central bank changes hands at the moment its independence is in court.
+  tags:
+  - fed
+  - economy
+  - monetary-policy
+  - independence
+  date_verified: true
+  source: https://www.aljazeera.com/economy/2026/5/22/kevin-warsh-sworn-in-as-new-us-fed-chair
+- id: war_powers_senate
+  start: 20260623
+  level: 4
+  kind: war
+  title: Senate Passes War Powers Resolution
+  description_short: The Senate adopts a resolution against the Iran War, 50 to 48, with four Republicans in favor.
+  description_long: It was a concurrent resolution that was not presented to the president, and the White House called it
+    of no significance. The Senate rejected another war powers resolution, 49 to 50, on September 24.
+  why: Congress votes against a war it never authorized, and the vote has no effect.
+  tags:
+  - war-powers
+  - congress
+  - iran
+  - executive-power
+  date_verified: true
+  source: https://abcnews.com/Politics/senate-house-pass-war-powers-resolution-1st-time/story?id=134145998
+- id: bolton_plea
+  start: 20260626
+  level: 4
+  kind: rule-of-law
+  title: Bolton Pleads Guilty
+  description_short: John Bolton, Trump's former national security adviser, pleads guilty to one count of retaining national
+    defense information.
+  description_long: He had been indicted on October 16, 2025, on eighteen counts. Sentencing is set for October 28, 2026.
+  why: One of the prosecutions of the president's critics ends in a plea.
+  tags:
+  - rule-of-law
+  - doj
+  - classified-documents
+  - prosecution
+  source: https://www.npr.org/2026/06/26/nx-s1-5871292/
+- id: iran_ceasefire_collapse
+  start: 20260708
+  level: 4
+  kind: war
+  title: Ceasefire Collapses
+  description_short: The Iran ceasefire collapses after the Islamabad Memorandum of June 17 set a sixty-day negotiating period.
+  description_long: No ceasefire was in force on October 19. The United States blockade of Iranian ports continued, and Iran's
+    offer to reopen the Strait of Hormuz was unresolved.
+  why: The war resumes with no stated end, three weeks before the midterms.
+  tags:
+  - iran
+  - war
+  - hormuz
+  - ceasefire
+  source: https://en.wikipedia.org/wiki/2026_Iran_war_ceasefire
+- id: iowa_caucuses_2016
+  start: 20160201
+  level: 5
+  kind: election
+  title: The Iowa Caucuses
+  description_short: Ted Cruz wins the Republican caucuses in Iowa and Bernie Sanders nearly ties Hillary Clinton on the Democratic
+    side.
+  description_long: The early results showed the strength of both insurgent campaigns. Trump finished second in Iowa and won
+    New Hampshire a week later.
+  why: The first signs of the repudiation appear on both sides.
+  tags:
+  - election
+  - primaries
+  - sanders
+  - trump
+- id: brexit_vote
+  start: 20160623
+  level: 5
+  kind: world
+  title: Brexit
+  description_short: The United Kingdom votes, 52 to 48 percent, to leave the European Union.
+  description_long: The vote came five months before the American election and was read by many as evidence of the same revolt
+    against established parties and globalization.
+  why: The same repudiation of the consensus appears in another country, a few months earlier.
+  tags:
+  - brexit
+  - populism
+  - europe
+  - globalization
+- id: access_hollywood
+  start: 20161007
+  level: 5
+  kind: politics
+  title: The Access Hollywood Tape
+  description_short: The Washington Post publishes a 2005 recording of Trump boasting about groping women.
+  description_long: Dozens of Republicans withdrew their endorsements. He apologized and continued in the race, and won a
+    month later.
+  why: A scandal that would have ended other campaigns does not end this one.
+  tags:
+  - election
+  - trump
+  - scandal
+  - gender
+- id: comey_letter
+  start: 20161028
+  level: 5
+  kind: politics
+  title: The Comey Letter
+  description_short: FBI Director James Comey tells Congress that the bureau is reviewing new emails related to the Clinton
+    investigation, eleven days before the election.
+  description_long: The review found nothing new and was closed two days before the election. Clinton later cited the letter
+    as a factor in her loss.
+  why: The institutions meant to stand outside the election enter it.
+  tags:
+  - election
+  - fbi
+  - clinton
+  - emails
+- id: gorsuch_confirmed
+  start: 20170407
+  level: 5
+  kind: court
+  title: Gorsuch Confirmed
+  description_short: The Senate confirms Neil Gorsuch after Republicans eliminate the filibuster for Supreme Court nominees.
+  description_long: The vote was 54 to 45. Gorsuch took the seat Garland would have held.
+  why: The Garland blockade is complete.
+  tags:
+  - court
+  - senate
+  - gorsuch
+  - filibuster
+- id: paris_withdrawal
+  start: 20170601
+  level: 5
+  kind: diplomacy
+  title: Paris Agreement Withdrawal
+  description_short: Trump announces that the United States will withdraw from the 2015 Paris climate agreement.
+  description_long: The withdrawal took effect in November 2020, a day after the election, and Biden rejoined on his first
+    day. Trump ordered a second withdrawal on January 20, 2025.
+  why: The country's climate commitment follows the election results, and nothing holds across administrations.
+  tags:
+  - climate
+  - diplomacy
+  - executive-power
+  - paris
+- id: aca_repeal_fails
+  start: 20170728
+  level: 5
+  kind: legislation
+  title: ACA Repeal Fails
+  description_short: Senator John McCain votes against a "skinny repeal" of the Affordable Care Act, and the effort fails,
+    49 to 51.
+  description_long: Republicans controlled the House, Senate, and presidency and had campaigned for seven years on repeal.
+    The House had passed a repeal bill in May, and the Senate could not pass any version.
+  why: The order's first great reform survives its most determined opponents.
+  tags:
+  - health-care
+  - aca
+  - senate
+  - mccain
+- id: singapore_summit
+  start: 20180612
+  level: 5
+  kind: diplomacy
+  title: Singapore Summit
+  description_short: Trump meets Kim Jong Un in Singapore, the first meeting between a sitting American president and a North
+    Korean leader.
+  description_long: The joint statement committed both sides to denuclearization without a timeline or procedures. A second
+    summit in Hanoi in February 2019 ended without an agreement.
+  why: A spectacle of personal diplomacy, with little left behind.
+  tags:
+  - north-korea
+  - diplomacy
+  - summit
+  - trump
+- id: helsinki_summit
+  start: 20180716
+  level: 5
+  kind: diplomacy
+  title: Helsinki Summit
+  description_short: Trump stands beside Vladimir Putin in Helsinki and says he sees no reason to doubt Putin's denial of
+    election interference, contradicting his intelligence agencies.
+  description_long: He walked back the remark the next day. The summit drew bipartisan criticism.
+  why: The president and the intelligence community present opposing accounts of the Russian question.
+  tags:
+  - russia
+  - diplomacy
+  - intelligence
+  - trump
+- id: us_mexico_canada
+  start: 20180930
+  level: 5
+  kind: economics
+  title: USMCA
+  description_short: The United States, Mexico, and Canada agree to replace NAFTA with the USMCA, signed in November 2018
+    and in force on July 1, 2020.
+  description_long: The new agreement raised the share of auto content that must be made in North America and added labor
+    provisions. Congress approved it in January 2020 with bipartisan support.
+  why: The repudiation of free trade is accommodated in trade law.
+  tags:
+  - trade
+  - nafta
+  - tariffs
+  - deindustrialization
+- id: first_step_act
+  start: 20181221
+  level: 5
+  kind: legislation
+  title: First Step Act
+  description_short: Trump signs a bipartisan criminal justice law that reduces some mandatory minimum sentences and expands
+    early release.
+  description_long: The Senate passed it 87 to 12. Thousands of federal prisoners had their sentences shortened, and it was
+    the largest change to federal sentencing in years.
+  why: A rare bipartisan reversal of the earlier order's incarceration regime, in the middle of a polarized term.
+  tags:
+  - criminal-justice
+  - race
+  - bipartisan
+  - sentencing
+- id: pelosi_gavel
+  start: 20190103
+  level: 5
+  kind: politics
+  title: Pelosi Retakes the Gavel
+  description_short: Nancy Pelosi is elected Speaker again, the first former Speaker to return to the post since 1955.
+  description_long: She led the House through the first impeachment and the second, and stepped aside as party leader in 2022.
+  why: The House's change of hands begins the check on the executive.
+  tags:
+  - congress
+  - house
+  - pelosi
+  - democrats
+- id: oil_negative
+  start: 20200420
+  level: 5
+  kind: economics
+  title: Oil Goes Negative
+  description_short: The price of a barrel of West Texas crude falls below zero for the first time in history.
+  description_long: The pandemic had cut demand, and storage ran short. The futures contract closed at minus $37.63.
+  why: The demand shock is so large that the price system briefly fails.
+  tags:
+  - economy
+  - oil
+  - covid
+  - markets
+- id: kenosha_shooting
+  start: 20200825
+  level: 5
+  kind: race
+  title: Kenosha
+  description_short: A seventeen-year-old kills two people and wounds a third during protests in Kenosha, Wisconsin, after
+    police shot Jacob Blake.
+  description_long: Kyle Rittenhouse was acquitted of all charges in November 2021. The protests continued for several days.
+  why: The summer's protests produce armed counter-presence, and the court decides self-defense.
+  tags:
+  - protest
+  - race
+  - guns
+  - wisconsin
+- id: trump_covid
+  start: 20201002
+  level: 5
+  kind: politics
+  title: Trump Tests Positive
+  description_short: Trump announces he has tested positive for COVID-19, a month before the election.
+  description_long: He was hospitalized at Walter Reed for three days. Several members of his circle and Senate Republicans
+    were infected after a White House event.
+  why: The president's own illness becomes the pandemic's most visible case.
+  tags:
+  - covid
+  - trump
+  - election
+  - health
+- id: stop_the_steal_suits
+  start: 20201211
+  level: 5
+  kind: politics
+  title: Texas v. Pennsylvania Dismissed
+  description_short: The Supreme Court rejects a Texas lawsuit asking it to overturn the results in four states Biden had
+    won.
+  description_long: More than 120 House Republicans had signed a brief supporting the suit. Justices Thomas and Alito wrote
+    that the Court should have heard the case but would not have granted relief.
+  why: The courts decline to settle the election by judicial action, and the political question stays open.
+  tags:
+  - election
+  - courts
+  - stop-the-steal
+  - legitimacy
+- id: gamestop
+  start: 20210128
+  level: 5
+  kind: economics
+  title: GameStop
+  description_short: Retail traders organized on Reddit drive up the price of GameStop stock, forcing hedge funds to cover
+    short positions.
+  description_long: The share price rose from about $20 to more than $480 in two weeks. Robinhood restricted trading in the
+    stock and drew congressional hearings.
+  why: The retail investors' revolt against Wall Street is quick, and the market's rules protect the institutions.
+  tags:
+  - finance
+  - markets
+  - retail
+  - reddit
+- id: jackson_confirmed
+  start: 20220407
+  level: 5
+  kind: court
+  title: Ketanji Brown Jackson Confirmed
+  description_short: The Senate confirms Ketanji Brown Jackson, 53 to 47, as the first Black woman on the Supreme Court.
+  description_long: Three Republicans voted for her. She replaced Stephen Breyer, which did not change the Court's six-to-three
+    balance.
+  why: A first is achieved on a Court that has just begun to remove the rights it granted.
+  tags:
+  - court
+  - race
+  - gender
+  - jackson
+- id: gas_prices_2022
+  start: 20220614
+  level: 5
+  kind: economics
+  title: Gas Prices Peak
+  description_short: The national average price of gasoline reaches a record $5.02 a gallon.
+  description_long: The price had been driven up by the Russian invasion and sanctions. It fell by more than a dollar by the
+    fall, and Biden released oil from the strategic reserve.
+  why: The cost of the war and the pandemic is paid at the pump.
+  tags:
+  - inflation
+  - gas
+  - ukraine
+  - cost-of-living
+- id: twitter_acquired
+  start: 20221027
+  level: 5
+  kind: technology
+  title: Musk Buys Twitter
+  description_short: Elon Musk completes his $44 billion purchase of Twitter and later renames it X.
+  description_long: Musk dismissed much of the staff, relaxed content moderation, and became a major political figure. He
+    donated more than $250 million to Trump's 2024 campaign.
+  why: A social media platform becomes the private property of a man who later enters the government.
+  tags:
+  - social-media
+  - musk
+  - technology
+  - free-speech
+- id: ftx_collapse
+  start: 20221111
+  level: 5
+  kind: economics
+  title: FTX Collapses
+  description_short: The cryptocurrency exchange FTX files for bankruptcy, and its founder is later convicted of fraud.
+  description_long: Customers lost billions of dollars. Sam Bankman-Fried was convicted in November 2023 and sentenced to
+    25 years. The collapse followed a year in which cryptocurrency prices had fallen by more than half.
+  why: The speculative economy's excess is exposed after the rate increases.
+  tags:
+  - crypto
+  - finance
+  - fraud
+  - fed
+- id: trump_announces_2024
+  start: 20221115
+  level: 5
+  kind: election
+  title: Trump Announces for 2024
+  description_short: Trump announces his candidacy for president for the third time, from Mar-a-Lago.
+  description_long: The announcement came a week after the midterms and before any indictment. He faced the first of his four
+    indictments in March.
+  why: The vehicle declares his intention to return, and the party follows.
+  tags:
+  - election
+  - trump
+  - '2024'
+- id: fox_dominion_settlement
+  start: 20230418
+  level: 5
+  kind: politics
+  title: Fox Pays Dominion
+  description_short: Fox News agrees to pay Dominion Voting Systems $787.5 million to settle a defamation suit over its broadcasts
+    about the 2020 election.
+  description_long: Internal messages disclosed in the case showed hosts and executives privately doubting claims they aired.
+    The settlement came on the day the trial was to begin.
+  why: The cost of the stolen-election claim is counted in dollars, for the first time.
+  tags:
+  - media
+  - election
+  - defamation
+  - misinformation
+- id: heat_records_2023
+  start: 20230704
+  level: 5
+  kind: environment
+  title: Hottest Day on Record
+  description_short: The global average temperature reaches a record high, and 2023 becomes the hottest year recorded to that
+    date.
+  description_long: 2024 was hotter still. Wildfire smoke from Canada covered the Northeast in June 2023.
+  why: The deferred climate debt registers in the thermometer.
+  tags:
+  - climate
+  - heat
+  - environment
+  - disaster
+- id: hollywood_strikes
+  start: 20230714
+  level: 5
+  kind: labor
+  title: Hollywood Strikes
+  description_short: Actors join writers on strike, shutting down film and television production over pay and the use of artificial
+    intelligence.
+  description_long: The writers' strike began on May 2 and the actors' on July 14. Both ended in the fall, with contracts
+    that limited the use of AI.
+  why: The first labor fight over generative AI is fought in Hollywood.
+  tags:
+  - labor
+  - ai
+  - strike
+  - entertainment
+- id: ai_executive_order
+  start: 20231030
+  level: 5
+  kind: technology
+  title: Biden's AI Executive Order
+  description_short: Biden signs an executive order setting safety requirements for advanced AI systems.
+  description_long: Trump revoked it on January 20, 2025. Congress passed no comprehensive AI law.
+  why: The regulation of the new technology depends on which president holds the pen.
+  tags:
+  - ai
+  - regulation
+  - executive-power
+  - technology
+- id: helene
+  start: 20240926
+  level: 5
+  kind: disaster
+  title: Hurricane Helene
+  description_short: Hurricane Helene makes landfall in Florida and kills more than 250 people across six states, most of
+    them in the Carolinas.
+  description_long: It was the deadliest hurricane on the mainland since Katrina. Disinformation about the federal response
+    circulated on social media in the weeks before the election.
+  why: A disaster in swing states becomes a test of the state's credibility.
+  tags:
+  - disaster
+  - hurricane
+  - fema
+  - misinformation
+- id: omb_freeze
+  start: 20250127
+  level: 5
+  kind: executive-power
+  title: Federal Funding Freeze
+  description_short: The Office of Management and Budget orders a freeze on federal grants and loans, and rescinds the memo
+    two days later after a judge pauses it.
+  description_long: Twenty-two states and the District of Columbia sued. The press secretary said the rescission did not end
+    the freeze on funding covered by the executive orders.
+  why: The first test of the executive's refusal to spend what Congress appropriated.
+  tags:
+  - impoundment
+  - executive-power
+  - budget
+  - courts
+  date_verified: true
+  source: https://www.nbcnewyork.com/news/business/money-report/white-house-rescinds-federal-funds-freeze-memo/6126779/
+- id: canada_china_tariffs
+  start: 20250201
+  level: 5
+  kind: economics
+  title: Tariffs on Canada, Mexico, and China
+  description_short: Trump orders a 25 percent tariff on Canada and 10 percent on China under the emergency statute, citing
+    fentanyl and illegal immigration.
+  description_long: The Canadian tariff covered energy at 10 percent, and took effect on February 4. These were the first
+    tariffs set under the International Emergency Economic Powers Act.
+  why: The emergency statute is used for tariffs on the country's closest trading partners.
+  tags:
+  - tariffs
+  - canada
+  - trade
+  - executive-power
+  date_verified: true
+  source: https://www.whitehouse.gov/presidential-actions/2025/02/imposing-duties-to-address-the-flow-of-illicit-drugs-across-our-national-border/
+- id: signal_chat
+  start: 20250324
+  level: 5
+  kind: politics
+  title: The Signal Chat
+  description_short: The Atlantic reports that its editor was added to a Signal group chat in which senior officials discussed
+    plans for strikes on Yemen.
+  description_long: The strikes began on March 15. The Pentagon's inspector general reported in December that Defense Secretary
+    Hegseth had used a personal device against policy. Whether the material was classified is disputed.
+  why: A security lapse at the top of the national security system, and no one is removed.
+  tags:
+  - national-security
+  - hegseth
+  - yemen
+  - oversight
+  date_verified: false
+  source: https://www.aljazeera.com/news/2025/12/4/inspectorgeneralreportraises-concerns-about-hegseths-use-of-signal-chat
+- id: china_geneva_truce
+  start: 20250512
+  level: 5
+  kind: diplomacy
+  title: Geneva Truce
+  description_short: The United States and China agree to a ninety-day reduction of tariffs, each cutting its added rate by
+    24 percentage points.
+  description_long: The truce followed weeks in which the American rate on Chinese goods had risen to 125 percent under the
+    April orders. A further truce followed in Busan in October.
+  why: The trade war with China is paused after a month of escalation.
+  tags:
+  - china
+  - tariffs
+  - trade
+  - diplomacy
+  date_verified: true
+  source: https://www.whitehouse.gov/briefings-statements/2025/05/joint-statement-on-u-s-china-economic-and-trade-meeting-in-geneva/
+- id: columbia_settlement
+  start: 20250723
+  level: 5
+  kind: executive-power
+  title: Columbia Settles
+  description_short: Columbia University agrees to pay $200 million to the government and accept a monitor to restore its
+    federal research funds.
+  description_long: The administration had cancelled about $400 million in grants and contracts in March. The settlement included
+    an additional $21 million to the Equal Employment Opportunity Commission and no admission of wrongdoing.
+  why: A university pays the state to restore the funds the state withheld.
+  tags:
+  - universities
+  - executive-power
+  - settlement
+  - research
+  date_verified: true
+  source: https://www.nbcchicago.com/news/national-international/columbia-university-reaches-a-deal-with-trump-to-restore-federal-research-funds
+- id: lisa_cook_firing
+  start: 20250825
+  level: 5
+  kind: executive-power
+  title: Cook Firing Announced
+  description_short: Trump announces the firing of Federal Reserve Governor Lisa Cook, the first attempt to remove a Fed governor.
+  description_long: He cited allegations about her mortgage filings. A federal judge enjoined the removal on September 9,
+    an appeals court upheld the injunction on September 15, and the Supreme Court heard the case on January 21, 2026.
+  why: The independence of the central bank is tested, for the first time.
+  tags:
+  - fed
+  - executive-power
+  - independent-agencies
+  - removal-power
+  date_verified: true
+  source: https://www.scotusblog.com/2026/06/court-prevents-trump-from-firing-fed-governor/
+- id: east_wing
+  start: 20251020
+  level: 5
+  kind: executive-power
+  title: East Wing Demolished
+  description_short: The White House East Wing is demolished to make way for a ballroom, without review by the planning commission.
+  description_long: The contract was about $200 million. The National Trust for Historic Preservation sued, and a judge ordered
+    construction halted on March 31, 2026, before an appeals court let it resume.
+  why: The president reshapes the house of the presidency, at private expense.
+  tags:
+  - white-house
+  - executive-power
+  - preservation
+  - ballroom
+- id: wh_who_withdrawal
+  start: 20260122
+  level: 5
+  kind: diplomacy
+  title: Withdrawal From the WHO
+  description_short: The United States' withdrawal from the World Health Organization takes effect, one year after the notice.
+  description_long: Trump had ordered the withdrawal on January 20, 2025. The WHO says the United States still owes about
+    $260 to $278 million in unpaid dues.
+  why: The state's pandemic lesson is to leave the institution that coordinates the response.
+  tags:
+  - public-health
+  - who
+  - diplomacy
+  - executive-power
+  source: https://cdc.gov/global-health/resources/us-withdrawal-who.html
+- id: lindsey_graham_dies
+  start: 20260711
+  level: 5
+  kind: politics
+  title: Senator Graham Dies
+  description_short: Senator Lindsey Graham of South Carolina dies at 71, a sitting senator.
+  description_long: A preliminary cause was an aortic dissection. He had served in the Senate since 2003.
+  why: A veteran of the old order leaves the chamber during the crisis.
+  tags:
+  - senate
+  - republicans
+  - obituary
+  source: https://www.foxnews.com/live-news/longtime-gop-sen-lindsey-graham-dies-71-brief-sudden-illness
+- id: diesel_record
+  start: 20260904
+  level: 5
+  kind: economics
+  title: Diesel Hits a Record
+  description_short: The average price of diesel reaches a record, $5.85 on September 4 and above $6 in October.
+  description_long: Gasoline did not pass its June 2022 peak of $5.02, but stayed above $4 a gallon for a record 158 days
+    by October 14. The September consumer price index rose 3.7 percent from a year earlier.
+  why: The war's cost is paid at the pump and in freight.
+  tags:
+  - inflation
+  - oil
+  - cost-of-living
+  - iran
+  source: https://gasprices.aaa.com/2026/
