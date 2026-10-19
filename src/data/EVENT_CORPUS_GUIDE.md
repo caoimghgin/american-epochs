@@ -252,7 +252,7 @@ compression, not a field-for-field copy:
 | The American Ascendancy (1941–1952) | `american_ascendancy_events.yaml` | Done, first pass — 106 events (9/14/33/39/8 points + three spans: World War II, the Korean War, and the Cold War), 5-level, reconciled into the live instrument (see `american_ascendancy_outline.md`). Dates drafted from memory, not yet source-checked |
 | The Affluent Society (1953–1965) | `affluent_society_events.yaml` | Done, first pass — 117 events (8/17/37/42/12 points + the Vietnam War span), 5-level, reconciled into the live instrument (see `affluent_society_outline.md`). Dates drafted from memory, not yet source-checked |
 | The Unravelling (1966–1979) | `unravelling_events.yaml` | Done, first pass — 121 events (8/21/34/42/14 points + the Watergate and Stagflation spans), 5-level, reconciled into the live instrument (see `unravelling_outline.md`). Carries the end events of the Vietnam War span. Dates drafted from memory, not yet source-checked |
-| Morning in America (1980–1991) | — | Not started |
+| Morning in America (1980–1991) | `morning_in_america_events.yaml` | Done, first pass — 114 events (9/12/27/44/22 points; nine at Level 1 on the editor's call, see `morning_in_america_outline.md`), 5-level, reconciled into the live instrument. The Cold War span (owned by the Ascendancy corpus) ends inside this epoch, and this corpus carries its end events. Dates drafted from memory, not yet source-checked |
 | The End of History (1992–2007) | — | Not started |
 | The Interregnum (2008–2015) | — | Not started |
 | The Reckoning (2016–present) | — | Not started |

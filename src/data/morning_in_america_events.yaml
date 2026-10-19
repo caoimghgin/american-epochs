@@ -1,0 +1,1435 @@
+schema:
+  name: American Epochs Event Corpus
+  version: 2
+  date_format: YYYYMMDD
+  level_definition:
+    1: The epoch's "crown of the mountain" — always visible, at every zoom, from the very widest view. One beat per structural
+      hinge in the epoch's own arc, not a list of "the important stuff." Target 5-8 entries regardless of how large or eventful
+      the epoch was; see curation_guidance below. Automatically revealed first as the viewer zooms in from full history —
+      never a manual toggle.
+    2: Major events, automatically revealed at the first closer zoom past Level 1.
+    3: Supporting events explaining mechanisms, shifts, and consequences.
+    4: Contextual events — political, military, social, institutional texture.
+    5: Fine-grained events for the closest inspection.
+  curation_guidance:
+  - Level 1 is the hardest and most important editorial call in the corpus. The viewer never chooses to see it — it is what
+    everyone sees whether they zoom in or not, so it carries the whole epoch's argument on its own.
+  - Pick one entry per point where the epoch's own arc genuinely turns, not one per famous name or battle. A working test
+    - "does removing this entry break the causal chain from the epoch's start to its end?" If not, it belongs at Level 2 or
+    below, however well-known it is.
+  - Target 5-8 Level 1 point events specifically. This is deliberately independent of the epoch's total event count or length
+    in years. Reconstruction intentionally carries nine point events because the Panic of 1873 and United States v. Cruikshank
+    describe distinct political and judicial turns and the editor has approved a slightly crowded crown.
+  - Span (duration) entries at Level 1 do not count against the point-event target because the live instrument never tier-filters
+    spans; they provide scene-setting context.
+  - Levels 2-5 have much more room to breathe. Disagreement there is a rounding error, not a structural problem. Spend the
+    real editorial effort on Level 1.
+  notes:
+  - A missing end date indicates a point event.
+  - Dates represent the most defensible public date for display, not necessarily every stage of a legal or political process.
+  - date_precision (year or month) applies to start, and end_precision (month) to the end of a range. Where set, the placeholder
+    in the date field must not be rendered as exact. Absent means a full day-level date. date_verified true means the date
+    was confirmed against an identifiable source.
+  - This corpus is a research/authoring artifact. A human or LLM reconciles it into the live EVENTS array.
+  - Levels were assigned by Claude as a first-pass editorial judgment (see morning_in_america_outline.md for the Level 1 reasoning).
+    All dates are drafted from memory and none are yet source-verified, so verify before treating as settled. No source URLs
+    are included. Figures to check first include the Welch speech date (the live instrument said August 1981, the corpus says
+    December 8, 1981), the PATCO firing date, the Black Monday figures, the S&L bailout cost, and the Gulf War vote counts.
+  - 'The Level 1 carries nine point events (above the usual five to eight) on the editor''s call: PATCO and the 1981 tax cut
+    together are the epoch''s story, and Tax Reform and Iran-Contra are the pair that shows who got preferred treatment and
+    where the separation of powers gave way. See the outline for the justification. The INF Treaty is the release valve if
+    the crown is too dense on screen.'
+  - The Cold War span (1947-03-12 to 1991-12-26) is owned by the American Ascendancy corpus and ends here, inside this epoch.
+    This corpus carries its end events, the Berlin Wall (Level 1) and the Soviet dissolution (Level 1). There are no span
+    entries in this corpus.
+  - hostage_release (1981-01-20) closes the Iran crisis that began in the Unravelling corpus as a point. The 1980 events before
+    Reagan's election are Carter's, kept here because the order begins before its president.
+  - The corpus opens on 1980-01-01 and closes on 1991-12-31. The End of History opens on 1992-01-01. The Rodney King beating
+    (March 1991) is here, and the Los Angeles riots (April 1992) are in the next epoch.
+epoch:
+  id: morning_in_america
+  title: Morning in America
+  start: 19800101
+  end: 19911231
+  thesis: 'A new answer to the question of government wins. The settlement that governed since 1933 could no longer manage
+    inflation, stagnation, or its own coalition, and the country spent twelve years finding out whether markets and a smaller
+    government could do what it could not. Reagan''s coalition won with a package: Volcker''s tight money, the 1981 tax cut
+    and 1986 tax reform, the PATCO firing, deregulated finance, and a military buildup. Inflation broke, growth returned,
+    and the Cold War ended inside the epoch. The costs fell unevenly on unions, industrial regions, farms, and those who caught
+    AIDS and crack, and the debt more than tripled. Iran-Contra tested the separation of powers and the order survived it.
+    The epoch''s name is the winners'' slogan, and it carries the irony that mornings end.'
+events:
+- id: reagan_elected
+  start: 19801104
+  level: 1
+  kind: election
+  title: Reagan Elected
+  description_short: Ronald Reagan defeats Jimmy Carter in a landslide, 489 electoral votes to 49.
+  description_long: Reagan, a former actor and two-term governor of California, wins on inflation, the hostages, and the argument
+    that government is the problem. Republicans also take the Senate for the first time since 1954.
+  why: It is regime change after forty-eight years of New Deal governance, the electorate catching up to a policy turn already
+    under way.
+  tags:
+  - election
+  - reagan
+  - realignment
+- id: patco_fired
+  start: 19810805
+  level: 1
+  kind: labor
+  title: Reagan Fires the Air Traffic Controllers
+  description_short: Reagan dismisses more than eleven thousand striking air traffic controllers who defied a federal ban
+    on strikes.
+  description_long: The PATCO strike began on August 3, and Reagan gave strikers forty-eight hours to return. The union is
+    decertified, and its members are barred from federal service for life. Private employers learn that a strike can be answered
+    with permanent replacement.
+  why: The law is enforced against workers at the moment taxes are cut for capital, and it breaks the leverage of organized
+    labor.
+  tags:
+  - labor
+  - unions
+  - reagan
+- id: erta_signed
+  start: 19810813
+  level: 1
+  kind: legislation
+  title: Economic Recovery Tax Act
+  description_short: Reagan signs the largest tax cut in American history, cutting individual rates by 25 percent over three
+    years.
+  description_long: The top marginal rate falls from 70 to 50 percent, and business depreciation is accelerated. The deficit
+    grows, and tax reduction becomes the organizing principle of the Republican Party.
+  why: It is the new order's signature act, and it makes tax reduction the policy and the deficit the price.
+  tags:
+  - taxes
+  - reagan
+  - supply-side
+- id: reagan_reelected
+  start: 19841106
+  level: 1
+  kind: election
+  title: Reagan Reelected
+  description_short: Reagan carries forty-nine states against Walter Mondale, losing only Minnesota and the District of Columbia.
+  description_long: He wins 525 electoral votes, the most in history, on a recovery that grew about 7 percent that year. The
+    campaign's "Morning in America" ad gives the epoch its name.
+  why: The country ratifies the new order's first term and the economy's recovery.
+  tags:
+  - election
+  - reagan
+  - recovery
+- id: tax_reform_act
+  start: 19861022
+  level: 1
+  kind: legislation
+  title: Tax Reform Act of 1986
+  description_short: Reagan signs a bipartisan overhaul of the tax code that cuts the top rate to 28 percent and closes many
+    loopholes.
+  description_long: Democrats Bill Bradley and Richard Gephardt co-sponsor it. The law moves the tax burden from corporations
+    to individuals and removes millions of low earners from the rolls.
+  why: It writes the order's terms into the tax code with bipartisan sponsorship, and it shows who got treatment under them.
+  tags:
+  - taxes
+  - bipartisan
+  - reagan
+- id: iran_contra_revealed
+  start: 19861103
+  level: 1
+  kind: scandal
+  title: Iran-Contra Affair Revealed
+  description_short: A Lebanese magazine reports that the United States sold arms to Iran, and weeks later the diversion of
+    the proceeds to the Contras comes out.
+  description_long: The sales broke an arms embargo and the diversion broke the Boland Amendment, which barred aid to the
+    Contras. Reagan addresses the nation on November 13, and Attorney General Meese announces the diversion on November 25.
+    Fourteen people are charged, and several convictions are overturned on appeal.
+  why: Executive power is exercised around Congress and the law, and the order survives it.
+  tags:
+  - iran-contra
+  - scandal
+  - separation-of-powers
+- id: inf_treaty
+  start: 19871208
+  level: 1
+  kind: diplomacy
+  title: INF Treaty Signed
+  description_short: Reagan and Gorbachev sign the treaty eliminating all intermediate-range nuclear missiles.
+  description_long: It is the first treaty to eliminate a whole class of nuclear weapons, and it includes on-site inspection.
+    The Senate ratifies it in May 1988, 93 to 5.
+  why: It turns the Cold War from confrontation to settlement.
+  tags:
+  - cold-war
+  - arms-control
+  - gorbachev
+- id: berlin_wall_falls
+  start: 19891109
+  level: 1
+  kind: cold_war
+  title: Berlin Wall Falls
+  description_short: East Germany opens the border, and crowds cross and climb the Wall that had divided Berlin since 1961.
+  description_long: An East German spokesman announces the new travel rules at a press conference, and the checkpoints open
+    that night. Within a year Germany is reunified.
+  why: The Cold War's central symbol ends, and the order's argument about itself changes from a defense to a victory.
+  tags:
+  - cold-war
+  - germany
+  - berlin
+- id: soviet_dissolution
+  start: 19911226
+  level: 1
+  kind: cold_war
+  title: Soviet Union Dissolves
+  description_short: The Supreme Soviet votes the Soviet Union out of existence the day after Gorbachev resigns.
+  description_long: Fifteen republics become independent states. The Soviet flag comes down over the Kremlin on December 25,
+    and Bush says in a televised address that the Cold War is over.
+  why: The rival is gone, and the Cold War span that began in 1947 ends.
+  tags:
+  - cold-war
+  - soviet-union
+- id: reagan_inaugurated
+  start: 19810120
+  level: 2
+  kind: politics
+  title: Reagan Inaugurated
+  description_short: Reagan is sworn in and declares that "government is not the solution to our problem; government is the
+    problem."
+  description_long: Minutes after the oath, Iran releases the fifty-two American hostages after 444 days. It is the first
+    inauguration held on the west front of the Capitol.
+  why: It is the founding statement of the new order, delivered on the day the old one's last crisis ended.
+  tags:
+  - reagan
+  - inaugural
+  - hostages
+- id: aids_first_reports
+  start: 19810605
+  level: 2
+  kind: health
+  title: AIDS Is First Reported
+  description_short: The CDC reports five cases of a rare pneumonia in young gay men in Los Angeles.
+  description_long: It is the first published notice of what will be named AIDS in 1982. By the end of the epoch tens of thousands
+    have died.
+  why: It opens the epidemic that tests the new order's answer to who the state protects.
+  tags:
+  - aids
+  - health
+  - public-health
+- id: unemployment_peak
+  start: 19821201
+  date_precision: month
+  level: 2
+  kind: economics
+  title: Unemployment Peaks at 10.8 Percent
+  description_short: Unemployment reaches its highest level since the Great Depression, after Volcker's tight money.
+  description_long: The recession runs from July 1981 to November 1982. Inflation falls from about 13 percent to about 3 percent
+    by 1983.
+  why: It is the price the new order paid to break inflation, and the bill went to workers and industrial regions.
+  tags:
+  - recession
+  - volcker
+  - unemployment
+- id: evil_empire
+  start: 19830308
+  level: 2
+  kind: cold_war
+  title: Reagan's "Evil Empire" Speech
+  description_short: Reagan tells a convention of evangelicals that the Soviet Union is "the focus of evil in the modern world."
+  description_long: The phrase frames the Cold War as a moral contest and ends détente's rhetoric.
+  why: It names the order's adversary and recasts the Cold War as a moral struggle.
+  tags:
+  - cold-war
+  - reagan
+  - rhetoric
+- id: sdi_announced
+  start: 19830323
+  level: 2
+  kind: cold_war
+  title: Strategic Defense Initiative Announced
+  description_short: Reagan proposes a space-based missile defense, which critics call "Star Wars."
+  description_long: Scientists doubt it can work. The program is never built, but it adds to the pressure on Soviet planners.
+  why: It is the buildup's most ambitious bet and a gamble on Soviet economic limits.
+  tags:
+  - cold-war
+  - defense
+  - sdi
+- id: beirut_bombing
+  start: 19831023
+  level: 2
+  kind: war
+  title: Beirut Barracks Bombing
+  description_short: A suicide truck bomb kills 241 American servicemen at the Marine barracks in Beirut.
+  description_long: Reagan withdraws the Marines in February 1984. Two days later the United States invades Grenada.
+  why: It is the epoch's costliest military failure, and the order absorbs it without shifting course.
+  tags:
+  - lebanon
+  - terrorism
+  - marines
+- id: gorbachev_takes_office
+  start: 19850311
+  level: 2
+  kind: cold_war
+  title: Gorbachev Becomes Soviet Leader
+  description_short: Mikhail Gorbachev becomes General Secretary of the Soviet Communist Party.
+  description_long: He is the first Soviet leader born after the revolution. Glasnost and perestroika follow, and he and Reagan
+    meet four times.
+  why: It is the change on the other side that makes the Cold War's end possible.
+  tags:
+  - cold-war
+  - gorbachev
+  - soviet-union
+- id: challenger
+  start: 19860128
+  level: 2
+  kind: disaster
+  title: Challenger Explosion
+  description_short: The space shuttle Challenger breaks apart seventy-three seconds after launch, killing all seven crew.
+  description_long: Among them is schoolteacher Christa McAuliffe. A commission finds that managers had ignored engineers'
+    warnings about the O-rings.
+  why: It is the order's most visible failure of institutional competence, and it lands in the middle of the recovery.
+  tags:
+  - space
+  - nasa
+  - disaster
+- id: black_monday
+  start: 19871019
+  level: 2
+  kind: economics
+  title: Black Monday
+  description_short: The Dow Jones falls 508 points, 22.6 percent, the largest one-day percentage drop in its history.
+  description_long: The Federal Reserve under Alan Greenspan floods the system with liquidity. The economy does not enter
+    a recession.
+  why: The order treats its survival of the crash as proof of resilience, and the Fed's response becomes the template.
+  tags:
+  - stock-market
+  - greenspan
+  - finance
+- id: bush_elected
+  start: 19881108
+  level: 2
+  kind: election
+  title: George H. W. Bush Elected
+  description_short: The vice president defeats Michael Dukakis, carrying forty states.
+  description_long: 'Bush had promised "read my lips: no new taxes" at the convention. The campaign''s Willie Horton ad is
+    among the most criticized in modern politics.'
+  why: The order passes to a second Republican president, and the party now governs inside it.
+  tags:
+  - election
+  - bush
+- id: tiananmen
+  start: 19890604
+  level: 2
+  kind: world
+  title: Tiananmen Square Massacre
+  description_short: The Chinese army clears pro-democracy protesters from Beijing, killing hundreds or thousands.
+  description_long: Bush limits sanctions and keeps trade open. The episode contrasts with Eastern Europe, where the same
+    year's protests succeed.
+  why: It shows an authoritarian state surviving the pressure that ends others, and the order's choice of trade over sanction.
+  tags:
+  - china
+  - democracy
+  - cold-war
+- id: gulf_war_ends
+  start: 19910228
+  level: 2
+  kind: war
+  title: Gulf War Ends
+  description_short: A hundred-hour ground campaign drives Iraq from Kuwait, and Bush declares a ceasefire.
+  description_long: A coalition of thirty-five nations fights under UN authorization. The air war began on January 17. American
+    casualties are low.
+  why: It is the order's display of military confidence, the nearest thing to a victory parade the epoch has.
+  tags:
+  - gulf-war
+  - iraq
+  - military
+- id: dida_deregulation
+  start: 19800331
+  level: 3
+  kind: legislation
+  title: Depository Institutions Deregulation Act
+  description_short: Carter signs the law that phases out interest-rate ceilings on deposits and widens what savings institutions
+    may do.
+  description_long: It is the first step in the financial deregulation that leads to the savings and loan crisis.
+  why: The new order's financial policy begins under the last Democratic president of the old one.
+  tags:
+  - deregulation
+  - finance
+  - carter
+- id: desert_one
+  start: 19800424
+  level: 3
+  kind: war
+  title: Desert One
+  description_short: A rescue mission for the Tehran hostages fails in the Iranian desert, and eight servicemen die.
+  description_long: Secretary of State Cyrus Vance resigns in protest of the plan. The failure deepens the sense of American
+    weakness.
+  why: It is the low point of the Carter presidency and the setup for the election.
+  tags:
+  - iran
+  - hostages
+  - carter
+- id: motor_carrier_act
+  start: 19800701
+  level: 3
+  kind: legislation
+  title: Motor Carrier Act
+  description_short: Carter signs the law that deregulates trucking.
+  description_long: It ends the Interstate Commerce Commission's control of rates and entry. The Staggers Rail Act follows
+    in October.
+  why: It is the second of Carter's three deregulation laws and weakens the Teamsters' position.
+  tags:
+  - deregulation
+  - trucking
+  - carter
+- id: hostage_release
+  start: 19810120
+  level: 3
+  kind: crisis
+  title: Iran Hostages Released
+  description_short: Fifty-two Americans are freed after 444 days, minutes after Reagan takes the oath.
+  description_long: The timing makes it a victory for the incoming president, though the negotiation was Carter's. The seizure
+    was in the Unravelling.
+  why: It closes the crisis that helped end the old order.
+  tags:
+  - iran
+  - hostages
+- id: reagan_shot
+  start: 19810330
+  level: 3
+  kind: politics
+  title: Reagan Shot
+  description_short: John Hinckley Jr. wounds Reagan outside the Washington Hilton, and the president recovers within weeks.
+  description_long: His good humor in the hospital raises his approval rating. Congress passes the tax and budget bills that
+    summer.
+  why: It gives the president a personal strength that helps carry the program through Congress.
+  tags:
+  - reagan
+  - assassination-attempt
+- id: welch_shareholder_value
+  start: 19811208
+  level: 3
+  kind: economics
+  title: Welch's "Shareholder Value" Speech
+  description_short: Jack Welch, the new head of General Electric, speaks at the Pierre Hotel in New York about running a
+    company for its stock price.
+  description_long: Welch cuts the workforce by about a hundred thousand over the decade. The speech is cited as the origin
+    of the shareholder-value era.
+  why: It states the corporate version of the order's logic, in which the shareholder is the primary claimant.
+  tags:
+  - corporations
+  - shareholder-value
+  - ge
+- id: tefra
+  start: 19820903
+  level: 3
+  kind: legislation
+  title: Tax Equity and Fiscal Responsibility Act
+  description_short: Reagan signs the largest peacetime tax increase to that point, reversing part of the 1981 cut.
+  description_long: It raises about $98 billion over three years, mostly by closing business loopholes and tightening collection.
+    Deficits had grown past what the 1981 projections allowed.
+  why: It shows the order correcting its own arithmetic within a year, and the pledge is not the whole practice.
+  tags:
+  - taxes
+  - deficit
+  - reagan
+- id: garn_st_germain
+  start: 19821015
+  level: 3
+  kind: legislation
+  title: Garn–St Germain Depository Institutions Act
+  description_short: Reagan signs the law that lets savings and loans invest in commercial real estate and other riskier assets.
+  description_long: It is the law that most directly sets up the S&L collapse of the late 1980s.
+  why: It is deregulation that comes with a deposit-insurance guarantee.
+  tags:
+  - deregulation
+  - savings-and-loan
+- id: social_security_rescue
+  start: 19830420
+  level: 3
+  kind: legislation
+  title: Social Security Rescue
+  description_short: Reagan signs a bipartisan package that raises payroll taxes and gradually raises the retirement age.
+  description_long: The Greenspan Commission's plan keeps the program solvent for decades.
+  why: It shows the order leaving the New Deal's central program standing.
+  tags:
+  - social-security
+  - bipartisan
+- id: grenada
+  start: 19831025
+  level: 3
+  kind: war
+  title: Invasion of Grenada
+  description_short: American forces land on the Caribbean island two days after the Beirut bombing and depose its Marxist
+    government.
+  description_long: It lasts about a week. It is the first major use of force since Vietnam and is popular at home.
+  why: It is a quick win after Beirut, and it tests the post-Vietnam appetite for force.
+  tags:
+  - military
+  - grenada
+- id: morning_in_america_ad
+  start: 19840101
+  date_precision: year
+  level: 3
+  kind: culture
+  title: '"It''s Morning Again in America"'
+  description_short: The Reagan campaign's ad shows a country at work, newly married, and at peace, and the phrase names the
+    epoch.
+  description_long: It is made by a team of advertising executives called the Tuesday Team. The ad does not mention Reagan
+    until its last seconds.
+  why: It is the epoch's name, given by the winners.
+  tags:
+  - campaign
+  - reagan
+  - media
+- id: geneva_summit
+  start: 19851119
+  level: 3
+  kind: diplomacy
+  title: Reagan and Gorbachev Meet in Geneva
+  description_short: The first summit between the two leaders in six years opens at Geneva.
+  description_long: They agree that a nuclear war cannot be won and must never be fought. Reykjavik follows the next October.
+  why: It starts the relationship that ends the Cold War.
+  tags:
+  - cold-war
+  - gorbachev
+  - summit
+- id: reykjavik
+  start: 19861012
+  level: 3
+  kind: diplomacy
+  title: Reykjavik Summit
+  description_short: Reagan and Gorbachev come close to agreeing to abolish all nuclear weapons, and talks collapse over SDI.
+  description_long: It ends without a deal, but the proposals set up the INF Treaty a year later.
+  why: It is the nearest the Cold War came to a settlement before the end.
+  tags:
+  - cold-war
+  - arms-control
+  - sdi
+- id: anti_drug_abuse_act
+  start: 19861027
+  level: 3
+  kind: legislation
+  title: Anti-Drug Abuse Act of 1986
+  description_short: Reagan signs a law setting mandatory minimum sentences, with a 100-to-1 disparity between crack and powder
+    cocaine.
+  description_long: It follows the death of basketball star Len Bias in June. The federal prison population rises steadily
+    afterward.
+  why: It is the law that starts the era of mass incarceration at the federal level.
+  tags:
+  - drugs
+  - incarceration
+  - crack
+- id: ircas
+  start: 19861106
+  level: 3
+  kind: legislation
+  title: Immigration Reform and Control Act
+  description_short: Reagan signs a law that grants legal status to about three million unauthorized immigrants and penalizes
+    employers who hire them.
+  description_long: The employer sanctions are weakly enforced, and unauthorized immigration continues.
+  why: It is the immigration thread's next beat after Hart–Celler and the last broad amnesty.
+  tags:
+  - immigration
+  - amnesty
+- id: iran_contra_hearings
+  start: 19870505
+  level: 3
+  kind: scandal
+  title: Iran-Contra Hearings
+  description_short: Joint congressional hearings open, and Oliver North testifies in July in his Marine uniform.
+  description_long: In March Reagan says that his heart and best intentions told him he had not traded arms for hostages,
+    but the facts told him he had. He is not charged.
+  why: It is the public accounting that leaves the president in office and several aides convicted.
+  tags:
+  - iran-contra
+  - congress
+- id: tear_down_this_wall
+  start: 19870612
+  level: 3
+  kind: cold_war
+  title: '"Tear Down This Wall"'
+  description_short: Reagan challenges Gorbachev at the Brandenburg Gate to tear down the Berlin Wall.
+  description_long: His State Department had tried to remove the line from the speech.
+  why: It is the epoch's most quoted line and a retrospective claim to credit for the Wall.
+  tags:
+  - cold-war
+  - reagan
+  - berlin
+- id: greenspan_fed
+  start: 19870811
+  level: 3
+  kind: economics
+  title: Greenspan Becomes Fed Chairman
+  description_short: Alan Greenspan succeeds Paul Volcker as Federal Reserve chairman.
+  description_long: He serves until 2006 and responds to Black Monday two months later.
+  why: It begins the era of the Fed as the economy's steward.
+  tags:
+  - federal-reserve
+  - greenspan
+- id: fukuyama_end_of_history
+  start: 19890101
+  date_precision: year
+  level: 3
+  kind: ideas
+  title: Fukuyama's "The End of History?"
+  description_short: Francis Fukuyama argues in The National Interest that liberal democracy may be the endpoint of ideological
+    evolution.
+  description_long: It appears in the summer of 1989 and becomes a book in 1992. It gives the next epoch its name.
+  why: It is the thesis of the next epoch, published in the middle of this one.
+  tags:
+  - ideas
+  - liberalism
+  - cold-war
+- id: sl_bailout_firrea
+  start: 19890809
+  level: 3
+  kind: legislation
+  title: S&L Bailout (FIRREA)
+  description_short: Bush signs the law that shuts the Federal Savings and Loan Insurance Corporation and creates the Resolution
+    Trust Corporation.
+  description_long: More than a thousand institutions have failed. The cost to taxpayers is about $125 billion.
+  why: It is the bill for deregulation with a deposit guarantee, paid by the public.
+  tags:
+  - savings-and-loan
+  - bailout
+  - deregulation
+- id: tax_pledge_broken
+  start: 19900626
+  level: 3
+  kind: politics
+  title: Bush Breaks the "No New Taxes" Pledge
+  description_short: Bush agrees in a statement that "tax revenue increases" will be part of a deficit deal.
+  description_long: The October budget agreement raises taxes. Conservatives in his party never forgive him, and the pledge
+    helps defeat him in 1992.
+  why: It is the clearest sign that the order's promises constrain its own president.
+  tags:
+  - bush
+  - taxes
+  - deficit
+- id: ada_signed
+  start: 19900726
+  level: 3
+  kind: legislation
+  title: Americans with Disabilities Act
+  description_short: Bush signs the law banning discrimination against people with disabilities.
+  description_long: It extends the Civil Rights Act's logic to a new group. It passes with large bipartisan majorities.
+  why: It is the epoch's main extension of civil rights, passed by a Republican president.
+  tags:
+  - disability
+  - civil-rights
+- id: iraq_invades_kuwait
+  start: 19900802
+  level: 3
+  kind: war
+  title: Iraq Invades Kuwait
+  description_short: Iraqi forces seize Kuwait, and Bush announces that the aggression "will not stand."
+  description_long: The UN authorizes sanctions and then force. The United States builds a coalition and deploys half a million
+    troops.
+  why: It tests the post-Cold War order within months of the Wall.
+  tags:
+  - iraq
+  - gulf-war
+- id: german_reunification
+  start: 19901003
+  level: 3
+  kind: cold_war
+  title: German Reunification
+  description_short: East and West Germany merge into one state, eleven months after the Wall opened.
+  description_long: Bush supports it, and Gorbachev accepts a united Germany in NATO.
+  why: It is the settlement's concrete result on the ground.
+  tags:
+  - cold-war
+  - germany
+- id: august_coup
+  start: 19910819
+  level: 3
+  kind: cold_war
+  title: August Coup
+  description_short: Soviet hardliners try to overthrow Gorbachev, and Boris Yeltsin's resistance in Moscow defeats them in
+    three days.
+  description_long: The coup's failure discredits the Communist Party and speeds the republics' independence.
+  why: It is the event that makes the dissolution unavoidable.
+  tags:
+  - cold-war
+  - yeltsin
+  - soviet-union
+- id: clarence_thomas
+  start: 19911015
+  level: 3
+  kind: politics
+  title: Clarence Thomas Confirmed
+  description_short: The Senate confirms Clarence Thomas to the Supreme Court, 52 to 48, after Anita Hill's televised testimony.
+  description_long: Hill testifies on October 11 that Thomas had sexually harassed her. The hearings reshape the conversation
+    about harassment.
+  why: It is a hinge in the politics of gender and the Court, ahead of 1992.
+  tags:
+  - supreme-court
+  - harassment
+  - gender
+- id: gorbachev_resigns
+  start: 19911225
+  level: 3
+  kind: cold_war
+  title: Gorbachev Resigns
+  description_short: Gorbachev announces his resignation as president of a country that has ceased to function.
+  description_long: The Soviet flag is lowered from the Kremlin that evening.
+  why: It is the formal end of the Soviet state, a day before the dissolution vote.
+  tags:
+  - cold-war
+  - gorbachev
+- id: olympic_boycott
+  start: 19800120
+  level: 4
+  kind: diplomacy
+  title: Carter Announces Olympic Boycott
+  description_short: Carter responds to the invasion of Afghanistan with a grain embargo and a call to boycott the Moscow
+    Olympics.
+  description_long: The United States and about sixty other nations stay home.
+  why: It is the end of détente.
+  tags:
+  - cold-war
+  - afghanistan
+  - carter
+- id: carter_doctrine
+  start: 19800123
+  level: 4
+  kind: diplomacy
+  title: Carter Doctrine
+  description_short: Carter declares in the State of the Union that the United States will use force to defend the Persian
+    Gulf.
+  description_long: It is a response to the Soviet invasion of Afghanistan and the Iranian revolution.
+  why: It makes the Gulf an American commitment.
+  tags:
+  - persian-gulf
+  - oil
+  - carter
+- id: credit_controls
+  start: 19800314
+  level: 4
+  kind: economics
+  title: Carter's Credit Controls
+  description_short: Carter authorizes the Fed to restrict consumer credit, and the economy contracts sharply in the spring.
+  description_long: The controls are lifted in July. Volcker's Fed, appointed by Carter, keeps rates high.
+  why: It is the last attempt to manage inflation by administrative controls.
+  tags:
+  - inflation
+  - volcker
+  - carter
+- id: mariel_boatlift
+  start: 19800415
+  level: 4
+  kind: immigration
+  title: Mariel Boatlift Begins
+  description_short: Castro opens the port of Mariel, and about 125,000 Cubans reach Florida over six months.
+  description_long: The surge strains Miami and Carter's approval.
+  why: It adds to the sense of a country that cannot control its borders.
+  tags:
+  - immigration
+  - cuba
+- id: reagan_nominated
+  start: 19800717
+  level: 4
+  kind: politics
+  title: Reagan Nominated
+  description_short: The Republican convention in Detroit nominates Reagan, with George Bush as his running mate.
+  description_long: Reagan holds the party together after a primary fight with Bush.
+  why: It is the formal start of the campaign.
+  tags:
+  - election
+  - reagan
+- id: solidarity
+  start: 19800831
+  level: 4
+  kind: cold_war
+  title: Solidarity Founded in Poland
+  description_short: Striking shipyard workers in Gdańsk win the right to form an independent trade union.
+  description_long: Lech Wałęsa leads it. The Polish government declares martial law in December 1981.
+  why: It is the first crack in the Soviet bloc.
+  tags:
+  - cold-war
+  - poland
+  - labor
+- id: carter_reagan_debate
+  start: 19801028
+  level: 4
+  kind: politics
+  title: Carter–Reagan Debate
+  description_short: A week before the election, Reagan asks voters, "Are you better off than you were four years ago?"
+  description_long: About eighty million watch. The race, close in the polls, breaks for Reagan.
+  why: It is the question that frames the election.
+  tags:
+  - election
+  - reagan
+  - debate
+- id: prime_rate_peak
+  start: 19801201
+  date_precision: month
+  level: 4
+  kind: economics
+  title: Prime Rate Reaches 21.5 Percent
+  description_short: Banks' prime lending rate hits a record 21.5 percent.
+  description_long: Mortgage rates exceed 15 percent. Housing and auto sales collapse.
+  why: It is the cost of the Fed's course, paid by borrowers.
+  tags:
+  - interest-rates
+  - volcker
+- id: superfund
+  start: 19801211
+  level: 4
+  kind: legislation
+  title: Superfund Law
+  description_short: Carter signs the law creating a fund to clean up hazardous waste sites.
+  description_long: It follows Love Canal. The tax that funds it expires in 1995.
+  why: It is the last major environmental law before the Reagan years.
+  tags:
+  - environment
+  - regulation
+- id: oconnor_named
+  start: 19810707
+  level: 4
+  kind: politics
+  title: Reagan Names Sandra Day O'Connor
+  description_short: Reagan announces the first woman nominated to the Supreme Court.
+  description_long: She is confirmed 99 to 0.
+  why: It is the epoch's first Court appointment.
+  tags:
+  - supreme-court
+  - women
+- id: ibm_pc
+  start: 19810812
+  level: 4
+  kind: technology
+  title: IBM Personal Computer Introduced
+  description_short: IBM launches its PC with an open architecture and a Microsoft operating system.
+  description_long: The clones that follow make the personal computer a mass product.
+  why: It is the start of the personal-computer economy.
+  tags:
+  - technology
+  - computing
+- id: era_expires
+  start: 19820630
+  level: 4
+  kind: constitution
+  title: Equal Rights Amendment Deadline Expires
+  description_short: The extended deadline for ratifying the ERA passes three states short of the thirty-eight required.
+  description_long: Phyllis Schlafly's STOP ERA campaign had stalled ratification after 1977.
+  why: It marks the limit of the women's movement's constitutional agenda.
+  tags:
+  - women
+  - constitution
+- id: mexico_debt_crisis
+  start: 19820812
+  level: 4
+  kind: economics
+  title: Mexico Defaults, Debt Crisis Begins
+  description_short: Mexico announces it cannot meet its foreign debt payments, and a wave of Latin American defaults follows.
+  description_long: The crisis follows Volcker's rate rises and the end of cheap dollar loans. The IMF and American banks
+    negotiate rescues.
+  why: It shows tight money in the United States spilling onto the rest of the world.
+  tags:
+  - debt
+  - latin-america
+  - imf
+- id: aids_named
+  start: 19820924
+  level: 4
+  kind: health
+  title: CDC Names AIDS
+  description_short: The CDC uses the name "acquired immune deficiency syndrome" for the first time.
+  description_long: By then 1,600 cases have been reported.
+  why: It turns a cluster of cases into a defined disease.
+  tags:
+  - aids
+  - public-health
+- id: vietnam_memorial
+  start: 19821113
+  level: 4
+  kind: culture
+  title: Vietnam Veterans Memorial Dedicated
+  description_short: Maya Lin's black granite wall, inscribed with the names of the dead, is dedicated in Washington.
+  description_long: It was controversial at first and becomes the most visited memorial on the Mall.
+  why: It is the country's first step toward reckoning with the war.
+  tags:
+  - vietnam
+  - memory
+- id: kal_007
+  start: 19830901
+  level: 4
+  kind: cold_war
+  title: Soviets Shoot Down Korean Air Lines 007
+  description_short: A Soviet fighter shoots down a Korean airliner that had strayed into Soviet airspace, killing 269.
+  description_long: Reagan calls it a massacre. Tension peaks that fall.
+  why: It is the low point of Cold War relations in the epoch.
+  tags:
+  - cold-war
+  - soviet-union
+- id: mlk_day_signed
+  start: 19831102
+  level: 4
+  kind: legislation
+  title: Martin Luther King Jr. Day Signed
+  description_short: Reagan signs the bill making King's birthday a federal holiday, after initial resistance.
+  description_long: The holiday is first observed in 1986. Senator Jesse Helms filibusters against it.
+  why: It is an accommodation to the civil rights settlement from the new order's president.
+  tags:
+  - civil-rights
+  - reagan
+- id: continental_illinois
+  start: 19840501
+  date_precision: month
+  level: 4
+  kind: economics
+  title: Continental Illinois Bailout
+  description_short: Regulators rescue Continental Illinois, the seventh-largest American bank, with a federal guarantee of
+    all its deposits.
+  description_long: Comptroller Todd Conover says some banks are "too big to fail."
+  why: It is the origin of the too-big-to-fail doctrine, in the middle of the deregulation era.
+  tags:
+  - banking
+  - bailout
+  - finance
+- id: ferraro_nominated
+  start: 19840719
+  level: 4
+  kind: politics
+  title: Ferraro Nominated for Vice President
+  description_short: Walter Mondale chooses Geraldine Ferraro, the first woman on a major party ticket.
+  description_long: The Democratic ticket loses forty-nine states anyway.
+  why: It is the party's attempt to expand the coalition.
+  tags:
+  - women
+  - democrats
+  - election
+- id: reagan_doctrine
+  start: 19850206
+  level: 4
+  kind: cold_war
+  title: Reagan Doctrine Announced
+  description_short: In the State of the Union Reagan pledges support to anti-communist insurgents in Afghanistan, Angola,
+    and Nicaragua.
+  description_long: American aid to the mujahideen and the Contras grows through the decade.
+  why: It turns containment into a policy of rollback in the periphery.
+  tags:
+  - cold-war
+  - reagan
+  - insurgency
+- id: plaza_accord
+  start: 19850922
+  level: 4
+  kind: economics
+  title: Plaza Accord
+  description_short: The five major economies agree to push down the dollar, which had grown strong under Volcker's rates.
+  description_long: It reduces the trade deficit with Japan and Germany. Japan's bubble follows.
+  why: It is an act of managed international economics inside the new order.
+  tags:
+  - dollar
+  - trade
+  - japan
+- id: farm_aid
+  start: 19850922
+  level: 4
+  kind: culture
+  title: Farm Aid Concert
+  description_short: Willie Nelson, Neil Young, and John Mellencamp stage a benefit concert for farmers facing foreclosure.
+  description_long: Farm debt and falling land values had driven thousands of farms out of business.
+  why: It makes visible the costs that fell on the rural Midwest.
+  tags:
+  - farm-crisis
+  - culture
+- id: rock_hudson
+  start: 19851002
+  level: 4
+  kind: health
+  title: Rock Hudson Dies of AIDS
+  description_short: The actor, whose diagnosis had been made public in July, dies.
+  description_long: Reagan, his friend, has still not spoken about the epidemic.
+  why: It changes how many Americans see AIDS.
+  tags:
+  - aids
+  - culture
+- id: gramm_rudman
+  start: 19851212
+  level: 4
+  kind: legislation
+  title: Gramm–Rudman–Hollings Act
+  description_short: Congress passes a law requiring automatic spending cuts if deficits exceed set targets.
+  description_long: The Supreme Court strikes down part of it in 1986. The deficits continue.
+  why: It is the order's attempt to answer its own debt.
+  tags:
+  - deficit
+  - budget
+- id: libya_bombing
+  start: 19860415
+  level: 4
+  kind: war
+  title: Bombing of Libya
+  description_short: American planes strike Tripoli and Benghazi in response to a terrorist attack on a Berlin nightclub.
+  description_long: It is popular at home and condemned abroad.
+  why: It shows the order's readiness to use force.
+  tags:
+  - libya
+  - terrorism
+- id: len_bias
+  start: 19860619
+  level: 4
+  kind: health
+  title: Len Bias Dies
+  description_short: The basketball star dies of a cocaine overdose two days after being drafted by the Celtics.
+  description_long: It drives Congress to pass the Anti-Drug Abuse Act within months.
+  why: It is the event that turns the crack scare into law.
+  tags:
+  - drugs
+  - crack
+- id: boesky
+  start: 19861114
+  level: 4
+  kind: economics
+  title: Boesky Insider-Trading Settlement
+  description_short: Ivan Boesky agrees to pay a $100 million penalty for insider trading and to inform on others.
+  description_long: The investigation reaches Michael Milken and Drexel Burnham. Boesky had told Berkeley graduates in 1986
+    that "greed is healthy."
+  why: It exposes the culture of the takeover boom.
+  tags:
+  - finance
+  - insider-trading
+  - wall-street
+- id: act_up
+  start: 19870312
+  level: 4
+  kind: protest
+  title: ACT UP Founded
+  description_short: Activists in New York form the AIDS Coalition to Unleash Power and stage their first protest on Wall
+    Street.
+  description_long: It forces drug approval to speed up.
+  why: It organizes the people at risk as a political force.
+  tags:
+  - aids
+  - protest
+- id: fairness_doctrine
+  start: 19870804
+  level: 4
+  kind: media
+  title: Fairness Doctrine Repealed
+  description_short: The FCC votes to end the requirement that broadcasters present both sides of controversial issues.
+  description_long: Reagan had vetoed a bill to write it into law two months earlier. Rush Limbaugh goes national in 1988.
+  why: It opens the way to partisan talk radio.
+  tags:
+  - media
+  - radio
+  - deregulation
+- id: bork_rejected
+  start: 19871023
+  level: 4
+  kind: politics
+  title: Bork Rejected
+  description_short: The Senate rejects Robert Bork's nomination to the Supreme Court, 58 to 42.
+  description_long: The fight begins the modern confirmation war. Anthony Kennedy is confirmed instead.
+  why: It shows the limits of the Reagan coalition in the Senate.
+  tags:
+  - supreme-court
+  - senate
+- id: bush_convention_speech
+  start: 19880818
+  level: 4
+  kind: politics
+  title: Bush's "Read My Lips" Convention Speech
+  description_short: 'Bush accepts the Republican nomination and says, "Read my lips: no new taxes."'
+  description_long: The line is written by Peggy Noonan.
+  why: It is the pledge that later defines his presidency.
+  tags:
+  - bush
+  - taxes
+  - election
+- id: willie_horton_ad
+  start: 19881001
+  date_precision: month
+  level: 4
+  kind: politics
+  title: Willie Horton Ad
+  description_short: An independent group airs an ad about a Black convict who had committed a crime while on a Massachusetts
+    furlough.
+  description_long: The Bush campaign runs a related ad.
+  why: It is a landmark in racial politics and crime.
+  tags:
+  - election
+  - crime
+  - race
+- id: rjr_nabisco
+  start: 19881130
+  level: 4
+  kind: economics
+  title: RJR Nabisco Leveraged Buyout
+  description_short: KKR wins a $25 billion takeover of RJR Nabisco, the largest in history to that point.
+  description_long: It is described in Barbarians at the Gate.
+  why: It is the peak of the buyout boom.
+  tags:
+  - finance
+  - leveraged-buyout
+- id: gorbachev_un
+  start: 19881207
+  level: 4
+  kind: cold_war
+  title: Gorbachev Announces Troop Cuts at the UN
+  description_short: Gorbachev tells the UN General Assembly he will cut Soviet forces by half a million.
+  description_long: He also says nations may choose their own path, effectively abandoning the Brezhnev Doctrine.
+  why: It removes the threat of Soviet intervention in Eastern Europe.
+  tags:
+  - cold-war
+  - gorbachev
+- id: afghanistan_withdrawal
+  start: 19890215
+  level: 4
+  kind: cold_war
+  title: Soviet Withdrawal from Afghanistan
+  description_short: The last Soviet troops leave Afghanistan after nine years.
+  description_long: American aid to the mujahideen had risen throughout the war.
+  why: It is the Soviet Union's Vietnam.
+  tags:
+  - cold-war
+  - afghanistan
+- id: solidarity_election
+  start: 19890604
+  level: 4
+  kind: cold_war
+  title: Solidarity Wins Poland's Election
+  description_short: Solidarity wins nearly every contested seat in Poland's semi-free parliamentary election.
+  description_long: A non-communist government takes office in August, the first in the Soviet bloc.
+  why: It is the first domino of 1989.
+  tags:
+  - cold-war
+  - poland
+- id: webster
+  start: 19890703
+  level: 4
+  kind: court_case
+  title: Webster v. Reproductive Health Services
+  description_short: The Supreme Court upholds a Missouri law restricting abortion, and signals it may be willing to revisit
+    Roe.
+  description_long: It encourages states to pass new restrictions.
+  why: It begins the long fight that reaches Dobbs.
+  tags:
+  - abortion
+  - supreme-court
+- id: panama_invasion
+  start: 19891220
+  level: 4
+  kind: war
+  title: Invasion of Panama
+  description_short: American forces invade Panama and capture Manuel Noriega.
+  description_long: About twenty-seven thousand troops take part.
+  why: It is the first use of force after the Wall.
+  tags:
+  - panama
+  - military
+- id: recession_1990
+  start: 19900701
+  date_precision: month
+  level: 4
+  kind: economics
+  title: The 1990–91 Recession Begins
+  description_short: A mild recession begins in July 1990, after the savings and loan collapse and the oil shock from Kuwait.
+  description_long: It ends in March 1991, but unemployment keeps rising into 1992.
+  why: It helps defeat Bush.
+  tags:
+  - recession
+  - bush
+- id: budget_deal_1990
+  start: 19901027
+  level: 4
+  kind: legislation
+  title: Budget Agreement of 1990
+  description_short: Bush signs a deficit-reduction deal that raises taxes on high earners and gasoline.
+  description_long: The deal follows a failed House vote. It is the budget that ends his pledge.
+  why: It is the first serious effort to curb the order's deficits.
+  tags:
+  - deficit
+  - taxes
+  - bush
+- id: use_of_force_authorized
+  start: 19910112
+  level: 4
+  kind: war
+  title: Congress Authorizes Force in the Gulf
+  description_short: The Senate votes 52 to 47 and the House 250 to 183 to authorize military action against Iraq.
+  description_long: The Senate vote is the narrowest for a war authorization in the modern era. The air war begins five days
+    later.
+  why: It is the congressional vote the Vietnam generation had demanded.
+  tags:
+  - gulf-war
+  - congress
+  - war-powers
+- id: rodney_king
+  start: 19910303
+  level: 4
+  kind: politics
+  title: Rodney King Beating
+  description_short: Los Angeles police officers beat Rodney King, and a bystander videotapes it.
+  description_long: The acquittal of the officers in April 1992 sets off the Los Angeles riots.
+  why: It is the first widely seen video of police violence.
+  tags:
+  - police
+  - race
+  - los-angeles
+- id: start_i
+  start: 19910731
+  level: 4
+  kind: diplomacy
+  title: START I Signed
+  description_short: Bush and Gorbachev sign the first treaty that reduces strategic nuclear arsenals.
+  description_long: It is signed in Moscow, five months before the Soviet Union ends.
+  why: It is the last arms treaty signed with the Soviet Union.
+  tags:
+  - arms-control
+  - cold-war
+- id: web_public
+  start: 19910806
+  level: 4
+  kind: technology
+  title: World Wide Web Goes Public
+  description_short: Tim Berners-Lee posts a summary of the project, and the first website goes online.
+  description_long: He had proposed it in March 1989 at CERN.
+  why: It is the foundation of the next epoch's economy.
+  tags:
+  - technology
+  - internet
+- id: mount_st_helens
+  start: 19800518
+  level: 5
+  kind: disaster
+  title: Mount St. Helens Erupts
+  description_short: The volcano in Washington State erupts, killing fifty-seven people.
+  description_long: It is the deadliest volcanic event in American history.
+  why: It is the epoch's first national disaster.
+  tags:
+  - disaster
+- id: cnn_launched
+  start: 19800601
+  level: 5
+  kind: media
+  title: CNN Launches
+  description_short: Ted Turner starts the first twenty-four-hour cable news channel.
+  description_long: The Gulf War makes it a global network.
+  why: It begins continuous news.
+  tags:
+  - media
+  - cable
+- id: mtv_launches
+  start: 19810801
+  level: 5
+  kind: culture
+  title: MTV Launches
+  description_short: MTV begins broadcasting with the video "Video Killed the Radio Star."
+  description_long: It changes how music is sold.
+  why: It is part of the culture of the decade.
+  tags:
+  - culture
+  - television
+  - music
+- id: just_say_no
+  start: 19820101
+  date_precision: year
+  level: 5
+  kind: culture
+  title: '"Just Say No"'
+  description_short: Nancy Reagan takes up the anti-drug slogan, and it becomes a national campaign.
+  description_long: The campaign runs alongside the Anti-Drug Abuse Act.
+  why: It is the soft side of the war on drugs.
+  tags:
+  - drugs
+  - culture
+- id: macintosh
+  start: 19840124
+  level: 5
+  kind: technology
+  title: Macintosh Introduced
+  description_short: Apple presents the Macintosh, the first mass-market computer with a graphical interface and a mouse.
+  description_long: The Super Bowl ad "1984" aired two days later.
+  why: It makes computing visual.
+  tags:
+  - technology
+  - apple
+- id: la_olympics
+  start: 19840728
+  level: 5
+  kind: culture
+  title: Los Angeles Olympics
+  description_short: The Summer Games open in Los Angeles, with the Soviet Union and its allies boycotting in retaliation
+    for 1980.
+  description_long: It is the first privately financed Olympics and turns a profit.
+  why: It is a display of the decade's patriotism and market logic.
+  tags:
+  - culture
+  - olympics
+  - cold-war
+- id: goetz
+  start: 19841222
+  level: 5
+  kind: crime
+  title: Bernhard Goetz Shoots Four Men on the Subway
+  description_short: A white New Yorker shoots four Black teenagers on a subway, claiming self-defense.
+  description_long: He is acquitted of attempted murder and convicted of illegal gun possession.
+  why: It crystallizes the fear of urban crime.
+  tags:
+  - crime
+  - new-york
+- id: live_aid
+  start: 19850713
+  level: 5
+  kind: culture
+  title: Live Aid
+  description_short: Concerts in London and Philadelphia raise money for Ethiopian famine relief.
+  description_long: About 1.9 billion people watch worldwide.
+  why: It is a peak of mass-media charity.
+  tags:
+  - culture
+  - charity
+- id: chernobyl
+  start: 19860426
+  level: 5
+  kind: disaster
+  title: Chernobyl
+  description_short: A reactor explodes in Ukraine, and the Soviet government is slow to admit it.
+  description_long: Gorbachev later calls it a cause of the Soviet collapse.
+  why: It exposes the cost of Soviet secrecy.
+  tags:
+  - soviet-union
+  - nuclear
+- id: tower_commission
+  start: 19870226
+  level: 5
+  kind: scandal
+  title: Tower Commission Report
+  description_short: The commission criticizes Reagan's management style and the NSC's freelancing in Iran-Contra.
+  description_long: It finds that the president did not know of the diversion.
+  why: It is the first official account.
+  tags:
+  - iran-contra
+- id: mckinney_act
+  start: 19870722
+  level: 5
+  kind: legislation
+  title: McKinney Homeless Assistance Act
+  description_short: Reagan signs the first major federal law on homelessness.
+  description_long: Homelessness had grown in the decade as cities closed institutions and cut housing aid.
+  why: It records a cost the order had not planned for.
+  tags:
+  - homelessness
+  - poverty
+- id: wall_street_film
+  start: 19871211
+  level: 5
+  kind: culture
+  title: Wall Street Released
+  description_short: Oliver Stone's film gives Gordon Gekko the line "Greed, for lack of a better word, is good."
+  description_long: It is meant as a critique, and many viewers take it as an ideal.
+  why: It is the decade's emblem of finance culture.
+  tags:
+  - culture
+  - finance
+- id: inf_ratified
+  start: 19880527
+  level: 5
+  kind: diplomacy
+  title: Senate Ratifies the INF Treaty
+  description_short: The Senate votes 93 to 5 to ratify the treaty.
+  description_long: Reagan travels to Moscow two days later for the exchange of documents.
+  why: It completes the treaty's approval.
+  tags:
+  - arms-control
+  - senate
+- id: pan_am_103
+  start: 19881221
+  level: 5
+  kind: terrorism
+  title: Pan Am Flight 103 Bombed
+  description_short: A bomb destroys a Pan Am jet over Lockerbie, Scotland, killing 270.
+  description_long: Libya is held responsible.
+  why: It is a reminder of terrorism in the decade.
+  tags:
+  - terrorism
+  - libya
+- id: drexel_guilty
+  start: 19881221
+  level: 5
+  kind: economics
+  title: Drexel Burnham Pleads Guilty
+  description_short: Drexel Burnham Lambert, the junk-bond house, pleads guilty to securities fraud and agrees to pay $650
+    million.
+  description_long: It files for bankruptcy in February 1990. Michael Milken is indicted in 1989.
+  why: It ends the junk-bond era's center.
+  tags:
+  - finance
+  - junk-bonds
+- id: bush_inaugurated
+  start: 19890120
+  level: 5
+  kind: politics
+  title: Bush Inaugurated
+  description_short: George H. W. Bush takes the oath and promises a "kinder, gentler nation."
+  description_long: Reagan leaves with high approval ratings.
+  why: It is the first transfer of the order between presidents.
+  tags:
+  - bush
+  - inaugural
+- id: exxon_valdez
+  start: 19890324
+  level: 5
+  kind: disaster
+  title: Exxon Valdez Oil Spill
+  description_short: A tanker runs aground in Prince William Sound, Alaska, and spills about eleven million gallons of crude.
+  description_long: It is the worst American oil spill to that date.
+  why: It reinforces the environmental movement.
+  tags:
+  - environment
+  - oil
+- id: texas_v_johnson
+  start: 19890621
+  level: 5
+  kind: court_case
+  title: Texas v. Johnson
+  description_short: The Supreme Court holds that burning the American flag is protected speech.
+  description_long: Congress responds with a flag-protection law, which the Court also strikes down.
+  why: It makes flag-burning a culture-war flashpoint.
+  tags:
+  - free-speech
+  - supreme-court
+- id: loma_prieta
+  start: 19891017
+  level: 5
+  kind: disaster
+  title: Loma Prieta Earthquake
+  description_short: A major earthquake interrupts the World Series in San Francisco and kills sixty-three.
+  description_long: It collapses a section of the Bay Bridge.
+  why: It is a natural disaster that tests the order's infrastructure.
+  tags:
+  - disaster
+  - california
+- id: sandinistas_lose
+  start: 19900225
+  level: 5
+  kind: cold_war
+  title: Sandinistas Lose Nicaragua's Election
+  description_short: Violeta Chamorro defeats Daniel Ortega in an internationally monitored election.
+  description_long: It closes the Contra war.
+  why: It ends the Reagan Doctrine's hardest case.
+  tags:
+  - nicaragua
+  - cold-war
+- id: civil_rights_act_1991
+  start: 19911121
+  level: 5
+  kind: legislation
+  title: Civil Rights Act of 1991
+  description_short: Bush signs a law that overturns several Supreme Court decisions limiting job-discrimination suits.
+  description_long: He had vetoed an earlier version in 1990.
+  why: It restores some protections after the Reagan Court.
+  tags:
+  - civil-rights
+  - employment
+- id: belovezha_accords
+  start: 19911208
+  level: 5
+  kind: cold_war
+  title: Belovezha Accords
+  description_short: The leaders of Russia, Ukraine, and Belarus declare that the Soviet Union has ceased to exist and form
+    the Commonwealth of Independent States.
+  description_long: It is signed in a hunting lodge in a Belarusian forest.
+  why: It is the legal act that ends the Soviet Union.
+  tags:
+  - soviet-union
+  - cold-war

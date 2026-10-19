@@ -46,7 +46,7 @@ The project's honesty bar (register system, no fabricated precision) applies to 
 
 ## Scope note
 
-`big_stick_events.yaml` (114 events) and `new_freedom_events.yaml` (105 events), `return_to_normalcy_events.yaml` (104 events), and `new_deal_events.yaml` (105 events), and `american_ascendancy_events.yaml` (106 events), and `affluent_society_events.yaml` (117 events), and `unravelling_events.yaml` (121 events) have the same status as the Gilded Age had before its audit: nothing is source-verified. Run the same procedure on it, preferably after the Gilded Age is finished so the method is settled. The title still says Gilded Age because that is where the ticket started.
+`big_stick_events.yaml` (114 events) and `new_freedom_events.yaml` (105 events), `return_to_normalcy_events.yaml` (104 events), and `new_deal_events.yaml` (105 events), and `american_ascendancy_events.yaml` (106 events), and `affluent_society_events.yaml` (117 events), `unravelling_events.yaml` (121 events), and `morning_in_america_events.yaml` (114 events) have the same status as the Gilded Age had before its audit: nothing is source-verified. Run the same procedure on it, preferably after the Gilded Age is finished so the method is settled. The title still says Gilded Age because that is where the ticket started.
 
 ## Non-Goals
 
