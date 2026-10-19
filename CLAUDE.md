@@ -118,7 +118,9 @@ american-epochs/
         ├── american_ascendancy_events.yaml       # Done (first pass) — reconciled into the live instrument
         ├── american_ascendancy_outline.md        # Identity, thesis, Level 1 spine reasoning, handoff for the American Ascendancy
         ├── affluent_society_events.yaml          # Done (first pass) — reconciled into the live instrument
-        └── affluent_society_outline.md           # Identity, thesis, Level 1 spine reasoning, handoff for the Affluent Society
+        ├── affluent_society_outline.md           # Identity, thesis, Level 1 spine reasoning, handoff for the Affluent Society
+        ├── unravelling_events.yaml               # Done (first pass) — reconciled into the live instrument
+        └── unravelling_outline.md                # Identity, thesis, Level 1 spine reasoning, handoff for the Unravelling
 ```
 
 Files under `src/data/` are research/authoring artifacts, not runtime data —

@@ -251,7 +251,7 @@ compression, not a field-for-field copy:
 | A New Deal (1933–1940) | `new_deal_events.yaml` | Done, first pass — 105 events (7/15/24/45/13 points + the Dust Bowl span), 5-level, reconciled into the live instrument (see `new_deal_outline.md`). Dates drafted from memory, not yet source-checked |
 | The American Ascendancy (1941–1952) | `american_ascendancy_events.yaml` | Done, first pass — 106 events (9/14/33/39/8 points + three spans: World War II, the Korean War, and the Cold War), 5-level, reconciled into the live instrument (see `american_ascendancy_outline.md`). Dates drafted from memory, not yet source-checked |
 | The Affluent Society (1953–1965) | `affluent_society_events.yaml` | Done, first pass — 117 events (8/17/37/42/12 points + the Vietnam War span), 5-level, reconciled into the live instrument (see `affluent_society_outline.md`). Dates drafted from memory, not yet source-checked |
-| The Unravelling (1966–1979) | — | Not started |
+| The Unravelling (1966–1979) | `unravelling_events.yaml` | Done, first pass — 121 events (8/21/34/42/14 points + the Watergate and Stagflation spans), 5-level, reconciled into the live instrument (see `unravelling_outline.md`). Carries the end events of the Vietnam War span. Dates drafted from memory, not yet source-checked |
 | Morning in America (1980–1991) | — | Not started |
 | The End of History (1992–2007) | — | Not started |
 | The Interregnum (2008–2015) | — | Not started |

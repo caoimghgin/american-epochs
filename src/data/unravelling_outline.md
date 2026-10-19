@@ -174,9 +174,11 @@ eight months apart) is tight at the top level.
   four-year hole before Volcker. It is the first successful tax revolt and the Reagan
   coalition's rehearsal, but its significance is retrospective. I let the Stagflation
   span carry the gap.
-- **The Iranian revolution and hostage crisis (1979)** are Level 2. The seizure
-  (November 4, 1979) is a point here and the release (January 20, 1981) belongs to Morning
-  in America. See the boundary decisions.
+- **The Iranian revolution (January 1979) and the hostage crisis (November 1979).** The
+  seizure (November 4, 1979) is Level 2, a point here, and the release (January 20, 1981)
+  belongs to Morning in America. The revolution itself is Level 3, which departs from my
+  first sketch, because the hostage seizure carries the epoch's last wound and the shah's
+  flight is its cause. See the boundary decisions.
 - **Carter's "malaise" speech (July 1979)** is Level 2. It is memorable, and it is close
   to Volcker, who ends the epoch.
 - **Apollo 11 (July 1969)** is Level 2. It completes the Cold War's great project, the

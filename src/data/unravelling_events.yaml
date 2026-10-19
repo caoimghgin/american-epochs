@@ -1,0 +1,1508 @@
+schema:
+  name: American Epochs Event Corpus
+  version: 2
+  date_format: YYYYMMDD
+  level_definition:
+    1: The epoch's "crown of the mountain" — always visible, at every zoom, from the very widest view. One beat per structural
+      hinge in the epoch's own arc, not a list of "the important stuff." Target 5-8 entries regardless of how large or eventful
+      the epoch was; see curation_guidance below. Automatically revealed first as the viewer zooms in from full history —
+      never a manual toggle.
+    2: Major events, automatically revealed at the first closer zoom past Level 1.
+    3: Supporting events explaining mechanisms, shifts, and consequences.
+    4: Contextual events — political, military, social, institutional texture.
+    5: Fine-grained events for the closest inspection.
+  curation_guidance:
+  - Level 1 is the hardest and most important editorial call in the corpus. The viewer never chooses to see it — it is what
+    everyone sees whether they zoom in or not, so it carries the whole epoch's argument on its own.
+  - Pick one entry per point where the epoch's own arc genuinely turns, not one per famous name or battle. A working test
+    - "does removing this entry break the causal chain from the epoch's start to its end?" If not, it belongs at Level 2 or
+    below, however well-known it is.
+  - Target 5-8 Level 1 point events specifically. This is deliberately independent of the epoch's total event count or length
+    in years. Reconstruction intentionally carries nine point events because the Panic of 1873 and United States v. Cruikshank
+    describe distinct political and judicial turns and the editor has approved a slightly crowded crown.
+  - Span (duration) entries at Level 1 do not count against the point-event target because the live instrument never tier-filters
+    spans; they provide scene-setting context.
+  - Levels 2-5 have much more room to breathe. Disagreement there is a rounding error, not a structural problem. Spend the
+    real editorial effort on Level 1.
+  notes:
+  - A missing end date indicates a point event.
+  - Dates represent the most defensible public date for display, not necessarily every stage of a legal or political process.
+  - date_precision (year or month) applies to start, and end_precision (month) to the end of a range. Where set, the placeholder
+    in the date field must not be rendered as exact. Absent means a full day-level date. date_verified true means the date
+    was confirmed against an identifiable source.
+  - This corpus is a research/authoring artifact. A human or LLM reconciles it into the live EVENTS array.
+  - Levels were assigned by Claude as a first-pass editorial judgment (see unravelling_outline.md for the Level 1 reasoning).
+    All dates are drafted from memory and none are yet source-verified, so verify before treating as settled. No source URLs
+    are included, per the guide's rule against unverifiable citations. Figures to check first include the Detroit and Newark
+    death tolls, Attica casualties, the Chrysler loan date, the Moral Majority founding month, and the 1973-75 recession's
+    unemployment peak.
+  - watergate (1972-06-17 to 1974-08-09) replaces the live year-level span with a precise one. stagflation (1973 to 1979)
+    stays year-level. The Vietnam War span is owned by the Affluent Society corpus, which begins it. This corpus carries its
+    end events, the Paris Peace Accords and the Fall of Saigon, as point events.
+  - hostages_seized (1979-11-04) is a point event here. The release (1981-01-20) belongs to the Morning in America corpus.
+    The crisis is 444 days, under two years, so it is two points and not a span.
+  - The corpus opens on 1966-01-01 and closes on 1979-12-31. Reagan's election (November 1980) opens Morning in America. Volcker
+    (Level 1) closes the epoch and the Saturday Night Special (October 1979) follows it at Level 2.
+  - 'Deviations from the outline: the Iranian revolution (January 1979) is Level 3, not Level 2, and Chicago, Kent State,
+    and the Fed''s October 1979 move were reconsidered while writing (Kent State and the Fed move are Level 2, Chicago stays
+    Level 3).'
+epoch:
+  id: unravelling
+  title: The Unravelling
+  start: 19660101
+  end: 19791231
+  thesis: The Affluent Society ended at its height and cracked at once, in a riot and a war. The Unravelling is the crack
+    widening until the order cannot be repaired, in three simultaneous failures. The coalition splits (Black Power, the backlash,
+    the 1968 election). The war discredits the state (Tet, Kent State, Watergate). The economy refutes Keynesianism (the gold
+    window, OPEC, stagflation), and the order's own central banker ends it in 1979. The period is also productive, with the
+    EPA, Title IX, and Roe, so the unravelling is of the consensus and not of the country's capacity to legislate.
+events:
+- id: watergate
+  start: 19720617
+  end: 19740809
+  level: 1
+  kind: scandal
+  title: Watergate
+  description_short: The break-in at the Democratic National Committee and the cover-up that ended a presidency.
+  description_long: From the arrest of five burglars on June 17, 1972 through the Senate hearings, the Saturday Night Massacre,
+    and the House impeachment inquiry to the resignation on August 9, 1974.
+  why: It is the sustained institutional process by which the presidency lost the public's trust.
+  tags:
+  - watergate
+  - presidency
+- id: stagflation
+  start: 19730101
+  end: 19791231
+  date_precision: year
+  level: 1
+  kind: economics
+  title: Stagflation
+  description_short: Inflation and unemployment rise together, which the Keynesian textbooks said could not happen.
+  description_long: From the first oil shock through the second, prices and joblessness climb at once, and the tools that
+    managed the cycle stop working. The span is a diagnosis and the events inside it carry the evidence.
+  why: It is the empirical refutation of Keynesian demand management and the end of the postwar economic settlement.
+  tags:
+  - stagflation
+  - inflation
+  - keynesianism
+- id: black_power_speech
+  start: 19660616
+  level: 1
+  kind: politics
+  title: Carmichael Calls for "Black Power"
+  description_short: Stokely Carmichael, SNCC chairman, raises the slogan at a rally in Greenwood, Mississippi.
+  description_long: The march was James Meredith's unfinished walk, shot at on June 6. The slogan separates a movement demanding
+    inclusion from one that wants power and self-definition, and it breaks the coalition's shared language.
+  why: It is the first visible fracture in the civil rights coalition, along the line the settlement had left unresolved.
+  tags:
+  - civil-rights
+  - black-power
+- id: tet_offensive
+  start: 19680130
+  level: 1
+  kind: war
+  title: Tet Offensive
+  description_short: North Vietnamese and Viet Cong forces attack cities and bases across South Vietnam during the lunar new
+    year truce.
+  description_long: The attacks are repulsed with heavy enemy losses, and they reach the grounds of the U.S. embassy in Saigon.
+    They contradict the government's claim that the war was being won.
+  why: The war's official optimism fails on television, and the Cold War consensus that justified the war dissolves.
+  tags:
+  - vietnam
+  - war
+  - credibility-gap
+- id: nixon_elected_1968
+  start: 19681105
+  level: 1
+  kind: election
+  title: Nixon Elected
+  description_short: Richard Nixon narrowly defeats Hubert Humphrey, with George Wallace taking five Southern states.
+  description_long: Nixon wins about 43.4 percent to Humphrey's 42.7. Wallace's third-party run takes 13.5 percent and 46
+    electoral votes. Nixon's appeal to a "silent majority" and to the white South begins the realignment of the parties.
+  why: The New Deal majority splits, and the realignment that follows reorders both parties for a generation.
+  tags:
+  - election
+  - realignment
+  - southern-strategy
+- id: gold_window_closed
+  start: 19710815
+  level: 1
+  kind: economics
+  title: Nixon Closes the Gold Window
+  description_short: Nixon suspends the dollar's convertibility into gold and freezes wages and prices for ninety days.
+  description_long: Announced on a Sunday evening after a weekend at Camp David, with a ten percent import surcharge. The
+    measure ends the Bretton Woods system the United States built in 1944, and currencies begin to float.
+  why: The monetary order of the postwar world is abandoned by the country that built it.
+  tags:
+  - bretton-woods
+  - dollar
+  - inflation
+- id: opec_embargo
+  start: 19731017
+  level: 1
+  kind: economics
+  title: OPEC Oil Embargo
+  description_short: Arab oil producers announce an embargo on the United States and its allies after the Yom Kippur War.
+  description_long: Crude oil prices roughly quadruple over the winter and gasoline lines form across the country. The embargo
+    ends in March 1974, but the price shock stays.
+  why: The first oil shock shows that the American economy's input costs are no longer American to control.
+  tags:
+  - oil
+  - energy-crisis
+  - stagflation
+- id: nixon_resigns
+  start: 19740809
+  level: 1
+  kind: politics
+  title: Nixon Resigns
+  description_short: Richard Nixon becomes the first president to resign, after the House Judiciary Committee votes articles
+    of impeachment.
+  description_long: He announces it on the evening of August 8, effective noon the next day, after the "smoking gun" tape
+    confirms his role in the cover-up. Gerald Ford is sworn in and says that "our long national nightmare is over."
+  why: Watergate ends the way institutional trust cannot recover, and the presidency is the order's lowest point.
+  tags:
+  - watergate
+  - presidency
+- id: fall_of_saigon
+  start: 19750430
+  level: 1
+  kind: war
+  title: Fall of Saigon
+  description_short: North Vietnamese tanks enter Saigon, and the last Americans are evacuated by helicopter from the embassy
+    roof.
+  description_long: South Vietnam surrenders. Operation Frequent Wind evacuates roughly seven thousand people by helicopter
+    over two days, and thousands of South Vietnamese allies are left behind.
+  why: The war ends in defeat, closing the span that began at Tonkin.
+  tags:
+  - vietnam
+  - war
+  - defeat
+- id: volcker_fed
+  start: 19790806
+  level: 1
+  kind: economics
+  title: Volcker Takes the Fed
+  description_short: Paul Volcker is sworn in as chairman of the Federal Reserve.
+  description_long: Carter nominated him on July 25 after a cabinet shake-up. Volcker is committed to breaking inflation,
+    even at the cost of unemployment, and in October he will change how the Fed operates.
+  why: It is the regime change that ends full employment as the order's priority, made by the order's own central banker.
+  tags:
+  - federal-reserve
+  - inflation
+  - monetary-policy
+- id: detroit_riot
+  start: 19670723
+  level: 2
+  kind: unrest
+  title: Detroit Riot
+  description_short: A police raid on an after-hours club in Detroit sets off five days of unrest that kills forty-three people.
+  description_long: Johnson sends in federal troops. It is the worst of the "long, hot summer" of 1967, which began with Newark.
+  why: The riots turn the civil rights consensus into a debate about order, and they feed the backlash.
+  tags:
+  - riots
+  - urban
+  - backlash
+- id: johnson_withdraws
+  start: 19680331
+  level: 2
+  kind: politics
+  title: Johnson Withdraws
+  description_short: Lyndon Johnson announces on television that he will not seek or accept renomination.
+  description_long: He also announces a partial bombing halt. The announcement follows Tet and Eugene McCarthy's near-win
+    in New Hampshire.
+  why: The architect of the Great Society leaves the field, and the Democratic coalition loses its leader.
+  tags:
+  - johnson
+  - vietnam
+  - election
+- id: king_assassinated
+  start: 19680404
+  level: 2
+  kind: politics
+  title: Martin Luther King Assassinated
+  description_short: King is shot in Memphis, where he had come to support striking sanitation workers.
+  description_long: Riots break out in more than a hundred cities. The Civil Rights Act of 1968, with its fair housing provisions,
+    passes within the week.
+  why: The movement's most prominent voice of nonviolent inclusion is gone, and the cities burn.
+  tags:
+  - civil-rights
+  - assassination
+- id: rfk_assassinated
+  start: 19680605
+  level: 2
+  kind: politics
+  title: Robert Kennedy Assassinated
+  description_short: Robert Kennedy is shot in Los Angeles after winning the California primary, and dies the next day.
+  description_long: He had been assembling a coalition of Black voters, working-class whites, and the young. Hubert Humphrey
+    wins the nomination without entering a primary.
+  why: The last figure who might have held the Democratic coalition together is killed two months after King.
+  tags:
+  - assassination
+  - democrats
+  - election
+- id: stonewall
+  start: 19690628
+  level: 2
+  kind: protest
+  title: Stonewall Uprising
+  description_short: Patrons of the Stonewall Inn in Greenwich Village resist a police raid, and the protests last several
+    nights.
+  description_long: The uprising launches the modern gay liberation movement. It is one of several new claims on the settlement
+    that arrive in the same years.
+  why: It adds another constituency to a coalition that was already struggling to hold the ones it had.
+  tags:
+  - gay-rights
+  - protest
+- id: apollo_11
+  start: 19690720
+  level: 2
+  kind: space
+  title: Apollo 11 Lands on the Moon
+  description_short: Neil Armstrong and Buzz Aldrin walk on the Moon, fulfilling Kennedy's 1961 pledge.
+  description_long: It is the largest shared event of the television age. The project the Cold War funded is complete as the
+    order's confidence begins to drain away.
+  why: It is the settlement's great technological promise kept at the moment it is losing its purpose.
+  tags:
+  - space-race
+  - cold-war
+- id: kent_state
+  start: 19700504
+  level: 2
+  kind: protest
+  title: Kent State Shootings
+  description_short: Ohio National Guardsmen fire on student protesters against the invasion of Cambodia and kill four.
+  description_long: Two more students are killed at Jackson State eleven days later. Hundreds of campuses close in a national
+    student strike.
+  why: The antiwar movement crosses a threshold, and the country's own soldiers kill its own students.
+  tags:
+  - antiwar
+  - vietnam
+  - protest
+- id: epa_created
+  start: 19701202
+  level: 2
+  kind: legislation
+  title: EPA Begins Operation
+  description_short: The Environmental Protection Agency opens under William Ruckelshaus, created by Nixon's reorganization
+    plan.
+  description_long: The Clean Air Act and Clean Water Act follow, and the federal government takes over the regulation of
+    pollution from the states.
+  why: It is the order's capacity to build new institutions while its legitimacy is draining.
+  tags:
+  - environment
+  - regulation
+- id: pentagon_papers
+  start: 19710613
+  level: 2
+  kind: press
+  title: Pentagon Papers Published
+  description_short: The New York Times begins publishing a classified Pentagon history of the Vietnam War, leaked by Daniel
+    Ellsberg.
+  description_long: The Supreme Court allows publication on June 30. The documents show four administrations misled the public
+    about the war.
+  why: It turns the "credibility gap" into documentary proof, and it pushes Nixon toward the Plumbers.
+  tags:
+  - vietnam
+  - press
+  - credibility-gap
+- id: nixon_china
+  start: 19720221
+  level: 2
+  kind: diplomacy
+  title: Nixon in China
+  description_short: Nixon arrives in Beijing, meeting Mao Zedong and ending twenty-five years of non-recognition.
+  description_long: The visit reorders the Cold War triangle. Détente follows in May with the SALT I arms control agreement
+    and the ABM Treaty.
+  why: It is the Cold War order's most creative move, made by an administration that was losing the war the order justified.
+  tags:
+  - china
+  - detente
+  - cold-war
+- id: watergate_break_in
+  start: 19720617
+  level: 2
+  kind: scandal
+  title: Watergate Break-In
+  description_short: Five men are arrested inside the Democratic National Committee offices at the Watergate complex.
+  description_long: They are tied to Nixon's reelection committee. The cover-up that follows, not the burglary, is what ends
+    the presidency.
+  why: It is the first beat of the scandal that the Watergate span covers.
+  tags:
+  - watergate
+  - scandal
+- id: title_ix
+  start: 19720623
+  level: 2
+  kind: legislation
+  title: Title IX Signed
+  description_short: The Education Amendments of 1972 bar sex discrimination in any federally funded education program.
+  description_long: Its largest visible effect is in school athletics, but it reaches admissions, employment, and harassment.
+    The Equal Rights Amendment passed Congress three months earlier.
+  why: It is the women's movement's largest legislative gain, one of the epoch's extensions of rights.
+  tags:
+  - women
+  - education
+  - civil-rights
+- id: roe_v_wade
+  start: 19730122
+  level: 2
+  kind: court_case
+  title: Roe v. Wade
+  description_short: The Supreme Court, 7 to 2, holds that the Constitution protects a woman's right to an abortion.
+  description_long: The decision federalizes an issue the states had decided. Over the following decades it reorganizes both
+    parties' coalitions.
+  why: It adds a new fault line to the coalition and becomes the engine of a religious mobilization on the right.
+  tags:
+  - abortion
+  - supreme-court
+  - realignment
+- id: paris_accords
+  start: 19730127
+  level: 2
+  kind: diplomacy
+  title: Paris Peace Accords
+  description_short: The United States, North and South Vietnam, and the Viet Cong sign an agreement ending American combat.
+  description_long: The last U.S. combat troops leave in March and prisoners of war come home. Fighting between North and
+    South Vietnam resumes.
+  why: It ends direct U.S. involvement and carries the Vietnam span toward its end.
+  tags:
+  - vietnam
+  - diplomacy
+  - war
+- id: saturday_night_massacre
+  start: 19731020
+  level: 2
+  kind: scandal
+  title: Saturday Night Massacre
+  description_short: Nixon orders special prosecutor Archibald Cox fired, and Attorney General Richardson and Deputy William
+    Ruckelshaus leave.
+  description_long: Solicitor General Robert Bork carries out the firing. The public outcry brings the House toward an impeachment
+    inquiry.
+  why: It is the moment the cover-up becomes a constitutional crisis.
+  tags:
+  - watergate
+  - presidency
+- id: carter_elected
+  start: 19761102
+  level: 2
+  kind: election
+  title: Carter Elected
+  description_short: Jimmy Carter, a former Georgia governor running as a Washington outsider, narrowly defeats Gerald Ford.
+  description_long: He carries every Southern state but Virginia, the last Democrat to sweep the region. His promise is honesty
+    and competence after Watergate.
+  why: The last Democrat of the order takes over an economy that the order's tools cannot repair.
+  tags:
+  - election
+  - carter
+- id: prop_13
+  start: 19780606
+  level: 2
+  kind: politics
+  title: Proposition 13
+  description_short: California voters pass a constitutional cap on property taxes by about two to one.
+  description_long: The measure rolls assessments back and limits annual increases. Within two years most states have copied
+    it in some form.
+  why: It is the first successful tax revolt, and the Reagan coalition assembles around it.
+  tags:
+  - taxes
+  - tax-revolt
+  - california
+- id: camp_david
+  start: 19780917
+  level: 2
+  kind: diplomacy
+  title: Camp David Accords
+  description_short: Carter, Sadat, and Begin sign the framework for peace between Egypt and Israel after thirteen days of
+    talks.
+  description_long: The treaty follows in March 1979. It is the epoch's clearest diplomatic success and a reminder of what
+    the order could still do abroad.
+  why: It shows American power could still broker an outcome while its domestic order was failing.
+  tags:
+  - middle-east
+  - diplomacy
+- id: malaise_speech
+  start: 19790715
+  level: 2
+  kind: politics
+  title: Carter's "Crisis of Confidence" Speech
+  description_short: Carter tells the nation that the crisis is one of confidence, a threat to the American will.
+  description_long: He never uses the word "malaise" but it sticks. Two days later he asks for the resignations of his cabinet.
+  why: A president names the legitimacy crisis directly, and the country hears a diagnosis without a plan.
+  tags:
+  - carter
+  - legitimacy
+  - energy
+- id: saturday_night_special
+  start: 19791006
+  level: 2
+  kind: economics
+  title: The Fed Changes Course
+  description_short: Volcker announces the Fed will target the money supply and let interest rates rise as high as needed.
+  description_long: The federal funds rate climbs toward twenty percent over the next year and a half. The recession it produces
+    breaks inflation and the political coalition that tolerated it.
+  why: It is the decision that ends the Keynesian era and opens the next one.
+  tags:
+  - federal-reserve
+  - monetary-policy
+  - inflation
+- id: hostages_seized
+  start: 19791104
+  level: 2
+  kind: crisis
+  title: Iran Hostage Crisis Begins
+  description_short: Iranian students seize the U.S. embassy in Tehran and take dozens of Americans hostage.
+  description_long: Fifty-two remain captive for 444 days, until January 20, 1981. The release belongs to the next corpus.
+  why: It is the humiliation of American power in an election year, the epoch's last wound.
+  tags:
+  - iran
+  - hostages
+  - foreign-policy
+- id: miranda
+  start: 19660613
+  level: 3
+  kind: court_case
+  title: Miranda v. Arizona
+  description_short: The Supreme Court requires police to warn suspects of their rights before questioning.
+  description_long: The Warren Court's criminal-procedure rulings become a target for "law and order" politics.
+  why: It is one of the decisions the backlash organizes against.
+  tags:
+  - supreme-court
+  - law-and-order
+- id: black_panthers_founded
+  start: 19661015
+  level: 3
+  kind: politics
+  title: Black Panther Party Founded
+  description_short: Huey Newton and Bobby Seale found the party in Oakland, California, to patrol police and defend their
+    neighborhoods.
+  description_long: The party arms itself, runs breakfast programs, and becomes a target of the FBI's COINTELPRO.
+  why: It shows the Black Power turn taking an organized form.
+  tags:
+  - black-power
+  - cointelpro
+- id: reagan_governor
+  start: 19661108
+  level: 3
+  kind: election
+  title: Reagan Elected Governor of California
+  description_short: Ronald Reagan, a former actor and spokesman for Goldwater's 1964 campaign, wins by about a million votes.
+  description_long: He campaigns against campus unrest and the welfare state. It is the first elected office he holds.
+  why: It is the beginning of the political career that will define the next order.
+  tags:
+  - reagan
+  - california
+  - conservatism
+- id: loving_v_virginia
+  start: 19670612
+  level: 3
+  kind: court_case
+  title: Loving v. Virginia
+  description_short: The Supreme Court unanimously strikes down state bans on interracial marriage.
+  description_long: It reaches the last of the Jim Crow marriage statutes, sixteen states, and rests on equal protection and
+    due process.
+  why: It is a late legal triumph of the civil rights era, arriving as the movement fractures.
+  tags:
+  - civil-rights
+  - supreme-court
+- id: newark_riot
+  start: 19670712
+  level: 3
+  kind: unrest
+  title: Newark Riot
+  description_short: Six days of unrest after a police arrest kill twenty-six people in Newark, New Jersey.
+  description_long: It begins the "long, hot summer" of 1967, and ends with the National Guard in the streets.
+  why: It is the first of the summer's riots, and one of the events the Kerner Commission examines.
+  tags:
+  - riots
+  - urban
+- id: cronkite_stalemate
+  start: 19680227
+  level: 3
+  kind: press
+  title: Cronkite Calls the War a Stalemate
+  description_short: Walter Cronkite tells CBS viewers that the war seems "mired in stalemate."
+  description_long: Johnson is said to have remarked that if he had lost Cronkite he had lost middle America. The remark may
+    be apocryphal.
+  why: It is the evidence that the war had lost the establishment, not only the young.
+  tags:
+  - vietnam
+  - press
+- id: kerner_report
+  start: 19680229
+  level: 3
+  kind: politics
+  title: Kerner Commission Report
+  description_short: The National Advisory Commission on Civil Disorders warns that the nation is "moving toward two societies,
+    one black, one white."
+  description_long: It blames white racism, not outside agitators, and recommends large federal spending. Johnson ignores
+    it.
+  why: It is the settlement's own diagnosis of what it had not fixed, and the administration cannot act on it.
+  tags:
+  - riots
+  - racism
+  - urban
+- id: fair_housing_act
+  start: 19680411
+  level: 3
+  kind: legislation
+  title: Fair Housing Act
+  description_short: Johnson signs the Civil Rights Act of 1968, which bans discrimination in the sale and rental of housing.
+  description_long: It passes a week after King's assassination. Enforcement is weak for twenty years.
+  why: It is the last great civil rights law of the order, and the first to run into the limits of enforcement.
+  tags:
+  - housing
+  - civil-rights
+- id: chicago_dnc
+  start: 19680826
+  level: 3
+  kind: politics
+  title: Chicago Democratic Convention
+  description_short: Antiwar protesters and Chicago police fight outside the convention hall while delegates nominate Humphrey.
+  description_long: A federal commission later calls it a "police riot." The scene plays on television as the party fights
+    inside.
+  why: The Democratic coalition tears itself apart on national television.
+  tags:
+  - democrats
+  - antiwar
+  - protest
+- id: moratorium
+  start: 19691015
+  level: 3
+  kind: protest
+  title: Vietnam Moratorium
+  description_short: Millions across the country take part in the largest antiwar demonstration to that date.
+  description_long: A second march in November brings roughly half a million to Washington.
+  why: It shows the antiwar movement reaching the mainstream.
+  tags:
+  - antiwar
+  - protest
+- id: silent_majority
+  start: 19691103
+  level: 3
+  kind: politics
+  title: Nixon's "Silent Majority" Speech
+  description_short: Nixon appeals to the "great silent majority" of Americans to support his Vietnam policy.
+  description_long: He announces Vietnamization, the gradual transfer of the fighting to South Vietnamese forces. Support
+    in the polls jumps.
+  why: It names the constituency of the realignment and puts the country on two sides of the war.
+  tags:
+  - nixon
+  - realignment
+  - vietnam
+- id: my_lai_revealed
+  start: 19691112
+  level: 3
+  kind: press
+  title: My Lai Massacre Revealed
+  description_short: Seymour Hersh reports that American soldiers killed hundreds of unarmed Vietnamese civilians at My Lai
+    in March 1968.
+  description_long: Lieutenant William Calley is convicted in 1971 and serves about three years of house arrest. The photographs
+    appear in December.
+  why: It is the atrocity that makes the war a question of American conscience.
+  tags:
+  - vietnam
+  - atrocity
+- id: earth_day
+  start: 19700422
+  level: 3
+  kind: protest
+  title: First Earth Day
+  description_short: About twenty million Americans take part in the first Earth Day events.
+  description_long: It is organized by Senator Gaylord Nelson and Denis Hayes, and it carries the environmental movement into
+    politics.
+  why: It shows a new claim on the settlement taking mass form.
+  tags:
+  - environment
+  - protest
+- id: cambodia_incursion
+  start: 19700430
+  level: 3
+  kind: war
+  title: Invasion of Cambodia
+  description_short: Nixon announces that American and South Vietnamese troops are attacking enemy sanctuaries in Cambodia.
+  description_long: The expansion of the war sets off the campus protests that lead to Kent State.
+  why: It widens the war the country wanted to leave.
+  tags:
+  - vietnam
+  - cambodia
+- id: clean_air_act
+  start: 19701231
+  level: 3
+  kind: legislation
+  title: Clean Air Act of 1970
+  description_short: Nixon signs the law that sets national air quality standards and gives the EPA enforcement powers.
+  description_long: It passes almost unanimously and sets deadlines the auto industry argues it cannot meet.
+  why: It is the foundation of modern environmental regulation.
+  tags:
+  - environment
+  - regulation
+- id: twenty_sixth_amendment
+  start: 19710701
+  level: 3
+  kind: constitution
+  title: Twenty-Sixth Amendment
+  description_short: The amendment lowering the voting age to eighteen is ratified in about three months, the fastest in history.
+  description_long: It follows the argument that those old enough to be drafted are old enough to vote.
+  why: It is a response to the war, and it enlarges the electorate.
+  tags:
+  - voting
+  - vietnam
+- id: era_passes_congress
+  start: 19720322
+  level: 3
+  kind: constitution
+  title: Equal Rights Amendment Passes Congress
+  description_short: Congress sends the ERA to the states with a seven-year deadline.
+  description_long: Thirty states ratify within a year, then it stalls, and falls short of thirty-eight by its extended deadline
+    in 1982.
+  why: It is the women's movement's constitutional goal, and its failure marks the limit of the new rights agenda.
+  tags:
+  - women
+  - constitution
+- id: salt_abm
+  start: 19720526
+  level: 3
+  kind: diplomacy
+  title: SALT I and the ABM Treaty
+  description_short: Nixon and Brezhnev sign the first strategic arms limitation agreement in Moscow.
+  description_long: It caps offensive missile launchers and limits anti-ballistic missile systems.
+  why: It is détente's centerpiece.
+  tags:
+  - detente
+  - arms-control
+- id: clean_water_act
+  start: 19721018
+  level: 3
+  kind: legislation
+  title: Clean Water Act
+  description_short: Congress overrides Nixon's veto to pass the law that regulates pollutant discharges into the nation's
+    waters.
+  description_long: Nixon objects to the cost. The override is 52 to 12 in the Senate and 247 to 23 in the House.
+  why: It is the capacity to legislate surviving the president who opposed it.
+  tags:
+  - environment
+  - congress
+- id: nixon_reelected
+  start: 19721107
+  level: 3
+  kind: election
+  title: Nixon Reelected
+  description_short: Nixon carries forty-nine states, losing only Massachusetts and the District of Columbia, in a landslide
+    over George McGovern.
+  description_long: He wins about 61 percent of the vote. The landslide comes five months after the Watergate break-in.
+  why: It is the height of Nixon's power, two years before his fall.
+  tags:
+  - election
+  - nixon
+- id: senate_watergate_hearings
+  start: 19730517
+  level: 3
+  kind: scandal
+  title: Senate Watergate Hearings Begin
+  description_short: The Senate Watergate committee opens televised hearings.
+  description_long: John Dean testifies in June and Alexander Butterfield reveals the White House taping system in July.
+  why: The hearings make the cover-up public and make the tapes the center of the case.
+  tags:
+  - watergate
+  - congress
+- id: agnew_resigns
+  start: 19731010
+  level: 3
+  kind: scandal
+  title: Agnew Resigns
+  description_short: Vice President Spiro Agnew resigns and pleads no contest to tax evasion on bribes taken as Maryland governor.
+  description_long: Nixon names Gerald Ford under the Twenty-Fifth Amendment, so the presidency passes to a man no one had
+    voted for.
+  why: It puts the person who will pardon Nixon in position to do it.
+  tags:
+  - scandal
+  - ford
+- id: war_powers_resolution
+  start: 19731107
+  level: 3
+  kind: legislation
+  title: War Powers Resolution
+  description_short: Congress overrides Nixon's veto to limit a president's power to send troops abroad without its consent.
+  description_long: It requires notification within forty-eight hours and withdrawal after sixty days without authorization.
+  why: It is Congress's answer to the war.
+  tags:
+  - congress
+  - vietnam
+  - presidency
+- id: us_v_nixon
+  start: 19740724
+  level: 3
+  kind: court_case
+  title: United States v. Nixon
+  description_short: The Supreme Court unanimously rules that Nixon must turn over the White House tapes.
+  description_long: The tape of June 23, 1972 shows him ordering the CIA to block the FBI's inquiry.
+  why: It is the constitutional limit on executive privilege.
+  tags:
+  - watergate
+  - supreme-court
+- id: impeachment_articles
+  start: 19740727
+  level: 3
+  kind: politics
+  title: House Committee Votes Impeachment
+  description_short: The House Judiciary Committee approves the first of three articles of impeachment, 27 to 11.
+  description_long: Several Republicans join the vote. Within two weeks Nixon's Senate support is gone.
+  why: It is the bipartisan step that makes resignation inevitable.
+  tags:
+  - watergate
+  - impeachment
+- id: ford_pardons_nixon
+  start: 19740908
+  level: 3
+  kind: politics
+  title: Ford Pardons Nixon
+  description_short: Ford grants Nixon a full, free, and absolute pardon for any offenses committed in office.
+  description_long: The pardon comes a month into his presidency and costs him public trust and probably the 1976 election.
+  why: It closes the legal case and keeps the political one open.
+  tags:
+  - watergate
+  - ford
+  - trust
+- id: church_committee
+  start: 19750127
+  level: 3
+  kind: politics
+  title: Church Committee Formed
+  description_short: The Senate creates a select committee under Frank Church to investigate U.S. intelligence agencies.
+  description_long: It finds CIA assassination plots, the FBI's COINTELPRO, and illegal surveillance. Congress creates permanent
+    intelligence oversight.
+  why: It extends the credibility crisis from the presidency to the security state.
+  tags:
+  - intelligence
+  - oversight
+- id: nyc_drop_dead
+  start: 19751029
+  level: 3
+  kind: economics
+  title: 'Ford to City: "Drop Dead"'
+  description_short: Ford says he will veto any federal bailout of New York City, and the Daily News runs the headline.
+  description_long: Ford never said the words. Federal loan guarantees follow in December. The city accepts fiscal oversight
+    and austerity.
+  why: It previews the austerity politics of the next order.
+  tags:
+  - new-york
+  - fiscal-crisis
+  - austerity
+- id: energy_speech
+  start: 19770418
+  level: 3
+  kind: politics
+  title: Carter's "Moral Equivalent of War" Speech
+  description_short: Carter tells the nation that the energy crisis is the "moral equivalent of war."
+  description_long: The plan asks for conservation and a tax on gas guzzlers. Congress passes a weakened version in 1978.
+  why: It is the order's last attempt to mobilize the country behind a collective sacrifice.
+  tags:
+  - energy
+  - carter
+- id: bakke
+  start: 19780628
+  level: 3
+  kind: court_case
+  title: Regents of the University of California v. Bakke
+  description_short: The Supreme Court bars racial quotas in admissions but allows race to be one factor.
+  description_long: The opinion is split, and Justice Powell's middle position becomes the law.
+  why: It limits how far the settlement can extend its terms through preference.
+  tags:
+  - affirmative-action
+  - supreme-court
+- id: airline_deregulation
+  start: 19781024
+  level: 3
+  kind: legislation
+  title: Airline Deregulation Act
+  description_short: Carter signs the law that phases out federal control of fares and routes.
+  description_long: It is pushed by Senator Edward Kennedy and economist Alfred Kahn. Trucking and rail deregulation follow
+    in 1980.
+  why: A Democratic president uses the next order's tool first.
+  tags:
+  - deregulation
+  - carter
+- id: iranian_revolution
+  start: 19790116
+  level: 3
+  kind: crisis
+  title: The Shah Leaves Iran
+  description_short: Mohammad Reza Pahlavi, long an American ally, flees Iran, and Ayatollah Khomeini returns two weeks later.
+  description_long: The revolution costs the United States a key regional partner and a source of oil. A second oil shock
+    follows.
+  why: It sets up the hostage crisis and the second shock.
+  tags:
+  - iran
+  - oil
+- id: three_mile_island
+  start: 19790328
+  level: 3
+  kind: disaster
+  title: Three Mile Island
+  description_short: A partial meltdown at a Pennsylvania nuclear plant brings the first serious accident at a U.S. commercial
+    reactor.
+  description_long: There are no immediate deaths, but no new reactor is ordered for decades. The film The China Syndrome
+    had opened twelve days earlier.
+  why: It adds a loss of trust in expert-managed technology to the epoch's list.
+  tags:
+  - nuclear
+  - energy
+  - trust
+- id: afghanistan_invasion
+  start: 19791224
+  level: 3
+  kind: war
+  title: Soviet Invasion of Afghanistan
+  description_short: Soviet forces enter Afghanistan to support a Marxist government.
+  description_long: Carter withdraws SALT II from the Senate, imposes a grain embargo, and calls for a boycott of the Moscow
+    Olympics.
+  why: It ends détente and opens the last decade of the Cold War.
+  tags:
+  - cold-war
+  - afghanistan
+- id: now_founded
+  start: 19660101
+  date_precision: year
+  level: 4
+  kind: politics
+  title: National Organization for Women Founded
+  description_short: Betty Friedan and others found NOW to press for equal treatment of women under the Civil Rights Act.
+  description_long: It grows out of frustration that the Equal Employment Opportunity Commission was not enforcing the ban
+    on sex discrimination.
+  why: It organizes the women's movement as a lobby inside the settlement.
+  tags:
+  - women
+  - civil-rights
+- id: fulbright_hearings
+  start: 19660204
+  level: 4
+  kind: politics
+  title: Fulbright Vietnam Hearings
+  description_short: Senator William Fulbright opens televised Foreign Relations Committee hearings that question the war.
+  description_long: Fulbright had steered the Gulf of Tonkin Resolution through the Senate in 1964. George Kennan and General
+    James Gavin testify against escalation.
+  why: It is the first sign of a break inside the establishment that had backed the war.
+  tags:
+  - vietnam
+  - congress
+- id: medicare_begins
+  start: 19660701
+  level: 4
+  kind: legislation
+  title: Medicare Takes Effect
+  description_short: Medicare coverage begins for Americans sixty-five and older.
+  description_long: Nearly a million sign up in the first weeks. Medicaid begins for the poor.
+  why: The Great Society's largest program becomes real as the order begins to unravel.
+  tags:
+  - medicare
+  - great-society
+- id: ali_refuses_draft
+  start: 19670428
+  level: 4
+  kind: protest
+  title: Muhammad Ali Refuses Induction
+  description_short: The heavyweight champion refuses induction into the Army, saying "I ain't got no quarrel with them Viet
+    Cong."
+  description_long: He is stripped of his title and convicted. The Supreme Court overturns the conviction in 1971.
+  why: It ties the war to the Black freedom struggle in a single public figure.
+  tags:
+  - draft
+  - vietnam
+  - civil-rights
+- id: six_day_war
+  start: 19670605
+  level: 4
+  kind: war
+  title: Six-Day War
+  description_short: Israel defeats Egypt, Jordan, and Syria in six days and takes the Sinai, the West Bank, and the Golan
+    Heights.
+  description_long: The war strengthens the American alliance with Israel and sets the terms of the region for decades.
+  why: It makes the Middle East the center of American oil and security policy.
+  tags:
+  - middle-east
+  - israel
+  - oil
+- id: marshall_confirmed
+  start: 19670830
+  level: 4
+  kind: court_case
+  title: Thurgood Marshall Confirmed
+  description_short: The Senate confirms Thurgood Marshall as the first Black justice of the Supreme Court.
+  description_long: He had argued Brown for the NAACP.
+  why: It is the civil rights era's legal victory placed on the Court itself.
+  tags:
+  - civil-rights
+  - supreme-court
+- id: march_on_pentagon
+  start: 19671021
+  level: 4
+  kind: protest
+  title: March on the Pentagon
+  description_short: About fifty thousand antiwar protesters rally in Washington, and thousands march to the Pentagon.
+  description_long: Hundreds are arrested. It is described in Norman Mailer's Armies of the Night.
+  why: It shows the antiwar movement turning from petitioning to confrontation.
+  tags:
+  - antiwar
+  - protest
+- id: paris_talks_open
+  start: 19680513
+  level: 4
+  kind: diplomacy
+  title: Paris Peace Talks Begin
+  description_short: The United States and North Vietnam open talks in Paris, a first step toward the 1973 accords.
+  description_long: The talks stall for months over the shape of the table and the role of the Viet Cong.
+  why: It starts the five-year road to the Paris Accords.
+  tags:
+  - vietnam
+  - diplomacy
+- id: gun_control_act
+  start: 19681022
+  level: 4
+  kind: legislation
+  title: Gun Control Act of 1968
+  description_short: Johnson signs the law restricting mail-order sales and barring felons from owning firearms.
+  description_long: It follows the assassinations of King and Robert Kennedy.
+  why: It is the era's largest federal gun law.
+  tags:
+  - guns
+  - legislation
+- id: nixon_inaugurated
+  start: 19690120
+  level: 4
+  kind: politics
+  title: Nixon Inaugurated
+  description_short: Nixon takes office promising to "bring us together."
+  description_long: He faces a Democratic Congress, which holds through his presidency.
+  why: It opens the administration that defines the epoch.
+  tags:
+  - nixon
+  - election
+- id: woodstock
+  start: 19690815
+  level: 4
+  kind: culture
+  title: Woodstock
+  description_short: About four hundred thousand people gather at a farm in upstate New York for a three-day music festival.
+  description_long: Altamont, four months later, becomes its dark counterpart.
+  why: It is the counterculture's defining image.
+  tags:
+  - counterculture
+  - music
+- id: draft_lottery
+  start: 19691201
+  level: 4
+  kind: politics
+  title: Draft Lottery Begins
+  description_short: The first draft lottery assigns birthdays numbers to decide the order of induction.
+  description_long: It replaces local boards' discretion, which had favored the privileged.
+  why: It makes the war's burden a matter of chance, and it begins the path to the all-volunteer force.
+  tags:
+  - draft
+  - vietnam
+- id: swann_busing
+  start: 19710420
+  level: 4
+  kind: court_case
+  title: Swann v. Charlotte-Mecklenburg
+  description_short: The Supreme Court upholds court-ordered busing as a remedy for school segregation.
+  description_long: Nixon opposes it, and busing becomes a national fight over integration.
+  why: It is the settlement's second clause reaching its limit in the schools.
+  tags:
+  - busing
+  - segregation
+  - supreme-court
+- id: china_trip_announced
+  start: 19710715
+  level: 4
+  kind: diplomacy
+  title: Nixon Announces Trip to China
+  description_short: Nixon announces on television that he will visit Beijing.
+  description_long: Henry Kissinger had flown there secretly days earlier. The surprise unsettles Taiwan and Japan.
+  why: It begins the opening that reorders the Cold War.
+  tags:
+  - china
+  - detente
+- id: attica
+  start: 19710909
+  level: 4
+  kind: unrest
+  title: Attica Prison Uprising
+  description_short: Inmates seize part of Attica prison in New York, and a state assault on September 13 leaves forty-three
+    dead.
+  description_long: Governor Nelson Rockefeller declines to go in and negotiate. Thirty-nine of the dead, hostages and inmates
+    alike, are killed by state police gunfire.
+  why: It puts the issues of prisons and law and order on the national stage.
+  tags:
+  - prisons
+  - law-and-order
+- id: smithsonian_agreement
+  start: 19711218
+  level: 4
+  kind: economics
+  title: Smithsonian Agreement
+  description_short: Ten leading nations agree to realign their currencies and devalue the dollar, in an attempt to save fixed
+    exchange rates.
+  description_long: Nixon calls it the "greatest monetary agreement in the history of the world." It collapses by 1973 and
+    currencies float.
+  why: It is the failed effort to repair what the gold window broke.
+  tags:
+  - bretton-woods
+  - dollar
+- id: wallace_shot
+  start: 19720515
+  level: 4
+  kind: politics
+  title: George Wallace Shot
+  description_short: Wallace is shot at a Maryland campaign rally and paralyzed.
+  description_long: He wins the Maryland and Michigan primaries the next day, but is out of the race.
+  why: It removes the Democrat who might have split Nixon's coalition again.
+  tags:
+  - wallace
+  - election
+- id: last_moon_landing
+  start: 19721211
+  level: 4
+  kind: space
+  title: Apollo 17 Lands on the Moon
+  description_short: The last crewed Moon landing of the Apollo program.
+  description_long: No one has walked on the Moon since. Budget cuts end the program ahead of schedule.
+  why: It marks the end of the space race that had given the Cold War its biggest project.
+  tags:
+  - space-race
+  - budget
+- id: christmas_bombing
+  start: 19721218
+  level: 4
+  kind: war
+  title: Christmas Bombing
+  description_short: Nixon orders eleven days of heavy B-52 raids on Hanoi and Haiphong.
+  description_long: The talks resume in January. The attacks cost fifteen B-52s and are widely condemned.
+  why: It is the war's last escalation, before the accords.
+  tags:
+  - vietnam
+  - bombing
+- id: end_of_draft
+  start: 19730127
+  level: 4
+  kind: politics
+  title: The Draft Ends
+  description_short: Defense Secretary Melvin Laird announces the end of conscription, and the all-volunteer force begins.
+  description_long: The announcement comes on the day the Paris Accords are signed.
+  why: It removes the most direct tie between the war and the middle class.
+  tags:
+  - draft
+  - military
+- id: wounded_knee
+  start: 19730227
+  level: 4
+  kind: protest
+  title: Wounded Knee Occupation
+  description_short: Members of the American Indian Movement take over the South Dakota town and hold it for seventy-one days.
+  description_long: Two Native Americans are killed in the standoff with federal marshals.
+  why: It brings Native American claims into the same national moment as the other movements.
+  tags:
+  - native-americans
+  - protest
+- id: yom_kippur_war
+  start: 19731006
+  level: 4
+  kind: war
+  title: Yom Kippur War
+  description_short: Egypt and Syria attack Israel on the holiest day of the Jewish year.
+  description_long: The United States airlifts supplies to Israel, which brings the oil embargo.
+  why: It is the immediate cause of the embargo.
+  tags:
+  - middle-east
+  - oil
+- id: recession_begins
+  start: 19731101
+  date_precision: month
+  level: 4
+  kind: economics
+  title: The 1973–75 Recession Begins
+  description_short: The deepest recession since the 1930s begins in November 1973.
+  description_long: Unemployment reaches 9 percent in May 1975. The stock market loses almost half its value.
+  why: It is the stagflation recession.
+  tags:
+  - recession
+  - stagflation
+- id: speed_limit_55
+  start: 19740102
+  level: 4
+  kind: legislation
+  title: National 55 mph Speed Limit
+  description_short: Nixon signs the law that sets a national speed limit to save fuel.
+  description_long: It stays in force for twenty-one years.
+  why: It is the first federal conservation measure that touches every driver.
+  tags:
+  - energy
+  - conservation
+- id: milliken_v_bradley
+  start: 19740725
+  level: 4
+  kind: court_case
+  title: Milliken v. Bradley
+  description_short: The Supreme Court bars the busing of children between Detroit and its suburbs to desegregate the city's
+    schools.
+  description_long: The 5-to-4 decision protects suburban school districts from metropolitan integration.
+  why: It sets the limit on desegregation by court order.
+  tags:
+  - busing
+  - segregation
+  - supreme-court
+- id: boston_busing
+  start: 19740912
+  level: 4
+  kind: unrest
+  title: Boston Busing Crisis Begins
+  description_short: Court-ordered busing begins in Boston and meets violent resistance in South Boston.
+  description_long: Police escort school buses for the next years.
+  why: It shows desegregation conflict reaching the North.
+  tags:
+  - busing
+  - segregation
+- id: whip_inflation_now
+  start: 19741008
+  level: 4
+  kind: economics
+  title: Ford's "Whip Inflation Now"
+  description_short: Ford asks Americans to conserve and to wear WIN buttons to fight inflation.
+  description_long: It is ridiculed, and inflation stays high through the recession that follows.
+  why: It shows that no tool in the order's kit worked.
+  tags:
+  - inflation
+  - ford
+- id: helsinki_accords
+  start: 19750801
+  level: 4
+  kind: diplomacy
+  title: Helsinki Accords
+  description_short: Thirty-five nations sign an agreement recognizing postwar borders and committing to human rights.
+  description_long: Critics call it a concession to Soviet control of Eastern Europe, but the human rights provisions are
+    later used by dissidents.
+  why: It is détente's last act.
+  tags:
+  - detente
+  - human-rights
+- id: bicentennial
+  start: 19760704
+  level: 4
+  kind: culture
+  title: The Bicentennial
+  description_short: The country marks two hundred years since the Declaration of Independence.
+  description_long: The celebration is large and unifying, and a relief from a decade of conflict.
+  why: It is a pause in the unravelling, and an effort to restore a shared story.
+  tags:
+  - bicentennial
+  - culture
+- id: reagan_1976_challenge
+  start: 19760801
+  date_precision: month
+  level: 4
+  kind: politics
+  title: Reagan Nearly Wins the Republican Nomination
+  description_short: Ronald Reagan comes within about a hundred delegates of defeating the incumbent Ford.
+  description_long: He gives a convention speech that shows his appeal and sets him up for 1980.
+  why: It shows the conservative movement taking over the party.
+  tags:
+  - reagan
+  - republicans
+- id: year_of_the_evangelical
+  start: 19761001
+  date_precision: month
+  level: 4
+  kind: culture
+  title: '"Year of the Evangelical"'
+  description_short: Newsweek declares 1976 the Year of the Evangelical, as Carter, a born-again Baptist, becomes the Democratic
+    candidate.
+  description_long: About a third of Americans call themselves born again.
+  why: It marks the religious mobilization that the right will organize in the next years.
+  tags:
+  - evangelicals
+  - religion
+- id: doe_created
+  start: 19770804
+  level: 4
+  kind: legislation
+  title: Department of Energy Created
+  description_short: Carter signs the bill creating a cabinet-level Department of Energy.
+  description_long: James Schlesinger is its first secretary.
+  why: It is the government's institutional response to the energy crisis.
+  tags:
+  - energy
+  - carter
+- id: panama_treaties
+  start: 19770907
+  level: 4
+  kind: diplomacy
+  title: Panama Canal Treaties Signed
+  description_short: Carter and Omar Torrijos sign treaties giving Panama control of the canal in 1999.
+  description_long: The Senate ratifies them in 1978 by one vote over the required margin. Reagan opposes them.
+  why: It is a politically costly act of retreat that conservatives will use.
+  tags:
+  - panama
+  - foreign-policy
+- id: youngstown_black_monday
+  start: 19770919
+  level: 4
+  kind: economics
+  title: Youngstown "Black Monday"
+  description_short: Youngstown Sheet and Tube announces the closing of its Campbell Works, and thousands lose jobs.
+  description_long: It is the first of many steel closures that hollow out the Mahoning Valley.
+  why: It is the visible start of deindustrialization.
+  tags:
+  - deindustrialization
+  - steel
+  - ohio
+- id: labor_law_reform_dies
+  start: 19780622
+  level: 4
+  kind: politics
+  title: Labor Law Reform Dies in the Senate
+  description_short: Senate Republicans filibuster a bill to strengthen workers' organizing rights, and supporters fail to
+    get cloture.
+  description_long: The bill had passed the House and had Carter's support. Business lobbying beats it.
+  why: It marks the decline of labor's power in the Democratic coalition.
+  tags:
+  - labor
+  - unions
+  - business
+- id: fisa
+  start: 19781025
+  level: 4
+  kind: legislation
+  title: FISA Signed
+  description_short: Carter signs the Foreign Intelligence Surveillance Act, requiring court warrants for domestic national-security
+    surveillance.
+  description_long: It is a response to the Church Committee's findings.
+  why: It is the oversight the unravelling produced.
+  tags:
+  - intelligence
+  - oversight
+- id: humphrey_hawkins
+  start: 19781027
+  level: 4
+  kind: legislation
+  title: Humphrey–Hawkins Act
+  description_short: The Full Employment and Balanced Growth Act sets targets of 4 percent unemployment and 3 percent inflation.
+  description_long: The goals are watered down and have no enforcement. It gives the Fed a dual mandate that Volcker will
+    test.
+  why: It is the last gesture of the full-employment commitment.
+  tags:
+  - employment
+  - federal-reserve
+- id: china_recognition
+  start: 19781215
+  level: 4
+  kind: diplomacy
+  title: U.S. Recognizes the People's Republic of China
+  description_short: Carter announces full diplomatic relations with Beijing, effective January 1, 1979.
+  description_long: It breaks formal ties with Taiwan.
+  why: It completes the opening Nixon began.
+  tags:
+  - china
+  - diplomacy
+- id: egypt_israel_treaty
+  start: 19790326
+  level: 4
+  kind: diplomacy
+  title: Egypt–Israel Peace Treaty
+  description_short: Sadat and Begin sign the treaty at the White House, following the Camp David framework.
+  description_long: Egypt is expelled from the Arab League and Sadat is assassinated in 1981.
+  why: It is the epoch's diplomatic high point.
+  tags:
+  - middle-east
+  - carter
+- id: moral_majority
+  start: 19790601
+  date_precision: month
+  level: 4
+  kind: politics
+  title: Moral Majority Founded
+  description_short: Jerry Falwell founds the Moral Majority with the encouragement of conservative organizers.
+  description_long: It registers voters and takes up school prayer, abortion, and the ERA.
+  why: It is the organization that brings evangelicals into the Republican coalition.
+  tags:
+  - evangelicals
+  - religious-right
+- id: second_gas_lines
+  start: 19790601
+  date_precision: month
+  level: 4
+  kind: economics
+  title: Second Gasoline Lines
+  description_short: The Iranian revolution cuts oil supplies, and gasoline lines return in the summer.
+  description_long: Prices roughly double over the year, and inflation reaches double digits.
+  why: It is the second oil shock.
+  tags:
+  - oil
+  - inflation
+- id: salt_ii_signed
+  start: 19790618
+  level: 4
+  kind: diplomacy
+  title: SALT II Signed
+  description_short: Carter and Brezhnev sign the second arms limitation treaty in Vienna.
+  description_long: The Senate never ratifies it, and Carter withdraws it after the invasion of Afghanistan.
+  why: It is détente's last treaty.
+  tags:
+  - arms-control
+  - detente
+- id: cuyahoga_fire
+  start: 19690622
+  level: 5
+  kind: environment
+  title: Cuyahoga River Fire
+  description_short: The polluted Cuyahoga River in Cleveland catches fire, as it had many times before.
+  description_long: Time magazine's coverage helps build support for the Clean Water Act.
+  why: It becomes the image of industrial pollution.
+  tags:
+  - environment
+  - pollution
+- id: alcatraz_occupation
+  start: 19691120
+  level: 5
+  kind: protest
+  title: Alcatraz Occupation Begins
+  description_short: Native American activists occupy the former prison island in San Francisco Bay and hold it for nineteen
+    months.
+  description_long: They call themselves "Indians of All Tribes."
+  why: It starts the Red Power movement.
+  tags:
+  - native-americans
+  - protest
+- id: jackson_state
+  start: 19700515
+  level: 5
+  kind: protest
+  title: Jackson State Shootings
+  description_short: Police fire into a women's dormitory at a Black college in Mississippi, killing two students.
+  description_long: It gets far less national attention than Kent State.
+  why: It shows how the attention was unevenly distributed.
+  tags:
+  - protest
+  - civil-rights
+- id: powell_memo
+  start: 19710823
+  level: 5
+  kind: politics
+  title: The Powell Memo
+  description_short: Lewis Powell sends the U.S. Chamber of Commerce a confidential memo urging business to organize politically.
+  description_long: Nixon names him to the Supreme Court two months later.
+  why: It is an early sign of the business mobilization against the regulatory state.
+  tags:
+  - business
+  - lobbying
+- id: microsoft_founded
+  start: 19750404
+  level: 5
+  kind: economics
+  title: Microsoft Founded
+  description_short: Bill Gates and Paul Allen start a software company in Albuquerque.
+  description_long: Apple follows in April 1976.
+  why: It is the start of an industry that will transform the next order's economy.
+  tags:
+  - technology
+  - computing
+- id: mayaguez
+  start: 19750512
+  level: 5
+  kind: war
+  title: Mayaguez Incident
+  description_short: Cambodian forces seize the American merchant ship Mayaguez, and Ford sends Marines to retake it.
+  description_long: Forty-one Americans die in the rescue, more than the crew who had been captured.
+  why: It is a display of force in the wake of the Saigon defeat.
+  tags:
+  - cambodia
+  - ford
+- id: apple_founded
+  start: 19760401
+  level: 5
+  kind: economics
+  title: Apple Computer Founded
+  description_short: Steve Jobs, Steve Wozniak, and Ronald Wayne found Apple in California.
+  description_long: The Apple II appears in 1977.
+  why: It is the other half of the computing industry's start.
+  tags:
+  - technology
+  - computing
+- id: gregg_v_georgia
+  start: 19760702
+  level: 5
+  kind: court_case
+  title: Gregg v. Georgia
+  description_short: The Supreme Court allows the death penalty to resume under new state laws.
+  description_long: It ends the four-year pause that began with Furman v. Georgia in 1972.
+  why: It is an outcome of the law-and-order politics that grew through the epoch.
+  tags:
+  - death-penalty
+  - supreme-court
+- id: draft_evaders_pardoned
+  start: 19770121
+  level: 5
+  kind: politics
+  title: Carter Pardons Draft Evaders
+  description_short: Carter fulfills a campaign promise on his first full day in office and pardons Vietnam-era draft evaders.
+  description_long: The pardon covers roughly a hundred thousand, and excludes deserters.
+  why: It is the first step in a decade of closing the wounds of the war.
+  tags:
+  - vietnam
+  - carter
+  - draft
+- id: roots
+  start: 19770123
+  level: 5
+  kind: culture
+  title: Roots Airs on Television
+  description_short: The miniseries based on Alex Haley's book begins on ABC and draws a huge audience.
+  description_long: The finale is among the most-watched programs in history.
+  why: It brings the history of slavery into American homes.
+  tags:
+  - television
+  - slavery
+  - culture
+- id: nyc_blackout
+  start: 19770713
+  level: 5
+  kind: crisis
+  title: New York City Blackout
+  description_short: A power failure leaves New York in the dark for a day, and looting and arson spread through poor neighborhoods.
+  description_long: About 3,700 people are arrested.
+  why: It shows a city already weakened by fiscal crisis and decay.
+  tags:
+  - new-york
+  - urban
+- id: love_canal
+  start: 19780807
+  level: 5
+  kind: environment
+  title: Love Canal Emergency
+  description_short: Carter declares an emergency at Love Canal, New York, where chemical waste had been buried under a neighborhood.
+  description_long: Hundreds of families are relocated. The Superfund law follows in 1980.
+  why: It shows pollution as a threat in the home.
+  tags:
+  - environment
+  - pollution
+- id: jonestown
+  start: 19781118
+  level: 5
+  kind: disaster
+  title: Jonestown
+  description_short: More than 900 members of the Peoples Temple die in Guyana, most by mass suicide.
+  description_long: Congressman Leo Ryan is murdered at the airstrip.
+  why: It is a shock that deepens the feeling of national unease.
+  tags:
+  - cults
+  - guyana
+- id: chrysler_bailout
+  start: 19791201
+  date_precision: month
+  level: 5
+  kind: economics
+  title: Chrysler Loan Guarantees Approved
+  description_short: Congress approves federal loan guarantees for the failing Chrysler Corporation.
+  description_long: Carter signs the bill in January 1980.
+  why: It is an industrial rescue the order could still manage.
+  tags:
+  - industrial-policy
+  - autos
