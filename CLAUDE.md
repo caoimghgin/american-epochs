@@ -122,7 +122,9 @@ american-epochs/
         ├── unravelling_events.yaml               # Done (first pass) — reconciled into the live instrument
         ├── unravelling_outline.md                # Identity, thesis, Level 1 spine reasoning, handoff for the Unravelling
         ├── morning_in_america_events.yaml        # Done (first pass) — reconciled into the live instrument
-        └── morning_in_america_outline.md         # Identity, thesis, Level 1 spine reasoning, handoff for Morning in America
+        ├── morning_in_america_outline.md         # Identity, thesis, Level 1 spine reasoning, handoff for Morning in America
+        ├── end_of_history_events.yaml            # Done (first pass) — reconciled into the live instrument
+        └── end_of_history_outline.md             # Identity, thesis, Level 1 spine reasoning, handoff for The End of History
 ```
 
 Files under `src/data/` are research/authoring artifacts, not runtime data —

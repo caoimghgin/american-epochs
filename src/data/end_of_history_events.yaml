@@ -1,0 +1,1878 @@
+schema:
+  name: American Epochs Event Corpus
+  version: 2
+  date_format: YYYYMMDD
+  level_definition:
+    1: The epoch's "crown of the mountain" — always visible, at every zoom, from the very widest view. One beat per structural
+      hinge in the epoch's own arc, not a list of "the important stuff." Target 5-8 entries regardless of how large or eventful
+      the epoch was; see curation_guidance below. Automatically revealed first as the viewer zooms in from full history —
+      never a manual toggle.
+    2: Major events, automatically revealed at the first closer zoom past Level 1.
+    3: Supporting events explaining mechanisms, shifts, and consequences.
+    4: Contextual events — political, military, social, institutional texture.
+    5: Fine-grained events for the closest inspection.
+  curation_guidance:
+  - Level 1 is the hardest and most important editorial call in the corpus. The viewer never chooses to see it — it is what
+    everyone sees whether they zoom in or not, so it carries the whole epoch's argument on its own.
+  - Pick one entry per point where the epoch's own arc genuinely turns, not one per famous name or battle. A working test
+    - "does removing this entry break the causal chain from the epoch's start to its end?" If not, it belongs at Level 2 or
+    below, however well-known it is.
+  - Target 5-8 Level 1 point events specifically. This is deliberately independent of the epoch's total event count or length
+    in years. Reconstruction intentionally carries nine point events because the Panic of 1873 and United States v. Cruikshank
+    describe distinct political and judicial turns and the editor has approved a slightly crowded crown.
+  - Span (duration) entries at Level 1 do not count against the point-event target because the live instrument never tier-filters
+    spans; they provide scene-setting context.
+  - Levels 2-5 have much more room to breathe. Disagreement there is a rounding error, not a structural problem. Spend the
+    real editorial effort on Level 1.
+  notes:
+  - A missing end date indicates a point event.
+  - Dates represent the most defensible public date for display, not necessarily every stage of a legal or political process.
+  - date_precision (year or month) applies to start, and end_precision (month) to the end of a range. Where set, the placeholder
+    in the date field must not be rendered as exact. Absent means a full day-level date. date_verified true means the date
+    was confirmed against an identifiable source.
+  - This corpus is a research/authoring artifact. A human or LLM reconciles it into the live EVENTS array.
+  - Levels were assigned by Claude as a first-pass editorial judgment (see end_of_history_outline.md for the Level 1 reasoning).
+    All dates are drafted from memory and none are yet source-verified, so verify before treating as settled. No source URLs
+    are included. Figures to check first include the vote counts (NAFTA, Gramm-Leach-Bliley, PNTR, the Iraq AUMF, the impeachment
+    articles), the Bush v. Gore wording, the Katrina death toll, the Abu Ghraib and Duelfer dates, and the Case-Shiller peak
+    month.
+  - 'The Level 1 carries nine point events (above the usual five to eight) on the editor''s call: Gramm-Leach-Bliley and China''s
+    permanent normal trade relations go hand in hand as the two acts of neoliberal capture (the financial opening and the
+    trade opening), so both are Level 1. Bush v. Gore and Katrina are also Level 1 on the editor''s call. PNTR (October 2000)
+    and Bush v. Gore (December 2000) sit two months apart and may crowd on screen. Gramm-Leach-Bliley is the release valve
+    if they do.'
+  - Two cross-epoch spans are owned by this corpus because they begin here. The Afghanistan War (2001-10-07 to 2021-08-30)
+    ends in the Reckoning, which must carry its end events (the Doha agreement, the withdrawal, the fall of Kabul). The Iraq
+    War (2003-03-20 to 2011-12-18) ends in the Interregnum, which must carry the 2011 withdrawal. The two spans overlap from
+    2003 to 2011.
+  - The Brooks Brothers Riot (2000-11-22) is Level 2 at the editor's request, as the epoch's example of orchestrated pressure
+    on an election count. The thread on rule of law and executive power runs through the Iran-Contra pardons (Level 3), the
+    Bush v. Gore decision (Level 1), Guantanamo and the torture memo (Level 2), warrantless wiretapping and the Military Commissions
+    Act (Level 3), and the Libby commutation (Level 4).
+  - The Republican revolution (1994-11-08) is Level 2 and the impeachment (1998-12-19) is Level 2. Circle back to the Republican
+    revolution if the crown looks odd without it.
+  - The corpus opens on 1992-01-01 and closes on 2007-12-31. The Interregnum opens on 2008-01-01. The Iran-Contra pardons
+    and the Los Angeles riots (1992) are here. The first credit failures of 2007 are the epoch's last beats, and Bear Stearns's
+    March 2008 rescue and Lehman belong to the next corpus.
+epoch:
+  id: end_of_history
+  title: The End of History
+  start: 19920101
+  end: 20071231
+  thesis: 'The order at its apex, with no rival and a belief in itself. Clinton''s election ratifies the settlement: the opposition
+    party accepts the terms, and then writes them into trade, welfare, and finance. The boom is real, the budget briefly balances,
+    and the gains reach the bottom of the wage scale for a few years. The belief is then tested four times in eight years:
+    an election decided by the Supreme Court, the largest attack on American soil, a war begun on a premise that proved false,
+    and a drowned city the state could not rescue. Executive power expands around the law each time. The confidence dies before
+    the crisis, and by the summer of 2007 the financial machinery is already failing.'
+events:
+- id: clinton_elected
+  start: 19921103
+  level: 1
+  kind: election
+  title: Clinton Elected
+  description_short: Bill Clinton defeats President Bush with 370 electoral votes to 168, on 43 percent of the popular vote.
+  description_long: The Arkansas governor runs as a New Democrat and on the economy ("It's the economy, stupid"). Ross Perot
+    takes 18.9 percent as an independent, the largest third-party share since 1912. Democrats take the White House for the
+    first time in twelve years.
+  why: It is the ratification signal. The opposition party wins by accepting the terms of the order the Republicans built.
+  tags:
+  - election
+  - clinton
+  - new-democrats
+  - ratification
+- id: nafta_signed
+  start: 19931208
+  level: 1
+  kind: trade
+  title: NAFTA Signed
+  description_short: Clinton signs the North American Free Trade Agreement, creating a free-trade zone with Canada and Mexico.
+  description_long: Bush had signed the agreement in December 1992, and Clinton won its passage over the opposition of most
+    House Democrats and organized labor. The House voted 234 to 200 on November 17 and the Senate 61 to 38 on November 20.
+    The agreement took effect on January 1, 1994.
+  why: Free trade becomes a Democratic project, and the party's labor wing loses the argument inside it.
+  tags:
+  - trade
+  - nafta
+  - labor
+  - ratification
+- id: welfare_reform
+  start: 19960822
+  level: 1
+  kind: legislation
+  title: Welfare Reform
+  description_short: Clinton signs the law ending the federal guarantee of cash assistance for poor families.
+  description_long: The Personal Responsibility and Work Opportunity Act replaces Aid to Families with Dependent Children
+    with block grants, work requirements, and a five-year lifetime limit. Clinton had vetoed two earlier versions, and three
+    senior officials at the Department of Health and Human Services resigned in protest.
+  why: A Democratic president writes the order's terms into the safety net, and fulfills the 1992 promise to "end welfare
+    as we know it."
+  tags:
+  - welfare
+  - clinton
+  - safety-net
+  - ratification
+- id: glass_steagall_repeal
+  start: 19991112
+  level: 1
+  kind: legislation
+  title: Gramm-Leach-Bliley Act
+  description_short: Clinton signs the repeal of the Glass-Steagall provisions that had separated commercial banking from
+    investment banking since 1933.
+  description_long: The bill passes the Senate 90 to 8 and the House 362 to 57. Citicorp and Travelers had already merged
+    in 1998 in anticipation of it, and the Commodity Futures Modernization Act of December 2000 then exempts over-the-counter
+    derivatives from regulation.
+  why: The order rewrites the rules of finance for the winners under a Democratic president, and the rules it removes are
+    the ones the New Deal built.
+  tags:
+  - finance
+  - deregulation
+  - glass-steagall
+  - clinton
+- id: china_pntr
+  start: 20001010
+  level: 1
+  kind: trade
+  title: China Granted Permanent Normal Trade Relations
+  description_short: Clinton signs the law ending the annual congressional review of China's trade status, clearing the way
+    for its entry into the World Trade Organization.
+  description_long: The House passed it 237 to 197 in May and the Senate 83 to 15 in September. China joined the WTO on December
+    11, 2001. Economists later estimated that the resulting import competition cost the United States more than two million
+    jobs between 1999 and 2011, concentrated in particular counties.
+  why: The order's other great opening runs alongside the financial one, and its costs fall on regions while its gains go
+    to capital and consumers.
+  tags:
+  - trade
+  - china
+  - manufacturing
+  - deindustrialization
+- id: bush_v_gore
+  start: 20001212
+  level: 1
+  kind: court
+  title: Bush v. Gore
+  description_short: The Supreme Court, 5 to 4, halts the Florida recount and decides the presidential election.
+  description_long: Bush led by 537 votes in Florida after a thirty-six-day dispute, and Gore won the national popular vote
+    by more than half a million. The majority holds that no constitutionally valid recount can be finished by the December
+    12 deadline and limits the ruling to "the present circumstances." Justice Stevens dissents that the real loser is "the
+    Nation's confidence in the judge as an impartial guardian of the rule of law."
+  why: A court chooses the president, and the order's claim to legitimacy rests on the court's.
+  tags:
+  - court
+  - election-2000
+  - rule-of-law
+  - florida
+- id: september_11
+  start: 20010911
+  level: 1
+  kind: terrorism
+  title: September 11
+  description_short: Nineteen hijackers crash four airliners into the World Trade Center, the Pentagon, and a field in Pennsylvania,
+    killing 2,977 people.
+  description_long: It is the largest attack on American soil. Bush addresses the nation that evening and declares a war on
+    terror, and on September 14 Congress authorizes the use of military force against those responsible, 98 to 0 in the Senate
+    and 420 to 1 in the House.
+  why: The order's power meets a shock it did not predict, and executive authority expands around it.
+  tags:
+  - terrorism
+  - 9-11
+  - war-on-terror
+  - executive-power
+- id: afghanistan_war
+  start: 20011007
+  end: 20210830
+  level: 1
+  kind: war
+  title: Afghanistan War
+  description_short: The United States and its allies invade Afghanistan to destroy al-Qaeda and remove the Taliban, and the
+    war lasts twenty years.
+  description_long: Kabul falls in November 2001 and the Taliban lose Kandahar in December. The mission shifts to building
+    an Afghan state, troop levels peak near 100,000 in 2010-11, and the last American flight leaves Kabul on August 30, 2021.
+    It is owned by this corpus and ends in the Reckoning.
+  why: It is the longest war in American history, and it runs through three epochs without a settlement.
+  tags:
+  - afghanistan
+  - war
+  - war-on-terror
+  - taliban
+- id: iraq_invasion
+  start: 20030320
+  level: 1
+  kind: war
+  title: Invasion of Iraq
+  description_short: The United States and its allies invade Iraq on the claim that Saddam Hussein holds weapons of mass destruction.
+  description_long: About 150,000 American troops lead the invasion without a Security Council resolution. Baghdad falls on
+    April 9, and no weapons of mass destruction are found.
+  why: It is the order's choice, not its shock, and it fails on its own premise.
+  tags:
+  - iraq
+  - war
+  - wmd
+  - preemption
+- id: iraq_war
+  start: 20030320
+  end: 20111218
+  level: 1
+  kind: war
+  title: Iraq War
+  description_short: The occupation and counterinsurgency that follow the 2003 invasion last until the last American troops
+    leave in December 2011.
+  description_long: The insurgency, sectarian war, Abu Ghraib, and the 2007 surge shape the years that follow. The war is
+    owned by this corpus and ends in the Interregnum.
+  why: The occupation proves the confidence of the End of History misplaced.
+  tags:
+  - iraq
+  - war
+  - occupation
+  - insurgency
+- id: katrina
+  start: 20050829
+  level: 1
+  kind: disaster
+  title: Hurricane Katrina
+  description_short: Katrina makes landfall in Louisiana, and the levees fail in New Orleans, flooding about 80 percent of
+    the city.
+  description_long: About 1,800 people die. Thousands wait for days at the Superdome and the convention center, and the federal
+    response is slow and visibly disorganized. Bush tells the FEMA director, "Brownie, you're doing a heck of a job."
+  why: A major city drowns on camera, and the state is shown unable to protect its own.
+  tags:
+  - katrina
+  - disaster
+  - fema
+  - new-orleans
+- id: fukuyama_book
+  start: 19920101
+  date_precision: year
+  level: 2
+  kind: ideas
+  title: Fukuyama Publishes The End of History
+  description_short: Francis Fukuyama publishes The End of History and the Last Man, arguing that liberal democracy and markets
+    have won the ideological contest.
+  description_long: It expands his 1989 essay and gives the epoch its name. Fukuyama is more cautious than the slogan that
+    follows him, and he asks what liberal society does with its victory.
+  why: It names the era's belief at the moment the belief begins.
+  tags:
+  - ideas
+  - fukuyama
+  - end-of-history
+- id: la_riots
+  start: 19920429
+  level: 2
+  kind: unrest
+  title: Los Angeles Riots
+  description_short: A jury acquits four Los Angeles police officers in the beating of Rodney King, and the city erupts for
+    six days.
+  description_long: Sixty-three people die, about 2,400 are injured, and damage runs near a billion dollars. Bush sends federal
+    troops, and the riots become a campaign issue in the last months of his presidency.
+  why: It shows the order's costs in a place its gains did not reach, at the moment it is being ratified.
+  tags:
+  - los-angeles
+  - race
+  - policing
+  - unrest
+- id: budget_1993
+  start: 19930810
+  level: 2
+  kind: legislation
+  title: Clinton Budget Passes
+  description_short: Clinton signs a deficit-reduction budget that raises the top income tax rate to 39.6 percent.
+  description_long: It passes without a single Republican vote, 218 to 216 in the House and 51 to 50 in the Senate on Vice
+    President Gore's tiebreaker. The bond market responds with falling interest rates, and the deficit declines.
+  why: The new Democrat chooses to prioritize the deficit, and the bond market is the audience.
+  tags:
+  - budget
+  - taxes
+  - deficit
+  - clinton
+- id: crime_bill
+  start: 19940913
+  level: 2
+  kind: legislation
+  title: Violent Crime Control Act
+  description_short: Clinton signs the largest crime bill in American history.
+  description_long: It funds 100,000 new police officers and nearly $10 billion for prisons, adds new federal death penalty
+    offenses and a "three strikes" rule, and bans certain assault weapons for ten years. State prison populations rise through
+    the rest of the decade.
+  why: Both parties compete to be tough on crime, and the settlement reaches policing and prisons.
+  tags:
+  - crime
+  - policing
+  - incarceration
+  - clinton
+- id: republican_revolution
+  start: 19941108
+  level: 2
+  kind: election
+  title: The Republican Revolution
+  description_short: Republicans win both houses of Congress, taking the House for the first time in forty years.
+  description_long: They gain 54 House seats and 8 in the Senate on Newt Gingrich's "Contract with America." Gingrich becomes
+    Speaker in January 1995, and Clinton responds by triangulating.
+  why: The ruling party's opponents win, and Clinton governs further inside the Republican terms.
+  tags:
+  - election
+  - congress
+  - gingrich
+  - triangulation
+- id: oklahoma_city
+  start: 19950419
+  level: 2
+  kind: terrorism
+  title: Oklahoma City Bombing
+  description_short: Timothy McVeigh bombs the federal building in Oklahoma City, killing 168 people.
+  description_long: It is the deadliest domestic terrorist attack to that point. McVeigh, an Army veteran, acts in part on
+    anger over the Waco siege two years before to the day, and he is executed in 2001.
+  why: It is the epoch's first mass-casualty attack and comes from inside the country, and Clinton's response recovers his
+    standing.
+  tags:
+  - terrorism
+  - domestic
+  - militia
+- id: clinton_reelected
+  start: 19961105
+  level: 2
+  kind: election
+  title: Clinton Reelected
+  description_short: Clinton defeats Bob Dole, 379 electoral votes to 159.
+  description_long: He is the first Democrat to win a second full term since Franklin Roosevelt. Perot takes 8 percent.
+  why: The opposition party that accepted the order wins its second term inside it.
+  tags:
+  - election
+  - clinton
+  - dole
+- id: first_surplus
+  start: 19981001
+  date_precision: month
+  level: 2
+  kind: economics
+  title: First Budget Surplus
+  description_short: The federal government ends fiscal year 1998 with a surplus of roughly $70 billion, the first since 1969.
+  description_long: Surpluses continue through 2001, and some economists begin to forecast that the national debt will be
+    paid off. The forecasts last about three years.
+  why: The order's proof of concept, and one that disappears quickly.
+  tags:
+  - budget
+  - surplus
+  - clinton
+  - debt
+- id: impeachment
+  start: 19981219
+  level: 2
+  kind: politics
+  title: Clinton Impeached
+  description_short: The House impeaches Clinton for perjury and obstruction of justice over his relationship with Monica
+    Lewinsky.
+  description_long: The votes are largely along party lines, 228 to 206 on perjury and 221 to 212 on obstruction. The Senate
+    acquits him on February 12, 1999, short of the two-thirds required.
+  why: The partisan war of the decade ends in an acquittal, and the president emerges more popular than before.
+  tags:
+  - impeachment
+  - clinton
+  - congress
+- id: kosovo_war
+  start: 19990324
+  level: 2
+  kind: war
+  title: Kosovo Air War
+  description_short: NATO begins a seventy-eight-day bombing campaign to stop Serbian forces from expelling Kosovo's Albanians.
+  description_long: Clinton acts without a United Nations authorization. No American is killed in combat, and Serbia withdraws.
+  why: The order shows what force looks like when it costs nothing, a lesson later applied to Iraq.
+  tags:
+  - kosovo
+  - nato
+  - air-war
+  - balkans
+- id: dotcom_peak
+  start: 20000310
+  level: 2
+  kind: economics
+  title: Dot-Com Bubble Peaks
+  description_short: The Nasdaq Composite closes above 5,000 for the first time, more than double its level a year earlier.
+  description_long: It falls 78 percent by October 2002, and trillions in paper wealth disappear. The Fed cuts rates, and
+    the cheap money flows to housing.
+  why: The boom ends in a crash, and the policy response sows the next boom.
+  tags:
+  - stock-market
+  - bubble
+  - dot-com
+  - nasdaq
+- id: brooks_brothers_riot
+  start: 20001122
+  level: 2
+  kind: election
+  title: The Brooks Brothers Riot
+  description_short: A crowd of Republican staffers and operatives storms the Miami-Dade County election office, and the recount
+    stops.
+  description_long: Dozens of Republican congressional aides and party workers, some flown in from Washington, shout and pound
+    on the doors as the canvassing board considers a manual recount. The board halts it, and the Wall Street Journal columnist
+    Paul Gigot names the event for the suits the crowd wore.
+  why: It is orchestrated pressure on an election count, and it works.
+  tags:
+  - election-2000
+  - florida
+  - recount
+  - political-operatives
+- id: afghanistan_invasion
+  start: 20011007
+  level: 2
+  kind: war
+  title: Invasion of Afghanistan
+  description_short: American and British forces begin bombing Afghanistan, and special forces and the Northern Alliance move
+    on Kabul.
+  description_long: The campaign targets al-Qaeda and the Taliban government that sheltered it. Kabul falls on November 13,
+    and Osama bin Laden escapes at Tora Bora in December.
+  why: It is the war the country agreed on, and it opens the longest conflict in its history.
+  tags:
+  - afghanistan
+  - war
+  - taliban
+  - war-on-terror
+- id: patriot_act
+  start: 20011026
+  level: 2
+  kind: legislation
+  title: USA PATRIOT Act
+  description_short: Bush signs the law expanding the government's surveillance and detention powers.
+  description_long: It passes the Senate 98 to 1 and the House 357 to 66, six weeks after the attacks. It loosens limits on
+    wiretaps, the sharing of intelligence with law enforcement, and access to records.
+  why: Congress delegates new power to the executive in weeks, and little of it is ever withdrawn.
+  tags:
+  - surveillance
+  - executive-power
+  - civil-liberties
+  - war-on-terror
+- id: enron
+  start: 20011202
+  level: 2
+  kind: scandal
+  title: Enron Collapses
+  description_short: Enron files for bankruptcy, the largest in American history to that point.
+  description_long: The energy trader hid billions in debt in off-the-books partnerships, and its auditor, Arthur Andersen,
+    is convicted and dissolved. Executives Kenneth Lay and Jeffrey Skilling are later charged.
+  why: The order's favorite company is revealed as a fraud, and the system treats it as a scandal about one firm.
+  tags:
+  - enron
+  - fraud
+  - accounting
+  - energy
+- id: china_wto
+  start: 20011211
+  level: 2
+  kind: trade
+  title: China Joins the WTO
+  description_short: China is admitted to the World Trade Organization.
+  description_long: The step follows PNTR by fourteen months and locks in the tariff terms. China's exports to the United
+    States rise sharply in the years after, and American manufacturing employment falls by about a third between 2000 and
+    2010.
+  why: The trade opening takes effect, and its costs begin to arrive in particular places.
+  tags:
+  - trade
+  - china
+  - wto
+  - manufacturing
+- id: guantanamo
+  start: 20020111
+  level: 2
+  kind: rule_of_law
+  title: Guantanamo Detention Begins
+  description_short: The first twenty prisoners arrive at the American naval base in Cuba.
+  description_long: The administration holds them as "unlawful enemy combatants," outside the Geneva Conventions and, it argues,
+    outside the reach of American courts. About 780 men are held there over time, and most are released without being charged.
+  why: The executive builds a place to hold people that no court was supposed to reach.
+  tags:
+  - guantanamo
+  - detention
+  - executive-power
+  - rule-of-law
+- id: torture_memo
+  start: 20020801
+  level: 2
+  kind: rule_of_law
+  title: The Torture Memo
+  description_short: The Justice Department's Office of Legal Counsel advises that "enhanced interrogation" is lawful unless
+    it causes pain equal to organ failure or death.
+  description_long: Assistant Attorney General Jay Bybee signs the memo, drafted largely by John Yoo, and a second memo the
+    same day approves specific techniques. The first is withdrawn in June 2004 after it leaks, and no one is prosecuted for
+    its consequences.
+  why: The executive legalizes what the law forbids, through its own lawyers, and the officials involved are protected.
+  tags:
+  - torture
+  - rule-of-law
+  - executive-power
+  - cia
+- id: iraq_aumf
+  start: 20021016
+  level: 2
+  kind: war
+  title: Iraq Authorization Passes
+  description_short: Bush signs the resolution authorizing force against Iraq after the House votes 296 to 133 and the Senate
+    77 to 23.
+  description_long: Congress votes before the midterm election, on intelligence claims about Iraqi weapons that the administration
+    has shaped and summarized. Many Democrats vote yes, including senators who later run for president.
+  why: The branch that declares war delegates the choice, in an election season.
+  tags:
+  - iraq
+  - congress
+  - war-powers
+  - wmd
+- id: powell_un
+  start: 20030205
+  level: 2
+  kind: war
+  title: Powell at the United Nations
+  description_short: Secretary of State Colin Powell presents the case that Iraq holds weapons of mass destruction.
+  description_long: He shows satellite images and describes mobile weapons laboratories before the Security Council. The claims
+    prove false, and Powell later calls the speech a "blot" on his record.
+  why: It is the case for the war, delivered by its most credible advocate, and it fails.
+  tags:
+  - iraq
+  - wmd
+  - powell
+  - intelligence
+- id: mission_accomplished
+  start: 20030501
+  level: 2
+  kind: war
+  title: Mission Accomplished
+  description_short: Bush lands on the USS Abraham Lincoln under a banner reading "Mission Accomplished" and declares the
+    end of major combat in Iraq.
+  description_long: The insurgency is only beginning. Nearly all of the war's roughly 4,400 American deaths come after that
+    day.
+  why: It is the confident image that the war then overtakes.
+  tags:
+  - iraq
+  - bush
+  - war
+  - media
+- id: abu_ghraib
+  start: 20040428
+  level: 2
+  kind: rule_of_law
+  title: Abu Ghraib
+  description_short: CBS News broadcasts photographs of American soldiers abusing prisoners at Abu Ghraib prison in Iraq.
+  description_long: The New Yorker publishes Seymour Hersh's account days later. Several enlisted soldiers are convicted,
+    and no senior official is.
+  why: The images make the war's costs concrete, and accountability stops below the chain of command.
+  tags:
+  - abu-ghraib
+  - iraq
+  - torture
+  - accountability
+- id: bush_reelected
+  start: 20041102
+  level: 2
+  kind: election
+  title: Bush Reelected
+  description_short: Bush defeats John Kerry, 286 electoral votes to 251.
+  description_long: He wins 50.7 percent of the popular vote, the first presidential majority since 1988, with the war in
+    Iraq at its height. Ohio decides the electoral vote.
+  why: The country reelects the president in the middle of the war, and the second term spends that mandate.
+  tags:
+  - election
+  - bush
+  - kerry
+- id: warrantless_wiretapping
+  start: 20051216
+  level: 2
+  kind: rule_of_law
+  title: Warrantless Wiretapping Revealed
+  description_short: The New York Times reports that the National Security Agency has been listening to Americans' phone calls
+    without court warrants since 2002.
+  description_long: Bush confirms the program and defends it as within his authority as commander in chief. Congress later
+    legalizes it in the 2008 FISA Amendments Act.
+  why: The executive acts outside a statute, and Congress later writes the statute to fit.
+  tags:
+  - surveillance
+  - nsa
+  - executive-power
+  - fisa
+- id: housing_peak
+  start: 20060701
+  date_precision: month
+  level: 2
+  kind: economics
+  title: Housing Prices Peak
+  description_short: National home prices stop rising in the summer of 2006, after a decade of increases.
+  description_long: Prices had roughly doubled since 1997, driven by low interest rates, loose lending standards, and mortgage
+    securities sold worldwide. Prices keep falling until 2012.
+  why: The boom of the decade's second half turns, and the debt behind it becomes visible.
+  tags:
+  - housing
+  - bubble
+  - mortgages
+  - finance
+- id: midterms_2006
+  start: 20061107
+  level: 2
+  kind: election
+  title: Democrats Win Congress
+  description_short: Democrats take both houses of Congress, in a vote widely read as a verdict on the Iraq War.
+  description_long: They gain 31 House seats and six in the Senate. Defense Secretary Donald Rumsfeld resigns the next day.
+  why: The country votes against the war, and the war continues.
+  tags:
+  - election
+  - midterm
+  - iraq
+  - democrats
+- id: surge
+  start: 20070110
+  level: 2
+  kind: war
+  title: The Surge
+  description_short: Bush announces he will send 20,000 more troops to Iraq and replace the commander, naming David Petraeus.
+  description_long: The decision runs against the Iraq Study Group's recommendation and the November election. Violence declines
+    through 2008.
+  why: The president escalates a war the voters have rejected.
+  tags:
+  - iraq
+  - surge
+  - petraeus
+  - escalation
+- id: bnp_paribas
+  start: 20070809
+  level: 2
+  kind: economics
+  title: BNP Paribas Freezes Funds
+  description_short: The French bank BNP Paribas suspends withdrawals from three investment funds, saying it cannot value
+    the mortgage securities inside them.
+  description_long: The European Central Bank injects about 95 billion euros into the banking system that day. Lenders stop
+    trusting each other's collateral, and the freeze spreads.
+  why: It is the first public sign that the financial machinery is failing, and it closes the epoch.
+  tags:
+  - finance
+  - credit-crisis
+  - mortgages
+  - europe
+- id: iran_contra_pardons
+  start: 19921224
+  level: 3
+  kind: rule_of_law
+  title: Bush Pardons the Iran-Contra Defendants
+  description_short: Bush pardons six officials in the Iran-Contra affair, including former defense secretary Caspar Weinberger,
+    who was awaiting trial.
+  description_long: Independent counsel Lawrence Walsh says the pardons complete the Iran-Contra cover-up. The trials of Weinberger
+    and former CIA officer Duane Clarridge, both pending, are canceled.
+  why: The thread from the last epoch ends in pardons, and the officials around the president escape the law.
+  tags:
+  - iran-contra
+  - pardons
+  - rule-of-law
+  - bush
+- id: wtc_bombing_1993
+  start: 19930226
+  level: 3
+  kind: terrorism
+  title: First World Trade Center Bombing
+  description_short: A truck bomb in the garage of the World Trade Center kills six people and injures about a thousand.
+  description_long: The conspirators are caught and convicted, and the case is treated as a crime for the courts. The attack
+    is a warning that was handled as a prosecution.
+  why: It shows the first attack on the towers, and the way the order answered it.
+  tags:
+  - terrorism
+  - world-trade-center
+  - al-qaeda
+- id: waco
+  start: 19930419
+  level: 3
+  kind: domestic
+  title: Waco Siege Ends
+  description_short: A fire destroys the Branch Davidian compound near Waco, Texas, after a fifty-one-day federal siege, killing
+    about seventy-six people.
+  description_long: The siege followed a failed ATF raid on February 28. The deaths become a rallying point for the militia
+    movement, and McVeigh cites them as he plans the Oklahoma City bombing.
+  why: A federal operation goes wrong, and it supplies the grievance for the decade's domestic terrorism.
+  tags:
+  - waco
+  - militia
+  - atf
+  - federal-power
+- id: dont_ask_dont_tell
+  start: 19930719
+  level: 3
+  kind: military
+  title: Don't Ask, Don't Tell
+  description_short: Clinton announces the policy allowing gay men and lesbians to serve in the military if they do not reveal
+    their orientation.
+  description_long: It replaces an outright ban, and Congress writes it into law that November. About 13,000 service members
+    are discharged under it before it ends in 2011.
+  why: A campaign promise becomes a compromise, and the compromise becomes a law.
+  tags:
+  - lgbt
+  - military
+  - clinton
+  - compromise
+- id: mogadishu
+  start: 19931003
+  level: 3
+  kind: war
+  title: Battle of Mogadishu
+  description_short: Eighteen American soldiers die in a firefight in Mogadishu, Somalia, and the bodies of some are dragged
+    through the streets.
+  description_long: Clinton withdraws American forces in March 1994. The memory of the battle shapes the decision not to intervene
+    in Rwanda six months later.
+  why: The order's first lesson in the limits of force without a plan, drawn narrowly.
+  tags:
+  - somalia
+  - war
+  - intervention
+  - black-hawk-down
+- id: rwanda
+  start: 19940406
+  level: 3
+  kind: world
+  title: Rwandan Genocide Begins
+  description_short: Hutu extremists begin killing Tutsis in Rwanda, and about 800,000 people die in a hundred days.
+  description_long: The Clinton administration avoids the word "genocide" and declines to send troops or jam the radio broadcasts
+    that direct the killing. Clinton later calls the failure one of his greatest regrets.
+  why: The only superpower decides not to act, and the choice is later judged a failure of will.
+  tags:
+  - rwanda
+  - genocide
+  - intervention
+  - humanitarian
+- id: health_plan_dies
+  start: 19940926
+  level: 3
+  kind: politics
+  title: Health Care Plan Dies
+  description_short: Senate Majority Leader George Mitchell announces that Congress will not vote on the Clinton health care
+    plan.
+  description_long: The plan, led by Hillary Clinton, would have required employers to cover workers. Opposition from insurers
+    and business, and the "Harry and Louise" advertisements, defeat it six weeks before the midterms.
+  why: The New Democrat's first major reform fails, and the next one is welfare.
+  tags:
+  - health-care
+  - clinton
+  - failure
+  - insurers
+- id: peso_bailout
+  start: 19950131
+  level: 3
+  kind: economics
+  title: Mexico Bailout
+  description_short: Clinton commits $20 billion from the Treasury's Exchange Stabilization Fund to rescue Mexico after its
+    peso collapses.
+  description_long: Congressional leaders balk at a loan, so the administration acts on its own authority. Mexico repays early,
+    and the rescue becomes the model for later ones.
+  why: It sets the precedent that the executive will protect the system's creditors, using its own funds.
+  tags:
+  - finance
+  - mexico
+  - bailout
+  - treasury
+- id: netscape_ipo
+  start: 19950809
+  level: 3
+  kind: economics
+  title: Netscape Goes Public
+  description_short: Netscape Communications sells shares to the public, and the stock more than doubles on the first day.
+  description_long: The company is a year and a half old and has no profits. The offering starts the dot-com boom.
+  why: The internet becomes an investment story, and the market begins to price the future.
+  tags:
+  - internet
+  - ipo
+  - dot-com
+  - stock-market
+- id: government_shutdowns
+  start: 19951114
+  level: 3
+  kind: politics
+  title: Government Shutdowns
+  description_short: The federal government shuts down for five days in November, and again for twenty-one days from December
+    16 to January 6.
+  description_long: Gingrich and the House Republicans refuse to fund the government without budget cuts. The public blames
+    them, and Clinton's standing recovers.
+  why: The majority overreaches, and Clinton's triangulation is vindicated.
+  tags:
+  - shutdown
+  - gingrich
+  - budget
+  - congress
+- id: dayton_accords
+  start: 19951121
+  level: 3
+  kind: diplomacy
+  title: Dayton Accords
+  description_short: The leaders of Bosnia, Serbia, and Croatia initial a peace agreement at an air force base in Ohio.
+  description_long: The agreement, signed in Paris on December 14, ends the war that killed about 100,000 people. Sixty thousand
+    NATO troops, including 20,000 Americans, enforce it.
+  why: The order settles a European war that Europe could not, and sets a precedent for Kosovo.
+  tags:
+  - bosnia
+  - diplomacy
+  - nato
+  - balkans
+- id: era_of_big_government
+  start: 19960123
+  level: 3
+  kind: politics
+  title: The Era of Big Government Is Over
+  description_short: Clinton tells Congress in the State of the Union that "the era of big government is over."
+  description_long: The line concedes the Republican argument in a Democratic president's own words, and it is the clearest
+    statement of the ratification.
+  why: The opposition party says aloud what it has accepted.
+  tags:
+  - clinton
+  - speech
+  - ratification
+  - triangulation
+- id: telecom_act
+  start: 19960208
+  level: 3
+  kind: legislation
+  title: Telecommunications Act
+  description_short: Clinton signs the first major rewrite of communications law since 1934.
+  description_long: It lifts limits on media ownership, and radio and cable consolidate quickly. It also includes the Communications
+    Decency Act, whose Section 230 shields websites from liability for what their users post.
+  why: The law shapes the internet's industry and the media's concentration for a generation.
+  tags:
+  - internet
+  - media
+  - section-230
+  - deregulation
+- id: doma
+  start: 19960921
+  level: 3
+  kind: legislation
+  title: Defense of Marriage Act
+  description_short: Clinton signs the law defining marriage as the union of a man and a woman for federal purposes.
+  description_long: It passes with large bipartisan majorities, 342 to 67 in the House and 85 to 14 in the Senate. The Supreme
+    Court strikes the federal definition in 2013.
+  why: An election-year signature on the culture war, and a measure of how far public opinion later moves.
+  tags:
+  - marriage
+  - lgbt
+  - clinton
+  - culture-war
+- id: iirira
+  start: 19960930
+  level: 3
+  kind: legislation
+  title: Illegal Immigration Reform Act
+  description_short: Clinton signs a law that expands deportation grounds, adds barriers to relief, and increases border enforcement.
+  description_long: It makes more crimes deportable offenses and limits judicial review. The law shapes the immigration system
+    for the decades that follow.
+  why: The order's two parties both choose enforcement, and the debate moves to who is inside.
+  tags:
+  - immigration
+  - deportation
+  - border
+  - clinton
+- id: irrational_exuberance
+  start: 19961205
+  level: 3
+  kind: economics
+  title: Irrational Exuberance
+  description_short: Fed Chairman Alan Greenspan asks in a speech how to know "when irrational exuberance has unduly escalated
+    asset values."
+  description_long: Markets dip around the world, and then keep rising for three more years. Greenspan does not raise rates
+    to cool the boom.
+  why: The central banker names the bubble and declines to act on it, and the pattern repeats.
+  tags:
+  - greenspan
+  - bubble
+  - stock-market
+  - fed
+- id: asian_crisis
+  start: 19970702
+  level: 3
+  kind: economics
+  title: Asian Financial Crisis
+  description_short: Thailand floats its currency, and a wave of currency collapses spreads across East Asia and then to Russia
+    and Brazil.
+  description_long: The International Monetary Fund and the Treasury impose austerity conditions on the countries it rescues.
+    Capital flows back into the dollar and American assets.
+  why: The crisis arrives in the order's periphery and strengthens its center.
+  tags:
+  - finance
+  - asia
+  - imf
+  - currency
+- id: balanced_budget_act
+  start: 19970805
+  level: 3
+  kind: legislation
+  title: Balanced Budget Agreement
+  description_short: Clinton signs a bipartisan budget deal and a tax bill that cuts the capital gains rate to 20 percent.
+  description_long: The agreement caps spending and, with a booming economy, leads to the first budget surplus in a generation.
+  why: The two parties agree on the budget, and capital gets the cut.
+  tags:
+  - budget
+  - taxes
+  - bipartisan
+  - capital-gains
+- id: lewinsky
+  start: 19980121
+  level: 3
+  kind: politics
+  title: The Lewinsky Story Breaks
+  description_short: The Washington Post reports that Clinton had an affair with a White House intern and allegedly urged
+    her to lie about it.
+  description_long: Clinton denies the relationship on January 26, saying he "did not have sexual relations with that woman."
+    The independent counsel Kenneth Starr expands his investigation.
+  why: A private scandal becomes a constitutional one.
+  tags:
+  - scandal
+  - clinton
+  - starr
+  - impeachment
+- id: ltcm
+  start: 19980923
+  level: 3
+  kind: economics
+  title: Long-Term Capital Management Rescued
+  description_short: The New York Fed organizes a private rescue of the hedge fund Long-Term Capital Management by fourteen
+    banks.
+  description_long: The fund had borrowed more than $100 billion against less than $5 billion in capital, and its collapse
+    threatened the banks that lent to it. The rescue contains the damage without a public bailout.
+  why: The first warning from the system's debt, handled as a one-off.
+  tags:
+  - finance
+  - hedge-funds
+  - leverage
+  - fed
+- id: acquittal
+  start: 19990212
+  level: 3
+  kind: politics
+  title: Senate Acquits Clinton
+  description_short: The Senate votes 45 to 55 on perjury and 50 to 50 on obstruction, well short of the two-thirds needed
+    to remove Clinton.
+  description_long: No Democrat votes for conviction. Ten Republicans vote not guilty on perjury and five on obstruction.
+    Clinton finishes the term with high approval ratings.
+  why: The Constitution's check is invoked, and the president survives.
+  tags:
+  - impeachment
+  - senate
+  - clinton
+- id: columbine
+  start: 19990420
+  level: 3
+  kind: violence
+  title: Columbine
+  description_short: Two students kill twelve classmates and a teacher at Columbine High School in Colorado, and then themselves.
+  description_long: It is the deadliest school shooting to that point. The country debates guns, media, and bullying, and
+    passes no federal law.
+  why: It is the first school shooting to define a decade, and the beginning of a recurring ritual.
+  tags:
+  - shooting
+  - guns
+  - schools
+  - columbine
+- id: wto_seattle
+  start: 19991130
+  level: 3
+  kind: protest
+  title: Battle of Seattle
+  description_short: Tens of thousands of protesters block the opening of the World Trade Organization meeting in Seattle.
+  description_long: Labor unions, environmentalists, and anarchists join in the streets, and police use tear gas. The meeting
+    collapses without an agreement.
+  why: It is the first major protest against the order's trade project, and it fails to change the project.
+  tags:
+  - trade
+  - protest
+  - wto
+  - globalization
+- id: microsoft_ruling
+  start: 20000403
+  level: 3
+  kind: law
+  title: Microsoft Antitrust Ruling
+  description_short: A federal judge rules that Microsoft violated the Sherman Act by using its Windows monopoly to dominate
+    other software.
+  description_long: The judge orders the company broken in two in June, and an appeals court overturns the breakup in 2001.
+    The case settles in 2002.
+  why: The last case against a monopoly in the order's favored sector, settled for a promise.
+  tags:
+  - antitrust
+  - microsoft
+  - technology
+  - monopoly
+- id: florida_recount
+  start: 20001107
+  level: 3
+  kind: election
+  title: Election Night 2000
+  description_short: The networks call Florida for Gore, retract it, give it to Bush, and then retract that too.
+  description_long: The margin shrinks to under 2,000 votes and triggers a mandatory machine recount. The dispute that follows
+    runs thirty-six days.
+  why: The country does not know who won its election, for the first time in over a century.
+  tags:
+  - election-2000
+  - florida
+  - recount
+  - media
+- id: gore_concedes
+  start: 20001213
+  level: 3
+  kind: election
+  title: Gore Concedes
+  description_short: Gore concedes the election in a televised speech, a day after the Supreme Court ruling.
+  description_long: He says he disagrees with the ruling but accepts it "for the sake of our unity as a people." Bush takes
+    office on January 20 having lost the popular vote.
+  why: The loser accepts the decision, and the order's peaceful transfer holds.
+  tags:
+  - election-2000
+  - gore
+  - concession
+  - transition
+- id: cfma
+  start: 20001221
+  level: 3
+  kind: legislation
+  title: Commodity Futures Modernization Act
+  description_short: Clinton signs a law that exempts over-the-counter derivatives from federal regulation.
+  description_long: It passes as a rider on a spending bill, with the support of Treasury and the Fed, and it bars the CFTC
+    from regulating swaps. Credit default swaps grow to tens of trillions of dollars.
+  why: The deregulation of finance is completed, and the instruments that later fail are exempted.
+  tags:
+  - finance
+  - derivatives
+  - deregulation
+  - swaps
+- id: bush_tax_cut
+  start: 20010607
+  level: 3
+  kind: legislation
+  title: Bush Tax Cut
+  description_short: Bush signs a $1.35 trillion tax cut over ten years.
+  description_long: It cuts income tax rates at every level, phases out the estate tax, and sends rebate checks. A second
+    cut in 2003 lowers the rate on dividends and capital gains to 15 percent.
+  why: The surplus is spent on tax cuts, and the next war is financed on credit.
+  tags:
+  - taxes
+  - bush
+  - surplus
+  - deficit
+- id: no_child_left_behind
+  start: 20020108
+  level: 3
+  kind: legislation
+  title: No Child Left Behind
+  description_short: Bush signs the bipartisan education law requiring annual testing and penalizing schools that fail to
+    improve.
+  description_long: Senator Ted Kennedy co-sponsors it, and it passes 87 to 10 in the Senate. It is widely criticized later
+    for narrowing instruction to tested subjects.
+  why: The two parties agree on accountability by testing, as they agreed on markets.
+  tags:
+  - education
+  - testing
+  - bipartisan
+  - bush
+- id: axis_of_evil
+  start: 20020129
+  level: 3
+  kind: war
+  title: Axis of Evil
+  description_short: Bush names Iraq, Iran, and North Korea an "axis of evil" in his State of the Union address.
+  description_long: The speech widens the war on terror from a response to the attacks into a campaign against states.
+  why: The war's purpose widens, and Iraq is on the list.
+  tags:
+  - bush
+  - speech
+  - iraq
+  - war-on-terror
+- id: sarbanes_oxley
+  start: 20020730
+  level: 3
+  kind: legislation
+  title: Sarbanes-Oxley Act
+  description_short: Bush signs the law tightening corporate accounting rules after Enron and WorldCom.
+  description_long: It requires executives to certify financial statements and creates an oversight board for auditors. WorldCom
+    had filed for bankruptcy on July 21, the largest in history up to then.
+  why: The system corrects the fraud it found, and misses the leverage it did not.
+  tags:
+  - accounting
+  - regulation
+  - enron
+  - worldcom
+- id: homeland_security_act
+  start: 20021125
+  level: 3
+  kind: legislation
+  title: Department of Homeland Security Created
+  description_short: Bush signs the law creating the Department of Homeland Security, the largest federal reorganization since
+    1947.
+  description_long: It merges twenty-two agencies and about 170,000 employees. FEMA is placed inside it, and critics say its
+    disaster role suffers.
+  why: The state reorganizes around a new threat, and the reorganization weakens an old function.
+  tags:
+  - homeland-security
+  - fema
+  - bureaucracy
+  - terrorism
+- id: baghdad_falls
+  start: 20030409
+  level: 3
+  kind: war
+  title: Baghdad Falls
+  description_short: American troops enter Baghdad, and crowds help pull down a statue of Saddam Hussein.
+  description_long: The Iraqi army dissolves, and looting follows. In May the American occupation authority bans Baath Party
+    members from government and disbands the army.
+  why: The regime falls in three weeks, and the war begins.
+  tags:
+  - iraq
+  - baghdad
+  - occupation
+  - baath
+- id: medicare_part_d
+  start: 20031208
+  level: 3
+  kind: legislation
+  title: Medicare Part D
+  description_short: Bush signs the largest expansion of Medicare since its creation, covering prescription drugs.
+  description_long: The law is not paid for, and it bars Medicare from negotiating drug prices. Its cost is estimated at about
+    $400 billion over ten years.
+  why: The benefit goes to the elderly and the profit to the drug industry, financed by debt.
+  tags:
+  - medicare
+  - health-care
+  - drug-prices
+  - deficit
+- id: saddam_captured
+  start: 20031213
+  level: 3
+  kind: war
+  title: Saddam Hussein Captured
+  description_short: American soldiers find Saddam Hussein hiding in a hole near Tikrit.
+  description_long: The insurgency continues. He is tried by an Iraqi court and executed on December 30, 2006.
+  why: The war's stated goal is achieved, and the war goes on.
+  tags:
+  - iraq
+  - saddam
+  - insurgency
+- id: nine_eleven_commission
+  start: 20040722
+  level: 3
+  kind: politics
+  title: 9/11 Commission Report
+  description_short: The bipartisan commission concludes that the attacks could have been prevented, and calls the failure
+    one of "imagination."
+  description_long: It finds that the CIA and FBI did not share what they knew. It recommends the creation of a director of
+    national intelligence, which Congress approves that December.
+  why: The state examines itself, and finds failure in its coordination.
+  tags:
+  - 9-11
+  - intelligence
+  - commission
+  - reform
+- id: duelfer_report
+  start: 20041006
+  level: 3
+  kind: war
+  title: No Weapons Found
+  description_short: The Iraq Survey Group's final report concludes that Iraq had destroyed its weapons of mass destruction
+    in 1991 and had no program in 2003.
+  description_long: The group searched for more than a year. The administration's main justification for the war is gone.
+  why: The war's premise is shown false after the war has begun.
+  tags:
+  - iraq
+  - wmd
+  - intelligence
+  - duelfer
+- id: iraq_election
+  start: 20050130
+  level: 3
+  kind: war
+  title: Iraqi Elections
+  description_short: Iraqis vote for a transitional assembly, and voters show purple ink-stained fingers.
+  description_long: Turnout is about 58 percent, with a Sunni boycott. The Shiite majority takes control, and sectarian violence
+    rises.
+  why: The war's democratic promise is kept, and its sectarian consequence follows.
+  tags:
+  - iraq
+  - election
+  - democracy
+  - sectarian
+- id: roberts_confirmed
+  start: 20050929
+  level: 3
+  kind: court
+  title: Roberts Confirmed
+  description_short: The Senate confirms John Roberts as Chief Justice, 78 to 22.
+  description_long: Roberts replaces William Rehnquist. A second appointment, Samuel Alito, follows in January 2006 and shifts
+    the court to the right.
+  why: The seat Bush v. Gore was meant to settle is followed by a long project to settle the Court.
+  tags:
+  - court
+  - roberts
+  - alito
+  - judicial-appointments
+- id: samarra_bombing
+  start: 20060222
+  level: 3
+  kind: war
+  title: Samarra Mosque Bombing
+  description_short: A bomb destroys the Shiite Golden Mosque in Samarra, Iraq.
+  description_long: Reprisals begin within hours, and Iraq enters a sectarian civil war in which thousands die each month
+    through 2007.
+  why: The war the United States started becomes a war the United States cannot control.
+  tags:
+  - iraq
+  - sectarian
+  - civil-war
+  - insurgency
+- id: military_commissions_act
+  start: 20061017
+  level: 3
+  kind: rule_of_law
+  title: Military Commissions Act
+  description_short: Bush signs the law creating military tribunals for detainees and stripping federal courts of power to
+    hear their habeas corpus petitions.
+  description_long: It authorizes trial by commission and limits the use of the Geneva Conventions. The Supreme Court strikes
+    the habeas provision in Boumediene v. Bush in 2008.
+  why: Congress and the executive agree to remove the courts, and the courts push back.
+  tags:
+  - detention
+  - habeas
+  - guantanamo
+  - rule-of-law
+- id: new_century
+  start: 20070402
+  level: 3
+  kind: economics
+  title: New Century Financial Files for Bankruptcy
+  description_short: New Century Financial, the second-largest subprime mortgage lender, files for Chapter 11.
+  description_long: The company had made $60 billion in loans in 2006, many to borrowers who could not repay. Other lenders
+    follow within months.
+  why: The first major lender fails, and the rest of the system treats it as a niche problem.
+  tags:
+  - subprime
+  - mortgages
+  - finance
+  - bankruptcy
+- id: bear_stearns_funds
+  start: 20070701
+  date_precision: month
+  level: 3
+  kind: economics
+  title: Bear Stearns Hedge Funds Collapse
+  description_short: Two Bear Stearns hedge funds that bet on mortgage securities lose nearly all their value.
+  description_long: Investors are told in July that the funds are nearly worthless, and they file for bankruptcy protection
+    by month's end. Bear Stearns itself is sold to JPMorgan Chase in March 2008.
+  why: The first Wall Street casualty of the mortgage boom, and a rehearsal for the one that follows.
+  tags:
+  - finance
+  - bear-stearns
+  - hedge-funds
+  - mortgages
+- id: recession_begins
+  start: 20071201
+  date_precision: month
+  level: 3
+  kind: economics
+  title: The Recession Begins
+  description_short: The economy peaks in December 2007, and the National Bureau of Economic Research later dates the start
+    of the Great Recession here.
+  description_long: The announcement comes a year later, in December 2008. The recession lasts eighteen months, the longest
+    of the postwar period.
+  why: The economy turns before anyone knows it, and the epoch ends.
+  tags:
+  - recession
+  - nber
+  - great-recession
+- id: hurricane_andrew
+  start: 19920824
+  level: 4
+  kind: disaster
+  title: Hurricane Andrew
+  description_short: Andrew hits south Florida, causing about $26 billion in damage and leaving 160,000 people homeless.
+  description_long: The federal response is slow and criticized, and FEMA is rebuilt under Clinton's director, James Lee Witt.
+    The storm is a rehearsal for the failure that Katrina repeats thirteen years later.
+  why: The state's disaster response fails once and is fixed, and then it fails again.
+  tags:
+  - hurricane
+  - fema
+  - florida
+  - disaster
+- id: clinton_inaugurated
+  start: 19930120
+  level: 4
+  kind: politics
+  title: Clinton Inaugurated
+  description_short: Bill Clinton is sworn in as the forty-second president, the first of the baby boom generation.
+  description_long: He is forty-six and takes office with Democratic majorities in both houses and 43 percent of the vote.
+  why: A generational handoff, and a mandate narrower than it looks.
+  tags:
+  - clinton
+  - inauguration
+  - generation
+- id: brady_bill
+  start: 19931130
+  level: 4
+  kind: legislation
+  title: Brady Bill Signed
+  description_short: Clinton signs the law requiring a five-day waiting period and background checks for handgun purchases.
+  description_long: It is named for James Brady, the press secretary wounded in the 1981 attempt on Reagan. It passes after
+    seven years of effort and a long fight with the gun lobby.
+  why: Federal gun control reaches its high point of the decade, and then recedes.
+  tags:
+  - guns
+  - brady
+  - background-checks
+  - nra
+- id: contract_with_america
+  start: 19940927
+  level: 4
+  kind: politics
+  title: Contract with America
+  description_short: More than 300 Republican House candidates sign a ten-point pledge on the Capitol steps.
+  description_long: It promises votes on a balanced budget amendment, term limits, and tax cuts within the first hundred days.
+    The party turns a midterm into a national election.
+  why: A program, not a mood, and it wins.
+  tags:
+  - republicans
+  - gingrich
+  - midterm
+  - program
+- id: prop_187
+  start: 19941108
+  level: 4
+  kind: immigration
+  title: California Proposition 187
+  description_short: California voters pass a ballot measure denying public services, including schools, to unauthorized immigrants.
+  description_long: A federal court blocks the measure, and it is never enforced. It reshapes California's politics, and Latino
+    voters move toward the Democratic Party for a generation.
+  why: The immigration debate moves to the ballot box, and has lasting effects on the party that wins it.
+  tags:
+  - immigration
+  - california
+  - ballot-measure
+  - latino-voters
+- id: gingrich_speaker
+  start: 19950104
+  level: 4
+  kind: politics
+  title: Gingrich Becomes Speaker
+  description_short: Newt Gingrich is elected Speaker of the House as the Republicans take the chamber for the first time
+    since 1955.
+  description_long: The House passes most of the Contract in its first hundred days. The Senate and the president block much
+    of it.
+  why: The majority is real, and its power runs into the veto.
+  tags:
+  - gingrich
+  - congress
+  - speaker
+  - republicans
+- id: deliberate_force
+  start: 19950830
+  level: 4
+  kind: war
+  title: NATO Bombs the Bosnian Serbs
+  description_short: NATO begins a three-week bombing campaign against Bosnian Serb forces after the Sarajevo marketplace
+    shelling.
+  description_long: The campaign follows the massacre at Srebrenica in July, where about 8,000 Bosnian Muslim men and boys
+    were killed. It brings Slobodan Milosevic to the table at Dayton.
+  why: Force is used in Europe after Europe failed to act, and works.
+  tags:
+  - bosnia
+  - nato
+  - air-war
+  - balkans
+- id: clinton_v_jones
+  start: 19970527
+  level: 4
+  kind: court
+  title: Clinton v. Jones
+  description_short: The Supreme Court rules 9 to 0 that a sitting president can be sued in a civil case over conduct before
+    he took office.
+  description_long: Paula Jones's suit gives her lawyers the power to question Clinton under oath about other women. That
+    deposition produces the testimony at the center of the impeachment.
+  why: A civil suit hands the courts the power that leads to the impeachment.
+  tags:
+  - court
+  - clinton
+  - paula-jones
+  - impeachment
+- id: kyoto_protocol
+  start: 19971211
+  level: 4
+  kind: environment
+  title: Kyoto Protocol
+  description_short: More than 150 nations adopt a treaty to cut greenhouse gas emissions, which the United States does not
+    ratify.
+  description_long: The Senate had voted 95 to 0 in July against any treaty that exempted developing countries. Clinton does
+    not submit it, and Bush withdraws in 2001.
+  why: The country that built the order declines to bind itself to the century's largest problem.
+  tags:
+  - climate
+  - kyoto
+  - treaty
+  - senate
+- id: shepard_murder
+  start: 19981012
+  level: 4
+  kind: violence
+  title: Matthew Shepard Dies
+  description_short: Matthew Shepard, a gay college student, dies six days after being beaten and tied to a fence outside
+    Laramie, Wyoming.
+  description_long: His death becomes a national symbol, and it leads to the federal hate crimes law that Obama signs in 2009.
+  why: A local crime becomes a national argument about who the law protects.
+  tags:
+  - lgbt
+  - hate-crime
+  - wyoming
+  - violence
+- id: clinton_pardons
+  start: 20010120
+  level: 4
+  kind: rule_of_law
+  title: Clinton's Last-Day Pardons
+  description_short: On his last day in office, Clinton pardons about 140 people, including the fugitive financier Marc Rich.
+  description_long: Rich had fled the country in 1983 while under indictment for tax evasion, and his former wife was a major
+    Democratic donor. The pardons draw a federal investigation and no charges.
+  why: The preferred treatment that begins at the top is bipartisan.
+  tags:
+  - pardons
+  - clinton
+  - rule-of-law
+  - donors
+- id: bush_inaugurated
+  start: 20010120
+  level: 4
+  kind: politics
+  title: George W. Bush Inaugurated
+  description_short: George W. Bush is sworn in as the forty-third president, with a Senate split 50 to 50.
+  description_long: He had campaigned as "a uniter, not a divider." Vice President Cheney holds the tiebreaking vote.
+  why: The president who lost the popular vote begins a term of unusual ambition.
+  tags:
+  - bush
+  - inauguration
+  - cheney
+- id: tora_bora
+  start: 20011212
+  level: 4
+  kind: war
+  title: Tora Bora
+  description_short: Osama bin Laden escapes into Pakistan after the battle of Tora Bora, as American commanders rely on Afghan
+    militias.
+  description_long: Requests for American ground troops to block his escape are not met. The decision is later criticized
+    as the war's first missed opportunity.
+  why: The war's stated aim slips away in its first months.
+  tags:
+  - afghanistan
+  - bin-laden
+  - war
+  - pakistan
+- id: worldcom
+  start: 20020721
+  level: 4
+  kind: scandal
+  title: WorldCom Bankrupt
+  description_short: WorldCom files for bankruptcy after admitting it inflated profits by $3.8 billion.
+  description_long: It is the largest bankruptcy in American history up to then. Its chief executive Bernard Ebbers is convicted
+    in 2005.
+  why: The second corporate fraud of the year, and the second treated as an exception.
+  tags:
+  - worldcom
+  - fraud
+  - accounting
+  - bankruptcy
+- id: fed_one_percent
+  start: 20030625
+  level: 4
+  kind: economics
+  title: Fed Cuts Rates to 1 Percent
+  description_short: The Federal Reserve lowers its target rate to 1 percent, the lowest since 1958.
+  description_long: It holds the rate there for a year, and the cheap money fuels mortgage lending and home prices.
+  why: The remedy for the last bubble builds the next.
+  tags:
+  - fed
+  - interest-rates
+  - housing
+  - greenspan
+- id: facebook
+  start: 20040204
+  level: 4
+  kind: technology
+  title: Facebook Launches
+  description_short: Mark Zuckerberg launches a social network at Harvard, which spreads to other campuses and then to the
+    public.
+  description_long: It reaches 100 million users by 2008. It is one of several platforms that reshape political communication
+    in the next epoch.
+  why: The technology of the next order's politics arrives.
+  tags:
+  - facebook
+  - social-media
+  - technology
+- id: obama_convention
+  start: 20040727
+  level: 4
+  kind: politics
+  title: Obama's Convention Speech
+  description_short: Barack Obama, then a state senator running for the Senate, delivers the keynote at the Democratic National
+    Convention.
+  description_long: He says "there's not a liberal America and a conservative America; there's the United States of America."
+    He wins the Senate seat that November.
+  why: A politician whose appeal is the end of the divide, arriving at the moment of its deepening.
+  tags:
+  - obama
+  - convention
+  - speech
+  - democrats
+- id: fallujah
+  start: 20041107
+  level: 4
+  kind: war
+  title: Second Battle of Fallujah
+  description_short: American Marines and Iraqi forces retake Fallujah in the heaviest urban fighting since Hue City in 1968.
+  description_long: About 100 Americans die, and most of the city is destroyed. The battle follows the killing and mutilation
+    of four American contractors there in March.
+  why: The occupation turns into a fight over cities.
+  tags:
+  - iraq
+  - fallujah
+  - insurgency
+  - marines
+- id: bankruptcy_act
+  start: 20050420
+  level: 4
+  kind: legislation
+  title: Bankruptcy Abuse Prevention Act
+  description_short: Bush signs a law making it harder for individuals to discharge debt in bankruptcy.
+  description_long: Credit card companies lobbied for it for years, and it passes with bipartisan support. It takes effect
+    that October.
+  why: The law shifts the risk of debt toward households, on the eve of the housing collapse.
+  tags:
+  - bankruptcy
+  - debt
+  - credit-cards
+  - households
+- id: alito_confirmed
+  start: 20060131
+  level: 4
+  kind: court
+  title: Alito Confirmed
+  description_short: The Senate confirms Samuel Alito to the Supreme Court, 58 to 42.
+  description_long: He replaces Sandra Day O'Connor, a swing vote, and the Court moves to the right on abortion, campaign
+    finance, and guns.
+  why: The Court's shift is set, and the Court becomes the next order's main battleground.
+  tags:
+  - court
+  - alito
+  - o-connor
+  - judicial-appointments
+- id: saddam_executed
+  start: 20061230
+  level: 4
+  kind: war
+  title: Saddam Hussein Executed
+  description_short: Saddam Hussein is hanged in Baghdad, and the filmed execution shows sectarian taunts.
+  description_long: The video, recorded on a phone, circulates widely. It confirms the sectarian character of the new Iraq.
+  why: The dictator is gone, and the state that replaces him is a sectarian one.
+  tags:
+  - iraq
+  - saddam
+  - execution
+  - sectarian
+- id: immigration_bill_fails
+  start: 20070628
+  level: 4
+  kind: immigration
+  title: Immigration Reform Fails
+  description_short: The Senate fails to advance a bipartisan immigration bill, 46 to 53, on a procedural vote.
+  description_long: Bush and a coalition of senators had backed a path to citizenship and more border enforcement. Opposition
+    from talk radio and the base kills it.
+  why: The last bipartisan attempt at immigration reform for the epoch, and for a long time after.
+  tags:
+  - immigration
+  - senate
+  - bush
+  - reform
+- id: iphone
+  start: 20070629
+  level: 4
+  kind: technology
+  title: The iPhone
+  description_short: Apple releases the iPhone.
+  description_long: It combines a phone, an internet device, and a computer in one object. By 2013 more than half of American
+    adults carry a smartphone.
+  why: The device that organizes the next order's attention.
+  tags:
+  - apple
+  - technology
+  - smartphone
+- id: libby_commutation
+  start: 20070702
+  level: 4
+  kind: rule_of_law
+  title: Libby Sentence Commuted
+  description_short: Bush commutes the prison sentence of Vice President Cheney's chief of staff, I. Lewis Libby, convicted
+    of lying in the investigation of the leak of a CIA officer's identity.
+  description_long: Libby was sentenced to thirty months. The commutation comes less than a month after the sentence and leaves
+    the fine and the conviction in place.
+  why: The officials near the president are protected from the law.
+  tags:
+  - pardons
+  - libby
+  - plame
+  - rule-of-law
+- id: fed_first_cut
+  start: 20070918
+  level: 4
+  kind: economics
+  title: Fed Cuts Rates by Half a Point
+  description_short: The Federal Reserve cuts rates by 0.5 percentage points, its first cut in four years.
+  description_long: It responds to the credit freeze that began in August. The Fed keeps cutting through April 2008.
+  why: The central bank acknowledges the freeze, and the cuts do not hold.
+  tags:
+  - fed
+  - interest-rates
+  - credit-crisis
+- id: ruby_ridge
+  start: 19920821
+  level: 5
+  kind: domestic
+  title: Ruby Ridge
+  description_short: Federal agents and a family in Idaho exchange gunfire, and a marshal, a boy, and a woman are killed.
+  description_long: The case, along with Waco, feeds the militia movement of the 1990s.
+  why: A first grievance for the movement that follows.
+  tags:
+  - ruby-ridge
+  - militia
+  - federal-power
+- id: oj_verdict
+  start: 19951003
+  level: 5
+  kind: trial
+  title: The O.J. Simpson Verdict
+  description_short: A Los Angeles jury acquits O.J. Simpson of the murders of his former wife and her friend.
+  description_long: An estimated 100 million people watch or listen as the verdict is read. The reaction splits along racial
+    lines.
+  why: The country watches the same event and sees two different things.
+  tags:
+  - trial
+  - race
+  - media
+  - los-angeles
+- id: million_man_march
+  start: 19951016
+  level: 5
+  kind: protest
+  title: Million Man March
+  description_short: Hundreds of thousands of Black men gather in Washington, called by Louis Farrakhan.
+  description_long: The attendance estimates run from 400,000 to more than 800,000.
+  why: A mass assembly in a decade of retreat from collective politics.
+  tags:
+  - race
+  - washington
+  - farrakhan
+  - protest
+- id: unabomber
+  start: 19960403
+  level: 5
+  kind: domestic
+  title: Unabomber Arrested
+  description_short: Federal agents arrest Theodore Kaczynski at his cabin in Montana after his brother recognizes his writing.
+  description_long: He had killed three people and wounded twenty-three in a seventeen-year campaign against technology. The
+    newspapers had published his manifesto.
+  why: A case that links the computer age to the anger at it.
+  tags:
+  - unabomber
+  - technology
+  - terrorism
+- id: deep_blue
+  start: 19970511
+  level: 5
+  kind: technology
+  title: Deep Blue Beats Kasparov
+  description_short: IBM's Deep Blue defeats world chess champion Garry Kasparov in a six-game match.
+  description_long: It is the first time a computer beats a reigning champion under tournament conditions.
+  why: A sign of what machines will do, in a decade of faith in technology.
+  tags:
+  - ai
+  - chess
+  - ibm
+  - technology
+- id: amazon_ipo
+  start: 19970515
+  level: 5
+  kind: economics
+  title: Amazon Goes Public
+  description_short: Amazon, an online bookseller, sells shares at $18.
+  description_long: The company loses money for years and then becomes the largest retailer in the country.
+  why: The internet's commercial model takes shape.
+  tags:
+  - amazon
+  - ipo
+  - internet
+  - retail
+- id: time_committee
+  start: 19990215
+  level: 5
+  kind: economics
+  title: The Committee to Save the World
+  description_short: Time puts Alan Greenspan, Robert Rubin, and Lawrence Summers on its cover, as "The Committee to Save
+    the World."
+  description_long: The cover celebrates the three men for managing the Asian crisis and keeping the boom going.
+  why: The peak of the order's confidence in expert management, one decade before it failed.
+  tags:
+  - greenspan
+  - rubin
+  - summers
+  - expertise
+- id: dow_10000
+  start: 19990329
+  level: 5
+  kind: economics
+  title: Dow Closes Above 10,000
+  description_short: The Dow Jones Industrial Average closes above 10,000 for the first time.
+  description_long: It had passed 1,000 in 1972 and 5,000 in 1995.
+  why: A round number marks a boom that would soon be called a bubble.
+  tags:
+  - stock-market
+  - dow
+  - boom
+- id: aol_time_warner
+  start: 20000110
+  level: 5
+  kind: economics
+  title: AOL Announces Merger with Time Warner
+  description_short: AOL announces a $164 billion merger with Time Warner, the largest in history.
+  description_long: The merged company later writes off nearly $100 billion in goodwill. The deal becomes shorthand for the
+    bubble.
+  why: The new economy buys the old one at the top.
+  tags:
+  - merger
+  - aol
+  - dot-com
+  - bubble
+- id: elian_gonzalez
+  start: 20000422
+  level: 5
+  kind: politics
+  title: Elian Gonzalez Seized
+  description_short: Federal agents seize six-year-old Elian Gonzalez from his relatives in Miami to return him to his father
+    in Cuba.
+  description_long: The raid angers the Cuban-American community in Florida, which votes heavily for Bush seven months later.
+  why: A custody case that mattered to a state decided by 537 votes.
+  tags:
+  - florida
+  - cuba
+  - immigration
+  - election-2000
+- id: california_blackouts
+  start: 20010117
+  level: 5
+  kind: economics
+  title: California Rolling Blackouts
+  description_short: California orders its first rolling blackouts as wholesale electricity prices spike.
+  description_long: Investigations later find that Enron and other traders manipulated the market. The governor, Gray Davis,
+    is recalled in 2003.
+  why: A deregulated market is gamed, and the fraud comes out later.
+  tags:
+  - energy
+  - california
+  - enron
+  - deregulation
+- id: jeffords_switch
+  start: 20010524
+  level: 5
+  kind: politics
+  title: Jeffords Leaves the Republican Party
+  description_short: Vermont Senator James Jeffords leaves the Republican Party and gives the Democrats control of the Senate.
+  description_long: The party gains the majority without winning an election. It holds it until the 2002 midterms.
+  why: A single senator reverses a result.
+  tags:
+  - senate
+  - jeffords
+  - majority
+- id: stem_cell_speech
+  start: 20010809
+  level: 5
+  kind: politics
+  title: Bush Limits Stem Cell Research Funding
+  description_short: Bush announces that federal funds can be used only for research on existing embryonic stem cell lines.
+  description_long: It is his first prime-time address. The policy stands until Obama reverses it in 2009.
+  why: A moral argument enters science policy.
+  tags:
+  - science
+  - stem-cells
+  - bush
+  - religion
+- id: dc_sniper
+  start: 20021002
+  level: 5
+  kind: violence
+  title: The D.C. Sniper Attacks
+  description_short: Two men shoot ten people dead over three weeks in the Washington area.
+  description_long: The shootings begin on October 2. John Allen Muhammad and Lee Boyd Malvo are arrested on October 24.
+  why: A month of fear in the capital, in the year before the Iraq war.
+  tags:
+  - shooting
+  - washington
+  - violence
+- id: nasdaq_bottom
+  start: 20021009
+  level: 5
+  kind: economics
+  title: Nasdaq Hits Bottom
+  description_short: The Nasdaq closes at 1,114, 78 percent below its March 2000 peak.
+  description_long: The bear market erases trillions in paper wealth. The recession that accompanied it was mild.
+  why: The bubble's end is visible only afterward.
+  tags:
+  - stock-market
+  - nasdaq
+  - dot-com
+  - bear-market
+- id: columbia_disaster
+  start: 20030201
+  level: 5
+  kind: disaster
+  title: Columbia Disaster
+  description_short: The space shuttle Columbia breaks up on reentry, killing all seven crew.
+  description_long: The investigation board finds that managers had again ignored engineers' warnings, as at Challenger.
+  why: An institutional failure repeats.
+  tags:
+  - space
+  - nasa
+  - disaster
+- id: google_ipo
+  start: 20040819
+  level: 5
+  kind: technology
+  title: Google Goes Public
+  description_short: Google sells shares to the public at $85 and ends the day near $100.
+  description_long: The company was six years old. Its founders keep voting control through a dual-class structure.
+  why: The new economy returns, with a different business model.
+  tags:
+  - google
+  - ipo
+  - technology
+  - advertising
+- id: kelo
+  start: 20050623
+  level: 5
+  kind: court
+  title: Kelo v. New London
+  description_short: The Supreme Court rules 5 to 4 that a city can take private homes for a private development.
+  description_long: The decision provokes a backlash, and most states pass laws restricting such seizures.
+  why: A court decision on property that draws a bipartisan protest.
+  tags:
+  - court
+  - property
+  - eminent-domain
+- id: virginia_tech
+  start: 20070416
+  level: 5
+  kind: violence
+  title: Virginia Tech Shooting
+  description_short: A student kills thirty-two people on the Virginia Tech campus and then himself.
+  description_long: It is the deadliest shooting by a single gunman in American history up to then.
+  why: The ritual of the decade continues, and the laws stay as they are.
+  tags:
+  - shooting
+  - guns
+  - virginia
+  - schools
+- id: minimum_wage_2007
+  start: 20070525
+  level: 5
+  kind: legislation
+  title: Minimum Wage Raised
+  description_short: Bush signs a bill raising the federal minimum wage from $5.15 to $7.25 in three steps.
+  description_long: It is the first increase in ten years and rides on a war funding bill.
+  why: The floor rises after a decade of the ceiling rising faster.
+  tags:
+  - wages
+  - minimum-wage
+  - labor
