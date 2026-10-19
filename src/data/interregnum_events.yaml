@@ -1,0 +1,1747 @@
+schema:
+  name: American Epochs Event Corpus
+  version: 2
+  date_format: YYYYMMDD
+  level_definition:
+    1: The epoch's "crown of the mountain" — always visible, at every zoom, from the very widest view. One beat per structural
+      hinge in the epoch's own arc, not a list of "the important stuff." Target 5-8 entries regardless of how large or eventful
+      the epoch was; see curation_guidance below. Automatically revealed first as the viewer zooms in from full history —
+      never a manual toggle.
+    2: Major events, automatically revealed at the first closer zoom past Level 1.
+    3: Supporting events explaining mechanisms, shifts, and consequences.
+    4: Contextual events — political, military, social, institutional texture.
+    5: Fine-grained events for the closest inspection.
+  curation_guidance:
+  - Level 1 is the hardest and most important editorial call in the corpus. The viewer never chooses to see it — it is what
+    everyone sees whether they zoom in or not, so it carries the whole epoch's argument on its own.
+  - Pick one entry per point where the epoch's own arc genuinely turns, not one per famous name or battle. A working test
+    - "does removing this entry break the causal chain from the epoch's start to its end?" If not, it belongs at Level 2 or
+    below, however well-known it is.
+  - Target 5-8 Level 1 point events specifically. This is deliberately independent of the epoch's total event count or length
+    in years. Reconstruction intentionally carries nine point events because the Panic of 1873 and United States v. Cruikshank
+    describe distinct political and judicial turns and the editor has approved a slightly crowded crown.
+  - Span (duration) entries at Level 1 do not count against the point-event target because the live instrument never tier-filters
+    spans; they provide scene-setting context.
+  - Levels 2-5 have much more room to breathe. Disagreement there is a rounding error, not a structural problem. Spend the
+    real editorial effort on Level 1.
+  notes:
+  - A missing end date indicates a point event.
+  - Dates represent the most defensible public date for display, not necessarily every stage of a legal or political process.
+  - date_precision (year or month) applies to start, and end_precision (month) to the end of a range. Where set, the placeholder
+    in the date field must not be rendered as exact. Absent means a full day-level date. date_verified true means the date
+    was confirmed against an identifiable source.
+  - This corpus is a research/authoring artifact. A human or LLM reconciles it into the live EVENTS array.
+  - Levels were assigned by Claude as a first-pass editorial judgment (see interregnum_outline.md for the Level 1 reasoning).
+    All dates are drafted from memory and none are yet source-verified, so verify before treating as settled. No source URLs
+    are included. Figures to check first include the TARP and ACA vote counts, the AIG commitment, the HAMP outcomes, the
+    Holder testimony wording, the National Mortgage Settlement terms, the Awlaki details, and the Tea Party seat swing.
+  - The Level 1 carries nine point events (above the usual five to eight) plus the zero interest rate policy span. Lehman,
+    TARP, and Obama's election fall within seven weeks, and Citizens United and the ACA are two months apart, so the front
+    of the epoch is dense. TARP is the one to demote if the labels collide, but it carries the preferred-treatment argument.
+    The Snowden pick fills the 2011 to 2015 gap on the executive-power thread, and Ferguson, Shelby County, and Holder's 'too
+    big to jail' testimony were the alternatives (they are Levels 2 and 3).
+  - 'The Iraq War span (2003-03-20 to 2011-12-18) is owned by the End of History corpus. This corpus carries its end events:
+    the withdrawal (Level 2), ISIS''s capture of Mosul (Level 2), and the caliphate (Level 3). The Afghanistan War span (2001-10-07
+    to 2021-08-30) is also owned by the End of History. This corpus carries the surge (Level 2) and the end of combat operations
+    (Level 3), and the Reckoning corpus must carry the end events (the Doha agreement, the withdrawal, the fall of Kabul).'
+  - zirp (2008-12-16 to 2015-12-16) is a span the editor accepted as 'an interesting detail that few people recall.' It ends
+    on the day of the Fed's first rate increase, which is also carried as a Level 3 point.
+  - 'The rule-of-law thread continues from the End of History: the Guantanamo order (Level 2), the decision not to prosecute
+    interrogators (Level 2), the Awlaki killing and Holder''s ''too big to jail'' testimony (Level 3), the NDAA detention
+    provisions (Level 4), the torture report (Level 3), and Snowden (Level 1). The preferred-treatment thread appears in TARP
+    (Level 1), the AIG bonuses and the mortgage settlement (Level 3), and the robo-signing scandal (Level 3).'
+  - The corpus opens on 2008-01-01 and closes on 2015-12-31. The Reckoning opens on 2016-01-01. Trump's announcement (2015-06-16)
+    is the last Level 1 event here. The Iowa caucuses, Scalia's death, and Trump's election belong to the Reckoning.
+epoch:
+  id: interregnum
+  title: The Interregnum
+  start: 20080101
+  end: 20151231
+  thesis: The order's creed is dead and its machinery keeps running. The financial system fails in September 2008, the government
+    saves it on the order's terms, and the households that owed the money carry the loss. A president elected on change stabilizes
+    the economy and expands health insurance through private markets, but leaves the financial structure and the surveillance
+    state in place. The Tea Party and Occupy appear as mirror-image symptoms of the same betrayal, one aimed at government
+    and one at the banks, and neither becomes a governing alternative. The Supreme Court opens politics to unlimited money
+    and ends the Voting Rights Act's enforcement. The Fed holds interest rates at zero for seven years, the one institution
+    willing to act. The epoch ends in June 2015, when a symptom announces itself as a candidate.
+events:
+- id: lehman_fails
+  start: 20080915
+  level: 1
+  kind: economics
+  title: Lehman Brothers Fails
+  description_short: Lehman Brothers files for bankruptcy after the government declines to rescue it, the largest bankruptcy
+    in American history.
+  description_long: The investment bank held about $639 billion in assets. The Treasury and the Fed had arranged the sale
+    of Bear Stearns in March and would rescue AIG the next day, but they let Lehman fail. A money market fund holding its
+    debt "breaks the buck" on September 16, and lending between banks stops.
+  why: The credit system seizes, and the crash names what the End of History had already spent.
+  tags:
+  - finance
+  - crash
+  - lehman
+  - credit-crisis
+- id: tarp_signed
+  start: 20081003
+  level: 1
+  kind: legislation
+  title: TARP Signed
+  description_short: Bush signs the $700 billion Troubled Asset Relief Program to rescue the financial system.
+  description_long: The House had rejected the bill on September 29, 228 to 205, and the Dow fell 777 points that day. The
+    Senate passed a revised version 74 to 25 and the House approved it 263 to 171. Treasury then used the fund to buy equity
+    in nine large banks and later to rescue insurers and automakers.
+  why: The order's institutions are made whole, and the households that owed the money are left to carry the loss.
+  tags:
+  - finance
+  - bailout
+  - tarp
+  - preferred-treatment
+- id: obama_elected
+  start: 20081104
+  level: 1
+  kind: election
+  title: Obama Elected
+  description_short: Barack Obama is elected the first Black president, with 365 electoral votes to John McCain's 173 and
+    Democratic majorities in both houses.
+  description_long: He wins 52.9 percent of the popular vote, the largest Democratic share since 1964, on a campaign of "change"
+    and "hope." The election comes seven weeks after Lehman and a month after TARP.
+  why: The country votes for change in the middle of the collapse, and the change arrives inside the settlement it inherits.
+  tags:
+  - election
+  - obama
+  - change
+  - race
+- id: zirp
+  start: 20081216
+  end: 20151216
+  level: 1
+  kind: economics
+  title: Zero Interest Rate Policy
+  description_short: The Federal Reserve holds its target rate at essentially zero for seven years.
+  description_long: The Fed cuts its rate to a range of 0 to 0.25 percent on December 16, 2008, and keeps it there until it
+    raises it a quarter point on December 16, 2015. It adds three rounds of large-scale asset purchases. Defenders say it
+    prevented a deeper slump, and critics say it lifted asset prices and the people who owned them.
+  why: The central bank is the one institution willing to act, and its tools reach asset holders before wage earners.
+  tags:
+  - fed
+  - interest-rates
+  - monetary-policy
+  - qe
+- id: citizens_united
+  start: 20100121
+  level: 1
+  kind: court
+  title: Citizens United v. FEC
+  description_short: The Supreme Court holds, 5 to 4, that corporations and unions can spend without limit on political advocacy.
+  description_long: The decision overrules earlier precedent and strikes down part of the 2002 McCain-Feingold law. A lower-court
+    ruling that spring lets outside groups raise unlimited sums as "super PACs." Obama criticizes the decision in his State
+    of the Union address, with six of the justices seated in front of him.
+  why: The order's money enters its politics without a limit, in the Court's second decision to reshape an election in a decade.
+  tags:
+  - court
+  - campaign-finance
+  - money-in-politics
+  - rule-of-law
+- id: aca_signed
+  start: 20100323
+  level: 1
+  kind: legislation
+  title: Affordable Care Act
+  description_short: Obama signs the Patient Protection and Affordable Care Act, the largest expansion of health insurance
+    since Medicare.
+  description_long: The House passed it 219 to 212 on March 21 without a Republican vote, after the Senate passed it on December
+    24, 60 to 39. It builds on private insurance with subsidies, exchanges, a Medicaid expansion, and an individual mandate,
+    and drops the public option. The Supreme Court upholds the mandate in 2012 on the taxing power.
+  why: The epoch's one structural reform keeps the order's market structure, and the fight over it defines the decade.
+  tags:
+  - health-care
+  - obama
+  - reform
+  - insurance
+- id: tea_party_wave
+  start: 20101102
+  level: 1
+  kind: election
+  title: The Tea Party Wave
+  description_short: Republicans gain 63 House seats and six in the Senate, the largest House swing since 1948.
+  description_long: The movement began in 2009 as a protest against the bailouts and the stimulus, and it turned on the health
+    law. Its candidates unseat incumbents in both parties' primaries, and the new House majority makes the debt ceiling a
+    weapon.
+  why: A symptom becomes a political force, and its anger is aimed at the government that rescued the banks.
+  tags:
+  - election
+  - tea-party
+  - midterm
+  - populism
+- id: occupy_wall_street
+  start: 20110917
+  level: 1
+  kind: protest
+  title: Occupy Wall Street
+  description_short: Protesters set up camp in Zuccotti Park in lower Manhattan, and the movement spreads to hundreds of cities.
+  description_long: It coins "We are the 99 percent" and makes inequality a subject of national debate. Police clear the park
+    on November 15, and the movement dissolves without an organization or a program.
+  why: The left's mirror image of the Tea Party aims its anger at the bailouts' beneficiaries, and it does not last.
+  tags:
+  - protest
+  - occupy
+  - inequality
+  - populism
+- id: snowden
+  start: 20130605
+  level: 1
+  kind: rule_of_law
+  title: Snowden's Disclosures
+  description_short: The Guardian publishes a secret court order requiring Verizon to hand over its customers' phone records,
+    the first of Edward Snowden's disclosures.
+  description_long: A National Security Agency contractor leaks documents showing bulk collection of phone records and internet
+    data under the Patriot Act and the 2008 FISA Amendments. Months earlier the Director of National Intelligence had told
+    the Senate that the agency did not "wittingly" collect data on millions of Americans. Snowden flees to Hong Kong and then
+    Russia.
+  why: The surveillance state's scale is shown by one of its contractors, and the executive power built after 9/11 survives
+    the change in party.
+  tags:
+  - surveillance
+  - nsa
+  - executive-power
+  - rule-of-law
+- id: trump_announces
+  start: 20150616
+  level: 1
+  kind: politics
+  title: Trump Announces
+  description_short: Donald Trump announces his candidacy for the Republican presidential nomination at Trump Tower in New
+    York.
+  description_long: The real-estate developer and television host opens by calling Mexican immigrants criminals and "rapists,"
+    and promises to build a wall. He is one of seventeen major Republican candidates and is not taken seriously by the party's
+    establishment.
+  why: A symptom of the vacuum announces itself as a candidate, and the epoch ends.
+  tags:
+  - election
+  - trump
+  - populism
+  - immigration
+- id: bear_stearns
+  start: 20080316
+  level: 2
+  kind: economics
+  title: Bear Stearns Rescued
+  description_short: The Fed finances JPMorgan Chase's purchase of Bear Stearns, which was about to fail.
+  description_long: The Fed takes on about $29 billion of the investment bank's riskiest assets. JPMorgan pays $2 a share,
+    raised to $10 after shareholders protest. It is the first time the Fed lends against an investment bank's assets.
+  why: The first rescue sets the precedent that Lehman, six months later, breaks.
+  tags:
+  - finance
+  - bear-stearns
+  - fed
+  - bailout
+- id: fannie_freddie
+  start: 20080907
+  level: 2
+  kind: economics
+  title: Fannie Mae and Freddie Mac Taken Over
+  description_short: The government places Fannie Mae and Freddie Mac in conservatorship.
+  description_long: The two firms guaranteed about half of American mortgages. The Treasury commits up to $100 billion to
+    each, and the government effectively owns the mortgage market.
+  why: The order's housing machinery is nationalized to keep it running.
+  tags:
+  - housing
+  - fannie-mae
+  - freddie-mac
+  - bailout
+- id: aig_rescue
+  start: 20080916
+  level: 2
+  kind: economics
+  title: AIG Rescued
+  description_short: The Fed lends $85 billion to the insurer American International Group in exchange for nearly 80 percent
+    of its shares.
+  description_long: AIG had sold hundreds of billions of dollars in credit default swaps on mortgage securities and could
+    not pay them. The government's total commitment grows to about $182 billion, and the money passes to AIG's trading partners,
+    including Goldman Sachs and European banks.
+  why: The derivatives the 2000 law left unregulated come due, and the counterparties are paid in full.
+  tags:
+  - finance
+  - aig
+  - derivatives
+  - bailout
+- id: obama_inaugurated
+  start: 20090120
+  level: 2
+  kind: politics
+  title: Obama Inaugurated
+  description_short: Barack Obama is sworn in before an estimated 1.8 million people.
+  description_long: He takes office with unemployment above 7 percent and the economy shedding about 700,000 jobs a month.
+  why: The country's most hopeful ceremony takes place at the bottom of its worst downturn in seventy years.
+  tags:
+  - obama
+  - inauguration
+  - recession
+- id: guantanamo_order
+  start: 20090122
+  level: 2
+  kind: rule_of_law
+  title: Obama Orders Guantanamo Closed
+  description_short: Obama signs an order to close the Guantanamo Bay detention camp within a year.
+  description_long: Congress later blocks the transfer of detainees to American soil and funding for the closure. About 240
+    men are held when he takes office, and 41 remain when he leaves.
+  why: A campaign promise on the executive's detention power meets Congress and fails.
+  tags:
+  - guantanamo
+  - detention
+  - executive-power
+  - rule-of-law
+- id: stimulus
+  start: 20090217
+  level: 2
+  kind: legislation
+  title: American Recovery and Reinvestment Act
+  description_short: Obama signs the $787 billion stimulus, the largest in American history.
+  description_long: It combines tax cuts, aid to states, infrastructure, and unemployment benefits. It passes with three Republican
+    votes in the Senate and none in the House. Many economists later judge it too small for the size of the hole.
+  why: The recovery is financed, and the response is smaller than the shock.
+  tags:
+  - stimulus
+  - recovery
+  - obama
+  - fiscal-policy
+- id: look_forward
+  start: 20090416
+  level: 2
+  kind: rule_of_law
+  title: Obama Declines to Prosecute Interrogators
+  description_short: Obama releases the Bush-era torture memos and says that CIA officers who relied on them will not be prosecuted.
+  description_long: He says that "nothing will be gained by spending our time and energy laying blame for the past." A federal
+    prosecutor later reviews the cases and closes them in 2012 without charges.
+  why: The officials who authorized the torture are protected, and the thread from Iran-Contra's pardons continues.
+  tags:
+  - torture
+  - rule-of-law
+  - accountability
+  - obama
+- id: afghan_surge
+  start: 20091201
+  level: 2
+  kind: war
+  title: The Afghan Surge
+  description_short: Obama announces he will send 30,000 more troops to Afghanistan, with a date to begin withdrawing in July
+    2011.
+  description_long: American forces in the country peak near 100,000 in 2010 and 2011. The announcement fails to settle the
+    debate, and the war continues.
+  why: The war the previous president began is escalated by the president who campaigned against the other one.
+  tags:
+  - afghanistan
+  - war
+  - surge
+  - obama
+- id: dodd_frank
+  start: 20100721
+  level: 2
+  kind: legislation
+  title: Dodd-Frank Act
+  description_short: Obama signs the most extensive financial regulation since the New Deal.
+  description_long: It creates the Consumer Financial Protection Bureau and a council to monitor systemic risk, adds the Volcker
+    Rule limiting banks' trading, and sets rules for derivatives. It does not break up the large banks, and rulemaking runs
+    for years.
+  why: The financial system is regulated at its edges, and the large institutions remain.
+  tags:
+  - finance
+  - regulation
+  - dodd-frank
+  - banks
+- id: bin_laden
+  start: 20110502
+  level: 2
+  kind: war
+  title: Bin Laden Killed
+  description_short: Navy SEALs kill Osama bin Laden in a raid on his compound in Abbottabad, Pakistan.
+  description_long: Obama announces it that night, and crowds gather outside the White House. Pakistan had not been told of
+    the raid in advance.
+  why: The war on terror's first object ends, and the war it started goes on.
+  tags:
+  - terrorism
+  - bin-laden
+  - pakistan
+  - war-on-terror
+- id: sp_downgrade
+  start: 20110805
+  level: 2
+  kind: economics
+  title: United States Downgraded
+  description_short: Standard & Poor's lowers the United States' credit rating from AAA for the first time, after a standoff
+    over the debt ceiling.
+  description_long: The Budget Control Act of August 2 had ended the standoff by promising spending cuts, including automatic
+    ones, that took effect as the sequester in 2013. The House Republican majority had made raising the debt limit conditional
+    on cuts.
+  why: The country's creditworthiness becomes a bargaining chip, and the order's political machinery is shown unable to govern
+    itself.
+  tags:
+  - debt-ceiling
+  - budget
+  - credit-rating
+  - congress
+- id: iraq_withdrawal
+  start: 20111218
+  level: 2
+  kind: war
+  title: Last American Troops Leave Iraq
+  description_short: The last convoy of American combat troops crosses into Kuwait, ending the war.
+  description_long: Obama had announced the withdrawal in October after talks on immunity for American troops failed. About
+    4,500 Americans and many times more Iraqis died, and the war cost trillions of dollars. This corpus carries the end of
+    the Iraq War span, which the End of History began.
+  why: The war ends on the date set in the 2008 agreement, and without the result its authors predicted.
+  tags:
+  - iraq
+  - war
+  - withdrawal
+- id: daca
+  start: 20120615
+  level: 2
+  kind: immigration
+  title: DACA
+  description_short: Obama announces that young immigrants brought illegally as children can apply for protection from deportation
+    and a work permit.
+  description_long: Congress had failed to pass the DREAM Act in December 2010. The program uses the executive's discretion
+    over enforcement, and about 800,000 people eventually enroll.
+  why: The executive acts where Congress would not, on immigration, and the legality of the action stays in dispute.
+  tags:
+  - immigration
+  - daca
+  - executive-power
+  - dreamers
+- id: obama_reelected
+  start: 20121106
+  level: 2
+  kind: election
+  title: Obama Reelected
+  description_short: Obama defeats Mitt Romney, 332 electoral votes to 206, with unemployment at 7.9 percent.
+  description_long: He wins 51.1 percent of the popular vote, the first Democrat since Franklin Roosevelt to win a majority
+    twice. Republicans keep the House.
+  why: The country ratifies the stabilization and returns divided government.
+  tags:
+  - election
+  - obama
+  - romney
+- id: sandy_hook
+  start: 20121214
+  level: 2
+  kind: violence
+  title: Sandy Hook
+  description_short: A gunman kills twenty children and six adults at an elementary school in Newtown, Connecticut.
+  description_long: Obama proposes background checks and a ban on assault weapons. A bipartisan background-check bill fails
+    in the Senate on April 17, 2013, 54 to 46, short of the 60 votes needed.
+  why: The shooting of twenty first-graders produces no federal law.
+  tags:
+  - shooting
+  - guns
+  - schools
+  - congress
+- id: shelby_county
+  start: 20130625
+  level: 2
+  kind: court
+  title: Shelby County v. Holder
+  description_short: The Supreme Court strikes down the formula that decided which states had to clear voting changes with
+    the federal government.
+  description_long: The 5-to-4 ruling ends the preclearance requirement of the Voting Rights Act of 1965, and Congress does
+    not write a new formula. Texas announces within hours that it will enforce a voter ID law that had been blocked.
+  why: The Voting Rights Act's central enforcement mechanism ends in the Court, fifty years after it was won.
+  tags:
+  - court
+  - voting-rights
+  - race
+  - rule-of-law
+- id: mosul_falls
+  start: 20140610
+  level: 2
+  kind: war
+  title: ISIS Takes Mosul
+  description_short: The Islamic State seizes Mosul, Iraq's second-largest city, after the Iraqi army collapses.
+  description_long: A force of a few thousand routs army divisions that the United States spent billions training. On June
+    29 the group declares a caliphate, and American airstrikes begin in August.
+  why: The war that ended in 2011 returns in a new form, and its consequences outrun its occupation.
+  tags:
+  - isis
+  - iraq
+  - terrorism
+  - mosul
+- id: ferguson
+  start: 20140809
+  level: 2
+  kind: unrest
+  title: Ferguson
+  description_short: A police officer shoots and kills Michael Brown, an unarmed eighteen-year-old, in Ferguson, Missouri.
+  description_long: His body lies in the street for four hours. Days of protest meet a militarized police response. A grand
+    jury declines to indict the officer on November 24, and a Justice Department report in March 2015 finds the city's police
+    and courts run on constitutionally unlawful practices that raise revenue from its Black residents.
+  why: The legitimacy crisis of policing becomes national, in the other half of the epoch's argument about who the state serves.
+  tags:
+  - ferguson
+  - policing
+  - race
+  - protest
+- id: charleston
+  start: 20150617
+  level: 2
+  kind: violence
+  title: Charleston Church Shooting
+  description_short: A white supremacist kills nine Black worshippers at Emanuel African Methodist Episcopal Church in Charleston,
+    South Carolina.
+  description_long: Obama delivers the eulogy for the pastor, Clementa Pinckney, and sings "Amazing Grace." South Carolina
+    removes the Confederate flag from its State House grounds on July 10.
+  why: The nation's oldest wound is reopened in a church, and it is followed by an act of public removal.
+  tags:
+  - charleston
+  - race
+  - violence
+  - confederate-flag
+- id: obergefell
+  start: 20150626
+  level: 2
+  kind: court
+  title: Obergefell v. Hodges
+  description_short: The Supreme Court holds, 5 to 4, that the Constitution guarantees a right to same-sex marriage.
+  description_long: The ruling comes nineteen years after Congress and Clinton passed the Defense of Marriage Act. Thirteen
+    states still banned same-sex marriage when it was decided.
+  why: The fastest shift in public opinion in modern polling reaches the Court.
+  tags:
+  - court
+  - marriage
+  - lgbt
+  - rights
+- id: iran_deal
+  start: 20150714
+  level: 2
+  kind: diplomacy
+  title: The Iran Nuclear Deal
+  description_short: The United States, its allies, Russia, and China sign an agreement with Iran limiting its nuclear program
+    in return for relief from sanctions.
+  description_long: Obama concludes it as an executive agreement and not a treaty, and the Senate fails to block it in September.
+    The next president withdraws the United States from it in 2018.
+  why: A major foreign-policy settlement is made by the executive alone, and is undone the same way.
+  tags:
+  - iran
+  - diplomacy
+  - executive-power
+  - nuclear
+- id: iowa_caucus_2008
+  start: 20080103
+  level: 3
+  kind: election
+  title: Obama Wins Iowa
+  description_short: Barack Obama wins the Iowa Democratic caucuses, ahead of John Edwards and Hillary Clinton.
+  description_long: A first-term senator wins a 95 percent white state, and the result makes him a front-runner. The primary
+    fight runs until June.
+  why: The campaign that ends in the first Black president begins on a snowy night in Iowa.
+  tags:
+  - election
+  - obama
+  - primary
+  - iowa
+- id: heller
+  start: 20080626
+  level: 3
+  kind: court
+  title: District of Columbia v. Heller
+  description_short: The Supreme Court holds, 5 to 4, that the Second Amendment protects an individual right to own a gun
+    for self-defense at home.
+  description_long: Justice Scalia's opinion strikes down the District of Columbia's handgun ban. It is the first time the
+    Court rules the amendment protects an individual right independent of militia service.
+  why: The constitutional landscape of guns shifts, in a decade of mass shootings.
+  tags:
+  - court
+  - guns
+  - second-amendment
+  - scalia
+- id: tarp_vote_fails
+  start: 20080929
+  level: 3
+  kind: legislation
+  title: The House Rejects TARP
+  description_short: The House votes 228 to 205 against the bailout bill, and the Dow falls 777 points, then the largest one-day
+    point drop in its history.
+  description_long: Members of both parties cite their constituents' anger at rescuing Wall Street. The Senate adds tax provisions
+    and raises deposit insurance, and the House passes a revised bill on October 3.
+  why: The voters' anger is felt in the vote, and the rescue passes anyway.
+  tags:
+  - tarp
+  - congress
+  - bailout
+  - populism
+- id: qe1
+  start: 20081125
+  level: 3
+  kind: economics
+  title: First Round of Quantitative Easing
+  description_short: The Federal Reserve announces it will buy $600 billion in mortgage securities and agency debt.
+  description_long: Having cut its rate to zero, the Fed turns to buying assets to lower long-term rates. It expands the program
+    to $1.75 trillion in March 2009.
+  why: The central bank's balance sheet becomes the economy's main tool.
+  tags:
+  - fed
+  - qe
+  - monetary-policy
+  - mortgages
+- id: madoff
+  start: 20081211
+  level: 3
+  kind: scandal
+  title: Madoff Arrested
+  description_short: Federal agents arrest Bernard Madoff, who confesses to running a $65 billion Ponzi scheme.
+  description_long: The investment adviser, a former chairman of the Nasdaq, had defrauded investors for decades. The SEC
+    had received warnings for years and had not acted.
+  why: The regulators missed the largest fraud in history, and the crash reveals it.
+  tags:
+  - fraud
+  - madoff
+  - sec
+  - ponzi
+- id: auto_rescue
+  start: 20081219
+  level: 3
+  kind: economics
+  title: Auto Industry Rescue
+  description_short: Bush lends $17.4 billion from TARP to General Motors and Chrysler.
+  description_long: Obama continues the rescue, and the two companies go through bankruptcy, Chrysler on April 30 and General
+    Motors on June 1, 2009. The total government support is about $80 billion, and the government owns most of General Motors
+    until 2013.
+  why: The industrial core of the New Deal order is rescued on terms the bankers did not face.
+  tags:
+  - autos
+  - bailout
+  - tarp
+  - manufacturing
+- id: hamp
+  start: 20090218
+  level: 3
+  kind: housing
+  title: Home Affordable Modification Program
+  description_short: Obama announces a plan to help three to four million homeowners avoid foreclosure.
+  description_long: The program pays servicers to modify loans, and it reaches far fewer homeowners than promised. About 1
+    million permanent modifications are completed, and millions of homes still go through foreclosure.
+  why: The rescue of homeowners is smaller than the rescue of the banks.
+  tags:
+  - housing
+  - foreclosure
+  - hamp
+  - mortgages
+- id: santelli_rant
+  start: 20090219
+  level: 3
+  kind: politics
+  title: The Santelli Rant
+  description_short: CNBC reporter Rick Santelli, on the floor of the Chicago Mercantile Exchange, calls for a "Chicago Tea
+    Party" to protest the plan to help homeowners.
+  description_long: Traders cheer. The clip spreads online, and "tea party" groups form within days. The administration's
+    plan had been announced the day before.
+  why: The movement that wins the 2010 midterms begins as a complaint about helping homeowners.
+  tags:
+  - tea-party
+  - media
+  - populism
+  - housing
+- id: dow_bottom
+  start: 20090309
+  level: 3
+  kind: economics
+  title: Dow Hits Bottom
+  description_short: The Dow Jones Industrial Average closes at 6,547, its lowest point of the crisis, down 54 percent from
+    its October 2007 peak.
+  description_long: The market begins a long recovery the next day. By 2013 it passes its pre-crisis high.
+  why: The stock market recovers long before most households do.
+  tags:
+  - stock-market
+  - recession
+  - recovery
+- id: aig_bonuses
+  start: 20090316
+  level: 3
+  kind: economics
+  title: AIG Bonuses
+  description_short: AIG reveals it paid $165 million in retention bonuses to the unit that sold the credit default swaps.
+  description_long: The company had received about $170 billion of federal money. The House passes a bill taxing the bonuses
+    at 90 percent, and the Senate does not.
+  why: The anger at the rescue finds a symbol.
+  tags:
+  - aig
+  - bailout
+  - bonuses
+  - populism
+- id: tax_day_tea_parties
+  start: 20090415
+  level: 3
+  kind: protest
+  title: Tax Day Tea Parties
+  description_short: Hundreds of rallies are held across the country, with hundreds of thousands of participants, against
+    bailouts, taxes, and the stimulus.
+  description_long: Cable news and conservative organizations promote the events. A march on Washington on September 12 draws
+    tens of thousands.
+  why: The anger takes the form of a movement.
+  tags:
+  - tea-party
+  - protest
+  - taxes
+  - populism
+- id: stress_tests
+  start: 20090507
+  level: 3
+  kind: economics
+  title: Bank Stress Tests
+  description_short: The Treasury publishes the results of its stress tests of the nineteen largest banks.
+  description_long: Ten banks are told to raise a total of $75 billion in capital. The results are more reassuring than the
+    market expected, and bank stocks rise.
+  why: The government restores confidence by disclosing that the banks would survive, and not by restructuring them.
+  tags:
+  - banks
+  - stress-test
+  - treasury
+  - confidence
+- id: recession_ends
+  start: 20090601
+  date_precision: month
+  level: 3
+  kind: economics
+  title: The Recession Ends
+  description_short: The National Bureau of Economic Research later dates the end of the recession to June 2009, after eighteen
+    months.
+  description_long: It is the longest and deepest contraction of the postwar period. The announcement comes in September 2010,
+    when the unemployment rate is 9.6 percent.
+  why: The recession ends in the data long before it ends in households.
+  tags:
+  - recession
+  - nber
+  - recovery
+- id: unemployment_peak
+  start: 20091001
+  date_precision: month
+  level: 3
+  kind: economics
+  title: Unemployment Peaks at 10 Percent
+  description_short: The unemployment rate reaches 10.0 percent, its highest since 1983.
+  description_long: It falls slowly, taking until 2016 to return to its pre-crisis level. The long-term unemployed are a larger
+    share of the jobless than at any time in the postwar period.
+  why: The recovery in output outruns the recovery in work.
+  tags:
+  - unemployment
+  - recession
+  - recovery
+- id: deepwater_horizon
+  start: 20100420
+  level: 3
+  kind: disaster
+  title: Deepwater Horizon
+  description_short: An explosion on the BP drilling rig Deepwater Horizon kills eleven workers and begins the largest accidental
+    oil spill in history.
+  description_long: About 4.9 million barrels flow into the Gulf of Mexico until the well is capped on July 15. BP agrees
+    in 2015 to pay a record $20.8 billion.
+  why: A disaster that tests the state's ability to regulate and respond, in the middle of the Obama presidency.
+  tags:
+  - oil-spill
+  - bp
+  - gulf-of-mexico
+  - regulation
+- id: robo_signing
+  start: 20101001
+  date_precision: month
+  level: 3
+  kind: housing
+  title: Robo-Signing Scandal
+  description_short: Banks halt foreclosures in all fifty states after it emerges that employees signed thousands of foreclosure
+    documents without reading them.
+  description_long: The practice, called robo-signing, violates the laws governing foreclosure. Attorneys general in all fifty
+    states open an investigation.
+  why: The banks that took the rescue are shown to have broken the paperwork rules, and the homeowners pay.
+  tags:
+  - foreclosure
+  - banks
+  - fraud
+  - housing
+- id: dadt_repeal
+  start: 20101222
+  level: 3
+  kind: military
+  title: Don't Ask, Don't Tell Repealed
+  description_short: Obama signs the law ending the ban on openly gay men and lesbians serving in the military.
+  description_long: The repeal ends a policy that Clinton began in 1993. It takes effect in September 2011.
+  why: A compromise of the previous order ends under the next.
+  tags:
+  - lgbt
+  - military
+  - repeal
+  - obama
+- id: arab_spring
+  start: 20110211
+  level: 3
+  kind: world
+  title: Mubarak Falls
+  description_short: Egyptian President Hosni Mubarak resigns after eighteen days of protests.
+  description_long: The uprising, which began in Tunisia in December 2010, spreads across the Arab world. The United States
+    has backed Mubarak for thirty years.
+  why: The regional order the United States built is shaken, and the response is improvised.
+  tags:
+  - egypt
+  - arab-spring
+  - middle-east
+  - protest
+- id: libya
+  start: 20110319
+  level: 3
+  kind: war
+  title: Intervention in Libya
+  description_short: The United States and its allies begin air strikes in Libya to protect civilians from Muammar Gaddafi's
+    forces.
+  description_long: Obama does not seek congressional authorization, and the administration argues the operation falls short
+    of "hostilities" under the War Powers Resolution. Gaddafi is killed on October 20, and Libya descends into civil war.
+  why: The executive wages a war without Congress, and the result is a failed state.
+  tags:
+  - libya
+  - war-powers
+  - executive-power
+  - intervention
+- id: awlaki
+  start: 20110930
+  level: 3
+  kind: rule_of_law
+  title: Anwar al-Awlaki Killed
+  description_short: An American drone strike in Yemen kills Anwar al-Awlaki, a U.S. citizen and al-Qaeda propagandist.
+  description_long: It is the first known deliberate killing of an American citizen by the government without a trial. A Justice
+    Department memo justifying it is released in 2014. His sixteen-year-old son is killed in a separate strike on October
+    14.
+  why: The executive claims the power to kill a citizen on its own finding.
+  tags:
+  - drones
+  - executive-power
+  - due-process
+  - war-on-terror
+- id: mortgage_settlement
+  start: 20120209
+  level: 3
+  kind: housing
+  title: National Mortgage Settlement
+  description_short: Five large banks agree to pay $25 billion over foreclosure abuses, and no executive is prosecuted.
+  description_long: The settlement with forty-nine states and the federal government provides for modest payments to homeowners
+    and for loan modifications. The banks do not admit wrongdoing.
+  why: The resolution of the largest consumer fraud in decades is a fine.
+  tags:
+  - foreclosure
+  - banks
+  - settlement
+  - accountability
+- id: trayvon_martin
+  start: 20120226
+  level: 3
+  kind: violence
+  title: Trayvon Martin Killed
+  description_short: A neighborhood watch volunteer, George Zimmerman, shoots and kills Trayvon Martin, an unarmed seventeen-year-old,
+    in Sanford, Florida.
+  description_long: Zimmerman is not charged for six weeks, and the case becomes a national protest. A jury acquits him on
+    July 13, 2013.
+  why: A killing and an acquittal start a movement.
+  tags:
+  - race
+  - florida
+  - self-defense
+  - blm
+- id: nfib_v_sebelius
+  start: 20120628
+  level: 3
+  kind: court
+  title: NFIB v. Sebelius
+  description_short: The Supreme Court upholds the Affordable Care Act's individual mandate, 5 to 4, as a tax.
+  description_long: Chief Justice Roberts writes the opinion and joins the four liberal justices. The Court limits the law's
+    Medicaid expansion, and many states decline it at first.
+  why: The law survives on the taxing power, and the expansion becomes optional.
+  tags:
+  - court
+  - aca
+  - health-care
+  - roberts
+- id: benghazi
+  start: 20120911
+  level: 3
+  kind: war
+  title: Benghazi Attack
+  description_short: Militants attack the American diplomatic compound in Benghazi, Libya, and kill Ambassador Christopher
+    Stevens and three others.
+  description_long: It becomes the subject of repeated congressional investigations and a persistent political controversy
+    through the 2016 election.
+  why: The aftermath of the Libya intervention becomes a partisan issue.
+  tags:
+  - libya
+  - benghazi
+  - congress
+  - partisanship
+- id: marijuana_legalization
+  start: 20121106
+  level: 3
+  kind: drugs
+  title: Colorado and Washington Legalize Marijuana
+  description_short: Voters in Colorado and Washington approve the first state laws legalizing recreational marijuana.
+  description_long: The measures conflict with federal law, which the Obama Justice Department chooses not to enforce. By
+    2015 four states and Washington, D.C., have legalized it.
+  why: The war on drugs, declared in 1971, loses ground first at the ballot box.
+  tags:
+  - drugs
+  - marijuana
+  - ballot-measure
+  - federalism
+- id: too_big_to_jail
+  start: 20130306
+  level: 3
+  kind: rule_of_law
+  title: 'Holder: "Too Big to Jail"'
+  description_short: Attorney General Eric Holder tells the Senate that the size of some banks makes them difficult to prosecute.
+  description_long: He says it is "difficult for us to prosecute them when we are hit with indications that if we do prosecute
+    — if we do bring a criminal charge — it will have a negative impact on the national economy." Almost no senior bank executive
+    is prosecuted for the crisis.
+  why: The law is applied in proportion to size, in the Justice Department's own words.
+  tags:
+  - banks
+  - prosecution
+  - rule-of-law
+  - accountability
+- id: gun_bill_fails
+  start: 20130417
+  level: 3
+  kind: legislation
+  title: Background-Check Bill Fails
+  description_short: The Senate votes 54 to 46 for a bipartisan background-check bill, six votes short of the 60 required.
+  description_long: The bill followed the Sandy Hook shooting four months earlier. Polls show about 90 percent support for
+    the measure.
+  why: The most popular response to the worst school shooting dies on a procedural vote.
+  tags:
+  - guns
+  - senate
+  - filibuster
+  - sandy-hook
+- id: gang_of_eight
+  start: 20130627
+  level: 3
+  kind: immigration
+  title: Senate Passes Immigration Reform
+  description_short: The Senate passes a bipartisan immigration bill, 68 to 32, with a path to citizenship and more border
+    enforcement.
+  description_long: The "Gang of Eight" senators wrote it. The House, under Speaker Boehner, never brings it to a vote.
+  why: The last bipartisan reform dies in the House, as in 2007.
+  tags:
+  - immigration
+  - senate
+  - reform
+  - house
+- id: zimmerman_verdict
+  start: 20130713
+  level: 3
+  kind: violence
+  title: Zimmerman Acquitted
+  description_short: A Florida jury acquits George Zimmerman of the murder of Trayvon Martin.
+  description_long: 'Within hours, the hashtag #BlackLivesMatter is created. Obama remarks that Trayvon Martin "could have
+    been me thirty-five years ago."'
+  why: A movement gets its name.
+  tags:
+  - race
+  - blm
+  - florida
+  - verdict
+- id: detroit_bankruptcy
+  start: 20130718
+  level: 3
+  kind: economics
+  title: Detroit Files for Bankruptcy
+  description_short: Detroit files for bankruptcy, the largest municipal bankruptcy in American history, with about $18 billion
+    in debts.
+  description_long: The city had lost more than 60 percent of its population since 1950. Bondholders fare better than retirees,
+    whose pensions are cut.
+  why: The deindustrialization of the Rust Belt reaches a city's balance sheet.
+  tags:
+  - detroit
+  - bankruptcy
+  - deindustrialization
+  - pensions
+- id: ghouta_red_line
+  start: 20130821
+  level: 3
+  kind: war
+  title: Syria Chemical Attack and the Red Line
+  description_short: The Assad regime kills about 1,400 people with sarin gas near Damascus, a year after Obama called chemical
+    weapons a "red line."
+  description_long: Obama asks Congress to authorize a strike and then accepts a Russian proposal for Syria to give up its
+    chemical weapons. Congress never votes.
+  why: The threat of force is withdrawn, and the credibility of the red line is damaged.
+  tags:
+  - syria
+  - chemical-weapons
+  - war-powers
+  - red-line
+- id: shutdown_2013
+  start: 20131001
+  level: 3
+  kind: politics
+  title: Government Shutdown
+  description_short: The federal government shuts down for sixteen days after House Republicans refuse to fund it without
+    defunding the Affordable Care Act.
+  description_long: About 800,000 federal employees are furloughed. The shutdown ends on October 16 with no change to the
+    law, and the Republican Party's approval falls.
+  why: The majority's weapon fails, and the pattern is set.
+  tags:
+  - shutdown
+  - aca
+  - congress
+  - partisanship
+- id: healthcare_gov
+  start: 20131001
+  level: 3
+  kind: health
+  title: Healthcare.gov Launches and Fails
+  description_short: The Affordable Care Act's insurance exchanges open, and the federal website crashes.
+  description_long: Only six people enroll on the first day. The site is repaired by December, and eight million people enroll
+    by April 2014.
+  why: The state's technical capacity is tested in public and found wanting.
+  tags:
+  - aca
+  - health-care
+  - technology
+  - state-capacity
+- id: crimea
+  start: 20140318
+  level: 3
+  kind: world
+  title: Russia Annexes Crimea
+  description_short: Russia annexes Crimea from Ukraine after a referendum held under military occupation.
+  description_long: It is the first annexation of territory in Europe by force since the Second World War. The United States
+    and Europe respond with sanctions and not force.
+  why: The post-Cold War settlement is violated at the edge of Europe.
+  tags:
+  - russia
+  - ukraine
+  - crimea
+  - sanctions
+- id: isis_caliphate
+  start: 20140629
+  level: 3
+  kind: war
+  title: ISIS Declares a Caliphate
+  description_short: The Islamic State declares a caliphate across parts of Iraq and Syria, with Abu Bakr al-Baghdadi as caliph.
+  description_long: The group beheads American hostages on video, and Obama orders airstrikes in Iraq in August and in Syria
+    in September. American troops return to Iraq as advisers.
+  why: The war the United States left in 2011 returns, and the occupation's consequences are the cause.
+  tags:
+  - isis
+  - syria
+  - iraq
+  - terrorism
+- id: eric_garner
+  start: 20140717
+  level: 3
+  kind: violence
+  title: Eric Garner Dies in Police Custody
+  description_short: New York police officers put Eric Garner in a chokehold, and he dies after saying "I can't breathe" eleven
+    times.
+  description_long: The incident is filmed, and Garner was being arrested for selling loose cigarettes. A grand jury declines
+    to indict the officer on December 3.
+  why: A filmed death makes policing a national argument, weeks before Ferguson.
+  tags:
+  - policing
+  - race
+  - new-york
+  - video
+- id: midterms_2014
+  start: 20141104
+  level: 3
+  kind: election
+  title: Republicans Win the Senate
+  description_short: Republicans take control of the Senate and expand their House majority to its largest since 1929.
+  description_long: Democrats lose nine Senate seats. Obama governs the last two years against a Congress controlled by the
+    opposition.
+  why: Divided government completes itself.
+  tags:
+  - election
+  - midterm
+  - senate
+  - republicans
+- id: dapa
+  start: 20141120
+  level: 3
+  kind: immigration
+  title: Executive Action on Immigration
+  description_short: Obama announces an order shielding up to four million parents of citizens and permanent residents from
+    deportation.
+  description_long: Texas and twenty-five other states sue. Courts block the program, and an evenly split Supreme Court leaves
+    the block in place in 2016.
+  why: The executive acts again where Congress would not, and the courts stop it.
+  tags:
+  - immigration
+  - executive-power
+  - courts
+  - dapa
+- id: torture_report
+  start: 20141209
+  level: 3
+  kind: rule_of_law
+  title: Senate Torture Report
+  description_short: The Senate Intelligence Committee releases a summary of its report on the CIA's detention and interrogation
+    program.
+  description_long: The 500-page summary finds that the techniques were brutal, ineffective, and misrepresented to Congress
+    and the White House. No one is prosecuted.
+  why: The record of the abuses is public, and its consequences are not.
+  tags:
+  - torture
+  - cia
+  - senate
+  - accountability
+- id: cuba_thaw
+  start: 20141217
+  level: 3
+  kind: diplomacy
+  title: Cuba Thaw
+  description_short: Obama and Raul Castro announce that the two countries will restore diplomatic relations after fifty-four
+    years.
+  description_long: Embassies reopen in July 2015. The embargo remains in place because only Congress can lift it.
+  why: A half-century policy ends by executive action.
+  tags:
+  - cuba
+  - diplomacy
+  - executive-power
+  - normalization
+- id: afghan_combat_ends
+  start: 20141228
+  level: 3
+  kind: war
+  title: Combat Mission in Afghanistan Ends
+  description_short: The United States and NATO formally end their combat mission in Afghanistan after thirteen years.
+  description_long: About 10,000 American troops remain in an advisory and counterterrorism role. The Afghanistan War span
+    continues, and the Reckoning carries its end.
+  why: The war is declared over for combat purposes and not in fact.
+  tags:
+  - afghanistan
+  - war
+  - withdrawal
+  - nato
+- id: sanders_announces
+  start: 20150430
+  level: 3
+  kind: election
+  title: Sanders Announces
+  description_short: Senator Bernie Sanders of Vermont, a self-described democratic socialist, announces he will run for the
+    Democratic nomination.
+  description_long: He runs against Hillary Clinton on income inequality and money in politics. He wins twenty-three primaries
+    and caucuses.
+  why: The left's symptom takes electoral form, as Trump does on the right.
+  tags:
+  - election
+  - sanders
+  - populism
+  - democrats
+- id: paris_agreement
+  start: 20151212
+  level: 3
+  kind: environment
+  title: Paris Climate Agreement
+  description_short: One hundred ninety-five countries adopt an agreement to limit global warming.
+  description_long: Obama commits to it as an executive agreement, so that it does not require Senate ratification. The next
+    president announces the withdrawal in 2017.
+  why: The Kyoto problem is solved by the executive, and is undone the same way.
+  tags:
+  - climate
+  - paris
+  - executive-power
+  - treaty
+- id: fed_liftoff
+  start: 20151216
+  level: 3
+  kind: economics
+  title: The Fed Raises Rates
+  description_short: The Federal Reserve raises its target rate by a quarter point, its first increase in nine years.
+  description_long: The move ends seven years at zero. The Fed expects four more increases in 2016 and delivers one.
+  why: The emergency ends, and the recovery is still not felt in wages.
+  tags:
+  - fed
+  - interest-rates
+  - monetary-policy
+- id: bitcoin_whitepaper
+  start: 20081031
+  level: 4
+  kind: technology
+  title: Bitcoin Whitepaper
+  description_short: An author using the name Satoshi Nakamoto publishes a paper describing a peer-to-peer electronic cash
+    system.
+  description_long: It appears six weeks after Lehman, and the first block is mined in January 2009. The first block carries
+    a message referring to a bank bailout.
+  why: The crash produces a technology built on distrust of the institutions that failed.
+  tags:
+  - bitcoin
+  - cryptocurrency
+  - technology
+  - finance
+- id: ledbetter
+  start: 20090129
+  level: 4
+  kind: legislation
+  title: Lilly Ledbetter Fair Pay Act
+  description_short: Obama signs his first bill, extending the time limit for filing equal-pay lawsuits.
+  description_long: It reverses a 2007 Supreme Court decision that had made such suits harder.
+  why: The first act of the new government is a narrow one.
+  tags:
+  - obama
+  - pay-equity
+  - courts
+  - women
+- id: sotomayor
+  start: 20090806
+  level: 4
+  kind: court
+  title: Sotomayor Confirmed
+  description_short: The Senate confirms Sonia Sotomayor, 68 to 31, as the first Hispanic Supreme Court justice.
+  description_long: She replaces David Souter. Obama appoints Elena Kagan the next year.
+  why: The Court's composition changes, and not its balance.
+  tags:
+  - court
+  - sotomayor
+  - judicial-appointments
+- id: arizona_sb1070
+  start: 20100423
+  level: 4
+  kind: immigration
+  title: Arizona SB 1070
+  description_short: Arizona enacts a law requiring police to check the immigration status of anyone they stop and suspect
+    is in the country illegally.
+  description_long: The Supreme Court strikes down most of the law in 2012 but leaves the status-check provision. Other states
+    follow with their own measures.
+  why: The immigration debate moves to the states when Congress cannot act.
+  tags:
+  - immigration
+  - arizona
+  - states
+  - enforcement
+- id: fair_sentencing
+  start: 20100803
+  level: 4
+  kind: drugs
+  title: Fair Sentencing Act
+  description_short: Obama signs a law reducing the disparity between sentences for crack and powder cocaine from 100 to 1
+    to 18 to 1.
+  description_long: The sentencing gap, set in 1986, had led to far longer terms for Black defendants. The act passes without
+    a single dissenting vote in the Senate.
+  why: The war on drugs gives up its most visible inequity.
+  tags:
+  - drugs
+  - sentencing
+  - race
+  - incarceration
+- id: qe2
+  start: 20101103
+  level: 4
+  kind: economics
+  title: Second Round of Quantitative Easing
+  description_short: The Fed announces it will buy another $600 billion in Treasury securities.
+  description_long: Critics at home and abroad warn of inflation and a falling dollar, and the inflation does not come.
+  why: The central bank acts again where Congress will not.
+  tags:
+  - fed
+  - qe
+  - monetary-policy
+- id: wikileaks_cables
+  start: 20101128
+  level: 4
+  kind: rule_of_law
+  title: WikiLeaks Publishes Diplomatic Cables
+  description_short: WikiLeaks begins publishing more than 250,000 American diplomatic cables.
+  description_long: The documents were leaked by an Army private, Chelsea Manning, who is sentenced to thirty-five years in
+    2013. Obama commutes the sentence in 2017.
+  why: The first mass leak of the digital age arrives three years before Snowden.
+  tags:
+  - wikileaks
+  - leaks
+  - secrecy
+  - diplomacy
+- id: simpson_bowles
+  start: 20101201
+  level: 4
+  kind: politics
+  title: Simpson-Bowles Commission
+  description_short: Obama's deficit commission votes 11 to 7 for its plan, short of the 14 votes needed to send it to Congress.
+  description_long: The plan combines spending cuts and tax increases. Neither party's leaders embrace it.
+  why: The bipartisan consensus on the deficit is real, and it cannot be acted on.
+  tags:
+  - deficit
+  - budget
+  - commission
+  - bipartisan
+- id: giffords
+  start: 20110108
+  level: 4
+  kind: violence
+  title: Giffords Shot
+  description_short: A gunman shoots Representative Gabrielle Giffords at a constituent event in Tucson, killing six people.
+  description_long: Giffords survives with a severe brain injury. The shooting prompts a debate over heated political rhetoric.
+  why: An attack on a member of Congress is followed by no change.
+  tags:
+  - shooting
+  - congress
+  - guns
+  - arizona
+- id: wisconsin_protests
+  start: 20110214
+  level: 4
+  kind: protest
+  title: Wisconsin Protests
+  description_short: Tens of thousands occupy the Wisconsin Capitol in protest of Governor Scott Walker's law ending most
+    public employees' collective bargaining.
+  description_long: Democratic senators leave the state to deny a quorum, and the law passes. Walker survives a recall election
+    in 2012.
+  why: The labor movement's last large stand in the epoch loses.
+  tags:
+  - labor
+  - wisconsin
+  - unions
+  - protest
+- id: ndaa_detention
+  start: 20111231
+  level: 4
+  kind: rule_of_law
+  title: NDAA Detention Provisions
+  description_short: Obama signs a defense bill authorizing the military to detain terrorism suspects, including citizens
+    in some readings, without trial.
+  description_long: He says he has "serious reservations" about the provisions and signs it anyway. Courts later limit their
+    reach.
+  why: The executive keeps the detention power it was given after 9/11.
+  tags:
+  - detention
+  - ndaa
+  - executive-power
+  - rule-of-law
+- id: london_whale
+  start: 20120510
+  level: 4
+  kind: economics
+  title: The London Whale
+  description_short: JPMorgan Chase reveals a trading loss of $2 billion, which later grows to more than $6 billion.
+  description_long: The loss comes in a London office of the bank, which had been the strongest to emerge from the crisis.
+    The Volcker Rule, which would have limited such trades, had not been finalized.
+  why: The bank held up as the model is shown taking the risks the reform meant to curb.
+  tags:
+  - jpmorgan
+  - trading
+  - dodd-frank
+  - banks
+- id: libor
+  start: 20120627
+  level: 4
+  kind: scandal
+  title: LIBOR Scandal
+  description_short: Barclays is fined $453 million for manipulating the London interbank interest rate on which trillions
+    of dollars of loans are priced.
+  description_long: Banks around the world are later found to have colluded to move the rate. Several pay billions in fines.
+  why: The benchmark under the global financial system is shown to have been rigged.
+  tags:
+  - libor
+  - banks
+  - fraud
+  - finance
+- id: qe3
+  start: 20120913
+  level: 4
+  kind: economics
+  title: Third Round of Quantitative Easing
+  description_short: The Fed announces open-ended purchases of $40 billion in mortgage securities a month.
+  description_long: The program continues until October 2014, and the Fed's balance sheet reaches $4.5 trillion.
+  why: The recovery is conducted by the central bank, not the government.
+  tags:
+  - fed
+  - qe
+  - monetary-policy
+- id: romney_47
+  start: 20120917
+  level: 4
+  kind: election
+  title: Romney's "47 Percent"
+  description_short: A leaked video shows Mitt Romney telling donors that 47 percent of Americans "believe that they are victims"
+    and pay no income tax.
+  description_long: The remark circulates for the rest of the campaign. Most of the 47 percent are workers who owe payroll
+    taxes, the elderly, and students.
+  why: A private remark makes a class argument public.
+  tags:
+  - election
+  - romney
+  - class
+  - campaign
+- id: hurricane_sandy
+  start: 20121029
+  level: 4
+  kind: disaster
+  title: Hurricane Sandy
+  description_short: Sandy makes landfall in New Jersey, flooding lower Manhattan and killing 159 people in the United States.
+  description_long: It causes about $65 billion in damage, the costliest storm since Katrina. Congress takes ten weeks to
+    pass a $50 billion aid bill, over the opposition of most House Republicans.
+  why: A disaster tests the post-Katrina state and the politics of relief.
+  tags:
+  - hurricane
+  - sandy
+  - fema
+  - new-jersey
+- id: boston_marathon
+  start: 20130415
+  level: 4
+  kind: terrorism
+  title: Boston Marathon Bombing
+  description_short: Two bombs at the finish line of the Boston Marathon kill three people and injure more than 250.
+  description_long: The suspects are identified within days, and a manhunt shuts down the city. The surviving brother is convicted
+    and sentenced to death in 2015.
+  why: The domestic terrorism of the epoch is small, local, and immediate.
+  tags:
+  - terrorism
+  - boston
+  - security
+- id: windsor
+  start: 20130626
+  level: 4
+  kind: court
+  title: United States v. Windsor
+  description_short: The Supreme Court strikes down the federal Defense of Marriage Act's definition of marriage, 5 to 4.
+  description_long: The ruling requires the federal government to recognize same-sex marriages performed in the states. It
+    comes the day after the Court gutted the Voting Rights Act.
+  why: The Court expands one civil right and narrows another in the same week.
+  tags:
+  - court
+  - marriage
+  - lgbt
+  - doma
+- id: mccutcheon
+  start: 20140402
+  level: 4
+  kind: court
+  title: McCutcheon v. FEC
+  description_short: The Supreme Court strikes down the limit on the total amount an individual can give to federal candidates
+    and parties, 5 to 4.
+  description_long: The ruling extends Citizens United's logic from independent spending to direct contributions. The cap
+    had stood since the post-Watergate reforms.
+  why: The limits on money in politics continue to fall.
+  tags:
+  - court
+  - campaign-finance
+  - money-in-politics
+  - citizens-united
+- id: flint
+  start: 20140425
+  level: 4
+  kind: disaster
+  title: Flint Water Crisis
+  description_short: Flint, Michigan, switches its water source to the Flint River while under a state-appointed emergency
+    manager, and lead contaminates the city's supply.
+  description_long: Residents complain for months before officials act. Thousands of children are exposed, and several officials
+    are later charged.
+  why: The state's basic capacity fails in a poor, majority-Black city.
+  tags:
+  - flint
+  - water
+  - michigan
+  - state-capacity
+- id: child_migrants
+  start: 20140601
+  date_precision: month
+  level: 4
+  kind: immigration
+  title: Child Migrant Surge
+  description_short: More than 68,000 unaccompanied children, mostly from Central America, are apprehended at the southern
+    border in the fiscal year.
+  description_long: Facilities in Texas are overwhelmed, and Obama asks Congress for emergency funds. Violence in Honduras,
+    El Salvador, and Guatemala drives much of the migration.
+  why: Border politics moves from Mexico to Central America.
+  tags:
+  - immigration
+  - border
+  - children
+  - central-america
+- id: hobby_lobby
+  start: 20140630
+  level: 4
+  kind: court
+  title: Burwell v. Hobby Lobby
+  description_short: The Supreme Court holds, 5 to 4, that closely held corporations can claim a religious exemption from
+    the Affordable Care Act's contraception coverage requirement.
+  description_long: The ruling extends religious-freedom protections to for-profit companies.
+  why: The Court treats a corporation as a person with a conscience.
+  tags:
+  - court
+  - aca
+  - religion
+  - corporations
+- id: ebola_us
+  start: 20140930
+  level: 4
+  kind: health
+  title: Ebola Reaches the United States
+  description_short: The first case of Ebola is diagnosed in the United States, in a traveler to Dallas.
+  description_long: He dies on October 8, and two nurses who treated him become infected. The country debates travel bans,
+    and cases remain very few.
+  why: A health scare tests the post-9/11 state.
+  tags:
+  - ebola
+  - public-health
+  - fear
+  - texas
+- id: clinton_announces
+  start: 20150412
+  level: 4
+  kind: election
+  title: Clinton Announces
+  description_short: Hillary Clinton announces her second campaign for president.
+  description_long: She begins as the heavy favorite for the Democratic nomination.
+  why: The establishment candidate enters a field of insurgents.
+  tags:
+  - election
+  - clinton
+  - democrats
+- id: freddie_gray
+  start: 20150427
+  level: 4
+  kind: unrest
+  title: Baltimore Unrest
+  description_short: Riots break out in Baltimore on the day of Freddie Gray's funeral, a week after he died of a spinal injury
+    in police custody.
+  description_long: The governor calls out the National Guard. Six officers are charged, and none is convicted.
+  why: Ferguson's argument is repeated in another city.
+  tags:
+  - baltimore
+  - policing
+  - race
+  - unrest
+- id: confederate_flag
+  start: 20150710
+  level: 4
+  kind: politics
+  title: Confederate Flag Removed in South Carolina
+  description_short: South Carolina removes the Confederate battle flag from the State House grounds.
+  description_long: The legislature votes after the Charleston shooting, with Governor Nikki Haley's support. Other states
+    and retailers move to remove Confederate symbols.
+  why: A symbol that survived 150 years comes down in a month.
+  tags:
+  - confederate
+  - south-carolina
+  - symbols
+  - race
+- id: boehner_resigns
+  start: 20150925
+  level: 4
+  kind: politics
+  title: Boehner Resigns
+  description_short: House Speaker John Boehner announces he will resign from Congress at the end of October.
+  description_long: He is pushed out by the party's hard-right members, who threaten a vote to remove him. Paul Ryan succeeds
+    him.
+  why: The party leader is outflanked by his own insurgents, the pattern the next epoch inherits.
+  tags:
+  - congress
+  - boehner
+  - republicans
+  - freedom-caucus
+- id: paris_attacks
+  start: 20151113
+  level: 4
+  kind: terrorism
+  title: Paris Attacks
+  description_short: Coordinated attacks by ISIS gunmen and suicide bombers kill 130 people in Paris.
+  description_long: Several governors announce they will not accept Syrian refugees. The attacks and the San Bernardino shooting
+    on December 2, which kills fourteen, shape the final weeks of the primary campaign.
+  why: The fear of terrorism returns to politics.
+  tags:
+  - isis
+  - terrorism
+  - paris
+  - refugees
+- id: muslim_ban_call
+  start: 20151207
+  level: 4
+  kind: politics
+  title: Trump Calls for a Muslim Ban
+  description_short: Trump calls for "a total and complete shutdown of Muslims entering the United States."
+  description_long: The statement is condemned by leaders of both parties. His poll numbers rise.
+  why: The candidacy becomes the movement.
+  tags:
+  - trump
+  - immigration
+  - islam
+  - campaign
+- id: overdose_deaths
+  start: 20151218
+  level: 4
+  kind: health
+  title: Overdose Deaths Reach a Record
+  description_short: The CDC reports that more than 47,000 Americans died of drug overdoses in 2014, the most on record.
+  description_long: Opioids, including prescription painkillers, heroin, and fentanyl, account for most of the deaths. The
+    epidemic has been building since the late 1990s.
+  why: A public-health catastrophe passes unnoticed by the national argument.
+  tags:
+  - opioids
+  - overdose
+  - public-health
+  - drugs
+- id: app_store
+  start: 20080710
+  level: 5
+  kind: technology
+  title: The App Store Opens
+  description_short: Apple opens the App Store, one year after the iPhone.
+  description_long: It grows into the main way that software reaches phones.
+  why: The platform economy gets a distribution channel.
+  tags:
+  - apple
+  - apps
+  - technology
+- id: beijing_olympics
+  start: 20080808
+  level: 5
+  kind: world
+  title: Beijing Olympics Open
+  description_short: China opens the Summer Olympics in Beijing with a lavish ceremony, a month before Lehman falls.
+  description_long: The Games present a rising China to the world, in the same year the United States' financial system fails.
+  why: The rival the order had admitted to its trading system announces itself, as the order falters.
+  tags:
+  - china
+  - olympics
+  - world
+- id: palin_chosen
+  start: 20080829
+  level: 5
+  kind: election
+  title: McCain Chooses Palin
+  description_short: John McCain names Alaska Governor Sarah Palin as his running mate.
+  description_long: The choice energizes the Republican base and alienates many moderates. Palin becomes a leading voice of
+    the Tea Party movement after the election.
+  why: A figure of the later populism enters national politics.
+  tags:
+  - election
+  - palin
+  - mccain
+  - populism
+- id: nobel_obama
+  start: 20091009
+  level: 5
+  kind: politics
+  title: Obama Wins the Nobel Peace Prize
+  description_short: The Nobel committee awards Obama the Peace Prize nine months into his presidency.
+  description_long: He accepts it in December, two weeks after announcing the Afghan surge. The award is widely seen as an
+    expression of hope more than an achievement.
+  why: The hope the election carried outruns what it had done.
+  tags:
+  - obama
+  - nobel
+  - afghanistan
+- id: fort_hood
+  start: 20091105
+  level: 5
+  kind: terrorism
+  title: Fort Hood Shooting
+  description_short: An Army psychiatrist, Major Nidal Hasan, kills thirteen people at Fort Hood, Texas.
+  description_long: He had been in contact with the radical cleric Anwar al-Awlaki. He is convicted and sentenced to death
+    in 2013.
+  why: The war on terror reaches an American base from inside.
+  tags:
+  - terrorism
+  - texas
+  - army
+  - awlaki
+- id: flash_crash
+  start: 20100506
+  level: 5
+  kind: economics
+  title: The Flash Crash
+  description_short: The Dow drops about 1,000 points in minutes and recovers most of it within the hour.
+  description_long: The cause is a combination of automated trading and a large sell order. It exposes how much of the market
+    runs on algorithms.
+  why: Markets run on machines faster than anyone can watch.
+  tags:
+  - stock-market
+  - algorithms
+  - trading
+- id: jobs_dies
+  start: 20111005
+  level: 5
+  kind: technology
+  title: Steve Jobs Dies
+  description_short: Steve Jobs, the co-founder of Apple, dies at 56.
+  description_long: The company he built is on its way to becoming the most valuable in the world.
+  why: A single company comes to stand for the period's technological achievement.
+  tags:
+  - apple
+  - technology
+  - jobs
+- id: facebook_ipo
+  start: 20120518
+  level: 5
+  kind: economics
+  title: Facebook Goes Public
+  description_short: Facebook sells shares at $38 in the largest technology offering to that time, valuing the company at
+    $104 billion.
+  description_long: The company has about 900 million users. Its stock falls below the offering price within days.
+  why: The platform becomes an asset class and a political arena.
+  tags:
+  - facebook
+  - ipo
+  - social-media
+- id: aurora_shooting
+  start: 20120720
+  level: 5
+  kind: violence
+  title: Aurora Theater Shooting
+  description_short: A gunman kills twelve people and wounds seventy at a midnight screening of a Batman film in Aurora, Colorado.
+  description_long: The shooting happens five months before Sandy Hook and prompts no federal action.
+  why: The ritual of the era repeats.
+  tags:
+  - shooting
+  - guns
+  - colorado
+- id: pope_francis_elected
+  start: 20130313
+  level: 5
+  kind: religion
+  title: Pope Francis Elected
+  description_short: Cardinal Jorge Bergoglio of Argentina is elected pope, the first from the Americas.
+  description_long: He takes the name Francis and focuses on poverty, migrants, and inequality. He visits the United States
+    in September 2015.
+  why: A global figure becomes a voice in the American argument about the economy.
+  tags:
+  - pope
+  - religion
+  - inequality
+- id: sony_hack
+  start: 20141124
+  level: 5
+  kind: technology
+  title: Sony Hack
+  description_short: Hackers publish stolen emails and films from Sony Pictures, an attack that the government attributes
+    to North Korea.
+  description_long: The attack is a response to a comedy film about the North Korean leader. It is among the first major state-linked
+    cyberattacks on a private American company.
+  why: Cyber conflict becomes visible.
+  tags:
+  - cyber
+  - north-korea
+  - hacking
+  - sony
+- id: kim_davis
+  start: 20150903
+  level: 5
+  kind: politics
+  title: Kim Davis Jailed
+  description_short: A federal judge jails Kim Davis, a Kentucky county clerk, for refusing to issue marriage licenses to
+    same-sex couples.
+  description_long: She cites her religious beliefs, and her release five days later makes her a hero to some conservatives.
+    The episode follows the Obergefell decision by two months.
+  why: The Court's ruling meets resistance at the county courthouse.
+  tags:
+  - marriage
+  - religion
+  - kentucky
+  - obergefell
+- id: pope_congress
+  start: 20150924
+  level: 5
+  kind: politics
+  title: Pope Francis Addresses Congress
+  description_short: Pope Francis addresses a joint session of Congress, the first pope to do so.
+  description_long: He calls for action on immigration, climate change, the death penalty, and inequality.
+  why: The most unusual voice in the epoch's argument speaks inside the Capitol.
+  tags:
+  - pope
+  - congress
+  - religion
+  - immigration
