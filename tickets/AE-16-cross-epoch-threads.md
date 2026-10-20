@@ -19,6 +19,23 @@ Let a viewer follow one theme (immigration, the Great Migration, civil liberties
 
 Raised during the Return to Normalcy outline, when the Immigration Act of 1924 turned out to be one beat in a thread that runs through the Chinese Exclusion Act (1882, Gilded Age), the Gentlemen's Agreement (1907, Big Stick), the 1921 and 1924 quota laws, and the 1965 abolition of national origins. The same pattern appears for the Great Migration (1916 onward, crossing five epochs), the income tax (Pollock 1895, the Sixteenth Amendment 1913, the War Revenue Act 1917), antitrust (Sherman 1890, Northern Securities 1904, Clayton 1914), and civil liberties (Espionage Act 1917 to Schenck, Debs, and Abrams). The project's central claim is that each epoch inherits an unresolved question from the last, and threads would make that visible at the level of single events.
 
+## Update (2026-10-19): threads, not only themes
+
+The editor's idea is larger than the tag filter above. A thread is a named, ordered group of events with a claim
+about why they belong together. It may be a documented chain (Al-Qaeda's War) or an argued, looser grouping (The
+Disenchantment, The Imperial Presidency), and it crosses epochs and levels. A pilot of three threads is drafted in
+`src/data/threads_pilot.yaml`. What it showed about the data model:
+
+- A thread has a title, a one-sentence claim, a short summary, a register (factual, structural, argued), and a
+  counter-reading.
+- Each member carries a role (origin, trigger, link, culmination, consequence, counterweight) and a link strength
+  (documented, contested, argued), which is separate from the thread's register.
+- Counterweights are members too, so that a thread reads as a contest and not a one-way story.
+- One event can belong to several threads.
+- Threads need stable event ids in the live array, which reconciliation currently drops.
+- Threads surface gaps: the pilot proposes about twenty events that no corpus has yet, each needing a source.
+- Threads are authored by Claude and reviewed by the editor, as Level 1 is. The interface is not designed yet.
+
 ## Current State
 
 - Each event in the YAML corpora has a `tags` list (for example `immigration`, `income-tax`, `antitrust`, `civil-liberties`), so threads are already queryable in the research files.

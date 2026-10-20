@@ -1,0 +1,704 @@
+# Threads — pilot draft. A thread is a named, ordered group of events with a claim about why they belong
+# together. Threads are authored arguments, not part of the Level 1 spine, and an event may belong to
+# several threads. Written by Claude as a first pass for the editor to overrule; nothing here is in the
+# live instrument yet.
+#
+# Data model under test in this pilot:
+#   id, title, claim (one sentence), summary (the story in a few sentences), register (factual | structural | argued), counter_reading, status
+#   members[]: ref (an existing event id from a corpus), or proposed (a new event the thread needs, not in
+#   any corpus yet), plus role (origin | link | culmination | consequence | context), link
+#   (documented | contested | argued) and a one-line why_here.
+#   `link` is the strength of this member's connection to the thread, separate from the thread's register.
+#   The register of the thread as a whole is the weakest claim it makes in its own title.
+
+version: 0
+
+threads:
+- id: al_qaedas_war
+  title: Al-Qaeda's War
+  claim: >-
+    September 11 was the culmination of a campaign al-Qaeda publicly declared in 1996 and expanded in 1998.
+  summary: >-
+    The United States initially confronted that campaign through criminal prosecution, intelligence operations,
+    and limited military force. After September 11, it launched a war that overthrew the Taliban government
+    sheltering al-Qaeda. Twenty years later, American forces withdrew from Afghanistan, and the Taliban
+    returned to power.
+  register: factual
+  register_note: >-
+    The core chain (1996 declaration, 1998 fatwa, the embassy bombings, the Cole, September 11) is documented
+    by the group's own statements and by indictments, and the 9/11 Commission narrates it. Two members
+    (the 1993 bombing and Mogadishu) are marked contested below and kept, since they are what the thread
+    argues about.
+  counter_reading: >-
+    Three objections. (1) The first World Trade Center bombing was planned by Ramzi Yousef, whose uncle
+    Khalid Sheikh Mohammed later planned September 11, but whether it was an al-Qaeda operation is a matter of
+    personnel and not of command, and the chain looks neater in retrospect than it did to those inside it.
+    (2) The common story that American support for the mujahideen in the 1980s created al-Qaeda is contested,
+    and bin Laden's own stated grievances do not rest on the Soviet war, so the thread leaves it out. (3) "War"
+    was the post-2001 government's word. Before September 11 the response was a mix of indictments,
+    covert action, and one round of missile strikes, and the choice of that mix is part of the story and
+    not a settled label.
+  endpoint: Open. The thread runs to the present, and its latest member is the August 2021 return of the Taliban, with the Afghanistan War span as the container.
+  status: open
+  see_also:
+  - imperial_presidency   # the Patriot Act, Guantanamo, and the military commissions began here
+  members:
+  # --- origins
+  - proposed: al_qaeda_founded
+    start: 19880800
+    date_precision: month
+    suggested_level: 4
+    suggested_epoch: morning_in_america
+    title: Al-Qaeda Founded
+    sketch: Bin Laden and associates form al-Qaeda. The month is from the 9/11 Commission narrative and needs a source check.
+    role: origin
+    link: documented
+    why_here: The organization exists before any attack on the United States.
+  - proposed: troops_in_saudi_arabia
+    start: 19900807
+    suggested_level: 4
+    suggested_epoch: morning_in_america
+    title: American Troops Deployed to Saudi Arabia
+    sketch: Operation Desert Shield begins after Iraq invades Kuwait, stationing American forces in the kingdom that holds Mecca and Medina. It is the grievance bin Laden cites most in his 1996 declaration.
+    role: origin
+    link: documented
+    why_here: Bin Laden's stated reason for the campaign against the United States.
+  # --- the early attacks
+  - corpus: end_of_history
+    id: wtc_bombing_1993
+    role: link
+    link: contested
+    why_here: A truck bomb under the North Tower kills six. Its planner is the nephew of the man who plans September 11, and the case is the model for the later treatment of such attacks as crimes.
+    verify: Check how the 9/11 Commission Report describes the connection between Yousef's plot and al-Qaeda.
+  - corpus: end_of_history
+    id: mogadishu
+    role: link
+    link: contested
+    why_here: Bin Laden later claimed his followers had trained Somali fighters, and he cited the American withdrawal as proof that the country would retreat. The extent of al-Qaeda's role in the battle is disputed.
+    verify: Source the claim and the dispute before this member is kept.
+  # --- the declared war
+  - proposed: declaration_of_war_1996
+    start: 19960823
+    suggested_level: 4
+    suggested_epoch: end_of_history
+    title: Bin Laden's Declaration of War
+    sketch: Bin Laden publishes a "Declaration of War against the Americans Occupying the Land of the Two Holy Places," calling for attacks on American forces in Arabia.
+    role: link
+    link: documented
+    why_here: The campaign is announced in writing, five years before it reaches American soil.
+  - proposed: fatwa_1998
+    start: 19980223
+    suggested_level: 4
+    suggested_epoch: end_of_history
+    title: The 1998 Fatwa
+    sketch: Bin Laden and allied leaders issue a statement under the name of a "World Islamic Front" that declares it a duty to kill Americans, civilian and military.
+    role: link
+    link: documented
+    why_here: The aim is extended to civilians, and the second public announcement precedes the embassy attacks by five months.
+  - proposed: embassy_bombings_1998
+    start: 19980807
+    suggested_level: 2
+    suggested_epoch: end_of_history
+    title: The Embassy Bombings
+    sketch: Truck bombs destroy the American embassies in Nairobi, Kenya, and Dar es Salaam, Tanzania, within minutes of each other, killing more than 220 people, most of them Africans, including twelve Americans.
+    role: link
+    link: documented
+    why_here: The first attacks the United States attributes to al-Qaeda, tried in federal court and answered with missile strikes.
+    verify: Confirm the death totals and the number of American dead.
+  - proposed: sudan_afghanistan_strikes_1998
+    start: 19980820
+    suggested_level: 4
+    suggested_epoch: end_of_history
+    title: Cruise Missile Strikes on Sudan and Afghanistan
+    sketch: The Clinton administration fires cruise missiles at a Khartoum factory and at training camps in Afghanistan in response to the embassy bombings. The Sudan target is later disputed.
+    role: link
+    link: documented
+    why_here: The one military response before 2001, and the Taliban's first appearance in the thread's record.
+  - proposed: millennium_plot_1999
+    start: 19991214
+    suggested_level: 5
+    suggested_epoch: end_of_history
+    title: The Millennium Plot
+    sketch: A customs officer stops Ahmed Ressam at the Washington State border with explosives bound for Los Angeles International Airport.
+    role: link
+    link: documented
+    why_here: A prevented attack, which shows the pattern was running ahead of the government's attention.
+  - proposed: uss_cole_2000
+    start: 20001012
+    suggested_level: 3
+    suggested_epoch: end_of_history
+    title: USS Cole
+    sketch: A boat bomb attacks the destroyer USS Cole in the port of Aden, Yemen, killing 17 American sailors.
+    role: link
+    link: documented
+    why_here: The last attack before September 11, and the one the outgoing and incoming administrations decided not to answer.
+    verify: Confirm that no military response followed, and the wording about the two administrations.
+  - proposed: bin_ladin_pdb_2001
+    start: 20010806
+    suggested_level: 4
+    suggested_epoch: end_of_history
+    title: "Bin Ladin Determined to Strike in US"
+    sketch: A President's Daily Brief with this title warns of possible hijackings and attacks in the United States.
+    role: link
+    link: documented
+    why_here: The warning is on the record five weeks before the attack, and the 9/11 Commission examines it.
+  # --- the culmination
+  - corpus: end_of_history
+    id: september_11
+    role: culmination
+    link: documented
+    why_here: The campaign reaches the United States.
+  # --- the war that follows
+  - corpus: end_of_history
+    id: afghanistan_invasion
+    role: consequence
+    link: documented
+    why_here: The war the attack produces, against the group's host government.
+  - corpus: end_of_history
+    id: tora_bora
+    role: consequence
+    link: documented
+    why_here: Bin Laden escapes into Pakistan.
+  - corpus: interregnum
+    id: bin_laden
+    role: consequence
+    link: documented
+    why_here: Killed nearly ten years later, in Pakistan, while the war in Afghanistan continues.
+  - corpus: reckoning
+    id: doha_agreement
+    role: consequence
+    link: documented
+    why_here: The United States agrees with the Taliban, over the Afghan government's head, to leave.
+  - corpus: reckoning
+    id: fall_of_kabul
+    role: consequence
+    link: documented
+    why_here: The host government that sheltered al-Qaeda returns to power as the last American troops leave.
+  - corpus: reckoning
+    id: last_flight_kabul
+    role: consequence
+    link: documented
+    why_here: The span closes.
+  - proposed: zawahiri_killed_2022
+    start: 20220731
+    suggested_level: 3
+    suggested_epoch: reckoning
+    title: Zawahiri Killed in Kabul
+    sketch: An American drone strike kills Ayman al-Zawahiri, al-Qaeda's leader since bin Laden's death, at a house in Kabul. The strike takes place eleven months after the last troops left.
+    role: consequence
+    link: documented
+    why_here: Shows the thread has not closed, because al-Qaeda's leader was living in the Taliban's capital.
+    verify: Confirm the date, the location, and the interval since the withdrawal.
+  gaps:
+    summary: >-
+      Eight events are not in any corpus yet, plus the 2022 Zawahiri strike. The embassy bombings and the Cole
+      are the ones the thread cannot do without, since they are the links between 1993 and 2001. Each needs a
+      source before it is added. The live array also needs an `id` per event so threads can refer to events.
+    settled_by_editor:
+    - The Soviet war and withdrawal are left out. Bin Laden's stated grievances do not rest on it.
+    - The 1993 bombing and Mogadishu stay as contested members.
+    - The thread is open and is not assumed to end in 2021. Tora Bora stays as a consequence, with Kabul after it.
+    open_questions:
+    - Whether Khobar Towers (1996) belongs. It is left out because the attribution is disputed and the group is not al-Qaeda, which would make it a different thread.
+
+- id: disenchantment
+  title: The Disenchantment
+  claim: >-
+    After the 2008 financial crisis, trust in the country's institutions collapsed on both the left and the
+    right, and voters turned to outsiders who promised to break the system.
+  summary: >-
+    The crash exposed institutions that had failed to see it coming, and the government's response protected
+    the banks that caused it while the households that owed the money carried the loss. The anger found two
+    forms, the Tea Party and Occupy Wall Street, each aimed at a different part of the same arrangement.
+    Neither became a governing alternative, and Congress and the parties kept failing to govern. In 2015 an
+    outsider on each side declared for the presidency, and in 2016 one of them won. The loss of faith did not
+    end with the election. It reached the count itself in 2020 and has not yet resolved.
+  register: argued
+  register_note: >-
+    Every member is a documented event. The connections between them are interpretive. That the crash and the
+    bailouts caused the Tea Party, Occupy, and Trump is a claim historians dispute, and the thread says so.
+  counter_reading: >-
+    Three objections. (1) The decline in trust began long before 2008. Public trust in the federal government
+    has fallen since the 1960s, through Vietnam and Watergate, which this project's own Unravelling epoch
+    treats as a break, so the crash accelerated a trend and did not start it. (2) The cause of the 2016 result
+    is disputed. Economic grievance is one explanation, and racial and cultural resentment, partisan
+    loyalty, and the weakness of the Clinton campaign are others, so the link from foreclosures to the Trump
+    vote is the thread's weakest. (3) The loss of faith was not steady or even. Voters re-elected Obama in
+    2012, four years after the crash, which is why that election is a member, as a counterweight.
+  endpoint: Open. The latest member is the 2024 re-election, and the thread runs to the present.
+  status: open
+  see_also:
+  - imperial_presidency
+  members:
+  # --- seeds: failures of the institutions before the crash
+  - corpus: end_of_history
+    id: bush_v_gore
+    role: origin
+    link: argued
+    why_here: The Supreme Court decides a presidential election, and many voters on one side stop trusting the count.
+  - corpus: end_of_history
+    id: duelfer_report
+    role: origin
+    link: argued
+    why_here: The weapons that justified the Iraq War are not found, and the government's account of itself is discredited.
+  - corpus: end_of_history
+    id: katrina
+    role: origin
+    link: argued
+    why_here: The state fails visibly, in a major city, and the failure falls on those with the least.
+  # --- the crash and the response
+  - corpus: end_of_history
+    id: housing_peak
+    role: origin
+    link: documented
+    why_here: Prices start to fall, and the loans written on the assumption that they would not begin to default.
+  - corpus: interregnum
+    id: lehman_fails
+    role: trigger
+    link: documented
+    why_here: The credit system seizes, and the institutions that were meant to prevent this did not see it coming.
+  - corpus: interregnum
+    id: tarp_signed
+    role: trigger
+    link: documented
+    why_here: The banks are rescued on the order's terms, and the public's anger has its target.
+  - corpus: interregnum
+    id: obama_elected
+    role: link
+    link: documented
+    why_here: Voters choose change in the middle of the collapse, and the change arrives inside the settlement it inherits.
+  - corpus: interregnum
+    id: hamp
+    role: link
+    link: documented
+    why_here: The program meant to help households modify their mortgages reaches far fewer than promised.
+  - corpus: interregnum
+    id: aig_bonuses
+    role: link
+    link: documented
+    why_here: A rescued firm pays bonuses to the people who caused its losses, and the outrage is bipartisan.
+  # --- two forms of the same anger
+  - corpus: interregnum
+    id: santelli_rant
+    role: link
+    link: documented
+    why_here: A television broadcast from the Chicago trading floor gives the Tea Party its name, as a protest against helping homeowners.
+  - corpus: interregnum
+    id: tea_party_wave
+    role: link
+    link: documented
+    why_here: The anger on the right becomes votes, and the largest House swing since 1948.
+  - corpus: interregnum
+    id: occupy_wall_street
+    role: link
+    link: documented
+    why_here: The anger on the left takes a different target, the banks, and has no electoral outlet.
+  - corpus: interregnum
+    id: too_big_to_jail
+    role: link
+    link: documented
+    why_here: The attorney general says some banks are too large to prosecute, and the line becomes the era's shorthand.
+  - proposed: congress_approval_2013
+    start: 20131100
+    date_precision: month
+    suggested_level: 5
+    suggested_epoch: interregnum
+    title: Congress Approval Hits a Record Low
+    sketch: Gallup reports that approval of Congress falls to 9 percent, the lowest in its polling.
+    role: link
+    link: documented
+    why_here: The measure of the loss of faith reaches its floor, a month after a government shutdown.
+    verify: Confirm the figure and the date against Gallup.
+  - corpus: interregnum
+    id: shutdown_2013
+    role: link
+    link: argued
+    why_here: A faction of one party shuts the government down over the health-care law, and the institutions are seen failing to govern.
+  - corpus: interregnum
+    id: obama_reelected
+    role: counterweight
+    link: documented
+    why_here: A majority re-elects the incumbent four years after the crash, so the disenchantment was neither universal nor linear.
+  - proposed: cantor_defeat_2014
+    start: 20140610
+    suggested_level: 4
+    suggested_epoch: interregnum
+    title: Cantor Loses His Primary
+    sketch: House Majority Leader Eric Cantor loses his Republican primary in Virginia to a Tea Party challenger, the first time a majority leader has lost a primary.
+    role: link
+    link: documented
+    why_here: The party's leadership cannot hold its own voters.
+    verify: Confirm the date and the claim that no majority leader had lost a primary before.
+  - corpus: interregnum
+    id: boehner_resigns
+    role: link
+    link: argued
+    why_here: The Speaker resigns under pressure from his own party's insurgents.
+  # --- the outsiders
+  - corpus: interregnum
+    id: sanders_announces
+    role: link
+    link: argued
+    why_here: An independent senator who calls himself a socialist challenges the Democratic establishment.
+  - corpus: interregnum
+    id: trump_announces
+    role: link
+    link: documented
+    why_here: A candidate with no political experience announces, and goes on to win the Republican nomination over the party's establishment.
+  - corpus: reckoning
+    id: scalia_garland
+    role: link
+    link: argued
+    why_here: The Senate refuses to hold a hearing on a Supreme Court nominee, so the Court itself becomes an object of the fight over the system.
+  - proposed: democratic_primary_2016
+    start: 20160607
+    suggested_level: 4
+    suggested_epoch: reckoning
+    title: Clinton Wins the Democratic Nomination
+    sketch: Hillary Clinton clinches the Democratic nomination after the final primaries, defeating Bernie Sanders, who won more than twenty states and about 13 million votes. A month later leaked party emails feed charges that the process favored her.
+    role: counterweight
+    link: argued
+    why_here: The insurgency on the left is absorbed by the party, where on the right the insurgency took it over, and the contrast is the thread's clearest asymmetry.
+    verify: Confirm the date the delegate majority was reached, Sanders's state and vote totals, and the date and content of the DNC email release.
+  - corpus: reckoning
+    id: trump_elected
+    role: culmination
+    link: argued
+    why_here: The outsider wins, against both establishments and the polls.
+  # --- the loss of faith continues
+  - corpus: reckoning
+    id: election_2020
+    role: consequence
+    link: argued
+    why_here: The loser refuses to concede, and the legitimacy of the count becomes a partisan fact.
+  - corpus: reckoning
+    id: january_6
+    role: consequence
+    link: argued
+    why_here: The loss of faith in the count becomes physical.
+  - corpus: reckoning
+    id: roe_leak
+    role: link
+    link: argued
+    why_here: A draft opinion leaks, and the Court's deliberations are seen before its decision.
+  - corpus: reckoning
+    id: dobbs
+    role: consequence
+    link: argued
+    why_here: The Court ends a fifty-year settlement, and the loss of faith in an institution now runs from the other side.
+  - proposed: court_confidence_2022
+    start: 20220700
+    date_precision: month
+    suggested_level: 4
+    suggested_epoch: reckoning
+    title: Confidence in the Supreme Court Hits a Record Low
+    sketch: Gallup reports the share of Americans with a great deal or quite a lot of confidence in the Supreme Court at the lowest in its polling, weeks after Dobbs.
+    role: consequence
+    link: documented
+    why_here: The measure of the loss of faith, applied to the Court.
+    verify: Confirm the figure and the date against Gallup before using either.
+  - corpus: reckoning
+    id: trump_reelected
+    role: consequence
+    link: argued
+    why_here: The electorate returns the outsider to office, after the institutions that might have judged him declined to.
+
+  settled_by_editor:
+  - The three pre-2008 seeds stay.
+  - The thread runs into Dobbs and the Court.
+  - The 2016 Democratic primary is added, as a counterweight, for the left-right asymmetry.
+  gaps:
+    summary: >-
+      Four events are not in any corpus yet, all at low levels. The pre-2008 seeds (Bush v. Gore, the
+      missing weapons, Katrina) are marked argued, since the claim that disenchantment began before the crash
+      is the thread's second counter-reading and is not settled.
+    open_questions:
+    - Whether the three pre-2008 seeds belong, or whether the thread starts at the crash.
+
+- id: imperial_presidency
+  title: The Imperial Presidency
+  claim: Since Nixon, the balance of power has shifted from Congress and the courts to the president, through claims that
+    the law does not bind him, and each limit that followed has been narrower than the claim.
+  summary: 'Nixon''s own words state the idea: "When the president does it, that means that it is not illegal." Watergate
+    produced the strongest correction, with a unanimous Supreme Court, a resignation, the Church Committee, and a law restoring
+    Congress''s control of spending, and the claim was never repudiated, only checked. After September 11, lawyers in the
+    executive branch wrote that the president''s war powers override statutes against torture and warrantless surveillance,
+    and a secret memo approved the killing of an American citizen by drone. Both parties'' presidents then governed by executive
+    action where Congress would not act, on immigration, recess appointments, eviction moratoria, vaccine rules, and student
+    debt, and the courts struck several of them down. In the second Trump term the claim moved from theory to practice, with
+    a Supreme Court decision on immunity, agencies dismantled by executive action, spending withheld, tariffs by emergency
+    declaration, and flights that proceeded despite a judge''s order. The courts have set some limits, and the thread records
+    those too.'
+  register: argued
+  register_note: The events are documented. That they form a pattern of one claim is an interpretation. The thread's own name
+    comes from Arthur Schlesinger's 1973 book, but the thread is narrower than his, which covered the whole growth of presidential
+    power, including war-making. The editor's reading is that war-making grew out of the country's postwar position, and is
+    a different question.
+  counter_reading: Three objections. (1) The unitary executive theory holds that the Constitution vests all executive power
+    in the president, so what the thread calls a claim of immunity is a restoration of Article II, and the Court's immunity
+    decision, on this view, is a correct reading. (2) Nixon was not the first to claim broad power. Lincoln suspended habeas
+    corpus and Wilson ran the Espionage Act, so a thread starting in 1972 may mistake the point at which the claim was made
+    explicit for the point at which it began. (3) The record is not a steady rise. United States v. Nixon, the post-Watergate
+    laws, and in 2025 and 2026 the rulings on the National Guard and the tariffs show the other branches holding the line
+    at times, and the thread includes them as counterweights.
+  endpoint: Open. The latest members are the Iran War and the 2026 Supreme Court rulings.
+  status: open
+  see_also:
+  - disenchantment
+  - al_qaedas_war
+  - war_powers (not yet drafted)
+  - dirty_tricks (not yet drafted)
+  members:
+  - proposed: olc_sitting_president_1973
+    start: 19730924
+    suggested_level: 4
+    suggested_epoch: unravelling
+    title: 'Justice Department: A Sitting President Cannot Be Indicted'
+    sketch: The Office of Legal Counsel concludes that a sitting president is immune from indictment, an opinion reaffirmed
+      in 2000 and applied to Mueller and to the 2024 federal cases.
+    role: link
+    link: documented
+    why_here: The Justice Department itself writes the rule that keeps the president out of court while he holds office.
+    verify: Confirm the date of the 1973 memo and its use in the Mueller and Smith cases.
+  - corpus: unravelling
+    id: saturday_night_massacre
+    role: link
+    link: documented
+    why_here: The president fires the special prosecutor and two senior officials resign rather than carry it out.
+  - proposed: impoundment_control_act_1974
+    start: 19740712
+    suggested_level: 3
+    suggested_epoch: unravelling
+    title: Congressional Budget and Impoundment Control Act
+    sketch: Congress passes a law limiting the president's power to withhold funds it has appropriated, after Nixon refused
+      to spend money for programs he opposed.
+    role: counterweight
+    link: documented
+    why_here: The correction to the claim that a president may decline to spend what Congress has voted, and the law that
+      the 2025 funding fights test.
+    verify: Confirm the date and the link to Nixon's impoundments.
+  - corpus: unravelling
+    id: us_v_nixon
+    role: counterweight
+    link: documented
+    why_here: The Court holds, unanimously, that the president cannot withhold evidence from a criminal case on a claim of
+      privilege.
+  - corpus: unravelling
+    id: church_committee
+    role: counterweight
+    link: documented
+    why_here: Congress investigates the intelligence agencies and writes limits on them, the strongest oversight of the period.
+  - proposed: national_emergencies_act_1976
+    start: 19760914
+    suggested_level: 4
+    suggested_epoch: unravelling
+    title: National Emergencies Act
+    sketch: Congress sets rules for presidential declarations of national emergency, a law that dozens of emergencies have
+      since been declared under.
+    role: origin
+    link: documented
+    why_here: Congress writes the tool that later presidents use for tariffs, border walls, and more, which is the thread's
+      first counter-reading.
+    verify: Confirm the date and the number of emergencies declared.
+  - proposed: nixon_frost_1977
+    start: 19770519
+    suggested_level: 3
+    suggested_epoch: unravelling
+    title: 'Nixon: "When the President Does It, That Means That It Is Not Illegal"'
+    sketch: In a televised interview with David Frost, Nixon says that when the president does it, that means it is not illegal.
+    role: origin
+    link: documented
+    why_here: The claim the thread follows, in the words of the man who made it.
+    verify: Confirm the date of the interview broadcast and the exact wording.
+  - proposed: ieepa_1977
+    start: 19771228
+    suggested_level: 4
+    suggested_epoch: unravelling
+    title: International Emergency Economic Powers Act
+    sketch: Congress gives the president broad power to regulate commerce with foreign countries during a declared emergency.
+    role: origin
+    link: documented
+    why_here: The statute used for the 2025 tariffs, until the Supreme Court held in 2026 that it does not reach them.
+    verify: Confirm the date.
+  - corpus: morning_in_america
+    id: iran_contra_revealed
+    role: link
+    link: documented
+    why_here: Officials run a foreign policy that Congress had forbidden, funded by arms sales.
+  - corpus: end_of_history
+    id: september_11
+    role: trigger
+    link: documented
+    why_here: The attack opens the period in which the executive claims the power to detain, interrogate, and surveil outside
+      ordinary law.
+  - corpus: end_of_history
+    id: patriot_act
+    role: link
+    link: documented
+    why_here: Congress expands surveillance powers within weeks, with little debate.
+  - corpus: end_of_history
+    id: guantanamo
+    role: link
+    link: documented
+    why_here: Prisoners are held offshore without charge or trial, on the theory that no court has jurisdiction.
+  - corpus: end_of_history
+    id: torture_memo
+    role: link
+    link: documented
+    why_here: Lawyers in the executive branch define torture so narrowly that interrogation methods fall outside it.
+  - corpus: end_of_history
+    id: warrantless_wiretapping
+    role: link
+    link: documented
+    why_here: The executive surveils Americans' calls without warrants, in secret, for years.
+  - corpus: interregnum
+    id: look_forward
+    role: link
+    link: documented
+    why_here: The next administration declines to prosecute the interrogators, and the policy stands.
+  - corpus: interregnum
+    id: awlaki
+    role: link
+    link: documented
+    why_here: An American citizen is killed abroad by a drone strike on the president's order, after a secret legal review.
+  - corpus: interregnum
+    id: snowden
+    role: link
+    link: documented
+    why_here: The scale of the surveillance state is made public, by a contractor.
+  - proposed: noel_canning_2014
+    start: 20140626
+    suggested_level: 4
+    suggested_epoch: interregnum
+    title: NLRB v. Noel Canning
+    sketch: The Supreme Court unanimously holds that Obama's recess appointments to the labor board were invalid because the
+      Senate was not in recess.
+    role: counterweight
+    link: documented
+    why_here: A Democratic president's attempt to act around the Senate is struck down, 9 to 0 on the result.
+    verify: Confirm the date and the vote.
+  - corpus: interregnum
+    id: dapa
+    role: link
+    link: argued
+    why_here: The president acts on immigration without Congress, after Congress failed to pass a bill, and courts later block
+      the program.
+  - corpus: reckoning
+    id: comey_fired
+    role: link
+    link: documented
+    why_here: The president fires the head of the agency investigating his campaign.
+  - corpus: reckoning
+    id: emergency_wall
+    role: link
+    link: documented
+    why_here: A spending decision Congress refused is made by emergency declaration.
+  - corpus: reckoning
+    id: first_impeachment
+    role: counterweight
+    link: documented
+    why_here: The House uses the constitutional remedy, and the Senate does not convict.
+  - proposed: eviction_moratorium_2021
+    start: 20210826
+    suggested_level: 4
+    suggested_epoch: reckoning
+    title: Court Ends the Eviction Moratorium
+    sketch: The Supreme Court ends the federal eviction moratorium, saying the health agency lacked authority to impose it
+      without Congress. The administration had renewed it after saying it doubted it could.
+    role: counterweight
+    link: documented
+    why_here: A Democratic administration acts where Congress would not, and the Court holds the line.
+    verify: Confirm the date, the vote, and the administration's stated doubts.
+  - proposed: osha_mandate_struck_2022
+    start: 20220113
+    suggested_level: 5
+    suggested_epoch: reckoning
+    title: Court Blocks the Vaccine Mandate for Large Employers
+    sketch: The Supreme Court blocks the workplace vaccine-or-test rule for employers of 100 or more, 6 to 3.
+    role: counterweight
+    link: documented
+    why_here: Another Democratic-era use of agency power that the Court holds Congress did not authorize.
+    verify: Confirm the date and the vote.
+  - corpus: reckoning
+    id: student_loans_struck
+    role: counterweight
+    link: documented
+    why_here: The Court holds that the president cannot cancel student debt without Congress.
+  - corpus: reckoning
+    id: trump_v_united_states
+    role: link
+    link: documented
+    why_here: The Court holds that a president has immunity for official acts.
+  - corpus: reckoning
+    id: inspectors_general_fired
+    role: link
+    link: documented
+    why_here: The offices that watch the executive from inside are cleared, without the notice the law requires.
+  - corpus: reckoning
+    id: omb_freeze
+    role: link
+    link: documented
+    why_here: The executive orders a freeze on funds Congress appropriated, and rescinds the memo only after a court pauses
+      it.
+  - corpus: reckoning
+    id: doge
+    role: link
+    link: documented
+    why_here: Agencies that Congress created are dismantled by executive action.
+  - corpus: reckoning
+    id: alien_enemies_act
+    role: link
+    link: documented
+    why_here: A wartime statute is used in peacetime, and flights proceed despite a judge's order.
+  - corpus: reckoning
+    id: liberation_day_tariffs
+    role: link
+    link: documented
+    why_here: A power that belongs to Congress is exercised through an emergency declaration.
+  - corpus: reckoning
+    id: la_guard_deployment
+    role: link
+    link: documented
+    why_here: The National Guard and Marines are sent into a state over its governor's objection.
+  - corpus: reckoning
+    id: trump_v_casa
+    role: link
+    link: documented
+    why_here: The Court narrows the lower courts' main tool against the executive.
+  - corpus: reckoning
+    id: boat_strikes
+    role: link
+    link: documented
+    why_here: Suspected drug smugglers are killed at sea without trial, under a claim of armed conflict.
+  - corpus: reckoning
+    id: ieepa_ruling
+    role: counterweight
+    link: documented
+    why_here: The Court holds that the emergency statute does not authorize the tariffs.
+  - corpus: reckoning
+    id: slaughter
+    role: link
+    link: documented
+    why_here: The Court overrules the precedent that protected independent agencies from the president's removal power.
+  - corpus: reckoning
+    id: cook_ruling
+    role: counterweight
+    link: documented
+    why_here: The Court carves out the Federal Reserve from that removal power, for now.
+  settled_by_editor:
+  - The thread starts with Nixon, and its subject is the shift in the balance of power toward the executive. War-making and
+    police actions are a different question, and belong in a separate thread.
+  - Pardons are left out. They are a constitutional power of the office, even when abused, and are not a shift in the balance
+    of power.
+  - The thread includes presidents of both parties and activity done for either party.
+  gaps:
+    summary: 'Six events are not in any corpus yet, at Levels 3 to 5: the Frost interview, the 1973 Justice Department opinion,
+      the 1974 impoundment law, the emergency statutes of 1976 and 1977, and three court rulings against Democratic-era actions
+      (Noel Canning, the eviction moratorium, and the vaccine mandate). The members dropped are the war-powers items, Youngstown,
+      the 1942 internment order, and all the pardons. The war-powers items are the natural start of a separate thread.'
+    open_questions:
+    - Whether to draft the war-powers thread, with the editor's postwar-position reading as its claim.
+    - Whether a fourth thread, on political dirty tricks (Nixon's plumbers, the Brooks Brothers Riot, the 2016 leaks), belongs
+      beside this one.
+    - Whether Comey's firing and January 6 should be members. January 6 was dropped, as being about the transfer of power
+      and not the balance among branches.
